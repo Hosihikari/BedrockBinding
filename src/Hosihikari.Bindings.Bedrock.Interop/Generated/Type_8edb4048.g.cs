@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Ability_Nested;
 
-public enum Type : sbyte
+public enum Type : byte
 {
     Invalid = 0,
     Unset = 1,

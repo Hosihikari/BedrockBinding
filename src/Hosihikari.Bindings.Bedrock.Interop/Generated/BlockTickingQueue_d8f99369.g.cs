@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockTickingQueue
+public sealed unsafe partial class BlockTickingQueue : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockTickingQueue(nint handle) : this(handle, true) { }
 
     internal BlockTickingQueue(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockTickingQueue Borrow(nint handle) => new BlockTickingQueue(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,128 +33,142 @@ public sealed unsafe partial class BlockTickingQueue
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockTickingQueue Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockTickingQueue Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void acquireAllRandomTicks(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_c681cc3a((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_68a09d08((void*)__hosihikari_shim_handle);
     }
 
-    public void acquireAllTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue arg0)
+    public void _acquireAllTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue otherChunkQueue)
     {
-        NativeMethods.TablePtr->hs_method_89176528((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_2e9506e6((void*)__hosihikari_shim_handle, (void*)otherChunkQueue.Handle);
     }
 
-    public void acquireAllTicks(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public void _addToNextTickQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int tickDelay, int priorityOffset)
     {
-        NativeMethods.TablePtr->hs_method_97bb1b50((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_bd749c64((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, tickDelay, priorityOffset);
     }
 
-    public void add(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, int arg3, int arg4)
+    public void _eliminateTicksForZeroAndAbove(global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue_Nested.TickDataSet queue)
     {
-        NativeMethods.TablePtr->hs_method_d60904fd((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4);
+        NativeMethods.TablePtr->C0.hs_method_a0dcb060((void*)__hosihikari_shim_handle, (void*)queue.Handle);
     }
 
-    public void addTickToLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, int arg3, int arg4)
+    public void _saveQueue(global::Hosihikari.Bindings.Bedrock.Interop.ListTag list, global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue_Nested.TickDataSet queue)
     {
-        NativeMethods.TablePtr->hs_method_e6b7ff34((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4);
+        NativeMethods.TablePtr->C0.hs_method_1e1dd116((void*)__hosihikari_shim_handle, (void*)list.Handle, (void*)queue.Handle);
     }
 
-    public void eliminateAllTicksZeroAndAbove()
+    public void add(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int tickDelay, int priorityOffset)
     {
-        NativeMethods.TablePtr->hs_method_bec804e2((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_4ee02228((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle, tickDelay, priorityOffset);
     }
 
-    public void eliminateDuplicatesOf(global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy arg0)
+    public void addTickToLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int tickDelay, int priorityOffset)
     {
-        NativeMethods.TablePtr->hs_method_bb4117aa((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_d6383ae4((void*)__hosihikari_shim_handle, (void*)lc.Handle, (void*)pos.Handle, (void*)block.Handle, tickDelay, priorityOffset);
+    }
+
+    public void eliminateDuplicatesOf(global::Hosihikari.Bindings.Bedrock.Interop.BlockType block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c2fcda2a((void*)__hosihikari_shim_handle, (void*)block.Handle);
     }
 
     public void finishInstaticking()
     {
-        NativeMethods.TablePtr->hs_method_81ceb23d((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_81ceb23d((void*)__hosihikari_shim_handle);
     }
 
-    public bool getNextUpdateForPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg1)
+    public bool getNextUpdateForPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Tick tick)
     {
-        return NativeMethods.TablePtr->hs_method_917174e2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_331e0099((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)tick.Handle) != 0;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Tick? getTickDelayForNextTickUpdateAtPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_multimap<BlockPos, TickDelayBlock>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getTickDelaysInArea(nint boundingBox) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_multimap<BlockPos, TickDelayBlock>' requires --link-carrier or --virtual-dispatch.");
+
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette palette)
     {
-        var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_ac48bba6((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
-        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)__hs_handle) : null;
+        NativeMethods.TablePtr->C0.hs_method_fd3cb8e9((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)palette.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getTickDelaysInArea_fd7fde2f(nint boundingBox) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_multimap<BlockPos,TickDelayBlock,std::hash<BlockPos>,std::equal_to<BlockPos>,std::allocator<std::pair<BlockPos const,TickDelayBlock>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTickDelaysInArea_b093920d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_multimap<BlockPos,TickDelayBlock,std::hash<BlockPos>,std::equal_to<BlockPos>,std::allocator<std::pair<BlockPos const,TickDelayBlock>>>' requires --link-carrier or --virtual-dispatch.");
-
-    public bool hasTickInPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActiveTickQueue_Address
     {
-        return NativeMethods.TablePtr->hs_method_38d165ef((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8bedc0c5((void*)__hosihikari_shim_handle);
     }
 
-    public bool isEmpty()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrentTick_Address
     {
-        return NativeMethods.TablePtr->hs_method_04ab63f9((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5ce8ea32((void*)__hosihikari_shim_handle);
     }
 
-    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeferredTicks_Address
     {
-        NativeMethods.TablePtr->hs_method_79934bd7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_be01a4ee((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mInstaTick
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_e121f18c((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_e121f18c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNextTickQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a14d3a59((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mOwningChunk
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d9846bcc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d9846bcc((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public byte mQueueType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_e683c7d3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_e683c7d3((void*)__hosihikari_shim_handle, value);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void remove(nint arg0) =>
+    public void remove(nint removeCondition) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public void remove(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        NativeMethods.TablePtr->hs_method_bf55e36c((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_21e126b8((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle);
     }
 
-    public void setOwningChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk? arg0)
+    public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->hs_method_3191c974((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_c6e5eae2((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public void tickAllPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, ulong arg1)
+    public bool tickPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Tick until, int max, bool instaTick_)
     {
-        NativeMethods.TablePtr->hs_method_f014ff46((void*)_handle, (void*)arg0.Handle, arg1);
+        return NativeMethods.TablePtr->C0.hs_method_de408c9c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)until.Handle, max, instaTick_) != 0;
     }
 
-    public bool tickPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg1, int arg2, bool arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_970d0b46((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
-    }
 
-    public int ticksFromNow(int arg0)
+    public void Dispose()
     {
-        return NativeMethods.TablePtr->hs_method_d7a450e4((void*)_handle, arg0);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d8f99369((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_04589651() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

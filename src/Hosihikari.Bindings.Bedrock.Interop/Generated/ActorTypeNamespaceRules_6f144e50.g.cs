@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ActorTypeNamespaceRules : int
+public enum ActorTypeNamespaceRules : byte
 {
+    ReturnWithoutNamespace = 0,
+    ReturnWithNamespace = 1,
 }

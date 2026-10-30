@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
 public sealed unsafe partial class StorageArea_windows : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StorageArea_windows(nint handle) : this(handle, true) { }
 
     internal StorageArea_windows(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StorageArea_windows Borrow(nint handle) => new StorageArea_windows(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,83 @@ public sealed unsafe partial class StorageArea_windows : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StorageArea_windows Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _attemptExtendSize(nint currentFreeSpace, nint onCompleteCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public static StorageArea_windows Create(int arg0, nint arg1, bool arg2)
+    public bool _canExtendSize()
     {
-        var handle = NativeMethods.TablePtr->hs_create_468db5b5(arg0, (void*)arg1, arg2);
+        return NativeMethods.TablePtr->C0.hs_method_a526f2c8((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _clearUsedSizeOverride()
+    {
+        NativeMethods.TablePtr->C0.hs_method_6a02a221((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong _getAvailableUserStorageSize()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_82fdb84f((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getExtendSizeThreshold(nint outExtendSizeThreshold) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo _getStorageAreaSpaceInfo()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->C0.hs_method_66be53b2((void*)__hosihikari_shim_handle));
+    }
+
+    public ulong _getTotalSize()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d83128ea((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getUsedSize(nint outUsedSize) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _preemptiveExtendSize(nint expectedContentSize, nint successCallback, nint failureCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _resetCanAttemptExtendSize()
+    {
+        NativeMethods.TablePtr->C0.hs_method_2a7ea66d((void*)__hosihikari_shim_handle);
+    }
+
+    public void _setUsedSizeOverride(ulong fileSize)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9295fa12((void*)__hosihikari_shim_handle, fileSize);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool _shouldRecordFileError(nint path, nint error) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    public bool _supportsExtendSize()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_55f50bf0((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsSizeQuery()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b7e1e5fc((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static StorageArea_windows Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_070a3a7c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,161 +118,103 @@ public sealed unsafe partial class StorageArea_windows : global::System.IDisposa
         return new StorageArea_windows((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StorageArea_windows Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static StorageArea_windows Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageArea_windows arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8a7bf62c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_10() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_11() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_20() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_21() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_22() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_23() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_24() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_25() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_26() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void attemptExtendSize_4e3e4e46(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new StorageArea_windows((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void attemptExtendSize_25f7701b(nint arg0, nint arg1) =>
+    public void attemptExtendSize(nint currentFreeSpace, nint onCompleteCallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool canExtendSize()
     {
-        return NativeMethods.TablePtr->hs_method_aa6d98ba((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_5352d115((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void clearUsedSizeOverride()
     {
-        NativeMethods.TablePtr->hs_method_160d20b2((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_160d20b2((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint createTransaction(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong getAvailableUserStorageSize()
     {
-        return NativeMethods.TablePtr->hs_method_fb5ec9ae((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_fb5ec9ae((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getExtendSizeThreshold(nint arg0) =>
+    public nint getExtendSizeThreshold(nint outExtendSizeThreshold) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::FileStorageArea::StorageAreaSpaceInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStorageAreaSpaceInfo() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::FileStorageArea::StorageAreaSpaceInfo' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo getStorageAreaSpaceInfo()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->C0.hs_method_db7bad42((void*)__hosihikari_shim_handle));
+    }
 
     public ulong getTotalSize()
     {
-        return NativeMethods.TablePtr->hs_method_0a28445e((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_a94aea68((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getUsedSize(nint arg0) =>
+    public nint getUsedSize(nint outUsedSize) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void notifyChangeInFileSize(long changeInSize, long changeInAllocatedSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc8f210_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fe33f3fa((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void preemptiveExtendSize_98cd6dbe(ulong arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageArea_windows operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageArea_windows arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageArea_windows((nint)NativeMethods.TablePtr->C0.hs_method_bd3b41f8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void preemptiveExtendSize_4644d0a9(ulong arg0, nint arg1, nint arg2) =>
+    public void preemptiveExtendSize(nint expectedContentSize, nint successCallback, nint failureCallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void resetCanAttemptExtendSize()
     {
-        NativeMethods.TablePtr->hs_method_242129d8((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_242129d8((void*)__hosihikari_shim_handle);
     }
 
-    public void setUsedSizeOverride(ulong arg0)
+    public void setUsedSizeOverride(ulong fileSize)
     {
-        NativeMethods.TablePtr->hs_method_79ef9be4((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_79ef9be4((void*)__hosihikari_shim_handle, fileSize);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool shouldAllowCommit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool shouldRecordFileError(nint path, nint error) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
     public bool supportsExtendSize()
     {
-        return NativeMethods.TablePtr->hs_method_ecf73b0d((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c442a574((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsSizeQuery()
     {
-        return NativeMethods.TablePtr->hs_method_97818cd5((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_44e7231f((void*)__hosihikari_shim_handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void trackBytesWritten(nint arg0, ulong amount, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void trackWriteOperation(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void unloadFlatFileManifests(bool shouldClearManifests) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_14ca659b((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_14ca659b((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

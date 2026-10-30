@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Puv.Logger_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ValidationResultCode : int
+public enum ValidationResultCode : byte
 {
+    Warning = 1,
+    Error = 2,
+    All = 255,
+    EnttEnumAsBitmask = 255,
 }

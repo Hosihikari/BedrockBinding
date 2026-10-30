@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.mce;
 
 public sealed unsafe partial class UUID : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UUID(nint handle) : this(handle, true) { }
 
     internal UUID(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UUID Borrow(nint handle) => new UUID(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,58 +33,103 @@ public sealed unsafe partial class UUID : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint EMPTY
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID EMPTY()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C4.hs_method_dc73d871(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static ulong STRING_LENGTH
+    public static nint STRING_LENGTH()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C4.hs_method_18410ac0();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UUID Create_28955e60(nint uuidStr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static UUID Create_28955e60(string uuidStr)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uuidStr);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uuidStr, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C4.hs_create_28955e60(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UUID Create_c68fbce8(nint uuidStr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+            return new UUID((nint)handle);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UUID Create(ulong a, ulong b) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static UUID Create_c68fbce8(string uuidStr)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uuidStr);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uuidStr, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C4.hs_create_c68fbce8(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new UUID((nint)handle);
+        }
+    }
+
+    public static UUID Create(ulong a, ulong b)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_92aefe9a(a, b);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UUID((nint)handle);
+    }
 
     public ulong a
     {
-        get => NativeMethods.TablePtr->hs_get_7713c0ae((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7713c0ae((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_7713c0ae((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_7713c0ae((void*)__hosihikari_shim_handle, value);
     }
 
     public string asString()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_3489fdba((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_dc9340de((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public ulong b
     {
-        get => NativeMethods.TablePtr->hs_get_c6427d65((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c6427d65((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_c6427d65((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_c6427d65((void*)__hosihikari_shim_handle, value);
     }
 
-    public static bool canParse(string arg0)
+    public static bool canParse(string @in)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(@in);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -94,16 +139,16 @@ public sealed unsafe partial class UUID : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(@in, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_46632602(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_836850c2(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID fromString(string arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID fromString(string @in)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(@in);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -113,56 +158,71 @@ public sealed unsafe partial class UUID : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(@in, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_method_da644287(__hs_stringData0, (nuint)__hs_stringByteCount0));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C4.hs_method_dd9ea793(__hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint fromStringHash(nint sv) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool isEmpty()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID fromStringHash(string sv)
     {
-        return NativeMethods.TablePtr->hs_method_df62876e((void*)_handle) != 0;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(sv);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(sv, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C4.hs_method_11fda17e(__hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_basic_string() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public string operator_basic_string()
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_b364eada((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_bool() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool operator_bool()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_59e89c50((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_less(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
     public nint operator_compare(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID other)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_47dc7ba7((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint random() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID random()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C4.hs_method_2b7181cc());
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: expected value type 'mce::UUID': by-value return type 'mce::UUID' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint tryFromString(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: expected value type 'mce::UUID': by-value return type 'mce::UUID' requires --link-carrier or --virtual-dispatch.");
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_992f8b9a((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_992f8b9a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

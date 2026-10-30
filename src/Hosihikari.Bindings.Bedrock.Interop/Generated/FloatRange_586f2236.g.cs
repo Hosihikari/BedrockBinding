@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FloatRange
+public sealed unsafe partial class FloatRange : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FloatRange(nint handle) : this(handle, true) { }
 
     internal FloatRange(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FloatRange Borrow(nint handle) => new FloatRange(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,65 @@ public sealed unsafe partial class FloatRange
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FloatRange Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FloatRange Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float getValue(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    public static FloatRange Create()
     {
-        return NativeMethods.TablePtr->hs_method_21971793((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_8ca0fdec();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FloatRange((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool parseJson(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, float arg1, float arg2)
+    public static FloatRange Create(global::Hosihikari.Bindings.Bedrock.Interop.FloatRange arg0)
     {
-        return NativeMethods.TablePtr->hs_method_fece58c8((void*)_handle, (void*)arg0.Handle, arg1, arg2) != 0;
+        var handle = NativeMethods.TablePtr->C1.hs_create_334a37bd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FloatRange((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaba715_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_03168b56((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcfba95_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cfde2f2d((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FloatRange operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.FloatRange arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FloatRange((nint)NativeMethods.TablePtr->C1.hs_method_a77bffb8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public bool parseJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value node, float minDefault, float maxDefault)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0d6b1e4e((void*)__hosihikari_shim_handle, (void*)node.Handle, minDefault, maxDefault) != 0;
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_586f2236((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

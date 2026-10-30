@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum MolangCompileResult : int
 {
+    FailedError = 0,
+    FailedNeedsArraysToBeResolved = 1,
+    FailedNeedsResourceVariablesToBeResolved = 2,
+    Success = 3,
 }

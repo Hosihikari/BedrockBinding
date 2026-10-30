@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OverworldBiomeBuilder
+public sealed unsafe partial class OverworldBiomeBuilder : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OverworldBiomeBuilder(nint handle) : this(handle, true) { }
 
     internal OverworldBiomeBuilder(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OverworldBiomeBuilder Borrow(nint handle) => new OverworldBiomeBuilder(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,105 +33,263 @@ public sealed unsafe partial class OverworldBiomeBuilder
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint EROSIONS_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e5e259c0();
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter FULL_RANGE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_70c62cdf(), false);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const ClimateUtils::Parameter (&)[]' is not supported.", false)]
+    public static nint EROSIONS() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const ClimateUtils::Parameter (&)[]' is not supported.");
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint HUMIDITIES_Address
+    public nint EXTREME_HILLS_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4150e47c();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bc89796d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OverworldBiomeBuilder Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static OverworldBiomeBuilder Create_ed1e9b7c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OverworldBiomeBuilder Create_fa8b2e01(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint EXTREME_HILLS_IDS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c27b22e3((void*)__hosihikari_shim_handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint TEMPERATURES_Address
+    public nint FROZEN_RANGE_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_445c4544();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_39b25f61((void*)__hosihikari_shim_handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter FULL_RANGE()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_feb12999(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const ClimateUtils::Parameter (&)[]' is not supported.", false)]
+    public static nint HUMIDITIES() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const ClimateUtils::Parameter (&)[]' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint MIDDLE_BIOMES_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_55ea9c07((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint MIDDLE_BIOMES_IDS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_de077ab2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint MIDDLE_BIOMES_VARIANT_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_79baa0cb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint MIDDLE_BIOMES_VARIANT_IDS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4f4f0006((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint OCEANS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7fc06b2f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint OCEANS_IDS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8ba0b5d8((void*)__hosihikari_shim_handle);
+    }
+
+    public static OverworldBiomeBuilder Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9e1a1801();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OverworldBiomeBuilder((nint)handle);
+    }
+
+    public static OverworldBiomeBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.OverworldBiomeBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fa8b2e01((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OverworldBiomeBuilder((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint PLATEAU_BIOMES_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5315a7f2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint PLATEAU_BIOMES_IDS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_466dc661((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint PLATEAU_BIOMES_IDS_1_21_60_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e5a45a88((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint PLATEAU_BIOMES_VARIANT_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5b0b142a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint PLATEAU_BIOMES_VARIANT_IDS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a2a28af3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint PLATEAU_BIOMES_VARIANT_IDS_1_21_60_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8ee25c92((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const ClimateUtils::Parameter (&)[]' is not supported.", false)]
+    public static nint TEMPERATURES() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const ClimateUtils::Parameter (&)[]' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint UNFROZEN_RANGE_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1dc9f747((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void addBiomes(nint arg0, nint arg1) =>
+    public void _addHighSlice(nint biomes, nint weirdness, nint biomeRegistry) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter coastContinentalness
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _addLowSlice(nint biomes, nint weirdness, nint biomeRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _addMidSlice(nint biomes, nint weirdness, nint biomeRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _addPeaks(nint biomes, nint weirdness, nint biomeRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _addSurfaceBiome(nint biomes, nint temperature, nint humidity, nint continentalness, nint erosion, nint weirdness, float offset, nint second) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _populateBiomeArrays(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_d26e52b1(), false);
+        NativeMethods.TablePtr->C2.hs_method_8917f042((void*)__hosihikari_shim_handle, (void*)biomeRegistry.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter deepOceanContinentalness
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter coastContinentalness()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_bf7d75e4(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_db4a5916(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter dripstoneCavesContinentalness
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter deepOceanContinentalness()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_7e7c7e1f(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_117d0ea8(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter farInlandContinentalness
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter dripstoneCavesContinentalness()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_9dc87bc8(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_63389e62(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter inlandContinentalness
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter farInlandContinentalness()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_b4cdf88d(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_00bec9a5(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter lushCavesHumidity
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter inlandContinentalness()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_def1502c(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_0664cd1e(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter midInlandContinentalness
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter lushCavesHumidity()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_35bd9e23(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_6ee0a2f5(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter mushroomFieldsContinentalness
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBaseGameVersion_Address
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_665ba57b(), false);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_016bab91((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter nearInlandContinentalness
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExperiments_Address
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_4c6ee20b(), false);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1204b91d((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter oceanContinentalness
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter midInlandContinentalness()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_get_ee041757(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_9a6283e2(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter mushroomFieldsContinentalness()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_81e0da88(), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter nearInlandContinentalness()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_4982f205(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter oceanContinentalness()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_6c3bfa4c(), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.OverworldBiomeBuilder operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.OverworldBiomeBuilder arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.OverworldBiomeBuilder((nint)NativeMethods.TablePtr->C2.hs_method_d3713731((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter sulfurCavesContinentalness()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_5c9bd7ba(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter sulfurCavesErosion()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_a58b6128(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter sulfurCavesWeirdness()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_73ab46a9(), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_6e6f6ac7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

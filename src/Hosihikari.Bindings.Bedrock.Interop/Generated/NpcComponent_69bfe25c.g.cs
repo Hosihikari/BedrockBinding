@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NpcComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NpcComponent(nint handle) : this(handle, true) { }
 
     internal NpcComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NpcComponent Borrow(nint handle) => new NpcComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,45 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string ACTIONS_TAG
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void _dtor()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_a682b747();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        NativeMethods.TablePtr->C2.hs_method_1f6060b6((void*)__hosihikari_shim_handle);
     }
 
-    public static string INTERACTIVE_TAG
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static string ACTIONS_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_aa5727f3();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_bb1a4222();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string NAME_RAW_TEXT_TAG
+    public static string INTERACTIVE_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_7df7bcbd();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_07806dfa();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string NAME_RAW_TEXT_TAG()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_262bac42();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static NpcComponent Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_e6ee8b87();
+        var handle = NativeMethods.TablePtr->C2.hs_create_e6ee8b87();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -77,12 +81,12 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static NpcComponent Create(nint arg0) =>
+    public static NpcComponent Create(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     public static NpcComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.NpcComponent arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_c78061a6((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_c78061a6((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -91,74 +95,53 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
         return new NpcComponent((nint)handle);
     }
 
-    public static string PLAYER_ID_TAG
+    public static string PLAYER_ID_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_fc54e362();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_aac3ea9c();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string PLAYER_SCENE_MAPPING_TAG
+    public static string PLAYER_SCENE_MAPPING_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_f09f0f50();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_38a3ca19();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string SCENE_NAME_TAG
+    public static string SCENE_NAME_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_9d6b6fa5();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_8efe8c3a();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string URL_TAG
+    public static string URL_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_3f77b821();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_624d8a0a();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public static void _defineEntityDataString(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, byte id)
     {
-        NativeMethods.TablePtr->hs_method_3f50520e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_b854b377((void*)owner.Handle, id);
     }
 
-    public void clearSceneStateForAllPlayers()
+    public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value npcData)
     {
-        NativeMethods.TablePtr->hs_method_d096a81f((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_dbe5c425((void*)__hosihikari_shim_handle, (void*)npcData.Handle);
     }
 
-    public void executeClosingCommands(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, string arg2)
+    public void _loadData(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_8de4634c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
-        }
+        NativeMethods.TablePtr->C2.hs_method_4a449132((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public void executeCommandAction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, int arg2, string arg3)
+    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        NativeMethods.TablePtr->C2.hs_method_d5d771ec((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)owner.Handle);
+    }
+
+    public static void executeCommandAction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player sourcePlayer, int actionIndex, string sceneName)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(sceneName);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -168,40 +151,16 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(sceneName, __hs_stringBytes3);
         fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
-            NativeMethods.TablePtr->hs_method_7e3031ba((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+            NativeMethods.TablePtr->C2.hs_method_daf7641f((void*)owner.Handle, (void*)sourcePlayer.Handle, actionIndex, __hs_stringData3, (nuint)__hs_stringByteCount3);
         }
-    }
-
-    public void executeOpeningCommands(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, string arg2)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_8fd7f883((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer getActionsContainer_38e5a861()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer((nint)NativeMethods.TablePtr->hs_method_38e5a861((void*)_handle), false);
     }
 
     public int[] getCommandCounts()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_f08d3706((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_4f2b173a((void*)__hosihikari_shim_handle);
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<int>() : new int[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -210,110 +169,130 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
         return __hs_result;
     }
 
-    public string getDefaultSceneId()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getInteraction(nint owner, nint player) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+
+    public string getInteractiveText(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_5d65ac05((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_3c06ec47((void*)__hosihikari_shim_handle, (void*)owner.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorInteraction arg2)
+    public string getSceneStateForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID playerID)
     {
-        return NativeMethods.TablePtr->hs_method_46f7d010((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
-    }
-
-    public string getInteractiveText(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_32389d47((void*)_handle, (void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_860e75c3((void*)__hosihikari_shim_handle, (void*)playerID.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getName(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void initClientOnlyData(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ff5669a4((void*)_handle, (void*)arg0.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        NativeMethods.TablePtr->C2.hs_method_963e7379((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public string getNameRawText(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_cf6366b5((void*)_handle, (void*)arg0.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        NativeMethods.TablePtr->C2.hs_method_56b05025((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public string getSceneStateForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    public void loadActions(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_fd177cb1((void*)_handle, (void*)arg0.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        NativeMethods.TablePtr->C2.hs_method_e36b7c29((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public ulong getSkinCount()
+    public void loadInteractiveRawText(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_67af50ef((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_add4784b((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public int getSkinIndex()
+    public void loadNameRawText(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_8b9445d1((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_a5d4dc2d((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public int getUrlCount()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActionsContainer_Address
     {
-        return NativeMethods.TablePtr->hs_method_927de8ec((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dc3d9bcf((void*)__hosihikari_shim_handle);
     }
 
-    public void initClientOnlyData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public int mCurrentSkin
     {
-        NativeMethods.TablePtr->hs_method_cd1692b4((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_05a9973c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_05a9973c((void*)__hosihikari_shim_handle, value);
     }
 
-    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultSceneId_Address
     {
-        NativeMethods.TablePtr->hs_method_5a7ad448((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_154912fc((void*)__hosihikari_shim_handle);
     }
 
-    public void loadActions(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInteractText_Address
     {
-        NativeMethods.TablePtr->hs_method_18882564((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_08c2ea97((void*)__hosihikari_shim_handle);
     }
 
-    public void loadInteractiveRawText(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInteractTextFilter_Address
     {
-        NativeMethods.TablePtr->hs_method_827b26bf((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3791b2ef((void*)__hosihikari_shim_handle);
     }
 
-    public void loadNPCData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool mIsGloballyAccessed
     {
-        NativeMethods.TablePtr->hs_method_4cfb9fdc((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_eb4f6210((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_eb4f6210((void*)__hosihikari_shim_handle, value);
     }
 
-    public void loadNameRawText(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNPCSkins_Address
     {
-        NativeMethods.TablePtr->hs_method_dcaa2c38((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d51859cf((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_eccbd01d(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_f4321d6c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNpcI18nObserver_Address
     {
-        NativeMethods.TablePtr->hs_method_5c1350f1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_11be4f35((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setActions_aec16311(nint owner, nint newActions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::variant<npc::CommandAction,npc::UrlAction>' is not supported.", false)]
-    public void setActions_3fcc39ab(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<npc::CommandAction,npc::UrlAction>' is not supported.");
-
-    public void setDefaultSceneId(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPickerOffsets_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d2f5289d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerSceneState_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1efee2e6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPortraitOffsets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_77e08178((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.NpcComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.NpcComponent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NpcComponent((nint)NativeMethods.TablePtr->C2.hs_method_f4321d6c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper dataLoadHelper)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c17b4dee((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
+    }
+
+    public string sanitizeRawText(string rawText)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(rawText);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -323,16 +302,36 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(rawText, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_6b604881((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_view = NativeMethods.TablePtr->C2.hs_method_69ec8194((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
-    public bool setDialogueScene(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)
+    public void setDefaultSceneId(string sceneId)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(sceneId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(sceneId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_dd785043((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public bool setDialogueScene(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, string sceneName)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(sceneName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -342,16 +341,16 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(sceneName, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_f5eacbf4((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_34c410a4((void*)__hosihikari_shim_handle, (void*)owner.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
-    public void setInteractiveText(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1, bool arg2)
+    public void setInteractiveText(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, string text, bool setLocal)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(text);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -361,16 +360,16 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(text, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_20af9d18((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+            NativeMethods.TablePtr->C2.hs_method_88cfd3d4((void*)__hosihikari_shim_handle, (void*)owner.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, setLocal);
         }
     }
 
-    public void setName(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1, bool arg2)
+    public void setName(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, string name, bool setLocal)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -380,16 +379,16 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_8e3699ba((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+            NativeMethods.TablePtr->C2.hs_method_cdb449d9((void*)__hosihikari_shim_handle, (void*)owner.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, setLocal);
         }
     }
 
-    public void setSceneStateForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, string arg2)
+    public void setSceneStateForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID playerID, string sceneName)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(sceneName);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -399,34 +398,34 @@ public sealed unsafe partial class NpcComponent : global::System.IDisposable
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(sceneName, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            NativeMethods.TablePtr->hs_method_b5a7eb57((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            NativeMethods.TablePtr->C2.hs_method_f44af0ad((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)playerID.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 
-    public bool setSkin(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool setSkinIndex(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, int skinIndex, bool setLocal)
     {
-        return NativeMethods.TablePtr->hs_method_d8125442((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_27638b2f((void*)__hosihikari_shim_handle, (void*)owner.Handle, skinIndex, setLocal) != 0;
     }
 
-    public bool setSkinIndex(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, bool arg2)
+    public void syncActionsWithClient(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_3386dee7((void*)_handle, (void*)arg0.Handle, arg1, arg2) != 0;
+        NativeMethods.TablePtr->C2.hs_method_bcf1f5de((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_69bfe25c((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_69bfe25c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

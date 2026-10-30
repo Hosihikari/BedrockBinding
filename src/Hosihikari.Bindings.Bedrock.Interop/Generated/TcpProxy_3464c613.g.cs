@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class TcpProxy
+public sealed unsafe partial class TcpProxy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TcpProxy(nint handle) : this(handle, true) { }
 
     internal TcpProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TcpProxy Borrow(nint handle) => new TcpProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,64 +33,62 @@ public sealed partial class TcpProxy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TcpProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TcpProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void close(nint address) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint connect(nint host, ushort port) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void deallocatePacket(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint nextCompletedConnectionAttempt() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint nextFailedConnectionAttempt() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint nextLostConnection() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint nextPacket() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool packetsAvailable() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void send(nint data, uint length, nint address) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool start(ushort port, ushort arg1, ushort arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool start(ushort port, ushort maxIncomming, ushort maxOutgoing) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_0e894657() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_3464c613((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

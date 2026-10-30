@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CombatRegenerationComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CombatRegenerationComponent(nint handle) : this(handle, true) { }
 
     internal CombatRegenerationComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CombatRegenerationComponent Borrow(nint handle) => new CombatRegenerationComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,35 @@ public sealed unsafe partial class CombatRegenerationComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CombatRegenerationComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CombatRegenerationComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void _applyCombatBuffsToMob(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor mob)
     {
-        NativeMethods.TablePtr->hs_method_6c914bcf((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_90d06360((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)mob.Handle);
+    }
+
+    public bool _shouldApplyCombatBuffs(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor mob)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_deff0ee5((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)mob.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCombatRegenerationListener_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_42ee7696((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_14c29b97((void*)__hosihikari_shim_handle);
+    }
+
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
+    {
+        NativeMethods.TablePtr->C0.hs_method_f27ffa08((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 }

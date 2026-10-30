@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptActorHurtAfterEvent
+public sealed unsafe partial class ScriptActorHurtAfterEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptActorHurtAfterEvent(nint handle) : this(handle, true) { }
 
     internal ScriptActorHurtAfterEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptActorHurtAfterEvent Borrow(nint handle) => new ScriptActorHurtAfterEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,40 +33,131 @@ public sealed partial class ScriptActorHurtAfterEvent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptActorHurtAfterEvent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorHurtAfterEvent arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_af765fb5((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptActorHurtAfterEvent Create_595aef06(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public nint _ctor(global::Hosihikari.Bindings.Abi.SharedHandle? eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_7533b07c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)scope.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptActorHurtAfterEvent Create_c57bbbd7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_85ab29f0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilderReadOnly<ScriptModuleMinecraft::ScriptActorHurtAfterEvent>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilderReadOnly<ScriptModuleMinecraft::ScriptActorHurtAfterEvent>' requires --link-carrier or --virtual-dispatch.");
+    public static ScriptActorHurtAfterEvent Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8c84f8d2();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilderReadOnly<ScriptModuleMinecraft::ScriptActorHurtAfterEvent>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bindV010() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilderReadOnly<ScriptModuleMinecraft::ScriptActorHurtAfterEvent>' requires --link-carrier or --virtual-dispatch.");
+        return new ScriptActorHurtAfterEvent((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_033cbb25(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ScriptActorHurtAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorHurtAfterEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a1fd6e16((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_e3372de5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ScriptActorHurtAfterEvent((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_4927fca6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static ScriptActorHurtAfterEvent Create(global::Hosihikari.Bindings.Abi.SharedHandle? eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e2a61903(eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)scope.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptActorHurtAfterEvent((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_0d5087ee());
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bindV010()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_a57891c6());
+    }
+
+    public int mCause
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9020bff1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9020bff1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mDamage
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_47aa0510((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_47aa0510((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDamageSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0b7c63e4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDamagingActor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f599cba3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHurtActor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cbd44ebc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProjectile_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0fab3b18((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStringCause_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bd68b028((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorHurtAfterEvent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorHurtAfterEvent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorHurtAfterEvent((nint)NativeMethods.TablePtr->C3.hs_method_e3372de5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_5432b71f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

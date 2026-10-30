@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ScriptIdentityModuleFactory
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptIdentityModuleFactory(nint handle) : this(handle, true) { }
 
     internal ScriptIdentityModuleFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptIdentityModuleFactory Borrow(nint handle) => new ScriptIdentityModuleFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,31 @@ public sealed unsafe partial class ScriptIdentityModuleFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static sbyte ModuleName
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ModuleUUID()
     {
-        get => NativeMethods.TablePtr->hs_get_03a98366();
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C3.hs_method_1859fc13(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ModuleUUID
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk13b033_Address
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_1bf4c0b2(), false);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6ec38956((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptIdentityModuleFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk89d8eb_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7bf23ba9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptIdentityModuleFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb046b8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2d4a26d9((void*)__hosihikari_shim_handle);
+    }
 }

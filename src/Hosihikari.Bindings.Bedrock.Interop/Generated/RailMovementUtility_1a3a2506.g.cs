@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RailMovementUtility
+public sealed unsafe partial class RailMovementUtility : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RailMovementUtility(nint handle) : this(handle, true) { }
 
     internal RailMovementUtility(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RailMovementUtility Borrow(nint handle) => new RailMovementUtility(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,45 @@ public sealed unsafe partial class RailMovementUtility
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint RAIL_EXITS_Address
+    public static nint RAIL_EXITS()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_03d75ae9();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_1e42839f();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RailMovementUtility Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RailMovementUtility Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculateGoldenRailSpeedIncrease(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculateGoldenRailSpeedIncrease(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int direction, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 posDelta)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_ee42c65d((void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_7093dc8f((void*)region.Handle, (void*)pos.Handle, direction, (void*)posDelta.Handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static nint calculateMoveVelocity(nint arg0, int arg1, float arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
+    public static nint calculateMoveVelocity(nint block, int railDirection, float maxSpeed, bool hasPassenger, nint posDelta, nint haltTrack, nint powerTrack, nint calculateAllPassengersInputFunc) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public static bool calculatePassengerRailMovementInput(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1, float arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculatePostRailMovementMinecartPosition(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 originalEntityPosition, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 entityPos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int railDirection, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 posDelta)
     {
-        return NativeMethods.TablePtr->hs_method_32a478e8((void*)arg0.Handle, arg1, arg2) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_28ea5999((void*)region.Handle, (void*)originalEntityPosition.Handle, (void*)entityPos.Handle, (void*)pos.Handle, railDirection, (void*)posDelta.Handle));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculatePostRailMovementMinecartPosition(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg5)
+    public static bool getPos(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 valueVec, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_851459d8((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, (void*)arg5.Handle));
+        return NativeMethods.TablePtr->C2.hs_method_67bfc2af((void*)region.Handle, (void*)valueVec.Handle, (void*)pos.Handle) != 0;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculatePreRailMovementMinecartPosition(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, float arg3)
+    public void Dispose()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_b2aa0fcb((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3));
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_1a3a2506((void*)__hosihikari_shim_handle);
+            }
 
-    public static bool getPos(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_3fad9be5((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

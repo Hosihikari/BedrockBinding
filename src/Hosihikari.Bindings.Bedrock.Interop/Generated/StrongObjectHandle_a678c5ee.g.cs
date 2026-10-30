@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-public sealed unsafe partial class StrongObjectHandle
+public sealed unsafe partial class StrongObjectHandle : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StrongObjectHandle(nint handle) : this(handle, true) { }
 
     internal StrongObjectHandle(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StrongObjectHandle Borrow(nint handle) => new StrongObjectHandle(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,70 +33,95 @@ public sealed unsafe partial class StrongObjectHandle
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint InvalidHandle
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle rhs)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C3.hs_method_186192b6((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StrongObjectHandle Create_1237995e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StrongObjectHandle Create_238f1151(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StrongObjectHandle Create(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asAny() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ObjectHandle' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getHandle() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ObjectHandle' requires --link-carrier or --virtual-dispatch.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.LifetimeRegistry? getLifetimeRegistry()
+    public void _dtor()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_23e1f178((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.LifetimeRegistry((nint)__hs_handle, false) : null;
+        NativeMethods.TablePtr->C3.hs_method_b23e5319((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::WeakLifetimeScope' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getScope() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakLifetimeScope' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle InvalidHandle()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle((nint)NativeMethods.TablePtr->C3.hs_method_56f8cd91(), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_ff340abd(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static StrongObjectHandle Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bcb9740b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_9d4d0ba9(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new StrongObjectHandle((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static StrongObjectHandle Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle rhs)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_74a776bd((void*)rhs.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ObjectHandle' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint release(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ObjectHandle' requires --link-carrier or --virtual-dispatch.");
+        return new StrongObjectHandle((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk312e65_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_54ab2070((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd70ff5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1ec457e8((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle((nint)NativeMethods.TablePtr->C3.hs_method_9d4d0ba9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle rhs)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b8c59880((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle promote(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakObjectHandle weakHandle)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongObjectHandle((nint)NativeMethods.TablePtr->C3.hs_method_261ce949((void*)weakHandle.Handle));
+    }
 
     public bool valid()
     {
-        return NativeMethods.TablePtr->hs_method_bb18569f((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_65284568((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a6f5e7b3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a678c5ee((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Social;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum IdentitySignInTrigger : int
 {
+    Unknown = -1,
+    Automatic = 0,
+    User = 1,
+    External = 2,
 }

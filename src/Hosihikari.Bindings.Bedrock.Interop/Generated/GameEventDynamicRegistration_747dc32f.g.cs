@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameEventDynamicRegistration
+public sealed unsafe partial class GameEventDynamicRegistration : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameEventDynamicRegistration(nint handle) : this(handle, true) { }
 
     internal GameEventDynamicRegistration(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameEventDynamicRegistration Borrow(nint handle) => new GameEventDynamicRegistration(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,76 @@ public sealed unsafe partial class GameEventDynamicRegistration
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameEventDynamicRegistration Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameEventDynamicRegistration Create_c3c5d613(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static GameEventDynamicRegistration Create_5c21ece6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void onActorLoadedIntoChunk(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
+    public nint _ctor(global::Hosihikari.Bindings.Abi.SharedHandle? listener)
     {
-        NativeMethods.TablePtr->hs_method_75f64365((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_3c8e2ff5((void*)__hosihikari_shim_handle, listener?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onActorMovedBetweenChunks(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
+    public static GameEventDynamicRegistration Create()
     {
-        NativeMethods.TablePtr->hs_method_9794be3a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_b42136cb();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameEventDynamicRegistration((nint)handle);
+    }
+
+    public static GameEventDynamicRegistration Create(global::Hosihikari.Bindings.Abi.SharedHandle? listener)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e3780c2b(listener?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameEventDynamicRegistration((nint)handle);
+    }
+
+    public void _onActorChangedChunk(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos toChunkPos, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType toDimensionId)
+    {
+        NativeMethods.TablePtr->C1.hs_method_40bbe1d8((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)toChunkPos.Handle, (void*)toDimensionId.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListener_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_af1507c3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistration_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_feebbbfc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistrationLocation_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fd7d926d((void*)__hosihikari_shim_handle);
     }
 
     public void onActorRemoved()
     {
-        NativeMethods.TablePtr->hs_method_193f9b24((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_193f9b24((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_747dc32f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

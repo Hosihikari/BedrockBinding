@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ConditionalBandwidthOptimizationComponent
+public sealed unsafe partial class ConditionalBandwidthOptimizationComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ConditionalBandwidthOptimizationComponent(nint handle) : this(handle, true) { }
 
     internal ConditionalBandwidthOptimizationComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ConditionalBandwidthOptimizationComponent Borrow(nint handle) => new ConditionalBandwidthOptimizationComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,100 @@ public sealed unsafe partial class ConditionalBandwidthOptimizationComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConditionalBandwidthOptimizationComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ConditionalBandwidthOptimizationComponent Create_d2f590f9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConditionalBandwidthOptimizationComponent Create_7ccbeadc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ConditionalBandwidthOptimization' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCurrentOptimizationValues(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ConditionalBandwidthOptimization' requires --link-carrier or --virtual-dispatch.");
-
-    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimizationDefinition arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimizationComponent arg0)
     {
-        NativeMethods.TablePtr->hs_method_1074a2ce((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_335ea141((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_48f3e786(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_f39b7bed((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_113e77b6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ConditionalBandwidthOptimizationComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e96c4f1d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_29fd4d8f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new ConditionalBandwidthOptimizationComponent((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static ConditionalBandwidthOptimizationComponent Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static ConditionalBandwidthOptimizationComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimizationComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7ccbeadc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConditionalBandwidthOptimizationComponent((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimization getCurrentOptimizationValues(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimization((nint)NativeMethods.TablePtr->C0.hs_method_db21bad3((void*)__hosihikari_shim_handle, (void*)owner.Handle));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCachedOptimizationValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e2175332((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConditionalValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0a7d79ad((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5ed15760((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastRequestedValuesTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_85faf5eb((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimizationComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimizationComponent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimizationComponent((nint)NativeMethods.TablePtr->C0.hs_method_113e77b6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_215a3ee5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

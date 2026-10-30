@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class IRuntime
+public sealed unsafe partial class IRuntime : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IRuntime(nint handle) : this(handle, true) { }
 
     internal IRuntime(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IRuntime Borrow(nint handle) => new IRuntime(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,108 @@ public sealed partial class IRuntime
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint call(nint contextId, nint closureHandle, nint args, uint argc, nint expectedReturnType, nint privilege) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint computeRuntimeStats() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createContext(nint bindings, nint loader, nint printer, nint config) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void destroyContext(nint contextId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void disableDebugger() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void disableWatchdog() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint enableDebugger(nint transport, nint validator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint enableWatchdog(nint settings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint executeCoroutines(nint privilege) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getFutureResult(nint contextId, nint futureHandle, nint expectedResultType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getFutureStatus(nint contextId, nint futureHandle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public nint getMetadata()
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_2f959f19((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getNameForType(nint contextId, nint type, bool allowUnknownTypes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getWatchdog() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool hasPendingJobs() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void moveToThread()
+    {
+        NativeMethods.TablePtr->C3.hs_method_430e8436((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint reject(nint contextId, nint promise, nint arg) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint resolve(nint contextId, nint promise, nint arg) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint run(nint contextId, nint payload, nint privilege) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void startProfiler() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void stopProfiler(nint captureCb, nint savePathOpt) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a6c95e01((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

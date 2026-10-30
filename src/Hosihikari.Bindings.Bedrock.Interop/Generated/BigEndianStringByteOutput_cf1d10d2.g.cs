@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BigEndianStringByteOutput : global::System.IDisposable
+public sealed unsafe partial class BigEndianStringByteOutput
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BigEndianStringByteOutput(nint handle) : this(handle, true) { }
 
     internal BigEndianStringByteOutput(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BigEndianStringByteOutput Borrow(nint handle) => new BigEndianStringByteOutput(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,68 @@ public sealed unsafe partial class BigEndianStringByteOutput : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void writeDouble(double arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void _writeDouble(double v)
     {
-        NativeMethods.TablePtr->hs_method_c782fac2((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_21a6c934((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeFloat(float arg0)
+    public void _writeFloat(float v)
     {
-        NativeMethods.TablePtr->hs_method_a1c4ca19((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_d854e286((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeInt(int arg0)
+    public void _writeInt(int v)
     {
-        NativeMethods.TablePtr->hs_method_e09c2e62((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_0471b4d2((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeLongLong(long arg0)
+    public void _writeLongLong(long v)
     {
-        NativeMethods.TablePtr->hs_method_fcd8d6ae((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_746fde88((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeShort(short arg0)
+    public void _writeShort(short v)
     {
-        NativeMethods.TablePtr->hs_method_e8877eb6((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_f47ba71d((void*)__hosihikari_shim_handle, v);
     }
 
-
-    public void Dispose()
+    public void writeDouble(double v)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_cf1d10d2((void*)_handle);
-            }
+        NativeMethods.TablePtr->C0.hs_method_c782fac2((void*)__hosihikari_shim_handle, v);
+    }
 
-            _handle = 0;
-        }
+    public void writeFloat(float v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a1c4ca19((void*)__hosihikari_shim_handle, v);
+    }
+
+    public void writeInt(int v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e09c2e62((void*)__hosihikari_shim_handle, v);
+    }
+
+    public void writeLongLong(long v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_fcd8d6ae((void*)__hosihikari_shim_handle, v);
+    }
+
+    public void writeShort(short v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e8877eb6((void*)__hosihikari_shim_handle, v);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e59ec178((void*)__hosihikari_shim_handle);
     }
 }

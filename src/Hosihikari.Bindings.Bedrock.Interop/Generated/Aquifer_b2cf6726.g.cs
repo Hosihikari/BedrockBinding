@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Aquifer
+public sealed unsafe partial class Aquifer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Aquifer(nint handle) : this(handle, true) { }
 
     internal Aquifer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Aquifer Borrow(nint handle) => new Aquifer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,60 +33,150 @@ public sealed unsafe partial class Aquifer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Aquifer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos, global::Hosihikari.Bindings.Bedrock.Interop.AquiferNoises aquiferNoises, global::Hosihikari.Bindings.Bedrock.Interop.OverworldNoises3d terrainNoises, global::Hosihikari.Bindings.Bedrock.Interop.SurfaceLevelCache surfaceLevelCache, int dimensionMinHeight, int levelGenHeight, int seaLevel)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_38be10ec((void*)__hosihikari_shim_handle, (void*)chunkPos.Handle, (void*)aquiferNoises.Handle, (void*)terrainNoises.Handle, (void*)surfaceLevelCache.Handle, dimensionMinHeight, levelGenHeight, seaLevel);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Aquifer Create(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, int arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static Aquifer Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_81667cb9();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Aquifer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new Aquifer((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _computeAquifer_47f0e066(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static Aquifer Create(global::Hosihikari.Bindings.Bedrock.Interop.Aquifer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2d3a5762((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Aquifer((nint)handle);
+    }
+
+    public static Aquifer Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos, global::Hosihikari.Bindings.Bedrock.Interop.AquiferNoises aquiferNoises, global::Hosihikari.Bindings.Bedrock.Interop.OverworldNoises3d terrainNoises, global::Hosihikari.Bindings.Bedrock.Interop.SurfaceLevelCache surfaceLevelCache, int dimensionMinHeight, int levelGenHeight, int seaLevel)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3fd66ee1((void*)chunkPos.Handle, (void*)aquiferNoises.Handle, (void*)terrainNoises.Handle, (void*)surfaceLevelCache.Handle, dimensionMinHeight, levelGenHeight, seaLevel);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Aquifer((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Aquifer::FluidSample' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _computeAquifer(nint cellCenter) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Aquifer::FluidSample' requires --link-carrier or --virtual-dispatch.");
+
+    public static nint chunkOffset()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_c9c86c37();
+    }
+
+    public void computeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos worldPos)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c0b60353((void*)__hosihikari_shim_handle, (void*)worldPos.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint chunkOffset_Address
+    public nint mAquiferNoises_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_02a0ee0e();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2c564faa((void*)__hosihikari_shim_handle);
     }
 
-    public void computeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFluidLevelCache_Address
     {
-        NativeMethods.TablePtr->hs_method_6e35b834((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4e37a6d6((void*)__hosihikari_shim_handle);
     }
 
-    public float getLastBarrier()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGridSize_Address
     {
-        return NativeMethods.TablePtr->hs_method_1dcba242((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_89afa896((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block? getLastFluidBlockType(bool arg0)
+    public float mLastBarrierDensity
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_ea5c23e7((void*)_handle, arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
+        get => NativeMethods.TablePtr->C0.hs_get_73a8d07c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_73a8d07c((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getLastFluidLevel()
+    public int mLastFluidLevel
     {
-        return NativeMethods.TablePtr->hs_method_60bc8de1((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_ccb0f038((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_ccb0f038((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool shouldScheduleFluidUpdate()
+    public sbyte mLastFluidType
     {
-        return NativeMethods.TablePtr->hs_method_ac35a834((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_76480825((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_76480825((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9745170b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMinGrid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c193d57c((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSeaLevel
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_fdd5c6cf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_fdd5c6cf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mShouldScheduleFluidUpdate
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_cc24efb4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_cc24efb4((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSurfaceLevelCache_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_048e3370((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTerrainNoises_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ca83f45c((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Aquifer operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Aquifer arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Aquifer((nint)NativeMethods.TablePtr->C0.hs_method_07f97ced((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b2cf6726((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

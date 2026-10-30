@@ -2,13 +2,13 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Facing_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Facing;
 
 public enum Rotation : int
 {
     None = 0,
-    CCW = 1,
-    OPP = 2,
-    CW = 3,
+    Ccw = 1,
+    Opp = 2,
+    Cw = 3,
     Count = 4,
 }

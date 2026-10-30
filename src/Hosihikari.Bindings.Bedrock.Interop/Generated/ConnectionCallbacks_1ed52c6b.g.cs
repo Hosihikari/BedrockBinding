@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Connector_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ConnectionCallbacks
+public sealed unsafe partial class ConnectionCallbacks : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ConnectionCallbacks(nint handle) : this(handle, true) { }
 
     internal ConnectionCallbacks(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ConnectionCallbacks Borrow(nint handle) => new ConnectionCallbacks(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,34 @@ public sealed partial class ConnectionCallbacks
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void onConnectionClosed(nint id, nint discoReason, nint messageFromServer, nint messageBodyOverride, bool skipDisconnectMessage, nint sessionSummary) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool onNewIncomingConnection(nint id, nint peer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool onNewOutgoingConnection(nint id, nint peer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_1ed52c6b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

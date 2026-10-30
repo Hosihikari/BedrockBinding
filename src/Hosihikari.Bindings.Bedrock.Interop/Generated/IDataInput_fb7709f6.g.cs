@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IDataInput
+public sealed unsafe partial class IDataInput : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IDataInput(nint handle) : this(handle, true) { }
 
     internal IDataInput(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IDataInput Borrow(nint handle) => new IDataInput(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,89 +33,99 @@ public sealed unsafe partial class IDataInput
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public ulong numBytesLeft() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public byte readByte()
     {
-        return NativeMethods.TablePtr->hs_method_8504c670((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_8504c670((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint readByteResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    public bool readBytes(nint arg0, ulong arg1)
+    public bool readBytes(nint data, ulong bytes)
     {
-        return NativeMethods.TablePtr->hs_method_3c9709f2((void*)_handle, (void*)arg0, arg1) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_9c78c280((void*)__hosihikari_shim_handle, (void*)data, bytes) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint readBytesResult(nint arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint readBytesResult(nint data, ulong bytes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint readDoubleResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint readFloatResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public int readInt()
     {
-        return NativeMethods.TablePtr->hs_method_7716a81b((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_7716a81b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint readIntResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public long readLongLong()
     {
-        return NativeMethods.TablePtr->hs_method_ba2a6ec2((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_ba2a6ec2((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint readLongLongResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public string readLongString()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_27ec4c70((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_e3dbb75c((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint readLongStringResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public short readShort()
     {
-        return NativeMethods.TablePtr->hs_method_14cc1571((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_14cc1571((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint readShortResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public string readString()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_5e0da824((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_ac3e6ce0((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint readStringResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_fb7709f6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

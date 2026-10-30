@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class BlockTypeRegistryReadLock
+public sealed unsafe partial class BlockTypeRegistryReadLock : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockTypeRegistryReadLock(nint handle) : this(handle, true) { }
 
     internal BlockTypeRegistryReadLock(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockTypeRegistryReadLock Borrow(nint handle) => new BlockTypeRegistryReadLock(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,60 @@ public sealed partial class BlockTypeRegistryReadLock
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockTypeRegistryReadLock Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Abi.SharedHandle? locker)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_1851b86f((void*)__hosihikari_shim_handle, locker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockTypeRegistryReadLock Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_95ed84af((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static BlockTypeRegistryReadLock Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_66528774();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_b32205b3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new BlockTypeRegistryReadLock((nint)handle);
+    }
+
+    public static BlockTypeRegistryReadLock Create(global::Hosihikari.Bindings.Abi.SharedHandle? locker)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5643c928(locker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockTypeRegistryReadLock((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocker_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7a837ff4((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_46515947((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

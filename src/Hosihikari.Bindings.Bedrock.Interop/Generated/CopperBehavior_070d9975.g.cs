@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CopperBehavior
+public sealed unsafe partial class CopperBehavior : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CopperBehavior(nint handle) : this(handle, true) { }
 
     internal CopperBehavior(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CopperBehavior Borrow(nint handle) => new CopperBehavior(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,82 @@ public sealed unsafe partial class CopperBehavior
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CopperBehavior Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CopperBehavior Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block getCorrespondingWaxedBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
+    public nint _ctor(nint blockSet, global::Hosihikari.Bindings.Bedrock.Interop.HashedString thisBlock)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_20c9499f((void*)_handle, (void*)arg0.Handle), false);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_41915994((void*)__hosihikari_shim_handle, (void*)blockSet, (void*)thisBlock.Handle);
     }
 
-    public bool isWaxable()
+    public static CopperBehavior Create()
     {
-        return NativeMethods.TablePtr->hs_method_ca779849((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_f84f2177();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CopperBehavior((nint)handle);
     }
 
-    public bool isWaxed()
+    public static CopperBehavior Create(global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior arg0)
     {
-        return NativeMethods.TablePtr->hs_method_832bbdff((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_b9f9fcb7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CopperBehavior((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool tryDecrementAge(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public static CopperBehavior Create(nint blockSet, global::Hosihikari.Bindings.Bedrock.Interop.HashedString thisBlock)
     {
-        return NativeMethods.TablePtr->hs_method_b75c22e5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_c3cd7642((void*)blockSet, (void*)thisBlock.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CopperBehavior((nint)handle);
     }
 
-    public bool tryIncrementAge(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, float arg2, float arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockSet_Address
     {
-        return NativeMethods.TablePtr->hs_method_d987941e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f14b97b1((void*)__hosihikari_shim_handle);
     }
 
-    public bool use(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2)
+    public bool mIsWaxed
     {
-        return NativeMethods.TablePtr->hs_method_1a95480f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_29d7f1e1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_29d7f1e1((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c765799f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public byte mType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_5faad7f5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_5faad7f5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior((nint)NativeMethods.TablePtr->C0.hs_method_c765ceeb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_070d9975((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

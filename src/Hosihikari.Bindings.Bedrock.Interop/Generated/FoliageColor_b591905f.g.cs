@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FoliageColor
+public sealed unsafe partial class FoliageColor : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FoliageColor(nint handle) : this(handle, true) { }
 
     internal FoliageColor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FoliageColor Borrow(nint handle) => new FoliageColor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,122 +33,21 @@ public sealed unsafe partial class FoliageColor
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color FOLIAGE_BOTTOM_LEFT
+    public void Dispose()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_80d682ed(), false);
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b591905f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color FOLIAGE_BOTTOM_RIGHT
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_bf3c37c8(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color FOLIAGE_TOP_LEFT
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_bbcac09f(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color FOLIAGE_TOP_RIGHT
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_9bca1a18(), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FoliageColor Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FoliageColor Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRASS_BOTTOM_LEFT
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_ae2cdbdf(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRASS_BOTTOM_RIGHT
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_50b295f8(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRASS_TOP_LEFT
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_441fc62a(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRASS_TOP_RIGHT
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_a14f0c38(), false);
-    }
-
-    public static int getBirchColor(float arg0, float arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_3cced757(arg0, arg1);
-    }
-
-    public static int getDefaultColor()
-    {
-        return NativeMethods.TablePtr->hs_method_f2d243b7();
-    }
-
-    public static int getEvergreenColor(float arg0, float arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_d9f9facd(arg0, arg1);
-    }
-
-    public static int getFoliageColor(int arg0, float arg1, float arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_d73efa24(arg0, arg1, arg2);
-    }
-
-    public static int getFoliageColor(float arg0, float arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_32c8a185(arg0, arg1);
-    }
-
-    public static int getMapBirchColor(float arg0, float arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_83eb5f43(arg0, arg1);
-    }
-
-    public static int getMapEvergreenColor(float arg0, float arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_af21c323(arg0, arg1);
-    }
-
-    public static int getMapFoliageColor(float arg0, float arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_fc32a9f2(arg0, arg1);
-    }
-
-    public static int getMapGrassColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_e6fd6aab((void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public static int getMapGrassColor(float arg0, float arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_c03c0e26(arg0, arg1);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mFoliagePalettes_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f454286f();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mGrassPalettes_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6d8c649b();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

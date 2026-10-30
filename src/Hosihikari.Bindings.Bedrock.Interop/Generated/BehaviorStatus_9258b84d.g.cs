@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum BehaviorStatus : int
 {
+    Success = 0,
+    Running = 1,
+    Failure = 2,
+    Error = 3,
+    Undefined = 4,
 }

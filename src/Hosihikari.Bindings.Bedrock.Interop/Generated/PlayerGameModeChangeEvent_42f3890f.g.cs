@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class PlayerGameModeChangeEvent
+public sealed unsafe partial class PlayerGameModeChangeEvent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerGameModeChangeEvent(nint handle) : this(handle, true) { }
 
     internal PlayerGameModeChangeEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerGameModeChangeEvent Borrow(nint handle) => new PlayerGameModeChangeEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,26 @@ public sealed partial class PlayerGameModeChangeEvent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerGameModeChangeEvent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int mFromGameMode
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_a83dc3e1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a83dc3e1((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerGameModeChangeEvent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b60e0156((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_73e9247c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int mToGameMode
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_9be5c2ca((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_9be5c2ca((void*)__hosihikari_shim_handle, value);
+    }
 }

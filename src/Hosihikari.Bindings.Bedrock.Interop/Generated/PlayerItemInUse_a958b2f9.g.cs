@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayerItemInUse
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerItemInUse(nint handle) : this(handle, true) { }
 
     internal PlayerItemInUse(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerItemInUse Borrow(nint handle) => new PlayerItemInUse(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,62 +33,31 @@ public sealed unsafe partial class PlayerItemInUse
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerItemInUse Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerItemInUse Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool checkShouldUse()
+    public int getUsedDuration(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext owner)
     {
-        return NativeMethods.TablePtr->hs_method_1a4796f5((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_b7610f8a((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public void clearItemInUse(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItem_Address
     {
-        NativeMethods.TablePtr->hs_method_0451c3f6((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_55952f8a((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getItemInUse()
+    public bool mShouldEmitGameEvents
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_59784190((void*)_handle), false);
+        get => NativeMethods.TablePtr->C2.hs_get_904d2e3d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_904d2e3d((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getMoveToMouthDuration()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSlot_Address
     {
-        return NativeMethods.TablePtr->hs_method_b12dca1d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7269ccc0((void*)__hosihikari_shim_handle);
     }
-
-    public int getUsedDuration()
-    {
-        return NativeMethods.TablePtr->hs_method_5bff81e2((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlayerInventorySlotData' is not a known bindable declaration.", false)]
-    public bool isInSlot(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlayerInventorySlotData' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void releaseUsing(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
-    {
-        NativeMethods.TablePtr->hs_method_942e93f9((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlayerInventorySlotData' is not a known bindable declaration.", false)]
-    public void setItemInUse(nint arg0, nint arg1, int arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlayerInventorySlotData' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

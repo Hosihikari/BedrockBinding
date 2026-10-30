@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayerTickProxy
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerTickProxy(nint handle) : this(handle, true) { }
 
     internal PlayerTickProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerTickProxy Borrow(nint handle) => new PlayerTickProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,58 @@ public sealed unsafe partial class PlayerTickProxy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerTickProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerTickProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clearDimensionPlayerReplicationList(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
+    public void _clearDimensionPlayerReplicationList(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        NativeMethods.TablePtr->hs_method_5a9dfce8((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_202b9b44((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void playerTick(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg1)
+    public void _playerTick(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
     {
-        NativeMethods.TablePtr->hs_method_afda18f6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_faa36e79((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)currentTick.Handle);
     }
 
-    public void postReplicationtick(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer arg0, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg1)
+    public void _postReplicationtick(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer serverPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
     {
-        NativeMethods.TablePtr->hs_method_7af295ff((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_71711666((void*)__hosihikari_shim_handle, (void*)serverPlayer.Handle, (void*)currentTick.Handle);
     }
 
-    public void preReplicationTick(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer arg0, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    public void _preReplicationTick(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer serverPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext userEntity)
     {
-        NativeMethods.TablePtr->hs_method_3697015d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_ce644df2((void*)__hosihikari_shim_handle, (void*)serverPlayer.Handle, (void*)currentTick.Handle, (void*)userEntity.Handle);
     }
 
-    public void processDimensionPlayerReplication(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
+    public void _processDimensionPlayerReplication(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        NativeMethods.TablePtr->hs_method_b9e3c5c2((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_0ff60c16((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void clearDimensionPlayerReplicationList(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d0edfe9b((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+    }
+
+    public void playerTick(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
+    {
+        NativeMethods.TablePtr->C2.hs_method_79bc0069((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)currentTick.Handle);
+    }
+
+    public void postReplicationtick(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer serverPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
+    {
+        NativeMethods.TablePtr->C2.hs_method_25657f4a((void*)__hosihikari_shim_handle, (void*)serverPlayer.Handle, (void*)currentTick.Handle);
+    }
+
+    public void preReplicationTick(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer serverPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext userEntity)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f4134eac((void*)__hosihikari_shim_handle, (void*)serverPlayer.Handle, (void*)currentTick.Handle, (void*)userEntity.Handle);
+    }
+
+    public void processDimensionPlayerReplication(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a3eaaf8f((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+    }
 }

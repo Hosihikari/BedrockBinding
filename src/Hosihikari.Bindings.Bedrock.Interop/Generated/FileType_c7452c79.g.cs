@@ -2,9 +2,11 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum FileType : int
 {
+    File = 0,
+    Directory = 1,
+    None = 2,
 }

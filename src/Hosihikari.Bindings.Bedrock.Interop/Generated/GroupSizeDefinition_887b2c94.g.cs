@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GroupSizeDefinition
+public sealed unsafe partial class GroupSizeDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GroupSizeDefinition(nint handle) : this(handle, true) { }
 
     internal GroupSizeDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GroupSizeDefinition Borrow(nint handle) => new GroupSizeDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,65 @@ public sealed unsafe partial class GroupSizeDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GroupSizeDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GroupSizeDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static GroupSizeDefinition Create()
     {
-        NativeMethods.TablePtr->hs_method_d29229b3(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        var handle = NativeMethods.TablePtr->C1.hs_create_db866a9a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GroupSizeDefinition((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static GroupSizeDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.GroupSizeDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_903ccafb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GroupSizeDefinition((nint)handle);
+    }
+
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b77e096b(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka73a42_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dadcb8b9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkba22e3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_db091864((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GroupSizeDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.GroupSizeDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GroupSizeDefinition((nint)NativeMethods.TablePtr->C1.hs_method_6e8cd741((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_887b2c94((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

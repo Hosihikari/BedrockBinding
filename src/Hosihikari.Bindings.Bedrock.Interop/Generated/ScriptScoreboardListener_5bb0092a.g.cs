@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptScoreboardListener
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptScoreboardListener(nint handle) : this(handle, true) { }
 
     internal ScriptScoreboardListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptScoreboardListener Borrow(nint handle) => new ScriptScoreboardListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,14 @@ public sealed unsafe partial class ScriptScoreboardListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptScoreboardListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptScoreboard>' is not a known bindable declaration.", false)]
-    public static ScriptScoreboardListener Create_6d1d4e49(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptScoreboard>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptScoreboardListener Create_978c63b3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int onObjectiveRemoved(string arg0)
+    public int _onObjectiveRemoved(string objective)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -62,23 +50,45 @@ public sealed unsafe partial class ScriptScoreboardListener
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_e72c9c84((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C3.hs_method_06e1b6d0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public int onScoreboardIdentityRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
+    public int _onScoreboardIdentityRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id)
     {
-        return NativeMethods.TablePtr->hs_method_b1cba7fc((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_0be5c684((void*)__hosihikari_shim_handle, (void*)id.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreboardHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_29dbf09c((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int onObjectiveRemoved(string objective)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C3.hs_method_12fe9365((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public int onScoreboardIdentityRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_65fa4483((void*)__hosihikari_shim_handle, (void*)id.Handle);
+    }
 }

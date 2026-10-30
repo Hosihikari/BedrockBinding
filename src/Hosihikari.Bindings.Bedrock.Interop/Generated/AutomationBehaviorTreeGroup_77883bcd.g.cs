@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class AutomationBehaviorTreeGroup
+public sealed unsafe partial class AutomationBehaviorTreeGroup : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AutomationBehaviorTreeGroup(nint handle) : this(handle, true) { }
 
     internal AutomationBehaviorTreeGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AutomationBehaviorTreeGroup Borrow(nint handle) => new AutomationBehaviorTreeGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,97 @@ public sealed partial class AutomationBehaviorTreeGroup
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AutomationBehaviorTreeGroup Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_01333bd9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AutomationBehaviorTreeGroup Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static AutomationBehaviorTreeGroup Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_05f2dedf();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AutomationBehaviorTreeGroup Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new AutomationBehaviorTreeGroup((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static AutomationBehaviorTreeGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.AutomationBehaviorTreeGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_371647d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BehaviorTreeDefinitionPtr' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryGetDefinition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BehaviorTreeDefinitionPtr' requires --link-carrier or --virtual-dispatch.");
+        return new AutomationBehaviorTreeGroup((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_7a2626ec() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefinitions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_980b7a37((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFactory_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_166451b0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegisteredPtrs_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1d5300d4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResourcePackManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1d72e7fd((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AutomationBehaviorTreeGroup operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.AutomationBehaviorTreeGroup arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AutomationBehaviorTreeGroup((nint)NativeMethods.TablePtr->C0.hs_method_15b4fe38((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BehaviorTreeDefinitionPtr tryGetDefinition(string defId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(defId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(defId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.BehaviorTreeDefinitionPtr((nint)NativeMethods.TablePtr->C0.hs_method_32987939((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_77883bcd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

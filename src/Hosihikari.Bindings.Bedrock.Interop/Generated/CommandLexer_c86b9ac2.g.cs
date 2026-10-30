@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CommandLexer : global::System.IDisposable
+public sealed unsafe partial class CommandLexer
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandLexer(nint handle) : this(handle, true) { }
 
     internal CommandLexer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandLexer Borrow(nint handle) => new CommandLexer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,38 @@ public sealed unsafe partial class CommandLexer : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandLexer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandLexer Create_73d3485b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
-    public static CommandLexer Create_b877f50c(nint arg0) =>
+    public static CommandLexer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
 
-    public static bool isDigit(sbyte arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_87e1c370(arg0) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
+    public static CommandLexer Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mInput_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3e577833((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3e577833((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mToken_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8f700434((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8f700434((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint next_db66193b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandLexer operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CommandLexer arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandLexer((nint)NativeMethods.TablePtr->C0.hs_method_bbd49f89((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void step()
     {
-        NativeMethods.TablePtr->hs_method_b7d72753((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c86b9ac2((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        NativeMethods.TablePtr->C0.hs_method_b7d72753((void*)__hosihikari_shim_handle);
     }
 }

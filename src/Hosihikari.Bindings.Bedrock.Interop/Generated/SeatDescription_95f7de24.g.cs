@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SeatDescription
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SeatDescription(nint handle) : this(handle, true) { }
 
     internal SeatDescription(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SeatDescription Borrow(nint handle) => new SeatDescription(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,87 @@ public sealed unsafe partial class SeatDescription
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SeatDescription EMPTY
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SeatDescription EMPTY()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.SeatDescription((nint)NativeMethods.TablePtr->hs_get_9dc7ca6b(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SeatDescription((nint)NativeMethods.TablePtr->C3.hs_method_267377f2(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SeatDescription Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SeatDescription Create_da504027(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void addRotationExpressionNode(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg0)
+    public void addRotationExpressionNode(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode node)
     {
-        NativeMethods.TablePtr->hs_method_86624ded((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_ee3c444c((void*)__hosihikari_shim_handle, (void*)node.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_755e9f9c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCameraRelaxDistanceSmoothing_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1a956908((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_78e72704(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mHasSeatRotation
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_451ad017((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_451ad017((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint seat) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mLockPassengerRotation
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_c8ca8e36((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_c8ca8e36((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_78bf89c3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public float mLockPassengerRotationDegrees
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_66bbde98((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_66bbde98((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMaxSeatCount
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9323cbd3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9323cbd3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinSeatCount
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_66bbb0c5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_66bbb0c5((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8d105975((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSeatRotation_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_439b6226((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mThirdPersonCameraRadiusOverride_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_eba37bfb((void*)__hosihikari_shim_handle);
+    }
+
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.SeatDescription seat)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_21bed981((void*)__hosihikari_shim_handle, (void*)seat.Handle) != 0;
+    }
+
+    public void setCameraRelaxDistanceSmoothing(nint value)
+    {
+        NativeMethods.TablePtr->C3.hs_method_411d4b60((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public void setThirdPersonCamerRadiusOverride(nint value)
+    {
+        NativeMethods.TablePtr->C3.hs_method_3f17f511((void*)__hosihikari_shim_handle, (void*)value);
+    }
 }

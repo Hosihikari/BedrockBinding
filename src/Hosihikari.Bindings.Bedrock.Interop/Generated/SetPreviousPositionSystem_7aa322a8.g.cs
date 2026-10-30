@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SetPreviousPositionSystem
+public sealed unsafe partial class SetPreviousPositionSystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SetPreviousPositionSystem(nint handle) : this(handle, true) { }
 
     internal SetPreviousPositionSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SetPreviousPositionSystem Borrow(nint handle) => new SetPreviousPositionSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,26 @@ public sealed partial class SetPreviousPositionSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SetPreviousPositionSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static void _doSetPreviousPositionSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4384f136((void*)arg0.Handle, (void*)stateVectorComponent.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SetPreviousPositionSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_7aa322a8((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createSystem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

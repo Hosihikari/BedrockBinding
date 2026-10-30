@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EquippableComponent
+public sealed unsafe partial class EquippableComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EquippableComponent(nint handle) : this(handle, true) { }
 
     internal EquippableComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EquippableComponent Borrow(nint handle) => new EquippableComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,71 @@ public sealed unsafe partial class EquippableComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EquippableComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EquippableComponent Create_2ccd6f87(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EquippableComponent Create_30249053(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket createDataPacket(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, sbyte arg1)
+    public static EquippableComponent Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket((nint)NativeMethods.TablePtr->hs_method_d7283e62((void*)_handle, (void*)arg0.Handle, arg1));
+        var handle = NativeMethods.TablePtr->C1.hs_create_d462e2c0();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EquippableComponent((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? createTag(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public static EquippableComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.EquippableComponent arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c495d2ad((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+        var handle = NativeMethods.TablePtr->C1.hs_create_30249053((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EquippableComponent((nint)handle);
     }
 
-    public int getSlotCount()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint createDataPacket(nint owner, nint containerID) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint createTag(nint owner) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSlots_Address
     {
-        return NativeMethods.TablePtr->hs_method_44a37970((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_36917a2f((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasSlotAllowedItems(int arg0)
+    public bool onItemChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, ulong slotIdx, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        return NativeMethods.TablePtr->hs_method_2f50bfd9((void*)_handle, arg0) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_83cf6d86((void*)__hosihikari_shim_handle, (void*)owner.Handle, slotIdx, (void*)item.Handle) != 0;
     }
 
-    public bool onItemChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, ulong arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint other) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EquippableComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EquippableComponent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_f289ccda((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EquippableComponent((nint)NativeMethods.TablePtr->C1.hs_method_ca2b7290((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_1f07cb68(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_ca2b7290(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint tryGetSlotAllowedItems(int arg0)
+    public void Dispose()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d317fe15((void*)_handle, arg0);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0cc31947((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_8eab13b9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

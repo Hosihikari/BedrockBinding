@@ -4,8 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum CommandBlockMode : short
+public enum CommandBlockMode : ushort
 {
+    Normal = 0,
     Repeating = 1,
     Chain = 2,
 }

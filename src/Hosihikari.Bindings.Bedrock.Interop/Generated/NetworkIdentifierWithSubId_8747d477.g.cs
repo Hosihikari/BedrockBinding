@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NetworkIdentifierWithSubId : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetworkIdentifierWithSubId(nint handle) : this(handle, true) { }
 
     internal NetworkIdentifierWithSubId(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetworkIdentifierWithSubId Borrow(nint handle) => new NetworkIdentifierWithSubId(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,33 @@ public sealed unsafe partial class NetworkIdentifierWithSubId : global::System.I
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mIdentifier_Address
+    public nint id_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dfa4cb71((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_18872faa((void*)__hosihikari_shim_handle);
     }
 
-    public byte mSubClientId
+    public byte subClientId
     {
-        get => NativeMethods.TablePtr->hs_get_a2c61de4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_a2c61de4((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_9937565e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_9937565e((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_8747d477((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_8747d477((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

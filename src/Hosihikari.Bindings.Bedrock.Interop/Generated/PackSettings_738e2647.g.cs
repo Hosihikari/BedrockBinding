@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PackSettings : global::System.IDisposable
+public sealed unsafe partial class PackSettings
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PackSettings(nint handle) : this(handle, true) { }
 
     internal PackSettings(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PackSettings Borrow(nint handle) => new PackSettings(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,36 @@ public sealed unsafe partial class PackSettings : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static PackSettings Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_d7e03bd9();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::variant<SharedTypes::v3_0_0::PackManifestDefinition::LabelSetting, SharedTypes::v3_0_0::PackManifestDefinition::SliderSetting, SharedTypes::v3_0_0::PackManifestDefinition::ToggleSetting, SharedTypes::v3_0_0::PackManifestDefinition::DropdownSetting, SharedTypes::v3_0_0::PackManifestDefinition::MultiSelectSetting>' is not supported.", false)]
+    public void applyDefinitions(nint packSettingDef, nint userOverrides) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<SharedTypes::v3_0_0::PackManifestDefinition::LabelSetting, SharedTypes::v3_0_0::PackManifestDefinition::SliderSetting, SharedTypes::v3_0_0::PackManifestDefinition::ToggleSetting, SharedTypes::v3_0_0::PackManifestDefinition::DropdownSetting, SharedTypes::v3_0_0::PackManifestDefinition::MultiSelectSetting>' is not supported.");
 
-        return new PackSettings((nint)handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value getAllSettings()
+    public ulong mLastUsed
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_059af990((void*)_handle), false);
-    }
-
-    public void loadPackSettings(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
-    {
-        NativeMethods.TablePtr->hs_method_0093cbb8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_6b04ce8c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6b04ce8c((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mPackSettings_Address
+    public nint mNameValueMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_7403c1c6((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d50af78d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mSettings_Address
+    public nint mOnChangePublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9f337a56((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fa83ecea((void*)__hosihikari_shim_handle);
     }
 
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackId_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_738e2647((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5b481933((void*)__hosihikari_shim_handle);
     }
 }

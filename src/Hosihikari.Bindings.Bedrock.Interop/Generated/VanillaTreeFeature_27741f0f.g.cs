@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VanillaTreeFeature
+public sealed unsafe partial class VanillaTreeFeature : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VanillaTreeFeature(nint handle) : this(handle, true) { }
 
     internal VanillaTreeFeature(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VanillaTreeFeature Borrow(nint handle) => new VanillaTreeFeature(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,85 @@ public sealed unsafe partial class VanillaTreeFeature
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaTreeFeature Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mCanUseInternalFeature
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_1a0ee6e1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_1a0ee6e1((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaTreeFeature Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mInternal
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f3a223c8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_f3a223c8((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isValidPlacement(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCanopy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b022cf2b((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRoots_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_09e33a6e((void*)__hosihikari_shim_handle);
+    }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTreeParams_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8866de0e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTrunk_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c9e2a064((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_55a024cc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_83fea30c((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static void _buildSchema(nint schemaNode)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1cd65587((void*)schemaNode);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'ITreeCanopyWrapper &' is not supported.", false)]
+    public static void _buildVanillaCanopyVariants(nint schemaNode, nint canopyAccessor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'ITreeCanopyWrapper &' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'ITreeTrunkWrapper &' is not supported.", false)]
+    public static void _buildVanillaTrunkVariants(nint schemaNode, nint trunkAccessor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'ITreeTrunkWrapper &' is not supported.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_27ef9514((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_27741f0f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

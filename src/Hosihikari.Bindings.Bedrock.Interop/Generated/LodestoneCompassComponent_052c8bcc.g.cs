@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LodestoneCompassComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LodestoneCompassComponent(nint handle) : this(handle, true) { }
 
     internal LodestoneCompassComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LodestoneCompassComponent Borrow(nint handle) => new LodestoneCompassComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,31 @@ public sealed unsafe partial class LodestoneCompassComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LodestoneCompassComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LodestoneCompassComponent Create_beb78d3b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LodestoneCompassComponent Create_3a2f9abc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getAnimationFrame(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LodestoneCompassComponentCalculator? _createCalculator(nint compassId)
     {
-        return NativeMethods.TablePtr->hs_method_b420d6c0((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_483f9641((void*)__hosihikari_shim_handle, (void*)compassId);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LodestoneCompassComponentCalculator((nint)__hs_handle, false) : null;
     }
 
-    public static int getSpinningAnimationFrame()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCalculators_Address
     {
-        return NativeMethods.TablePtr->hs_method_dee4fe33();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_41b5502e((void*)__hosihikari_shim_handle);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CompassSpriteCalculator mSpinningLodestone()
     {
-        NativeMethods.TablePtr->hs_method_46127312((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompassSpriteCalculator((nint)NativeMethods.TablePtr->C2.hs_method_46424dbc(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.CompassSpriteCalculator mSpinningLodestone
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTrackingHandle_Address
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.CompassSpriteCalculator((nint)NativeMethods.TablePtr->hs_get_501790e2(), false);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4225e0f6((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<ActorUniqueID,std::pair<BlockPos,AutomaticID<Dimension,int>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint makeCalculatorId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<ActorUniqueID,std::pair<BlockPos,AutomaticID<Dimension,int>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_d3298f0c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_08cdb20c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setTrackOnlyInSameDimension(nint arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_cb33dce4((void*)_handle, (void*)arg0, arg1);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_68605ea0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

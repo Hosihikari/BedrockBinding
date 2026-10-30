@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LegacyMapping
+public sealed unsafe partial class LegacyMapping : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LegacyMapping(nint handle) : this(handle, true) { }
 
     internal LegacyMapping(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LegacyMapping Borrow(nint handle) => new LegacyMapping(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,78 @@ public sealed partial class LegacyMapping
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static LegacyMapping Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_63dc40d2();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyMapping((nint)handle);
+    }
+
+    public static LegacyMapping Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup_Nested.LegacyMapping arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ee948ec9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyMapping((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilterDef_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4f100103((void*)__hosihikari_shim_handle);
+    }
+
+    public short mOperator
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_d1397935((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d1397935((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mProcess
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_70eeef12((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_70eeef12((void*)__hosihikari_shim_handle, value);
+    }
+
+    public short mSubject
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_95b14d15((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_95b14d15((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_d978891d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d978891d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup_Nested.LegacyMapping operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup_Nested.LegacyMapping arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup_Nested.LegacyMapping((nint)NativeMethods.TablePtr->C0.hs_method_cb032edc((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6f85a2f9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

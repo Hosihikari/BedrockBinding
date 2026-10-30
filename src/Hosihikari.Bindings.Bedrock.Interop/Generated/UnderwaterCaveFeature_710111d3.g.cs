@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class UnderwaterCaveFeature
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UnderwaterCaveFeature(nint handle) : this(handle, true) { }
 
     internal UnderwaterCaveFeature(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UnderwaterCaveFeature Borrow(nint handle) => new UnderwaterCaveFeature(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,161 @@ public sealed unsafe partial class UnderwaterCaveFeature
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UnderwaterCaveFeature Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UnderwaterCaveFeature Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static bool isDiggable(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
+    public int CAVE_COUNT_BASE_FACTOR
     {
-        return NativeMethods.TablePtr->hs_method_964ca171((void*)arg0.Handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_b25d350c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float FLATTENING_FACTOR
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_cca8c0b9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int MAX_NUM_TUNNELS_ADDED_ON_ROOM_CARVE
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f87b2822((void*)__hosihikari_shim_handle);
+    }
+
+    public int ROOM_CARVE_CHANCE
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_308962f2((void*)__hosihikari_shim_handle);
+    }
+
+    public int STEEP_CHANCE
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ead0abc4((void*)__hosihikari_shim_handle);
+    }
+
+    public float STEEP_FLATTENING_FACTOR
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ca541716((void*)__hosihikari_shim_handle);
+    }
+
+    public int TUNNEL_SKIP_CHANCE
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_923be2be((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint VALID_PASS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5d01e8f7((void*)__hosihikari_shim_handle);
+    }
+
+    public float X_DAMPENING_FACTOR
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_2a5a0727((void*)__hosihikari_shim_handle);
+    }
+
+    public float Y_DAMPENING_FACTOR
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ad1f243b((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mCacheEnabled
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_d56d08ac((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_d56d08ac((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCacheMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9804a7aa((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCachedMetaDataMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f911ae2d((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mFillWithBlock
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_43cc3107((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFloorLevel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_486acf73((void*)__hosihikari_shim_handle);
+    }
+
+    public int mHeightLimit
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_5eacba61((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5eacba61((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHorizontalRadiusMultiplier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e4f0ffcf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlaceCount_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_607970f1((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSkipCarveChance
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_33e11a7a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_33e11a7a((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVerticalRadiusMultiplier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d1e07b26((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWidthMod_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8040104e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mYScale_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d8bb79d7((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mCanUseInternalFeature
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_19e496a6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_19e496a6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mInternal
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_1610c2ac((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_1610c2ac((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool _carveEllipsoidVolume(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.CaveFeatureUtils.CarverConfiguration arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 startPos, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox volume, float rad, float yRad, global::Hosihikari.Bindings.Bedrock.Interop.CaveFeatureUtils.CarvingParameters carveValues)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_2a91a472((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)arg1.Handle, (void*)random.Handle, (void*)pos.Handle, (void*)startPos.Handle, (void*)volume.Handle, rad, yRad, (void*)carveValues.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public bool carveEllipsoidVolume(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.CaveFeatureUtils.CarverConfiguration arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 startPos, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox volume, float rad, float yRad, global::Hosihikari.Bindings.Bedrock.Interop.CaveFeatureUtils.CarvingParameters carveValues)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_57ac4af2((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)arg1.Handle, (void*)random.Handle, (void*)pos.Handle, (void*)startPos.Handle, (void*)volume.Handle, rad, yRad, (void*)carveValues.Handle) != 0;
+    }
+
+    public nint mAirReplacementBlock
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5d564928((void*)__hosihikari_shim_handle);
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DelayActionList : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DelayActionList(nint handle) : this(handle, true) { }
 
     internal DelayActionList(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DelayActionList Borrow(nint handle) => new DelayActionList(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,61 @@ public sealed unsafe partial class DelayActionList : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static DelayActionList Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_01ecb5b9();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-        return new DelayActionList((nint)handle);
+    public void _loadRequests(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.ICommandOriginLoader loader, ulong currentTick)
+    {
+        NativeMethods.TablePtr->C1.hs_method_98dd71f6((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)levelStorage.Handle, (void*)loader.Handle, currentTick);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DelayActionList Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DelayRequest' is not copy-constructible.", false)]
+    public nint _queueRequestOrExecuteAction(nint request, nint levelStorage, nint dimension, ulong currentTick, bool allowDuplicates) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DelayRequest' is not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public nint queueRequestOrExecuteAction(nint arg0, nint arg1, nint arg2, ulong arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1, ulong arg2)
+    public int clearRequestWithAction(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.IRequestAction? actionToRemove)
     {
-        NativeMethods.TablePtr->hs_method_ea8c15a7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        return NativeMethods.TablePtr->C1.hs_method_69a9a369((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle, (void*)(actionToRemove?.Handle ?? 0));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDelayRequests_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_399f4b48((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionDataSerializer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a2449a76((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DelayRequest' is not copy-constructible.", false)]
+    public nint queueRequestOrExecuteAction(nint request, nint dimension, ulong currentTick, bool allowDuplicates) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DelayRequest' is not copy-constructible.");
+
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel level, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, ulong currentTick)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c7c18235((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)dimension.Handle, currentTick);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_9cfdf006((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_9cfdf006((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

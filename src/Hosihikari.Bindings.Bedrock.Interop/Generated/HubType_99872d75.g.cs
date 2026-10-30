@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.DeferredSubscriptionHub_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum HubType : int
 {
+    Priority = 0,
+    Fifo = 1,
+    RecursiveFIFO = 2,
 }

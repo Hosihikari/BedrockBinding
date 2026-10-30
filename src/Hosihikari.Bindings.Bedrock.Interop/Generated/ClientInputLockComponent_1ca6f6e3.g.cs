@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ClientInputLockComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ClientInputLockComponent(nint handle) : this(handle, true) { }
 
     internal ClientInputLockComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ClientInputLockComponent Borrow(nint handle) => new ClientInputLockComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,25 @@ public sealed unsafe partial class ClientInputLockComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ClientInputLockComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ClientInputLockComponent Create_8ae866d0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ClientInputLockComponent Create_428e49e0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public bool hasAnyLock()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActiveCategories_Address
     {
-        return NativeMethods.TablePtr->hs_method_bae2da1c((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9dff9393((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasLockCategory(int arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mClientInputLocks_Address
     {
-        return NativeMethods.TablePtr->hs_method_d913b3de((void*)_handle, arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_acfc81a2((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasLockType(int arg0)
+    public void setLockCategory(byte category, bool state)
     {
-        return NativeMethods.TablePtr->hs_method_d5096835((void*)_handle, arg0) != 0;
+        NativeMethods.TablePtr->C0.hs_method_fd79d607((void*)__hosihikari_shim_handle, category, state);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_cfdf6b9c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_e6ce4577(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerLockCategoryChangeCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    public uint serialize()
-    {
-        return NativeMethods.TablePtr->hs_method_2dbf43b3((void*)_handle);
-    }
-
-    public void setLockCategory(int arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_fd79d607((void*)_handle, arg0, arg1);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_2e804454() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class FilterInputs
+public sealed unsafe partial class FilterInputs : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FilterInputs(nint handle) : this(handle, true) { }
 
     internal FilterInputs(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FilterInputs Borrow(nint handle) => new FilterInputs(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,86 @@ public sealed partial class FilterInputs
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilterInputs Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public nint _ctor(nint subject, nint domain, nint op, nint value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilterInputs Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_6fe1f671((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static FilterInputs Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4e67fdac();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_0b739ab1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new FilterInputs((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static FilterInputs Create(nint subject, nint domain, nint op, nint value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    public static FilterInputs Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_40eab7a4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterInputs((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk260a64_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9a52eceb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6920e4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3f54fbee((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke637f5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d4f251a8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf5bc24_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_db8bd672((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs((nint)NativeMethods.TablePtr->C1.hs_method_deef21b0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_65a22141((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

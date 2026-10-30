@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class FurnaceContainerScreenValidator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FurnaceContainerScreenValidator(nint handle) : this(handle, true) { }
 
     internal FurnaceContainerScreenValidator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FurnaceContainerScreenValidator Borrow(nint handle) => new FurnaceContainerScreenValidator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,40 @@ public sealed unsafe partial class FurnaceContainerScreenValidator : global::Sys
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValidContainerEnumNames_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_797118fd((void*)__hosihikari_shim_handle);
+    }
+
+    public nint _ctor()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_24ded313((void*)__hosihikari_shim_handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_c37e48ba((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _postCommitItemRemoved(byte containerEnumName, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_7e76816f((void*)__hosihikari_shim_handle, containerEnumName, slot, (void*)item.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
     public static FurnaceContainerScreenValidator Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_1219fbc0();
+        var handle = NativeMethods.TablePtr->C1.hs_create_1219fbc0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,31 +75,29 @@ public sealed unsafe partial class FurnaceContainerScreenValidator : global::Sys
         return new FurnaceContainerScreenValidator((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FurnaceContainerScreenValidator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? postCommitItemRemoved(sbyte arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExperienceRewards_Address
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_1be46fb6((void*)_handle, arg0, arg1, (void*)arg2.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fabec0ab((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? postCommitItemRemoved(byte containerEnumName, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_c4d8371d((void*)__hosihikari_shim_handle, containerEnumName, slot, (void*)item.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_28e4e541((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_28e4e541((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DropdownControl
+public sealed unsafe partial class DropdownControl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DropdownControl(nint handle) : this(handle, true) { }
 
     internal DropdownControl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DropdownControl Borrow(nint handle) => new DropdownControl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,36 +33,88 @@ public sealed partial class DropdownControl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DropdownControl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _buildJson(nint forPlayer, nint commandVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DropdownControl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint label, nint options, nint defaultValueIndex, nint tooltip) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.", false)]
-    public static DropdownControl Create_af055fc7(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.");
+    public static DropdownControl Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_73d73876();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DropdownControl Create_bdc5419e(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new DropdownControl((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint buildJson(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value>' requires --link-carrier or --virtual-dispatch.");
+    public static DropdownControl Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.DropdownControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2cdc5fef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new DropdownControl((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.", false)]
+    public static DropdownControl Create(nint label, nint options, nint defaultValueIndex, nint tooltip) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint buildJson(nint forPlayer, nint commandVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2a4364_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_891e8ce7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk516966_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2cacbd3f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk59ecce_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f836590d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk608e4e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_eb315e3f((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.DropdownControl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.DropdownControl arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.DropdownControl((nint)NativeMethods.TablePtr->C3.hs_method_1babe505((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_0057c02a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal;
 
-public sealed unsafe partial class ReflectionCtx
+public sealed unsafe partial class ReflectionCtx : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ReflectionCtx(nint handle) : this(handle, true) { }
 
     internal ReflectionCtx(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ReflectionCtx Borrow(nint handle) => new ReflectionCtx(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,71 @@ public sealed unsafe partial class ReflectionCtx
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReflectionCtx Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReflectionCtx Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx global()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx((nint)NativeMethods.TablePtr->hs_method_9f56b0e5(), false);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b4caa28b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint _ctor()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_4d2d2fc5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_9fd20dd7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C4.hs_method_4b650e56((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ReflectionCtx Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_8d63c708();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ReflectionCtx((nint)handle);
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mForcedJSONSchemaOutput_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_99509773((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mKnownProperties_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_eeacaa4b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetaCtx_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8b6e0ab4((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_6b0f8377((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

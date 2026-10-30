@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum CorrectionMethod : int
+public enum CorrectionMethod : byte
 {
+    None = 0,
+    AcceptClient = 1,
+    CorrectClient = 2,
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LootItem
+public sealed unsafe partial class LootItem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LootItem(nint handle) : this(handle, true) { }
 
     internal LootItem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LootItem Borrow(nint handle) => new LootItem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,93 @@ public sealed partial class LootItem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootItem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public bool __createItem(nint output, nint random, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootItem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int _getEntryType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_d8285133((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<LootItemCondition,std::default_delete<LootItemCondition>>' is not supported.", false)]
-    public static nint deserialize_c628fe43(nint arg0, int arg1, int arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<LootItemCondition,std::default_delete<LootItemCondition>>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public bool _createItem(nint output, nint random, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint deserialize_63c89b13(nint entry, int weight, int quality, nint conditions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int getEntryType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_ef67521b((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int mAuxValue
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5e835df7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5e835df7((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFunctions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f72669cc((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mItem
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d0b04109((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOriginalItemName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4b02a718((void*)__hosihikari_shim_handle);
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConditions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c16848aa((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mJsonVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0a027e41((void*)__hosihikari_shim_handle);
+    }
+
+    public int mQuality
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_4bf7fe0f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4bf7fe0f((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubTable_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a778832e((void*)__hosihikari_shim_handle);
+    }
+
+    public int mWeight
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_2f893b5a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2f893b5a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ac62c5c2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

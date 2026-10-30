@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptItemCustomComponentRegistry
+public sealed unsafe partial class ScriptItemCustomComponentRegistry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptItemCustomComponentRegistry(nint handle) : this(handle, true) { }
 
     internal ScriptItemCustomComponentRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptItemCustomComponentRegistry Borrow(nint handle) => new ScriptItemCustomComponentRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,204 @@ public sealed unsafe partial class ScriptItemCustomComponentRegistry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptItemCustomComponentRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void __onReload()
+    {
+        NativeMethods.TablePtr->C3.hs_method_ed306afe((void*)__hosihikari_shim_handle);
+    }
+
+    public void __onScriptInitializationComplete()
+    {
+        NativeMethods.TablePtr->C3.hs_method_850eec32((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static ScriptItemCustomComponentRegistry Create(nint arg0, nint arg1) =>
+    public nint _ctor(nint events, nint deferredEventCoordinator, nint itemRegistry, nint signals, nint parameterCache) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptItemCustomComponentRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener _getEventListener()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener((nint)NativeMethods.TablePtr->C3.hs_method_b33dbbd7((void*)__hosihikari_shim_handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not a known bindable declaration.", false)]
+    public nint _getValidComponentsForItem(nint itemHandle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not a known bindable declaration.");
+
+    public void _setCerealContext(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        NativeMethods.TablePtr->C3.hs_method_276ea28b((void*)__hosihikari_shim_handle, (void*)ctx.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not a known bindable declaration.", false)]
+    public nint _tryGetCustomComponentParametersForItem(nint itemHandle, nint componentName, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _tryRegisterComponent_948274d0(nint componentName, nint closures) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _tryRegisterComponentV1(nint componentName, nint closures) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.");
+
+    public static ScriptItemCustomComponentRegistry Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b40766e3();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemCustomComponentRegistry((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static ScriptItemCustomComponentRegistry Create(nint events, nint deferredEventCoordinator, nint itemRegistry, nint signals, nint parameterCache) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public static ScriptItemCustomComponentRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7feaf4b8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemCustomComponentRegistry((nint)handle);
+    }
+
+    public void _onReload()
+    {
+        NativeMethods.TablePtr->C3.hs_method_e8eee4e7((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onScriptInitializationComplete()
+    {
+        NativeMethods.TablePtr->C3.hs_method_adfcb970((void*)__hosihikari_shim_handle);
+    }
+
+    public void _subscribeItemsToComponents()
+    {
+        NativeMethods.TablePtr->C3.hs_method_981615e9((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _tryRegisterComponent_9952f6cb(nint componentName, nint closures) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener getEventListener()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener((nint)NativeMethods.TablePtr->hs_method_dd8ecbd0((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener((nint)NativeMethods.TablePtr->C3.hs_method_fbc6aba0((void*)__hosihikari_shim_handle), false);
     }
 
-    public void onReload()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not a known bindable declaration.", false)]
+    public nint getValidComponentsForItem(nint itemHandle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCerealContext_Address
     {
-        NativeMethods.TablePtr->hs_method_d45e0c11((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_892af769((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeferredEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d0928bc0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError,ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError,ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError,ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryRegisterComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError,ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError,ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError,ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b9a87481((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemRegistryInitSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6eeae94c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mKnownComponents_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_acfa5a95((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParameterCache_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0f3b071b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSignals_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_19233023((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentRegistry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentRegistry arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentRegistry((nint)NativeMethods.TablePtr->C3.hs_method_7db71479((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void setCerealContext(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        NativeMethods.TablePtr->C3.hs_method_cebd4d40((void*)__hosihikari_shim_handle, (void*)ctx.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not a known bindable declaration.", false)]
+    public nint tryGetCustomComponentParametersForItem(nint itemHandle, nint componentName, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint tryRegisterComponent(nint componentName, nint closures) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint tryRegisterComponentV1(nint componentName, nint closures) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.");
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInitializeCompleteSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b593ffb8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreReloadSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5510f669((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStartupCompleteSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1b41771b((void*)__hosihikari_shim_handle);
+    }
+
+    public int mState
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_bf9edee7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_bf9edee7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_243d7f15((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

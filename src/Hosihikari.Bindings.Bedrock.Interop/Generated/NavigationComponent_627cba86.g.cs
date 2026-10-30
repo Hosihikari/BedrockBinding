@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NavigationComponent
+public sealed unsafe partial class NavigationComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NavigationComponent(nint handle) : this(handle, true) { }
 
     internal NavigationComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NavigationComponent Borrow(nint handle) => new NavigationComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,338 +33,266 @@ public sealed unsafe partial class NavigationComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NavigationComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NavigationComponent Create_b7316ad5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Path? createPath(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent other)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c2099b8f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Path((nint)__hs_handle) : null;
+        return (nint)NativeMethods.TablePtr->C2.hs_method_1391e167((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Path? createPath(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    public void _dtor()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_376ace4e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Path((nint)__hs_handle) : null;
+        NativeMethods.TablePtr->C2.hs_method_3d335e8d((void*)__hosihikari_shim_handle);
     }
 
-    public bool getAvoidDamageBlocks()
+    public static NavigationComponent Create()
     {
-        return NativeMethods.TablePtr->hs_method_e98b887e((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C2.hs_create_b9f95fd2();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NavigationComponent((nint)handle);
     }
 
-    public bool getAvoidPortals()
+    public static NavigationComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent other)
     {
-        return NativeMethods.TablePtr->hs_method_31f803ab((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C2.hs_create_adbfee28((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NavigationComponent((nint)handle);
     }
 
-    public bool getAvoidSun()
+    public void initMultiTypeNavigationComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob entity, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor initDescription)
     {
-        return NativeMethods.TablePtr->hs_method_c5db6679((void*)_handle) != 0;
+        NativeMethods.TablePtr->C2.hs_method_f26bbf24((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)initDescription.Handle);
     }
 
-    public bool getAvoidWater()
+    public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Mob owner, global::Hosihikari.Bindings.Bedrock.Interop.NavigationDescription? description)
     {
-        return NativeMethods.TablePtr->hs_method_f7bc9df3((void*)_handle) != 0;
+        NativeMethods.TablePtr->C2.hs_method_3077512b((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)(description?.Handle ?? 0));
     }
 
-    public nint getBlocksToAvoid()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mAvoidDamageBlocks
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ddcdd181((void*)_handle);
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getCanBreach()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mAvoidPortals
     {
-        return NativeMethods.TablePtr->hs_method_9192d7fb((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getCanFloat()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mAvoidSun
     {
-        return NativeMethods.TablePtr->hs_method_d6ad0ca3((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getCanJump()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mAvoidWater
     {
-        return NativeMethods.TablePtr->hs_method_2de44e18((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getCanOpenDoors()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlocksToAvoid_Address
     {
-        return NativeMethods.TablePtr->hs_method_4747bc69((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1f44c1f7((void*)__hosihikari_shim_handle);
     }
 
-    public bool getCanOpenIronDoors()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanBreach
     {
-        return NativeMethods.TablePtr->hs_method_923c697a((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getCanPassDoors()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanFloat
     {
-        return NativeMethods.TablePtr->hs_method_6f221ae1((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getCanPathOverLava()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanJump
     {
-        return NativeMethods.TablePtr->hs_method_dbc3670c((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getCanSink()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanOpenDoors
     {
-        return NativeMethods.TablePtr->hs_method_6093f449((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getCanWalkInLava()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanOpenIronDoors
     {
-        return NativeMethods.TablePtr->hs_method_668d3b3c((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public float getEndPathRadiusSqr()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanPassDoors
     {
-        return NativeMethods.TablePtr->hs_method_f5b508ee((void*)_handle);
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getHasDestination()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanPathOverLava
     {
-        return NativeMethods.TablePtr->hs_method_aa04da75((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getHasEndPathRadius()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanSink
     {
-        return NativeMethods.TablePtr->hs_method_6f5b77a4((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getIsAmphibious()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mCanWalkInLava
     {
-        return NativeMethods.TablePtr->hs_method_76cc2dc4((void*)_handle) != 0;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public bool getIsFollowingRivers()
+    public float mEndPathRadiusSqr
     {
-        return NativeMethods.TablePtr->hs_method_fa96210c((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_0fa9673f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0fa9673f((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getLastStuckCheckPosition()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mHasDestination
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_d364c27e((void*)_handle));
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public float getMaxDistance(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mHasEndPathRadius
     {
-        return NativeMethods.TablePtr->hs_method_e006991c((void*)_handle, (void*)arg0.Handle);
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Path? getPath()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mIsAmphibious
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d7c951f7((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Path((nint)__hs_handle, false) : null;
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public float getSpeed()
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mIsFollowingRivers
     {
-        return NativeMethods.TablePtr->hs_method_ea01caad((void*)_handle);
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getTargetOffset()
+    public int mLastStuckCheck
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_dac04fc2((void*)_handle), false);
+        get => NativeMethods.TablePtr->C2.hs_get_45d908ad((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_45d908ad((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getTerminationThreshold()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastStuckCheckPosition_Address
     {
-        return NativeMethods.TablePtr->hs_method_ff7dfc33((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6c9a2e05((void*)__hosihikari_shim_handle);
     }
 
-    public int getTickTimeout()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNavigation_Address
     {
-        return NativeMethods.TablePtr->hs_method_a18c4e08((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_157e9791((void*)__hosihikari_shim_handle);
     }
 
-    public void incrementTick()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPath_Address
     {
-        NativeMethods.TablePtr->hs_method_3c80eafe((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2408bf4c((void*)__hosihikari_shim_handle);
     }
 
-    public void initMultiTypeNavigationComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor arg1)
+    public float mSpeed
     {
-        NativeMethods.TablePtr->hs_method_a31bc042((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_e85abad0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e85abad0((void*)__hosihikari_shim_handle, value);
     }
 
-    public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.NavigationDescription? arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetOffset_Address
     {
-        NativeMethods.TablePtr->hs_method_f0d99255((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_28fa185d((void*)__hosihikari_shim_handle);
     }
 
-    public bool isDone()
+    public float mTerminationThreshold
     {
-        return NativeMethods.TablePtr->hs_method_047c1cdc((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_8be943df((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8be943df((void*)__hosihikari_shim_handle, value);
     }
 
-    public int isFree(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int arg4)
+    public int mTick
     {
-        return NativeMethods.TablePtr->hs_method_a35f1fec((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4);
+        get => NativeMethods.TablePtr->C2.hs_get_072637a6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_072637a6((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isStuck(int arg0)
+    public int mTickTimeout
     {
-        return NativeMethods.TablePtr->hs_method_e2f5ebce((void*)_handle, arg0) != 0;
-    }
-
-    public bool moveTo(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, float arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_aa149068((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
-    }
-
-    public bool moveTo(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_57584411((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
-    }
-
-    public bool moveTo(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_b26f933d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool moveTo(nint arg0, nint arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_4a21762a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_a5930225(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void resetPath()
-    {
-        NativeMethods.TablePtr->hs_method_2dd78964((void*)_handle);
-    }
-
-    public void setAvoidDamageBlocks(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_99ad8caf((void*)_handle, arg0);
-    }
-
-    public void setAvoidPortals(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_712f0b11((void*)_handle, arg0);
-    }
-
-    public void setAvoidSun(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_0595b35b((void*)_handle, arg0);
-    }
-
-    public void setAvoidWater(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_3578aeb0((void*)_handle, arg0);
-    }
-
-    public void setCanFloat(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_42b4f3af((void*)_handle, arg0);
-    }
-
-    public void setCanJump(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_cf83012e((void*)_handle, arg0);
-    }
-
-    public void setCanOpenDoors(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f6640f20((void*)_handle, arg0);
-    }
-
-    public void setCanPassDoors(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_52b73ec0((void*)_handle, arg0);
-    }
-
-    public void setCanSink(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_b9fd9d20((void*)_handle, arg0);
-    }
-
-    public void setEndPathRadius(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_dc2c7630((void*)_handle, arg0);
-    }
-
-    public void setHasDestination(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_c072fa3f((void*)_handle, arg0);
-    }
-
-    public void setHasEndPathRadius(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_3bc42319((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_a24578da((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a24578da((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setInternalType(nint arg0) =>
+    public bool moveTo(nint owner, nint newPath, float speed) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void setIsFollowingRivers(bool arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent arg0)
     {
-        NativeMethods.TablePtr->hs_method_0b8ea02d((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent((nint)NativeMethods.TablePtr->C2.hs_method_a5930225((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setPath(nint arg0) =>
+    public void setPath(nint path) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void setSpeed(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_8b78e32a((void*)_handle, arg0);
-    }
 
-    public void setTargetOffset(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_e0ec4d0c((void*)_handle, (void*)arg0.Handle);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_627cba86((void*)__hosihikari_shim_handle);
+            }
 
-    public void setTerminationThreshold(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_18a43561((void*)_handle, arg0);
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    public void setTickTimeout(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_650400ea((void*)_handle, arg0);
-    }
-
-    public void stop(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f9b59b29((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public bool travel(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, nint arg1, nint arg2, nint arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_7fc8abbd((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
-    }
-
-    public void update(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
-    {
-        NativeMethods.TablePtr->hs_method_fd39de66((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void updateLastStuckCheck(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
-    {
-        NativeMethods.TablePtr->hs_method_2d6d9217((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_7392742b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

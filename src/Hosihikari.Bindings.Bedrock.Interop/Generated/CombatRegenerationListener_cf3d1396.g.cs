@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CombatRegenerationListener
+public sealed unsafe partial class CombatRegenerationListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CombatRegenerationListener(nint handle) : this(handle, true) { }
 
     internal CombatRegenerationListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CombatRegenerationListener Borrow(nint handle) => new CombatRegenerationListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,99 @@ public sealed unsafe partial class CombatRegenerationListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CombatRegenerationListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CombatRegenerationListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorNotificationEvent arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ActorEventCoordinator coordinator)
     {
-        return NativeMethods.TablePtr->hs_method_c9ea1645((void*)_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_bab150ba((void*)__hosihikari_shim_handle, (void*)coordinator.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorNotificationEvent @event)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9c5f3631((void*)__hosihikari_shim_handle, (void*)@event.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static CombatRegenerationListener Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_030398e8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CombatRegenerationListener((nint)handle);
+    }
+
+    public static CombatRegenerationListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorEventCoordinator coordinator)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fa432d9a((void*)coordinator.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CombatRegenerationListener((nint)handle);
+    }
+
+    public static CombatRegenerationListener Create(global::Hosihikari.Bindings.Bedrock.Interop.CombatRegenerationListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5f610e81((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CombatRegenerationListener((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_071a1c73((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMobId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cf04a939((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetActorId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8c53b84d((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mTargetKilledByMob
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_a5365a76((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_a5365a76((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorNotificationEvent @event)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_932fe17b((void*)__hosihikari_shim_handle, (void*)@event.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CombatRegenerationListener operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CombatRegenerationListener arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CombatRegenerationListener((nint)NativeMethods.TablePtr->C0.hs_method_74d883a6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_cf3d1396((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

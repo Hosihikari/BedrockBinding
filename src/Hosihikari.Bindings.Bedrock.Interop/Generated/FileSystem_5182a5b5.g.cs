@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
 public sealed unsafe partial class FileSystem
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FileSystem(nint handle) : this(handle, true) { }
 
     internal FileSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FileSystem Borrow(nint handle) => new FileSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,146 +33,235 @@ public sealed unsafe partial class FileSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint COPY_FOLDER_SENTINEL_FILE
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d55ae908((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _checkFileInitialSize(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _copyDirectoryStructure(nint from, nint to, nint directories, nint transaction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint cleanPathSeparators_deprecated_1ad9de37(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _copyFilesWithLimit(nint from, nint to, nint files, nint currentFileBytesWritten, nint transactionLimit, nint fileTransferFunction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint cleanPath_deprecated_1aed5297(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _copyFlatFile(nint flatFileParentDirectory, nint targetDirectory, nint excludedDirectories, nint excludedFiles) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint copyDirectoryAndContentsRecursively(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _getDirectoriesAndFileSizesRecursively(nint directoryPath, nint directoriesOut, nint filesOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint copyFile(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint addIgnoredThrottlePath(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createDirectoryForFile(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool checkStorageCorrupt(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createDirectoryRecursively(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint cleanPathSeparators_deprecated(nint pathBufferOut, nint pathIn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint deleteDirectoryAndContentsRecursively(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint cleanPath_deprecated(nint pathBufferOut, nint pathIn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint deleteEmptyDirectory(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint copyDirectoryAndContentsRecursively(nint from, nint to) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint deleteFile(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint copyDirectoryAndContentsRecursivelyWithLimit(nint from, nint to) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    public static bool directoryExists(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint copyFile(nint sourceFileName, nint targetFileName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint copyFileWithLimit(nint sourceFilePath, nint targetFilePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint copyFlatFile(nint flatFileParentDirectory, nint targetDirectory, nint excludedDirectories, nint excludedFiles) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint copyTimeAndAccessRights(nint sourceFilePath, nint targetFilePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createDirectoryForFile(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createDirectoryRecursively(nint dirName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createEmptyFile(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createFlatFile(nint sourceDirectoryPath, nint targetDirectoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createOneDirectory(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createOneDirectoryIfNotExisting(nint dirName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createUniquePathFromSeed(nint basePath, nint seedGenerator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint deleteDirectoryAndContentsRecursively(nint dirName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint deleteDirectoryContentsRecursively(nint directoryName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint deleteEmptyDirectory(nint dirPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint deleteFile(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint deleteFilePriority(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool directoryExists(nint dirName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool fileExists(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool fileOrDirectoryExists(nint fileOrDirectoryName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem get()
     {
-        return NativeMethods.TablePtr->hs_method_55c56f7a((void*)arg0) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem((nint)NativeMethods.TablePtr->C0.hs_method_086f6616(), false);
     }
 
-    public static bool fileExists(nint arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_2c7724c2((void*)arg0) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getDirectoryFiles(nint files, nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    public static bool fileOrDirectoryExists(nint arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_08096fa9((void*)arg0) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getDirectoryFilesAllocatedSizeRecursively(nint totalSize, nint totalAllocatedSize, nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getDirectoryFiles_436b282f(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getDirectoryFilesAndSizes(nint filesOut, nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getDirectoryFiles_b69d6cfb(nint files, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getDirectoryFilesRecursively(nint files, nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getDirectoryFilesRecursively_66c1c443(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getDirectoryFilesSizeRecursively(nint totalSize, nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getDirectoryFilesRecursively_78670240(nint files, nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getFileOrDirectorySize(nint path, nint pFileSizeOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getFileOrDirectorySize(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getFileSize(nint filePath, nint pFileSize) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getFileSize(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getLastModificationTime(nint filePath, nint pLastModificationTime) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getLastModificationTime(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getUniqueFilePathForDirectory(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getUniqueFilePathForDirectory(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getUniqueFilePathForFile(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint iterateOverDirectory(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool isDirectoryPartiallyCopied(nint directory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint openFile(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool isDirectoryPathAFlatFile(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint isValidPath(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
-    public static nint presetFileInitialSize(nint arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint iterateOverDirectory(nint dirName, nint flags, nint callbackFunction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint readFileData(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint openFile(nint filePath, nint fileOut, nint openMode, nint bufferingMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint readFileData(nint arg0, ulong arg1, ulong arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint presetFileInitialSize(nint path, ulong initialSize) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint removeIgnoredThrottlePath(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint readFile(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint renameFile(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint readFileData(nint filePath, nint data) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.", false)]
-    public static nint splitPathIntoFullPathSegments_1ae82ac2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint readFileDataExt(nint filePath, ulong filePosition, ulong bufferSize, nint buffer, nint bytesRead) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint splitPathIntoFullPathSegments_cfb88607(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint removeIgnoredThrottlePath(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint renameDirectory(nint oldDirectoryName, nint newDirectoryName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint renameFile(nint sourceName, nint targetName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint splitPathIntoFullPathSegments(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint writeFile(nint filePath, nint data) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 }

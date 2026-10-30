@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested.ZipUtils;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core.ZipUtils;
 
 public sealed unsafe partial class ZipProgress : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ZipProgress(nint handle) : this(handle, true) { }
 
     internal ZipProgress(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ZipProgress Borrow(nint handle) => new ZipProgress(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,54 @@ public sealed unsafe partial class ZipProgress : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ZipProgress Create()
+    public void _clear()
     {
-        var handle = NativeMethods.TablePtr->hs_create_e168ef81();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ZipProgress((nint)handle);
+        NativeMethods.TablePtr->C0.hs_method_856c7fb3((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ZipProgress Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     public void clear()
     {
-        NativeMethods.TablePtr->hs_method_f16352da((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_f16352da((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilesDone_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5f357fa6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilesSkipped_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6806bdd5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTotalFiles_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ca1a83dc((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_c3d81f7d((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_c3d81f7d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

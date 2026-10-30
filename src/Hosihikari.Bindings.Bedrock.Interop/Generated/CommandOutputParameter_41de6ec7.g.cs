@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandOutputParameter : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandOutputParameter(nint handle) : this(handle, true) { }
 
     internal CommandOutputParameter(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandOutputParameter Borrow(nint handle) => new CommandOutputParameter(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,139 +33,34 @@ public sealed unsafe partial class CommandOutputParameter : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static CommandOutputParameter Create_64e3e033(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.CommandOutputParameter rhs)
     {
-        var handle = NativeMethods.TablePtr->hs_create_64e3e033((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_0b48fb0a((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
     }
 
-    public static CommandOutputParameter Create_653cad1e(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0)
+    public nint _ctor_6f714c6d(nint entities)
     {
-        var handle = NativeMethods.TablePtr->hs_create_653cad1e((void*)(arg0?.Handle ?? 0));
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_6f714c6d((void*)__hosihikari_shim_handle, (void*)entities);
     }
 
-    public static CommandOutputParameter Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public nint _ctor_9534e964(nint players)
     {
-        var handle = NativeMethods.TablePtr->hs_create_4f4a59cd((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_9534e964((void*)__hosihikari_shim_handle, (void*)players);
     }
 
-    public static CommandOutputParameter Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOutputParameter arg0)
+    public nint _ctor_3343d302(nint text)
     {
-        var handle = NativeMethods.TablePtr->hs_create_b27ac960((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_3343d302((void*)__hosihikari_shim_handle, (void*)text);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static CommandOutputParameter Create_a81c68c0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public static CommandOutputParameter Create_66c405a4(int arg0)
+    public nint _ctor(string text)
     {
-        var handle = NativeMethods.TablePtr->hs_create_66c405a4(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
-    }
-
-    public static CommandOutputParameter Create_079fd4f6(nint arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_079fd4f6((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
-    }
-
-    public static CommandOutputParameter Create_ec7616f8(nint arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_ec7616f8((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
-    }
-
-    public static CommandOutputParameter Create(bool arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_8cd0d6a9(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
-    }
-
-    public static CommandOutputParameter Create_3f9e8e72(nint arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_3f9e8e72((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
-    }
-
-    public static CommandOutputParameter Create(float arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_e2e4a52c(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
-    }
-
-    public static CommandOutputParameter Create_32b3ac8c(int arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_32b3ac8c(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOutputParameter((nint)handle);
-    }
-
-    public static CommandOutputParameter Create(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(text);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -175,54 +70,36 @@ public sealed unsafe partial class CommandOutputParameter : global::System.IDisp
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(text, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_dda6332f(__hs_stringData0, (nuint)__hs_stringByteCount0);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new CommandOutputParameter((nint)handle);
+            return (nint)NativeMethods.TablePtr->C0.hs_method_c97cbcc6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public static CommandOutputParameter Create_182223f5(nint[] arg0)
+    public nint _ctor_d6935fa6(nint[] entities)
     {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<nint>();
+        var __hs_vectorItems0 = entities ?? global::System.Array.Empty<nint>();
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorItems0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            var handle = NativeMethods.TablePtr->hs_create_182223f5(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new CommandOutputParameter((nint)handle);
+            return (nint)NativeMethods.TablePtr->C0.hs_method_d6935fa6((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(entities?.Length ?? 0));
         }
     }
 
-    public static CommandOutputParameter Create_b4fd790d(nint[] arg0)
+    public nint _ctor_a7f03a05(nint[] players)
     {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<nint>();
+        var __hs_vectorItems0 = players ?? global::System.Array.Empty<nint>();
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorItems0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            var handle = NativeMethods.TablePtr->hs_create_b4fd790d(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new CommandOutputParameter((nint)handle);
+            return (nint)NativeMethods.TablePtr->C0.hs_method_a7f03a05((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(players?.Length ?? 0));
         }
     }
 
-    public static CommandOutputParameter Create(string[] arg0)
+    public nint _ctor(string[] strings)
     {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
+        var __hs_vectorItems0 = strings ?? global::System.Array.Empty<string>();
         var __hs_vectorCount0 = __hs_vectorItems0.Length;
         var __hs_vectorByteTotal0 = 0;
         for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
@@ -242,7 +119,86 @@ public sealed unsafe partial class CommandOutputParameter : global::System.IDisp
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            var handle = NativeMethods.TablePtr->hs_create_35695360(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            return (nint)NativeMethods.TablePtr->C0.hs_method_889dcce1((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(strings?.Length ?? 0));
+        }
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_f20b47d1((void*)__hosihikari_shim_handle);
+    }
+
+    public static CommandOutputParameter Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_dd09a74f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOutputParameter((nint)handle);
+    }
+
+    public static CommandOutputParameter Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOutputParameter rhs)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f2d3b159((void*)rhs.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOutputParameter((nint)handle);
+    }
+
+    public static CommandOutputParameter Create_a93bd541(nint entities)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a93bd541((void*)entities);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOutputParameter((nint)handle);
+    }
+
+    public static CommandOutputParameter Create_55f42bb7(nint players)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_55f42bb7((void*)players);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOutputParameter((nint)handle);
+    }
+
+    public static CommandOutputParameter Create_19021bf7(nint text)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_19021bf7((void*)text);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOutputParameter((nint)handle);
+    }
+
+    public static CommandOutputParameter Create(string text)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(text);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(text, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C0.hs_create_f8975370(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -252,37 +208,104 @@ public sealed unsafe partial class CommandOutputParameter : global::System.IDisp
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_const_std__basic_string_char___() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint str_Address
+    public static CommandOutputParameter Create_4a7a0c66(nint[] entities)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5a066bd2((void*)_handle);
+        var __hs_vectorItems0 = entities ?? global::System.Array.Empty<nint>();
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorItems0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var handle = NativeMethods.TablePtr->C0.hs_create_4a7a0c66(__hs_vectorData0, (nuint)(entities?.Length ?? 0));
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new CommandOutputParameter((nint)handle);
+        }
     }
 
-    public int type
+    public static CommandOutputParameter Create_b37cd82c(nint[] players)
     {
-        get => NativeMethods.TablePtr->hs_get_d9b0152e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d9b0152e((void*)_handle, value);
+        var __hs_vectorItems0 = players ?? global::System.Array.Empty<nint>();
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorItems0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var handle = NativeMethods.TablePtr->C0.hs_create_b37cd82c(__hs_vectorData0, (nuint)(players?.Length ?? 0));
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new CommandOutputParameter((nint)handle);
+        }
+    }
+
+    public static CommandOutputParameter Create(string[] strings)
+    {
+        var __hs_vectorItems0 = strings ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            var handle = NativeMethods.TablePtr->C0.hs_create_411380cd(__hs_vectorData0, (nuint)(strings?.Length ?? 0));
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new CommandOutputParameter((nint)handle);
+        }
+    }
+
+    public int mCount
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_d7d65159((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d7d65159((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mString_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c9423501((void*)__hosihikari_shim_handle);
+    }
+
+    public string operator_const_std__basic_string_char___()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_9fa846ff((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandOutputParameter operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CommandOutputParameter arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandOutputParameter((nint)NativeMethods.TablePtr->C0.hs_method_416c1ec0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_41de6ec7((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_41de6ec7((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

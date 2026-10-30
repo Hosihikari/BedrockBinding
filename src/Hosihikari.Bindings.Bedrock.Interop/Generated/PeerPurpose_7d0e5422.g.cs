@@ -7,6 +7,6 @@ namespace Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper_Nested;
 public enum PeerPurpose : int
 {
     Gameplay = 0,
-    LAN_Discovery = 1,
+    LanDiscovery = 1,
     Count = 2,
 }

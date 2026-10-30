@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class IRandom
+public sealed unsafe partial class IRandom : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IRandom(nint handle) : this(handle, true) { }
 
     internal IRandom(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IRandom Borrow(nint handle) => new IRandom(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,64 +33,137 @@ public sealed partial class IRandom
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IRandom Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _chance(int likeliness, int possibilities)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_81b0d912((void*)__hosihikari_shim_handle, likeliness, possibilities) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IRandom Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _chanceAllButOneIn(int possibilities)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_808b08b5((void*)__hosihikari_shim_handle, possibilities) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void consumeCount(uint count) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool _chanceFloatGreaterOrEqual(float improbability)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6f43cb38((void*)__hosihikari_shim_handle, improbability) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint fork() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool _chanceFloatGreaterThan(float improbability)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6928d308((void*)__hosihikari_shim_handle, improbability) != 0;
+    }
+
+    public bool _chanceFloatLessOrEqual(float probability)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0e5d6a8a((void*)__hosihikari_shim_handle, probability) != 0;
+    }
+
+    public bool _chanceFloatLessThan(float probability)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_643805d0((void*)__hosihikari_shim_handle, probability) != 0;
+    }
+
+    public bool _chanceOneIn(int possibilities)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c4f071bd((void*)__hosihikari_shim_handle, possibilities) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
+    public nint _forkPositional() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.");
+
+    public static nint ChanceFloatGreaterThan_MinExcessiveImprobability()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_8ab524fb();
+    }
+
+    public bool chance(int likeliness, int possibilities)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c38867f4((void*)__hosihikari_shim_handle, likeliness, possibilities) != 0;
+    }
+
+    public bool chanceAllButOneIn(int possibilities)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ce58d742((void*)__hosihikari_shim_handle, possibilities) != 0;
+    }
+
+    public bool chanceFloatGreaterOrEqual(float improbability)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_86780855((void*)__hosihikari_shim_handle, improbability) != 0;
+    }
+
+    public bool chanceFloatGreaterThan(float improbability)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_b8b1ba77((void*)__hosihikari_shim_handle, improbability) != 0;
+    }
+
+    public bool chanceFloatLessOrEqual(float probability)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_418b841a((void*)__hosihikari_shim_handle, probability) != 0;
+    }
+
+    public bool chanceFloatLessThan(float probability)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e430c3b4((void*)__hosihikari_shim_handle, probability) != 0;
+    }
+
+    public bool chanceOneIn(int possibilities)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_4942fc9a((void*)__hosihikari_shim_handle, possibilities) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void consumeCount(uint rounds) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
     public nint forkPositional() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool nextBoolean() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public double nextDouble() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public float nextFloat() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public double nextGaussianDouble() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public int nextInt() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public int nextInt(int n) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public int nextInt(int bound) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public long nextLong() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a514b966() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_4298f764((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

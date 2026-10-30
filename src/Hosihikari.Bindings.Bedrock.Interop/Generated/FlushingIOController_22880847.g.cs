@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class FlushingIOController
+public sealed unsafe partial class FlushingIOController : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FlushingIOController(nint handle) : this(handle, true) { }
 
     internal FlushingIOController(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FlushingIOController Borrow(nint handle) => new FlushingIOController(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,80 @@ public sealed partial class FlushingIOController
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FlushingIOController Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static FlushingIOController Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9afe7b2c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FlushingIOController Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new FlushingIOController((nint)handle);
+    }
+
+    public static FlushingIOController Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.FlushingIOController arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a2f34850((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlushingIOController((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public nint flush() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5f53e1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_45be65b1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk77d4a1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f5aa7daf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka30178_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4e5c63b5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc26063_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fe11bdec((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.FlushingIOController operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.FlushingIOController arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.FlushingIOController((nint)NativeMethods.TablePtr->C0.hs_method_940180ef((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint write(nint data, ulong byteCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_22880847((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

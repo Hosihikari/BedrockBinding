@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BreathableComponent
+public sealed unsafe partial class BreathableComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BreathableComponent(nint handle) : this(handle, true) { }
 
     internal BreathableComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BreathableComponent Borrow(nint handle) => new BreathableComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,87 +33,146 @@ public sealed unsafe partial class BreathableComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BreathableComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BreathableComponent Create_e2fdf4f4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_354edb2d((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_a49b6a93((void*)__hosihikari_shim_handle);
     }
 
-    public bool canBreathe(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public static BreathableComponent Create()
     {
-        return NativeMethods.TablePtr->hs_method_e6862669((void*)_handle, (void*)arg0.Handle) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_16149cd8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreathableComponent((nint)handle);
     }
 
-    public bool generatesBubbles()
+    public static BreathableComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BreathableComponent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_507d9f68((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_00a24362((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreathableComponent((nint)handle);
     }
 
-    public int getAirRegenPerTick()
+    public bool canBreathe(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_bc2a699e((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_a2658ea8((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
     }
 
-    public short getAirSupply()
+    public int mAirRegenPerTick
     {
-        return NativeMethods.TablePtr->hs_method_ecc511e3((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_dbd2c223((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_dbd2c223((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getBreathableState_e4c78ed1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public float getInhaleTime()
+    public short mAirSupply
     {
-        return NativeMethods.TablePtr->hs_method_b710ec38((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_7cb6ca53((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_7cb6ca53((void*)__hosihikari_shim_handle, value);
     }
 
-    public short getMaxAirSupply()
+    public short mAirSupplyMax
     {
-        return NativeMethods.TablePtr->hs_method_c6dafca8((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_d2eb98fe((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d2eb98fe((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getSuffocateTime()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBreathableBlocks_Address
     {
-        return NativeMethods.TablePtr->hs_method_9bc91098((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_22fda5f5((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_26591a2c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_b225b491(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    public int mBreathableState
     {
-        NativeMethods.TablePtr->hs_method_7bc4579d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_f34d2b15((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f34d2b15((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setAirSupply(short arg0)
+    public bool mBreathesAir
     {
-        NativeMethods.TablePtr->hs_method_b2fce5d1((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_73e36ca9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_73e36ca9((void*)__hosihikari_shim_handle, value);
     }
 
-    public void updateBreathableState(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool mBreathesLava
     {
-        NativeMethods.TablePtr->hs_method_d664f1eb((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_9da01cb7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_9da01cb7((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_97e29665() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public bool mBreathesSolids
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_6d609d76((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_6d609d76((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mBreathesWater
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b8385c14((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b8385c14((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mGeneratesBubbles
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b00719e7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b00719e7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mInhaleTime
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_9a73802f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_9a73802f((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNonBreathableBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_06135462((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSuffocateTime
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_94b3ff94((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_94b3ff94((void*)__hosihikari_shim_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BreathableComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BreathableComponent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BreathableComponent((nint)NativeMethods.TablePtr->C0.hs_method_b225b491((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void updateBreathableState(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a584e321((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f3574129((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class AppPlatform : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AppPlatform(nint handle) : this(handle, true) { }
 
     internal AppPlatform(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AppPlatform Borrow(nint handle) => new AppPlatform(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,100 +33,125 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AppPlatform Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static AppPlatform Create(bool arg0)
+    public void __disableCPUBoost()
     {
-        var handle = NativeMethods.TablePtr->hs_create_e1b460ca(arg0);
-        if (handle == null)
+        NativeMethods.TablePtr->C0.hs_method_7bf76460((void*)__hosihikari_shim_handle);
+    }
+
+    public void __initializeFileStorageAreas()
+    {
+        NativeMethods.TablePtr->C0.hs_method_84e37c8a((void*)__hosihikari_shim_handle);
+    }
+
+    public void __onInitialize()
+    {
+        NativeMethods.TablePtr->C0.hs_method_60288d8c((void*)__hosihikari_shim_handle);
+    }
+
+    public void __onTeardown()
+    {
+        NativeMethods.TablePtr->C0.hs_method_af8880a1((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __readAssetFileInternal(nint filename) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    public void __teardownFileStorageAreas()
+    {
+        NativeMethods.TablePtr->C0.hs_method_ed88a98c((void*)__hosihikari_shim_handle);
+    }
+
+    public bool __tryEnableCPUBoost()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3acd7fc8((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _addListener(global::Hosihikari.Bindings.Bedrock.Interop.AppPlatformListener? l, float priority)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a84d365a((void*)__hosihikari_shim_handle, (void*)(l?.Handle ?? 0), priority);
+    }
+
+    public bool _allowBetaXblSignIn()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_00602859((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _allowContentLogWriteToDisk()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_53e1f8e8((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _allowsResourcePackDevelopment()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_90d663e5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _areThreadsFrozen()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f9a4f2d7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _areTreatmentPacksThrottled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_99adb11c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _buyGame()
+    {
+        NativeMethods.TablePtr->C0.hs_method_7e7fd718((void*)__hosihikari_shim_handle);
+    }
+
+    public void _calculateIfLowMemoryDevice()
+    {
+        NativeMethods.TablePtr->C0.hs_method_4239f058((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _canLaunchUri(string uri)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uri);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
         {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
         }
-
-        return new AppPlatform((nint)handle);
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uri, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C0.hs_method_74f6381f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AppPlatform Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint HOME_PATH_Address
+    public bool _canManageLegacyData()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1ad703c0();
+        return NativeMethods.TablePtr->C0.hs_method_236110ae((void*)__hosihikari_shim_handle) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LOG_PATH_Address
+    public bool _canMigrateWorldData()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c6e5e6f0();
+        return NativeMethods.TablePtr->C0.hs_method_34f7f819((void*)__hosihikari_shim_handle) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SETTINGS_PATH_Address
+    public int _checkLicense()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dd0bb874();
+        return NativeMethods.TablePtr->C0.hs_method_4500997c((void*)__hosihikari_shim_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SHADERCACHE_PATH_Address
+    public void _collectGraphicsHardwareDetails()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ca204b70();
+        NativeMethods.TablePtr->C0.hs_method_b8d2ee0e((void*)__hosihikari_shim_handle);
     }
 
-    public void _fireAppTerminated()
-    {
-        NativeMethods.TablePtr->hs_method_3d6d6228((void*)_handle);
-    }
-
-    public nint accessPlatformRuntimeInformation_Shim()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_bcfdc17a((void*)_handle);
-    }
-
-    public void addListener(global::Hosihikari.Bindings.Bedrock.Interop.AppPlatformListener? arg0, float arg1)
-    {
-        NativeMethods.TablePtr->hs_method_3d4490ab((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
-    }
-
-    public bool allowBetaXblSignIn()
-    {
-        return NativeMethods.TablePtr->hs_method_3d8488aa((void*)_handle) != 0;
-    }
-
-    public bool allowContentLogWriteToDisk()
-    {
-        return NativeMethods.TablePtr->hs_method_99660a0d((void*)_handle) != 0;
-    }
-
-    public bool allowsResourcePackDevelopment()
-    {
-        return NativeMethods.TablePtr->hs_method_c4cbc0ff((void*)_handle) != 0;
-    }
-
-    public bool areThreadsFrozen()
-    {
-        return NativeMethods.TablePtr->hs_method_3b00cd45((void*)_handle) != 0;
-    }
-
-    public void buyGame()
-    {
-        NativeMethods.TablePtr->hs_method_6746de51((void*)_handle);
-    }
-
-    public void calculateIfLowMemoryDevice()
-    {
-        NativeMethods.TablePtr->hs_method_5ad6e965((void*)_handle);
-    }
-
-    public bool canLaunchUri(string arg0)
+    public bool _compareAppReceiptToLocalReceipt(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -141,126 +166,77 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_480ae40e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C0.hs_method_4a92bd02((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public bool canManageLegacyData()
+    public bool _copyAssetFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filename, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path destination)
     {
-        return NativeMethods.TablePtr->hs_method_f41dee6a((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_06639cb5((void*)__hosihikari_shim_handle, (void*)filename.Handle, (void*)destination.Handle) != 0;
     }
 
-    public bool canMigrateWorldData()
+    public string _copyImportFileToTempFolder(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filePath)
     {
-        return NativeMethods.TablePtr->hs_method_e3570776((void*)_handle) != 0;
-    }
-
-    public bool canSwapVRMode(bool arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_4ad21303((void*)_handle, arg0) != 0;
-    }
-
-    public int checkLicense()
-    {
-        return NativeMethods.TablePtr->hs_method_d8696f72((void*)_handle);
-    }
-
-    public void collectGraphicsHardwareDetails()
-    {
-        NativeMethods.TablePtr->hs_method_34e7c4d8((void*)_handle);
-    }
-
-    public bool compareAppReceiptToLocalReceipt(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_ebe16daf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
-        }
-    }
-
-    public bool copyAssetFile(nint arg0, nint arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_9a24db66((void*)_handle, (void*)arg0, (void*)arg1) != 0;
-    }
-
-    public string copyImportFileToTempFolder(nint arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_df6c0cb5((void*)_handle, (void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_6af4a105((void*)__hosihikari_shim_handle, (void*)filePath.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? createLoggingStorageArea(int arg0, nint arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public nint _createLoggingStorageArea(nint fileAccessType, nint loggingPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    public void _createUserInput()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_072cb172((void*)_handle, arg0, (void*)arg1);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        NativeMethods.TablePtr->C0.hs_method_ee097fa3((void*)__hosihikari_shim_handle);
     }
 
-    public void createUserInput()
+    public void _createUserInput(int dialogId)
     {
-        NativeMethods.TablePtr->hs_method_5e8d78e7((void*)_handle);
-    }
-
-    public void createUserInput(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_6eb30016((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_241d3d4c((void*)__hosihikari_shim_handle, dialogId);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public nint createWebview(nint arg0) =>
+    public nint _createWebview(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public bool doesLANRequireMultiplayerRestrictions()
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'IAppPlatformImpl' has no generated wrapper.", false)]
+    public nint _ctor(nint impl, bool registerService) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'IAppPlatformImpl' has no generated wrapper.");
+
+    public bool _devHotReloadRenderResources()
     {
-        return NativeMethods.TablePtr->hs_method_835f8f9a((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_e67da3c3((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void exitVRMode_38ea6335(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void exitVRMode_09ab9aa3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void finish()
+    public bool _doesLANRequireMultiplayerRestrictions()
     {
-        NativeMethods.TablePtr->hs_method_c0ac3df2((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_d87889c8((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public int getARVRPlatform()
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_c9a0c685((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_d278d1e0((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAndroidScopedStorageInfo_221d63f6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.AppLifecycleContext getAppLifecycleContext_6edd25e0()
+    public void _finish()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AppLifecycleContext((nint)NativeMethods.TablePtr->hs_method_6edd25e0((void*)_handle), false);
+        NativeMethods.TablePtr->C0.hs_method_262eb1a4((void*)__hosihikari_shim_handle);
     }
 
-    public string getAssetFileFullPath(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AppLifecycleContext _getAppLifecycleContext()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_26d11506((void*)_handle, (void*)arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AppLifecycleContext((nint)NativeMethods.TablePtr->C0.hs_method_128365b1((void*)__hosihikari_shim_handle), false);
+    }
+
+    public string _getAssetFileFullPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filename)
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_7f8a7fa3((void*)__hosihikari_shim_handle, (void*)filename.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string[] getBroadcastAddresses()
+    public string[] _getBroadcastAddresses()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_d68a98e4((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_cd1f2494((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -270,142 +246,131 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         return __hs_result;
     }
 
-    public int[] getBroadcastingMultiplayerServiceIds(bool arg0, bool arg1)
+    public int _getBuildPlatform()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_9467063c((void*)_handle, arg0, arg1);
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<int>() : new int[checked((int)__hs_view.Size)];
-        if (__hs_view.Size > 0)
-        {
-            new global::System.ReadOnlySpan<int>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
-        }
-        return __hs_result;
+        return NativeMethods.TablePtr->C0.hs_method_3017cc9a((void*)__hosihikari_shim_handle);
     }
 
-    public int getBuildPlatform()
+    public string _getCacheStoragePath()
     {
-        return NativeMethods.TablePtr->hs_method_70891d6b((void*)_handle);
-    }
-
-    public string getCacheStoragePath()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7b04ecc3((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_4ebc83c9((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getCatalogSearchScratchPath()
+    public string _getCatalogSearchScratchPath()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c2c1c55b((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_591f804a((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getClientUpdateUrl()
+    public string _getClientUpdateUrl()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_669e21ca((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_84d024d8((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getCurrentStoragePath()
+    public uint _getDefaultInputMode()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_99fe2a60((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_98c284d7((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getDefaultNetworkMaxPlayers()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d38827d6((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getDefaultSafeZoneScaleAll()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5fadde8c((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getDefaultSafeZoneScaleX()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a04577e8((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getDefaultSafeZoneScaleY()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_116e7438((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getDefaultScreenPositionX()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_40293d56((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getDefaultScreenPositionY()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d33d1908((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getDeviceSunsetTier()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_bcd6bfc6((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _getDisableLDBSeekCompactions()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b6d012f1((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public int _getDisplayHeight()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_59460e00((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getDisplayWidth()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ceb4246d((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getDpi()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_055bd131((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getEdition()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_407dcca6((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public int getDefaultInputMode()
+    public string _getFeedbackBugsLink()
     {
-        return NativeMethods.TablePtr->hs_method_8941af1b((void*)_handle);
-    }
-
-    public int getDefaultNetworkMaxPlayers()
-    {
-        return NativeMethods.TablePtr->hs_method_1eacaedb((void*)_handle);
-    }
-
-    public float getDefaultSafeZoneScaleAll()
-    {
-        return NativeMethods.TablePtr->hs_method_cbf829fa((void*)_handle);
-    }
-
-    public float getDefaultSafeZoneScaleX()
-    {
-        return NativeMethods.TablePtr->hs_method_4eeac9cb((void*)_handle);
-    }
-
-    public float getDefaultSafeZoneScaleY()
-    {
-        return NativeMethods.TablePtr->hs_method_1e0e6c95((void*)_handle);
-    }
-
-    public float getDefaultScreenPositionX()
-    {
-        return NativeMethods.TablePtr->hs_method_9ae5b5c2((void*)_handle);
-    }
-
-    public float getDefaultScreenPositionY()
-    {
-        return NativeMethods.TablePtr->hs_method_fdc9fb49((void*)_handle);
-    }
-
-    public int getDeviceSunsetTier()
-    {
-        return NativeMethods.TablePtr->hs_method_4d7d7695((void*)_handle);
-    }
-
-    public int getDisplayHeight()
-    {
-        return NativeMethods.TablePtr->hs_method_5b47207f((void*)_handle);
-    }
-
-    public int getDisplayWidth()
-    {
-        return NativeMethods.TablePtr->hs_method_a7ccd297((void*)_handle);
-    }
-
-    public int getDpi()
-    {
-        return NativeMethods.TablePtr->hs_method_ea9b170f((void*)_handle);
-    }
-
-    public string getEdition()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_8f79fc5c((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_7fc18650((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ScreenshotOptions' is not supported.", false)]
-    public nint getExtraLevelSaveDataIconParams(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'ScreenshotOptions' is not supported.");
-
-    public string getFeedbackBugsLink()
+    public string _getFeedbackHelpLink()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_8ed34855((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_913c57ab((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getFeedbackHelpLink()
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getFileAccess(int fileSystem)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_e5281910((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getFileAccess(int arg0)
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_a2540882((void*)_handle, arg0);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_b81e774d((void*)__hosihikari_shim_handle, fileSystem);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public int getFocusState()
+    public int _getFocusState()
     {
-        return NativeMethods.TablePtr->hs_method_8dc47638((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_913b4766((void*)__hosihikari_shim_handle);
     }
 
-    public ulong getHighPerformanceThreadsCount()
+    public nint _getHardwareMemoryTierUtil()
     {
-        return NativeMethods.TablePtr->hs_method_dcf74be8((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_2082a8a8((void*)__hosihikari_shim_handle);
     }
 
-    public string[] getIPAddresses()
+    public ulong _getHighPerformanceThreadsCount()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_f60b3eba((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_3040db09((void*)__hosihikari_shim_handle);
+    }
+
+    public string[] _getIPAddresses()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_7b710d7d((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -415,508 +380,233 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         return __hs_result;
     }
 
-    public string getInternalPackStoragePath()
+    public string _getInternalPackStoragePath()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_cbb5d125((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_05f87084((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getInternalStoragePath()
+    public string _getLevelInfoCachePath()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ca6263c1((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public bool getIsRunningInAppCenter()
-    {
-        return NativeMethods.TablePtr->hs_method_18705296((void*)_handle) != 0;
-    }
-
-    public string getLevelInfoCachePath()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_1d4a2361((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_c7977ac4((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
-    public nint getLevelSaveInterval() =>
+    public nint _getLevelSaveInterval() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    public string getLoggingPath()
+    public string _getLoggingPath()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_49747bcc((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_0e02d126((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public ulong getLowPhysicalMemoryThreshold()
+    public ulong _getLowMemoryEventRecoveryThreshold(int severity)
     {
-        return NativeMethods.TablePtr->hs_method_f7cd33e9((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_60eedfd5((void*)__hosihikari_shim_handle, severity);
     }
 
-    public uint getMaxClubsRequests()
+    public ulong _getLowMemoryEventThreshold(int arg0)
     {
-        return NativeMethods.TablePtr->hs_method_8021dcc5((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_31c33e36((void*)__hosihikari_shim_handle, arg0);
     }
 
-    public int getMaxLDBFilesOpen()
+    public ulong _getLowPhysicalMemoryThreshold()
     {
-        return NativeMethods.TablePtr->hs_method_57e512bd((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_cbe8a3af((void*)__hosihikari_shim_handle);
     }
 
-    public int getMaxSimRadiusInChunks()
+    public uint _getMaxClubsRequests()
     {
-        return NativeMethods.TablePtr->hs_method_7b144697((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_b5ebb8ae((void*)__hosihikari_shim_handle);
     }
 
-    public int getMaxSimultaneousDownloads()
+    public int _getMaxLDBFilesOpen()
     {
-        return NativeMethods.TablePtr->hs_method_c13f85ca((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_2ba68598((void*)__hosihikari_shim_handle);
     }
 
-    public uint getMaxSimultaneousServiceRequests()
+    public int _getMaxSimRadiusInChunks()
     {
-        return NativeMethods.TablePtr->hs_method_c587492b((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_14141978((void*)__hosihikari_shim_handle);
     }
 
-    public ulong getMaximumUsedMemory()
+    public int _getMaxSimultaneousDownloads()
     {
-        return NativeMethods.TablePtr->hs_method_8cf6580f((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_3d68bc2c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getModalErrorMessageProc_acec1301() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getModelName()
+    public uint _getMaxSimultaneousServiceRequests()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_2c79a8ee((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_d936c2c0((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong _getMaximumUsedMemory()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_67a02c2c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'AssertDialogResponse (*)(const std::basic_string<char> &, const std::basic_string<char> &)' is not supported.", false)]
+    public nint _getModalErrorMessageProc() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'AssertDialogResponse (*)(const std::basic_string<char> &, const std::basic_string<char> &)' is not supported.");
+
+    public string _getModelName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_b61100b0((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public nint getMultiplayerServiceListToRegister_859be887() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getMultiplayerServiceListToRegister_b668083a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int getNetworkConnectionType()
+    public string _getModelNameForUI()
     {
-        return NativeMethods.TablePtr->hs_method_c674ff2d((void*)_handle);
-    }
-
-    public int getNumberOfParticleFramesToInterpolate()
-    {
-        return NativeMethods.TablePtr->hs_method_2dc07b84((void*)_handle);
-    }
-
-    public int getOSVersion()
-    {
-        return NativeMethods.TablePtr->hs_method_0c6a2a28((void*)_handle);
-    }
-
-    public string getOnDiskPackScratchPath()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_010fcb2a((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_a285eddc((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getOnDiskScratchPath()
+    public byte _getNetworkConnectionType()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ed3657da((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_b1b20cda((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getNumberOfParticleFramesToInterpolate()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_2001f319((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getOSVersion()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_da25a346((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getOnDiskPackScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_e7406db8((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public int? getOperationMode()
+    public string _getOnDiskScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_f6dce486((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public int? _getOperationMode()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_c2c51e93((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_a81f77f7((void*)__hosihikari_shim_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
-    public ulong getOptimalLDBSize()
+    public ulong _getOptimalLDBSize()
     {
-        return NativeMethods.TablePtr->hs_method_5e95dbb9((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_b25c5b9b((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
-    public nint getOptionsSaveInterval() =>
+    public nint _getOptionsSaveInterval() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    public string getPackageFamilyName()
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getOrCreateStorageAreaForUser(nint arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_fa739529((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_89c333e4((void*)__hosihikari_shim_handle, (void*)arg0);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public string _getPackageFamilyName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_467b8b31((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getPackagedShaderCachePath()
+    public string _getPackagedShaderCachePath()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b3058b9a((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_e7bd0724((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getPlatformRuntimeInformation()
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID _getPlatformBetaPackUUID()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7a19ad05((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C0.hs_method_ee5d5eee((void*)__hosihikari_shim_handle), false);
     }
 
-    public string getPlatformStringVar(int arg0)
+    public int _getPlatformDpi()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_bdb21a8a((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C0.hs_method_3c7903bd((void*)__hosihikari_shim_handle);
+    }
+
+    public uint _getPlatformErrorCodeForStoreError(nint arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_87fea807((void*)__hosihikari_shim_handle, (void*)arg0);
+    }
+
+    public nint _getPlatformShim()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_7a831672((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getPlatformStringVar(int arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_78c62860((void*)__hosihikari_shim_handle, arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public bool getPlatformTTSEnabled()
+    public bool _getPlatformTTSEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_d8e0f07e((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_743348dc((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public bool getPlatformTTSExists()
+    public bool _getPlatformTTSExists()
     {
-        return NativeMethods.TablePtr->hs_method_9f6aa4c3((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_605318e6((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public int getPlatformType()
+    public int _getPlatformType()
     {
-        return NativeMethods.TablePtr->hs_method_26bdd925((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_f9b98e02((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<HWND__*,std::monostate>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getRenderSurfaceParameters() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<HWND__*,std::monostate>' requires --link-carrier or --virtual-dispatch.");
-
-    public string getScratchPath()
+    public int _getPlatformUIScalingRules()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_31888e3e((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return NativeMethods.TablePtr->C0.hs_method_346290a0((void*)__hosihikari_shim_handle);
     }
 
-    public int getScreenHeight()
+    public int _getProcessExecutionState()
     {
-        return NativeMethods.TablePtr->hs_method_daf6a1d5((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_d1ff4bf8((void*)__hosihikari_shim_handle);
     }
 
-    public int getScreenWidth()
-    {
-        return NativeMethods.TablePtr->hs_method_8174b750((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.SecureStorage? getSecureStorage()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_69a76eaa((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SecureStorage((nint)__hs_handle) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SecureStorageKey' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSecureStorageKey(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SecureStorageKey' requires --link-carrier or --virtual-dispatch.");
-
-    public string getSettingsPath()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_233a5038((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public string getShaderCachePath()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7cf53c08((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public float getStoreNetworkFailureTimeout()
-    {
-        return NativeMethods.TablePtr->hs_method_a4abedff((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getThirdPartyPackUUID()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_method_1f7338cb((void*)_handle), false);
-    }
-
-    public ulong getTotalHardwareThreadsCount()
-    {
-        return NativeMethods.TablePtr->hs_method_fd1de4f0((void*)_handle);
-    }
-
-    public int getUIScalingRules()
-    {
-        return NativeMethods.TablePtr->hs_method_3eae4b1c((void*)_handle);
-    }
-
-    public string[] getUserInput()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ad25f73b((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    public int getUserInputStatus()
-    {
-        return NativeMethods.TablePtr->hs_method_f9ecf2f7((void*)_handle);
-    }
-
-    public string getUserStorageRootPath()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_0d38106b((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public string getUserdataPath()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_e8a8b85c((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public string getUserdataPathForLevels()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_5f2271b5((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public int getVRControllerType()
-    {
-        return NativeMethods.TablePtr->hs_method_963979da((void*)_handle);
-    }
-
-    public void goToExternalConsumablesStoreListing()
-    {
-        NativeMethods.TablePtr->hs_method_645c03f8((void*)_handle);
-    }
-
-    public void handlePlatformSpecificCommerceError(uint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_2c3cba03((void*)_handle, arg0);
-    }
-
-    public bool hasAssetFile(nint arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_db6fe80b((void*)_handle, (void*)arg0) != 0;
-    }
-
-    public bool hasBuyButtonWhenInvalidLicense()
-    {
-        return NativeMethods.TablePtr->hs_method_663f7e1d((void*)_handle) != 0;
-    }
-
-    public bool hasFastAlphaTest()
-    {
-        return NativeMethods.TablePtr->hs_method_17591078((void*)_handle) != 0;
-    }
-
-    public bool hasIDEProfiler()
-    {
-        return NativeMethods.TablePtr->hs_method_520ca19d((void*)_handle) != 0;
-    }
-
-    public bool hasJournalingFilesystem()
-    {
-        return NativeMethods.TablePtr->hs_method_e852f7f4((void*)_handle) != 0;
-    }
-
-    public bool hasMulticastReceivePermission()
-    {
-        return NativeMethods.TablePtr->hs_method_bcb630fa((void*)_handle) != 0;
-    }
-
-    public bool hasPlatformSpecificInvites()
-    {
-        return NativeMethods.TablePtr->hs_method_c5a220cd((void*)_handle) != 0;
-    }
-
-    public bool hasSeparatedStorageAreasForContentAcquisition()
-    {
-        return NativeMethods.TablePtr->hs_method_baf2fe2b((void*)_handle) != 0;
-    }
-
-    public void hideSplashScreen()
-    {
-        NativeMethods.TablePtr->hs_method_c7120f4f((void*)_handle);
-    }
-
-    public bool importAsFlatFile()
-    {
-        return NativeMethods.TablePtr->hs_method_a1350d10((void*)_handle) != 0;
-    }
-
-    public void initAppPlatformNetworkSettings()
-    {
-        NativeMethods.TablePtr->hs_method_4f709328((void*)_handle);
-    }
-
-    public void initialize()
-    {
-        NativeMethods.TablePtr->hs_method_8428ed9a((void*)_handle);
-    }
-
-    public void initializeGameStreaming()
-    {
-        NativeMethods.TablePtr->hs_method_aecb8f2f((void*)_handle);
-    }
-
-    public void initializeMulticast()
-    {
-        NativeMethods.TablePtr->hs_method_314d4285((void*)_handle);
-    }
-
-    public void initializeScreenDependentResources()
-    {
-        NativeMethods.TablePtr->hs_method_b5a9e87c((void*)_handle);
-    }
-
-    public bool isAutoCompactionEnabled()
-    {
-        return NativeMethods.TablePtr->hs_method_fabcaf1a((void*)_handle) != 0;
-    }
-
-    public bool isCentennial()
-    {
-        return NativeMethods.TablePtr->hs_method_0b2d632a((void*)_handle) != 0;
-    }
-
-    public bool isContentAutoUpdateAllowed()
-    {
-        return NativeMethods.TablePtr->hs_method_f1733720((void*)_handle) != 0;
-    }
-
-    public bool isCrossPlatformToggleVisible()
-    {
-        return NativeMethods.TablePtr->hs_method_0de9f606((void*)_handle) != 0;
-    }
-
-    public bool isDisplayInitialized()
-    {
-        return NativeMethods.TablePtr->hs_method_113c95ec((void*)_handle) != 0;
-    }
-
-    public bool isDownloadAndImportBlocking()
-    {
-        return NativeMethods.TablePtr->hs_method_e316e44f((void*)_handle) != 0;
-    }
-
-    public bool isDownloadBuffered()
-    {
-        return NativeMethods.TablePtr->hs_method_50b61ca5((void*)_handle) != 0;
-    }
-
-    public bool isEduMode()
-    {
-        return NativeMethods.TablePtr->hs_method_dcf933d1((void*)_handle) != 0;
-    }
-
-    public bool isFireTV()
-    {
-        return NativeMethods.TablePtr->hs_method_fa84d91b((void*)_handle) != 0;
-    }
-
-    public bool isInternetAvailable()
-    {
-        return NativeMethods.TablePtr->hs_method_b0216e7c((void*)_handle) != 0;
-    }
-
-    public bool isJoinableViaExternalServers()
-    {
-        return NativeMethods.TablePtr->hs_method_0c809945((void*)_handle) != 0;
-    }
-
-    public bool isLANAllowed()
-    {
-        return NativeMethods.TablePtr->hs_method_0319e69a((void*)_handle) != 0;
-    }
-
-    public bool isLANAvailable()
-    {
-        return NativeMethods.TablePtr->hs_method_18094258((void*)_handle) != 0;
-    }
-
-    public bool isLowMemoryDevice()
-    {
-        return NativeMethods.TablePtr->hs_method_3e24fd3e((void*)_handle) != 0;
-    }
-
-    public bool isLowPhysicalMemoryDevice()
-    {
-        return NativeMethods.TablePtr->hs_method_fc0fdb3a((void*)_handle) != 0;
-    }
-
-    public bool isNetworkAllowed()
-    {
-        return NativeMethods.TablePtr->hs_method_5950bfcb((void*)_handle) != 0;
-    }
-
-    public bool isNetworkAvailable()
-    {
-        return NativeMethods.TablePtr->hs_method_cbaea9bc((void*)_handle) != 0;
-    }
-
-    public bool isNetworkEnabled(bool arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_b4d4363c((void*)_handle, arg0) != 0;
-    }
-
-    public bool isNetworkThrottled()
-    {
-        return NativeMethods.TablePtr->hs_method_8c3c0f8e((void*)_handle) != 0;
-    }
-
-    public bool? isOnWifiConnectionTelemetryValue()
+    public int? _getRefreshRate()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_396420c8((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue ? __hs_value != 0 : (bool?)null;
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_6eff9a35((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
     }
 
-    public bool isQuitCapable()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'dragon::platform::SurfaceParameters' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getRenderSurfaceParameters() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'dragon::platform::SurfaceParameters' requires --link-carrier or --virtual-dispatch.");
+
+    public string _getScratchPath()
     {
-        return NativeMethods.TablePtr->hs_method_886879e0((void*)_handle) != 0;
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_a62399ca((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public bool isRealmsEnabled()
+    public int _getScreenHeight()
     {
-        return NativeMethods.TablePtr->hs_method_93c0510c((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_f900bd8d((void*)__hosihikari_shim_handle);
     }
 
-    public bool isTelemetryAllowed()
+    public int _getScreenWidth()
     {
-        return NativeMethods.TablePtr->hs_method_b8ed05d5((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_6ad7191e((void*)__hosihikari_shim_handle);
     }
 
-    public bool isTerminating()
-    {
-        return NativeMethods.TablePtr->hs_method_b2fe21f6((void*)_handle) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'SecureStorage' has no accessible destructor.", false)]
+    public nint _getSecureStorage() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'SecureStorage' has no accessible destructor.");
 
-    public bool isTrialWorldsTransferToFullGameAllowed()
-    {
-        return NativeMethods.TablePtr->hs_method_a0d0d0b9((void*)_handle) != 0;
-    }
-
-    public bool isWebviewSupported()
-    {
-        return NativeMethods.TablePtr->hs_method_dc372098((void*)_handle) != 0;
-    }
-
-    public bool isWin10Arm()
-    {
-        return NativeMethods.TablePtr->hs_method_75152b6f((void*)_handle) != 0;
-    }
-
-    public void launchLegacyVersion()
-    {
-        NativeMethods.TablePtr->hs_method_e856bddf((void*)_handle);
-    }
-
-    public void launchSettings()
-    {
-        NativeMethods.TablePtr->hs_method_f758d705((void*)_handle);
-    }
-
-    public void launchUri(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SecureStorageKey _getSecureStorageKey(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -931,91 +621,408 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_50486dd4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.SecureStorageKey((nint)NativeMethods.TablePtr->C0.hs_method_bfb066de((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::set<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::less<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::allocator<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint listAssetFilesIn_d6fe61f7(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::set<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::less<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::allocator<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint listAssetFilesIn_3ce5b8ab(nint path, nint extension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static bool mIsInitialized
+    public string _getSettingsPath()
     {
-        get => NativeMethods.TablePtr->hs_get_a3f89adb() != 0;
-    }
-
-    public uint maxFileDataRequestConcurrency()
-    {
-        return NativeMethods.TablePtr->hs_method_e0b54408((void*)_handle);
-    }
-
-    public bool minimizeBackgroundDownloads()
-    {
-        return NativeMethods.TablePtr->hs_method_868793a1((void*)_handle) != 0;
-    }
-
-    public bool multiplayerRequiresPremiumAccess()
-    {
-        return NativeMethods.TablePtr->hs_method_7fef6ee8((void*)_handle) != 0;
-    }
-
-    public bool multiplayerRequiresUGCEnabled()
-    {
-        return NativeMethods.TablePtr->hs_method_928a8991((void*)_handle) != 0;
-    }
-
-    public bool notifyControllerConnectionStateChange()
-    {
-        return NativeMethods.TablePtr->hs_method_fe6c7761((void*)_handle) != 0;
-    }
-
-    public void notifyNetworkConfigurationChanged()
-    {
-        NativeMethods.TablePtr->hs_method_86cc5703((void*)_handle);
-    }
-
-    public void notifyUserStorageInitialized()
-    {
-        NativeMethods.TablePtr->hs_method_b5e2939e((void*)_handle);
-    }
-
-    public void onFullGameUnlock()
-    {
-        NativeMethods.TablePtr->hs_method_4363210b((void*)_handle);
-    }
-
-    public void onMinecraftGameInitComplete()
-    {
-        NativeMethods.TablePtr->hs_method_a9657073((void*)_handle);
-    }
-
-    public void onPrimaryUserNetworkReady()
-    {
-        NativeMethods.TablePtr->hs_method_b98117f4((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool platformRequiresControllerApplet()
-    {
-        return NativeMethods.TablePtr->hs_method_60df0686((void*)_handle) != 0;
-    }
-
-    public string readAssetFile(nint arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_6968bfea((void*)_handle, (void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_28be0f2c((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void registerExperimentsActiveCrashDump(string[] arg0)
+    public string _getShaderCachePath()
     {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_f74eb020((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'SecureStorage' has no accessible destructor.", false)]
+    public nint _getSharedSecureStorage() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'SecureStorage' has no accessible destructor.");
+
+    public string _getSharedSettingsPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_1c079790((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public ulong _getSingleMipDefaultMemoryBudget()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4dff2ac5((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getStoreNetworkFailureTimeout()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_24a2c708((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getTextureCacheStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_b83a5912((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public ulong _getTextureMemoryBudget()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9cf92dc6((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID _getThirdPartyPackUUID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C0.hs_method_58e573dd((void*)__hosihikari_shim_handle), false);
+    }
+
+    public ulong _getTotalHardwareThreadsCount()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_31349349((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getUIScalingRules()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ef02dd34((void*)__hosihikari_shim_handle);
+    }
+
+    public string[] _getUserInput()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_481b30e6((void*)__hosihikari_shim_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    public int _getUserInputStatus()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_7ba7d7e4((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getUserStorageRootPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_ecfeaf75((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getUserdataPathForLevels()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_b9f833fc((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint _getWatchdogTimerDurationForAppSuspend() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public void _goToExternalConsumablesStoreListing()
+    {
+        NativeMethods.TablePtr->C0.hs_method_b9d0e075((void*)__hosihikari_shim_handle);
+    }
+
+    public void _handlePlatformSpecificCommerceError(uint arg0, string arg1)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C0.hs_method_3beae132((void*)__hosihikari_shim_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public bool _hasAssetFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filename)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_6995af3f((void*)__hosihikari_shim_handle, (void*)filename.Handle) != 0;
+    }
+
+    public bool _hasBuyButtonWhenInvalidLicense()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_1b088a7d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _hasIDEProfiler()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_afbe103b((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _hasJournalingFilesystem()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_25a64a63((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _hasMulticastReceivePermission()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_13fbe096((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _hasPlatformSpecificInvites()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5e839dd5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _hasSeparatedStorageAreasForContentAcquisition()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e12901c7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _hideSplashScreen()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a45ad976((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _importAsFlatFile()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_2684c21f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _initAppPlatformNetworkSettings()
+    {
+        NativeMethods.TablePtr->C0.hs_method_d1f66f05((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initialize()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a3db4274((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initializeGameStreaming()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a94786ea((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initializeGraphicsDeviceTier()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a7310c49((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initializeMulticast()
+    {
+        NativeMethods.TablePtr->C0.hs_method_18cf67ce((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _is24HourTimeFormat()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_988d534d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isAutoCompactionEnabled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_8c980e7f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isCentennial()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ae5c8f2d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isContentAutoUpdateAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b408dc0b((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isCrossPlatformToggleVisible()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f08b152d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isDisplayInitialized()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c558be6b((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isDownloadAndImportBlocking()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3a0cee35((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isDownloadBuffered()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_05e3fbef((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isEduMode()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_1ca30898((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isInternetAvailable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_74a74c95((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isJoinableViaExternalServers()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_bd7156f6((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isLANAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_904a978f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isLANAvailable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0b899532((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isLowMemoryDevice()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_eade4f03((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isLowPhysicalMemoryDevice()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0a364a94((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isNetworkAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_6599d620((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isNetworkAvailable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a3346cae((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isNetworkEnabled(bool arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_db2d7017((void*)__hosihikari_shim_handle, arg0) != 0;
+    }
+
+    public bool _isNetworkThrottled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_fa15234a((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool? _isOnWifiConnectionTelemetryValue()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_6e7e308b((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value != 0 : (bool?)null;
+    }
+
+    public bool _isQuitCapable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3c6ba71a((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isTelemetryAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_6853d45a((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isWebviewSupported()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c32f9e38((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _launchLegacyVersion()
+    {
+        NativeMethods.TablePtr->C0.hs_method_196b2243((void*)__hosihikari_shim_handle);
+    }
+
+    public void _launchSettings()
+    {
+        NativeMethods.TablePtr->C0.hs_method_5d55afdd((void*)__hosihikari_shim_handle);
+    }
+
+    public void _launchUri(string uri)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uri);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uri, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_03ad19a2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::set<Core::PathBuffer<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _listAssetFilesIn(nint path, nint extension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::set<Core::PathBuffer<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.");
+
+    public uint _maxFileDataRequestConcurrency()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_45fec57e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _minimizeBackgroundDownloads()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ab71e752((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _multiplayerRequiresPremiumAccess()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9fd9a68c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _multiplayerRequiresUGCEnabled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0b4aaa02((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _notifyControllerConnectionStateChange()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_bc74bd5d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _notifyNetworkConfigurationChanged()
+    {
+        NativeMethods.TablePtr->C0.hs_method_dc56148e((void*)__hosihikari_shim_handle);
+    }
+
+    public int _numberOfThrottledTreatmentPacksToImportPerMinute()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_239ee32e((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onFullGameUnlock()
+    {
+        NativeMethods.TablePtr->C0.hs_method_091addfa((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onMinecraftGameInitComplete()
+    {
+        NativeMethods.TablePtr->C0.hs_method_93fbfbeb((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onPrimaryUserNetworkReady()
+    {
+        NativeMethods.TablePtr->C0.hs_method_86c3344b((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _platformRequiresControllerApplet()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_75345d50((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _readyForApplicationExitInfo()
+    {
+        NativeMethods.TablePtr->C0.hs_method_92203e95((void*)__hosihikari_shim_handle);
+    }
+
+    public void _registerExperimentsActiveCrashDump(string[] activeExperiments)
+    {
+        var __hs_vectorItems0 = activeExperiments ?? global::System.Array.Empty<string>();
         var __hs_vectorCount0 = __hs_vectorItems0.Length;
         var __hs_vectorByteTotal0 = 0;
         for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
@@ -1035,31 +1042,91 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            NativeMethods.TablePtr->hs_method_2472c8e0((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            NativeMethods.TablePtr->C0.hs_method_e4318e3f((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(activeExperiments?.Length ?? 0));
         }
     }
 
-    public void registerFileForCollectionWithCrashDump(nint arg0)
+    public void _registerFileForCollectionWithCrashDump(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path arg0)
     {
-        NativeMethods.TablePtr->hs_method_998463a8((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C0.hs_method_d0c1878e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    public void releaseMulticastReceivePermission()
+    public void _releaseMulticastReceivePermission()
     {
-        NativeMethods.TablePtr->hs_method_55c687ae((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_a0de4a08((void*)__hosihikari_shim_handle);
     }
 
-    public bool reloadRenderResourcesOnResume()
+    public void _removeListener(global::Hosihikari.Bindings.Bedrock.Interop.AppPlatformListener? l)
     {
-        return NativeMethods.TablePtr->hs_method_5d8d76c8((void*)_handle) != 0;
+        NativeMethods.TablePtr->C0.hs_method_a28d4f82((void*)__hosihikari_shim_handle, (void*)(l?.Handle ?? 0));
     }
 
-    public void removeListener(global::Hosihikari.Bindings.Bedrock.Interop.AppPlatformListener? arg0)
+    public void _requestMulticastReceivePermission()
     {
-        NativeMethods.TablePtr->hs_method_e12fa098((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_4bcb9967((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? requestIntegrityToken(string arg0)
+    public bool _requireControllerAtStartup()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_2e013953((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _requiresAutoSaveIconExplanationPopup()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b2e9164f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _requiresLiveGoldForMultiplayer()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b35bbb4c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _requiresXboxLiveSigninToPlay()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e4bab9e1((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _restartApp(bool restart)
+    {
+        NativeMethods.TablePtr->C0.hs_method_24ce9682((void*)__hosihikari_shim_handle, restart);
+    }
+
+    public bool _restartRequested()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_feba753b((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _saveEncryptedPacksAsZips()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_50441f50((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _saveEncryptedPersonaPacksAsZips()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0d4064dd((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _saveEncryptedWorldTemplatePacksAsZips()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c78b8aaa((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _saveTreatmentPacksAsZips()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_234267d5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _setDpi(int dpi)
+    {
+        NativeMethods.TablePtr->C0.hs_method_77042c5c((void*)__hosihikari_shim_handle, dpi);
+    }
+
+    public void _setFullscreenMode(int fullscreenMode)
+    {
+        NativeMethods.TablePtr->C0.hs_method_0ece44a3((void*)__hosihikari_shim_handle, fullscreenMode);
+    }
+
+    public void _setIntegrityToken(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -1074,64 +1141,1498 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_5695274c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+            NativeMethods.TablePtr->C0.hs_method_c33cd524((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
+    }
+
+    public void _setIntegrityTokenErrorMessage(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_1a08dfdc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _setKeepScreenOnFlag(bool arg0)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9926bf29((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void _setNetworkAllowed(bool arg0)
+    {
+        NativeMethods.TablePtr->C0.hs_method_3c27995b((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void _setNetworkConnectionType(byte connectionType)
+    {
+        NativeMethods.TablePtr->C0.hs_method_6d144acf((void*)__hosihikari_shim_handle, connectionType);
+    }
+
+    public void _setScreenSize(int width, int height)
+    {
+        NativeMethods.TablePtr->C0.hs_method_7f35b033((void*)__hosihikari_shim_handle, width, height);
+    }
+
+    public void _setSecureStorageKey(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SecureStorageKey arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_95c2f77f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+        }
+    }
+
+    public void _setSleepEnabled(bool arg0)
+    {
+        NativeMethods.TablePtr->C0.hs_method_eb11ed71((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TextBoxSelection' is not a known bindable declaration.", false)]
+    public void _setTextBoxSelection(nint selection) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TextBoxSelection' is not a known bindable declaration.");
+
+    public void _setThreadsFrozen(bool frozen)
+    {
+        NativeMethods.TablePtr->C0.hs_method_039265f7((void*)__hosihikari_shim_handle, frozen);
+    }
+
+    public void _setUIScalingRules(int UIScalingRules)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e63e392f((void*)__hosihikari_shim_handle, UIScalingRules);
+    }
+
+    public void _setWindowSize(int width, int height)
+    {
+        NativeMethods.TablePtr->C0.hs_method_4c3c071e((void*)__hosihikari_shim_handle, width, height);
+    }
+
+    public void _setWindowText(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_a9949782((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public bool _shouldPauseDownloadsWhenEnterGame()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_cd327f3c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _shouldRegisterForXboxLiveNotifications()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4a22d13b((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _shouldRemoveGraphicsDeviceOnAppTermination()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_df996938((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _showDialog(int arg0)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5d8ab7db((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _showOSUserDialog(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _showPlatformEmptyStoreDialog(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _showPlatformStoreIcon(bool arg0)
+    {
+        NativeMethods.TablePtr->C0.hs_method_85b55e09((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public bool _supportsAutoSaveOnDBCompaction()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9d261de4((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsClientUpdate()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_29676c55((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsDayOneExperience()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_88569b98((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsFliteTTS()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_22b9710e((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsInPackageRecursion()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ab4778ca((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsLaunchingLegacyVersion()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_445b6073((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsLegacySinglePremiumCacheDirectory()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9b009658((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsVibration()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e87d607a((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsWorldShare()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ba345497((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _supportsXboxLiveAchievements()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c9e09eb3((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _teardown()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a5d23c5e((void*)__hosihikari_shim_handle);
+    }
+
+    public void _updateBootstrapSettingsFromTreatmentsAsync()
+    {
+        NativeMethods.TablePtr->C0.hs_method_b4f725e2((void*)__hosihikari_shim_handle);
+    }
+
+    public void _updateLocalization(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_8d2671cf((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public bool _useAppPlatformForTelemetryIPAddress()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b02178f5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _usePlatformProfilePicturesOnly()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a7d58fb7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _useXboxControlHelpers()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_93131d9e((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _usesAsyncOptionSaving()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_760c032b((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForIAppPlatform() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForISecureStorageKeySystem() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void _vibrate(int arg0)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ef5b2adb((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public static AppPlatform Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c0203a75();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AppPlatform((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'IAppPlatformImpl' has no generated wrapper.", false)]
+    public static AppPlatform Create(nint impl, bool registerService) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'IAppPlatformImpl' has no generated wrapper.");
+
+    public static nint HOME_PATH()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_2b595937();
+    }
+
+    public static nint LOG_PATH()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_5909bf53();
+    }
+
+    public static nint SETTINGS_PATH()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_85109a07();
+    }
+
+    public static nint SHADERCACHE_PATH()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_9cf77876();
+    }
+
+    public void _disableCPUBoost()
+    {
+        NativeMethods.TablePtr->C0.hs_method_e2d81da9((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _getCurrentStoragePath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _getExternalStoragePath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _getInternalStoragePath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _getSharedDataPath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _getUserdataPath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void _initializeFileStorageAreas()
+    {
+        NativeMethods.TablePtr->C0.hs_method_e1ec2850((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onInitialize()
+    {
+        NativeMethods.TablePtr->C0.hs_method_0263bb23((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onTeardown()
+    {
+        NativeMethods.TablePtr->C0.hs_method_12e5176b((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _readAssetFileInternal(nint filename) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    public void _setDeviceTier(string tier)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(tier);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tier, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_dd0c0992((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _teardownFileStorageAreas()
+    {
+        NativeMethods.TablePtr->C0.hs_method_1f68bc9e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _tryEnableCPUBoost()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5dd3fb60((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void addListener(global::Hosihikari.Bindings.Bedrock.Interop.AppPlatformListener? l, float priority)
+    {
+        NativeMethods.TablePtr->C0.hs_method_aa76aad3((void*)__hosihikari_shim_handle, (void*)(l?.Handle ?? 0), priority);
+    }
+
+    public bool allowBetaXblSignIn()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b9604fa2((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool allowContentLogWriteToDisk()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_99660a0d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool allowsResourcePackDevelopment()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_052cb49d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool areThreadsFrozen()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_02ed47d8((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool areTreatmentPacksThrottled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_74dfdefc((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void buyGame()
+    {
+        NativeMethods.TablePtr->C0.hs_method_6746de51((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public ulong calculateAvailableDiskFreeSpace(nint rootPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void calculateIfLowMemoryDevice()
+    {
+        NativeMethods.TablePtr->C0.hs_method_5ad6e965((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool canAppSelfTerminate() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public bool canLaunchUri(string uri)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uri);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uri, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C0.hs_method_4e18aaa6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
+
+    public bool canManageLegacyData()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_89ba6897((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool canMigrateWorldData()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5239e595((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public int checkLicense()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d8696f72((void*)__hosihikari_shim_handle);
+    }
+
+    public void collectGraphicsHardwareDetails()
+    {
+        NativeMethods.TablePtr->C0.hs_method_34e7c4d8((void*)__hosihikari_shim_handle);
+    }
+
+    public bool compareAppReceiptToLocalReceipt(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C0.hs_method_82976b79((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
+
+    public bool copyAssetFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filename, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path destination)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_7f42376d((void*)__hosihikari_shim_handle, (void*)filename.Handle, (void*)destination.Handle) != 0;
+    }
+
+    public string copyImportFileToTempFolder(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filePath)
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_f52181f5((void*)__hosihikari_shim_handle, (void*)filePath.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public nint createLoggingStorageArea(nint fileAccessType, nint loggingPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    public void createUserInput()
+    {
+        NativeMethods.TablePtr->C0.hs_method_5e8d78e7((void*)__hosihikari_shim_handle);
+    }
+
+    public void createUserInput(int dialogId)
+    {
+        NativeMethods.TablePtr->C0.hs_method_6eb30016((void*)__hosihikari_shim_handle, dialogId);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint createWebview(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public bool devHotReloadRenderResources()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_62e7eca9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool doesLANRequireMultiplayerRestrictions()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3ffc4153((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void finish()
+    {
+        NativeMethods.TablePtr->C0.hs_method_c0ac3df2((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AppLifecycleContext getAppLifecycleContext()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AppLifecycleContext((nint)NativeMethods.TablePtr->C0.hs_method_21bc434e((void*)__hosihikari_shim_handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getApplicationId() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getArchiveHandlePool()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_a25a4677((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public string getAssetFileFullPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filename)
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_d978b39b((void*)__hosihikari_shim_handle, (void*)filename.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string[] getBroadcastAddresses()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_96bf20fc((void*)__hosihikari_shim_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    public int getBuildPlatform()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_6f4213b1((void*)__hosihikari_shim_handle);
+    }
+
+    public string getCacheStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_6d84b243((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public int getCaretPosition() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public string getCatalogSearchScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_b7cabb56((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getClientUpdateUrl()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_f23d5ab0((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public uint getDefaultInputMode()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d5ab0f7a((void*)__hosihikari_shim_handle);
+    }
+
+    public int getDefaultNetworkMaxPlayers()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_dc3e1e99((void*)__hosihikari_shim_handle);
+    }
+
+    public float getDefaultSafeZoneScaleAll()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_750394fe((void*)__hosihikari_shim_handle);
+    }
+
+    public float getDefaultSafeZoneScaleX()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f064fd5a((void*)__hosihikari_shim_handle);
+    }
+
+    public float getDefaultSafeZoneScaleY()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b907063e((void*)__hosihikari_shim_handle);
+    }
+
+    public float getDefaultScreenPositionX()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ee90afd0((void*)__hosihikari_shim_handle);
+    }
+
+    public float getDefaultScreenPositionY()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ddcada79((void*)__hosihikari_shim_handle);
+    }
+
+    public int getDeviceSunsetTier()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0ab666d9((void*)__hosihikari_shim_handle);
+    }
+
+    public bool getDisableLDBSeekCompactions()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_84341d11((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public int getDisplayHeight()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5b47207f((void*)__hosihikari_shim_handle);
+    }
+
+    public int getDisplayWidth()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a7ccd297((void*)__hosihikari_shim_handle);
+    }
+
+    public int getDpi()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_78e15eb8((void*)__hosihikari_shim_handle);
+    }
+
+    public string getEdition()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_151ae883((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getFeedbackBugsLink()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_c99d2975((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getFeedbackHelpLink()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_4ad44961((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getFileAccess(int fileSystem)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_a2540882((void*)__hosihikari_shim_handle, fileSystem);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public int getFocusState()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_8dc47638((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public ulong getFreeMemory() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public string getGraphicsDeviceTier()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_6ec45f50((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public nint getHardwareMemoryTierUtil()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_06888370((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong getHighPerformanceThreadsCount()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c02729d7((void*)__hosihikari_shim_handle);
+    }
+
+    public string[] getIPAddresses()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_fd717e29((void*)__hosihikari_shim_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    public string getInternalPackStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_610b35f6((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getLevelInfoCachePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_31f2d870((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint getLevelSaveInterval() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::locale' is not supported.", false)]
+    public nint getLocaleForDateTimeFormatting() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::locale' is not supported.");
+
+    public string getLoggingPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_152a3985((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public ulong getLowMemoryEventRecoveryThreshold(int severity)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3ca568f5((void*)__hosihikari_shim_handle, severity);
+    }
+
+    public ulong getLowMemoryEventThreshold(int arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ac49a115((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public ulong getLowPhysicalMemoryThreshold()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_97cffcd6((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getMainThreadQueue() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public uint getMaxClubsRequests()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_7a899c04((void*)__hosihikari_shim_handle);
+    }
+
+    public int getMaxLDBFilesOpen()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4acc9351((void*)__hosihikari_shim_handle);
+    }
+
+    public int getMaxSimRadiusInChunks()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f4287b5e((void*)__hosihikari_shim_handle);
+    }
+
+    public int getMaxSimultaneousDownloads()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c5cae25c((void*)__hosihikari_shim_handle);
+    }
+
+    public uint getMaxSimultaneousServiceRequests()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_33f81fee((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong getMaximumUsedMemory()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_8cf6580f((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public ulong getMemoryLimit() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'AssertDialogResponse (*)(const std::basic_string<char> &, const std::basic_string<char> &)' is not supported.", false)]
+    public nint getModalErrorMessageProc() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'AssertDialogResponse (*)(const std::basic_string<char> &, const std::basic_string<char> &)' is not supported.");
+
+    public string getModelName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_ed867344((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getModelNameForUI()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_fde6037b((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public byte getNetworkConnectionType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c674ff2d((void*)__hosihikari_shim_handle);
+    }
+
+    public int getNumberOfParticleFramesToInterpolate()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9ca43da6((void*)__hosihikari_shim_handle);
+    }
+
+    public int getOSVersion()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b7bf9de2((void*)__hosihikari_shim_handle);
+    }
+
+    public string getOnDiskPackScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_74df37ac((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getOnDiskScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_1401fa7d((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public int? getOperationMode()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_69e6ab99((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
+
+    public ulong getOptimalLDBSize()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5e95dbb9((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint getOptionsSaveInterval() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateStorageAreaForUser(nint arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_b2043d0c((void*)__hosihikari_shim_handle, (void*)arg0);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public string getPackageFamilyName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_08608e2c((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getPackagePath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public string getPackagedShaderCachePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_f25ab00c((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getPlatformBetaPackUUID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C0.hs_method_c4dafb8d((void*)__hosihikari_shim_handle), false);
+    }
+
+    public int getPlatformDpi()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_8d66c0bc((void*)__hosihikari_shim_handle);
+    }
+
+    public uint getPlatformErrorCodeForStoreError(nint arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3951450c((void*)__hosihikari_shim_handle, (void*)arg0);
+    }
+
+    public nint getPlatformShim()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_65e3986a((void*)__hosihikari_shim_handle);
+    }
+
+    public string getPlatformStringVar(int arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_b49b2610((void*)__hosihikari_shim_handle, arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public bool getPlatformTTSEnabled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_63a63e85((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool getPlatformTTSExists()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a8d9b7ce((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getPlatformTempPath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public int getPlatformType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_533058da((void*)__hosihikari_shim_handle);
+    }
+
+    public int getPlatformUIScalingRules()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_918bb0e0((void*)__hosihikari_shim_handle);
+    }
+
+    public int getProcessExecutionState()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_435c81b3((void*)__hosihikari_shim_handle);
+    }
+
+    public int? getRefreshRate()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_5bc5ac82((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'dragon::platform::SurfaceParameters' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getRenderSurfaceParameters() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'dragon::platform::SurfaceParameters' requires --link-carrier or --virtual-dispatch.");
+
+    public string getScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_c0cbd6c5((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public int getScreenHeight()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_55ec58ee((void*)__hosihikari_shim_handle);
+    }
+
+    public int getScreenWidth()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e05c517a((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'SecureStorage' has no accessible destructor.", false)]
+    public nint getSecureStorage() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'SecureStorage' has no accessible destructor.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SecureStorageKey getSecureStorageKey(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.SecureStorageKey((nint)NativeMethods.TablePtr->C0.hs_method_dd9cd931((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
+
+    public string getSettingsPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_004e1f8d((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getShaderCachePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_3c076af4((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'SecureStorage' has no accessible destructor.", false)]
+    public nint getSharedSecureStorage() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'SecureStorage' has no accessible destructor.");
+
+    public string getSharedSettingsPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_8740dee5((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public ulong getSingleMipDefaultMemoryBudget()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_34e55544((void*)__hosihikari_shim_handle);
+    }
+
+    public float getStoreNetworkFailureTimeout()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_34e1f34a((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getSubPlatformString() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getTextBoxBackend() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public string getTextureCacheStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_c38a2d6e((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public ulong getTextureMemoryBudget()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_aaa4c469((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getThirdPartyPackUUID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C0.hs_method_359ea9cf((void*)__hosihikari_shim_handle), false);
+    }
+
+    public ulong getTotalHardwareThreadsCount()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_296df899((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public ulong getTotalPhysicalMemory() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public int getUIScalingRules()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d06452fb((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public ulong getUsedMemory() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public string[] getUserInput()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_51b79d3f((void*)__hosihikari_shim_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    public int getUserInputStatus()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f9ecf2f7((void*)__hosihikari_shim_handle);
+    }
+
+    public string getUserStorageRootPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_4e6d4ed2((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getUserdataPathForLevels()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_8a156098((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint getWatchdogTimerDurationForAppSuspend() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public void goToExternalConsumablesStoreListing()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a1e0f1ba((void*)__hosihikari_shim_handle);
+    }
+
+    public void handlePlatformSpecificCommerceError(uint arg0, string arg1)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C0.hs_method_2d91c675((void*)__hosihikari_shim_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public bool hasAssetFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filename)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_484d9cd7((void*)__hosihikari_shim_handle, (void*)filename.Handle) != 0;
+    }
+
+    public bool hasBuyButtonWhenInvalidLicense()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_663f7e1d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool hasIDEProfiler()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_520ca19d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool hasJournalingFilesystem()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d6fdcec9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool hasMulticastReceivePermission()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_126a4602((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool hasPlatformSpecificInvites()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9d0b1e97((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool hasSeparatedStorageAreasForContentAcquisition()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d2b6d08e((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void hideSplashScreen()
+    {
+        NativeMethods.TablePtr->C0.hs_method_c7120f4f((void*)__hosihikari_shim_handle);
+    }
+
+    public bool importAsFlatFile()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5a38c034((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void initAppPlatformNetworkSettings()
+    {
+        NativeMethods.TablePtr->C0.hs_method_4f709328((void*)__hosihikari_shim_handle);
+    }
+
+    public void initialize()
+    {
+        NativeMethods.TablePtr->C0.hs_method_8428ed9a((void*)__hosihikari_shim_handle);
+    }
+
+    public void initializeGameStreaming()
+    {
+        NativeMethods.TablePtr->C0.hs_method_aecb8f2f((void*)__hosihikari_shim_handle);
+    }
+
+    public void initializeGraphicsDeviceTier()
+    {
+        NativeMethods.TablePtr->C0.hs_method_93b0fd42((void*)__hosihikari_shim_handle);
+    }
+
+    public void initializeMulticast()
+    {
+        NativeMethods.TablePtr->C0.hs_method_fd403c08((void*)__hosihikari_shim_handle);
+    }
+
+    public bool is24HourTimeFormat()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5bcaa301((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isAutoCompactionEnabled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_fbd8869f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isCentennial()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_51a97104((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isContentAutoUpdateAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_539e3314((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isCrossPlatformToggleVisible()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_00498a69((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isDisplayInitialized()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b1930d91((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isDownloadAndImportBlocking()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d3cb0f8c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isDownloadBuffered()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d0146be9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isEduMode()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_bf6b48a7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isInternetAvailable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4a6f46bb((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isJoinableViaExternalServers()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_75e21c16((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isLANAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_2eec2940((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isLANAvailable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3c279494((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isLowMemoryDevice()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_87f0f1e2((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isLowPhysicalMemoryDevice()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a547b1e2((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isNetworkAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_efc13369((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isNetworkAvailable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_007ad301((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isNetworkEnabled(bool arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_67605aea((void*)__hosihikari_shim_handle, arg0) != 0;
+    }
+
+    public bool isNetworkThrottled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_7ed5a7d6((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool? isOnWifiConnectionTelemetryValue()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_396420c8((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value != 0 : (bool?)null;
+    }
+
+    public bool isQuitCapable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_09603d00((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isTelemetryAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b8ed05d5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isTrialWorldsTransferToFullGameAllowed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_65bf22fc((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isWebviewSupported()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f6fc9fcc((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void launchLegacyVersion()
+    {
+        NativeMethods.TablePtr->C0.hs_method_e856bddf((void*)__hosihikari_shim_handle);
+    }
+
+    public void launchSettings()
+    {
+        NativeMethods.TablePtr->C0.hs_method_f758d705((void*)__hosihikari_shim_handle);
+    }
+
+    public void launchUri(string uri)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uri);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uri, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_8af829c6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::set<Core::PathBuffer<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint listAssetFilesIn(nint path, nint extension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::set<Core::PathBuffer<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMembers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1026bd6e((void*)__hosihikari_shim_handle);
+    }
+
+    public uint maxFileDataRequestConcurrency()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a5c61c85((void*)__hosihikari_shim_handle);
+    }
+
+    public bool minimizeBackgroundDownloads()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_23671aa4((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool multiplayerRequiresPremiumAccess()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ebe5b260((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool multiplayerRequiresUGCEnabled()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a9461925((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool notifyControllerConnectionStateChange()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_908475b4((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void notifyNetworkConfigurationChanged()
+    {
+        NativeMethods.TablePtr->C0.hs_method_86cc5703((void*)__hosihikari_shim_handle);
+    }
+
+    public int numberOfThrottledTreatmentPacksToImportPerMinute()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4292471d((void*)__hosihikari_shim_handle);
+    }
+
+    public void onFullGameUnlock()
+    {
+        NativeMethods.TablePtr->C0.hs_method_4363210b((void*)__hosihikari_shim_handle);
+    }
+
+    public void onMinecraftGameInitComplete()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a9657073((void*)__hosihikari_shim_handle);
+    }
+
+    public void onPrimaryUserNetworkReady()
+    {
+        NativeMethods.TablePtr->C0.hs_method_b98117f4((void*)__hosihikari_shim_handle);
+    }
+
+    public bool platformRequiresControllerApplet()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_84515388((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void queueForMainThread_DEPRECATED(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint readAssetFile(nint filename, nint readMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    public void readyForApplicationExitInfo()
+    {
+        NativeMethods.TablePtr->C0.hs_method_063f18be((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerExperimentsActiveCrashDump(string[] activeExperiments)
+    {
+        var __hs_vectorItems0 = activeExperiments ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            NativeMethods.TablePtr->C0.hs_method_af1768a8((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(activeExperiments?.Length ?? 0));
+        }
+    }
+
+    public void registerFileForCollectionWithCrashDump(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path arg0)
+    {
+        NativeMethods.TablePtr->C0.hs_method_46d56509((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void releaseMulticastReceivePermission()
+    {
+        NativeMethods.TablePtr->C0.hs_method_00f396a1((void*)__hosihikari_shim_handle);
+    }
+
+    public void removeListener(global::Hosihikari.Bindings.Bedrock.Interop.AppPlatformListener? l)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a4afa687((void*)__hosihikari_shim_handle, (void*)(l?.Handle ?? 0));
     }
 
     public void requestMulticastReceivePermission()
     {
-        NativeMethods.TablePtr->hs_method_ae146b9f((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_ae146b9f((void*)__hosihikari_shim_handle);
     }
 
     public bool requireControllerAtStartup()
     {
-        return NativeMethods.TablePtr->hs_method_964a29d7((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_16743ed5((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool requiresAutoSaveIconExplanationPopup()
     {
-        return NativeMethods.TablePtr->hs_method_bc5c6b31((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_cf4ba59a((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool requiresLiveGoldForMultiplayer()
     {
-        return NativeMethods.TablePtr->hs_method_d663cb86((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_6d0cb2f0((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool requiresXboxLiveSigninToPlay()
     {
-        return NativeMethods.TablePtr->hs_method_db4c7b71((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_64e2f766((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void restartApp(bool arg0)
+    public void restartApp(bool restart)
     {
-        NativeMethods.TablePtr->hs_method_df6dcb30((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_df6dcb30((void*)__hosihikari_shim_handle, restart);
     }
 
     public bool restartRequested()
     {
-        return NativeMethods.TablePtr->hs_method_c0ce3271((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c0ce3271((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool saveEncryptedPacksAsZips()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_6c2b28db((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool saveEncryptedPersonaPacksAsZips()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f431aedc((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool saveEncryptedWorldTemplatePacksAsZips()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9f53cd88((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool saveTreatmentPacksAsZips()
     {
-        return NativeMethods.TablePtr->hs_method_441c70eb((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_e9368074((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void setARVRPlatform(int arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void setCaretPosition(int position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void setDpi(int dpi)
     {
-        NativeMethods.TablePtr->hs_method_8dd4891d((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_716b976b((void*)__hosihikari_shim_handle, dpi);
     }
 
-    public void setDpi(int arg0)
+    public void setFullscreenMode(int fullscreenMode)
     {
-        NativeMethods.TablePtr->hs_method_716b976b((void*)_handle, arg0);
-    }
-
-    public void setFullscreenMode(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_e177b330((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_f15789c2((void*)__hosihikari_shim_handle, fullscreenMode);
     }
 
     public void setIntegrityToken(string arg0)
@@ -1149,7 +2650,7 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_069c58d9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_aa891685((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -1168,28 +2669,28 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_8a50a71e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_68587cac((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void setKeepScreenOnFlag(bool arg0)
     {
-        NativeMethods.TablePtr->hs_method_bd417c6c((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_bd417c6c((void*)__hosihikari_shim_handle, arg0);
     }
 
     public void setNetworkAllowed(bool arg0)
     {
-        NativeMethods.TablePtr->hs_method_9c66ebe1((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_9c66ebe1((void*)__hosihikari_shim_handle, arg0);
     }
 
-    public void setNetworkConnectionType(int arg0)
+    public void setNetworkConnectionType(byte connectionType)
     {
-        NativeMethods.TablePtr->hs_method_8e042190((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_8e042190((void*)__hosihikari_shim_handle, connectionType);
     }
 
-    public void setScreenSize(int arg0, int arg1)
+    public void setScreenSize(int width, int height)
     {
-        NativeMethods.TablePtr->hs_method_3e74a5f5((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C0.hs_method_3e74a5f5((void*)__hosihikari_shim_handle, width, height);
     }
 
     public void setSecureStorageKey(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SecureStorageKey arg1)
@@ -1207,33 +2708,36 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_c45dc383((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            NativeMethods.TablePtr->C0.hs_method_88d17ed3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
         }
     }
 
     public void setSleepEnabled(bool arg0)
     {
-        NativeMethods.TablePtr->hs_method_7692e1ad((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_7692e1ad((void*)__hosihikari_shim_handle, arg0);
     }
 
-    public void setThreadsFrozen(bool arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void setTextBoxBackend(nint newText) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TextBoxSelection' is not a known bindable declaration.", false)]
+    public void setTextBoxSelection(nint selection) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TextBoxSelection' is not a known bindable declaration.");
+
+    public void setThreadsFrozen(bool frozen)
     {
-        NativeMethods.TablePtr->hs_method_27a876c1((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_27a876c1((void*)__hosihikari_shim_handle, frozen);
     }
 
-    public void setUIScalingRules(int arg0)
+    public void setUIScalingRules(int UIScalingRules)
     {
-        NativeMethods.TablePtr->hs_method_5f82e26f((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_5f82e26f((void*)__hosihikari_shim_handle, UIScalingRules);
     }
 
-    public void setVRControllerType(int arg0)
+    public void setWindowSize(int width, int height)
     {
-        NativeMethods.TablePtr->hs_method_508e1604((void*)_handle, arg0);
-    }
-
-    public void setWindowSize(int arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_b19ef584((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C0.hs_method_b19ef584((void*)__hosihikari_shim_handle, width, height);
     }
 
     public void setWindowText(string arg0)
@@ -1251,150 +2755,102 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_4f83031e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_4b06c038((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public bool shouldPauseDownloadsWhenEnterGame()
     {
-        return NativeMethods.TablePtr->hs_method_984c5802((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_efe78618((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool shouldRegisterForXboxLiveNotifications()
     {
-        return NativeMethods.TablePtr->hs_method_650588a4((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_a7298dd4((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool shouldRemoveGraphicsDeviceOnAppTermination()
     {
-        return NativeMethods.TablePtr->hs_method_259ac741((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_fda0a598((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void showDialog(int arg0)
     {
-        NativeMethods.TablePtr->hs_method_f494a1a4((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_f494a1a4((void*)__hosihikari_shim_handle, arg0);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? showOSUserDialog(string arg0, string arg1, string arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    var __hs_shared = NativeMethods.TablePtr->hs_method_862291a1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-                    return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-                }
-            }
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint showOSUserDialog(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void showPlatformEmptyStoreDialog(nint arg0) =>
+    public void showPlatformEmptyStoreDialog(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void showPlatformStoreIcon(bool arg0)
     {
-        NativeMethods.TablePtr->hs_method_97342948((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_97342948((void*)__hosihikari_shim_handle, arg0);
     }
 
     public bool supportsAutoSaveOnDBCompaction()
     {
-        return NativeMethods.TablePtr->hs_method_88a787a1((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_602484d3((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsClientUpdate()
     {
-        return NativeMethods.TablePtr->hs_method_56f4773f((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_d84da66e((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsDayOneExperience()
     {
-        return NativeMethods.TablePtr->hs_method_515929d2((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_abcb530f((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsFliteTTS()
     {
-        return NativeMethods.TablePtr->hs_method_2d7ab36c((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_3bac23d0((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsInPackageRecursion()
     {
-        return NativeMethods.TablePtr->hs_method_67dace77((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_f538df3b((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsLaunchingLegacyVersion()
     {
-        return NativeMethods.TablePtr->hs_method_8ae84425((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_3f3d94a7((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsLegacySinglePremiumCacheDirectory()
     {
-        return NativeMethods.TablePtr->hs_method_592dcd69((void*)_handle) != 0;
-    }
-
-    public bool supportsVRModeSwap()
-    {
-        return NativeMethods.TablePtr->hs_method_2f4a5147((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c31346d9((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsVibration()
     {
-        return NativeMethods.TablePtr->hs_method_a10146e1((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_7f0b6b26((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsWorldShare()
     {
-        return NativeMethods.TablePtr->hs_method_c227d665((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_8e78c361((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool supportsXboxLiveAchievements()
     {
-        return NativeMethods.TablePtr->hs_method_b11ac22d((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_b03b6399((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void teardown()
     {
-        NativeMethods.TablePtr->hs_method_5fed8c97((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_5fed8c97((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void tryEnterVRMode(bool arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    public void updateBootstrapSettingsFromTreatmentsAsync()
+    {
+        NativeMethods.TablePtr->C0.hs_method_4b59a6ed((void*)__hosihikari_shim_handle);
+    }
 
     public void updateLocalization(string arg0)
     {
@@ -1411,62 +2867,52 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_48773c2e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_c0b96f67((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public bool useAppPlatformForTelemetryIPAddress()
     {
-        return NativeMethods.TablePtr->hs_method_1ebdae45((void*)_handle) != 0;
-    }
-
-    public bool useNativeStoreForRealmsPurchase()
-    {
-        return NativeMethods.TablePtr->hs_method_1f103dce((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_1ebdae45((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool usePlatformProfilePicturesOnly()
     {
-        return NativeMethods.TablePtr->hs_method_eae5f3c1((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_34eade8f((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool useXboxControlHelpers()
     {
-        return NativeMethods.TablePtr->hs_method_62f5be88((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_ca7396e4((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool usesAsyncOptionSaving()
     {
-        return NativeMethods.TablePtr->hs_method_a7e9febf((void*)_handle) != 0;
-    }
-
-    public bool usesHDRBrightness()
-    {
-        return NativeMethods.TablePtr->hs_method_456709c8((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c0232ec0((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void vibrate(int arg0)
     {
-        NativeMethods.TablePtr->hs_method_b9088803((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_b9088803((void*)__hosihikari_shim_handle, arg0);
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dc61486f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_dc61486f((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d3d4495d((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_d3d4495d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

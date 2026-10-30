@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CooldownItemComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CooldownItemComponent(nint handle) : this(handle, true) { }
 
     internal CooldownItemComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CooldownItemComponent Borrow(nint handle) => new CooldownItemComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,72 @@ public sealed unsafe partial class CooldownItemComponent : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void bindType(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public nint _ctor(nint component) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static CooldownItemComponent Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_134b279e(), false);
+        var handle = NativeMethods.TablePtr->C0.hs_create_6f221efc();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CooldownItemComponent((nint)handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static CooldownItemComponent Create(nint component) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCategory_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_39644235((void*)__hosihikari_shim_handle);
+    }
+
+    public float mDuration
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_53c81643((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_53c81643((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b0b6ae99((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b0b6ae99((void*)__hosihikari_shim_handle, value);
+    }
+
+    public nint mOwner
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3b26e165((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_3b26e165((void*)__hosihikari_shim_handle, (void*)value);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_aa92494f((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_aa92494f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

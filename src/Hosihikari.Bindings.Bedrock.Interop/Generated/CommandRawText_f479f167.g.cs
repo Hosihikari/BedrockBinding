@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandRawText
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandRawText(nint handle) : this(handle, true) { }
 
     internal CommandRawText(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandRawText Borrow(nint handle) => new CommandRawText(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,24 +33,14 @@ public sealed unsafe partial class CommandRawText
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public string getText()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b1fbdb4d((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_basic_string() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     // The native field type is not projected; this is the address of the field storage.
-    public nint text_Address
+    public nint mText_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_db9b76ec((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_daf20fc3((void*)__hosihikari_shim_handle);
     }
 }

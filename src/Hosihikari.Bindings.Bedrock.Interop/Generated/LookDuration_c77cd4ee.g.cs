@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.sim;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum LookDuration : int
+public enum LookDuration : byte
 {
+    Instant = 0,
+    Continuous = 1,
+    UntilMove = 2,
 }

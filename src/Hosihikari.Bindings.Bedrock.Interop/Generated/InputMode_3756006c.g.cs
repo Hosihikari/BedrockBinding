@@ -4,11 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum InputMode : int
+public enum InputMode : uint
 {
     Undefined = 0,
     Mouse = 1,
     Touch = 2,
     GamePad = 3,
-    MotionController = 4,
+    MotionControllerDeprecated = 4,
+    Count = 5,
 }

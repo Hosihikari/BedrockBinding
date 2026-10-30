@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformUtils;
 
-public sealed unsafe partial class PlatformData
+public sealed unsafe partial class PlatformData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlatformData(nint handle) : this(handle, true) { }
 
     internal PlatformData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlatformData Borrow(nint handle) => new PlatformData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,66 @@ public sealed unsafe partial class PlatformData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlatformData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlatformData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformUtils.PlatformData get()
+    public static PlatformData Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformUtils.PlatformData((nint)NativeMethods.TablePtr->hs_method_0fdc71ca(), false);
+        var handle = NativeMethods.TablePtr->C0.hs_create_7f378646();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlatformData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static PlatformData Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformUtils.PlatformData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0d62552a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlatformData((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1a0b52_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_135d1934((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1ebd6c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bc52089d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkddb5e1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5266ca4a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformUtils.PlatformData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformUtils.PlatformData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformUtils.PlatformData((nint)NativeMethods.TablePtr->C0.hs_method_6e1c7fd2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b34cb9cc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

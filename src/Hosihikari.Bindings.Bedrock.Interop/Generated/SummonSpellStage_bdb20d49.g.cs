@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SummonSpellStage
+public sealed unsafe partial class SummonSpellStage : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SummonSpellStage(nint handle) : this(handle, true) { }
 
     internal SummonSpellStage(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SummonSpellStage Borrow(nint handle) => new SummonSpellStage(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,99 @@ public sealed partial class SummonSpellStage
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SummonSpellStage Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_8c3e1a23((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SummonSpellStage Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int baseDelay
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_57c0095a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_57c0095a((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int delayPerSummoning
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_1af1f333((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_1af1f333((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int entityCount
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_20498ded((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_20498ded((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint entityIdentifier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5c487969((void*)__hosihikari_shim_handle);
+    }
+
+    public int entityLifespan
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_398a0ca8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_398a0ca8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int shape
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_749e367e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_749e367e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float size
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_6c3db9cb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_6c3db9cb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint stageSoundEvent
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_72df1906((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_72df1906((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int summonCap
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_26e63aee((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_26e63aee((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float summonCapRadius
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b0be7b5a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b0be7b5a((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint summonEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cdf28320((void*)__hosihikari_shim_handle);
+    }
+
+    public int target
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_cbed99a9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_cbed99a9((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_bdb20d49((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

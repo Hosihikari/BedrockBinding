@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class FogCommandComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FogCommandComponent(nint handle) : this(handle, true) { }
 
     internal FogCommandComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FogCommandComponent Borrow(nint handle) => new FogCommandComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,19 @@ public sealed unsafe partial class FogCommandComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FogCommandComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FogCommandComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->hs_method_3d7803d6((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_f64be17f((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
     public string[] getFogSettingsStack()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_bc56fa42((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_8c07c837((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -63,17 +55,21 @@ public sealed unsafe partial class FogCommandComponent
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_b44a88a7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_dec4ffb5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool popFogSetting(string arg0)
+    public string[] getUserProvidedIds()
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_60763b55((void*)__hosihikari_shim_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    public static bool isValidIdentifier(string format)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(format);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -83,16 +79,23 @@ public sealed unsafe partial class FogCommandComponent
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(format, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_86d6de18((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_b8a2be1e(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public bool pushFogSetting(string arg0, string arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFogStack_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a523c2cf((void*)__hosihikari_shim_handle);
+    }
+
+    public string? popFogSetting(string? userProvidedId)
+    {
+        var __hs_hasValue = false;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(userProvidedId ?? string.Empty);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -102,8 +105,29 @@ public sealed unsafe partial class FogCommandComponent
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(userProvidedId ?? string.Empty, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_71284636((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, userProvidedId is not null, &__hs_hasValue);
+            return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+        }
+    }
+
+    public byte? pushFogSetting(string fogId, string? userProvidedId)
+    {
+        var __hs_hasValue = false;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fogId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fogId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(userProvidedId ?? string.Empty);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -113,24 +137,25 @@ public sealed unsafe partial class FogCommandComponent
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(userProvidedId ?? string.Empty, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return NativeMethods.TablePtr->hs_method_cd249aec((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+                var __hs_value = NativeMethods.TablePtr->C1.hs_method_6d01191e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, userProvidedId is not null, &__hs_hasValue);
+                return __hs_hasValue ? __hs_value : (byte?)null;
             }
         }
     }
 
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper dataLoadHelper)
     {
-        NativeMethods.TablePtr->hs_method_fe1c2725((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C1.hs_method_526ee51c((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
-    public bool removeFogSettings(string arg0)
+    public bool removeFogSettings(string? userProvidedId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(userProvidedId ?? string.Empty);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -140,10 +165,50 @@ public sealed unsafe partial class FogCommandComponent
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(userProvidedId ?? string.Empty, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_246ef20e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_199e3a12((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, userProvidedId is not null) != 0;
+        }
+    }
+
+    public bool setFogSettingsStack(string[] fogIds, string? userProvidedId)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(userProvidedId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(userProvidedId ?? string.Empty, __hs_stringBytes1);
+        var __hs_vectorItems0 = fogIds ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                return NativeMethods.TablePtr->C1.hs_method_8bdfd53c((void*)__hosihikari_shim_handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_vectorData0, (nuint)(fogIds?.Length ?? 0), userProvidedId is not null) != 0;
+            }
         }
     }
 }

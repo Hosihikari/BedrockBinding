@@ -4,7 +4,20 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum AttributeBuffType : int
 {
+    Hunger = 0,
+    Saturation = 1,
+    Regeneration = 2,
+    Heal = 3,
+    Harm = 4,
+    Magic = 5,
+    Wither = 6,
+    Poison = 7,
+    FatalPoison = 8,
+    SelfHeal = 9,
+    SelfDestruct = 10,
+    TotemOfUndying = 11,
+    Unknown = 12,
+    None = 13,
 }

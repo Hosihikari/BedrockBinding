@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MultiplyValueAmplifier
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MultiplyValueAmplifier(nint handle) : this(handle, true) { }
 
     internal MultiplyValueAmplifier(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MultiplyValueAmplifier Borrow(nint handle) => new MultiplyValueAmplifier(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,28 @@ public sealed unsafe partial class MultiplyValueAmplifier
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MultiplyValueAmplifier Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MultiplyValueAmplifier Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float getAmount(int arg0, float arg1)
+    public float _getAmount(int amplification, float arg1)
     {
-        return NativeMethods.TablePtr->hs_method_b898d387((void*)_handle, arg0, arg1);
+        return NativeMethods.TablePtr->C2.hs_method_2a4961be((void*)__hosihikari_shim_handle, amplification, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public float getAmount(int amplification, float arg1)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_9c248e86((void*)__hosihikari_shim_handle, amplification, arg1);
+    }
+
+    public float mScalar
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_b4c812f8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b4c812f8((void*)__hosihikari_shim_handle, value);
+    }
 }

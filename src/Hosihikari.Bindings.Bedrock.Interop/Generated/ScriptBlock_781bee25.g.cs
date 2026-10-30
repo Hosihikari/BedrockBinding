@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptBlock
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptBlock(nint handle) : this(handle, true) { }
 
     internal ScriptBlock(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptBlock Borrow(nint handle) => new ScriptBlock(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,238 +33,119 @@ public sealed unsafe partial class ScriptBlock
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptBlock Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint above(int steps) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptBlock Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint below(int steps) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptBlock Create_f707c916(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptBlock Create_f1182c6a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint above(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint below(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptBlock>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptBlock>' requires --link-carrier or --virtual-dispatch.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 bottomCenter()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind(global::Hosihikari.Bindings.Abi.SharedHandle? blockComponents)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_b12f1086((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_8030bcaf(blockComponents?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint canPlace(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint canBeDestroyedByLiquidSpread(nint liquidType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 center()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_49307773((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint canContainLiquid(nint liquidType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint east(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint east(int steps) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_e8752b64((void*)_handle), false);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::BaseScriptBlockComponent>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getComponent_V2(nint components, nint componentName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::BaseScriptBlockComponent>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::BaseScriptBlockComponent>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::BaseScriptBlockComponent>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<int, Scripting::InvalidArgumentError, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getLightLevel() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<int, Scripting::InvalidArgumentError, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::BaseScriptBlockComponent>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getComponent_010(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::BaseScriptBlockComponent>>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::basic_string<char>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getLocalizationKey() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::basic_string<char>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptDimension>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDimension() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptDimension>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<int, Scripting::InvalidArgumentError, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getSkyLightLevel() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<int, Scripting::InvalidArgumentError, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError>' requires --link-carrier or --virtual-dispatch.");
 
-    public string getId_010()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_0c834813((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getItemStack(int arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLocation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<BlockPos>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLocation_010() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<BlockPos>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPermutation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPermutation_010() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<int>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getRedstonePower() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<int>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTags() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    public string[] getTags_010()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_09c0cb86((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockType>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockType>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::basic_string<char>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getTypeId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::basic_string<char>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockType>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getType_010() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockType>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getWaterlogged() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint hasTag(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    public bool hasTag_010(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_44d12fa3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint isAir() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint isLiquid() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint isLiquidBlocking(nint liquidType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint isSolid() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint matches_7c4f1c62(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint liquidSpreadCausesSpawn(nint liquidType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint matches_99f8deb0(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint north(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint offset(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_3c792e7d(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_c06efff1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setPermutation(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
-
-    public void setPermutation_010(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptBlockPermutation arg0)
+    public nint mBlockSource
     {
-        NativeMethods.TablePtr->hs_method_ba1e28c7((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cfd5cb73((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_cfd5cb73((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint setTypeStatic(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
-
-    public void setType_010(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptBlockType arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPosition_Address
     {
-        NativeMethods.TablePtr->hs_method_a3b4c8d4((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f1b8252b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setWaterlogged(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d3666bcd((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setWaterlogged_010(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint north(int steps) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint south(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint offset(nint offset) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint trySetPermutation(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint setPermutationStatic(nint region, nint location, nint blockData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint west(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>,ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError,ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint setTypeStatic(nint region, nint location, nint blockTypeOrBlockTypeName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_ff39739d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint south(int steps) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint west(int steps) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>>, ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError, ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError>' requires --link-carrier or --virtual-dispatch.");
 }

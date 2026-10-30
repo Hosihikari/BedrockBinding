@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GeneDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GeneDefinition(nint handle) : this(handle, true) { }
 
     internal GeneDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GeneDefinition Borrow(nint handle) => new GeneDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,43 @@ public sealed unsafe partial class GeneDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GeneDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static GeneDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void addGeneticVariant(global::Hosihikari.Bindings.Bedrock.Interop.GeneticVariant arg0)
+    public void addGeneticVariant(global::Hosihikari.Bindings.Bedrock.Interop.GeneticVariant geneticVariant)
     {
-        NativeMethods.TablePtr->hs_method_58f3e0a3((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_4f9eabd4((void*)__hosihikari_shim_handle, (void*)geneticVariant.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAlleleRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ba0d5423((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_2708cc0f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGeneticVariants_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fd3833c9((void*)__hosihikari_shim_handle);
+    }
+
+    public float mMutationRateOverride
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_eafd7758((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_eafd7758((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_47c96ffd((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mUseSimplifiedBreeding
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_dea86251((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_dea86251((void*)__hosihikari_shim_handle, value);
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NetworkIdentifier : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetworkIdentifier(nint handle) : this(handle, true) { }
 
     internal NetworkIdentifier(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetworkIdentifier Borrow(nint handle) => new NetworkIdentifier(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,19 +33,19 @@ public sealed unsafe partial class NetworkIdentifier : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier INVALID_ID
+    public static global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier INVALID_ID()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier((nint)NativeMethods.TablePtr->hs_get_ef738712(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier((nint)NativeMethods.TablePtr->C2.hs_method_8652d579(), false);
     }
 
     public static NetworkIdentifier Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_5748c1c3();
+        var handle = NativeMethods.TablePtr->C2.hs_create_5748c1c3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -54,9 +54,9 @@ public sealed unsafe partial class NetworkIdentifier : global::System.IDisposabl
         return new NetworkIdentifier((nint)handle);
     }
 
-    public static NetworkIdentifier Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID arg0)
+    public static NetworkIdentifier Create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier other)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ab258f1d((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_f5977d39((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,146 +65,84 @@ public sealed unsafe partial class NetworkIdentifier : global::System.IDisposabl
         return new NetworkIdentifier((nint)handle);
     }
 
-    public static NetworkIdentifier Create_862745e1(nint arg0)
+    public static string calculateCorrelationId(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakNetGUID rakId)
     {
-        var handle = NativeMethods.TablePtr->hs_create_862745e1((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new NetworkIdentifier((nint)handle);
-    }
-
-    public static NetworkIdentifier Create_c43ecf73(nint arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_c43ecf73((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new NetworkIdentifier((nint)handle);
-    }
-
-    public static NetworkIdentifier Create(ulong arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_2059349d(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new NetworkIdentifier((nint)handle);
-    }
-
-    public static string calculateCorrelationId(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_59d82b26((void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_5ddb1ba4((void*)rakId.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string calculateCorrelationId(ulong arg0)
+    public bool equalsTypeData(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier other)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_9b619898(arg0);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return NativeMethods.TablePtr->C2.hs_method_521cd5be((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public string getAddress()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_99399741((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public string getCorrelationId()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_86ec198e((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_f4c07318((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public ulong getHash()
     {
-        return NativeMethods.TablePtr->hs_method_bf65cfb5((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_a2d6b4f8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getIPAndPort() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID getRakNetGUID()
+    public string getIPAndPort()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID((nint)NativeMethods.TablePtr->hs_method_3a9506e0((void*)_handle), false);
-    }
-
-    public nint getSocketAddress()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_1bb09548((void*)_handle);
-    }
-
-    public nint getSocketAddress6()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_1e035ed3((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getType_5d70671b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static string hyphenateId(ulong arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7fb02308(arg0);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_2eac1b7f((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isUnassigned()
     {
-        return NativeMethods.TablePtr->hs_method_ace82d8c((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_1c7515a7((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGuid_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4397cc47((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4397cc47((void*)__hosihikari_shim_handle);
     }
 
-    public ulong mNetherNetIdValue
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetherNetId_Address
     {
-        get => NativeMethods.TablePtr->hs_get_3ae98067((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_3ae98067((void*)_handle, value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5fb1062a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_784424b9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_784424b9((void*)__hosihikari_shim_handle);
     }
 
     public int mType
     {
-        get => NativeMethods.TablePtr->hs_get_ce11d7df((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ce11d7df((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ce11d7df((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ce11d7df((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier other)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_a643bed2((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
 
     public string toString()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_4b498ac3((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_ab0e4f63((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_892258e9((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_892258e9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

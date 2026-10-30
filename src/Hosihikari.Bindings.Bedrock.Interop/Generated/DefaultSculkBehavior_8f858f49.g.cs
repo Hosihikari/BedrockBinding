@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DefaultSculkBehavior
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DefaultSculkBehavior(nint handle) : this(handle, true) { }
 
     internal DefaultSculkBehavior(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DefaultSculkBehavior Borrow(nint handle) => new DefaultSculkBehavior(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,68 @@ public sealed unsafe partial class DefaultSculkBehavior
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DefaultSculkBehavior Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DefaultSculkBehavior Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool attemptSpreadVeins(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg4)
+    public bool _attemptSpreadVeins(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int facingData, global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg4)
     {
-        return NativeMethods.TablePtr->hs_method_af1c3698((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)arg4.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_bea43b8a((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)block.Handle, facingData, (void*)arg4.Handle) != 0;
     }
 
-    public int attemptUseCharge(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.Random arg6, global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg7, bool arg8)
+    public int _attemptUseCharge(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int charge, int decayDelay, global::Hosihikari.Bindings.Bedrock.Interop.Random arg6, global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg7, bool arg8)
     {
-        return NativeMethods.TablePtr->hs_method_9649c3bc((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5, (void*)arg6.Handle, (void*)arg7.Handle, arg8);
+        return NativeMethods.TablePtr->C1.hs_method_5674abbf((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, charge, decayDelay, (void*)arg6.Handle, (void*)arg7.Handle, arg8);
+    }
+
+    public bool _canChangeBlockOnSpread()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e052127c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _onDischarged(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
+    {
+        NativeMethods.TablePtr->C1.hs_method_6150e388((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle);
+    }
+
+    public int _updateDecayDelay(int currentValue)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0fc20000((void*)__hosihikari_shim_handle, currentValue);
+    }
+
+    public int _updateFacingData(int currentValue, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_105b9d89((void*)__hosihikari_shim_handle, currentValue, (void*)arg1.Handle);
+    }
+
+    public bool attemptSpreadVeins(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int facingData, global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg4)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_695f4f4b((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)block.Handle, facingData, (void*)arg4.Handle) != 0;
+    }
+
+    public int attemptUseCharge(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int charge, int decayDelay, global::Hosihikari.Bindings.Bedrock.Interop.Random arg6, global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg7, bool arg8)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c6ae89b2((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, charge, decayDelay, (void*)arg6.Handle, (void*)arg7.Handle, arg8);
     }
 
     public bool canChangeBlockOnSpread()
     {
-        return NativeMethods.TablePtr->hs_method_f531df3e((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_2102a44c((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void onDischarged(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
     {
-        NativeMethods.TablePtr->hs_method_6ce12067((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle);
+        NativeMethods.TablePtr->C1.hs_method_51d1067a((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int updateDecayDelay(int arg0)
+    public int updateDecayDelay(int currentValue)
     {
-        return NativeMethods.TablePtr->hs_method_dd6155e5((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C1.hs_method_798757af((void*)__hosihikari_shim_handle, currentValue);
     }
 
-    public int updateFacingData(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
+    public int updateFacingData(int currentValue, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
-        return NativeMethods.TablePtr->hs_method_243333a5((void*)_handle, arg0, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_cca46c7c((void*)__hosihikari_shim_handle, currentValue, (void*)arg1.Handle);
     }
 }

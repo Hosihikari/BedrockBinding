@@ -2,9 +2,12 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Util_Nested.ResourceUri;
+namespace Hosihikari.Bindings.Bedrock.Interop.Util.ResourceUri;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ValidationStatus : int
 {
+    Success = 0,
+    InvalidScheme = 1,
+    InvalidFilePath = 2,
+    InvalidEmpty = 3,
 }

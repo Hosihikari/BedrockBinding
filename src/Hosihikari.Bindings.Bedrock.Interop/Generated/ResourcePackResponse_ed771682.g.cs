@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ResourcePackResponse : int
+public enum ResourcePackResponse : sbyte
 {
+    Cancel = 1,
+    Downloading = 2,
+    DownloadingFinished = 3,
+    ResourcePackStackFinished = 4,
 }

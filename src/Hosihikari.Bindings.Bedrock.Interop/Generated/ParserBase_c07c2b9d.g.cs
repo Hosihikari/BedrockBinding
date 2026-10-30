@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.Puv;
 
 public sealed unsafe partial class ParserBase : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ParserBase(nint handle) : this(handle, true) { }
 
     internal ParserBase(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ParserBase Borrow(nint handle) => new ParserBase(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,77 @@ public sealed unsafe partial class ParserBase : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ParserBase Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ParserBase Create(nint arg0, nint arg1) =>
+    public nint _ctor(nint parserVersion, nint supportedVersions) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ParserBase Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion parserVersion()
+    public static ParserBase Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_556d160a((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C2.hs_create_95efa0db();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParserBase((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange supportedVersions()
+    public static ParserBase Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.ParserBase arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange((nint)NativeMethods.TablePtr->hs_method_e1f0e19c((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C2.hs_create_024144d5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParserBase((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static ParserBase Create(nint parserVersion, nint supportedVersions) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint doParse(nint input, nint contextArea) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk480fe1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_79334149((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkdde19d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_84104207((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Puv.ParserBase operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.ParserBase arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.ParserBase((nint)NativeMethods.TablePtr->C2.hs_method_7d3a9c78((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_c07c2b9d((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_c07c2b9d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

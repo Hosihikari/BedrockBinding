@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TeleportComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TeleportComponent(nint handle) : this(handle, true) { }
 
     internal TeleportComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TeleportComponent Borrow(nint handle) => new TeleportComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,85 +33,99 @@ public sealed unsafe partial class TeleportComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TeleportComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TeleportComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float getDarkTeleportChance()
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return NativeMethods.TablePtr->hs_method_27a4ed80((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_4c08d7d3((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public float getLightTeleportChance()
+    public float mDarkTeleportChance
     {
-        return NativeMethods.TablePtr->hs_method_0ff8b4b3((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_b66b2c5f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b66b2c5f((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getMaxTeleportTime()
+    public float mLightTeleportChance
     {
-        return NativeMethods.TablePtr->hs_method_9f3852c7((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_4fbfad4c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_4fbfad4c((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getMinTeleportTime()
+    public int mMaxTeleportTime
     {
-        return NativeMethods.TablePtr->hs_method_ccd491a0((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_78fb3874((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_78fb3874((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getRandomTeleports()
+    public int mMinTeleportTime
     {
-        return NativeMethods.TablePtr->hs_method_aaa1aacb((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_b4f77d9e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b4f77d9e((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getTargetDistance()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProjectileFilter_Address
     {
-        return NativeMethods.TablePtr->hs_method_5c489c62((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_20baeeee((void*)__hosihikari_shim_handle);
     }
 
-    public float getTargetTeleportChance()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRandomTeleportCube_Address
     {
-        return NativeMethods.TablePtr->hs_method_9fa009f1((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8a52ba78((void*)__hosihikari_shim_handle);
     }
 
-    public int getTeleportTime()
+    public bool mRandomTeleports
     {
-        return NativeMethods.TablePtr->hs_method_4ecf3e70((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_6a4275d9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_6a4275d9((void*)__hosihikari_shim_handle, value);
     }
 
-    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public float mTargetDistance
     {
-        NativeMethods.TablePtr->hs_method_3aaed3ee((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_eb5b06fe((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_eb5b06fe((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool randomTeleport(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public float mTargetTeleportChance
     {
-        return NativeMethods.TablePtr->hs_method_88edaef0((void*)_handle, (void*)arg0.Handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_8419e3c0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_8419e3c0((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setTeleportTime(int arg0)
+    public int mTeleportTime
     {
-        NativeMethods.TablePtr->hs_method_8ebc026c((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C3.hs_get_2e274a36((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_2e274a36((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool teleport(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    public bool mTeleportsOnProjectileHit
     {
-        return NativeMethods.TablePtr->hs_method_37196665((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_dd287f7f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_dd287f7f((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool teleportTowards(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public bool randomTeleport(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_c3e902ea((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_e1735286((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
+    }
+
+    public bool teleport(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_00a7f3bc((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)pos.Handle) != 0;
+    }
+
+    public bool teleportTowards(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_fbd56810((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)target.Handle) != 0;
+    }
+
+    public bool tryTeleportFromProjectileHit(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor projectile)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_0d357c19((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)projectile.Handle) != 0;
     }
 }

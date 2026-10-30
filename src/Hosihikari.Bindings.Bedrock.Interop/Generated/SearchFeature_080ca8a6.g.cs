@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SearchFeature
+public sealed unsafe partial class SearchFeature : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SearchFeature(nint handle) : this(handle, true) { }
 
     internal SearchFeature(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SearchFeature Borrow(nint handle) => new SearchFeature(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,72 @@ public sealed unsafe partial class SearchFeature
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SearchFeature Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mCanUseInternalFeature
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_04312c16((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_04312c16((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SearchFeature Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mInternal
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_7aa837d3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_7aa837d3((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isValidPlacement(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_4d6658a0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_9d55dd2c((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFeatureRef_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e585bdd4((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRequiredSuccesses
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_8cfa44a7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_8cfa44a7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mSearchAxis
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_32590b74((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_32590b74((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSearchVolume_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_20f8cfa7((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_8b6b7664((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_080ca8a6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

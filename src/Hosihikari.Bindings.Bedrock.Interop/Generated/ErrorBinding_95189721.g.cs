@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ErrorBinding
+public sealed unsafe partial class ErrorBinding : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ErrorBinding(nint handle) : this(handle, true) { }
 
     internal ErrorBinding(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ErrorBinding Borrow(nint handle) => new ErrorBinding(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,84 @@ public sealed partial class ErrorBinding
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ErrorBinding Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_8bf4958c((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ErrorBinding Create_9dc64db7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ErrorBinding Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_22bf349c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ErrorBinding Create_9aca3fab(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new ErrorBinding((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ErrorBinding Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ErrorBinding Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9aca3fab((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ErrorBinding((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_02245eda() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk30992f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1b16f05c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk573a59_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_541ce6c7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd85588_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_746e3234((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd8aa0c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_40c4e56b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding((nint)NativeMethods.TablePtr->C3.hs_method_d707ee35((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1ec4ac_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c453c61c((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_95189721((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

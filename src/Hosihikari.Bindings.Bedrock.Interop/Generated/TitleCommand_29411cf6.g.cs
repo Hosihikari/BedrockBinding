@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TitleCommand
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TitleCommand(nint handle) : this(handle, true) { }
 
     internal TitleCommand(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TitleCommand Borrow(nint handle) => new TitleCommand(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,157 @@ public sealed unsafe partial class TitleCommand
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public int mCommandSymbol
     {
-        get => NativeMethods.TablePtr->hs_get_bd491c2c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_bd491c2c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_bd491c2c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_bd491c2c((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFlags_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b20108c4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b20108c4((void*)__hosihikari_shim_handle);
     }
 
     public byte mPermissionLevel
     {
-        get => NativeMethods.TablePtr->hs_get_59046cf8((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_59046cf8((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_59046cf8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_59046cf8((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mRegistry
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ab68150d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ab68150d((void*)__hosihikari_shim_handle);
     }
 
     public int mVersion
     {
-        get => NativeMethods.TablePtr->hs_get_c5d7359f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c5d7359f((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_c5d7359f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_c5d7359f((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TitleCommand Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TitleCommand Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
+    public bool mRequireChatPerms
     {
-        NativeMethods.TablePtr->hs_method_dcd2c679((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_2dc360f8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_2dc360f8((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0)
+    public bool mRequireTellPerms
     {
-        NativeMethods.TablePtr->hs_method_ad515259((void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_e4b14d52((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_e4b14d52((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void _execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8bac81f8((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
+    }
+
+    public static bool _sendEvent(global::Hosihikari.Bindings.Bedrock.Interop.Level level, string sender, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext[] targets, string title, string? filteredTitle, int titleType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(sender);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(sender, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(title);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(title, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(filteredTitle ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(filteredTitle ?? string.Empty, __hs_stringBytes4);
+        var __hs_vectorItems2 = targets;
+        var __hs_vectorHandles2 = new nint[__hs_vectorItems2?.Length ?? 0];
+        for (var __hs_i2 = 0; __hs_i2 < __hs_vectorHandles2.Length; __hs_i2++)
+        {
+            __hs_vectorHandles2[__hs_i2] = __hs_vectorItems2![__hs_i2]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData2 = __hs_vectorHandles2)
+        {
+            var __hs_vectorData2 = (void**)__hs_vectorHandleData2;
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                {
+                    fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                    {
+                        return NativeMethods.TablePtr->C3.hs_method_27defa05((void*)level.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, titleType, __hs_vectorData2, (nuint)(targets?.Length ?? 0), filteredTitle is not null) != 0;
+                    }
+                }
+            }
+        }
+    }
+
+    public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1e779645((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
+    }
+
+    public int mFadeIn
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_4d443810((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_4d443810((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mFadeOut
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_891335a7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_891335a7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMessage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ca745da6((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMode
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a7887889((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a7887889((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mStay
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_16f0800a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_16f0800a((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_919ba4ac((void*)__hosihikari_shim_handle);
+    }
+
+    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry)
+    {
+        NativeMethods.TablePtr->C3.hs_method_efbd1d82((void*)registry.Handle);
+    }
 }

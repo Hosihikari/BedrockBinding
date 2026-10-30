@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ThrownPotionEffectSubcomponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ThrownPotionEffectSubcomponent(nint handle) : this(handle, true) { }
 
     internal ThrownPotionEffectSubcomponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ThrownPotionEffectSubcomponent Borrow(nint handle) => new ThrownPotionEffectSubcomponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,54 @@ public sealed unsafe partial class ThrownPotionEffectSubcomponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ThrownPotionEffectSubcomponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ThrownPotionEffectSubcomponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
+    public int mPotionEffect
     {
-        NativeMethods.TablePtr->hs_method_62fd6a0a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_a350bcd6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a350bcd6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void _doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f1f5cb53((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);
+    }
+
+    public nint _getName()
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_bab85e63((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d522eb6b((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+    public void _writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
+    {
+        NativeMethods.TablePtr->C3.hs_method_00e13cbf((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
+    {
+        NativeMethods.TablePtr->C3.hs_method_02da51b3((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);
     }
 
     public nint getName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3222d670((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_28906cdc((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
     {
-        NativeMethods.TablePtr->hs_method_d9208faf((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_71149dbb((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
+    {
+        NativeMethods.TablePtr->C3.hs_method_869466b8((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 }

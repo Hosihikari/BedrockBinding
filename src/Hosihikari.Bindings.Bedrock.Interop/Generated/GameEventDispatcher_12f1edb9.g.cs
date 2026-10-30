@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameEventDispatcher
+public sealed unsafe partial class GameEventDispatcher : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameEventDispatcher(nint handle) : this(handle, true) { }
 
     internal GameEventDispatcher(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameEventDispatcher Borrow(nint handle) => new GameEventDispatcher(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,26 @@ public sealed unsafe partial class GameEventDispatcher
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameEventDispatcher Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameEventDispatcher Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void post(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg4)
+    public void post(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Actor? source, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 originPos, global::Hosihikari.Bindings.Bedrock.Interop.Block? affectedBlock)
     {
-        NativeMethods.TablePtr->hs_method_be955891((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, (void*)(arg4?.Handle ?? 0));
+        NativeMethods.TablePtr->C1.hs_method_17faf48c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)(source?.Handle ?? 0), (void*)gameEvent.Handle, (void*)originPos.Handle, (void*)(affectedBlock?.Handle ?? 0));
     }
 
-    public void post(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg4)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_c0bcad8f((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, (void*)(arg4?.Handle ?? 0));
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_12f1edb9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

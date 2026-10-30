@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub;
 
 public sealed unsafe partial class DeferredSubscriptionHubBase : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DeferredSubscriptionHubBase(nint handle) : this(handle, true) { }
 
     internal DeferredSubscriptionHubBase(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DeferredSubscriptionHubBase Borrow(nint handle) => new DeferredSubscriptionHubBase(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,67 +33,107 @@ public sealed unsafe partial class DeferredSubscriptionHubBase : global::System.
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DeferredSubscriptionHubBase Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void __join(nint subscription) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DeferredSubscriptionHubBase Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _clear()
+    {
+        NativeMethods.TablePtr->C0.hs_method_6eac9acd((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_41ef6552((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _empty()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_134a27c0((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public ulong _erase(nint subscription)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_eaf62e5d((void*)__hosihikari_shim_handle, (void*)subscription);
+    }
+
+    public ulong _runDeferredEvents(ulong maxToRun)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_15fc7e93((void*)__hosihikari_shim_handle, maxToRun);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public ulong _runDeferredEventsForDuration(nint msec) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public ulong _size()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_67e5d2f1((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void _join(nint subscription) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool _runOneEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public void clear()
     {
-        NativeMethods.TablePtr->hs_method_25d1e85a((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_25d1e85a((void*)__hosihikari_shim_handle);
     }
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->hs_method_2ff956d4((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_3ef1b3de((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public ulong erase(nint arg0)
+    public ulong erase(nint subscription)
     {
-        return NativeMethods.TablePtr->hs_method_e54ab16e((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->C0.hs_method_08b438ad((void*)__hosihikari_shim_handle, (void*)subscription);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public ulong runDeferredEvents(ulong arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubscriptions_Address
     {
-        return NativeMethods.TablePtr->hs_method_c8b71451((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ee763f36((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong runDeferredEvents(ulong maxToRun)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c8b71451((void*)__hosihikari_shim_handle, maxToRun);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public ulong runDeferredEventsForDuration_c31eb710(nint arg0) =>
+    public ulong runDeferredEventsForDuration(nint msec) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public ulong size()
     {
-        return NativeMethods.TablePtr->hs_method_55bdd938((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_b454cf2a((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_87b657f2((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_87b657f2((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

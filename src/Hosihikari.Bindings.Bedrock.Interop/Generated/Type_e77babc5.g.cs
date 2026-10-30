@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen.RandomSpreadPlacement_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum Type : int
+public enum Type : byte
 {
+    Linear = 0,
+    Triangular = 1,
 }

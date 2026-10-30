@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ItemStackNetIdVariant : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemStackNetIdVariant(nint handle) : this(handle, true) { }
 
     internal ItemStackNetIdVariant(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemStackNetIdVariant Borrow(nint handle) => new ItemStackNetIdVariant(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class ItemStackNetIdVariant : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static ItemStackNetIdVariant Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_0306207d();
+        var handle = NativeMethods.TablePtr->C1.hs_create_0306207d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,97 +49,37 @@ public sealed unsafe partial class ItemStackNetIdVariant : global::System.IDispo
         return new ItemStackNetIdVariant((nint)handle);
     }
 
-    public static ItemStackNetIdVariant Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_6007a962((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ItemStackNetIdVariant((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ItemStackNetIdVariant Create_fde15c4d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint deserialize_951d78cd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint deserialize_e8ac2b3b(nint stream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool hasServerNetId()
-    {
-        return NativeMethods.TablePtr->hs_method_49167e29((void*)_handle) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint deserialize(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint id_Address
+    public nint mVariant_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dcfeb959((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4792caa6((void*)__hosihikari_shim_handle);
     }
 
-    public bool isValid()
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant other)
     {
-        return NativeMethods.TablePtr->hs_method_d0533706((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_7e8930b2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_d2f14e93(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_edcea25d(nint legacyClientRequestId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_8ef9f70d(nint serverNetId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
-    {
-        NativeMethods.TablePtr->hs_method_7570f661((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_574f7dce((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public string toString()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_107258f8((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_33144578((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_ItemStackNetIdTag_int_0_? tryGetServerNetId_d6b8b28c()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d6b8b28c((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_ItemStackNetIdTag_int_0_((nint)__hs_handle, false) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint tryGetServerNetId_c6b705d7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d2621d43((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_d2621d43((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

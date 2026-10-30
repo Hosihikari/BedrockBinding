@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class IScriptWorldBeforeEvents
+public sealed unsafe partial class IScriptWorldBeforeEvents : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IScriptWorldBeforeEvents(nint handle) : this(handle, true) { }
 
     internal IScriptWorldBeforeEvents(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IScriptWorldBeforeEvents Borrow(nint handle) => new IScriptWorldBeforeEvents(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,83 +33,184 @@ public sealed unsafe partial class IScriptWorldBeforeEvents
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IScriptWorldBeforeEvents Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHealBeforeEvent>' is not supported.", false)]
+    public nint _onBeforeActorHeal(nint actor, nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHealBeforeEvent>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IScriptWorldBeforeEvents Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHurtBeforeEvent>' is not supported.", false)]
+    public nint _onBeforeActorHurt(nint actor, nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHurtBeforeEvent>' is not supported.");
 
-    public void onBeforeActorRemove(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorItemPickupBeforeEvent>' is not supported.", false)]
+    public nint _onBeforeActorItemPickup(nint actorItemPickupEvent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorItemPickupBeforeEvent>' is not supported.");
+
+    public void _onBeforeActorRemove(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_76262c85((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_ff22f47d((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorTamedBeforeEvent>' is not supported.", false)]
+    public nint _onBeforeActorTamed(nint actor, nint tamingActor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorTamedBeforeEvent>' is not supported.");
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptChatSendBeforeEvent>' is not supported.", false)]
-    public nint onBeforeChat(nint arg0, nint arg1) =>
+    public nint _onBeforeChat(nint chatEvent, nint player) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptChatSendBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorAddEffectBeforeEvent>' is not supported.", false)]
-    public nint onBeforeEffectAddedEventSend(nint arg0, nint arg1) =>
+    public nint _onBeforeEffectAddedEventSend(nint actorEffectAddedEvent, nint actor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorAddEffectBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptExplosionStartedBeforeEvent>' is not supported.", false)]
-    public nint onBeforeExplosion(nint arg0) =>
+    public nint _onBeforeExplosion(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptExplosionStartedBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseBeforeEvent>' is not supported.", false)]
-    public nint onBeforeItemUse(nint arg0, nint arg1) =>
+    public nint _onBeforeItemUse(nint player, nint itemEvent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseOnBeforeEvent>' is not supported.", false)]
-    public nint onBeforeItemUseOn(nint arg0, nint arg1) =>
+    public nint _onBeforeItemUseOn(nint player, nint itemEvent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseOnBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerBreakBlockBeforeEvent>' is not supported.", false)]
-    public nint onBeforePlayerBreakBlock(nint arg0, nint arg1) =>
+    public nint _onBeforePlayerBreakBlock(nint player, nint eventData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerBreakBlockBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerGameModeChangeBeforeEvent>' is not supported.", false)]
-    public nint onBeforePlayerGameModeChange(nint arg0, nint arg1, nint arg2) =>
+    public nint _onBeforePlayerGameModeChange(nint player, nint fromGameMode, nint toGameMode) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerGameModeChangeBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerInteractWithBlockBeforeEvent>' is not supported.", false)]
-    public nint onBeforePlayerInteractWithBlock(nint arg0, nint arg1) =>
+    public nint _onBeforePlayerInteractWithBlock(nint player, nint eventData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerInteractWithBlockBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerInteractWithEntityBeforeEvent>' is not supported.", false)]
-    public nint onBeforePlayerInteractWithEntity(nint arg0, nint arg1, nint arg2) =>
+    public nint _onBeforePlayerInteractWithEntity(nint player, nint target, nint eventData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerInteractWithEntityBeforeEvent>' is not supported.");
 
-    public void onBeforePlayerLeave(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public void _onBeforePlayerLeave(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_a668e122((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_8f62444b((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerPlaceBlockBeforeEvent>' is not supported.", false)]
-    public nint onBeforePlayerPlaceBlock(nint arg0, nint arg1) =>
+    public nint _onBeforePlayerPlaceBlock(nint player, nint eventData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerPlaceBlockBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWeatherChangedBeforeEvent>' is not supported.", false)]
-    public nint onBeforeWeatherChangedEvent(nint arg0, nint arg1, int arg2) =>
+    public nint _onBeforeWeatherChangedEvent(nint previousWeatherType, nint newWeatherType, int duration) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWeatherChangedBeforeEvent>' is not supported.");
 
-    public void onBeforeWorldInitialize(nint arg0, nint arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWorldClockRestartBeforeEvent>' is not supported.", false)]
+    public nint _onBeforeWorldClockRestart(nint clock, int newTime) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWorldClockRestartBeforeEvent>' is not supported.");
+
+    public void _onBeforeWorldInitialize(global::Hosihikari.Bindings.Bedrock.Interop.ScriptingWorldInitializeEvent eventData)
     {
-        NativeMethods.TablePtr->hs_method_032d7f18((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->C3.hs_method_177d62b3((void*)__hosihikari_shim_handle, (void*)eventData.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHealBeforeEvent>' is not supported.", false)]
+    public nint onBeforeActorHeal(nint actor, nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHealBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHurtBeforeEvent>' is not supported.", false)]
+    public nint onBeforeActorHurt(nint actor, nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHurtBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorItemPickupBeforeEvent>' is not supported.", false)]
+    public nint onBeforeActorItemPickup(nint actorItemPickupEvent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorItemPickupBeforeEvent>' is not supported.");
+
+    public void onBeforeActorRemove(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f3d5f0b5((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorTamedBeforeEvent>' is not supported.", false)]
+    public nint onBeforeActorTamed(nint actor, nint tamingActor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorTamedBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptChatSendBeforeEvent>' is not supported.", false)]
+    public nint onBeforeChat(nint chatEvent, nint player) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptChatSendBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorAddEffectBeforeEvent>' is not supported.", false)]
+    public nint onBeforeEffectAddedEventSend(nint actorEffectAddedEvent, nint actor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorAddEffectBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptExplosionStartedBeforeEvent>' is not supported.", false)]
+    public nint onBeforeExplosion(nint @event) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptExplosionStartedBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseBeforeEvent>' is not supported.", false)]
+    public nint onBeforeItemUse(nint player, nint itemEvent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseOnBeforeEvent>' is not supported.", false)]
+    public nint onBeforeItemUseOn(nint player, nint itemEvent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseOnBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerBreakBlockBeforeEvent>' is not supported.", false)]
+    public nint onBeforePlayerBreakBlock(nint player, nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerBreakBlockBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerGameModeChangeBeforeEvent>' is not supported.", false)]
+    public nint onBeforePlayerGameModeChange(nint player, nint fromGameMode, nint toGameMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerGameModeChangeBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerInteractWithBlockBeforeEvent>' is not supported.", false)]
+    public nint onBeforePlayerInteractWithBlock(nint player, nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerInteractWithBlockBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerInteractWithEntityBeforeEvent>' is not supported.", false)]
+    public nint onBeforePlayerInteractWithEntity(nint player, nint target, nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerInteractWithEntityBeforeEvent>' is not supported.");
+
+    public void onBeforePlayerLeave(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C3.hs_method_07704da7((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerPlaceBlockBeforeEvent>' is not supported.", false)]
+    public nint onBeforePlayerPlaceBlock(nint player, nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerPlaceBlockBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWeatherChangedBeforeEvent>' is not supported.", false)]
+    public nint onBeforeWeatherChangedEvent(nint previousWeatherType, nint newWeatherType, int duration) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWeatherChangedBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWorldClockRestartBeforeEvent>' is not supported.", false)]
+    public nint onBeforeWorldClockRestart(nint clock, int newTime) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWorldClockRestartBeforeEvent>' is not supported.");
+
+    public void onBeforeWorldInitialize(global::Hosihikari.Bindings.Bedrock.Interop.ScriptingWorldInitializeEvent eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_64726141((void*)__hosihikari_shim_handle, (void*)eventData.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_58c71400((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerTickManager
+public sealed unsafe partial class PlayerTickManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerTickManager(nint handle) : this(handle, true) { }
 
     internal PlayerTickManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerTickManager Borrow(nint handle) => new PlayerTickManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,79 @@ public sealed unsafe partial class PlayerTickManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerTickManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<DimensionManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint dimensionManager, nint gameplayUserManager, nint playerTickProxy, bool isClientSide) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<DimensionManager>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerTickManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerTickManager Create(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void processPlayerNetworking(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_d560502e((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_2a1f304c((void*)__hosihikari_shim_handle);
     }
 
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
+    public static PlayerTickManager Create()
     {
-        NativeMethods.TablePtr->hs_method_519249e0((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_71699597();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerTickManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<DimensionManager>>' is not a known bindable declaration.", false)]
+    public static PlayerTickManager Create(nint dimensionManager, nint gameplayUserManager, nint playerTickProxy, bool isClientSide) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<DimensionManager>>' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b4292c8b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameplayUserManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5da48df5((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsClientSide
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_8f171eb6((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerTickProxy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ca9f1ddd((void*)__hosihikari_shim_handle);
+    }
+
+    public void processPlayerNetworking(global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a80839f9((void*)__hosihikari_shim_handle, (void*)currentTick.Handle);
+    }
+
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8c672a56((void*)__hosihikari_shim_handle, (void*)currentTick.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_3d97d963((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

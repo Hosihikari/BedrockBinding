@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum VaultBlockState : int
+public enum VaultBlockState : byte
 {
+    Inactive = 0,
+    Active = 1,
+    Unlocking = 2,
+    Ejecting = 3,
+    Count = 4,
 }

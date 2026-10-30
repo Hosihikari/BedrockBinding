@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameEventMapping
+public sealed unsafe partial class GameEventMapping : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameEventMapping(nint handle) : this(handle, true) { }
 
     internal GameEventMapping(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameEventMapping Borrow(nint handle) => new GameEventMapping(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,14 @@ public sealed unsafe partial class GameEventMapping
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameEventMapping Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameEventMapping Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.GameEvent? creatorNameToEvent(string arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.GameEvent? creatorNameToEvent(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -58,27 +50,34 @@ public sealed unsafe partial class GameEventMapping
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_30c20370(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_9f44de92(__hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameEvent((nint)__hs_handle, false) : null;
         }
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mExposedGameEvents_Address
+    public static nint mExposedGameEvents()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1d1e6333();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_13aca85f();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mGameEventPairs_Address
+    public static nint mGameEventPairs()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c5ad0fe7();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_b5586172();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_8ed9a2fb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

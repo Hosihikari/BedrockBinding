@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-public sealed unsafe partial class FilePickerManagerImpl : global::System.IDisposable
+public sealed unsafe partial class FilePickerManagerImpl
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FilePickerManagerImpl(nint handle) : this(handle, true) { }
 
     internal FilePickerManagerImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FilePickerManagerImpl Borrow(nint handle) => new FilePickerManagerImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,51 +33,32 @@ public sealed unsafe partial class FilePickerManagerImpl : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static FilePickerManagerImpl Create()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_62c9ee4f();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new FilePickerManagerImpl((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_20d8718a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilePickerManagerImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _directoryPickingEnabledForPlatform()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_73258146((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::FilePickerManager::DirectoryPickerResult>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _pickDirectory(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::FilePickerManager::DirectoryPickerResult>' requires --link-carrier or --virtual-dispatch.");
 
     public bool directoryPickingEnabledForPlatform()
     {
-        return NativeMethods.TablePtr->hs_method_c646bc52((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c114fa0b((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? pickDirectory(nint arg0)
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_bb6d4ea4((void*)_handle, (void*)arg0);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_38700d63((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::FilePickerManager::DirectoryPickerResult>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint pickDirectory(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::FilePickerManager::DirectoryPickerResult>' requires --link-carrier or --virtual-dispatch.");
 }

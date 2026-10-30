@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PathfinderNode
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PathfinderNode(nint handle) : this(handle, true) { }
 
     internal PathfinderNode(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PathfinderNode Borrow(nint handle) => new PathfinderNode(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,64 +33,74 @@ public sealed unsafe partial class PathfinderNode
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PathfinderNode Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PathfinderNode Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PathfinderNode Create_3973e79d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public float distanceTo(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? arg0)
+    public nint cameFrom
     {
-        return NativeMethods.TablePtr->hs_method_1f9d6569((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e6f57b26((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e6f57b26((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    public float distanceToSqr(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? arg0)
+    public bool closed
     {
-        return NativeMethods.TablePtr->hs_method_b8ae1d26((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        get => NativeMethods.TablePtr->C2.hs_get_1dbff327((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1dbff327((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool equals(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? arg0)
+    public float f
     {
-        return NativeMethods.TablePtr->hs_method_48d948bd((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_50ead916((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_50ead916((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getCostMalus()
+    public float g
     {
-        return NativeMethods.TablePtr->hs_method_74e95e3c((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_4e1c29af((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4e1c29af((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getType()
+    public float h
     {
-        return NativeMethods.TablePtr->hs_method_2ae4d11a((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_52c2fc46((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_52c2fc46((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool inOpenSet()
+    public int heapIdx
     {
-        return NativeMethods.TablePtr->hs_method_0c6be2f0((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_e1a97ef0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e1a97ef0((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setCostMalus(float arg0)
+    public float mCostMalus
     {
-        NativeMethods.TablePtr->hs_method_7d1a1e36((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_44867428((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_44867428((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setMoveMalus(float arg0)
+    public float mMoveMalus
     {
-        NativeMethods.TablePtr->hs_method_50dfcc3f((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_24ee286f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_24ee286f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mTargetDist
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_bd137d07((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_bd137d07((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_b280658a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b280658a((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint pos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f5a8382b((void*)__hosihikari_shim_handle);
     }
 }

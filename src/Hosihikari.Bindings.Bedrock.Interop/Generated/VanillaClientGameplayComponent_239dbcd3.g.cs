@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class VanillaClientGameplayComponent
+public sealed unsafe partial class VanillaClientGameplayComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VanillaClientGameplayComponent(nint handle) : this(handle, true) { }
 
     internal VanillaClientGameplayComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VanillaClientGameplayComponent Borrow(nint handle) => new VanillaClientGameplayComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,20 +33,116 @@ public sealed partial class VanillaClientGameplayComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaClientGameplayComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mBoatingInputSwitchRequested
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ab6a1ad4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_ab6a1ad4((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaClientGameplayComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mEmotingLastTick
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_778f2a09((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_778f2a09((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int mFlyTriggerSource
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_d9a62491((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d9a62491((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mJumpRidingTicks
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_2d3389e7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_2d3389e7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mJumpTriggerTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_e0e87561((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e0e87561((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastDelta_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e3f3c902((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_09d9d0c5((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mMinecartInputSwitchRequested
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_57371000((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_57371000((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mPreviousRidingDistance
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_c54e3485((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_c54e3485((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreviousRidingPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3b0ccdd1((void*)__hosihikari_shim_handle);
+    }
+
+    public int mScaffoldingDropHeldTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_61c187f5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_61c187f5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mSprintTriggerTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_11293134((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_11293134((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mSprintingOnInput
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_68491fb7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_68491fb7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mStartRidingTick
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_d0463609((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d0463609((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWasChangeHeight
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ee22a9b8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_ee22a9b8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWasJumping
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_55993e4b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_55993e4b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWasRunning
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_d085233d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_d085233d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWasSneaking
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ac4d3a3a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_ac4d3a3a((void*)__hosihikari_shim_handle, value);
+    }
 }

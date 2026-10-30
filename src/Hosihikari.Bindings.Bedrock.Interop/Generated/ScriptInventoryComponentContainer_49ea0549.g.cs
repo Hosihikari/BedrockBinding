@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptInventoryComponentContainer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptInventoryComponentContainer(nint handle) : this(handle, true) { }
 
     internal ScriptInventoryComponentContainer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptInventoryComponentContainer Borrow(nint handle) => new ScriptInventoryComponentContainer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,60 +33,79 @@ public sealed unsafe partial class ScriptInventoryComponentContainer : global::S
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptInventoryComponentContainer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ScriptInventoryComponentContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptInventoryComponentContainer arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRules_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_2f7826db((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ScriptInventoryComponentContainer((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_30ea1df4((void*)__hosihikari_shim_handle);
     }
 
-    public static ScriptInventoryComponentContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.WeakLifetimeScope arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_a41929fc((void*)arg0.Handle, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ScriptInventoryComponentContainer((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dc5d0313((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptInventoryComponentContainer>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bindV010() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptInventoryComponentContainer>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemContext __getItemContext(int slot)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemContext((nint)NativeMethods.TablePtr->C3.hs_method_99f01809((void*)__hosihikari_shim_handle, slot));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<int>' requires --link-carrier or --virtual-dispatch.", false)]
+    public global::Hosihikari.Bindings.Bedrock.Interop.Container? __tryGetContainer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_7829a729((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Container((nint)__hs_handle, false) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<int>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getEmptySlotsCount() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<int>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemContext _getItemContext(int slot)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemContext((nint)NativeMethods.TablePtr->C3.hs_method_19d0ab71((void*)__hosihikari_shim_handle, slot));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Container? _tryGetContainer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_34d5f4da((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Container((nint)__hs_handle, false) : null;
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bindV010()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_3f13439e());
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<int>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getEmptySlotsCount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<int>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<int>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityRef_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a7590776((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_49ea0549((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_49ea0549((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

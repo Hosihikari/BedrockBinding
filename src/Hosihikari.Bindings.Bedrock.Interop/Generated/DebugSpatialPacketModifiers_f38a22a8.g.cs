@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SpatialActorNetworkData_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DebugSpatialPacketModifiers
+public sealed unsafe partial class DebugSpatialPacketModifiers : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DebugSpatialPacketModifiers(nint handle) : this(handle, true) { }
 
     internal DebugSpatialPacketModifiers(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DebugSpatialPacketModifiers Borrow(nint handle) => new DebugSpatialPacketModifiers(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,102 @@ public sealed partial class DebugSpatialPacketModifiers
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static DebugSpatialPacketModifiers Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2423eb20();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DebugSpatialPacketModifiers((nint)handle);
+    }
+
+    public static DebugSpatialPacketModifiers Create(global::Hosihikari.Bindings.Bedrock.Interop.SpatialActorNetworkData_Nested.DebugSpatialPacketModifiers arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8635c4be((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DebugSpatialPacketModifiers((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2c6ac9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1b7cd0c5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk529cf2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_eda80d41((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk70a9cd_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_375485e4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk70f911_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3ec3684b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk92dc7e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1060dceb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka07cd9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bef3fa10((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcde04f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1a6dd5db((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke0a99e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e1320140((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke12a67_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a552480e((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpatialActorNetworkData_Nested.DebugSpatialPacketModifiers operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SpatialActorNetworkData_Nested.DebugSpatialPacketModifiers arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SpatialActorNetworkData_Nested.DebugSpatialPacketModifiers((nint)NativeMethods.TablePtr->C3.hs_method_7bc17b97((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f38a22a8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

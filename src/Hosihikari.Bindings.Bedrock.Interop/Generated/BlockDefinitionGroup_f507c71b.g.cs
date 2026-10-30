@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockDefinitionGroup
+public sealed unsafe partial class BlockDefinitionGroup : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockDefinitionGroup(nint handle) : this(handle, true) { }
 
     internal BlockDefinitionGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockDefinitionGroup Borrow(nint handle) => new BlockDefinitionGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,77 +33,62 @@ public sealed unsafe partial class BlockDefinitionGroup
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockDefinitionGroup Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockDefinitionGroup Create_97898e13(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockDefinitionGroup Create_d41b68bc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void buildBlockSchema(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.IPuvLoadEventing eventing)
     {
-        NativeMethods.TablePtr->hs_method_568989bf((void*)_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_7b3321d7((void*)__hosihikari_shim_handle, (void*)ctx.Handle, (void*)eventing.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition? generateBlockDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup_Nested.BlockResource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
+    public void _dtor()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_cf263953((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition((nint)__hs_handle) : null;
+        NativeMethods.TablePtr->C0.hs_method_fff0446d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,CompoundTag>' is not supported.", false)]
-    public nint generateServerBlockProperties_748a09a9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,CompoundTag>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint generateServerBlockProperties_ce5b01a2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint[] getBlockDefinitions()
+    public static BlockDefinitionGroup Create()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_acea3bd9((void*)_handle);
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
-        if (__hs_view.Size > 0)
+        var handle = NativeMethods.TablePtr->C0.hs_create_3811faf7();
+        if (handle == null)
         {
-            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        return __hs_result;
+
+        return new BlockDefinitionGroup((nint)handle);
     }
 
-    public void initializeBlockFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
+    public static BlockDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup arg0)
     {
-        NativeMethods.TablePtr->hs_method_da46621d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void initializeBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
-    {
-        NativeMethods.TablePtr->hs_method_bde3ebfd((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition? loadResource(string arg0, nint arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg3, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg4, bool arg5)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        var handle = NativeMethods.TablePtr->C0.hs_create_d41b68bc((void*)arg0.Handle);
+        if (handle == null)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        else
+
+        return new BlockDefinitionGroup((nint)handle);
+    }
+
+    public static BlockDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.IPuvLoadEventing eventing)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_32fb72da((void*)ctx.Handle, (void*)eventing.Handle);
+        if (handle == null)
         {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+
+        return new BlockDefinitionGroup((nint)handle);
+    }
+
+    public void _buildBlockDescriptionSchema(global::Hosihikari.Bindings.Abi.SharedHandle? description)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b90d12e7((void*)__hosihikari_shim_handle, description?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public bool _parseComponents(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value blockRoot, global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentGroupDescription componentGroupDescription, string blockIdentifier, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion originalJsonVersion, nint packLoadContext, bool isVanillaBlock)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(blockIdentifier);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -113,41 +98,191 @@ public sealed unsafe partial class BlockDefinitionGroup
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(blockIdentifier, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            return NativeMethods.TablePtr->C0.hs_method_07af4ed5((void*)__hosihikari_shim_handle, (void*)blockRoot.Handle, (void*)componentGroupDescription.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)originalJsonVersion.Handle, (void*)packLoadContext, isVanillaBlock) != 0;
+        }
+    }
+
+    public static byte _stringToCreativeItemCategory(string category, string blockIdentifier)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(category);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(category, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(blockIdentifier);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(blockIdentifier, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_handle = NativeMethods.TablePtr->hs_method_c9924111((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle, (void*)arg4.Handle, arg5);
-                return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition((nint)__hs_handle) : null;
+                return NativeMethods.TablePtr->C0.hs_method_ff0b4a92(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
             }
         }
     }
 
-    public void loadResources(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2)
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'PackLoadRequirement' is not supported.", false)]
+    public static bool _validatePrereleaseRequirements(nint logArea, nint jsonType, nint jsonIdentifier, nint releaseVersion, nint requirements, nint packLoadContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'PackLoadRequirement' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'ServerBlockProperty' is not supported.", false)]
+    public void digestServerBlockProperties(nint blocks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ServerBlockProperty' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' has no accessible destructor.", false)]
+    public nint generateBlockDefinition(nint resource, nint packLoadContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ServerBlockProperty' is not supported.", false)]
+    public nint generateServerBlockProperties() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ServerBlockProperty' is not supported.");
+
+    public nint[] getBlockDefinitions()
     {
-        NativeMethods.TablePtr->hs_method_a9e7eb46((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_f9c68b06((void*)__hosihikari_shim_handle);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void registerBlockDefinition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void registerBlockFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition arg0, bool arg1)
+    public void initBlockTypeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockType blockType, global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition definition)
     {
-        NativeMethods.TablePtr->hs_method_65fc724c((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C0.hs_method_d5d6ee56((void*)__hosihikari_shim_handle, (void*)blockType.Handle, (void*)definition.Handle);
     }
 
-    public void registerBlocks()
+    public void initializeBlockFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition definition, global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        NativeMethods.TablePtr->hs_method_b649f110((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_302fd73b((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)level.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_46a8404e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void initializeBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
+    {
+        NativeMethods.TablePtr->C0.hs_method_2cec2d1d((void*)__hosihikari_shim_handle, (void*)level.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' has no accessible destructor.", false)]
+    public nint loadResource(nint upgradedJsonData, nint res, nint resourcePacklocation, nint packLoadContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
+    public void loadResources(nint resourcePackManager, nint experiments, nint validator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockDefinitions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b01f633e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockResourceGroupNames_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b9ed055e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCtx_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d7549a3a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescriptionSchema_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_97044eb8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventHandlers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ead09c19((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventing_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_12bf132e((void*)__hosihikari_shim_handle);
+    }
+
+    public int mLastBlockId
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_4bbd0fd2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_4bbd0fd2((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTraitFactory_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4a425f9e((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup((nint)NativeMethods.TablePtr->C0.hs_method_66f02d13((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void registerBlockFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition definition, bool assertIfAlreadyExists)
+    {
+        NativeMethods.TablePtr->C0.hs_method_0b4c03af((void*)__hosihikari_shim_handle, (void*)definition.Handle, assertIfAlreadyExists);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockType? registerDataDrivenBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockDescription desc)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_dce6792e((void*)__hosihikari_shim_handle, (void*)desc.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockType((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition? tryGetBlockDefinition(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C0.hs_method_b84fe568((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition((nint)__hs_handle, false) : null;
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f507c71b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

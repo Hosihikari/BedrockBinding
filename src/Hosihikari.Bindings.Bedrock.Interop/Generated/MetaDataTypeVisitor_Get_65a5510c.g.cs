@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MetaDataTypeVisitor_Get
+public sealed unsafe partial class MetaDataTypeVisitor_Get : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MetaDataTypeVisitor_Get(nint handle) : this(handle, true) { }
 
     internal MetaDataTypeVisitor_Get(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MetaDataTypeVisitor_Get Borrow(nint handle) => new MetaDataTypeVisitor_Get(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,74 @@ public sealed partial class MetaDataTypeVisitor_Get
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MetaDataTypeVisitor_Get Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_fc09e8e4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MetaDataTypeVisitor_Get Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static MetaDataTypeVisitor_Get Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7131fb1b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new MetaDataTypeVisitor_Get((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static MetaDataTypeVisitor_Get Create(global::Hosihikari.Bindings.Bedrock.Interop.MetaDataTypeVisitor_Get arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_45ea5dc9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MetaDataTypeVisitor_Get((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetaDataTag_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a7a7b793((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_be1fbc3c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::variant<BaseGameVersion, std::basic_string<char>, LevelSeed64, GeneratorType, bool, short, DimensionHeightRange, NeighborAwareBlockUpgradeVersionType>' is not supported.", false)]
+    public nint operator_call_5177558d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<BaseGameVersion, std::basic_string<char>, LevelSeed64, GeneratorType, bool, short, DimensionHeightRange, NeighborAwareBlockUpgradeVersionType>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::variant<BaseGameVersion, std::basic_string<char>, LevelSeed64, GeneratorType, bool, short, DimensionHeightRange, NeighborAwareBlockUpgradeVersionType>' is not supported.", false)]
+    public nint operator_call_18c89576(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<BaseGameVersion, std::basic_string<char>, LevelSeed64, GeneratorType, bool, short, DimensionHeightRange, NeighborAwareBlockUpgradeVersionType>' is not supported.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MetaDataTypeVisitor_Get operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MetaDataTypeVisitor_Get arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MetaDataTypeVisitor_Get((nint)NativeMethods.TablePtr->C2.hs_method_5096d3e6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_65a5510c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,21 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Identity;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum EduSignInStage : int
 {
+    Unknown = 0,
+    AttemptingActiveDirectory = 1,
+    FailedActiveDirectory = 2,
+    AttemptingMess = 3,
+    FailedMess = 4,
+    PresentingingEula = 5,
+    Success = 6,
+    RefreshingActiveDirectory = 7,
+    RefreshActiveDirectorySuccess = 8,
+    RefreshActiveDirectoryFailed = 9,
+    AttemptingMessDemo = 10,
+    SuccessDemo = 11,
+    PresentingAgeVerification = 12,
+    AgeVerifyStarted = 13,
+    CanceledActiveDirectory = 14,
 }

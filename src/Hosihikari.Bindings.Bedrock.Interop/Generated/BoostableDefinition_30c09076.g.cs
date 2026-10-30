@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BoostableDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BoostableDefinition(nint handle) : this(handle, true) { }
 
     internal BoostableDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BoostableDefinition Borrow(nint handle) => new BoostableDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,31 @@ public sealed unsafe partial class BoostableDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BoostableDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BoostableDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_2db2e3a9(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C0.hs_method_7838026e(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoostableComponent arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoostItems_Address
     {
-        NativeMethods.TablePtr->hs_method_791341bc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_412e8cf9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mMaxBoostTime
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_f798439b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f798439b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mSpeedModifier
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_69e42e22((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_69e42e22((void*)__hosihikari_shim_handle, value);
+    }
 }

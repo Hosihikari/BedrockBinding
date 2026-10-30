@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandFlag : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandFlag(nint handle) : this(handle, true) { }
 
     internal CommandFlag(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandFlag Borrow(nint handle) => new CommandFlag(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,74 @@ public sealed unsafe partial class CommandFlag : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static CommandFlag Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8597f4af();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandFlag((nint)handle);
+    }
+
+    public static CommandFlag Create(ushort value)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7590a310(value);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandFlag((nint)handle);
+    }
+
+    public bool operator_not_equal(global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag rhs)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_2abd3abc((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
+
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag rhs)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b3beb9e1((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag operator_operator__(ushort rhs)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag((nint)NativeMethods.TablePtr->C0.hs_method_9cc710d1((void*)__hosihikari_shim_handle, rhs), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag operator_operator__(global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag rhs)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag((nint)NativeMethods.TablePtr->C0.hs_method_233b19b4((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag remove(ushort rhs)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag((nint)NativeMethods.TablePtr->C0.hs_method_3e59d480((void*)__hosihikari_shim_handle, rhs), false);
+    }
+
+    public ushort value
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_a7d73052((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a7d73052((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_9319a2a8((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_9319a2a8((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

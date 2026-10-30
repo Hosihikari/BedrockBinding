@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockStateGroup
+public sealed unsafe partial class BlockStateGroup : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockStateGroup(nint handle) : this(handle, true) { }
 
     internal BlockStateGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockStateGroup Borrow(nint handle) => new BlockStateGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,41 @@ public sealed unsafe partial class BlockStateGroup
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockStateGroup Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockStateGroup Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static int MAX_ENUM_SIZE
+    public nint _ctor()
     {
-        get => NativeMethods.TablePtr->hs_get_4bc8c420();
+        return (nint)NativeMethods.TablePtr->C0.hs_method_ecc4219c((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockStateMeta? getBlockStateFromHash(nint arg0)
+    public void _dtor()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_746d66f0((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C0.hs_method_af61c121((void*)__hosihikari_shim_handle);
+    }
+
+    public static BlockStateGroup Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2be7abcf();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockStateGroup((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockStateMeta? getBlockStateFromHash(nint h)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_2c1909d0((void*)__hosihikari_shim_handle, (void*)h);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockStateMeta((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockStateMeta? getBlockStateFromName(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockStateMeta? getBlockStateFromName(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -69,17 +77,23 @@ public sealed unsafe partial class BlockStateGroup
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_04e5995a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C0.hs_method_18a038f3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockStateMeta((nint)__hs_handle, false) : null;
         }
     }
 
-    public static bool loadBlockStateFromJson(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateDefinition arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
+    public ulong lastStateID
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        get => NativeMethods.TablePtr->C0.hs_get_0f194937((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_0f194937((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static bool loadBlockStateFromJson(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateDefinition blockState, string name, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -89,24 +103,64 @@ public sealed unsafe partial class BlockStateGroup
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_0ac838d2((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle) != 0;
+            return NativeMethods.TablePtr->C0.hs_method_7f89a616((void*)blockState.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)root.Handle) != 0;
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerBlockStateDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateDefinition arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockStates_Address
     {
-        NativeMethods.TablePtr->hs_method_916505b8((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c3020326((void*)__hosihikari_shim_handle);
     }
 
-    public void registerExistingBlockState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHashNames_Address
     {
-        NativeMethods.TablePtr->hs_method_410d37e6((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_affae2f8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdNames_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_262e44cf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mJsonBlockStates_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_76269ec2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegisteredBlockStates_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4442bda6((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerBlockStateDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateDefinition def)
+    {
+        NativeMethods.TablePtr->C0.hs_method_52af388f((void*)__hosihikari_shim_handle, (void*)def.Handle);
+    }
+
+    public void registerExistingBlockState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState state)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9a0af9a9((void*)__hosihikari_shim_handle, (void*)state.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_bcc0052b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

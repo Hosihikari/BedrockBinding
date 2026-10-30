@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SignBlockActor_Nested.Text_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum LoadMode : int
 {
+    TextOnly = 0,
+    AllData = 1,
 }

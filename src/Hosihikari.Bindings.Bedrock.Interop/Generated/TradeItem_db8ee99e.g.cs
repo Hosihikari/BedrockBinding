@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class TradeItem
+public sealed unsafe partial class TradeItem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TradeItem(nint handle) : this(handle, true) { }
 
     internal TradeItem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TradeItem Borrow(nint handle) => new TradeItem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,114 @@ public sealed partial class TradeItem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TradeItem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint item) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TradeItem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_cde76cf4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_233c6390(nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static TradeItem Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f27f501b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_ad40525e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new TradeItem((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static TradeItem Create(nint item) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static TradeItem Create(global::Hosihikari.Bindings.Bedrock.Interop.TradeItem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f540b073((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TradeItem((nint)handle);
+    }
+
+    public int count_max
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_94e5e89f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_94e5e89f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int count_min
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_70455d9a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_70455d9a((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f69a533c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint functions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_820d5acb((void*)__hosihikari_shim_handle);
+    }
+
+    public int itemAux
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f5020b9c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f5020b9c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int itemId
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_def3af3c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_def3af3c((void*)__hosihikari_shim_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint item) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TradeItem operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.TradeItem arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TradeItem((nint)NativeMethods.TablePtr->C3.hs_method_ad40525e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint originalName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7a293dfc((void*)__hosihikari_shim_handle);
+    }
+
+    public float price_multiplier
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_6765c751((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_6765c751((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_db8ee99e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

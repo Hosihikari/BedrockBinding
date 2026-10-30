@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.QuickJS;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS;
 
-public sealed unsafe partial class ContextScopeListener
+public sealed unsafe partial class ContextScopeListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ContextScopeListener(nint handle) : this(handle, true) { }
 
     internal ContextScopeListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ContextScopeListener Borrow(nint handle) => new ContextScopeListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,58 +33,87 @@ public sealed unsafe partial class ContextScopeListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContextScopeListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContextScopeListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void onDestroyObject(nint arg0, nint arg1, nint arg2, uint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void onMakeObject(nint arg0, nint arg1, nint arg2, uint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void onObjectPromotedToMultipleOwners(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void onObjectReducedToSingleOwner(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public void onPostLifetimeScopeDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.LifetimeRegistry arg0)
+    public void _onPostLifetimeScopeDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry arg0)
     {
-        NativeMethods.TablePtr->hs_method_136db301((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_7302058e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    public void onPreLifetimeScopeDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.LifetimeRegistry arg0)
+    public void _onPreLifetimeScopeDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry registry)
     {
-        NativeMethods.TablePtr->hs_method_51ba0d61((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_a3760eea((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void onTrackObject(nint arg0, nint arg1, nint arg2, uint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    public static ContextScopeListener Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_afa1890b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void onUntrackObject(nint arg0, nint arg1, nint arg2, uint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        return new ContextScopeListener((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ContextScopeListener Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextScopeListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_62dc855f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new ContextScopeListener((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1aace1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_158d30e8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk910ca8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a98249d7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkad91a9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_59f108c6((void*)__hosihikari_shim_handle);
+    }
+
+    public void onPostLifetimeScopeDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry arg0)
+    {
+        NativeMethods.TablePtr->C3.hs_method_fb307d94((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void onPreLifetimeScopeDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry registry)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9b5279dc((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextScopeListener operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextScopeListener arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextScopeListener((nint)NativeMethods.TablePtr->C3.hs_method_bb4450f0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f2abe01d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

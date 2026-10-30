@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum RecordStatus : int
+public enum RecordStatus : byte
 {
+    Ok = 0,
+    PendingUpdate = 1,
+    Deleted = 2,
 }

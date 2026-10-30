@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OceanRuinPieces
+public sealed unsafe partial class OceanRuinPieces : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OceanRuinPieces(nint handle) : this(handle, true) { }
 
     internal OceanRuinPieces(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OceanRuinPieces Borrow(nint handle) => new OceanRuinPieces(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,143 +33,57 @@ public sealed unsafe partial class OceanRuinPieces
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string BIG_RUIN_LOOT
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_eeae4ed6();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OceanRuinPieces Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OceanRuinPieces Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static string RUIN_LOOT
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_b241e6dc();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string STRUCTURE_BIG_RUIN1_BRICK
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_9380ccdb();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string STRUCTURE_BIG_RUIN8_BRICK
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_73bb2ad8();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string STRUCTURE_RUIN_2_BRICK
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_298a89bf();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string STRUCTURE_RUIN_3_BRICK
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_0e111ec9();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void _addClusterRuins_eaf74997(nint structureManager, nint random, nint rotation, nint parentPos, nint configuration, nint pieces) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void _addPiece_ed56ccaa(nint structureManager, nint position, nint rotation, nint pieces, nint random, nint configuration, bool isLarge, float baseIntegrity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
-    public static void addPieces_49499103(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+    public static void _addPiece(nint structureManager, nint position, nint rotation, nint pieces, nint random, nint configuration, nint isLarge, nint baseIntegrity) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void addPieces_3775956b(nint structureManager, nint position, nint rotation, nint pieces, nint random, nint configuration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[4]' is not supported.", false)]
+    public static nint bigRuinsBrick() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[4]' is not supported.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint bigRuinsBrick_Address
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[4]' is not supported.", false)]
+    public static nint bigRuinsCracked() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[4]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[4]' is not supported.", false)]
+    public static nint bigRuinsMossy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[4]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[4]' is not supported.", false)]
+    public static nint bigWarmRuins() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[4]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[9]' is not supported.", false)]
+    public static nint ruinsBrick() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[9]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[9]' is not supported.", false)]
+    public static nint ruinsCracked() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[9]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[9]' is not supported.", false)]
+    public static nint ruinsMossy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[9]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[8]' is not supported.", false)]
+    public static nint warmRuins() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::basic_string_view<char> (&)[8]' is not supported.");
+
+    public void Dispose()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c7a7dbea();
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b003c700((void*)__hosihikari_shim_handle);
+            }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint bigRuinsCracked_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ba8f10a3();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint bigRuinsMossy_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_55dfb4bc();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint bigWarmRuins_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e5c01807();
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings mSettings
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings((nint)NativeMethods.TablePtr->hs_get_71a0d6d7(), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint ruinsBrick_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_de4ff48c();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint ruinsCracked_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_59340bf6();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint ruinsMossy_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e12696dd();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint warmRuins_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_72437910();
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

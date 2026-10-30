@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BuoyancyComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BuoyancyComponent(nint handle) : this(handle, true) { }
 
     internal BuoyancyComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BuoyancyComponent Borrow(nint handle) => new BuoyancyComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,52 +33,19 @@ public sealed unsafe partial class BuoyancyComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BuoyancyComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BuoyancyComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool canFloat(global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1)
+    public bool canFloat(global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region)
     {
-        return NativeMethods.TablePtr->hs_method_6a396bf0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_a22bdf7f((void*)__hosihikari_shim_handle, (void*)stateVectorComponent.Handle, (void*)region.Handle) != 0;
     }
 
-    public float getBaseBuoyancy()
+    public void loadData(string data, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion engineVersion)
     {
-        return NativeMethods.TablePtr->hs_method_a9400075((void*)_handle);
-    }
-
-    public float getBigWaveProbability()
-    {
-        return NativeMethods.TablePtr->hs_method_d4325f4a((void*)_handle);
-    }
-
-    public float getBigWaveSpeedMultiplier()
-    {
-        return NativeMethods.TablePtr->hs_method_969ef86e((void*)_handle);
-    }
-
-    public double getTimer()
-    {
-        return NativeMethods.TablePtr->hs_method_b814a52d((void*)_handle);
-    }
-
-    public void increaseTimer(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_51482910((void*)_handle, arg0);
-    }
-
-    public void loadData(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -88,37 +55,69 @@ public sealed unsafe partial class BuoyancyComponent
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_49dbada3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            NativeMethods.TablePtr->C0.hs_method_a4dc166c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)engineVersion.Handle);
         }
     }
 
-    public bool needToResurface(global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1)
+    public bool mApplyGravity
     {
-        return NativeMethods.TablePtr->hs_method_b8a4b2d9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_9cecd309((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_9cecd309((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_013026b5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_7de1a81d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool shouldApplyGravity()
+    public float mBaseBuoyancy
     {
-        return NativeMethods.TablePtr->hs_method_cd7bf787((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_71907339((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_71907339((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool shouldSimulateWaves()
+    public float mBigWaveProbability
     {
-        return NativeMethods.TablePtr->hs_method_bc21b0c6((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_91b7d396((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_91b7d396((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_e416f5f8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public float mBigWaveSpeedMultiplier
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_f6b3faf1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f6b3faf1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mCanAutoStepFromLiquid
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_d3485d83((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_d3485d83((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mDragDownOnRemoval
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_2b531518((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_2b531518((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLiquidBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f3c9c918((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mMovementType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_c6a3b124((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_c6a3b124((void*)__hosihikari_shim_handle, value);
+    }
+
+    public double mTimer
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_14b83df3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_14b83df3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool needToResurface(global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_583e44d8((void*)__hosihikari_shim_handle, (void*)stateVectorComponent.Handle, (void*)region.Handle) != 0;
+    }
 }

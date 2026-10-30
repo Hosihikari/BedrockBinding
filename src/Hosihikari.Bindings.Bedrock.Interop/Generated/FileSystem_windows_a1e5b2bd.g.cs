@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class FileSystem_windows
+public sealed unsafe partial class FileSystem_windows : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FileSystem_windows(nint handle) : this(handle, true) { }
 
     internal FileSystem_windows(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FileSystem_windows Borrow(nint handle) => new FileSystem_windows(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,160 +33,224 @@ public sealed partial class FileSystem_windows
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileSystem_windows Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk104955_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_78134bef((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileSystem_windows Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk26049b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0e080dfa((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk906cc5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6f1b9a40((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_34() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9bcf95_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_47a3dba9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_35() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka1996d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2120af33((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaaf50d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ba5b1c5f((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc9bc1f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5b273f7b((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkdc96a2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_146821d0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _copyDirectoryAndContentsRecursively(nint sourceDirectoryPath, nint targetDirectoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkddc461_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cb01bb61((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _copyFile(nint sourceFileName, nint targetFileName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf94830_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4ac2a6b0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _copyFileWithLimit(nint sourceFileName, nint targetFileName, ulong startPosition, nint outBytesWritten, nint outBytesRemaining) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __copyTimeAndAccessRights(nint sourceEntryPath, nint targetEntryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _copyFlatFile(nint sourceDirectoryPath, nint targetDirectoryPath, nint excludedDirectories, nint excludedFiles) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __createOneDirectory(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _createDirectoryRecursively(nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __deleteEmptyDirectory(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _createEmptyFile(nint fileName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __deleteFile(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _createFlatFile(nint sourceDirectoryPath, nint targetDirectoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool __directoryExists(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _createOneDirectoryIfNotExisting(nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool __fileExists(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _deleteDirectoryAndContentsRecursively(nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool __fileOrDirectoryExists(nint entryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _deleteDirectoryContentsRecursively(nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __getEntryType(nint entryPath, nint fileTypeOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _deleteRecursively(nint directoryPath, nint deleteFileType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __getFileSize(nint filePath, nint pFileSizeOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _endTransaction() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __getLastModificationTime(nint filePath, nint pModificationTime) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _flatFileDeleteFileOrDirectory(nint fileOrDirectoryPath, nint manifestPath, bool directoryDeleteEnabled, bool deleteRecursively) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __iterateOverDirectory(nint directoryPath, nint flags, nint fx) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _flatFileDirectoryExists(nint directoryPath, nint manifestPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __openFile(nint uptFileOut, nint filename, nint fileOpenMode, nint bufferingMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _flatFileFileExists(nint filePath, nint manifestPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __renameDirectory(nint sourceDirectoryPath, nint targetDirectoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _flatFileGetFileSize(nint filePath, nint manifestPath, nint pFileSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __renameFile(nint sourceFilePath, nint targetFilePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _flatFileIterateOverDirectory(nint directoryPath, nint manifestPath, nint flags, nint callbackFunction) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint _ctor(int accessType, global::Hosihikari.Bindings.Abi.SharedHandle? storageArea, global::Hosihikari.Bindings.Abi.SharedHandle? manifestTracker)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_0b65eed9((void*)__hosihikari_shim_handle, accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getDirectoryFiles(nint files, nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static FileSystem_windows Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5ad3c9f0();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getDirectoryFilesAllocatedSizeRecursively(nint totalSize, nint totalSizeAllocated, nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new FileSystem_windows((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getDirectoryFilesRecursively(nint filesOut, nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static FileSystem_windows Create(int accessType, global::Hosihikari.Bindings.Abi.SharedHandle? storageArea, global::Hosihikari.Bindings.Abi.SharedHandle? manifestTracker)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5687e86e(accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getDirectoryFilesSizeRecursively(nint totalSize, nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new FileSystem_windows((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getFileOrDirectorySize(nint entryName, nint pFileSizeOut) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _copyTimeAndAccessRights(nint sourceEntryPath, nint targetEntryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _isDirectoryPathAFlatFile(nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _createOneDirectory(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _iterateOverDirectoryWide_80205697(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _deleteEmptyDirectory(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _readFileData(nint filePath, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _deleteFile(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _writeOperation(nint fullPath, nint result, nint observerCallOrNull, ulong numBytesWritten) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool _directoryExists(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint copyTimeAndAccessRights(nint sourceFilePath, nint targetFilePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool _fileExists(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLastModificationTime(nint entryPath, nint lastModificationTime) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool _fileOrDirectoryExists(nint entryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getEntryType(nint entryPath, nint fileTypeOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getFileSize(nint filePath, nint pFileSizeOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getLastModificationTime(nint filePath, nint pModificationTime) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _iterateOverDirectory(nint directoryPath, nint flags, nint fx) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _makeFailureFromFileSystemResult(nint errorCode, nint function, nint fileContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _openFile(nint uptFileOut, nint filename, nint fileOpenMode, nint bufferingMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _renameDirectory(nint sourceDirectoryPath, nint targetDirectoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _renameFile(nint sourceFilePath, nint targetFilePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a1e5b2bd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

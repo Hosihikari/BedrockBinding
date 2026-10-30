@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class RandomSpreadPlacement
+public sealed unsafe partial class RandomSpreadPlacement : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RandomSpreadPlacement(nint handle) : this(handle, true) { }
 
     internal RandomSpreadPlacement(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RandomSpreadPlacement Borrow(nint handle) => new RandomSpreadPlacement(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,44 @@ public sealed unsafe partial class RandomSpreadPlacement
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RandomSpreadPlacement Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RandomSpreadPlacement Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos placementChunk(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructurePlacement arg0, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState arg1, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg2)
+    public int mSeparation
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos((nint)NativeMethods.TablePtr->hs_method_196990ed((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle));
+        get => NativeMethods.TablePtr->C4.hs_get_ec984fca((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_ec984fca((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mSpacing
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_91092009((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_91092009((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mType
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_93d80dfb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_93d80dfb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos placementChunk(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructurePlacement def, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState state, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos((nint)NativeMethods.TablePtr->C4.hs_method_60887232((void*)__hosihikari_shim_handle, (void*)def.Handle, (void*)state.Handle, (void*)chunkPos.Handle));
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_cfba6880((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

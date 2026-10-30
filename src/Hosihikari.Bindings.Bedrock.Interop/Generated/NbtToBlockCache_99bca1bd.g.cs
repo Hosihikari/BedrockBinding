@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockSerializationUtils;
 
-public sealed unsafe partial class NbtToBlockCache : global::System.IDisposable
+public sealed unsafe partial class NbtToBlockCache
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NbtToBlockCache(nint handle) : this(handle, true) { }
 
     internal NbtToBlockCache(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NbtToBlockCache Borrow(nint handle) => new NbtToBlockCache(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,20 @@ public sealed unsafe partial class NbtToBlockCache : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCache_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_69d9247a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_69d9247a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2523d471((void*)_handle);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_99bca1bd((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2523d471((void*)__hosihikari_shim_handle);
     }
 }

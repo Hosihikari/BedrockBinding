@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum CommandCompareOperator : sbyte
+public enum CommandCompareOperator : byte
 {
     Invalid = 0,
     Equals = 1,

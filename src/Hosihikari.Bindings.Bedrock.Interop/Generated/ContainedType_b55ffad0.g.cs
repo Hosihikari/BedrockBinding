@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ContainedType : int
+public enum ContainedType : sbyte
 {
+    None = -1,
+    IntProperty = 0,
+    FloatProperty = 1,
+    BoolProperty = 2,
+    EnumIndexProperty = 3,
+    Count = 4,
 }

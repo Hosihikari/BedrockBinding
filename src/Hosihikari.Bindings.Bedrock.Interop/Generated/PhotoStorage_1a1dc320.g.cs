@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PhotoStorage
+public sealed unsafe partial class PhotoStorage : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PhotoStorage(nint handle) : this(handle, true) { }
 
     internal PhotoStorage(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PhotoStorage Borrow(nint handle) => new PhotoStorage(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,64 +33,114 @@ public sealed unsafe partial class PhotoStorage
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string BOOKS_DIR
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path baseDir)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_5f1961b8();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        return (nint)NativeMethods.TablePtr->C2.hs_method_4ea2a62e((void*)__hosihikari_shim_handle, (void*)baseDir.Handle);
     }
 
-    public static string MANIFEST_NAME
+    public void _dtor()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_e687e53b();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        NativeMethods.TablePtr->C2.hs_method_28f8cf5c((void*)__hosihikari_shim_handle);
     }
 
-    public static string PHOTOITEM_DIR
+    public static string BOOKS_DIR()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_a83af920();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_76732ec5();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string PHOTO_DIR
+    public static string MANIFEST_NAME()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_bd4cae00();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_97d10972();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PhotoStorage Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static string PHOTOITEM_DIR()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_f22911f7();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PhotoStorage Create_d772c3d8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static string PHOTO_DIR()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_7a0709eb();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PhotoStorage Create_eef43e77(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static PhotoStorage Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_bf75800e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new PhotoStorage((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_5601b1e3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static PhotoStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path baseDir)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_473b7200((void*)baseDir.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PhotoStorage((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBaseDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_02a0548d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBookDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_86f94832((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChecksums_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c38334f9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mManifestDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e2e4066b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPhotoDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ad955778((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPhotoItemDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ffa49637((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_1a1dc320((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

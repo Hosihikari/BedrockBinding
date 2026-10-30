@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
 public sealed unsafe partial class LifetimeRegistry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LifetimeRegistry(nint handle) : this(handle, true) { }
 
     internal LifetimeRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LifetimeRegistry Borrow(nint handle) => new LifetimeRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,76 +33,188 @@ public sealed unsafe partial class LifetimeRegistry : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LifetimeRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public static LifetimeRegistry Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LifetimeRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void addReference(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public void destroyLifetimeScope(bool arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, nint registryRef)
     {
-        NativeMethods.TablePtr->hs_method_e54810e8((void*)_handle, arg0);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_f7112721((void*)__hosihikari_shim_handle, (void*)contextId.Handle, (void*)registryRef);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public bool removeReference(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint resolveAsAny(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint resolveAsStrongTypedObjectHandle(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint resolveAsTypedObjectHandle(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint resolveAsWeakTypedObjectHandle(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_type' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint resolvedType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_type' requires --link-carrier or --virtual-dispatch.");
-
-    public bool valid(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ObjectHandle arg0)
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_e858a672((void*)_handle, (void*)arg0.Handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_a4475480((void*)__hosihikari_shim_handle);
+    }
+
+    public static LifetimeRegistry Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5e808d63();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LifetimeRegistry((nint)handle);
+    }
+
+    public static LifetimeRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, nint registryRef)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_428b0f73((void*)contextId.Handle, (void*)registryRef);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LifetimeRegistry((nint)handle);
+    }
+
+    public static LifetimeRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1c196258((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LifetimeRegistry((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _createBaseObject(nint baseScriptComp) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void _destroyObject(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle, nint baseScriptComp)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d703d573((void*)__hosihikari_shim_handle, (void*)handle.Handle, (void*)baseScriptComp);
+    }
+
+    public bool _doTypesMatch(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle, nint expectedType)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_39535bd4((void*)__hosihikari_shim_handle, (void*)handle.Handle, (void*)expectedType) != 0;
+    }
+
+    public void addReference(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a4f7794b((void*)__hosihikari_shim_handle, (void*)handle.Handle);
+    }
+
+    public void destroyLifetimeScope(bool expectAllDead)
+    {
+        NativeMethods.TablePtr->C3.hs_method_e54810e8((void*)__hosihikari_shim_handle, expectAllDead);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IScriptRef? getScriptRef(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_ba520bfa((void*)__hosihikari_shim_handle, (void*)handle.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IScriptRef((nint)__hs_handle, false) : null;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint handleCache_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7d929f2c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContextId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a5cfda6b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mObjectListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7e2b8122((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistryReference_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_843010ed((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScopeListener_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bc51cc60((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTypeCache_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bf2b612a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry((nint)NativeMethods.TablePtr->C3.hs_method_2fa31785((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint registry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5687fb4a((void*)__hosihikari_shim_handle);
+    }
+
+    public void removeObjectListener(global::Hosihikari.Bindings.Abi.SharedHandle? strongListener)
+    {
+        NativeMethods.TablePtr->C3.hs_method_28cf809c((void*)__hosihikari_shim_handle, strongListener?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public bool removeReference(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_323a6d03((void*)__hosihikari_shim_handle, (void*)handle.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint removingEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cd6e9273((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint resolveAsAny(nint handle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint resolveAsStrongTypedObjectHandle(nint handle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint resolveAsTypedObjectHandle(nint handle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint resolveAsWeakTypedObjectHandle(nint handle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
+
+    public nint resolvedType(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_67dbea38((void*)__hosihikari_shim_handle, (void*)handle.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void setScriptRef(nint handle, nint scriptRef) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public bool valid(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_8708b59e((void*)__hosihikari_shim_handle, (void*)handle.Handle) != 0;
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_438c32f9((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_438c32f9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

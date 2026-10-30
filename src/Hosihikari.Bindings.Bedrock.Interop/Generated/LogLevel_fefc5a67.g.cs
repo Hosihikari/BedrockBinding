@@ -4,10 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum LogLevel : int
+public enum LogLevel : uint
 {
     Verbose = 0,
-    Info = 1,
+    Inform = 1,
     Warning = 2,
     Error = 3,
     Count = 4,

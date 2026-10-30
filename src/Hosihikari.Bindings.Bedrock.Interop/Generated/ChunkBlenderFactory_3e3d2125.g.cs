@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ChunkBlenderFactory
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkBlenderFactory(nint handle) : this(handle, true) { }
 
     internal ChunkBlenderFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkBlenderFactory Borrow(nint handle) => new ChunkBlenderFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,47 @@ public sealed unsafe partial class ChunkBlenderFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkBlenderFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChunkBlenderFactory Create_cdd49e32(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkBlenderFactory Create_ca6a9d31(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _finalizeChunkAttenuationData_a0a9c354(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _processDensityColumn_21b0d172(nint arg0, nint arg1, float weight, nint arg3, nint arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _updateIntermediateAttenuationData_2b750e0b(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateChunkBlender(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0)
+    public void freeChunkBlenderCache()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_2908eb39((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_81c49f8e((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateChunkBlender(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos lcPosition)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_1725cdd1((void*)__hosihikari_shim_handle, (void*)lcPosition.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public bool isClientSide()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttenuatorCache_Address
     {
-        return NativeMethods.TablePtr->hs_method_dd1d6ad8((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_683ced10((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttenuatorSharedMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6f1748b5((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mChunkSource
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_015af4dc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_015af4dc((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public short mDimensionMinHeight
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b9c46a25((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsClientSide
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_af2f9bb3((void*)__hosihikari_shim_handle) != 0;
+    }
 }

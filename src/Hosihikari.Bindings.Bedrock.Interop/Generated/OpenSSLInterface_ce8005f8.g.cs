@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Crypto.Asymmetric;
 
-public sealed unsafe partial class OpenSSLInterface
+public sealed unsafe partial class OpenSSLInterface : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OpenSSLInterface(nint handle) : this(handle, true) { }
 
     internal OpenSSLInterface(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OpenSSLInterface Borrow(nint handle) => new OpenSSLInterface(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,14 @@ public sealed unsafe partial class OpenSSLInterface
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OpenSSLInterface Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OpenSSLInterface Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public string computeSharedSecret(string arg0, string arg1)
+    public string _computeSharedSecret(string myPrivateKey, string peerPublicKey)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(myPrivateKey);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -58,8 +50,8 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(myPrivateKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(peerPublicKey);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -69,20 +61,28 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(peerPublicKey, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_view = NativeMethods.TablePtr->hs_method_bda31b99((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_7bb243a4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
                 return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
             }
         }
     }
 
-    public string decryptData(string arg0, string arg1, int arg2)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _constructPublicKey(nint components) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::variant<Crypto::Asymmetric::RsaPublicKeyComponents, Crypto::Asymmetric::EcPublicKeyComponents>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _deconstructPublicKey(nint publicKey) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::variant<Crypto::Asymmetric::RsaPublicKeyComponents, Crypto::Asymmetric::EcPublicKeyComponents>>' requires --link-carrier or --virtual-dispatch.");
+
+    public string _decryptData(string privateKey, string data, int paddingType)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(privateKey);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -92,8 +92,8 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(privateKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -103,20 +103,24 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_view = NativeMethods.TablePtr->hs_method_5031f676((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_dc69af81((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, paddingType);
                 return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
             }
         }
     }
 
-    public string encryptData(string arg0, string arg1, int arg2, int arg3)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _derivePublicKey(nint privateKey) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    public string _encryptData(string publicKey, string data, int paddingType, int keyFormat, bool useSHA256)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(publicKey);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -126,8 +130,8 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -137,28 +141,28 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_view = NativeMethods.TablePtr->hs_method_80882c92((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3);
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_4b1b3cc5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, paddingType, keyFormat, useSHA256);
                 return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
             }
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool generateKeyPair(nint arg0, nint arg1) =>
+    public bool _generateKeyPair(nint privateKey, nint publicKey) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _parsePrivateKey(nint privateKey, nint format) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
 
-    public string signData(string arg0, string arg1, int arg2, int arg3)
+    public string _signData(string privateKey, string data, int hash, int format)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(privateKey);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -168,8 +172,8 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(privateKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -179,20 +183,20 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_view = NativeMethods.TablePtr->hs_method_8ab4ef57((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3);
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_9e68d536((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, hash, format);
                 return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
             }
         }
     }
 
-    public bool verifyData(string arg0, string arg1, string arg2, int arg3)
+    public bool _verifyData(string publicKey, string signature, string data, int hash)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(publicKey);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -202,8 +206,8 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(signature);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -213,8 +217,8 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(signature, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -224,20 +228,292 @@ public sealed unsafe partial class OpenSSLInterface
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    return NativeMethods.TablePtr->hs_method_cf9d1bd8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3) != 0;
+                    return NativeMethods.TablePtr->C1.hs_method_d66050d5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, hash) != 0;
                 }
             }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static OpenSSLInterface Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_df9c662a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpenSSLInterface((nint)handle);
+    }
+
+    public static OpenSSLInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Asymmetric.OpenSSLInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_571b29df((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpenSSLInterface((nint)handle);
+    }
+
+    public string computeSharedSecret(string myPrivateKey, string peerPublicKey)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(myPrivateKey);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(myPrivateKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(peerPublicKey);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(peerPublicKey, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_bb70edf0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint constructPublicKey(nint components) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::variant<Crypto::Asymmetric::RsaPublicKeyComponents, Crypto::Asymmetric::EcPublicKeyComponents>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint deconstructPublicKey(nint publicKey) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::variant<Crypto::Asymmetric::RsaPublicKeyComponents, Crypto::Asymmetric::EcPublicKeyComponents>>' requires --link-carrier or --virtual-dispatch.");
+
+    public string decryptData(string privateKey, string data, int paddingType)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(privateKey);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(privateKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_044a4a21((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, paddingType);
+                return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint derivePublicKey(nint privateKey) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    public string encryptData(string publicKey, string data, int paddingType, int keyFormat, bool useSHA256)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(publicKey);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_2dfab308((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, paddingType, keyFormat, useSHA256);
+                return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public bool generateKeyPair(nint privateKey, nint publicKey) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Crypto::Asymmetric::System>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint inferSystemFromPublicKey(nint publicKey) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Crypto::Asymmetric::System>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2484a2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cab283a7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk46aacc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d412aa2c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk931832_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_46d04ff1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkce0d9f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_08523f17((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Asymmetric.OpenSSLInterface operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Asymmetric.OpenSSLInterface arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Asymmetric.OpenSSLInterface((nint)NativeMethods.TablePtr->C1.hs_method_3dd44cc2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint parsePrivateKey(nint privateKey, nint format) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    public string signData(string privateKey, string data, int hash, int format)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(privateKey);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(privateKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_b2159461((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, hash, format);
+                return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            }
+        }
+    }
+
+    public bool verifyData(string publicKey, string signature, string data, int hash)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(publicKey);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(signature);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(signature, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    return NativeMethods.TablePtr->C1.hs_method_13671806((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, hash) != 0;
+                }
+            }
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ce8005f8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

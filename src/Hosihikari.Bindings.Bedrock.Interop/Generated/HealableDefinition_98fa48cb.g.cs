@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class HealableDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public HealableDefinition(nint handle) : this(handle, true) { }
 
     internal HealableDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static HealableDefinition Borrow(nint handle) => new HealableDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,19 @@ public sealed unsafe partial class HealableDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static HealableDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HealableDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addFeedItem(global::Hosihikari.Bindings.Bedrock.Interop.FeedItem arg0)
+    public void addFeedItem(global::Hosihikari.Bindings.Bedrock.Interop.FeedItem feedItem)
     {
-        NativeMethods.TablePtr->hs_method_89aafffc((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_39f6a713((void*)__hosihikari_shim_handle, (void*)feedItem.Handle);
     }
 
-    public void addFeedItemByName(string arg0)
+    public void addFeedItemByName(string itemName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(itemName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -63,19 +55,33 @@ public sealed unsafe partial class HealableDefinition
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(itemName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_eb07fa8d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C1.hs_method_58785e03((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_d4aac1f1(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C1.hs_method_8b4bba86(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_60dfc7b7((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mForceUse
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_06643edd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_06643edd((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHealItems_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_08894aee((void*)__hosihikari_shim_handle);
+    }
 }

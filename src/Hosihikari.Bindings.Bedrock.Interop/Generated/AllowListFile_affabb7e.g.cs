@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AllowListFile
+public sealed unsafe partial class AllowListFile : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AllowListFile(nint handle) : this(handle, true) { }
 
     internal AllowListFile(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AllowListFile Borrow(nint handle) => new AllowListFile(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,43 +33,66 @@ public sealed unsafe partial class AllowListFile
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AllowListFile Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AllowListFile Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.AllowList getAllowList()
+    public static AllowListFile Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AllowList((nint)NativeMethods.TablePtr->hs_method_04db688e((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C0.hs_create_75063fc3();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AllowListFile((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AllowListFile' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint loadFromDefaultLocations() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AllowListFile' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int reload()
+    public static AllowListFile Create(global::Hosihikari.Bindings.Bedrock.Interop.AllowListFile arg0)
     {
-        return NativeMethods.TablePtr->hs_method_ac38afb7((void*)_handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_86cc99de((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AllowListFile((nint)handle);
     }
 
-    public void syncToDisc()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3edfdb_Address
     {
-        NativeMethods.TablePtr->hs_method_b94c298e((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c24c4a7b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_70c71239() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7c975f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fc40842e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8fdea0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_243f6dba((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AllowListFile operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.AllowListFile arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AllowListFile((nint)NativeMethods.TablePtr->C0.hs_method_59482bc6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_affabb7e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

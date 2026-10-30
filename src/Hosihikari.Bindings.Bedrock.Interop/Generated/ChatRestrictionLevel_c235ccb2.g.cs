@@ -4,8 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum ChatRestrictionLevel : sbyte
+public enum ChatRestrictionLevel : byte
 {
+    None = 0,
     Dropped = 1,
     Disabled = 2,
 }

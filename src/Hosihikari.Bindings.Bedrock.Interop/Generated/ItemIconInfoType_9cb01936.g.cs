@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ItemIconInfoType : int
 {
+    Icon = 0,
+    Atlas = 1,
+    RawUVs = 2,
+    BlockType = 3,
 }

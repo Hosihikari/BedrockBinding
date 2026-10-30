@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ChunkSourceViewGenerateMode : int
+public enum ChunkSourceViewGenerateMode : byte
 {
+    DontGenerateOnlyGet = 0,
+    GenerateTickingAndSavedOnly = 1,
+    GenerateClient = 2,
+    GenerateAll = 3,
 }

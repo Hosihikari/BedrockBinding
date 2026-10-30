@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RegionHillsOperationNode : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RegionHillsOperationNode(nint handle) : this(handle, true) { }
 
     internal RegionHillsOperationNode(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RegionHillsOperationNode Borrow(nint handle) => new RegionHillsOperationNode(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,27 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RegionHillsOperationNode Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RegionHillsOperationNode Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static RegionHillsOperationNode Create(uint arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1, global::Hosihikari.Bindings.Abi.SharedHandle? arg2, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg3)
+    public void __fillArea(nint operationNodeData, global::Hosihikari.Bindings.Bedrock.Interop.Pos2d origin, global::Hosihikari.Bindings.Bedrock.Interop.Pos2d size, int pw)
     {
-        var handle = NativeMethods.TablePtr->hs_create_f8e63b0d(arg0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg3.Handle);
+        NativeMethods.TablePtr->C2.hs_method_b8312d9f((void*)__hosihikari_shim_handle, (void*)operationNodeData, (void*)origin.Handle, (void*)size.Handle, pw);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __getAreaRead(nint origin, nint size) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static RegionHillsOperationNode Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fc0f6fc7();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,29 +62,53 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
         return new RegionHillsOperationNode((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _allocateAndFill(ulong arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static RegionHillsOperationNode Create(global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3eedf613((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void init(long seed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new RegionHillsOperationNode((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _fillArea(nint operationNodeData, global::Hosihikari.Bindings.Bedrock.Interop.Pos2d origin, global::Hosihikari.Bindings.Bedrock.Interop.Pos2d size, int pw)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8499989d((void*)__hosihikari_shim_handle, (void*)operationNodeData, (void*)origin.Handle, (void*)size.Handle, pw);
+    }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getAreaRead(nint origin, nint size) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6e418a2b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRiverOperationNode_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c6221f24((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode((nint)NativeMethods.TablePtr->C2.hs_method_4ad2e350((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_816ccc97((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_816ccc97((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

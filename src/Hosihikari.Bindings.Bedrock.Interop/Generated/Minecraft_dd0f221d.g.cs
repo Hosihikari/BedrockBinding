@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Minecraft : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Minecraft(nint handle) : this(handle, true) { }
 
     internal Minecraft(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Minecraft Borrow(nint handle) => new Minecraft(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,246 +33,397 @@ public sealed unsafe partial class Minecraft : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3dba5ba7((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3dba5ba7((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Minecraft Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint args) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Minecraft Create_32d2e06c(nint app, nint gameCallbacks, nint allowList, nint permissionsFile, nint filePathManager, nint maxPlayerIdleTime, nint eventing, nint network, nint packetSender, nint clientSubId, nint simTimer, nint realTimer, nint contentTierManager, nint serverMetrics) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static Minecraft Create_cf0d4547(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Minecraft Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void _tryCatchupMovementTicks(global::Hosihikari.Bindings.Bedrock.Interop.EntitySystems arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg1)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getEntityRegistry_28006e83()
     {
-        NativeMethods.TablePtr->hs_method_579fe69f((void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void activateAllowList()
-    {
-        NativeMethods.TablePtr->hs_method_267d8a31((void*)_handle);
-    }
-
-    public void configureGameTest(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
-    {
-        NativeMethods.TablePtr->hs_method_4ba3f18d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void disconnectClient(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, int arg1, string arg2)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_1a79a4af((void*)_handle, (void*)arg0.Handle, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-        }
-    }
-
-    public void earlyShutdownMainthread()
-    {
-        NativeMethods.TablePtr->hs_method_24062afb((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ClientNetworkSystem getClientNetworkSystem_de622c5b()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ClientNetworkSystem((nint)NativeMethods.TablePtr->hs_method_de622c5b((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands getCommands()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands((nint)NativeMethods.TablePtr->hs_method_cd964710((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_75ed0099()
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_75ed0099((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_28006e83((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getEntityRegistry_aa8cb615()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_aa8cb615((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public bool _getSimPaused()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_d19f7a25((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isOnlineClient()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_9cf52c41((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _setSimTimePause(bool pause)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3febe371((void*)__hosihikari_shim_handle, pause);
+    }
+
+    public void _setSimTimeScale(float scale)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f7d0e162((void*)__hosihikari_shim_handle, scale);
+    }
+
+    public static Minecraft Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_81ce6caa();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Minecraft((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static Minecraft Create(nint args) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static Minecraft Create(global::Hosihikari.Bindings.Bedrock.Interop.Minecraft arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_67c246af((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Minecraft((nint)handle);
+    }
+
+    public void _tryCatchupMovementTicks()
+    {
+        NativeMethods.TablePtr->C2.hs_method_a74f3185((void*)__hosihikari_shim_handle);
+    }
+
+    public static void _tryCatchupMovementTicks(global::Hosihikari.Bindings.Bedrock.Interop.EntitySystems entitySystems, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry, nint addMovementTickForCatchup)
+    {
+        NativeMethods.TablePtr->C2.hs_method_80dd5dde((void*)entitySystems.Handle, (void*)registry.Handle, (void*)addMovementTickForCatchup);
+    }
+
+    public void configureGameTest(global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a6fd47df((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)experiments.Handle);
+    }
+
+    public void disconnectClient(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, int disconnectReason)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4b374422((void*)__hosihikari_shim_handle, (void*)id.Handle, disconnectReason);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_6fde3d4a()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_6fde3d4a((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_6fde3d4a((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing getEventing()
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_006b886e()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing((nint)NativeMethods.TablePtr->hs_method_a70aea67((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.GameModuleServer getGameModuleServer()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.GameModuleServer((nint)NativeMethods.TablePtr->hs_method_a4398c75((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTest? getGameTest()
-    {
-        var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_192cc900((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTest((nint)__hs_handle, false) : null;
-    }
-
-    public double getLastTimestep()
-    {
-        return NativeMethods.TablePtr->hs_method_33f21544((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_006b886e((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Level? getLevel()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_79fb6e7b((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_ae0c0094((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager getResourceLoader()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager((nint)NativeMethods.TablePtr->hs_method_2f501a17((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getServerNetworkHandler()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_9c7e2099((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_9c7e2099((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem getServerNetworkSystem_199bcc7b()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem((nint)NativeMethods.TablePtr->hs_method_199bcc7b((void*)_handle), false);
     }
 
     public bool getSimPaused()
     {
-        return NativeMethods.TablePtr->hs_method_05adaf8a((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_8a3b207f((void*)__hosihikari_shim_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getStructureManager()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_643d1a59((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_643d1a59((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public bool hasCommands()
-    {
-        return NativeMethods.TablePtr->hs_method_053034c5((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool hostMultiplayer_74c0aa40(nint serverName, nint arg1, nint localPlayer, nint localPlayerId, nint clientNetworkHandler, int maxChunkRadius, bool shouldAnnounce, bool requireTrustedAuthentication, nint extraTrustedKeys, nint serverType, nint connectionDefinition, nint packIdToContentKey, nint scheduler, nint textFilteringProcessor, nint arg14) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level,std::default_delete<Level>>,OwnerPtr<EntityContext>>' is not a known bindable declaration.", false)]
-    public bool hostMultiplayer_b8514879(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, bool arg6, bool arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13, nint arg14) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level,std::default_delete<Level>>,OwnerPtr<EntityContext>>' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level>, OwnerPtr<EntityContext>>' is not a known bindable declaration.", false)]
+    public bool hostMultiplayer(nint serverName, nint levelEntity, nint hostPublicKey, int maxChunkRadius, bool shouldAnnounce, nint connectionDefinition, nint packIdToContentKey, nint scheduler, nint textFilteringProcessor, nint packetHandlerConfig, nint packSettingsCache, nint serverNetworkOptions) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level>, OwnerPtr<EntityContext>>' is not a known bindable declaration.");
 
     public void init()
     {
-        NativeMethods.TablePtr->hs_method_97e78996((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_97e78996((void*)__hosihikari_shim_handle);
     }
 
     public void initAsDedicatedServer()
     {
-        NativeMethods.TablePtr->hs_method_f053a2d1((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_f053a2d1((void*)__hosihikari_shim_handle);
     }
 
-    public bool isDedicatedServer()
+    public void initCommands()
     {
-        return NativeMethods.TablePtr->hs_method_66b6d929((void*)_handle) != 0;
-    }
-
-    public bool isLeaveGameDone()
-    {
-        return NativeMethods.TablePtr->hs_method_76b79789((void*)_handle) != 0;
+        NativeMethods.TablePtr->C2.hs_method_d9b45cec((void*)__hosihikari_shim_handle);
     }
 
     public bool isOnlineClient()
     {
-        return NativeMethods.TablePtr->hs_method_c53033a3((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_f92687d9((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void requestResourceReload()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAddMovementTickForCatchup_Address
     {
-        NativeMethods.TablePtr->hs_method_31c4607a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_01f26b0d((void*)__hosihikari_shim_handle);
     }
 
-    public void requestServerShutdown(string arg0)
+    public byte mClientSubId
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_685a7f6e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
+        get => NativeMethods.TablePtr->C2.hs_get_72b4f079((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_72b4f079((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setSimTimePause(bool arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCommands_Address
     {
-        NativeMethods.TablePtr->hs_method_51ac0cd1((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0e71e823((void*)__hosihikari_shim_handle);
     }
 
-    public void setSimTimeScale(float arg0)
+    public bool mCorruptionDetected
     {
-        NativeMethods.TablePtr->hs_method_fec45a6b((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_90374a0a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_90374a0a((void*)__hosihikari_shim_handle, value);
     }
 
-    public void startLeaveGame(bool arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCreateMinecraftCommands_Address
     {
-        NativeMethods.TablePtr->hs_method_c3bc3035((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4797ca9a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCreateServerNetworkHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3484b6f0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultCommandsContextProvider_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ee923be5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_234dfbce((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventing_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6a60ad2d((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mFireOnLevelCorrupt
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_8fbe6d24((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_8fbe6d24((void*)__hosihikari_shim_handle, value);
+    }
+
+    public double mFrameDuration
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_a4912190((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a4912190((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameCallbacks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2a9bff04((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameModuleServer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a6423c4a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameSession_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f27f6c3c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameTest_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0ebc1bd6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameTestLevelListener_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c69e820a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGetFileArchiver_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d7e5a2a8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mImpl_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c4901700((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsDedicatedServer
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_0157544f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public double mLastFrameStart
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_66b3b984((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_66b3b984((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelSubscribers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5a340d58((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMaxPlayerIdleTime_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5d9cd109((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMinecraftServiceKeys_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f626ac03((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetwork_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_88bc9822((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPacketSender_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c8bd1a53((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mPermissionsFile
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_05037551((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_05037551((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRealTimer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_105747cd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRequestServerShutdown_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_83b2ee67((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResourceLoader_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8a6436f9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSaveGamePath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_90f64f7b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerKeys_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9763a5d5((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mServerMetrics
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7164b56d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7164b56d((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSimTimer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e9a6de53((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_70ff98b7((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Minecraft operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Minecraft arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Minecraft((nint)NativeMethods.TablePtr->C2.hs_method_4424ebfe((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void setSimTimePause(bool pause)
+    {
+        NativeMethods.TablePtr->C2.hs_method_51ac0cd1((void*)__hosihikari_shim_handle, pause);
+    }
+
+    public void setSimTimeScale(float scale)
+    {
+        NativeMethods.TablePtr->C2.hs_method_fec45a6b((void*)__hosihikari_shim_handle, scale);
+    }
+
+    public void startLeaveGame(bool stopNetwork)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c3bc3035((void*)__hosihikari_shim_handle, stopNetwork);
     }
 
     public bool update()
     {
-        return NativeMethods.TablePtr->hs_method_b27630a7((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_b27630a7((void*)__hosihikari_shim_handle) != 0;
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_dd0f221d((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_dd0f221d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

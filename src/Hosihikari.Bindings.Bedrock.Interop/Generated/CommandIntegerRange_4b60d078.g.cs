@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandIntegerRange : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandIntegerRange(nint handle) : this(handle, true) { }
 
     internal CommandIntegerRange(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandIntegerRange Borrow(nint handle) => new CommandIntegerRange(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,66 +33,45 @@ public sealed unsafe partial class CommandIntegerRange : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static CommandIntegerRange Create()
+    public bool mInclusive
     {
-        var handle = NativeMethods.TablePtr->hs_create_2b2ee644();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandIntegerRange((nint)handle);
-    }
-
-    public static CommandIntegerRange Create(int arg0, int arg1, bool arg2, bool arg3)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_a6f66015(arg0, arg1, arg2, arg3);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandIntegerRange((nint)handle);
-    }
-
-    public bool isWithinRange(int arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_5fe1f537((void*)_handle, arg0) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_6a692662((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_6a692662((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInvert
     {
-        get => NativeMethods.TablePtr->hs_get_9c7edf14((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_9c7edf14((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_9c7edf14((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_9c7edf14((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMaxValue
     {
-        get => NativeMethods.TablePtr->hs_get_9baf47e2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9baf47e2((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_9baf47e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_9baf47e2((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMinValue
     {
-        get => NativeMethods.TablePtr->hs_get_b456e78a((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b456e78a((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_b456e78a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b456e78a((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_4b60d078((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_4b60d078((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

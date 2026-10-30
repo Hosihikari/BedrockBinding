@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.CerealHelpers_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.CerealHelpers;
 
-public sealed unsafe partial class FileReference
+public sealed unsafe partial class FileReference : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FileReference(nint handle) : this(handle, true) { }
 
     internal FileReference(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FileReference Borrow(nint handle) => new FileReference(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,59 @@ public sealed unsafe partial class FileReference
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileReference Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileReference Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    public static FileReference Create()
     {
-        NativeMethods.TablePtr->hs_method_543fea89((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_004ce94a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileReference((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static FileReference Create(global::Hosihikari.Bindings.Bedrock.Interop.CerealHelpers.FileReference arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4ea6f2eb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileReference((nint)handle);
+    }
+
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ff041c49((void*)ctx.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka0e779_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_03e48b3f((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CerealHelpers.FileReference operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CerealHelpers.FileReference arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CerealHelpers.FileReference((nint)NativeMethods.TablePtr->C0.hs_method_e533877e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_533b363a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

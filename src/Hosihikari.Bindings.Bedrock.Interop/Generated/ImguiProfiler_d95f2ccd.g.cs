@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ImguiProfiler : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ImguiProfiler(nint handle) : this(handle, true) { }
 
     internal ImguiProfiler(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ImguiProfiler Borrow(nint handle) => new ImguiProfiler(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,20 +33,29 @@ public sealed unsafe partial class ImguiProfiler : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fcfaa41f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fcfaa41f((void*)__hosihikari_shim_handle);
     }
+
+    public nint _ctor()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_d9b49882((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     public static ImguiProfiler Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_8462f88b();
+        var handle = NativeMethods.TablePtr->C1.hs_create_8462f88b();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,50 +64,86 @@ public sealed unsafe partial class ImguiProfiler : global::System.IDisposable
         return new ImguiProfiler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ImguiProfiler Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static void addRecord(nint record) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TimeAccumulator' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTimeAccumulator(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TimeAccumulator' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.TimeAccumulator getTimeAccumulator(string group, string name, bool isClientSide)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(group);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(group, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                return new global::Hosihikari.Bindings.Bedrock.Interop.TimeAccumulator((nint)NativeMethods.TablePtr->C1.hs_method_af1f27e8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, isClientSide));
+            }
+        }
+    }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint sPendingRecords_Address
+    public nint mRecordGroupMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_91188f73();
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_aa03a649((void*)__hosihikari_shim_handle);
     }
 
-    public static int sProduceRecords
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecordGroups_Address
     {
-        get => NativeMethods.TablePtr->hs_get_b976e6b2();
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a6b481f5((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sRecordMutex
+    public static nint sPendingRecords()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_529934f1(), false);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_fc96cd05();
+    }
+
+    public static nint sProduceRecords()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_67687011();
+    }
+
+    public static nint sRecordMutex()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_ffb61cab();
     }
 
     public void update()
     {
-        NativeMethods.TablePtr->hs_method_d8d915ea((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_d8d915ea((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d95f2ccd((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_d95f2ccd((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

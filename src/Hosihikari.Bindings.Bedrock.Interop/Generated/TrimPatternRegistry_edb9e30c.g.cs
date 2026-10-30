@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TrimPatternRegistry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TrimPatternRegistry(nint handle) : this(handle, true) { }
 
     internal TrimPatternRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TrimPatternRegistry Borrow(nint handle) => new TrimPatternRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,14 @@ public sealed unsafe partial class TrimPatternRegistry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TrimPatternRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TrimPatternRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool doesPatternExist(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public bool doesPatternExist(global::Hosihikari.Bindings.Bedrock.Interop.HashedString patternId)
     {
-        return NativeMethods.TablePtr->hs_method_92e143cb((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_a2b5ca76((void*)__hosihikari_shim_handle, (void*)patternId.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TrimPattern' is not supported.", false)]
@@ -56,14 +48,22 @@ public sealed unsafe partial class TrimPatternRegistry
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TrimPattern' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'HashedString' is not supported.", false)]
-    public nint getPatternIdByItem(nint arg0) =>
+    public nint getPatternIdByItem(nint itemId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'HashedString' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void initializeServer(nint arg0) =>
+    public void initializeServer(nint itemRegistry) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPatternIdToTemplateItemMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b904d555((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTemplateItemToPatternIdMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fca56e64((void*)__hosihikari_shim_handle);
+    }
 }

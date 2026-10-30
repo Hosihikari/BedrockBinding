@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorInfo
+public sealed unsafe partial class ActorInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorInfo(nint handle) : this(handle, true) { }
 
     internal ActorInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorInfo Borrow(nint handle) => new ActorInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,82 @@ public sealed unsafe partial class ActorInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorInfo Create_f6bba4b5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0)
+    public nint _ctor()
     {
-        NativeMethods.TablePtr->hs_method_2945737a((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        return (nint)NativeMethods.TablePtr->C0.hs_method_b5e96a3c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? save()
+    public static ActorInfo Create()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_74db93c7((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+        var handle = NativeMethods.TablePtr->C0.hs_create_2964424f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorInfo((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_35a4ee23() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_570c1360((void*)__hosihikari_shim_handle, (void*)(tag?.Handle ?? 0));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBaseIdentifier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b457809f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExperimentIndex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_13e0b5d1((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mHasSpawnEgg
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b54721da((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b54721da((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentifier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a2ea8baf((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsSummonable
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_8340e7ee((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_8340e7ee((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mRuntimeId
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_2f0a5d8f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_2f0a5d8f((void*)__hosihikari_shim_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint save() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_c6f5e379((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

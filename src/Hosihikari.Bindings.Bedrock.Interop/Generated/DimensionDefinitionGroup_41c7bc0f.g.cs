@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DimensionDefinitionGroup(nint handle) : this(handle, true) { }
 
     internal DimensionDefinitionGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DimensionDefinitionGroup Borrow(nint handle) => new DimensionDefinitionGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,24 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static DimensionDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.DimensionDefinitionGroup arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? rpm, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
     {
-        var handle = NativeMethods.TablePtr->hs_create_e5821071((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_d6824314((void*)__hosihikari_shim_handle, (void*)ctx.Handle, (void*)(rpm?.Handle ?? 0), (void*)eventing.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_3e39b3ca((void*)__hosihikari_shim_handle);
+    }
+
+    public static DimensionDefinitionGroup Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_17661c4b();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,9 +59,9 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
         return new DimensionDefinitionGroup((nint)handle);
     }
 
-    public static DimensionDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg1, bool arg2)
+    public static DimensionDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? rpm, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
     {
-        var handle = NativeMethods.TablePtr->hs_create_dfa3b35e((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), arg2);
+        var handle = NativeMethods.TablePtr->C1.hs_create_d96be55e((void*)ctx.Handle, (void*)(rpm?.Handle ?? 0), (void*)eventing.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,68 +70,31 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
         return new DimensionDefinitionGroup((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionDefinitionGroup_Nested.DimensionDefinition? getDimensionDefinition(string arg0)
-    {
-        var __hs_hasValue = false;
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_85416922((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
-            return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DimensionDefinitionGroup_Nested.DimensionDefinition((nint)__hs_handle) : null;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void forEachDimensionDefinition(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public bool isEmpty()
-    {
-        return NativeMethods.TablePtr->hs_method_4041f715((void*)_handle) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'DimensionDefinitionGroup::DimensionDefinition' is not supported.", false)]
+    public nint getDimensionDefinition(nint dimensionName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'DimensionDefinitionGroup::DimensionDefinition' is not supported.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionDefinitions_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fd27b16f((void*)_handle);
-    }
-
-    public bool tryAddDimensionDefinitionByString(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            return NativeMethods.TablePtr->hs_method_0700620d((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fd27b16f((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_41c7bc0f((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_41c7bc0f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class KeyManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public KeyManager(nint handle) : this(handle, true) { }
 
     internal KeyManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static KeyManager Borrow(nint handle) => new KeyManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,19 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static KeyManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static KeyManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static KeyManager Create(string arg0, int arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.KeyManager rhs)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_c9ca935c((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
+    }
+
+    public nint _ctor(string publicKey, int system)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(publicKey);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -58,10 +55,65 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b308a006(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            return (nint)NativeMethods.TablePtr->C1.hs_method_1966ed76((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, system);
+        }
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_e5d8d858((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _isValid()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_b27c2aee((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static KeyManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_171eaefb();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KeyManager((nint)handle);
+    }
+
+    public static KeyManager Create(global::Hosihikari.Bindings.Bedrock.Interop.KeyManager rhs)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d3478501((void*)rhs.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KeyManager((nint)handle);
+    }
+
+    public static KeyManager Create(string publicKey, int system)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(publicKey);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C1.hs_create_f17fdf15(__hs_stringData0, (nuint)__hs_stringByteCount0, system);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,32 +123,39 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
         }
     }
 
-    public string getPublicKey()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_5b3613cd((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
     public bool isValid()
     {
-        return NativeMethods.TablePtr->hs_method_283177f6((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_d820b7d7((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka2774b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0a8335b8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkbe6af1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_45121658((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.KeyManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.KeyManager rhs)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.KeyManager((nint)NativeMethods.TablePtr->C1.hs_method_7a34a356((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ed2d05e0((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_ed2d05e0((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

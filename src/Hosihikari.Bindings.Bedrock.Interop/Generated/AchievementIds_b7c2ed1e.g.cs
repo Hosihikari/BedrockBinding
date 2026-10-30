@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MinecraftEventing_Nested;
 
-public enum AchievementIds : int
+public enum AchievementIds : byte
 {
     ChestFullOfCobblestone = 7,
     DiamondForYou = 10,
@@ -32,7 +32,6 @@ public enum AchievementIds : int
     TreasureHunter = 67,
     ShootingStar = 68,
     FashionShow = 69,
-    Brilliance = 70,
     SelfPublishedAuthor = 71,
     AlternativeFuel = 72,
     SleepWithTheFishes = 73,
@@ -69,4 +68,25 @@ public enum AchievementIds : int
     ItSpreads = 104,
     BirthdaySong = 105,
     WithOurPowersCombined = 106,
+    PlantingThePast = 107,
+    CarefulRestoration = 108,
+    Revaulting = 109,
+    CraftersCraftingCrafters = 110,
+    WhoNeedsRockets = 111,
+    OverOverkill = 112,
+    HeartTransplanter = 113,
+    StayHydrated = 114,
+    MobKabob = 115,
+    AdventuringTime = 116,
+    UhOh = 117,
+    GettingWood = 118,
+    BenchMaking = 119,
+    TimeToMine = 120,
+    HotTopic = 121,
+    AcquireHardware = 122,
+    GettingAnUpgrade = 123,
+    MonsterHunter = 124,
+    Diamonds = 125,
+    PlethoraOfCats = 126,
+    Count = 127,
 }

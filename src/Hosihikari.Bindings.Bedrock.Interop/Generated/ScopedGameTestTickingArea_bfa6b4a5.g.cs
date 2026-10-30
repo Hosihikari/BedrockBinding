@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScopedGameTestTickingArea
+public sealed unsafe partial class ScopedGameTestTickingArea : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScopedGameTestTickingArea(nint handle) : this(handle, true) { }
 
     internal ScopedGameTestTickingArea(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScopedGameTestTickingArea Borrow(nint handle) => new ScopedGameTestTickingArea(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,144 @@ public sealed unsafe partial class ScopedGameTestTickingArea
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScopedGameTestTickingArea Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScopedGameTestTickingArea Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScopedGameTestTickingArea Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static string TICKING_AREA_PREFIX
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox bounds, string structureName)
     {
-        get
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
         {
-            var view = NativeMethods.TablePtr->hs_get_1d6918ca();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
         }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            return (nint)NativeMethods.TablePtr->C2.hs_method_cdd264c3((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)bounds.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_ab590ac3((void*)__hosihikari_shim_handle);
+    }
+
+    public static ScopedGameTestTickingArea Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0717f7fe();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScopedGameTestTickingArea((nint)handle);
+    }
+
+    public static ScopedGameTestTickingArea Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox bounds, string structureName)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            var handle = NativeMethods.TablePtr->C2.hs_create_ca7059a3((void*)dimension.Handle, (void*)bounds.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ScopedGameTestTickingArea((nint)handle);
+        }
+    }
+
+    public static ScopedGameTestTickingArea Create(global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0ba096cd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScopedGameTestTickingArea((nint)handle);
+    }
+
+    public static string TICKING_AREA_PREFIX()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_81021211();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void _removeTickingArea()
+    {
+        NativeMethods.TablePtr->C2.hs_method_d8e2231b((void*)__hosihikari_shim_handle);
     }
 
     public bool areChunksLoaded()
     {
-        return NativeMethods.TablePtr->hs_method_274c9066((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_274c9066((void*)__hosihikari_shim_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getTickingArea()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_de562ec8((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_55d15748((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4e4001_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fd0e556d((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5eb88c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f3ab597e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb32f30_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2f3a84bf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc921a0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4cb701f3((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea((nint)NativeMethods.TablePtr->C2.hs_method_68ee4ebe((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_bfa6b4a5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

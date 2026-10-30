@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class FileUploadManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FileUploadManager(nint handle) : this(handle, true) { }
 
     internal FileUploadManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FileUploadManager Borrow(nint handle) => new FileUploadManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,84 +33,29 @@ public sealed unsafe partial class FileUploadManager : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string BOUNDARY
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup taskGroup, global::Hosihikari.Bindings.Abi.SharedHandle? fileUploader)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_da10385c();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        return (nint)NativeMethods.TablePtr->C1.hs_method_43b16ae1((void*)__hosihikari_shim_handle, (void*)taskGroup.Handle, fileUploader?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public static int CHUNK_UPLOAD_SIZE
+    public void _dtor()
     {
-        get => NativeMethods.TablePtr->hs_get_2b92fd94();
+        NativeMethods.TablePtr->C1.hs_method_27b1b43d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileUploadManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static FileUploadManager Create(global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    public float _getUploadProgress()
     {
-        var handle = NativeMethods.TablePtr->hs_create_f9b374e5((void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new FileUploadManager((nint)handle);
+        return NativeMethods.TablePtr->C1.hs_method_aa4f8b17((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileUploadManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addCallbackQueue_7344278d(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addCallbackQueue_fc148cd9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public float getUploadProgress()
+    public void _uploadFileToRealmStorage(string uploadId, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path, int slotIndex)
     {
-        return NativeMethods.TablePtr->hs_method_a921d84c((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setFailed(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_ef1e5db1((void*)_handle, arg0);
-    }
-
-    public void setUseStream(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_0127918b((void*)_handle, arg0);
-    }
-
-    public void update()
-    {
-        NativeMethods.TablePtr->hs_method_a58cad7b((void*)_handle);
-    }
-
-    public void uploadChunk(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_044958cc((void*)_handle, arg0);
-    }
-
-    public void uploadFile(string arg0, nint arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uploadId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -120,28 +65,190 @@ public sealed unsafe partial class FileUploadManager : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(uploadId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_00032fb1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, arg2, (void*)arg3.Handle);
+            NativeMethods.TablePtr->C1.hs_method_b320e8bb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)path.Handle, slotIndex);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void uploadFileToRealmStorage(nint uploadId, nint path, int slotIndex, nint realmsGuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static string BOUNDARY()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_09f382b5();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static FileUploadManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_79958410();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileUploadManager((nint)handle);
+    }
+
+    public static FileUploadManager Create(global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup taskGroup, global::Hosihikari.Bindings.Abi.SharedHandle? fileUploader)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7900ea23((void*)taskGroup.Handle, fileUploader?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileUploadManager((nint)handle);
+    }
+
+    public static FileUploadManager Create(global::Hosihikari.Bindings.Bedrock.Interop.FileUploadManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9dd5563b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileUploadManager((nint)handle);
+    }
+
+    public void _uploadChunk(global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo chunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_061c740e((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void addCallbackQueue(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void archiveAndUploadFileToRealmStorage(nint uploadId, nint worldID, nint slotIndex, nint realmsGuid) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public float getUploadProgress()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_8f8dd72d((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mContinueOnReception
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ce9d8776((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_ce9d8776((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFile_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_32b08660((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFileArchiver_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_95f112e9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilePicker_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_17aedb10((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFileUploader_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_29e964f3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIOTaskGroup_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e0d0dc58((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMultiPartHelper_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_eede31b5((void*)__hosihikari_shim_handle);
+    }
+
+    public int mState
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_8100b664((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_8100b664((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mUploadAllAtOnce
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_13217afe((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_13217afe((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mUploadError
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_c33317dd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c33317dd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mUseStream
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_38d6a28b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_38d6a28b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FileUploadManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.FileUploadManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FileUploadManager((nint)NativeMethods.TablePtr->C1.hs_method_502f8a4c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void uploadFile(string uploadId, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filePath, bool autoStartUpload, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value uploadOptions)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uploadId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uploadId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_cd9940e2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)filePath.Handle, autoStartUpload, (void*)uploadOptions.Handle);
+        }
+    }
+
+    public void uploadFileToRealmStorage(string uploadId, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path, int slotIndex)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uploadId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uploadId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_1966ee36((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)path.Handle, slotIndex);
+        }
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_aef2d542((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_aef2d542((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

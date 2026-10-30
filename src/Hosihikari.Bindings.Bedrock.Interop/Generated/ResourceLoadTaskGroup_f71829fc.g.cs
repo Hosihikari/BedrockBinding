@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ResourceLoadTaskGroup
+public sealed unsafe partial class ResourceLoadTaskGroup : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ResourceLoadTaskGroup(nint handle) : this(handle, true) { }
 
     internal ResourceLoadTaskGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ResourceLoadTaskGroup Borrow(nint handle) => new ResourceLoadTaskGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,88 @@ public sealed partial class ResourceLoadTaskGroup
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static ResourceLoadTaskGroup Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5d086c5d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceLoadTaskGroup((nint)handle);
+    }
+
+    public static ResourceLoadTaskGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager_Nested.ResourceLoadTaskGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0e2528f1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceLoadTaskGroup((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk43122d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5967d29a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk448294_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_036b2651((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6c2afd_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a011c31c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkac15ed_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9fefbb0e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd78565_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_82ea4fa7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfb510f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_48fcf4fc((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager_Nested.ResourceLoadTaskGroup operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager_Nested.ResourceLoadTaskGroup arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager_Nested.ResourceLoadTaskGroup((nint)NativeMethods.TablePtr->C2.hs_method_a1f62bc7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint queue(nint threadedCallback, nint mainThreadCallback, uint taskPriority) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_f71829fc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

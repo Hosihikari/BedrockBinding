@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ToggleControl
+public sealed unsafe partial class ToggleControl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ToggleControl(nint handle) : this(handle, true) { }
 
     internal ToggleControl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ToggleControl Borrow(nint handle) => new ToggleControl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,82 @@ public sealed partial class ToggleControl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ToggleControl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _buildJson(nint forPlayer, nint commandVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ToggleControl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint label, nint defaultValue, nint tooltip) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.", false)]
-    public static ToggleControl Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.");
+    public static ToggleControl Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e6edbfa5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint buildJson(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value>' requires --link-carrier or --virtual-dispatch.");
+        return new ToggleControl((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ToggleControl Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ToggleControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_01ad216e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new ToggleControl((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.", false)]
+    public static ToggleControl Create(nint label, nint defaultValue, nint tooltip) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, ScriptModuleMinecraft::ScriptRawMessageInterface>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint buildJson(nint forPlayer, nint commandVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk18eab1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e4ae234f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4bedaa_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a563d7cb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke05b7d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3d2a92d0((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ToggleControl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ToggleControl arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ToggleControl((nint)NativeMethods.TablePtr->C3.hs_method_f2c01739((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_ff8ffa14((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

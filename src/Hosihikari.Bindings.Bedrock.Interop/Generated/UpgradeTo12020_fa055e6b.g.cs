@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.WearableItemComponentVersioning;
 
-public sealed unsafe partial class UpgradeTo12020 : global::System.IDisposable
+public sealed unsafe partial class UpgradeTo12020
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UpgradeTo12020(nint handle) : this(handle, true) { }
 
     internal UpgradeTo12020(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UpgradeTo12020 Borrow(nint handle) => new UpgradeTo12020(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,42 @@ public sealed unsafe partial class UpgradeTo12020 : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static UpgradeTo12020 Create()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk40e0d7_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_855713d3();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new UpgradeTo12020((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9dd82b3b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UpgradeTo12020 Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool previousSchema_fe724eb7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool previousSchema_98d4c2a7(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb0e3c9_Address
     {
-        return NativeMethods.TablePtr->hs_method_98d4c2a7((void*)_handle, (void*)arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9af1caac((void*)__hosihikari_shim_handle);
     }
 
-
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc96bdc_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_fa055e6b((void*)_handle);
-            }
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d06e1a67((void*)__hosihikari_shim_handle);
+    }
 
-            _handle = 0;
-        }
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd8210b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f2ed7951((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _previousSchema(nint component)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_4d26b9d0((void*)__hosihikari_shim_handle, (void*)component) != 0;
+    }
+
+    public bool previousSchema(nint component)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_fe724eb7((void*)__hosihikari_shim_handle, (void*)component) != 0;
     }
 }

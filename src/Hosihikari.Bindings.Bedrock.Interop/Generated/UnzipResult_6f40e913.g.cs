@@ -2,9 +2,15 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested.ZipUtils;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core.ZipUtils;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum UnzipResult : int
 {
+    Ok = 0,
+    UnzipError = 1,
+    ParamError = 2,
+    BadZipFile = 3,
+    InternalError = 4,
+    CRCError = 5,
+    DirectoryDepthError = 6,
 }

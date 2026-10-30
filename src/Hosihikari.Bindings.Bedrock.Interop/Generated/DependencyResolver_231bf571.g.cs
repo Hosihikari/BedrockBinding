@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DependencyResolver
+public sealed unsafe partial class DependencyResolver : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DependencyResolver(nint handle) : this(handle, true) { }
 
     internal DependencyResolver(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DependencyResolver Borrow(nint handle) => new DependencyResolver(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,68 @@ public sealed partial class DependencyResolver
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DependencyResolver Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static DependencyResolver Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3cc7ec7b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DependencyResolver Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new DependencyResolver((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _buildVersionRequestTable_5251ed1d(nint arg0, nint dependencies) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static DependencyResolver Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyResolver arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1f6fea3a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _resolveDependencyRequests_de4fafe3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new DependencyResolver((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Scripting::ModuleDescriptor' is not supported.", false)]
+    public nint _getDependencyChain(nint firstRequest, nint originalRequestorUUID, nint versionRequestTable) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Scripting::ModuleDescriptor' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'Scripting::VersionRequestKey' is not supported.", false)]
+    public nint _resolveDependencyRequests(nint versionRequestTable) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'Scripting::VersionRequestKey' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcb02eb_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6a5fac96((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke3be7c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d4d5c5c2((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyResolver operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyResolver arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyResolver((nint)NativeMethods.TablePtr->C3.hs_method_acaf5d55((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_231bf571((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

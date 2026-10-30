@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested;
 
-public sealed unsafe partial class NetworkStatus : global::System.IDisposable
+public sealed unsafe partial class NetworkStatus
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetworkStatus(nint handle) : this(handle, true) { }
 
     internal NetworkStatus(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetworkStatus Borrow(nint handle) => new NetworkStatus(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,74 @@ public sealed unsafe partial class NetworkStatus : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Dispose()
+    public int mApproximateMaxBps
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_73e7a8ac((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C2.hs_get_2db6c31f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2db6c31f((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public float mAveragePacketLoss
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ccb20cbd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ccb20cbd((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAveragePing_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5c7ab739((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong mCurrentBytesSendBuffer
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e8d6351a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e8d6351a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mCurrentPacketLoss
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_4f4c3603((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4f4c3603((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrentPing_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_84324a44((void*)__hosihikari_shim_handle);
+    }
+
+    public int mICEState
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_041ed0f0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_041ed0f0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mLoad
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_f67139ec((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f67139ec((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mTotalBytesReceived
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d43cf7cd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d43cf7cd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mTotalBytesSent
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_0cf6bd3f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0cf6bd3f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mUsingRelays
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_cf0c4629((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_cf0c4629((void*)__hosihikari_shim_handle, value);
     }
 }

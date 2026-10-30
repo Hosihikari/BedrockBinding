@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GoalSelectorComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GoalSelectorComponent(nint handle) : this(handle, true) { }
 
     internal GoalSelectorComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GoalSelectorComponent Borrow(nint handle) => new GoalSelectorComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,72 +33,41 @@ public sealed unsafe partial class GoalSelectorComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GoalSelectorComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GoalSelectorComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addGoal(int arg0, nint arg1) =>
+    public void addGoal(int priority, nint goal) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void buildDebugInfo(nint arg0) =>
+    public void buildDebugInfo(nint @out) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     public void clearAllGoals()
     {
-        NativeMethods.TablePtr->hs_method_372d9745((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_372d9745((void*)__hosihikari_shim_handle);
     }
 
-    public void clearNonTargetedGoals()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGoalMap_Address
     {
-        NativeMethods.TablePtr->hs_method_9a807a81((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d17f32ba((void*)__hosihikari_shim_handle);
     }
 
-    public void clearTargetGoals()
+    public void onPlayerDimensionChanged(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromDimension, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType toDimension)
     {
-        NativeMethods.TablePtr->hs_method_4d8ba5f7((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_b8a7eeae((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)fromDimension.Handle, (void*)toDimension.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getGoalMap_3364533c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getGoalMap_9cc1ec07()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_9cc1ec07((void*)_handle);
-    }
-
-    public void onPlayerDimensionChanged(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
-    {
-        NativeMethods.TablePtr->hs_method_d3c0339c((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool removeGoal(ushort arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_55eb5ba5((void*)_handle, arg0) != 0;
-    }
-
-    public void stopAllGoals()
-    {
-        NativeMethods.TablePtr->hs_method_4330fb24((void*)_handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GoalId' is not a known bindable declaration.", false)]
+    public bool removeGoal(nint typeId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GoalId' is not a known bindable declaration.");
 
     public void stopNonTargetedGoals()
     {
-        NativeMethods.TablePtr->hs_method_cc83ed3a((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_cc83ed3a((void*)__hosihikari_shim_handle);
     }
 }

@@ -7,24 +7,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 [global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
 public sealed partial class CommandPositionFloat
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandPositionFloat(nint handle) : this(handle, true) { }
 
     internal CommandPositionFloat(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandPositionFloat Borrow(nint handle) => new CommandPositionFloat(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +34,8 @@ public sealed partial class CommandPositionFloat
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 }

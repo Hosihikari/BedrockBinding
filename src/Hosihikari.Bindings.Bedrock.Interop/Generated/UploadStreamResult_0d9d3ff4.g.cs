@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IFileChunkUploader_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum UploadStreamResult : int
 {
+    Success = 0,
+    Failure = 1,
+    FailureForbidden = 2,
+    FailureWorldName = 3,
+    InvalidResponseBody = 4,
+    None = 5,
 }

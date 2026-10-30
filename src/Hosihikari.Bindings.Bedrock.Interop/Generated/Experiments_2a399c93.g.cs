@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Experiments
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Experiments(nint handle) : this(handle, true) { }
 
     internal Experiments(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Experiments Borrow(nint handle) => new Experiments(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,103 +33,47 @@ public sealed unsafe partial class Experiments
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public bool DataDrivenBiomes()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeprecatedData_Address
     {
-        return NativeMethods.TablePtr->hs_method_dfc453e5((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3f6f8e93((void*)__hosihikari_shim_handle);
     }
 
-    public bool DataDrivenItems()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExperimentData_Address
     {
-        return NativeMethods.TablePtr->hs_method_b04c7747((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b69b5182((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Experiments Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Experiments Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool Gametest()
+    public bool mExperimentsEverToggled
     {
-        return NativeMethods.TablePtr->hs_method_f73f2fd7((void*)_handle) != 0;
-    }
-
-    public bool UpcomingCreatorFeatures()
-    {
-        return NativeMethods.TablePtr->hs_method_ce69105c((void*)_handle) != 0;
-    }
-
-    public bool VillagerTradesRebalance()
-    {
-        return NativeMethods.TablePtr->hs_method_3b46a855((void*)_handle) != 0;
-    }
-
-    public void __autoclassinit2(ulong arg0)
-    {
-        NativeMethods.TablePtr->hs_method_e4ee8d7b((void*)_handle, arg0);
-    }
-
-    public static string getExperimentTextID(int arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_63f9fcea(arg0);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => NativeMethods.TablePtr->C1.hs_get_1cd70959((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_1cd70959((void*)__hosihikari_shim_handle, value);
     }
 
     public string getExperimentsActiveAsJSONList()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_279386cf((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_d97d690a((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string[] getExperimentsActiveForTelemetry()
+    public void getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_23f45a42((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
+        NativeMethods.TablePtr->C1.hs_method_3629482b((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public void getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public bool isExperimentEnabled(int experiment)
     {
-        NativeMethods.TablePtr->hs_method_1942ba59((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_02a48b05((void*)__hosihikari_shim_handle, experiment) != 0;
     }
 
-    public static nint getToggleNames()
+    public void setTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6df953d1();
+        NativeMethods.TablePtr->C1.hs_method_b823e097((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
-
-    public bool isExperimentEnabled(int arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_5768aed3((void*)_handle, arg0) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setExperimentEnabled(int arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_cd40a63f((void*)_handle, arg0, arg1);
-    }
-
-    public void setTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
-    {
-        NativeMethods.TablePtr->hs_method_a8a044e3((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_e9aca719() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

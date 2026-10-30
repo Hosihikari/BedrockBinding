@@ -4,26 +4,27 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MinecraftGameTestHelperProvider
+[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
+public sealed partial class MinecraftGameTestHelperProvider
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MinecraftGameTestHelperProvider(nint handle) : this(handle, true) { }
 
     internal MinecraftGameTestHelperProvider(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MinecraftGameTestHelperProvider Borrow(nint handle) => new MinecraftGameTestHelperProvider(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +34,28 @@ public sealed unsafe partial class MinecraftGameTestHelperProvider
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftGameTestHelperProvider Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftGameTestHelperProvider Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.gametest.IGameTestHelperProvider? clone()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_7ceeaa4a((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.gametest.IGameTestHelperProvider((nint)__hs_handle) : null;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestHelperProvider' has no accessible destructor.", false)]
+    public nint _clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestHelperProvider' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::BaseGameTestHelper' has no accessible destructor.", false)]
-    public nint createGameTestHelper(nint arg0) =>
+    public nint _createGameTestHelper(nint testInstance) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::BaseGameTestHelper' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestHelperProvider' has no accessible destructor.", false)]
+    public nint clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestHelperProvider' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::BaseGameTestHelper' has no accessible destructor.", false)]
+    public nint createGameTestHelper(nint testInstance) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::BaseGameTestHelper' has no accessible destructor.");
 }

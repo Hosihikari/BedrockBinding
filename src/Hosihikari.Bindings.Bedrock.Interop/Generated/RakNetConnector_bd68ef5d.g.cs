@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RakNetConnector : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakNetConnector(nint handle) : this(handle, true) { }
 
     internal RakNetConnector(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakNetConnector Borrow(nint handle) => new RakNetConnector(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,24 +33,160 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b4e97f77((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b4e97f77((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakNetConnector Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static RakNetConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.ConnectionCallbacks arg0, global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper_Nested.IPSupportInterface arg1, nint arg2, nint arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCallbacks_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_110702b0((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ec0da2e6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1d223d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5fbb0e64((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaf3b65_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b3972ff9((void*)__hosihikari_shim_handle);
+    }
+
+    public void __onDisable()
+    {
+        NativeMethods.TablePtr->C2.hs_method_822e02bc((void*)__hosihikari_shim_handle);
+    }
+
+    public void __onEnable()
+    {
+        NativeMethods.TablePtr->C2.hs_method_25b25ba8((void*)__hosihikari_shim_handle);
+    }
+
+    public void _closeNetworkConnection(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6d1569fe((void*)__hosihikari_shim_handle, (void*)id.Handle);
+    }
+
+    public bool _connect(global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo primaryConnection, global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo backupConnection, global::Hosihikari.Bindings.Abi.SharedHandle? arg2)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_2cc13318((void*)__hosihikari_shim_handle, (void*)primaryConnection.Handle, (void*)backupConnection.Handle, arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.ConnectionCallbacks callbacks, global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper_Nested.IPSupportInterface ipInterface, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_AppPlatform_ appPlatform, nint rakPeerConfig)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_822601cd((void*)__hosihikari_shim_handle, (void*)callbacks.Handle, (void*)ipInterface.Handle, (void*)appPlatform.Handle, (void*)rakPeerConfig);
+    }
+
+    public void _disconnect()
+    {
+        NativeMethods.TablePtr->C2.hs_method_43c1c275((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo _getConnectedGameInfo()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo((nint)NativeMethods.TablePtr->C2.hs_method_b4677b99((void*)__hosihikari_shim_handle), false);
+    }
+
+    public ushort _getIPv4Port()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_57931ca3((void*)__hosihikari_shim_handle);
+    }
+
+    public ushort _getIPv6Port()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_232e4e28((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getLocalIp()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b9c5709c((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier _getNetworkIdentifier()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier((nint)NativeMethods.TablePtr->C2.hs_method_65bb63de((void*)__hosihikari_shim_handle));
+    }
+
+    public int _getNetworkType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_f7afd5fb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface? _getPeer_195dccd0()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_195dccd0((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface? _getPeer_26275a38()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_26275a38((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface((nint)__hs_handle, false) : null;
+    }
+
+    public ushort _getPort()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_b30d561f((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _host(global::Hosihikari.Bindings.Bedrock.Interop.ConnectionDefinition definition, global::Hosihikari.Bindings.Bedrock.Interop.PrivateKeyManager arg1)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_7c1cac4b((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)arg1.Handle) != 0;
+    }
+
+    public bool _isIPv4Supported()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_28914b78((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isIPv6Supported()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_fca00525((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isServer()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_95f72935((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _runEvents()
+    {
+        NativeMethods.TablePtr->C2.hs_method_7c89f8c2((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _setApplicationHandshakeCompleted(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_9ef5df09((void*)__hosihikari_shim_handle, (void*)id.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _setConnectedResolvedExperienceInfo(nint resolvedExperienceInfo) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _setDisableLanSignaling(bool arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0ec5f18d((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void _tick()
+    {
+        NativeMethods.TablePtr->C2.hs_method_064925ff((void*)__hosihikari_shim_handle);
+    }
+
+    public static RakNetConnector Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_19cb8263();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,195 +195,274 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         return new RakNetConnector((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakNetConnector Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addConnectionStateListener(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionStateListener? arg0)
+    public static RakNetConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.ConnectionCallbacks callbacks, global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper_Nested.IPSupportInterface ipInterface, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_AppPlatform_ appPlatform, nint rakPeerConfig)
     {
-        NativeMethods.TablePtr->hs_method_7d001904((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->C2.hs_create_907a4862((void*)callbacks.Handle, (void*)ipInterface.Handle, (void*)appPlatform.Handle, (void*)rakPeerConfig);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetConnector((nint)handle);
     }
 
-    public void closeNetworkConnection(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
+    public static RakNetConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector arg0)
     {
-        NativeMethods.TablePtr->hs_method_5a46c50c((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_30178366((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetConnector((nint)handle);
     }
 
-    public bool connect(global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg1)
+    public void _onDisable()
     {
-        return NativeMethods.TablePtr->hs_method_3bd30155((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        NativeMethods.TablePtr->C2.hs_method_9b535b45((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onEnable()
+    {
+        NativeMethods.TablePtr->C2.hs_method_46e385b3((void*)__hosihikari_shim_handle);
+    }
+
+    public void closeNetworkConnection(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id)
+    {
+        NativeMethods.TablePtr->C2.hs_method_be8ce608((void*)__hosihikari_shim_handle, (void*)id.Handle);
+    }
+
+    public bool connect(global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo primaryConnection, global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo backupConnection, global::Hosihikari.Bindings.Abi.SharedHandle? arg2)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_ec3b0829((void*)__hosihikari_shim_handle, (void*)primaryConnection.Handle, (void*)backupConnection.Handle, arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
     }
 
     public void disconnect()
     {
-        NativeMethods.TablePtr->hs_method_bf431ced((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_bf431ced((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo getConnectedGameInfo()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo((nint)NativeMethods.TablePtr->hs_method_35b18287((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo((nint)NativeMethods.TablePtr->C2.hs_method_a260d3bd((void*)__hosihikari_shim_handle), false);
     }
 
     public ushort getIPv4Port()
     {
-        return NativeMethods.TablePtr->hs_method_cd7e422d((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_2f54eb9e((void*)__hosihikari_shim_handle);
     }
 
     public ushort getIPv6Port()
     {
-        return NativeMethods.TablePtr->hs_method_975c10ee((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_6bc44aaf((void*)__hosihikari_shim_handle);
     }
 
     public string getLocalIp()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_714fb3e1((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_6a16074a((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string[] getLocalIps()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_62ea1fe0((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Connector::NatPunchInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNatPunchInfo() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Connector::NatPunchInfo' requires --link-carrier or --virtual-dispatch.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier getNetworkIdentifier()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier((nint)NativeMethods.TablePtr->hs_method_96df104f((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier((nint)NativeMethods.TablePtr->C2.hs_method_661c48fc((void*)__hosihikari_shim_handle));
     }
 
     public int getNetworkType()
     {
-        return NativeMethods.TablePtr->hs_method_5269f808((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_7c4b3140((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? getPeer_70b4f098()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface? getPeer_8e41de34()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_70b4f098((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface((nint)__hs_handle, false) : null;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_8e41de34((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? getPeer_c240863b()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface? getPeer_116036d3()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c240863b((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface((nint)__hs_handle, false) : null;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_116036d3((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface((nint)__hs_handle, false) : null;
     }
 
     public ushort getPort()
     {
-        return NativeMethods.TablePtr->hs_method_31f7b4c8((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_ac5660e1((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress[] getRefinedLocalIps()
+    public bool getStatistics(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakNetStatistics rns)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_774c734c((void*)_handle);
-        var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress>() : new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)__hs_items[__hs_i]);
-        }
-        return __hs_result;
+        return NativeMethods.TablePtr->C2.hs_method_8addeb7b((void*)__hosihikari_shim_handle, (void*)rns.Handle) != 0;
     }
 
-    public bool getStatistics(nint arg0)
+    public bool host(global::Hosihikari.Bindings.Bedrock.Interop.ConnectionDefinition definition, global::Hosihikari.Bindings.Bedrock.Interop.PrivateKeyManager arg1)
     {
-        return NativeMethods.TablePtr->hs_method_a911f15f((void*)_handle, (void*)arg0) != 0;
-    }
-
-    public bool host(nint arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_7a0b88b2((void*)_handle, (void*)arg0) != 0;
-    }
-
-    public bool isConnected(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_49909006((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_7ed48eb1((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool isIPv4Supported()
     {
-        return NativeMethods.TablePtr->hs_method_8de6c97a((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_0c21cac8((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isIPv6Supported()
     {
-        return NativeMethods.TablePtr->hs_method_8e55588f((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_3eef8210((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isServer()
     {
-        return NativeMethods.TablePtr->hs_method_aeac81a6((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_da234989((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeConnectionStateListener(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionStateListener? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBackupGameConnection_Address
     {
-        NativeMethods.TablePtr->hs_method_972d3614((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1d02d60f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConnectedGameInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_87cfbafb((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mConnectingToClient
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d7ea3e90((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_d7ea3e90((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIPSupportInterface_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_130bc5f4((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsAwaitingNatClient
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_6bc9b209((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_6bc9b209((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsDisconnecting
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ba154f3f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ba154f3f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsServer
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e94e0310((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e94e0310((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNATPunchServerId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7768136a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnedThreadWork_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_da6ce52f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPeerHelper_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_57084e07((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPeers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_71ec9157((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPingTimeCallbacks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bac27aa5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreviousConnectionDefinition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_12980c1c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRakPeer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_05bd42ce((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResolvedIP_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dbc742ef((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_31ee6304((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mTryBackupConnection
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ca7cb089((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ca7cb089((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWasHostWhenSuspended
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e95291e3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e95291e3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector((nint)NativeMethods.TablePtr->C2.hs_method_5bf96d83((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void runEvents()
     {
-        NativeMethods.TablePtr->hs_method_a7a392fb((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_a7a392fb((void*)__hosihikari_shim_handle);
     }
 
-    public bool setApplicationHandshakeCompleted(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
+    public bool setApplicationHandshakeCompleted(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id)
     {
-        return NativeMethods.TablePtr->hs_method_2a0ff77d((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_aeea1ba7((void*)__hosihikari_shim_handle, (void*)id.Handle) != 0;
     }
 
-    public void setupNatPunch(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_547448ca((void*)_handle, arg0);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void setConnectedResolvedExperienceInfo(nint resolvedExperienceInfo) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void startNatPunchingClient(string arg0, ushort arg1)
+    public void setDisableLanSignaling(bool arg0)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_2ef44858((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-        }
+        NativeMethods.TablePtr->C2.hs_method_4f6e332b((void*)__hosihikari_shim_handle, arg0);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_ef40a776((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_ef40a776((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_bd68ef5d((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_bd68ef5d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

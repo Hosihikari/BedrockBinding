@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-public sealed unsafe partial class DirectoryIterationItem
+public sealed unsafe partial class DirectoryIterationItem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DirectoryIterationItem(nint handle) : this(handle, true) { }
 
     internal DirectoryIterationItem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DirectoryIterationItem Borrow(nint handle) => new DirectoryIterationItem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,93 +33,104 @@ public sealed unsafe partial class DirectoryIterationItem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DirectoryIterationItem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DirectoryIterationItem Create_5b3df777(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DirectoryIterationItem Create_d2fbc9ef(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public ulong getFileSize()
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_4e2317da((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_feeeaafe((void*)__hosihikari_shim_handle);
     }
 
-    public ulong getFileSizeAllocationOnDisk()
+    public static DirectoryIterationItem Create()
     {
-        return NativeMethods.TablePtr->hs_method_0db7132d((void*)_handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_90be30f4();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DirectoryIterationItem((nint)handle);
     }
 
-    public nint getFullPathName()
+    public static DirectoryIterationItem Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0ad74fb0((void*)_handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_d2fbc9ef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DirectoryIterationItem((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathPart getName()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk47aa5b_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathPart((nint)NativeMethods.TablePtr->hs_method_c9df41f6((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f397e6e6((void*)__hosihikari_shim_handle);
     }
 
-    public int getType()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5990e0_Address
     {
-        return NativeMethods.TablePtr->hs_method_edaded39((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1225ddca((void*)__hosihikari_shim_handle);
     }
 
-    public bool isDirectory()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk657388_Address
     {
-        return NativeMethods.TablePtr->hs_method_8ec5d1ce((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_27c3f995((void*)__hosihikari_shim_handle);
     }
 
-    public bool isFile()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk657618_Address
     {
-        return NativeMethods.TablePtr->hs_method_dbb2527f((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bb7c354b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setCreateTime(long arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkba94d0_Address
     {
-        NativeMethods.TablePtr->hs_method_0a279ecc((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1c1cae31((void*)__hosihikari_shim_handle);
     }
 
-    public void setFileSize(ulong arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd41f5c_Address
     {
-        NativeMethods.TablePtr->hs_method_ca96b751((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fc050163((void*)__hosihikari_shim_handle);
     }
 
-    public void setFullPathName(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf25ac3_Address
     {
-        NativeMethods.TablePtr->hs_method_402d3c4a((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b07b6efa((void*)__hosihikari_shim_handle);
     }
 
-    public void setModifyTime(long arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem arg0)
     {
-        NativeMethods.TablePtr->hs_method_863d70a9((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem((nint)NativeMethods.TablePtr->C0.hs_method_43dc893f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    public void setName(global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathPart arg0)
-    {
-        NativeMethods.TablePtr->hs_method_40465227((void*)_handle, (void*)arg0.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public void setFullPathName(nint fullPathName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    public void setType(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_7f2c25b0((void*)_handle, arg0);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public void setName(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a2a54cfb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_e62656be((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

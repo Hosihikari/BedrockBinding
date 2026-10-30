@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ResourceSignature
+public sealed unsafe partial class ResourceSignature : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ResourceSignature(nint handle) : this(handle, true) { }
 
     internal ResourceSignature(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ResourceSignature Borrow(nint handle) => new ResourceSignature(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,59 @@ public sealed unsafe partial class ResourceSignature
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResourceSignature Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResourceSignature Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__ SIGNATURE_FILENAME
+    public static ResourceSignature Create()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->hs_get_66d073b5(), false);
+        var handle = NativeMethods.TablePtr->C2.hs_create_a1ac8020();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceSignature((nint)handle);
     }
 
-    public bool areKnownFilesValid(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg0)
+    public static ResourceSignature Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature arg0)
     {
-        return NativeMethods.TablePtr->hs_method_319e4bd1((void*)_handle, (void*)arg0.Handle) != 0;
+        var handle = NativeMethods.TablePtr->C2.hs_create_3df37d08((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceSignature((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ SIGNATURE_FILENAME()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_616d4640(), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke8472c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b7cdfbf4((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature((nint)NativeMethods.TablePtr->C2.hs_method_cc07f3b4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_80e678f0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

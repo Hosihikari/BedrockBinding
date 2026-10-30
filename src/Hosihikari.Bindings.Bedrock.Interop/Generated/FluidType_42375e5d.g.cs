@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Aquifer_Nested.FluidSample_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum FluidType : sbyte
 {
+    Water = 0,
+    Lava = 1,
+    None = 2,
 }

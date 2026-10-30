@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptBlockFilter
+public sealed unsafe partial class ScriptBlockFilter : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptBlockFilter(nint handle) : this(handle, true) { }
 
     internal ScriptBlockFilter(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptBlockFilter Borrow(nint handle) => new ScriptBlockFilter(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,109 +33,168 @@ public sealed unsafe partial class ScriptBlockFilter
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptBlockFilter Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptBlockFilter Create_dca0851e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptBlockFilter Create_f67be6ed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBindingBuilder<ScriptModuleMinecraft::ScriptBlockFilter>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBindingBuilder<ScriptModuleMinecraft::ScriptBlockFilter>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getExcludePermutations_f64475ef() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getExcludePermutations_ecf911cf() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getExcludeTags() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getExcludeTypes() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getIncludePermutations_46582efc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getIncludePermutations_9dbf2c62() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getIncludeTags() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getIncludeTypes() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    public bool isValid(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.Error arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter arg0)
     {
-        return NativeMethods.TablePtr->hs_method_e85078e3((void*)_handle, (void*)arg0.Handle) != 0;
+        return (nint)NativeMethods.TablePtr->C3.hs_method_01291477((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_call(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_5670ef45((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_894e9420(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ScriptBlockFilter Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0a94731c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_8da99db7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ScriptBlockFilter((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint setExcludePermutations_216a54f7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ScriptBlockFilter Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a41b4eaf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setExcludePermutations_ec55b597(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+        return new ScriptBlockFilter((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setExcludeTags(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_02b133f3());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setExcludeTypes(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getExcludePermutations() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint setIncludePermutations_50c5de6a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<std::basic_string<char>>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getExcludeTags() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<std::basic_string<char>>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setIncludePermutations_d1b42bec(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<std::basic_string<char>>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getExcludeTypes() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<std::basic_string<char>>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setIncludeTags(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getIncludePermutations() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setIncludeTypes(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<std::basic_string<char>>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getIncludeTags() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<std::basic_string<char>>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f024e218() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<std::basic_string<char>>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getIncludeTypes() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::optional<std::vector<std::basic_string<char>>>>' requires --link-carrier or --virtual-dispatch.");
+
+    public bool isValid(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Error error)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_935df077((void*)__hosihikari_shim_handle, (void*)error.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExcludePermutations_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_658f5d1d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExcludeTags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_15ee0015((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExcludeTypes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_723610f7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIncludePermutations_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8f960b86((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIncludeTags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f258d85f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIncludeTypes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_43064ace((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_36326249((void*)__hosihikari_shim_handle);
+    }
+
+    public bool operator_call(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_cf91e2e9((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter((nint)NativeMethods.TablePtr->C3.hs_method_8da99db7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setExcludePermutations(nint permutations) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setExcludeTags(nint strings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setExcludeTypes(nint strings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setIncludePermutations(nint permutations) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setIncludeTags(nint strings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setIncludeTypes(nint strings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_51165cf2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

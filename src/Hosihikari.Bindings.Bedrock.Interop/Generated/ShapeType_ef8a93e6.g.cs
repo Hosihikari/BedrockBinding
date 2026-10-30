@@ -4,8 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum ShapeType : int
+public enum ShapeType : byte
 {
-    All = 0,
-    SolidOnly = 1,
+    Outline = 0,
+    Collision = 1,
+    CollisionForCamera = 2,
 }

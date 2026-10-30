@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-public sealed unsafe partial class LocklessUint32_t
+public sealed unsafe partial class LocklessUint32_t : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LocklessUint32_t(nint handle) : this(handle, true) { }
 
     internal LocklessUint32_t(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LocklessUint32_t Borrow(nint handle) => new LocklessUint32_t(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,54 @@ public sealed unsafe partial class LocklessUint32_t
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public uint Decrement()
+    public static LocklessUint32_t Create()
     {
-        return NativeMethods.TablePtr->hs_method_6fc87480((void*)_handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_aade68f5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LocklessUint32_t((nint)handle);
     }
 
-    public uint Increment()
+    public static LocklessUint32_t Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.LocklessUint32_t arg0)
     {
-        return NativeMethods.TablePtr->hs_method_3853f523((void*)_handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_7593e42c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LocklessUint32_t((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LocklessUint32_t Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka0282a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a4e06643((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LocklessUint32_t Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.LocklessUint32_t operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.LocklessUint32_t arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.LocklessUint32_t((nint)NativeMethods.TablePtr->C2.hs_method_8145152e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_2d5166b6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

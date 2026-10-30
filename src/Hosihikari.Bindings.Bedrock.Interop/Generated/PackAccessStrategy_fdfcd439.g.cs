@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PackAccessStrategy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PackAccessStrategy(nint handle) : this(handle, true) { }
 
     internal PackAccessStrategy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PackAccessStrategy Borrow(nint handle) => new PackAccessStrategy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,19 +33,88 @@ public sealed unsafe partial class PackAccessStrategy : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__ PACK_IMPORT_LOCK_FILE
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.", false)]
+    public nint __loadArchive(nint packRelativePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Bedrock::Resources::PreloadedPathHandle' is not supported.", false)]
+    public nint __preloadSubFolders(nint packRelativePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Bedrock::Resources::PreloadedPathHandle' is not supported.");
+
+    public bool _canRecurse()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->hs_get_980e3992(), false);
+        return NativeMethods.TablePtr->C2.hs_method_d96d3b46((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'PackAssetSet' has no generated wrapper.", false)]
+    public nint _ctor(nint assetSet, nint handlePool) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'PackAssetSet' has no generated wrapper.");
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_4f3b66cf((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _forEachInAssetSet(nint packRelativePath, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public int _generateAssetSet()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_fa8e285d((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getSubPath()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_3abf2c29((void*)__hosihikari_shim_handle), false);
+    }
+
+    public bool _isAssetExtractionViable()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_38499bd6((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _readContentIdentity() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+
+    public int _regenerateAssetSet()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_48d3dae1((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _supportsSignatureVerification()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_cd8d18e0((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static nint ARCHIVE_EXTENSION()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_937a78b5();
+    }
+
+    public static nint ARCHIVE_FOLDER()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_8db6cc02();
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ PACK_IMPORT_LOCK_FILE()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_ed0eb742(), false);
     }
 
     public static PackAccessStrategy Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_4c1206f4();
+        var handle = NativeMethods.TablePtr->C2.hs_create_4c1206f4();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -54,119 +123,161 @@ public sealed unsafe partial class PackAccessStrategy : global::System.IDisposab
         return new PackAccessStrategy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackAccessStrategy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static PackAccessStrategy Create(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0452a36d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackAccessStrategy((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'PackAssetSet' has no generated wrapper.", false)]
+    public static PackAccessStrategy Create(nint assetSet, nint handlePool) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'PackAssetSet' has no generated wrapper.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.", false)]
+    public nint _loadArchive(nint packRelativePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Bedrock::Resources::PreloadedPathHandle' is not supported.", false)]
+    public nint _preloadSubFolders(nint packRelativePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Bedrock::Resources::PreloadedPathHandle' is not supported.");
 
     public bool canRecurse()
     {
-        return NativeMethods.TablePtr->hs_method_8ff560b9((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_a9e4db44((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint createSubPack(nint subPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool deleteAsset(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void forEachIn(nint packRelativePath, nint callback, bool recurseAnyways) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachInAssetSet(nint arg0, nint arg1) =>
+    public void forEachInAssetSet(nint packRelativePath, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public int generateAssetSet()
     {
-        return NativeMethods.TablePtr->hs_method_8e50dcde((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_8e50dcde((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool getAsset(nint packRelativePath, nint result, bool trustedContentOnly) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getPackLocation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getPackName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public ulong getPackSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getStrategyType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    public nint getSubPath()
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getStreamableSource(nint packRelativePath, nint tempDirectory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getSubPath()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7460e95e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_7ed84413((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool hasAsset(nint packRelativePath, bool trustedContentOnly, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool hasAsset(nint packRelativePath, bool trustedContentOnly, bool caseSensative) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool hasFolder(nint packRelativePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    public bool hasGeneratedAssetSet()
+    public bool isAssetExtractionViable()
     {
-        return NativeMethods.TablePtr->hs_method_a2d0da6a((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_b92cbd03((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public bool hasUpgradeFiles()
-    {
-        return NativeMethods.TablePtr->hs_method_e0d261cf((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool isTrusted() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool isWritable() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity readContentIdentity()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2ff3dc_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->hs_method_cf262363((void*)_handle));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dab776a5((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setIsTrusted(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk962cf5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_37f3bdd2((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb0ada6_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0ee1b714((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)NativeMethods.TablePtr->C2.hs_method_1625abbc((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Resources::PreloadedPathHandle' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint preloadArchive(nint packRelativePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Resources::PreloadedPathHandle' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Bedrock::Resources::PreloadedPathHandle' is not supported.", false)]
+    public nint preloadPath(nint packRelativePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Bedrock::Resources::PreloadedPathHandle' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint readContentIdentity() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+
+    public int regenerateAssetSet()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_e539d893((void*)__hosihikari_shim_handle);
+    }
+
+    public bool supportsSignatureVerification()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_a9db4db0((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void unload() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool writeAsset(nint packRelativePath, nint fileContent) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_fdfcd439((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_fdfcd439((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

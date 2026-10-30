@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BiomeManager
+public sealed unsafe partial class BiomeManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BiomeManager(nint handle) : this(handle, true) { }
 
     internal BiomeManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BiomeManager Borrow(nint handle) => new BiomeManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,68 +33,90 @@ public sealed unsafe partial class BiomeManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BiomeManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint biomes, nint automaticFeatureRules) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BiomeManager Create(nint arg0, nint arg1, bool arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BiomeManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory getBiomeComponentFactory_13563baa()
+    public void _dtor()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory((nint)NativeMethods.TablePtr->hs_method_13563baa((void*)_handle), false);
+        NativeMethods.TablePtr->C0.hs_method_b1757ceb((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry getBiomeRegistry_1e3f11a7()
+    public static BiomeManager Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry((nint)NativeMethods.TablePtr->hs_method_1e3f11a7((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C0.hs_create_2121f18a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeManager((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry getSurfaceBuilderRegistry_158e5096()
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static BiomeManager Create(nint biomes, nint automaticFeatureRules) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
+    public void _initializeServerBiomeRegistry(nint worldRegistries, nint levelSeed, nint levelStorage, nint linkedAssetValidator, nint biomeIdToResolvedData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
+    public void initializeBiomeRegistryAndAutomaticFeatureRulesOnServer(nint worldRegistries, nint resourcePackManager, nint levelSeed, nint levelStorage, nint linkedAssetValidator, nint biomeIdToResolvedData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAutomaticFeatureRules_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry((nint)NativeMethods.TablePtr->hs_method_158e5096((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_46976951((void*)__hosihikari_shim_handle);
     }
 
-    public void initializeBiomeRegistryAndAutomaticFeatureRulesOnServer(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg2, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeComponentFactory_Address
     {
-        NativeMethods.TablePtr->hs_method_f098f4e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b7c802fb((void*)__hosihikari_shim_handle);
     }
 
-    public void initializeWithLevelStorageManager(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeDecorationFeatureMap_Address
     {
-        NativeMethods.TablePtr->hs_method_f5d32066((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_59983a73((void*)__hosihikari_shim_handle);
     }
 
-    public void loadBiomeData(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomes_Address
     {
-        NativeMethods.TablePtr->hs_method_46450dd0((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9ee302fc((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void sendLevelBiomesRegistered()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLevelBiomesRegisteredPublisher_Address
     {
-        NativeMethods.TablePtr->hs_method_9ce0df34((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_82efb39b((void*)__hosihikari_shim_handle);
     }
 
-    public static bool use3DBiomeMaps(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSurfaceBuilders_Address
     {
-        return NativeMethods.TablePtr->hs_method_cf2ad5c5((void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0057a394((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_122957fb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_ebc25cbe((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

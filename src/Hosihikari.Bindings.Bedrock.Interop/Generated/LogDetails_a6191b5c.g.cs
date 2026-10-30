@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.BedrockLog_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.BedrockLog;
 
-public sealed unsafe partial class LogDetails
+public sealed unsafe partial class LogDetails : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LogDetails(nint handle) : this(handle, true) { }
 
     internal LogDetails(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LogDetails Borrow(nint handle) => new LogDetails(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,68 +33,36 @@ public sealed unsafe partial class LogDetails
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LogDetails Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LogDetails Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void closeLog()
+    public static LogDetails Create()
     {
-        NativeMethods.TablePtr->hs_method_453542f9((void*)_handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_8dbab7dc();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LogDetails((nint)handle);
     }
 
-    public void createLog(nint arg0, string arg1, string arg2, bool arg3, nint arg4, double arg5)
+    public static LogDetails Create(global::Hosihikari.Bindings.Bedrock.Interop.BedrockLog.LogDetails arg0)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
+        var handle = NativeMethods.TablePtr->C0.hs_create_af915102((void*)arg0.Handle);
+        if (handle == null)
         {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-            {
-                NativeMethods.TablePtr->hs_method_1dc92404((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, (void*)arg4, arg5);
-            }
-        }
+
+        return new LogDetails((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'LogSettingsUpdater' has no generated wrapper.", false)]
-    public void updateLogFilter(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'LogSettingsUpdater' has no generated wrapper.");
-
-    public void updateLogSetting(string arg0, bool arg1)
+    public void _logToFile(string debugEvent)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(debugEvent);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -104,10 +72,299 @@ public sealed unsafe partial class LogDetails
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(debugEvent, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_a19f8deb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            NativeMethods.TablePtr->C0.hs_method_e045087c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _log_va(int _area, uint _priority, nint _function, int line, int _messageId, nint pszFormat, nint argptr)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c5dfb554((void*)__hosihikari_shim_handle, _area, _priority, (void*)_function, line, _messageId, (void*)pszFormat, (void*)argptr);
+    }
+
+    public string _makeLogString(string timestamp, int area, uint priority, string functionName, int lineNumber, int messageId, string logMessage)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(timestamp);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(timestamp, __hs_stringBytes0);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(functionName);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(functionName, __hs_stringBytes3);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(logMessage);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(logMessage, __hs_stringBytes6);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                {
+                    var __hs_view = NativeMethods.TablePtr->C0.hs_method_9983a1cc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, area, priority, __hs_stringData3, (nuint)__hs_stringByteCount3, lineNumber, messageId, __hs_stringData6, (nuint)__hs_stringByteCount6);
+                    return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+                }
+            }
+        }
+    }
+
+    public void _openLogFile()
+    {
+        NativeMethods.TablePtr->C0.hs_method_2056a9bf((void*)__hosihikari_shim_handle);
+    }
+
+    public void closeLog()
+    {
+        NativeMethods.TablePtr->C0.hs_method_453542f9((void*)__hosihikari_shim_handle);
+    }
+
+    public void createLog(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path _logFilePath, string _logFileName, string _debugLogTimestamp, bool createLogFile, nint _settings, double _logCycleInS)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(_logFileName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(_logFileName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(_debugLogTimestamp);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(_debugLogTimestamp, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C0.hs_method_640c23da((void*)__hosihikari_shim_handle, (void*)_logFilePath.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, createLogFile, (void*)_settings, _logCycleInS);
+            }
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk13ee41_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c176e9e0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2ef1c2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_63e66b49((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2f550b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_106fb932((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk381674_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d791c279((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk39777d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4224cdc1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3dc6d5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_74ae8d72((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3fa36f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a2ed8e76((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4c7730_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_89dc7646((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk52b3f7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_04732815((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8dc1a4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cad9b57f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk94b151_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_18826283((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk98388d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_78b2f0d3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9c26d4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_be64465b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9d155d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3cd43517((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9ff44e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ce4f2a45((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka42560_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c98a68f3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkba0ae8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_33b34a80((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkbd562e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4779c4b4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkbdf6bc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d520ac8b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd577e9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cecb9e42((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd6e125_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_77dc7891((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkdd0f61_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e4fa194e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke1734c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8f29df5d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke5f581_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_15cceebe((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkef8f13_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_67b69063((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf140b5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_460eca7f((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BedrockLog.LogDetails operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BedrockLog.LogDetails arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BedrockLog.LogDetails((nint)NativeMethods.TablePtr->C0.hs_method_9ad0d422((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void updateLogSetting(string setting, bool newValue)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(setting);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(setting, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_80ca7b7b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, newValue);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a6191b5c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,7 +4,29 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DoorBlock_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum DoorType : int
 {
+    Oak = 0,
+    Spruce = 1,
+    Birch = 2,
+    Jungle = 3,
+    Acacia = 4,
+    Darkoak = 5,
+    Iron = 6,
+    Crimson = 7,
+    BlueNethershroom = 8,
+    Mangrove = 9,
+    Bamboo = 10,
+    Cherry = 11,
+    Copper = 12,
+    ExposedCopper = 13,
+    WeatheredCopper = 14,
+    OxidizedCopper = 15,
+    WaxedCopper = 16,
+    WaxedExposedCopper = 17,
+    WaxedWeatheredCopper = 18,
+    WaxedOxidizedCopper = 19,
+    PaleOak = 20,
+    Poplar = 21,
+    Count = 22,
 }

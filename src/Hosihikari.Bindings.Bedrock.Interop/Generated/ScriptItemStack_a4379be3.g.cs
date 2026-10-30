@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptItemStack
+public sealed unsafe partial class ScriptItemStack : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptItemStack(nint handle) : this(handle, true) { }
 
     internal ScriptItemStack(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptItemStack Borrow(nint handle) => new ScriptItemStack(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,51 +33,82 @@ public sealed unsafe partial class ScriptItemStack
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptItemStack Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptItemStack Create_6178cfb1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptItemStack Create_72e1a14b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptItemStack Create(nint arg0, nint arg1, int arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptItemStack>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptItemStack>' requires --link-carrier or --virtual-dispatch.");
-
-    public void clearDynamicProperties(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ContextConfig arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, nint itemTypeHandle, int amount, int data)
     {
-        NativeMethods.TablePtr->hs_method_4aaf9509((void*)_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_eb3cebae((void*)__hosihikari_shim_handle, (void*)scope.Handle, (void*)itemTypeHandle, amount, data);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint clone(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' requires --link-carrier or --virtual-dispatch.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_f2f0f5ab((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createHandle(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' requires --link-carrier or --virtual-dispatch.");
+    public static ScriptItemStack Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0810fbb6();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not supported.", false)]
-    public static nint createOptionalHandle(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' is not supported.");
+        return new ScriptItemStack((nint)handle);
+    }
+
+    public static ScriptItemStack Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, nint itemTypeHandle, int amount, int data)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_fde49982((void*)scope.Handle, (void*)itemTypeHandle, amount, data);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemStack((nint)handle);
+    }
+
+    public static ScriptItemStack Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemStack arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8cc8bfb5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemStack((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, Scripting::ArgumentOutOfBoundsError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _validateDynamicProperty(nint key, nint value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, Scripting::ArgumentOutOfBoundsError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind(global::Hosihikari.Bindings.Abi.SharedHandle? itemComponents, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version version)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_80988d43(itemComponents?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)version.Handle));
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_ createHandle(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_((nint)NativeMethods.TablePtr->C3.hs_method_c43a4913((void*)scope.Handle, (void*)item.Handle));
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_? createOptionalHandle(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_9250dd42((void*)scope.Handle, (void*)item.Handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_((nint)__hs_handle) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptRawMessageInterface' is not supported.", false)]
+    public static nint createRawLoreVector(nint lore) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptRawMessageInterface' is not supported.");
 
     public string[] getCanDestroy()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_9899b4ef((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_ad807003((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -89,7 +120,7 @@ public sealed unsafe partial class ScriptItemStack
 
     public string[] getCanPlaceOn()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_319cd07e((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_2efc33aa((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -100,51 +131,16 @@ public sealed unsafe partial class ScriptItemStack
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemComponent>' is not supported.", false)]
-    public nint getComponent(nint arg0, nint arg1) =>
+    public nint getComponent(nint components, nint id, bool includeCustom) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemComponent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemComponent>' is not supported.", false)]
-    public nint getComponents_1b264299(nint arg0) =>
+    public nint getComponents(nint components, bool includeCustom) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemComponent>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getComponents_bd347a4c(nint scope) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::variant<double,float,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Vec3>' is not supported.", false)]
-    public nint getDynamicProperty(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<double,float,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Vec3>' is not supported.");
-
-    public string[] getDynamicPropertyIds(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ContextConfig arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_d6f72f12((void*)_handle, (void*)arg0.Handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    public int getDynamicPropertyTotalByteCount(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ContextConfig arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_cdeedb79((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getItemInstance_e103d6ec()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_e103d6ec((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getItemInstance_e752d933()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_e752d933((void*)_handle), false);
-    }
 
     public string[] getLore()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_53cd73a0((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_4ad9e973((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -152,18 +148,11 @@ public sealed unsafe partial class ScriptItemStack
             __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
         }
         return __hs_result;
-    }
-
-    public string? getNameTag()
-    {
-        var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->hs_method_c87d6c19((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
     public string[] getTags()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_6524ebc1((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_3b9ab13f((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -173,112 +162,82 @@ public sealed unsafe partial class ScriptItemStack
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemType>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemType>' requires --link-carrier or --virtual-dispatch.");
-
-    public string getTypeId()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttachedComponents_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b050e450((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_04153f78((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public bool hasComponent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public bool hasTag(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemInstance_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_86ecbd9d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_49a832d9((void*)__hosihikari_shim_handle);
     }
 
-    public bool isStackableWith(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptItemStack arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemType_Address
     {
-        return NativeMethods.TablePtr->hs_method_9cc7f9d0((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7a3b19bc((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::unordered_map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::variant<int,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,bool>,std::hash<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::equal_to<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::variant<int,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,bool>>>>' is abstract or not copy-constructible.", false)]
-    public bool matches_cc278f3d(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::unordered_map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::variant<int,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,bool>,std::hash<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::equal_to<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::variant<int,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,bool>>>>' is abstract or not copy-constructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool matches_a918701f(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_baf07c6d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_95f886de(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setAmount(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setCanDestroy(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setCanPlaceOn(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setDynamicProperty(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setLore(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is abstract or not copy-constructible.", false)]
-    public void setLoreV010(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is abstract or not copy-constructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setNameTag(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
-
-    public void setNameTagV010(string? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0 ?? string.Empty);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0 ?? string.Empty, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_54cc198e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg0 is not null);
-        }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d8dd18c9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Error' is not supported.", false)]
-    public static nint validateLoreLength(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Error' is not supported.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cbf308ae((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_e653e773() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemStack operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemStack arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemStack((nint)NativeMethods.TablePtr->C3.hs_method_95f886de((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void setAmountV010(int amount)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1b9f3566((void*)__hosihikari_shim_handle, amount);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setCanDestroy(nint blockIdentifiers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setCanPlaceOn(nint blockIdentifiers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+    public void setData(int data)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bf2054fe((void*)__hosihikari_shim_handle, data);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, Scripting::ArgumentOutOfBoundsError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setDynamicProperty(nint contextConfig, nint key, nint optionalValue) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, Scripting::ArgumentOutOfBoundsError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char>>' is not supported.", false)]
+    public static nint tryCreateLoreVector(nint loreVariantList, nint errorMessage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ArgumentOutOfBoundsError' is not supported.", false)]
+    public static nint validateLoreLength(nint loreList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ArgumentOutOfBoundsError' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a4379be3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RealmsUnknownPackSource
+public sealed unsafe partial class RealmsUnknownPackSource : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RealmsUnknownPackSource(nint handle) : this(handle, true) { }
 
     internal RealmsUnknownPackSource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RealmsUnknownPackSource Borrow(nint handle) => new RealmsUnknownPackSource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,113 @@ public sealed unsafe partial class RealmsUnknownPackSource
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RealmsUnknownPackSource Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RealmsUnknownPackSource Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachPack(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachPackConst(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public sbyte getPackOrigin()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
     {
-        return NativeMethods.TablePtr->hs_method_211e9445((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6dcb89f3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_404aa310((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIO_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d3a614cd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTaskGroup_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f9129a70((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __loadImpl(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+
+    public byte _getPackOrigin()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_b4fbd039((void*)__hosihikari_shim_handle);
+    }
+
+    public sbyte _getPackType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_14e62b33((void*)__hosihikari_shim_handle);
+    }
+
+    public static RealmsUnknownPackSource Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_974d010f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RealmsUnknownPackSource((nint)handle);
+    }
+
+    public static RealmsUnknownPackSource Create(global::Hosihikari.Bindings.Bedrock.Interop.RealmsUnknownPackSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_71571172((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RealmsUnknownPackSource((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _loadImpl(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+
+    public byte getPackOrigin()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0245d4bb((void*)__hosihikari_shim_handle);
     }
 
     public sbyte getPackType()
     {
-        return NativeMethods.TablePtr->hs_method_823061f8((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_1006d47e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceReport' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint load(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceReport' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk811301_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e5be8176((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfcb077_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b2671a65((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RealmsUnknownPackSource operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RealmsUnknownPackSource arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RealmsUnknownPackSource((nint)NativeMethods.TablePtr->C2.hs_method_c7b4cdea((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_1926863f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

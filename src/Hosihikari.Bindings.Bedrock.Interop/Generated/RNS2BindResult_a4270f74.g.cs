@@ -2,9 +2,12 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum RNS2BindResult : int
 {
+    Success = 0,
+    RequiresRaknetSupportIpv6Define = 1,
+    FailedToBindSocket = 2,
+    FailedSendTest = 3,
 }

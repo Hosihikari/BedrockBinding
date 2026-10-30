@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NullLogger
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NullLogger(nint handle) : this(handle, true) { }
 
     internal NullLogger(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NullLogger Borrow(nint handle) => new NullLogger(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,23 @@ public sealed unsafe partial class NullLogger
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Logv_defb5f7c(nint arg0, nint arg1)
+    public void _Logv(nint format, nint ap)
     {
-        NativeMethods.TablePtr->hs_method_defb5f7c((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->C2.hs_method_43edf6bc((void*)__hosihikari_shim_handle, (void*)format, (void*)ap);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NullLogger Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NullLogger Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.NullLogger instance
+    public void Logv(nint format, nint ap)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.NullLogger((nint)NativeMethods.TablePtr->hs_get_a08bc60d(), false);
+        NativeMethods.TablePtr->C2.hs_method_8ce83988((void*)__hosihikari_shim_handle, (void*)format, (void*)ap);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.NullLogger instance()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NullLogger((nint)NativeMethods.TablePtr->C2.hs_method_02445b71(), false);
+    }
 }

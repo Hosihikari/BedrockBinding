@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorDefinitionDiffList
+public sealed unsafe partial class ActorDefinitionDiffList : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorDefinitionDiffList(nint handle) : this(handle, true) { }
 
     internal ActorDefinitionDiffList(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorDefinitionDiffList Borrow(nint handle) => new ActorDefinitionDiffList(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,61 @@ public sealed unsafe partial class ActorDefinitionDiffList
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorDefinitionDiffList Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorDefinitionDiffList Create_8ac5e0d1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorDefinitionDiffList Create_79c5243b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addDefinition(string arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup definitions)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_eed5b3bb((void*)__hosihikari_shim_handle, (void*)definitions.Handle);
+    }
+
+    public static ActorDefinitionDiffList Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4d8408e5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDefinitionDiffList((nint)handle);
+    }
+
+    public static ActorDefinitionDiffList Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup definitions)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_baa03bc3((void*)definitions.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDefinitionDiffList((nint)handle);
+    }
+
+    public static ActorDefinitionDiffList Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDiffList arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_79c5243b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDefinitionDiffList((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ActorDefinitionDescriptor' has no accessible destructor.", false)]
+    public nint _getDescriptionFrom(ulong start, ulong end) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ActorDefinitionDescriptor' has no accessible destructor.");
+
+    public void _updateStack()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a04a9136((void*)__hosihikari_shim_handle);
+    }
+
+    public void addDefinition(string def)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(def);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -62,34 +97,90 @@ public sealed unsafe partial class ActorDefinitionDiffList
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(def, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_397ac8f7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_42aedc8e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addPendingPropertyChange(ulong arg0, nint arg1) =>
+    public void addPendingPropertyChange(ulong overallPropertyIndex, nint value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionDescriptor' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint buildAdditiveDescriptionFrom(ulong arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionDescriptor' requires --link-carrier or --virtual-dispatch.");
 
     public void clearChangedDescription()
     {
-        NativeMethods.TablePtr->hs_method_b2b874b2((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_b2b874b2((void*)__hosihikari_shim_handle);
     }
 
-    public void clearDefinitions()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAddedDefinitionGroup_Address
     {
-        NativeMethods.TablePtr->hs_method_747c40fe((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9f397501((void*)__hosihikari_shim_handle);
     }
 
-    public string definitionListToString(string arg0)
+    public bool mChanged
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_b6f9d74c((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b6f9d74c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChangedDescription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3fcecb94((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeferredPropertyChanges_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f57be760((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefinitionStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_15e3f3e5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefinitions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b841f2e4((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mLockedChanges
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_2458cec7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_2458cec7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingChanges_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6654b84a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingPropertyChanges_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_28361e2b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRemovedDefinitionGroup_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c6aefdd3((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDiffList operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDiffList arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDiffList((nint)NativeMethods.TablePtr->C0.hs_method_4a411a52((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void removeDefinition(string def)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(def);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -99,117 +190,23 @@ public sealed unsafe partial class ActorDefinitionDiffList
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(def, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_81540dc3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            NativeMethods.TablePtr->C0.hs_method_0b40bead((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup getAddedDefinitionGroup()
+    public void Dispose()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->hs_method_7c5a11c2((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup getAddedDefinitionGroupMutable()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->hs_method_5fd79d5d((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor getChangedDescription()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor((nint)NativeMethods.TablePtr->hs_method_51cb20e5((void*)_handle), false);
-    }
-
-    public nint getDefinitionStack()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_f3a4c589((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor? getDescription(bool arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_89b68b55((void*)_handle, arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor((nint)__hs_handle) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup getRemovedDefinitionGroup()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->hs_method_b6a847ed((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup getRemovedDefinitionGroupMutable()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->hs_method_bc0a1664((void*)_handle), false);
-    }
-
-    public bool hasChanged()
-    {
-        return NativeMethods.TablePtr->hs_method_a616c34d((void*)_handle) != 0;
-    }
-
-    public bool hasDefinition(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        if (__hosihikari_shim_handle != 0)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_63bc406d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_8d9a674a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    public void lockChanges()
-    {
-        NativeMethods.TablePtr->hs_method_f38c909a((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeDefinition(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_d5dd403d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void setDefinitionStack(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    public ulong size()
-    {
-        return NativeMethods.TablePtr->hs_method_ac77dc64((void*)_handle);
-    }
-
-    public void unlockChanges()
-    {
-        NativeMethods.TablePtr->hs_method_1e302e45((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_9619b8d8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

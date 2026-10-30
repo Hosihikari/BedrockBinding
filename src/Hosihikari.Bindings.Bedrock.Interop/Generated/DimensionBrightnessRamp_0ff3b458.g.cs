@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DimensionBrightnessRamp
+public sealed unsafe partial class DimensionBrightnessRamp : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DimensionBrightnessRamp(nint handle) : this(handle, true) { }
 
     internal DimensionBrightnessRamp(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DimensionBrightnessRamp Borrow(nint handle) => new DimensionBrightnessRamp(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,52 @@ public sealed unsafe partial class DimensionBrightnessRamp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    public void _buildBrightnessRamp()
+    {
+        NativeMethods.TablePtr->C1.hs_method_d02e16be((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getBaseAmbientValue()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e84a1df1((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
     public void buildBrightnessRamp()
     {
-        NativeMethods.TablePtr->hs_method_2a7e83ea((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_2a7e83ea((void*)__hosihikari_shim_handle);
     }
 
     public float getBaseAmbientValue()
     {
-        return NativeMethods.TablePtr->hs_method_3c1736e5((void*)_handle);
-    }
-
-    public float getBrightnessRampValue(int arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_3e3b9c5c((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C1.hs_method_b8555054((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBrightnessRamp_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a0157916((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a0157916((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0ff3b458((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

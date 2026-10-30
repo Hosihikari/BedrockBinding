@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OnFireComponent
+public sealed unsafe partial class OnFireComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OnFireComponent(nint handle) : this(handle, true) { }
 
     internal OnFireComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OnFireComponent Borrow(nint handle) => new OnFireComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,58 +33,55 @@ public sealed unsafe partial class OnFireComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string LEGACY_FIRE_TAG
+    public static string LEGACY_FIRE_TAG()
     {
-        get
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_40883839();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string ON_FIRE_TAG()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_02a3b564();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C2.hs_method_97ade38b((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertFromLegacyData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag outTag)
+    {
+        NativeMethods.TablePtr->C2.hs_method_49a649b5((void*)tag.Handle, (void*)outTag.Handle);
+    }
+
+    public bool mIgnitedThisTick
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_98991b31((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_98991b31((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mOnFireTicks
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_11e6b805((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_11e6b805((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
         {
-            var view = NativeMethods.TablePtr->hs_get_428c5ffa();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_53b2748a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
-    }
-
-    public static string ON_FIRE_TAG
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_9b12afc2();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OnFireComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OnFireComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
-    {
-        NativeMethods.TablePtr->hs_method_aaa8e9c6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public static void convertFromLegacyData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
-    {
-        NativeMethods.TablePtr->hs_method_7176db99((void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public static bool needsLegacyConversion(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_7405bc86((void*)arg0.Handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
-    {
-        NativeMethods.TablePtr->hs_method_44bc5c0f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 }

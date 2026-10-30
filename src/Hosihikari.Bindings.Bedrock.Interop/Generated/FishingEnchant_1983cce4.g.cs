@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class FishingEnchant
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FishingEnchant(nint handle) : this(handle, true) { }
 
     internal FishingEnchant(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FishingEnchant Borrow(nint handle) => new FishingEnchant(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,92 @@ public sealed unsafe partial class FishingEnchant
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FishingEnchant Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FishingEnchant Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getMaxCost(int arg0)
+    public int mCompatibility
     {
-        return NativeMethods.TablePtr->hs_method_167ecad2((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_9752da02((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d72443a4((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mEnchantType
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_24289072((void*)__hosihikari_shim_handle);
+    }
+
+    public int mFrequency
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_fbe51441((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsAvailableInVillagerTrading
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_102538d2((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool mIsDisabled
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_fab845cb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_fab845cb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mPrimarySlots
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ccfd2f54((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptStringId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_74b428e8((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSecondarySlots
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_5fc6ef07((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStringId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_47832d8d((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getMaxCost(int level)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d8fb64e4((void*)__hosihikari_shim_handle, level);
+    }
+
+    public int _getMaxLevel()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_60a52379((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getMinCost(int level)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_66696579((void*)__hosihikari_shim_handle, level);
+    }
+
+    public int getMaxCost(int level)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f59cdd1a((void*)__hosihikari_shim_handle, level);
     }
 
     public int getMaxLevel()
     {
-        return NativeMethods.TablePtr->hs_method_e7f74786((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_390c7b7f((void*)__hosihikari_shim_handle);
     }
 
-    public int getMinCost(int arg0)
+    public int getMinCost(int level)
     {
-        return NativeMethods.TablePtr->hs_method_4a890c9b((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C1.hs_method_877c2786((void*)__hosihikari_shim_handle, level);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

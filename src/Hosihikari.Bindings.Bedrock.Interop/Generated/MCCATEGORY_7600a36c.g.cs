@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum MCCATEGORY : sbyte
+public enum MCCATEGORY : byte
 {
     Minecraft = 0,
     AutomationProtocol = 1,

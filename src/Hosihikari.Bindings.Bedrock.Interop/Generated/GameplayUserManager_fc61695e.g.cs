@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameplayUserManager
+public sealed unsafe partial class GameplayUserManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameplayUserManager(nint handle) : this(handle, true) { }
 
     internal GameplayUserManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameplayUserManager Borrow(nint handle) => new GameplayUserManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,111 +33,186 @@ public sealed unsafe partial class GameplayUserManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static GameplayUserManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getAnyGameplayUsersRemovedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameplayUserManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getGameplayUserAddedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void addGameplayUser(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getGameplayUserRemovedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getGameplayUserResumedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getGameplayUserSuspendedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getPlayerRenamedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void _addTrackedMapPlayers(global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData mapItemSavedData)
+    {
+        NativeMethods.TablePtr->C1.hs_method_ec978e1c((void*)__hosihikari_shim_handle, (void*)mapItemSavedData.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _forEachActivePlayer(nint callback, bool includeRemovedPlayers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _saveAllPlayers(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C1.hs_method_4e765994((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle);
+    }
 
     public void cleanupRemovedGameplayUsers()
     {
-        NativeMethods.TablePtr->hs_method_1bc94482((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_1bc94482((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachActiveGameplayUser(nint arg0) =>
+    public void forEachActiveGameplayUser(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachActivePlayer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getAnyGameplayUsersRemovedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachActivePlayerIncludeRemoved(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getGameplayUserAddedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public nint getActiveGameplayUsers()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_dd26ab1a((void*)_handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getGameplayUserRemovedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getGameplayUserEntities_004284da() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getGameplayUserResumedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public nint getGameplayUserEntities_d6d229e2()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_d6d229e2((void*)_handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getGameplayUserSuspendedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void initializeWithGameplayUserManagerProxy(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getPlayerRenamedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public bool isGameplayUserSuspended(nint arg0) =>
+    public bool isGameplayUserSuspended(nint weakEntityUser) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint registerAnyGameplayUsersRemovedCallback_b02998b2(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerAnyGameplayUsersRemovedCallback_bcb5c9dd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerGameplayUserAddedCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerGameplayUserRemovedCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerGameplayUserResumedCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerGameplayUserSuspendedCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    public void registerLevelStorageManagerListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActiveGameplayUsers_Address
     {
-        NativeMethods.TablePtr->hs_method_823bf95e((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5fea3e13((void*)__hosihikari_shim_handle);
     }
 
-    public void registerMapDataManagerListener(global::Hosihikari.Bindings.Bedrock.Interop.MapDataManager arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameplayUserEntities_Address
     {
-        NativeMethods.TablePtr->hs_method_e9547adb((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bc66cfc4((void*)__hosihikari_shim_handle);
     }
 
-    public bool shouldStartGameSaveTimer()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameplayUserManagerProxy_Address
     {
-        return NativeMethods.TablePtr->hs_method_13594a0b((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_447a29ce((void*)__hosihikari_shim_handle);
     }
 
-    public void tickSuspensions()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAnyGameplayUsersRemovedPublisher_Address
     {
-        NativeMethods.TablePtr->hs_method_323cee0b((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a6df286f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_65ea79e9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnCanStartGameSaveTimerCheckSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_863d8a24((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnCreateMapSavedDataSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2084f95b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserAdded_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_115ead21((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserRemovedPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9838722d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserResumedPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6513f7e6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserSuspendedPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0076642c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnPlayerRenamedPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_648ea627((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnSaveGameDataSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ee282db7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSuspendResumeList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6fe4c7a4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSuspendedGameplayUsers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_54318f3f((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerMapDataManagerListener(global::Hosihikari.Bindings.Bedrock.Interop.IServerMapDataManagerConnector serverMapDataManagerConnector)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b8274bb7((void*)__hosihikari_shim_handle, (void*)serverMapDataManagerConnector.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_fc61695e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

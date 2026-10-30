@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameTestRunner
+public sealed unsafe partial class GameTestRunner : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameTestRunner(nint handle) : this(handle, true) { }
 
     internal GameTestRunner(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameTestRunner Borrow(nint handle) => new GameTestRunner(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,46 @@ public sealed unsafe partial class GameTestRunner
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameTestRunner Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameTestRunner Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _subdivideBatch_8f03e25f(nint batch, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void clearMarkers(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    public static void clearAllTests(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestTicker testTicker, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox[] gameTestInstanceBounds)
     {
-        NativeMethods.TablePtr->hs_method_b213b42b((void*)arg0.Handle);
+        var __hs_vectorItems2 = gameTestInstanceBounds;
+        var __hs_vectorHandles2 = new nint[__hs_vectorItems2?.Length ?? 0];
+        for (var __hs_i2 = 0; __hs_i2 < __hs_vectorHandles2.Length; __hs_i2++)
+        {
+            __hs_vectorHandles2[__hs_i2] = __hs_vectorItems2![__hs_i2]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData2 = __hs_vectorHandles2)
+        {
+            var __hs_vectorData2 = (void**)__hs_vectorHandleData2;
+            NativeMethods.TablePtr->C1.hs_method_33fbc3b1((void*)region.Handle, (void*)testTicker.Handle, __hs_vectorData2, (nuint)(gameTestInstanceBounds?.Length ?? 0));
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'gametest::GameTestBatch' is not supported.", false)]
-    public static nint groupTestsIntoBatches_7b7ddd8e(nint arg0, nint arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'gametest::GameTestBatch' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint groupTestsIntoBatches_d13f04c7(nint registry, nint arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void runTest(global::Hosihikari.Bindings.Abi.SharedHandle? arg0, global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestTicker arg1)
+    public static void clearMarkers(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        NativeMethods.TablePtr->hs_method_a1121e7d(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_c3609485((void*)level.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static nint runTests(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    public static void runTest(global::Hosihikari.Bindings.Abi.SharedHandle? test, global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestTicker ticker)
+    {
+        NativeMethods.TablePtr->C1.hs_method_6e9a7355(test?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)ticker.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_53101fbc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

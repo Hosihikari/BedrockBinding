@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TickingAreasManager
+public sealed unsafe partial class TickingAreasManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TickingAreasManager(nint handle) : this(handle, true) { }
 
     internal TickingAreasManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TickingAreasManager Borrow(nint handle) => new TickingAreasManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,33 @@ public sealed unsafe partial class TickingAreasManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickingAreasManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TickingAreasManager Create_b17be2fd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickingAreasManager Create_3a4f4000(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int addArea(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int arg4, bool arg5, int arg6, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg7)
+    public static TickingAreasManager Create()
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var handle = NativeMethods.TablePtr->C3.hs_create_b046fd48();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickingAreasManager((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.", false)]
+    public static TickingAreasManager Create(nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.");
+
+    public int _addArea(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, string name, global::Hosihikari.Bindings.Bedrock.Interop.Bounds bounds, bool isCircle, int limitCheck, bool isPersistent, byte loadMode, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -62,16 +69,49 @@ public sealed unsafe partial class TickingAreasManager
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_e166e24b((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5, arg6, (void*)arg7.Handle);
+            return NativeMethods.TablePtr->C3.hs_method_a76cd1a4((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)bounds.Handle, isCircle, limitCheck, isPersistent, loadMode, (void*)levelStorage.Handle);
         }
     }
 
-    public int addArea(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, int arg3, int arg4, bool arg5, int arg6, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg7)
+    public static void _deletePendingArea(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.PendingArea pendingArea)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        NativeMethods.TablePtr->C3.hs_method_64d5dab6((void*)levelStorage.Handle, (void*)pendingArea.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
+    public nint _getPendingAreaDescriptionsFiltered(nint dimensionId, nint includeInList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
+
+    public void _postReloadActorAdded(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f5dd6a66((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public static void _savePendingArea(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Bedrock.Interop.PendingArea pendingArea)
+    {
+        NativeMethods.TablePtr->C3.hs_method_dc96d06f((void*)levelStorage.Handle, (void*)dimensionId.Handle, (void*)pendingArea.Handle);
+    }
+
+    public void addEntityArea(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d045e89a((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, (void*)actor.Handle, (void*)levelStorage.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void addEntityArea(nint dimensionId, nint entityId, nint bounds, bool alwaysActive, float maxDistToPlayers, nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public void addTickingAreaListForDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Abi.SharedHandle? tickingAreaList)
+    {
+        NativeMethods.TablePtr->C3.hs_method_84c06b29((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, tickingAreaList?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager_Nested.ScopedContext addTransientScopedArea(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, string name, ulong scopeKey, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid, global::Hosihikari.Bindings.Bedrock.Interop.Bounds bounds)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -81,130 +121,115 @@ public sealed unsafe partial class TickingAreasManager
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_b87392bf((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, arg3, arg4, arg5, arg6, (void*)arg7.Handle);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager_Nested.ScopedContext((nint)NativeMethods.TablePtr->C3.hs_method_7eeaefa3((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, scopeKey, (void*)uuid.Handle, (void*)bounds.Handle));
         }
-    }
-
-    public void addEntityArea(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg2)
-    {
-        NativeMethods.TablePtr->hs_method_268d9ffe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    public void addEntityArea(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, global::Hosihikari.Bindings.Bedrock.Interop.Bounds arg2, bool arg3, float arg4, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg5)
-    {
-        NativeMethods.TablePtr->hs_method_316751b2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, (void*)arg5.Handle);
-    }
-
-    public void addTickingAreaListForDimension(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
-    {
-        NativeMethods.TablePtr->hs_method_b115e68b((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
-
-    public uint countActiveStandaloneTickingAreas()
-    {
-        return NativeMethods.TablePtr->hs_method_c1f28c87((void*)_handle);
     }
 
     public uint countStandaloneTickingAreas()
     {
-        return NativeMethods.TablePtr->hs_method_7e02703b((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_2303fa4d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getLimitCheck_34fe5d18(nint level, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static int getLimitCheck(global::Hosihikari.Bindings.Bedrock.Interop.Level level, bool enforce)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_34fe5d18((void*)level.Handle, enforce);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActiveAreas_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_47662e39((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsPreloadDone
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ff57ee69((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_ff57ee69((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelStorage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4f2b020b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnCanStartGameSaveTimerCheckSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_394bd464((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingAreas_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_13507cdb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPostReloadActorAdded_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_09372256((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerForActorManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.IActorManagerConnector actorManagerConnector)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b2a9e5d2((void*)__hosihikari_shim_handle, (void*)actorManagerConnector.Handle);
+    }
+
+    public void registerForLevelStorageManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelStorageManagerConnector levelStorageManagerConnector)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d7c92f88((void*)__hosihikari_shim_handle, (void*)levelStorageManagerConnector.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint getPendingStandaloneAreaDescriptions(nint arg0) =>
+    public nint removePendingAreaByName(nint dimensionId, nint name, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint getPendingStandaloneAreaDescriptionsByName(nint arg0, nint arg1) =>
+    public nint removePendingAreaByPosition(nint dimensionId, nint position, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint getPendingStandaloneAreaDescriptionsByPosition(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    public bool hasActiveAreas()
+    public void removeScopedAreas(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID[] uuids)
     {
-        return NativeMethods.TablePtr->hs_method_db3b701b((void*)_handle) != 0;
-    }
-
-    public bool isPreloadDone()
-    {
-        return NativeMethods.TablePtr->hs_method_4eba1f62((void*)_handle) != 0;
-    }
-
-    public void loadArea(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        var __hs_vectorItems0 = uuids;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
         }
-        else
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            NativeMethods.TablePtr->C3.hs_method_62f0813e((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(uuids?.Length ?? 0));
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
+    public nint setPendingAreaLoadModeByName(nint dimensionId, nint name, nint loadMode, nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
+    public nint setPendingAreaLoadModeByPosition(nint dimensionId, nint position, nint loadMode, nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
+
+    public void update(global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C3.hs_method_aa9bcdd7((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)levelStorage.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
         {
-            NativeMethods.TablePtr->hs_method_e334e6cf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(arg1?.Handle ?? 0));
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_15251ae5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
-    }
-
-    public void loadAreasFromSaveData(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0)
-    {
-        NativeMethods.TablePtr->hs_method_9eddfe73((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void onTickingEntityAdded(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg2)
-    {
-        NativeMethods.TablePtr->hs_method_408136c7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerForActorManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ActorManager arg0)
-    {
-        NativeMethods.TablePtr->hs_method_70c69cb8((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void registerForLevelStorageManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)
-    {
-        NativeMethods.TablePtr->hs_method_80c65b44((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint removePendingAreaByName(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint removePendingAreaByPosition(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint setPendingAreaLoadModeByName(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint setPendingAreaLoadModeByPosition(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
-    {
-        NativeMethods.TablePtr->hs_method_6da2117f((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void update(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg1)
-    {
-        NativeMethods.TablePtr->hs_method_c9e34b18((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 }

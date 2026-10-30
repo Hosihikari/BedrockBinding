@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ValidatorRegistryValidators
+public sealed unsafe partial class ValidatorRegistryValidators : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ValidatorRegistryValidators(nint handle) : this(handle, true) { }
 
     internal ValidatorRegistryValidators(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ValidatorRegistryValidators Borrow(nint handle) => new ValidatorRegistryValidators(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,60 @@ public sealed partial class ValidatorRegistryValidators
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static ValidatorRegistryValidators Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c8419a43();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ValidatorRegistryValidators((nint)handle);
+    }
+
+    public static ValidatorRegistryValidators Create(global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_409b9cbd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ValidatorRegistryValidators((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk25ba02_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6490b713((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk317db0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3406410a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators((nint)NativeMethods.TablePtr->C3.hs_method_3bd3581d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_746a35bf((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

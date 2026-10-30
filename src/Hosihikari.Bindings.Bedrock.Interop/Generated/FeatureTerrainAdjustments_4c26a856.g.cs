@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FeatureTerrainAdjustments : global::System.IDisposable
+public sealed unsafe partial class FeatureTerrainAdjustments
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FeatureTerrainAdjustments(nint handle) : this(handle, true) { }
 
     internal FeatureTerrainAdjustments(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FeatureTerrainAdjustments Borrow(nint handle) => new FeatureTerrainAdjustments(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,93 +33,62 @@ public sealed unsafe partial class FeatureTerrainAdjustments : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FeatureTerrainAdjustments Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint _insertDescriptions(nint intersectingChunks, nint modifyFn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FeatureTerrainAdjustments Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint at_627f2366(nint chunkPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static float calculateContribution(global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments_Nested.Descriptions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, float arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments_Nested.Descriptions at(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
     {
-        return NativeMethods.TablePtr->hs_method_99f32d72((void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments_Nested.Descriptions((nint)NativeMethods.TablePtr->C1.hs_method_627f2366((void*)__hosihikari_shim_handle, (void*)chunkPos.Handle));
+    }
+
+    public static float calculateContribution(global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments_Nested.Descriptions descriptions, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos currentPos, float noiseValue)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ad06d910((void*)descriptions.Handle, (void*)currentPos.Handle, noiseValue);
     }
 
     public void garbageCollectDescriptions()
     {
-        NativeMethods.TablePtr->hs_method_0b29aa6e((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_0b29aa6e((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel getBeardKernel()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel mBeardKernel()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel((nint)NativeMethods.TablePtr->hs_method_de53acbc(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel mBeardKernel
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel((nint)NativeMethods.TablePtr->hs_get_1ee59cd3(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel((nint)NativeMethods.TablePtr->C1.hs_method_195f823d(), false);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDescriptionsToProcess_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ed86b25d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ed86b25d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5ddc5555((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5ddc5555((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? setBeardAndShaver(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, int arg1, float arg2, float arg3)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? setBeardAndShaver(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox bb, int deltaY, float minBeardWidth, float maxBeardWidth)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_8823ea27((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_78665f08((void*)__hosihikari_shim_handle, (void*)bb.Handle, deltaY, minBeardWidth, maxBeardWidth);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? setBeardifier(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, int arg1)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? setBeardifier(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox bb, int deltaY)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_a53285da((void*)_handle, (void*)arg0.Handle, arg1);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_b9c073a1((void*)__hosihikari_shim_handle, (void*)bb.Handle, deltaY);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? setBury(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? setBury(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox bb)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_40d3a8bd((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ea9f7c48((void*)__hosihikari_shim_handle, (void*)bb.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public static bool shouldDoTerrainAdjustments(global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments_Nested.Descriptions arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_1c7a6f0a((void*)arg0.Handle) != 0;
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_4c26a856((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

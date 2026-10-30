@@ -17,5 +17,6 @@ public enum ResourceFileSystem : int
     UserDir = 8,
     ScreenshotsDir = 9,
     StoreCache = 10,
-    Invalid = 11,
+    MaterialsDir = 11,
+    Invalid = 12,
 }

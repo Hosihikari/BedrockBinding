@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Puv;
 
-public sealed unsafe partial class VersionRange
+public sealed unsafe partial class VersionRange : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VersionRange(nint handle) : this(handle, true) { }
 
     internal VersionRange(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VersionRange Borrow(nint handle) => new VersionRange(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,99 @@ public sealed unsafe partial class VersionRange
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VersionRange Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VersionRange Create_ffbc9a6e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VersionRange Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public bool contains(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion min, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion max, int type)
     {
-        return NativeMethods.TablePtr->hs_method_94d6134b((void*)_handle, (void*)arg0.Handle) != 0;
+        return (nint)NativeMethods.TablePtr->C2.hs_method_7ddb64be((void*)__hosihikari_shim_handle, (void*)min.Handle, (void*)max.Handle, type);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_e04987e9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_8b63be20() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static VersionRange Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_68d1dd75();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VersionRange((nint)handle);
+    }
+
+    public static VersionRange Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0db6903a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VersionRange((nint)handle);
+    }
+
+    public static VersionRange Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion min, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion max, int type)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ccecdf21((void*)min.Handle, (void*)max.Handle, type);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VersionRange((nint)handle);
+    }
+
+    public bool contains(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion v)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_9ac65f87((void*)__hosihikari_shim_handle, (void*)v.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1a868c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fbe6f540((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7084e3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_78337784((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9d6c21_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d3b2a5a0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd68461_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a15b6bef((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange((nint)NativeMethods.TablePtr->C2.hs_method_52dd5fad((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_6026cb92((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum EduControlPanelUpdateType : int
+public enum EduControlPanelUpdateType : short
 {
+    Unknown = 0,
+    ManualActivation = 1,
+    RoleActivation = 2,
+    SavedStateActivation = 3,
+    FailedActivation = 4,
+    Deactivation = 5,
 }

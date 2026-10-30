@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Path_Nested;
 
-public sealed unsafe partial class Node : global::System.IDisposable
+public sealed unsafe partial class Node
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Node(nint handle) : this(handle, true) { }
 
     internal Node(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Node Borrow(nint handle) => new Node(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,20 @@ public sealed unsafe partial class Node : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint pos_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_8331e6f7((void*)_handle);
-            }
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_16ccce34((void*)__hosihikari_shim_handle);
+    }
 
-            _handle = 0;
-        }
+    public int type
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_16a427a6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_16a427a6((void*)__hosihikari_shim_handle, value);
     }
 }

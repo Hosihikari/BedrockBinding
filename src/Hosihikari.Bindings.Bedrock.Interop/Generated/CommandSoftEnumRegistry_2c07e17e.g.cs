@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandSoftEnumRegistry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandSoftEnumRegistry(nint handle) : this(handle, true) { }
 
     internal CommandSoftEnumRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandSoftEnumRegistry Borrow(nint handle) => new CommandSoftEnumRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,27 @@ public sealed unsafe partial class CommandSoftEnumRegistry : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandSoftEnumRegistry Create(nint registry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static CommandSoftEnumRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry? arg0)
+    public nint mRegistry
     {
-        var handle = NativeMethods.TablePtr->hs_create_700d566d((void*)(arg0?.Handle ?? 0));
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandSoftEnumRegistry((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5abe538d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_5abe538d((void*)__hosihikari_shim_handle, (void*)value);
     }
-
-    public nint registry
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_619db8a7((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_619db8a7((void*)_handle, (void*)value);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void updateSoftEnum(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2c07e17e((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_2c07e17e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

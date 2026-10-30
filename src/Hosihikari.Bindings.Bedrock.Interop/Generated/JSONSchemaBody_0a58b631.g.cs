@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal.ext.@internal;
 
-public sealed unsafe partial class JSONSchemaBody
+public sealed unsafe partial class JSONSchemaBody : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public JSONSchemaBody(nint handle) : this(handle, true) { }
 
     internal JSONSchemaBody(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static JSONSchemaBody Borrow(nint handle) => new JSONSchemaBody(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,147 @@ public sealed unsafe partial class JSONSchemaBody
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static JSONSchemaBody Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static JSONSchemaBody Create_853b5091(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static JSONSchemaBody Create_80f6c165(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void fillBody(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ExtendedSchemaInfo arg0, nint arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ext.@internal.JSONSchemaBody arg0)
     {
-        NativeMethods.TablePtr->hs_method_927ce6f7((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_fb65313d((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fillBody(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C4.hs_method_27cedec5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_8dcc08c1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static JSONSchemaBody Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_a198cd95();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_13856315(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new JSONSchemaBody((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f5600957() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static JSONSchemaBody Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ext.@internal.JSONSchemaBody arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f4888263((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JSONSchemaBody((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAdditionalProperties_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_65e9780e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConstValue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_447f4d1f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultValue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8c394d98((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeprecated_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7e776e64((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnum_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_58bd5e73((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnumDescription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_caf23674((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItems_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_48ab7c7c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOneOf_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_2939bc80((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPatternProperties_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c3950d00((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProperties_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_04b4ac49((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPropertyNames_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_dd977a35((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRef_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d5ca7c39((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRequired_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b16bc89e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mType_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8733273c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.ext.@internal.JSONSchemaBody operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ext.@internal.JSONSchemaBody arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.ext.@internal.JSONSchemaBody((nint)NativeMethods.TablePtr->C4.hs_method_13856315((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_0a58b631((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

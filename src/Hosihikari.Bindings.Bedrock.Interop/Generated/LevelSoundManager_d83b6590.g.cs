@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelSoundManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelSoundManager(nint handle) : this(handle, true) { }
 
     internal LevelSoundManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelSoundManager Borrow(nint handle) => new LevelSoundManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,88 +33,282 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_cd147448((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cd147448((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelSoundManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint soundPlayer, bool isClientSide, nint levelEventCoordinator, nint packetSender, bool isServerAuthSoundEnabled) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelSoundManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnLevelSoundEventConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.IDimension arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg4, bool arg5, bool arg6, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg7)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnLevelSoundEventWithVolumeAndPitchConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnStopAllLevelSoundsEventConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnStopLevelSoundEventConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnStopMusicEventConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static LevelSoundManager Create()
     {
-        NativeMethods.TablePtr->hs_method_6448e033((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4.Handle, arg5, arg6, (void*)(arg7?.Handle ?? 0));
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void playPredictiveSynchronizedSound(global::Hosihikari.Bindings.Bedrock.Interop.IDimension arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg5, bool arg6, bool arg7)
-    {
-        NativeMethods.TablePtr->hs_method_59b12fd3((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), arg4, (void*)arg5.Handle, arg6, arg7);
-    }
-
-    public void playSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg3, bool arg4, bool arg5)
-    {
-        NativeMethods.TablePtr->hs_method_e2258dbf((void*)_handle, arg0, (void*)arg1.Handle, arg2, (void*)arg3.Handle, arg4, arg5);
-    }
-
-    public void playSound(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, float arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        var handle = NativeMethods.TablePtr->C1.hs_create_6426c3fc();
+        if (handle == null)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_57d0dd31((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, arg3);
-        }
+
+        return new LevelSoundManager((nint)handle);
     }
 
-    public void playSynchronizedSound_DEPRECATED(global::Hosihikari.Bindings.Bedrock.Interop.IDimension arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg5, bool arg6, bool arg7)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' is not a known bindable declaration.", false)]
+    public static LevelSoundManager Create(nint soundPlayer, bool isClientSide, nint levelEventCoordinator, nint packetSender, bool isServerAuthSoundEnabled) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<LevelSoundManager::QueuedSoundSendPacket, LevelSoundManager::QueuedSoundBroadcastPacket, LevelSoundManager::QueuedSoundBroadcastUserIdPacket, LevelSoundManager::QueuedSoundBroadcastMultipleUserIdsPacket>' is not a known bindable declaration.", false)]
+    public void _queueSoundPacket(nint packet) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<LevelSoundManager::QueuedSoundSendPacket, LevelSoundManager::QueuedSoundBroadcastPacket, LevelSoundManager::QueuedSoundBroadcastUserIdPacket, LevelSoundManager::QueuedSoundBroadcastMultipleUserIdsPacket>' is not a known bindable declaration.");
+
+    public void _stopBroadcastsForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType? dimension)
     {
-        NativeMethods.TablePtr->hs_method_edb7063c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), arg4, (void*)arg5.Handle, arg6, arg7);
+        NativeMethods.TablePtr->C1.hs_method_e62726a0((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)(dimension?.Handle ?? 0), dimension is not null);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerOnLevelSoundEventCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    public void setLevelEventCoordinator(nint arg0)
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Player? primaryLocalPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
     {
-        NativeMethods.TablePtr->hs_method_6a5ace05((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C1.hs_method_24b39238((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0), (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
     }
 
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier soundEvent, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Player? primaryLocalPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8584f99f((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)soundEvent.Handle, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0), (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ServerSoundInstance' is not supported.", false)]
+    public nint createServerSoundInstance(nint soundEventName, int loopCount, nint recipient, nint broadcast) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'ServerSoundInstance' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnLevelSoundEventConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnLevelSoundEventWithVolumeAndPitchConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnStopAllLevelSoundsEventConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnStopLevelSoundEventConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnStopMusicEventConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public bool mIsClientSide
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_c2865b53((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_c2865b53((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f6a2bf71((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelPacketSender_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5b484f84((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLevelSoundEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_80960797((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLevelSoundEventWithVolumeAndPitch_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8002027c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnPlayerConnectedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0fcdcfee((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnPlayerDisconnectedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5600fd78((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnPlayerLeftDimensionSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_78d99a81((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnRecordStartedEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_874bcd37((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnRecordStoppedEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d50c5a4d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnStopAllLevelSoundsEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0b09fd8c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnStopLevelSoundEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e641ac23((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnStopMusicEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_32893006((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mServerAuthSoundEnabled
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_338dedc7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_338dedc7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerSoundDefinitionRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_be836cc7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerSoundInstanceManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3c9089f2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSoundPacketQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a61abc84((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSoundPlayer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9a263132((void*)__hosihikari_shim_handle);
+    }
+
+    public void onViewRegionMoved(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, uint radius, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimension)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5278227e((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)position.Handle, radius, (void*)dimension.Handle);
+    }
+
+    public void playPredictiveSynchronizedSound(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Player? targetPlayer, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c328e85c((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, (void*)(targetPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
+
+    public void playPredictiveSynchronizedSound(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier soundEvent, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Player? targetPlayer, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        NativeMethods.TablePtr->C1.hs_method_eedcfcfa((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)soundEvent.Handle, (void*)pos.Handle, (void*)(targetPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
+
+    public void playSound(uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, float volume, float pitch)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5178aea3((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, volume, pitch);
+    }
+
+    public void playSound(uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal)
+    {
+        NativeMethods.TablePtr->C1.hs_method_895b6cb2((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal);
+    }
+
+    public void playSoundForPlayerInDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionType, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Player? primaryLocalPlayer)
+    {
+        NativeMethods.TablePtr->C1.hs_method_fd330aca((void*)__hosihikari_shim_handle, (void*)dimensionType.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0));
+    }
+
+    public void playSynchronizedSound_DEPRECATED(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Player? primaryLocalPlayer, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        NativeMethods.TablePtr->C1.hs_method_4befe436((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, (void*)(primaryLocalPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
+
+    public void processQueuedSoundPackets()
+    {
+        NativeMethods.TablePtr->C1.hs_method_a2afb7cf((void*)__hosihikari_shim_handle);
+    }
+
+    public void sendRecordStarted(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId[] recipients, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle)
+    {
+        var __hs_vectorItems0 = recipients;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            NativeMethods.TablePtr->C1.hs_method_619b1193((void*)__hosihikari_shim_handle, (void*)blockPos.Handle, (void*)serverSoundHandle.Handle, __hs_vectorData0, (nuint)(recipients?.Length ?? 0));
+        }
+    }
+
+    public void subscribeToPlayerConnectionEvents(global::Hosihikari.Bindings.Bedrock.Interop.IPlayerConnectionConnector connector)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c5d3a498((void*)__hosihikari_shim_handle, (void*)connector.Handle);
+    }
+
+    public void subscribeToPlayerDimensionTransfers(global::Hosihikari.Bindings.Bedrock.Interop.IPlayerDimensionTransferConnector connector)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d902d012((void*)__hosihikari_shim_handle, (void*)connector.Handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d83b6590((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_d83b6590((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

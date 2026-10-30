@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-public sealed unsafe partial class WeakLifetimeScope
+public sealed unsafe partial class WeakLifetimeScope : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WeakLifetimeScope(nint handle) : this(handle, true) { }
 
     internal WeakLifetimeScope(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WeakLifetimeScope Borrow(nint handle) => new WeakLifetimeScope(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,70 +33,33 @@ public sealed unsafe partial class WeakLifetimeScope
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WeakLifetimeScope Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WeakLifetimeScope Create_47fe7c93(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WeakLifetimeScope Create_265ad9dd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WeakLifetimeScope Create_77cc5e60(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void addListener(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public nint mRegistryRef
     {
-        NativeMethods.TablePtr->hs_method_a7a0cc19((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0beeba79((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_0beeba79((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ContextId' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getContextId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ContextId' requires --link-carrier or --virtual-dispatch.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.LifetimeRegistry? getLifetimeRegistry()
+    public uint mVersion
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_661411dd((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.LifetimeRegistry((nint)__hs_handle, false) : null;
+        get => NativeMethods.TablePtr->C3.hs_get_f25936d1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f25936d1((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_c28f5620(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_6e88ef98(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeListener(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_321129b4((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_522fffd2((void*)__hosihikari_shim_handle);
+            }
 
-    public void reset()
-    {
-        NativeMethods.TablePtr->hs_method_379ddb70((void*)_handle);
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    public bool valid()
-    {
-        return NativeMethods.TablePtr->hs_method_e56483fd((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_9bc1feb6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

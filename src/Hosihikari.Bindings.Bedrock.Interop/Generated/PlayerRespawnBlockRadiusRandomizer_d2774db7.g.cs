@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerRespawnBlockRadiusRandomizer
+public sealed unsafe partial class PlayerRespawnBlockRadiusRandomizer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerRespawnBlockRadiusRandomizer(nint handle) : this(handle, true) { }
 
     internal PlayerRespawnBlockRadiusRandomizer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerRespawnBlockRadiusRandomizer Borrow(nint handle) => new PlayerRespawnBlockRadiusRandomizer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,84 @@ public sealed unsafe partial class PlayerRespawnBlockRadiusRandomizer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerRespawnBlockRadiusRandomizer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerRespawnBlockRadiusRandomizer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool getNextPosition(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, bool arg1)
+    public nint _ctor(uint spawnRadius, global::Hosihikari.Bindings.Bedrock.Interop.XoroshiroRandom random)
     {
-        return NativeMethods.TablePtr->hs_method_0a10be72((void*)_handle, (void*)arg0.Handle, arg1) != 0;
+        return (nint)NativeMethods.TablePtr->C2.hs_method_87354ef3((void*)__hosihikari_shim_handle, spawnRadius, (void*)random.Handle);
     }
 
-    public void init(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1)
+    public static PlayerRespawnBlockRadiusRandomizer Create()
     {
-        NativeMethods.TablePtr->hs_method_e37d79d7((void*)_handle, arg0, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_291825ae();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerRespawnBlockRadiusRandomizer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static PlayerRespawnBlockRadiusRandomizer Create(uint spawnRadius, global::Hosihikari.Bindings.Bedrock.Interop.XoroshiroRandom random)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f9e8ef55(spawnRadius, (void*)random.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerRespawnBlockRadiusRandomizer((nint)handle);
+    }
+
+    public uint mCurrentOrigin
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_b5ec62b3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b5ec62b3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mIterationCount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_7dfd3c73((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7dfd3c73((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mLargestPrime
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_2906206a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2906206a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mPossibleOrigins
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_79944f3a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_79944f3a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mSpawnRadius
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ea779db7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ea779db7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mStartOrigin
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ed82df0e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ed82df0e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_d2774db7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

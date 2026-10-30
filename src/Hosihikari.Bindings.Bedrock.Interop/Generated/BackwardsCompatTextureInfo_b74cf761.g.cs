@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class BackwardsCompatTextureInfo
+public sealed unsafe partial class BackwardsCompatTextureInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BackwardsCompatTextureInfo(nint handle) : this(handle, true) { }
 
     internal BackwardsCompatTextureInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BackwardsCompatTextureInfo Borrow(nint handle) => new BackwardsCompatTextureInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,78 @@ public sealed partial class BackwardsCompatTextureInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BackwardsCompatTextureInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static BackwardsCompatTextureInfo Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8e11382e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BackwardsCompatTextureInfo Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new BackwardsCompatTextureInfo((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static BackwardsCompatTextureInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.BackwardsCompatTextureInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4b273d47((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new BackwardsCompatTextureInfo((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2ac2dd_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6bee43d2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk96efec_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0be28951((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka19104_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fbc168f9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkacd42c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3fce8cfc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke0f3bc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4d68edb8((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BackwardsCompatTextureInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BackwardsCompatTextureInfo arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BackwardsCompatTextureInfo((nint)NativeMethods.TablePtr->C0.hs_method_2f9d289a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b74cf761((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

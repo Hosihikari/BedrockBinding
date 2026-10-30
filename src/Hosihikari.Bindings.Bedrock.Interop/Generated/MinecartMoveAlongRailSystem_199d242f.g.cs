@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MinecartMoveAlongRailSystem
+public sealed unsafe partial class MinecartMoveAlongRailSystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MinecartMoveAlongRailSystem(nint handle) : this(handle, true) { }
 
     internal MinecartMoveAlongRailSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MinecartMoveAlongRailSystem Borrow(nint handle) => new MinecartMoveAlongRailSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,40 +33,33 @@ public sealed partial class MinecartMoveAlongRailSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecartMoveAlongRailSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Optional<const VehicleComponent>' is not a known bindable declaration.", false)]
+    public static void _calculateRailMovementSystem(nint context, nint railMovementComponent, nint snapOnRailComponent, nint stateVectorComponent, nint vehicleComponent, nint playerView, nint mod) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Optional<const VehicleComponent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecartMoveAlongRailSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EntityModifier<ActorSetPositionRequestComponent>' is not a known bindable declaration.", false)]
+    public static void _postRailMovementCalculateMinecartPositionSystem(nint context, nint snapOnRailComponent, nint stateVectorComponent, nint mod, nint constBlockSource) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EntityModifier<ActorSetPositionRequestComponent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<FlagComponent<PlayerComponentFlag>>,ActorRotationComponent const,LocalMoveVelocityComponent const>' is not a known bindable declaration.", false)]
-    public static bool _calculateAllPassengersRailMovementInput(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<FlagComponent<PlayerComponentFlag>>,ActorRotationComponent const,LocalMoveVelocityComponent const>' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EntityModifier<ActorSetPositionRequestComponent>' is not a known bindable declaration.", false)]
+    public static void _preRailMovementCalculateMinecartPositionSystem(nint context, nint offsetsComponent, nint stateVectorComponent, nint fallDistanceComponent, nint snapOnRailComponent, nint mod, nint constBlockSource) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EntityModifier<ActorSetPositionRequestComponent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createCleanupSystem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_199d242f((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createPostRailMovementPositionSystem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createPreRailMovementPositionSystem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createRailMovementSystem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

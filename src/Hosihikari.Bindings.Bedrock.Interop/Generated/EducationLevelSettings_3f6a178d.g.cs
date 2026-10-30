@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class EducationLevelSettings : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EducationLevelSettings(nint handle) : this(handle, true) { }
 
     internal EducationLevelSettings(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EducationLevelSettings Borrow(nint handle) => new EducationLevelSettings(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,23 +33,30 @@ public sealed unsafe partial class EducationLevelSettings : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string DEFAULT_BORDER_PATH
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.EducationLevelSettings arg0)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_cde268b1();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        return (nint)NativeMethods.TablePtr->C1.hs_method_22808326((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_94f3a840((void*)__hosihikari_shim_handle);
+    }
+
+    public static string DEFAULT_BORDER_PATH()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_7ba792f5();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static EducationLevelSettings Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_8a85b6c1();
+        var handle = NativeMethods.TablePtr->C1.hs_create_8a85b6c1();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,7 +67,7 @@ public sealed unsafe partial class EducationLevelSettings : global::System.IDisp
 
     public static EducationLevelSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.EducationLevelSettings arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_e86b1967((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_c82a6b86((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -69,85 +76,90 @@ public sealed unsafe partial class EducationLevelSettings : global::System.IDisp
         return new EducationLevelSettings((nint)handle);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint agentCapabilities_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3759b190((void*)__hosihikari_shim_handle);
+    }
+
+    public bool canResizeCodeBuilder
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_4c083a30((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_4c083a30((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint codeBuilderDefaultUri_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_111e4d54((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint codeBuilderTitle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_94e8e920((void*)__hosihikari_shim_handle);
+    }
+
+    public bool disableLegacyTitleBar
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_8e1071ac((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_8e1071ac((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint externalLinkSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ee0d255e((void*)__hosihikari_shim_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
     public nint getCommandOverrideFunctor() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mAgentCapabilities_Address
+    public nint hiddenCommands_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_7d4d2b47((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f5e562fb((void*)__hosihikari_shim_handle);
     }
 
-    public bool mCanResizeCodeBuilder
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'EducationLevelSettings' is not supported.", false)]
+    public static nint load(nint storage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'EducationLevelSettings' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint localSettings_Address
     {
-        get => NativeMethods.TablePtr->hs_get_7fa5ecce((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_7fa5ecce((void*)_handle, value);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_87cb5a7b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EducationLevelSettings operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EducationLevelSettings arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EducationLevelSettings((nint)NativeMethods.TablePtr->C1.hs_method_8e098d8d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mCodeBuilderDefaultUri_Address
+    public nint postProcessFilter_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c00c630d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b2d129e0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mCodeBuilderTitle_Address
+    public nint screenshotBorderResourcePath_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_72ef03c2((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_eecf8b2b((void*)__hosihikari_shim_handle);
     }
-
-    public bool mDisableLegacyTitleBar
-    {
-        get => NativeMethods.TablePtr->hs_get_ade8273c((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_ade8273c((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mExternalLinkSettings_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_cd7ebc1b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mHiddenCommands_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e82f628e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLocalSettings_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d1dc60a1((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPostProcessFilter_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8b2d07c4((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mScreenshotBorderResourcePath_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_db8cd560((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_3f6a178d((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_3f6a178d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

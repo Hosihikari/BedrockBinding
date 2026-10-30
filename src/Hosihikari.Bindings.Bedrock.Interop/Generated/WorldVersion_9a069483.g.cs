@@ -4,8 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum WorldVersion : sbyte
+public enum WorldVersion : byte
 {
-    Pre_1_18 = 0,
-    Post_1_18 = 1,
+    Pre1_18 = 0,
+    Post1_18 = 1,
 }

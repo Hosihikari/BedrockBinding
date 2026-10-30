@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CaveFeatureUtils;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CarverConfiguration
+public sealed unsafe partial class CarverConfiguration : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CarverConfiguration(nint handle) : this(handle, true) { }
 
     internal CarverConfiguration(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CarverConfiguration Borrow(nint handle) => new CarverConfiguration(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,63 @@ public sealed partial class CarverConfiguration
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CarverConfiguration Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGetDistance_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8b7706ff((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CarverConfiguration Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGetRandomY_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fe8d9c6b((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGetTunnelThickness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2622cb75((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_2da513b8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIsDiggable_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_535b38c5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIsSurface_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0d7e3a2b((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIs_1_16_terrainGen
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b5d42033((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b5d42033((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinHeight
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_e72ff458((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_e72ff458((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_fbb24ac9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

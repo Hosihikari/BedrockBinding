@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class IScriptTelemetryLogger
+public sealed unsafe partial class IScriptTelemetryLogger : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IScriptTelemetryLogger(nint handle) : this(handle, true) { }
 
     internal IScriptTelemetryLogger(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IScriptTelemetryLogger Borrow(nint handle) => new IScriptTelemetryLogger(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,42 @@ public sealed partial class IScriptTelemetryLogger
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public void onDebuggerConnect(bool autoAttach, int retries)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c3777bca((void*)__hosihikari_shim_handle, autoAttach, retries);
+    }
+
+    public void onDebuggerListen(bool autoAttach)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8204acd3((void*)__hosihikari_shim_handle, autoAttach);
+    }
+
+    public void onPluginDiscovery(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManagerResult pluginManagerResult)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a14555e5((void*)__hosihikari_shim_handle, (void*)pluginManagerResult.Handle);
+    }
+
+    public void onPluginRun(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManagerResult pluginManagerResult)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2417af7c((void*)__hosihikari_shim_handle, (void*)pluginManagerResult.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9cdf9488((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

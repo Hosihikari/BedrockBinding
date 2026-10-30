@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DimensionTransitionSystem
+public sealed unsafe partial class DimensionTransitionSystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DimensionTransitionSystem(nint handle) : this(handle, true) { }
 
     internal DimensionTransitionSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DimensionTransitionSystem Borrow(nint handle) => new DimensionTransitionSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,56 +33,29 @@ public sealed partial class DimensionTransitionSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DimensionTransitionSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext, DimensionStateComponent, StateVectorComponent>' is not a known bindable declaration.", false)]
+    public static void requestPlayerChangeDimension(nint player, nint request, nint playerData, nint modifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext, DimensionStateComponent, StateVectorComponent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DimensionTransitionSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext, Include<PlayerComponent>, PlayerChangeDimensionRequestComponent, ActorOwnerComponent>' is not a known bindable declaration.", false)]
+    public static void tryHandleChangeDimensionRequestLevel(nint requests, nint modifier, nint callback, nint isSuspended) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext, Include<PlayerComponent>, PlayerChangeDimensionRequestComponent, ActorOwnerComponent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Exclude<PassengerComponent,VehicleComponent>,ActorOwnerComponent,DimensionTransitionComponent const>' is not a known bindable declaration.", false)]
-    public static void _tickPortalTransition(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Exclude<PassengerComponent,VehicleComponent>,ActorOwnerComponent,DimensionTransitionComponent const>' is not a known bindable declaration.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_60c752cc((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<PlayerChangeDimensionRequestComponent,PassengerComponent>>' is not a known bindable declaration.", false)]
-    public static void _tickVehicleDismount(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<PlayerChangeDimensionRequestComponent,PassengerComponent>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createPortalTransition() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createReadyToContinueServer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createVehicleDismount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EntityModifier<PlayerChangeDimensionRequestComponent>' is not a known bindable declaration.", false)]
-    public static void removeChangeDimensionRequest(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EntityModifier<PlayerChangeDimensionRequestComponent>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,DimensionStateComponent,StateVectorComponent>' is not a known bindable declaration.", false)]
-    public static void requestPlayerChangeDimension(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,DimensionStateComponent,StateVectorComponent>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,PlayerChangeDimensionRequestComponent const>' is not a known bindable declaration.", false)]
-    public static bool shouldLevelWaitForSystem(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,PlayerChangeDimensionRequestComponent const>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<FlagComponent<PlayerComponentFlag>>,PlayerChangeDimensionRequestComponent,ActorOwnerComponent>' is not a known bindable declaration.", false)]
-    public static void tryHandleChangeDimensionRequestLevel(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<FlagComponent<PlayerComponentFlag>>,PlayerChangeDimensionRequestComponent,ActorOwnerComponent>' is not a known bindable declaration.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

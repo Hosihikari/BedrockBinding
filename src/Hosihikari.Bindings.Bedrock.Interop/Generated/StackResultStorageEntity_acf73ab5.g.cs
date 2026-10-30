@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class StackResultStorageEntity : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StackResultStorageEntity(nint handle) : this(handle, true) { }
 
     internal StackResultStorageEntity(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StackResultStorageEntity Borrow(nint handle) => new StackResultStorageEntity(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,48 @@ public sealed unsafe partial class StackResultStorageEntity : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContext_Address
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.WeakStorageEntity weakStorage)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e51634ea((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_4025f5be((void*)__hosihikari_shim_handle, (void*)weakStorage.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_bool() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static StackResultStorageEntity Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c4231779();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StackResultStorageEntity((nint)handle);
+    }
+
+    public static StackResultStorageEntity Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakStorageEntity weakStorage)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_500f5ff7((void*)weakStorage.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StackResultStorageEntity((nint)handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_acf73ab5((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_acf73ab5((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

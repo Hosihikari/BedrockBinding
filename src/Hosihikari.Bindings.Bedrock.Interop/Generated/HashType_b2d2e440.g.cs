@@ -6,9 +6,9 @@ namespace Hosihikari.Bindings.Bedrock.Interop.Crypto.Hash;
 
 public enum HashType : int
 {
-    MD5 = 0,
-    SHA1 = 1,
-    SHA256 = 2,
-    SHA384 = 3,
-    SHA512 = 4,
+    Md5 = 0,
+    Sha1 = 1,
+    Sha256 = 2,
+    Sha384 = 3,
+    Sha512 = 4,
 }

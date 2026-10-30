@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal.@internal;
 
-public sealed unsafe partial class ReflectionContext
+public sealed unsafe partial class ReflectionContext : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ReflectionContext(nint handle) : this(handle, true) { }
 
     internal ReflectionContext(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ReflectionContext Borrow(nint handle) => new ReflectionContext(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,45 @@ public sealed unsafe partial class ReflectionContext
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReflectionContext Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReflectionContext Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ReflectionContext from_d2f23447(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    public void _dtor()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ReflectionContext((nint)NativeMethods.TablePtr->hs_method_d2f23447((void*)arg0.Handle), false);
+        NativeMethods.TablePtr->C4.hs_method_80130b6f((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ReflectionContext from_f395f948(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mForcedJSONSchemaOutput_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ReflectionContext((nint)NativeMethods.TablePtr->hs_method_f395f948((void*)arg0.Handle), false);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d840efda((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mKnownProperties_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_0844af0d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetaCtx_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_69e77df7((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_6c74724e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

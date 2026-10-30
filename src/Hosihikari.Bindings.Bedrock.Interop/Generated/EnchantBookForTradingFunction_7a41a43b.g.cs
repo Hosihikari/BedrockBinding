@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class EnchantBookForTradingFunction
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EnchantBookForTradingFunction(nint handle) : this(handle, true) { }
 
     internal EnchantBookForTradingFunction(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EnchantBookForTradingFunction Borrow(nint handle) => new EnchantBookForTradingFunction(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,52 +33,81 @@ public sealed unsafe partial class EnchantBookForTradingFunction
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EnchantBookForTradingFunction Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EnchantBookForTradingFunction Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.Trade arg2, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg3)
+    public int _applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2, global::Hosihikari.Bindings.Bedrock.Interop.Trade arg3)
     {
-        return NativeMethods.TablePtr->hs_method_a546cc4b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_1a86d9bc((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
-    public int apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.Trade arg2, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg3)
+    public void _applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
     {
-        return NativeMethods.TablePtr->hs_method_7d73224b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        NativeMethods.TablePtr->C1.hs_method_8f2cec97((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)arg2.Handle);
     }
 
-    public void apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
+    public int _getFunctionType()
     {
-        NativeMethods.TablePtr->hs_method_c83da2e7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_fcecaf32((void*)__hosihikari_shim_handle);
     }
 
-    public void apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance? _trySelectEnchantmentFromOptions(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        NativeMethods.TablePtr->hs_method_ece076fb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_8b781739((void*)__hosihikari_shim_handle, (void*)random.Handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'EnchantBookForTradingFunction' has no accessible destructor.", false)]
-    public static nint deserialize_972915fa(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'EnchantBookForTradingFunction' has no accessible destructor.");
+    public int applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2, global::Hosihikari.Bindings.Bedrock.Interop.Trade arg3)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e6b7c398((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint deserialize_8db79030(nint @object, nint predicates) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
+    {
+        NativeMethods.TablePtr->C1.hs_method_325db80f((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)arg2.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int getFunctionType()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c3d86fa1((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int mBaseCost
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_8c20aca6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_8c20aca6((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnchantmentOptions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_097ba563((void*)__hosihikari_shim_handle);
+    }
+
+    public int mPerLevelCost
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_a22a6f19((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_a22a6f19((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mRandomBaseCost
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_449510e5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_449510e5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mRandomPerLevelCost
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_db6d4df2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_db6d4df2((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPredicates_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_361c4e75((void*)__hosihikari_shim_handle);
+    }
 }

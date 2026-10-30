@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorDefinitionGroup : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorDefinitionGroup(nint handle) : this(handle, true) { }
 
     internal ActorDefinitionGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorDefinitionGroup Borrow(nint handle) => new ActorDefinitionGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,18 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorDefinitionGroup Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint level, nint resourcePackManager, nint eventing, nint experiments, nint linkedAssetValidator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
 
-    public static ActorDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg1, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3)
+    public static ActorDefinitionGroup Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_33a4f039((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_b9d11a9c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,17 +53,33 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
         return new ActorDefinitionGroup((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorDefinitionGroup Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
+    public static ActorDefinitionGroup Create(nint level, nint resourcePackManager, nint eventing, nint experiments, nint linkedAssetValidator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _loadActorDefinition_adf7f8bc(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, bool arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ActorDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7509967f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDefinitionGroup((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionGroup::LoadActorResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _loadActorDefinition(nint level, nint packLoadContext, nint relativeResourceFilepath, nint root, nint definitions, nint logArea) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionGroup::LoadActorResult' requires --link-carrier or --virtual-dispatch.");
+
+    public static void _setupCommonResourceDefinitionMap(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinition def, global::Hosihikari.Bindings.Bedrock.Interop.Level level)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9a435f99((void*)def.Handle, (void*)level.Handle);
+    }
 
     public string[] buildActorEventList()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c58fe9ce((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_4c0cfe50((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -73,63 +89,134 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void forEachComponentOf(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorComponentFactory? getComponentFactory()
+    public nint mComponentFactory
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_6a68a5ac((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorComponentFactory((nint)__hs_handle, false) : null;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b2b27f06((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b2b27f06((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static bool loadActorDefinitionIdentifier(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static bool loadActorDefinitionRuntimeIdentifier(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setComponentFactory(global::Hosihikari.Bindings.Bedrock.Interop.ActorComponentFactory? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefinitions_Address
     {
-        NativeMethods.TablePtr->hs_method_d4ec7576((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_68ab9ca8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryGetDefinition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryGetDefinitionGroup(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.");
-
-    public static bool tryReadEntityResourceFile(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventing_Address
     {
-        return NativeMethods.TablePtr->hs_method_95850e4e((void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_628d00b8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExperiments_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7099959e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLinkedAssetValidator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_49be745e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mReferenceMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bbfc9373((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegisteredPtrs_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_db7866fe((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResourcePackManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1f2f4185((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTemplateMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0cd0b0af((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup((nint)NativeMethods.TablePtr->C0.hs_method_5c9578df((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionPtr tryGetDefinition(string definitionId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(definitionId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(definitionId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionPtr((nint)NativeMethods.TablePtr->C0.hs_method_ef042212((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionPtr tryGetDefinitionGroup(string @base, string definitionId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(@base);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(@base, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(definitionId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(definitionId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionPtr((nint)NativeMethods.TablePtr->C0.hs_method_a7a52a8a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1));
+            }
+        }
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f2f98bf2((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f2f98bf2((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_6843dd16((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_6843dd16((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

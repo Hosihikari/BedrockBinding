@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScriptDeferredEventListener
+public sealed unsafe partial class ScriptDeferredEventListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptDeferredEventListener(nint handle) : this(handle, true) { }
 
     internal ScriptDeferredEventListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptDeferredEventListener Borrow(nint handle) => new ScriptDeferredEventListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,75 +33,142 @@ public sealed unsafe partial class ScriptDeferredEventListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptDeferredEventListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptDeferredEventListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool onFlushBlockCustomComponentAfterEvents()
+    public void _onFlushBlockCustomComponentAfterEvents(nint deferredTracker)
     {
-        return NativeMethods.TablePtr->hs_method_069f68a3((void*)_handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_a0058214((void*)__hosihikari_shim_handle, (void*)deferredTracker);
     }
 
-    public bool onFlushEditorDataStoreAfterEvents()
+    public void _onFlushEditorDataStoreAfterEvents(nint deferredTracker)
     {
-        return NativeMethods.TablePtr->hs_method_7e6a1acf((void*)_handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_dc8eef7a((void*)__hosihikari_shim_handle, (void*)deferredTracker);
     }
 
-    public bool onFlushEditorExtensionContextAfterEvents()
+    public void _onFlushEditorExtensionContextAfterEvents(nint deferredTracker)
     {
-        return NativeMethods.TablePtr->hs_method_66c5c612((void*)_handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_d0f76b47((void*)__hosihikari_shim_handle, (void*)deferredTracker);
     }
 
-    public bool onFlushItemCustomComponentAfterEvents()
+    public void _onFlushEditorProjectAfterEvents(nint deferredTracker)
     {
-        return NativeMethods.TablePtr->hs_method_1735e2a6((void*)_handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_54b2a231((void*)__hosihikari_shim_handle, (void*)deferredTracker);
     }
 
-    public bool onFlushSystemAfterEvents()
+    public void _onFlushItemCustomComponentAfterEvents(nint deferredTracker)
     {
-        return NativeMethods.TablePtr->hs_method_d2179cbb((void*)_handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_7ffdf793((void*)__hosihikari_shim_handle, (void*)deferredTracker);
     }
 
-    public bool onFlushWorldAfterEvents()
+    public void _onFlushSystemAfterEvents(nint deferredTracker)
     {
-        return NativeMethods.TablePtr->hs_method_df1a0e4a((void*)_handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_171818c4((void*)__hosihikari_shim_handle, (void*)deferredTracker);
     }
 
-    public void onLevelTickEnd()
+    public void _onFlushWorldAfterEvents(nint deferredTracker)
     {
-        NativeMethods.TablePtr->hs_method_8a4ae33a((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_0e260ade((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+    public void _onPostFlushAfterEvents()
+    {
+        NativeMethods.TablePtr->C3.hs_method_d57ae862((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onPreFlushAfterEvents()
+    {
+        NativeMethods.TablePtr->C3.hs_method_fe278489((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onRunSystemTick(nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a0f59db0((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+    public void _onScriptTickEnd()
+    {
+        NativeMethods.TablePtr->C3.hs_method_845e4299((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onScriptTickStart()
+    {
+        NativeMethods.TablePtr->C3.hs_method_f565a7b5((void*)__hosihikari_shim_handle);
+    }
+
+    public void onFlushBlockCustomComponentAfterEvents(nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_000a4fb0((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+    public void onFlushEditorDataStoreAfterEvents(nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ec7422c2((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+    public void onFlushEditorExtensionContextAfterEvents(nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0f95c2e2((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+    public void onFlushEditorProjectAfterEvents(nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_607f90fc((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+    public void onFlushItemCustomComponentAfterEvents(nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ab141c60((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+    public void onFlushSystemAfterEvents(nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_cf507b91((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+    public void onFlushWorldAfterEvents(nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_6a961f9a((void*)__hosihikari_shim_handle, (void*)deferredTracker);
     }
 
     public void onPostFlushAfterEvents()
     {
-        NativeMethods.TablePtr->hs_method_1e8784d5((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_1e8784d5((void*)__hosihikari_shim_handle);
     }
 
     public void onPreFlushAfterEvents()
     {
-        NativeMethods.TablePtr->hs_method_d97f2fec((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_d97f2fec((void*)__hosihikari_shim_handle);
     }
 
-    public void onRunAsyncJobs()
+    public void onRunSystemTick(nint deferredTracker)
     {
-        NativeMethods.TablePtr->hs_method_6933dd36((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_cad6d60c((void*)__hosihikari_shim_handle, (void*)deferredTracker);
     }
 
-    public bool onRunSystemTick()
+    public void onScriptTickEnd()
     {
-        return NativeMethods.TablePtr->hs_method_4163505b((void*)_handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_b3c54a83((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onScriptTickStart()
+    {
+        NativeMethods.TablePtr->C3.hs_method_078d6ada((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_badc2fd2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.EducationMetadata_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum UserType : int
+public enum UserType : uint
 {
+    Unknown = 0,
+    StudentAndTeacher = 1,
+    Teacher = 2,
+    Count = 3,
 }

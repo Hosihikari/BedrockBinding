@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.StrongholdPiece_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SmallDoorType : int
 {
+    Opening = 0,
+    WoodDoor = 1,
+    Grates = 2,
+    IronDoor = 3,
 }

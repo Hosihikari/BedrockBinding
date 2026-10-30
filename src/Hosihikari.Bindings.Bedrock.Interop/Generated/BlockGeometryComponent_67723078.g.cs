@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BlockGeometryComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockGeometryComponent(nint handle) : this(handle, true) { }
 
     internal BlockGeometryComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockGeometryComponent Borrow(nint handle) => new BlockGeometryComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,145 @@ public sealed unsafe partial class BlockGeometryComponent : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockGeometryComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BlockGeometryComponent other)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_80d331ca((void*)__hosihikari_shim_handle, (void*)other.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockGeometryComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BlockGeometryDescription blockGeometryDescription, global::Hosihikari.Bindings.Bedrock.Interop.BlockType? blockType)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_c2107fc0((void*)__hosihikari_shim_handle, (void*)blockGeometryDescription.Handle, (void*)(blockType?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_49098ade((void*)__hosihikari_shim_handle);
+    }
+
+    public static BlockGeometryComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockGeometryComponent other)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_6d74a40e((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockGeometryComponent((nint)handle);
+    }
+
+    public static BlockGeometryComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockGeometryDescription blockGeometryDescription, global::Hosihikari.Bindings.Bedrock.Interop.BlockType? blockType)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2a19fe37((void*)blockGeometryDescription.Handle, (void*)(blockType?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockGeometryComponent((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockSchematic_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_97ea7f42((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCullingLayer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_415979be((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGeometryName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_49be4897((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIgnoreGeometryForIsSolid
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3a250990((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_3a250990((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsFullBlock
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_afb4b839((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_afb4b839((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsFullBlockV1
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_d200e668((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_d200e668((void*)__hosihikari_shim_handle, value);
+    }
+
+    public nint mNWayVisualRotationStateX
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_aa01a155((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mNWayVisualRotationStateY
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a8fcfa8b((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mNWayVisualRotationStateZ
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c5523311((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mNeedsLegacyTopRotation
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b908e2c5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b908e2c5((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRenderer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b625f6dc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSharedInitializationData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fc74707f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUVsLocked_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_05f28a87((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mUseBlockTypeLightAbsorption
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_89690097((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_89690097((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockGeometryComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BlockGeometryComponent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockGeometryComponent((nint)NativeMethods.TablePtr->C0.hs_method_d3f9c263((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_67723078((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_67723078((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

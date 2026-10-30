@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ItemEventResponseFactory : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemEventResponseFactory(nint handle) : this(handle, true) { }
 
     internal ItemEventResponseFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemEventResponseFactory Borrow(nint handle) => new ItemEventResponseFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,60 @@ public sealed unsafe partial class ItemEventResponseFactory : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemEventResponseFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSchema_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3e857cf9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemEventResponseFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _initSchema()
+    {
+        NativeMethods.TablePtr->C1.hs_method_d61e700e((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initializeFactory(global::Hosihikari.Bindings.Bedrock.Interop.PackLoadInfo packLoadInfo)
+    {
+        NativeMethods.TablePtr->C1.hs_method_44bac3ee((void*)__hosihikari_shim_handle, (void*)packLoadInfo.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForEventResponseFactory() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForIPackLoadScoped() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     public void initSchema()
     {
-        NativeMethods.TablePtr->hs_method_64a5c4d9((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_64a5c4d9((void*)__hosihikari_shim_handle);
     }
 
-    public void initializeFactory(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
+    public void initializeFactory(global::Hosihikari.Bindings.Bedrock.Interop.PackLoadInfo packLoadInfo)
     {
-        NativeMethods.TablePtr->hs_method_862a2f41((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_4b01f5b3((void*)__hosihikari_shim_handle, (void*)packLoadInfo.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'LegacyEventItemComponentData' is not supported.", false)]
+    public nint makeLegacyEvents(nint documentVersion, nint itemDocument) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'LegacyEventItemComponentData' is not supported.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_eb12cd47((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_eb12cd47((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LegacyJigsawPlacement
+public sealed unsafe partial class LegacyJigsawPlacement : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LegacyJigsawPlacement(nint handle) : this(handle, true) { }
 
     internal LegacyJigsawPlacement(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LegacyJigsawPlacement Borrow(nint handle) => new LegacyJigsawPlacement(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,44 +33,69 @@ public sealed partial class LegacyJigsawPlacement
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyJigsawPlacement Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<PoolElementStructurePiece>' is not supported.", false)]
+    public nint _ctor(int maxDepth, nint factory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<PoolElementStructurePiece>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyJigsawPlacement Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LegacyJigsawPlacement Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b41efae7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LegacyJigsawPlacement Create(int arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new LegacyJigsawPlacement((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addPiece_6b8c89e7(nint pieces, nint sourcePiece, nint random, nint position, nint rotation, nint pools, nint dimension, nint box, nint refPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<PoolElementStructurePiece>' is not supported.", false)]
+    public static LegacyJigsawPlacement Create(int maxDepth, nint factory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<PoolElementStructurePiece>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _tryPlacingPiece_226a91d2(nint pieces, nint sourcePiece, nint random, nint sourceJigsaw, nint sourceBB, nint sourceInternalBBs, nint attachPos, nint targetPool, nint pools, nint dimension, nint box, nint refPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
+    public void _addPiece(nint pieces, nint sourcePiece, nint random, nint position, nint rotation, nint pools, nint dimension, nint box, nint refPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public void addPieces_a0274173(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
+    public bool _tryPlacingPiece(nint pieces, nint sourcePiece, nint random, nint sourceJigsaw, nint sourceBB, nint sourceInternalBBs, nint attachPos, nint targetPool, nint pools, nint dimension, nint box, nint refPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addPieces_2e937692(nint pieces, nint initialElement, nint random, nint position, nint rotation, nint pools, nint dimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
+    public void addPieces(nint pieces, nint initialElement, nint random, nint position, nint rotation, nint pools, nint dimension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkHeightCache_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_54f21766((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFactory_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c7973672((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMaxDepth
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_5b4bfdef((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_fae29e6e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

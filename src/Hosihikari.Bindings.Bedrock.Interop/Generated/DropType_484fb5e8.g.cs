@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ExperienceOrb_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum DropType : int
+public enum DropType : byte
 {
+    NoType = 0,
+    FromBlock = 1,
+    FromMob = 2,
+    FromPlayer = 3,
 }

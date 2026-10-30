@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MangroveTreeRoots
+public sealed unsafe partial class MangroveTreeRoots : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MangroveTreeRoots(nint handle) : this(handle, true) { }
 
     internal MangroveTreeRoots(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MangroveTreeRoots Borrow(nint handle) => new MangroveTreeRoots(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,36 +33,111 @@ public sealed unsafe partial class MangroveTreeRoots
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MangroveTreeRoots Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MangroveTreeRoots Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static float RANDOM_SKEW_CHANCE
-    {
-        get => NativeMethods.TablePtr->hs_get_f9ec454d();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? placeRoots(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg4, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams arg5)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _placeRoots(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int trunkHeight, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg4, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_daf76427((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)arg4.Handle, (void*)arg5.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_e0c9b2b0((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)random.Handle, trunkHeight, (void*)arg4.Handle, (void*)treeParams.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public bool _simulateRoots(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos rootPos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos newOrigin, byte dir, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] rootPositions, int layer, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams)
+    {
+        var __hs_vectorItems5 = rootPositions;
+        var __hs_vectorHandles5 = new nint[__hs_vectorItems5?.Length ?? 0];
+        for (var __hs_i5 = 0; __hs_i5 < __hs_vectorHandles5.Length; __hs_i5++)
+        {
+            __hs_vectorHandles5[__hs_i5] = __hs_vectorItems5![__hs_i5]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData5 = __hs_vectorHandles5)
+        {
+            var __hs_vectorData5 = (void**)__hs_vectorHandleData5;
+            return NativeMethods.TablePtr->C2.hs_method_af7d317c((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)random.Handle, (void*)rootPos.Handle, (void*)newOrigin.Handle, dir, layer, (void*)treeParams.Handle, __hs_vectorData5, (nuint)(rootPositions?.Length ?? 0)) != 0;
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAboveRootBlockChance_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_218b129e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAboveRootBlockDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e51503e6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDecoration_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_68ac2b55((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMaxRootLength
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c71b92e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c71b92e2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMaxRootWidth
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_14848ecc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_14848ecc((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMudBlockDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f81c6dbf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMuddyRootBlockDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b834b67b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRootBlockDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e2f1e93a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRootsMayGrowThrough_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_33add9a8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mYOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_26fce822((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? placeRoots(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int trunkHeight, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg4, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_946672f1((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)random.Handle, trunkHeight, (void*)arg4.Handle, (void*)treeParams.Handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_50ad8410((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

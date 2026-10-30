@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UserEntityIdentifierComponent : global::System.IDisposable
+public sealed unsafe partial class UserEntityIdentifierComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UserEntityIdentifierComponent(nint handle) : this(handle, true) { }
 
     internal UserEntityIdentifierComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UserEntityIdentifierComponent Borrow(nint handle) => new UserEntityIdentifierComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,87 +33,74 @@ public sealed unsafe partial class UserEntityIdentifierComponent : global::Syste
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UserEntityIdentifierComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static UserEntityIdentifierComponent Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static UserEntityIdentifierComponent Create_18b9dad3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UserEntityIdentifierComponent Create_4120289b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool isPrimaryClient()
+    public string getIdentityName()
     {
-        return NativeMethods.TablePtr->hs_method_b974c60f((void*)_handle) != 0;
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_9b237621((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mCertificate_Address
+    public string getMessUserId()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9e0a2889((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_1dcb5762((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getPlayFabId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_73d97d8a((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getTenantId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_d2c0ee89((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getXuid()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_77be7238((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public int mAuthenticationType
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_0bbc4d52((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_0bbc4d52((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mClientSubId
     {
-        get => NativeMethods.TablePtr->hs_get_4fb994dd((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4fb994dd((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_4fb994dd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_4fb994dd((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mClientUUID_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e6773878((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e6773878((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNetworkId_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c4686691((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c4686691((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mPlayFabId_Address
+    public nint mTrustedPlayerInfo_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2a527be9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5bac9d0a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_3136d702(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_134ad8d3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? tryGetFromEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? tryGetFromEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_4e4bd071((void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_66c629dc((void*)entity.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent((nint)__hs_handle, false) : null;
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_928e1aaa((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

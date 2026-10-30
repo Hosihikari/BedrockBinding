@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftNet;
 
-public sealed unsafe partial class ScriptNetHttpClient
+public sealed unsafe partial class ScriptNetHttpClient : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptNetHttpClient(nint handle) : this(handle, true) { }
 
     internal ScriptNetHttpClient(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptNetHttpClient Borrow(nint handle) => new ScriptNetHttpClient(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,67 @@ public sealed unsafe partial class ScriptNetHttpClient
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptNetHttpClient Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Scheduler>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint descriptorString, nint serverScheduler, nint config, nint @delegate, nint serializationRegistry, nint contentEncoder) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Scheduler>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptNetHttpClient Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptNetHttpClient Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraftNet::ScriptNetHttpClient>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraftNet::ScriptNetHttpClient>' requires --link-carrier or --virtual-dispatch.");
-
-    public void cancelAll(string arg0)
+    public static ScriptNetHttpClient Create()
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        var handle = NativeMethods.TablePtr->C3.hs_create_313b7ca6();
+        if (handle == null)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_536b08c5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
+
+        return new ScriptNetHttpClient((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftNet::ScriptNetResponse>,Scripting::Error,void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint get(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftNet::ScriptNetResponse>,Scripting::Error,void>' requires --link-carrier or --virtual-dispatch.");
+    public static ScriptNetHttpClient Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftNet.ScriptNetHttpClient arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_65dc4e44((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ScriptNetHttpClient((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftNet::ScriptNetResponse>,Scripting::Error,void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint request(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftNet::ScriptNetResponse>,Scripting::Error,void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Scheduler>' is not a known bindable declaration.", false)]
+    public static ScriptNetHttpClient Create(nint descriptorString, nint serverScheduler, nint config, nint @delegate, nint serializationRegistry, nint contentEncoder) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Scheduler>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_4f64222f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_685718c1());
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5f1385_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_80de5b16((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftNet.ScriptNetHttpClient operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftNet.ScriptNetHttpClient arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftNet.ScriptNetHttpClient((nint)NativeMethods.TablePtr->C3.hs_method_311a2e9a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_054d3c22((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

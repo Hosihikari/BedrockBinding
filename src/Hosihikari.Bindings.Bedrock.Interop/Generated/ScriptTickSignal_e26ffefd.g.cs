@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptTickSignal
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptTickSignal(nint handle) : this(handle, true) { }
 
     internal ScriptTickSignal(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptTickSignal Borrow(nint handle) => new ScriptTickSignal(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,53 @@ public sealed unsafe partial class ScriptTickSignal
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptTickSignal Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActive_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_71a286ff((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptTickSignal Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mDispatching
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_df88a3cd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_df88a3cd((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _processPending_356c6c0b(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public uint mNextId
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_393be8e6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_393be8e6((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPending_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_051fd7dc((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint scheduleInterval_11da80c7(nint arg0, uint interval, uint currentTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void processTick(uint currentTick, nint deferredTracker)
+    {
+        NativeMethods.TablePtr->C3.hs_method_40b440b3((void*)__hosihikari_shim_handle, currentTick, (void*)deferredTracker);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public uint scheduleInterval_d68f0728(nint arg0, uint arg1, uint arg2) =>
+    public uint scheduleInterval(nint closure, uint interval, uint currentTick) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint scheduleTimeout_61ada1ab(nint arg0, uint delay, uint currentTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public uint scheduleTimeout_37079ef2(nint arg0, uint arg1, uint arg2) =>
+    public uint scheduleTimeout_61ada1ab(nint closure, uint delay, uint currentTick) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint scheduleTimeout_e46a74cd(nint arg0, uint arg1, uint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public uint scheduleTimeout_98d11451(nint arg0, uint arg1, uint arg2) =>
+    public uint scheduleTimeout_e46a74cd(nint function, uint delay, uint currentTick) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint scheduleTimeoutSafe_d5926d72(nint arg0, uint currentTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public uint scheduleTimeoutSafe_7f62021d(nint arg0, uint arg1) =>
+    public uint scheduleTimeoutSafe(nint closure, uint currentTick) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public void unschedule(uint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_6acc4763((void*)_handle, arg0);
-    }
 }

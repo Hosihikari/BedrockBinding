@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class EntityContext : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EntityContext(nint handle) : this(handle, true) { }
 
     internal EntityContext(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EntityContext Borrow(nint handle) => new EntityContext(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,67 +33,80 @@ public sealed unsafe partial class EntityContext : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static EntityContext Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry _registry()
+    public static EntityContext Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry((nint)NativeMethods.TablePtr->hs_method_2f180814((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C1.hs_create_adf38203();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityContext((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getWeakRef()
+    public static EntityContext Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_feede911((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        var handle = NativeMethods.TablePtr->C1.hs_create_c1f496fb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityContext((nint)handle);
     }
 
-    public bool isValid()
+    public nint getRegistry_f025e308()
     {
-        return NativeMethods.TablePtr->hs_method_cef4073d((void*)_handle) != 0;
+        return (nint)NativeMethods.TablePtr->C1.hs_method_f025e308((void*)__hosihikari_shim_handle);
+    }
+
+    public nint getRegistry_357c472d()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_357c472d((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakEntityRef' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getWeakRef() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakEntityRef' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnTTRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_77a85ee5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_be893c62((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mEnttRegistry_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4b0de638((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_be893c62((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f2400127((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f2400127((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.EntityContext operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EntityContext((nint)NativeMethods.TablePtr->C1.hs_method_fa0313d9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_4cb2b0b7((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_4cb2b0b7((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

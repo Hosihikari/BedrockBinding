@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum POIType : int
 {
+    InvalidPOI = -1,
+    Bed = 0,
+    MeetingArea = 1,
+    Jobsite = 2,
+    Count = 3,
 }

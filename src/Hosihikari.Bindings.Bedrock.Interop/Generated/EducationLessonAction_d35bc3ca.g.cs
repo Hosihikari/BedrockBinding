@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum EducationLessonAction : int
 {
+    Start = 0,
+    Continue = 1,
+    Restart = 2,
+    Host = 3,
+    Join = 4,
+    Finish = 5,
 }

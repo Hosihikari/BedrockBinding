@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CameraItemComponentLegacy_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum UseAction : int
+public enum UseAction : byte
 {
+    None = 0,
+    Place = 1,
+    Use = 2,
 }

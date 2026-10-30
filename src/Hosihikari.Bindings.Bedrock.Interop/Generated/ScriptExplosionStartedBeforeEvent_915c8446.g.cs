@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptExplosionStartedBeforeEvent
+public sealed unsafe partial class ScriptExplosionStartedBeforeEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptExplosionStartedBeforeEvent(nint handle) : this(handle, true) { }
 
     internal ScriptExplosionStartedBeforeEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptExplosionStartedBeforeEvent Borrow(nint handle) => new ScriptExplosionStartedBeforeEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,94 @@ public sealed partial class ScriptExplosionStartedBeforeEvent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptExplosionStartedBeforeEvent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c813efd9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptExplosionStartedBeforeEvent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_43a0336c((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptExplosionStartedBeforeEvent>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptExplosionStartedBeforeEvent>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimension_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_741bd7c4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_568b1e59((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setImpactedBlocks_5592a3d5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5eb2c0cf((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>' is not supported.", false)]
-    public void setImpactedBlocks_31d54346(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>' is not supported.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ExplosionStartedEvent eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_636e905f((void*)__hosihikari_shim_handle, (void*)eventData.Handle, (void*)scope.Handle);
+    }
+
+    public static ScriptExplosionStartedBeforeEvent Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_58e4472b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptExplosionStartedBeforeEvent((nint)handle);
+    }
+
+    public static ScriptExplosionStartedBeforeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ExplosionStartedEvent eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0533566c((void*)eventData.Handle, (void*)scope.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptExplosionStartedBeforeEvent((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_2d6258c3());
+    }
+
+    public void copyTo(global::Hosihikari.Bindings.Bedrock.Interop.ExplosionStartedEvent explosionStartedEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b14fe439((void*)__hosihikari_shim_handle, (void*)explosionStartedEvent.Handle);
+    }
+
+    public bool mCancel
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_4eafbf58((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_4eafbf58((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_915c8446((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

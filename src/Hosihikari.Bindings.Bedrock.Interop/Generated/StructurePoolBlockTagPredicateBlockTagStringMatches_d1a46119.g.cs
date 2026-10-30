@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringMatches : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructurePoolBlockTagPredicateBlockTagStringMatches(nint handle) : this(handle, true) { }
 
     internal StructurePoolBlockTagPredicateBlockTagStringMatches(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructurePoolBlockTagPredicateBlockTagStringMatches Borrow(nint handle) => new StructurePoolBlockTagPredicateBlockTagStringMatches(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,19 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructurePoolBlockTagPredicateBlockTagStringMatches Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static StructurePoolBlockTagPredicateBlockTagStringMatches Create(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, string arg1, string arg2)
+    public void _appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        NativeMethods.TablePtr->C3.hs_method_9261a68d((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Block block, string tag, string value)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(tag);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -54,8 +55,8 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(value);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -65,12 +66,65 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(value, __hs_stringBytes2);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var handle = NativeMethods.TablePtr->hs_create_33f29aaf((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                return (nint)NativeMethods.TablePtr->C3.hs_method_cc0f0a0e((void*)__hosihikari_shim_handle, (void*)block.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    public bool _test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_f9af40c9((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)tag.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static StructurePoolBlockTagPredicateBlockTagStringMatches Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8354139e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolBlockTagPredicateBlockTagStringMatches((nint)handle);
+    }
+
+    public static StructurePoolBlockTagPredicateBlockTagStringMatches Create(global::Hosihikari.Bindings.Bedrock.Interop.Block block, string tag, string value)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(tag);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(value);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(value, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                var handle = NativeMethods.TablePtr->C3.hs_create_6c7d5908((void*)block.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -81,30 +135,60 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructurePoolBlockTagPredicateBlockTagStringMatches Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool test(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
+    public static StructurePoolBlockTagPredicateBlockTagStringMatches Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches arg0)
     {
-        return NativeMethods.TablePtr->hs_method_2fe87c0f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        var handle = NativeMethods.TablePtr->C3.hs_create_2d57bc20((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolBlockTagPredicateBlockTagStringMatches((nint)handle);
     }
 
+    public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
+    {
+        NativeMethods.TablePtr->C3.hs_method_40879e81((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7a9f4840((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTagKey_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f81d76db((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTagValue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bd10fb8b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches((nint)NativeMethods.TablePtr->C3.hs_method_66191344((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public bool test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_ab9609b5((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)tag.Handle) != 0;
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d1a46119((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_d1a46119((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnchantableItemComponent : global::System.IDisposable
+public sealed unsafe partial class EnchantableItemComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EnchantableItemComponent(nint handle) : this(handle, true) { }
 
     internal EnchantableItemComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EnchantableItemComponent Borrow(nint handle) => new EnchantableItemComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,44 @@ public sealed unsafe partial class EnchantableItemComponent : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static EnchantableItemComponent Create()
+    public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        var handle = NativeMethods.TablePtr->hs_create_b0ffb7c1();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new EnchantableItemComponent((nint)handle);
+        NativeMethods.TablePtr->C1.hs_method_fcc25a49((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public void _initializeComponent()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->hs_method_841b8a6f((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_e7730664((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void bindType(nint arg0, nint arg1, nint arg2) =>
+    public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnchantSlot_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_174a343c(), false);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dbe1a2ec((void*)__hosihikari_shim_handle);
     }
 
-
-    public void Dispose()
+    public byte mEnchantValue
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_77d86b7d((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C1.hs_get_9badf17f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_9badf17f((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public nint mOwner
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0178e1b2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_0178e1b2((void*)__hosihikari_shim_handle, (void*)value);
     }
 }

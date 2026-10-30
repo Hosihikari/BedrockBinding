@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CameraPresets_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CameraList
+public sealed unsafe partial class CameraList : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CameraList(nint handle) : this(handle, true) { }
 
     internal CameraList(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CameraList Borrow(nint handle) => new CameraList(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,65 @@ public sealed partial class CameraList
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets_Nested.CameraList arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_9cca821f((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public static CameraList Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0b11e0b0();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraList((nint)handle);
+    }
+
+    public static CameraList Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets_Nested.CameraList arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f0531503((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraList((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5496bdb7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPresetIndices_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_60b22382((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets_Nested.CameraList operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets_Nested.CameraList arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets_Nested.CameraList((nint)NativeMethods.TablePtr->C0.hs_method_2260d389((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_da16a0d6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

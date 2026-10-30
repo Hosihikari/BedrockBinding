@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DynamicJumpControl
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DynamicJumpControl(nint handle) : this(handle, true) { }
 
     internal DynamicJumpControl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DynamicJumpControl Borrow(nint handle) => new DynamicJumpControl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,90 @@ public sealed unsafe partial class DynamicJumpControl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DynamicJumpControl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'JumpControl' has no accessible destructor.", false)]
+    public nint _clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'JumpControl' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DynamicJumpControl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.JumpControl? clone()
+    public int _getJumpDelay(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_ac2f012c((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.JumpControl((nint)__hs_handle) : null;
+        return NativeMethods.TablePtr->C1.hs_method_e64e7392((void*)__hosihikari_shim_handle, (void*)parent.Handle);
     }
 
-    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.JumpControlDescription? arg1)
+    public float _getJumpPower(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent)
     {
-        NativeMethods.TablePtr->hs_method_276b6597((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        return NativeMethods.TablePtr->C1.hs_method_a4ff5ae3((void*)__hosihikari_shim_handle, (void*)parent.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int _getJumpType(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_9fc116e0((void*)__hosihikari_shim_handle, (void*)parent.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void _initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40.JumpControlComponentDefinition? description)
+    {
+        NativeMethods.TablePtr->C1.hs_method_94ead114((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
+    }
+
+    public void _resetSpeedModifier(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C1.hs_method_3d9969ff((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
+
+    public void _setJumpType(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent, int type)
+    {
+        NativeMethods.TablePtr->C1.hs_method_93cd59aa((void*)__hosihikari_shim_handle, (void*)parent.Handle, type);
+    }
+
+    public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c26e7694((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'JumpControl' has no accessible destructor.", false)]
+    public nint clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'JumpControl' has no accessible destructor.");
+
+    public int getJumpDelay(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0ad62c15((void*)__hosihikari_shim_handle, (void*)parent.Handle);
+    }
+
+    public float getJumpPower(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0153908d((void*)__hosihikari_shim_handle, (void*)parent.Handle);
+    }
+
+    public int getJumpType(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_bd8b9f98((void*)__hosihikari_shim_handle, (void*)parent.Handle);
+    }
+
+    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40.JumpControlComponentDefinition? description)
+    {
+        NativeMethods.TablePtr->C1.hs_method_833f1987((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
+    }
+
+    public void resetSpeedModifier(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7a42f89e((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
+
+    public void setJumpType(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent, int type)
+    {
+        NativeMethods.TablePtr->C1.hs_method_109180d6((void*)__hosihikari_shim_handle, (void*)parent.Handle, type);
+    }
+
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C1.hs_method_06562ec5((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
 }

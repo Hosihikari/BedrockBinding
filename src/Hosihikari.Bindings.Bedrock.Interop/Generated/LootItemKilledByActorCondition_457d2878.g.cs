@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LootItemKilledByActorCondition
+public sealed unsafe partial class LootItemKilledByActorCondition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LootItemKilledByActorCondition(nint handle) : this(handle, true) { }
 
     internal LootItemKilledByActorCondition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LootItemKilledByActorCondition Borrow(nint handle) => new LootItemKilledByActorCondition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,84 @@ public sealed unsafe partial class LootItemKilledByActorCondition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootItemKilledByActorCondition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootItemKilledByActorCondition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool applies(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7dec2c_Address
     {
-        return NativeMethods.TablePtr->hs_method_f29fc294((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2c270df2((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint deserialize(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool __applies(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_f2bc42eb((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)context.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int _getConditionType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_3b5fe191((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static LootItemKilledByActorCondition Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f2bc7a70();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootItemKilledByActorCondition((nint)handle);
+    }
+
+    public static LootItemKilledByActorCondition Create(global::Hosihikari.Bindings.Bedrock.Interop.LootItemKilledByActorCondition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_eb5433bf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootItemKilledByActorCondition((nint)handle);
+    }
+
+    public bool _applies(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_feab6929((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)context.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LootItemCondition' has no accessible destructor.", false)]
+    public static nint deserialize(nint @object) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LootItemCondition' has no accessible destructor.");
+
+    public int getConditionType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_c1e0db21((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk16f3ab_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1ce0a027((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LootItemKilledByActorCondition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LootItemKilledByActorCondition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LootItemKilledByActorCondition((nint)NativeMethods.TablePtr->C2.hs_method_0a3a7cb3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_457d2878((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

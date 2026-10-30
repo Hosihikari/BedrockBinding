@@ -9,5 +9,5 @@ public enum States : int
     Off = 0,
     On = 1,
     OffLocked = 2,
-    Onlocked = 3,
+    OnLocked = 3,
 }

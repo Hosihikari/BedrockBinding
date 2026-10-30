@@ -2,9 +2,15 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.QuickJS;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ParseContext : int
+public enum ParseContext : byte
 {
+    FunctionArgument = 0,
+    ReturnType = 1,
+    ArrayElement = 2,
+    DictionaryElement = 3,
+    ClosureReturnType = 4,
+    InterfaceProperty = 5,
+    Invalid = 6,
 }

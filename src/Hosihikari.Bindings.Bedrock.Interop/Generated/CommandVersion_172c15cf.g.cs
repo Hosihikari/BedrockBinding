@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandVersion : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandVersion(nint handle) : this(handle, true) { }
 
     internal CommandVersion(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandVersion Borrow(nint handle) => new CommandVersion(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,14 @@ public sealed unsafe partial class CommandVersion : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandVersion Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static CommandVersion Create(int arg0, int arg1)
+    public static CommandVersion Create(int from, int to)
     {
-        var handle = NativeMethods.TablePtr->hs_create_374beced(arg0, arg1);
+        var handle = NativeMethods.TablePtr->C0.hs_create_374beced(from, to);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,43 +49,32 @@ public sealed unsafe partial class CommandVersion : global::System.IDisposable
         return new CommandVersion((nint)handle);
     }
 
-    public static int CurrentVersion
-    {
-        get => NativeMethods.TablePtr->hs_get_f5c8f05b();
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getLatestCompatibleSemVersion(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_96e8ade8(arg0));
-    }
-
-    public static int getVersionMapping(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_2262f943((void*)arg0.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getLatestCompatibleSemVersion(nint currentGameSemVersion, int version) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.");
 
     public int mFrom
     {
-        get => NativeMethods.TablePtr->hs_get_caea1e38((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_caea1e38((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_caea1e38((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_caea1e38((void*)__hosihikari_shim_handle, value);
     }
 
     public int mTo
     {
-        get => NativeMethods.TablePtr->hs_get_4f7c2530((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4f7c2530((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_4f7c2530((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_4f7c2530((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_172c15cf((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_172c15cf((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

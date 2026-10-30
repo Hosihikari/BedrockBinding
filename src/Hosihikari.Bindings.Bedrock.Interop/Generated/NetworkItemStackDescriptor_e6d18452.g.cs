@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NetworkItemStackDescriptor : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetworkItemStackDescriptor(nint handle) : this(handle, true) { }
 
     internal NetworkItemStackDescriptor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetworkItemStackDescriptor Borrow(nint handle) => new NetworkItemStackDescriptor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,45 @@ public sealed unsafe partial class NetworkItemStackDescriptor : global::System.I
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mImpl_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a0bd7fe4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a0bd7fe4((void*)__hosihikari_shim_handle);
     }
 
     public ushort mStackSize
     {
-        get => NativeMethods.TablePtr->hs_get_fe1bb1a0((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_fe1bb1a0((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_fe1bb1a0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_fe1bb1a0((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NetworkItemStackDescriptor Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static NetworkItemStackDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        var handle = NativeMethods.TablePtr->hs_create_fdca648c((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_07bb1b3f((void*)__hosihikari_shim_handle, (void*)item.Handle);
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemStackDescriptor arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_c68d00b8((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_6c1fa4d7((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static NetworkItemStackDescriptor Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_979c63c3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,9 +80,9 @@ public sealed unsafe partial class NetworkItemStackDescriptor : global::System.I
         return new NetworkItemStackDescriptor((nint)handle);
     }
 
-    public static NetworkItemStackDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackDescriptor arg0)
+    public static NetworkItemStackDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        var handle = NativeMethods.TablePtr->hs_create_2d438f9a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_5720ea22((void*)item.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -78,7 +93,7 @@ public sealed unsafe partial class NetworkItemStackDescriptor : global::System.I
 
     public static NetworkItemStackDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemStackDescriptor arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_b3a9b82d((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_6b1e138b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -87,77 +102,55 @@ public sealed unsafe partial class NetworkItemStackDescriptor : global::System.I
         return new NetworkItemStackDescriptor((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static NetworkItemStackDescriptor Create_a5904ac9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
     public uint mBlockRuntimeId
     {
-        get => NativeMethods.TablePtr->hs_get_20832048((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_20832048((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_20832048((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_20832048((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mIncludeNetIds
     {
-        get => NativeMethods.TablePtr->hs_get_d2f349f4((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d2f349f4((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_d2f349f4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_d2f349f4((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNetIdVariant_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e77774d4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e77774d4((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUserDataBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3b6e1fc4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3b6e1fc4((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint read_68a828e2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint read_3cf15a86(nint stream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setIncludeNetIds(bool arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemStackDescriptor operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemStackDescriptor arg0)
     {
-        NativeMethods.TablePtr->hs_method_7b196b37((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemStackDescriptor((nint)NativeMethods.TablePtr->C2.hs_method_8df12852((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_ItemStackNetIdTag_int_0_? tryGetServerNetId_7aed4336()
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemStackDescriptor rhs)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_7aed4336((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_ItemStackNetIdTag_int_0_((nint)__hs_handle, false) : null;
+        return NativeMethods.TablePtr->C2.hs_method_68fa8577((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint tryGetServerNetId_498d1a04() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
-    {
-        NativeMethods.TablePtr->hs_method_4e2155bb((void*)_handle, (void*)arg0.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint read(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_e6d18452((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_e6d18452((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

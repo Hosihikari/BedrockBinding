@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RopeSystem
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RopeSystem(nint handle) : this(handle, true) { }
 
     internal RopeSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RopeSystem Borrow(nint handle) => new RopeSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,69 +33,65 @@ public sealed unsafe partial class RopeSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RopeSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RopeSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void _initializePins(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.RopeParams @params, ulong initialRopeCount)
     {
-        NativeMethods.TablePtr->hs_method_3e52b667((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_a9b6d42b((void*)__hosihikari_shim_handle, (void*)@params.Handle, initialRopeCount);
     }
 
-    public void cutAtPercent(float arg0)
+    public void initializePins(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 startPin, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 endPin)
     {
-        NativeMethods.TablePtr->hs_method_6a34787d((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_96c85e2e((void*)__hosihikari_shim_handle, (void*)startPin.Handle, (void*)endPin.Handle);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.RopeParams arg0)
+    public ulong mCutRenderNode
     {
-        NativeMethods.TablePtr->hs_method_4fa03f96((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_e208e1a1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e208e1a1((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isCut()
+    public ulong mCutTicks
     {
-        return NativeMethods.TablePtr->hs_method_fd76a3da((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_c8e98d20((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c8e98d20((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isDestroyed()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEndPinEntity_Address
     {
-        return NativeMethods.TablePtr->hs_method_d72dcf0d((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c082959b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void queueTick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRopeMutex_Address
     {
-        NativeMethods.TablePtr->hs_method_3d5d089e((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_330fbf32((void*)__hosihikari_shim_handle);
     }
 
-    public static float sBucketLength
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRopes_Address
     {
-        get => NativeMethods.TablePtr->hs_get_c35778ee();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ad53776b((void*)__hosihikari_shim_handle);
     }
 
-    public static bool sEnabled
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTicking_Address
     {
-        get => NativeMethods.TablePtr->hs_get_a0815eba() != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_57ce26b4((void*)__hosihikari_shim_handle);
     }
 
-    public static float sEpsilon
+    public bool mWaveApplied
     {
-        get => NativeMethods.TablePtr->hs_get_8bfb6d09();
+        get => NativeMethods.TablePtr->C2.hs_get_ddecebcc((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ddecebcc((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a212f3fb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void queueTick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Abi.SharedHandle? self)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4098f48a((void*)__hosihikari_shim_handle, (void*)region.Handle, self?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 }

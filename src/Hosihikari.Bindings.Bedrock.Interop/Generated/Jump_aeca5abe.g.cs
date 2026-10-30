@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.JumpAroundTargetGoal_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Jump
+public sealed unsafe partial class Jump
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Jump(nint handle) : this(handle, true) { }
 
     internal Jump(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Jump Borrow(nint handle) => new Jump(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,20 @@ public sealed partial class Jump
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint targetPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a9cd2f83((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint velocityVector_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a1dd21fc((void*)__hosihikari_shim_handle);
     }
 }

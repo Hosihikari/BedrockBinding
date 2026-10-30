@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class StructurePoolElement : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructurePoolElement(nint handle) : this(handle, true) { }
 
     internal StructurePoolElement(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructurePoolElement Borrow(nint handle) => new StructurePoolElement(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,159 +33,312 @@ public sealed unsafe partial class StructurePoolElement : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructurePoolElement Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructurePoolElement Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructurePoolElement Create_cdec83df(nint manager, nint location, nint blockRules, nint blockTagRules, nint actorRules, nint projection, nint postProcessSettings) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
-    public static StructurePoolElement Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
-    public static StructurePoolElement Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
-    public static StructurePoolElement Create_4275d4b9(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getTemplate_f6a4be72() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.", false)]
-    public static nint empty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox getBoundingBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, byte arg1)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _createMetadata()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->hs_method_f1a9033b((void*)_handle, (void*)arg0.Handle, arg1));
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_347aec8b((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor_5b421d6e(nint manager, nint location, nint projection, nint postProcessSettings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint manager, nint location, nint settings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint manager, nint location, nint blockRules, nint blockTagRules, nint actorRules, nint projection, nint postProcessSettings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor_c6fffaac(nint manager, nint location, nint processors, nint projection) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_ad36982a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox _getBoundingBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, byte rotation)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->C3.hs_method_62fc672e((void*)__hosihikari_shim_handle, (void*)position.Handle, rotation));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.", false)]
-    public nint getJigsawMarkers(nint arg0, nint arg1, nint arg2) =>
+    public nint _getJigsawMarkers(nint position, nint settings, nint region) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.", false)]
-    public nint getJigsawMarkers(nint arg0, nint arg1) =>
+    public nint _getJigsawMarkers(nint position, nint rotation) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.");
 
-    public int getPostProcessSettings()
+    public byte _getPostProcessSettings()
     {
-        return NativeMethods.TablePtr->hs_method_dc64de95((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_766a7dd1((void*)__hosihikari_shim_handle);
     }
 
-    public int getProjection()
+    public byte _getProjection()
     {
-        return NativeMethods.TablePtr->hs_method_17ba7563((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_afc457e1((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSize(byte arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getSize(byte rotation)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_eef8fb8d((void*)_handle, arg0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_81a92c24((void*)__hosihikari_shim_handle, rotation));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'BlockPos' is not supported.", false)]
+    public void _handleDataMarker(nint region, nint markerPos, nint markerData, nint entitiesToPlace) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'BlockPos' is not supported.");
+
+    public void _handleJigsawBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.JigsawBlockInfo jigsawBlock, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings settings)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a807808e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)jigsawBlock.Handle, (void*)settings.Handle);
+    }
+
+    public bool _isValid()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_102f72ce((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos sectionOrigin, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB, byte rotation, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random, byte jigsaw, byte liquidSettings)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_0c868838((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)position.Handle, (void*)sectionOrigin.Handle, (void*)chunkBB.Handle, rotation, (void*)random.Handle, jigsaw, liquidSettings) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'BlockPos' is not supported.", false)]
+    public bool _place(nint region, nint position, nint rotation, nint chunkBB, nint random, nint entitiesToPlace, nint refPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'BlockPos' is not supported.");
+
+    public void _placeActors(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, byte rotation, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        NativeMethods.TablePtr->C3.hs_method_6346a9b8((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)position.Handle, rotation, (void*)random.Handle);
+    }
+
+    public void _placeEntities(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, byte rotation, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox overlapBB)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f8837f27((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)position.Handle, rotation, (void*)overlapBB.Handle);
+    }
+
+    public void _setProjection(byte projection)
+    {
+        NativeMethods.TablePtr->C3.hs_method_2adca455((void*)__hosihikari_shim_handle, projection);
+    }
+
+    public byte _type()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_26fc4c20((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static StructurePoolElement Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7f829c23();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolElement((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
+    public static StructurePoolElement Create_5bc1d419(nint manager, nint location, nint projection, nint postProcessSettings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
+    public static StructurePoolElement Create(nint manager, nint location, nint settings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
+    public static StructurePoolElement Create(nint manager, nint location, nint blockRules, nint blockTagRules, nint actorRules, nint projection, nint postProcessSettings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
+    public static StructurePoolElement Create_0d6aa387(nint manager, nint location, nint processors, nint projection) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
+
+    public nint _getMetadata()
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_31f4398d((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong _getMetadataKey()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_bae7d0bc((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createMetadata()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_0dc23d80((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox getBoundingBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, byte rotation)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->C3.hs_method_1c252930((void*)__hosihikari_shim_handle, (void*)position.Handle, rotation));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.", false)]
+    public nint getJigsawMarkers(nint position, nint settings, nint region) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.", false)]
+    public nint getJigsawMarkers(nint position, nint rotation) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.");
+
+    public byte getPostProcessSettings()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_3bc8941f((void*)__hosihikari_shim_handle);
+    }
+
+    public byte getProjection()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_a3d27143((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSize(byte rotation)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_4b650a9f((void*)__hosihikari_shim_handle, rotation));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'BlockPos' is not supported.", false)]
     public void handleDataMarker(nint region, nint markerPos, nint markerData, nint entitiesToPlace) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'BlockPos' is not supported.");
 
-    public void handleDataMarker(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, string arg2, nint arg3)
+    public void handleJigsawBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.JigsawBlockInfo jigsawBlock, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings settings)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_c793cdff((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3);
-        }
-    }
-
-    public void handleJigsawBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.JigsawBlockInfo arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2)
-    {
-        NativeMethods.TablePtr->hs_method_1a91d9df((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C3.hs_method_e770c4d7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)jigsawBlock.Handle, (void*)settings.Handle);
     }
 
     public bool isValid()
     {
-        return NativeMethods.TablePtr->hs_method_b7290f7d((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_4169d3d3((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_14e420bf((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocation_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dcca7837((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_169ff45c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetadata_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_de0cadbe((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong mMetadataKey
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_4da6d99f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_4da6d99f((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetadataMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_32bd4d1d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProcessors_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1b9f01ad((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_59de007f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTemplate_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_59a9d466((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTemplateOnceFlag_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_64964f9f((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mValid
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_8e1cf39a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_8e1cf39a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos sectionOrigin, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB, byte rotation, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random, byte jigsaw, byte liquidSettings)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b85192aa((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)position.Handle, (void*)sectionOrigin.Handle, (void*)chunkBB.Handle, rotation, (void*)random.Handle, jigsaw, liquidSettings) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'BlockPos' is not supported.", false)]
     public bool place(nint region, nint position, nint rotation, nint chunkBB, nint random, nint entitiesToPlace, nint refPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'BlockPos' is not supported.");
 
-    public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg3, global::Hosihikari.Bindings.Bedrock.Interop.Random arg4, nint arg5, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg6)
+    public void placeActors(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, byte rotation, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->hs_method_6f433f75((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5, (void*)arg6.Handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_cb20654b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)position.Handle, rotation, (void*)random.Handle);
     }
 
-    public void placeActors(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
+    public void placeEntities(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, byte rotation, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox overlapBB)
     {
-        NativeMethods.TablePtr->hs_method_51c71e1f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle);
+        NativeMethods.TablePtr->C3.hs_method_f8dc7ad7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)position.Handle, rotation, (void*)overlapBB.Handle);
     }
 
-    public void setProjection(int arg0)
+    public void setProjection(byte projection)
     {
-        NativeMethods.TablePtr->hs_method_18190a7b((void*)_handle, arg0);
+        NativeMethods.TablePtr->C3.hs_method_18190a7b((void*)__hosihikari_shim_handle, projection);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.", false)]
-    public static nint single_aee39a99(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::function<const StructurePoolElement &(StructureTemplateRegistrationContext, Projection)>' is not supported.", false)]
+    public static nint single_ea75f5f4(nint location, nint processors) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<const StructurePoolElement &(StructureTemplateRegistrationContext, Projection)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.", false)]
-    public static nint single_3331252a(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'std::function<const StructurePoolElement &(StructureTemplateRegistrationContext, Projection)>' is not supported.", false)]
+    public static nint single_8f14a50b(nint location, nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<const StructurePoolElement &(StructureTemplateRegistrationContext, Projection)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint single_5445aed0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint single_ded65bf8(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int type()
+    public byte type()
     {
-        return NativeMethods.TablePtr->hs_method_12cc769d((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_17417948((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_af673b1e((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_af673b1e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ClubsEngagementAction : int
 {
+    Like = 0,
+    Unlike = 1,
+    Post = 2,
+    Delete = 3,
+    Report = 4,
+    Comment = 5,
 }

@@ -7,6 +7,7 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 public enum SubClientId : byte
 {
     PrimaryClient = 0,
+    Server = 0,
     Client2 = 1,
     Client3 = 2,
     Client4 = 3,

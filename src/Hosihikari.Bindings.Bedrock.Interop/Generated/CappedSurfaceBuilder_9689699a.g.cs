@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VanillaSurfaceBuilders;
 
-public sealed unsafe partial class CappedSurfaceBuilder : global::System.IDisposable
+public sealed unsafe partial class CappedSurfaceBuilder
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CappedSurfaceBuilder(nint handle) : this(handle, true) { }
 
     internal CappedSurfaceBuilder(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CappedSurfaceBuilder Borrow(nint handle) => new CappedSurfaceBuilder(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,51 +33,80 @@ public sealed unsafe partial class CappedSurfaceBuilder : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static CappedSurfaceBuilder Create()
+    public void _buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters globalParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters surfaceBuilderParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
     {
-        var handle = NativeMethods.TablePtr->hs_create_fbd3e1a8();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CappedSurfaceBuilder((nint)handle);
+        NativeMethods.TablePtr->C3.hs_method_d885a373((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CappedSurfaceBuilder Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.BuildParameters arg0)
+    public bool _getUsesDepthValue()
     {
-        NativeMethods.TablePtr->hs_method_34d69b76((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_151c8c50((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void init(global::Hosihikari.Bindings.Bedrock.Interop.Biome arg0, uint arg1)
+    public void _initBiomeSurface(nint surfaceBuilderData)
     {
-        NativeMethods.TablePtr->hs_method_b094ed3a((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C3.hs_method_bdf2818d((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public void _initBuilder(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_9689699a((void*)_handle);
-            }
+        NativeMethods.TablePtr->C3.hs_method_a6815014((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
+    }
 
-            _handle = 0;
-        }
+    public bool _isBestBuilder(nint surfaceBuilderData)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b33feeb2((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters globalParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters surfaceBuilderParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b6301d85((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
+    }
+
+    public bool getUsesDepthValue()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_714ae321((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void initBiomeSurface(nint surfaceBuilderData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_7e017604((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
+    }
+
+    public void initBuilder(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed)
+    {
+        NativeMethods.TablePtr->C3.hs_method_deeb5ec3((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
+    }
+
+    public bool isBestBuilder(nint surfaceBuilderData)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_71552a49((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBeachNoise_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_82ab1ea6((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mLevelSeed
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_26fdd534((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_26fdd534((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMaterialHelper_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3a83399f((void*)__hosihikari_shim_handle);
     }
 }

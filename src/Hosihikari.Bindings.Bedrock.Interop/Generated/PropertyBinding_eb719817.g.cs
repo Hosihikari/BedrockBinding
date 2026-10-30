@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-public sealed unsafe partial class PropertyBinding
+public sealed unsafe partial class PropertyBinding : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PropertyBinding(nint handle) : this(handle, true) { }
 
     internal PropertyBinding(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PropertyBinding Borrow(nint handle) => new PropertyBinding(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,162 @@ public sealed unsafe partial class PropertyBinding
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PropertyBinding Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PropertyBinding Create_9cec2eec(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PropertyBinding Create_60d14573(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public bool isValidPropertyValue(nint arg0)
+    public nint _ctor()
     {
-        return NativeMethods.TablePtr->hs_method_81dc02e6((void*)_handle, (void*)arg0) != 0;
+        return (nint)NativeMethods.TablePtr->C3.hs_method_3bd18872((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_b6dc247a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.PropertyBinding arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_713a36ed((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_dfe223d4((void*)__hosihikari_shim_handle);
+    }
+
+    public static PropertyBinding Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_983e4897();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PropertyBinding((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static PropertyBinding Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static PropertyBinding Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.PropertyBinding arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2dbff84a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PropertyBinding((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk20fee6_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c2bc019e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk516d58_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7dbdc269((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk667c85_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_df7b55ad((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk848c5a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_adf1b42f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8a1fda_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c284aa20((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8a8634_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_277bbfd1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8ffa41_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c729f708((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9889b0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0b9e46a1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkae65ab_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3d8b9000((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb93590_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bfec9e86((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb9812f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_aa7d7c99((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc5b748_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a88a061b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfa8fc4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e1d30227((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfebb39_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fd5a617d((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.PropertyBinding operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.PropertyBinding arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.PropertyBinding((nint)NativeMethods.TablePtr->C3.hs_method_35b2a215((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1ec4ac_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1e861d20((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_eb719817((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

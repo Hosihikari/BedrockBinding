@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SmoothStoneSelector : global::System.IDisposable
+public sealed unsafe partial class SmoothStoneSelector
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SmoothStoneSelector(nint handle) : this(handle, true) { }
 
     internal SmoothStoneSelector(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SmoothStoneSelector Borrow(nint handle) => new SmoothStoneSelector(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,24 @@ public sealed unsafe partial class SmoothStoneSelector : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SmoothStoneSelector Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SmoothStoneSelector Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block next(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, int arg1, int arg2, int arg3, bool arg4)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block _next(global::Hosihikari.Bindings.Bedrock.Interop.Random random, int arg1, int arg2, int arg3, bool isEdge)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_f7bb8732((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C3.hs_method_b593efe5((void*)__hosihikari_shim_handle, (void*)random.Handle, arg1, arg2, arg3, isEdge), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalRegistry_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_af712bfc((void*)_handle);
-            }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4eaa1dbd((void*)__hosihikari_shim_handle);
+    }
 
-            _handle = 0;
-        }
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block next(global::Hosihikari.Bindings.Bedrock.Interop.Random random, int arg1, int arg2, int arg3, bool isEdge)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C3.hs_method_ac1fec97((void*)__hosihikari_shim_handle, (void*)random.Handle, arg1, arg2, arg3, isEdge), false);
     }
 }

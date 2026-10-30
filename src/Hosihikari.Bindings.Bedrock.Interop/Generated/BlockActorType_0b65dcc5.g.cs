@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum BlockActorType : int
+public enum BlockActorType : byte
 {
     Undefined = 0,
     Furnace = 1,
@@ -58,5 +58,13 @@ public enum BlockActorType : int
     BrushableBlock = 52,
     DecoratedPot = 53,
     CalibratedSculkSensor = 54,
-    Count = 55,
+    Crafter = 55,
+    TrialSpawner = 56,
+    Vault = 57,
+    CreakingHeart = 58,
+    Shelf = 59,
+    CopperGolemStatue = 60,
+    PotentSulfurBlock = 61,
+    DataDriven = 62,
+    Count = 63,
 }

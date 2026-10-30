@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RandomSearchAndDigGoal_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum CanUseOutcome : int
 {
+    Ok = 0,
+    InCooldown = 1,
+    NoNavigation = 2,
+    CouldNotFindTargetPos = 3,
+    CouldNotCreatePath = 4,
+    CouldNotPathAllTheWay = 5,
 }

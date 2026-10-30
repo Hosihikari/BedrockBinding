@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StringByteOutput : global::System.IDisposable
+public sealed unsafe partial class StringByteOutput
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StringByteOutput(nint handle) : this(handle, true) { }
 
     internal StringByteOutput(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StringByteOutput Borrow(nint handle) => new StringByteOutput(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,45 @@ public sealed unsafe partial class StringByteOutput : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StringByteOutput Create(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public void writeBytes(nint arg0, ulong arg1)
+    public void _writeBytes(nint data, ulong bytes)
     {
-        NativeMethods.TablePtr->hs_method_41083085((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->C3.hs_method_5941244c((void*)__hosihikari_shim_handle, (void*)data, bytes);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
+    public static StringByteOutput Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
 
-    public void Dispose()
+    [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
+    public static StringByteOutput Create_7240faa0(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
+    public static StringByteOutput Create_3fb98a06(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBuffer_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_ae451fd5((void*)_handle);
-            }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f328835c((void*)__hosihikari_shim_handle);
+    }
 
-            _handle = 0;
-        }
+    public global::Hosihikari.Bindings.Bedrock.Interop.StringByteOutput operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.StringByteOutput arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StringByteOutput((nint)NativeMethods.TablePtr->C3.hs_method_3a4cf29d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void writeBytes(nint data, ulong bytes)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1a6b782c((void*)__hosihikari_shim_handle, (void*)data, bytes);
     }
 }

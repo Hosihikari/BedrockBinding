@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WebRTCNetworkPeer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WebRTCNetworkPeer(nint handle) : this(handle, true) { }
 
     internal WebRTCNetworkPeer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WebRTCNetworkPeer Borrow(nint handle) => new WebRTCNetworkPeer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,64 +33,43 @@ public sealed unsafe partial class WebRTCNetworkPeer : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPeer_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1b12f6de((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_1b12f6de((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WebRTCNetworkPeer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static WebRTCNetworkPeer Create(nint arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WebRTCNetworkPeer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus getNetworkStatus()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->hs_method_285851f0((void*)_handle));
-    }
-
-    public ulong getPeerId()
-    {
-        return NativeMethods.TablePtr->hs_method_8d9e2f80((void*)_handle);
-    }
-
-    public bool isEncrypted()
-    {
-        return NativeMethods.TablePtr->hs_method_224d616d((void*)_handle) != 0;
-    }
-
-    public bool isLocal()
-    {
-        return NativeMethods.TablePtr->hs_method_54a5dd4e((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public nint receivePacket_3b251a8d(nint arg0, nint arg1) =>
+    public nint __receivePacket(nint outData, nint timepointPtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint receivePacket_4c10f870(nint outData, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getNetworkStatus() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
 
-    public void sendPacket(string arg0, int arg1, int arg2)
+    public bool _isEncrypted()
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        return NativeMethods.TablePtr->C4.hs_method_370ab905((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isLan()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_5b2f8842((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isLocal()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_ee3b62c0((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _sendPacket(string data, int reliability, int arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -100,29 +79,114 @@ public sealed unsafe partial class WebRTCNetworkPeer : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_5ee0a19f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+            NativeMethods.TablePtr->C4.hs_method_21a10c80((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, arg2);
+        }
+    }
+
+    public void _update()
+    {
+        NativeMethods.TablePtr->C4.hs_method_160483d0((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public nint _receivePacket(nint outData, nint timepointPtr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getNetworkStatus() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+
+    public bool isEncrypted()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_f74e6f8f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isLan()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_a8d25f33((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isLocal()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_4d3e487d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool mIsLan
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_810d7daf((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetherNetConnector_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_28bd0bd9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetherNetNetworkStatus_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9f48b1ce((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mNumNetworkStatusUpdates
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_79af33a4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_79af33a4((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPeerId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f9d49433((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong mSessionId
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_a0ca6fdb((void*)__hosihikari_shim_handle);
+    }
+
+    public void sendPacket(string data, int reliability, int arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C4.hs_method_3a3853af((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, arg2);
         }
     }
 
     public void update()
     {
-        NativeMethods.TablePtr->hs_method_3d5f6de7((void*)_handle);
+        NativeMethods.TablePtr->C4.hs_method_3d5f6de7((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_c93bea57((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_c93bea57((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

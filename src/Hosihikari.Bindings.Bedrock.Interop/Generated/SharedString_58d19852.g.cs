@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakString_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SharedString
+public sealed unsafe partial class SharedString : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SharedString(nint handle) : this(handle, true) { }
 
     internal SharedString(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SharedString Borrow(nint handle) => new SharedString(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,84 @@ public sealed partial class SharedString
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static SharedString Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_85fcc56f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SharedString((nint)handle);
+    }
+
+    public static SharedString Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString_Nested.SharedString arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_909d6f34((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SharedString((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk35e35d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dfae4d3d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk58a7f9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_73425416((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk59de61_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6eec0dc1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka2f925_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2d74f591((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka4bdce_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2806d239((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke2527f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e7279a20((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString_Nested.SharedString operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString_Nested.SharedString arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString_Nested.SharedString((nint)NativeMethods.TablePtr->C2.hs_method_cfa75848((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_58d19852((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

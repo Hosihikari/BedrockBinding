@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class VibrationDataComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VibrationDataComponent(nint handle) : this(handle, true) { }
 
     internal VibrationDataComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VibrationDataComponent Borrow(nint handle) => new VibrationDataComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,20 @@ public sealed unsafe partial class VibrationDataComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VibrationDataComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VibrationDataComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clearLastVibrationPos()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastVibrationPos_Address
     {
-        NativeMethods.TablePtr->hs_method_366c4800((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_84707982((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? getLastVibrationPos()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastVibrationTick_Address
     {
-        var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_91894751((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
-    }
-
-    public ulong? getTicksSinceLastVibration(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_4e682bc2((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
-        return __hs_hasValue ? __hs_value : (ulong?)null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setLastVibrationPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg1)
-    {
-        NativeMethods.TablePtr->hs_method_3c8a69d4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6425e7fe((void*)__hosihikari_shim_handle);
     }
 }

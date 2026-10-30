@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ItemEnchants
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemEnchants(nint handle) : this(handle, true) { }
 
     internal ItemEnchants(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemEnchants Borrow(nint handle) => new ItemEnchants(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,52 +33,48 @@ public sealed unsafe partial class ItemEnchants
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemEnchants Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemEnchants Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemEnchants Create(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemEnchants Create(int arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public bool addEnchant(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public int addEnchants(global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants arg0, bool arg1)
+    public void _fromList(global::Hosihikari.Bindings.Bedrock.Interop.ListTag tag)
     {
-        return NativeMethods.TablePtr->hs_method_d8e8d2c4((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C1.hs_method_f1a68da6((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ListTag' has no accessible destructor.", false)]
+    public nint _toList() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ListTag' has no accessible destructor.");
+
+    public int addEnchants(global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants enchants, bool allowNonVanilla)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c20f36ed((void*)__hosihikari_shim_handle, (void*)enchants.Handle, allowNonVanilla);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EnchantResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint canEnchant(nint arg0, bool arg1) =>
+    public nint canEnchant(nint enchant, bool allowNonVanilla) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EnchantResult' requires --link-carrier or --virtual-dispatch.");
 
-    public int count()
+    public global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance[] getAllEnchants()
     {
-        return NativeMethods.TablePtr->hs_method_a00dc113((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_6aaa494f((void*)__hosihikari_shim_handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance>() : new global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'EnchantmentInstance' is not supported.", false)]
-    public nint getAllEnchants() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'EnchantmentInstance' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::array<std::vector<EnchantmentInstance>, 3>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getEnchantInstances() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::array<std::vector<EnchantmentInstance>, 3>' requires --link-carrier or --virtual-dispatch.");
 
     public string[] getEnchantNames()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7a9cad8f((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_d785dbd3((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -88,53 +84,29 @@ public sealed unsafe partial class ItemEnchants
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EnchantmentInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getEnchantment(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EnchantmentInstance' requires --link-carrier or --virtual-dispatch.");
-
-    public nint getEnchants(int arg0)
+    public int getTotalValue(bool bookModifier)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a63d88c3((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C1.hs_method_55c1f728((void*)__hosihikari_shim_handle, bookModifier);
     }
 
-    public int getSlot()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemEnchants_Address
     {
-        return NativeMethods.TablePtr->hs_method_1c200791((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8b87b3e1((void*)__hosihikari_shim_handle);
     }
 
-    public int getTotalValue(bool arg0)
+    public int mSlot
     {
-        return NativeMethods.TablePtr->hs_method_8c829030((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_eaae2f3c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_eaae2f3c((void*)__hosihikari_shim_handle, value);
     }
 
-    public int hasEnchant(sbyte arg0)
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants rhs)
     {
-        return NativeMethods.TablePtr->hs_method_79d74883((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C1.hs_method_1dab9056((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
-    public bool isEmpty()
-    {
-        return NativeMethods.TablePtr->hs_method_d76a7d0f((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint read_7d085b09(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint read_f46dd35b(nint stream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeEnchantment(sbyte arg0)
-    {
-        NativeMethods.TablePtr->hs_method_ace273c9((void*)_handle, arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_025bf779() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::array<std::vector<EnchantmentInstance>, 3>' is not a known bindable declaration.", false)]
+    public void setEnchantInstances(nint enchants) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::array<std::vector<EnchantmentInstance>, 3>' is not a known bindable declaration.");
 }

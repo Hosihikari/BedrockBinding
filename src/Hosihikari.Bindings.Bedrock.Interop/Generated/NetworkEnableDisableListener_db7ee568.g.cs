@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NetworkEnableDisableListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetworkEnableDisableListener(nint handle) : this(handle, true) { }
 
     internal NetworkEnableDisableListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetworkEnableDisableListener Borrow(nint handle) => new NetworkEnableDisableListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,23 @@ public sealed unsafe partial class NetworkEnableDisableListener : global::System
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NetworkEnableDisableListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static NetworkEnableDisableListener Create_35d9d81b(nint arg0)
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_35d9d81b((void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_991c6f4c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static NetworkEnableDisableListener Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b8899b8a();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,53 +58,53 @@ public sealed unsafe partial class NetworkEnableDisableListener : global::System
         return new NetworkEnableDisableListener((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NetworkEnableDisableListener Create_6226c789(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static NetworkEnableDisableListener Create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkEnableDisableListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6226c789((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+        return new NetworkEnableDisableListener((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void _onDisable() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void _onEnable() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    public void disable()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1d223d_Address
     {
-        NativeMethods.TablePtr->hs_method_75bae4f1((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a8761b4c((void*)__hosihikari_shim_handle);
     }
 
-    public bool isDisabled()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaf3b65_Address
     {
-        return NativeMethods.TablePtr->hs_method_f996475f((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_52778164((void*)__hosihikari_shim_handle);
     }
 
-    public bool isEnabled()
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkEnableDisableListener operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.NetworkEnableDisableListener arg0)
     {
-        return NativeMethods.TablePtr->hs_method_3ec529f8((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void tryEnable()
-    {
-        NativeMethods.TablePtr->hs_method_8500b56c((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkEnableDisableListener((nint)NativeMethods.TablePtr->C2.hs_method_374e33c1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_db7ee568((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_db7ee568((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

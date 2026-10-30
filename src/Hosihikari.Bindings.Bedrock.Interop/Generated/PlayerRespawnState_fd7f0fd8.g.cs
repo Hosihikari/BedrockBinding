@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum PlayerRespawnState : sbyte
+public enum PlayerRespawnState : byte
 {
     SearchingForSpawn = 0,
     ReadyToSpawn = 1,

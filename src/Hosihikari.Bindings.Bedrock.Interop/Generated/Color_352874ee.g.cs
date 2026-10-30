@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.mce;
 
-public sealed unsafe partial class Color
+public sealed unsafe partial class Color : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Color(nint handle) : this(handle, true) { }
 
     internal Color(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Color Borrow(nint handle) => new Color(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,306 +33,298 @@ public sealed unsafe partial class Color
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public float a
     {
-        get => NativeMethods.TablePtr->hs_get_39a049d1((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_39a049d1((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_39a049d1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_39a049d1((void*)__hosihikari_shim_handle, value);
     }
 
     public float b
     {
-        get => NativeMethods.TablePtr->hs_get_8c31c7ec((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_8c31c7ec((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_8c31c7ec((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_8c31c7ec((void*)__hosihikari_shim_handle, value);
     }
 
     public float g
     {
-        get => NativeMethods.TablePtr->hs_get_7e9d0a90((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7e9d0a90((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_7e9d0a90((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_7e9d0a90((void*)__hosihikari_shim_handle, value);
     }
 
     public float p
     {
-        get => NativeMethods.TablePtr->hs_get_ae50eaeb((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ae50eaeb((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_ae50eaeb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_ae50eaeb((void*)__hosihikari_shim_handle, value);
     }
 
     public float q
     {
-        get => NativeMethods.TablePtr->hs_get_f3f6a6b7((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f3f6a6b7((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_f3f6a6b7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_f3f6a6b7((void*)__hosihikari_shim_handle, value);
     }
 
     public float r
     {
-        get => NativeMethods.TablePtr->hs_get_6aed2ce6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6aed2ce6((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_6aed2ce6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_6aed2ce6((void*)__hosihikari_shim_handle, value);
     }
 
     public float s
     {
-        get => NativeMethods.TablePtr->hs_get_7027a0ae((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7027a0ae((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_7027a0ae((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_7027a0ae((void*)__hosihikari_shim_handle, value);
     }
 
     public float t
     {
-        get => NativeMethods.TablePtr->hs_get_9ec1e614((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9ec1e614((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_9ec1e614((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_9ec1e614((void*)__hosihikari_shim_handle, value);
     }
 
     public float w
     {
-        get => NativeMethods.TablePtr->hs_get_89e75995((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_89e75995((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_89e75995((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_89e75995((void*)__hosihikari_shim_handle, value);
     }
 
     public float x
     {
-        get => NativeMethods.TablePtr->hs_get_b8721936((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b8721936((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_b8721936((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_b8721936((void*)__hosihikari_shim_handle, value);
     }
 
     public float y
     {
-        get => NativeMethods.TablePtr->hs_get_957e61bf((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_957e61bf((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_957e61bf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_957e61bf((void*)__hosihikari_shim_handle, value);
     }
 
     public float z
     {
-        get => NativeMethods.TablePtr->hs_get_9bea4c3c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9bea4c3c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_9bea4c3c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_9bea4c3c((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint BLACK
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color BLACK()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_485f43af(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint BLUE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color BLUE()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_db1631ed(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint CYAN
+    public static Color Create()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        var handle = NativeMethods.TablePtr->C4.hs_create_ad9db3fd();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Color((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Color Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Color Create(float arg0, float arg1, float arg2, float arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Color Create(nint hex) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Color Create(uint hex) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint GREEN
+    public static Color Create(string hex)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(hex);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hex, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C4.hs_create_7f8f1879(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new Color((nint)handle);
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint GREY
+    public static Color Create(uint hex)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        var handle = NativeMethods.TablePtr->C4.hs_create_001a5057(hex);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Color((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint LMSToLinear() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint LMSToOklab() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint LabToXYZ() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint MINECOIN_GOLD
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GREEN()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_8adb19af(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint NIL
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color LMSToLinear()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_1eda70b0((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint ORANGE
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color LMSToOklab()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_89df8891((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint OklabToLMS() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint PINK
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color LabToXYZ()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_ae313992((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint PURPLE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color NIL()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_9522ebde(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint REBECCA_PURPLE
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color OklabToLMS()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_24b2a766((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint RED
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color PURPLE()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_289eba76(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint SHADE_DOWN
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color RED()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_0c169c34(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint SHADE_NORTH_SOUTH
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color WHITE()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_30d961ec(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint SHADE_UP
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color XYZToLab()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_5b9ba0ac((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint SHADE_WEST_EAST
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color XYZToLinear()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_1e94e711((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint WHITE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color YELLOW()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_c8d348aa(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint XYZToLab() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint XYZToLinear() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint YELLOW
+    public double deltaE00(global::Hosihikari.Bindings.Bedrock.Interop.mce.Color dst)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return NativeMethods.TablePtr->C4.hs_method_a16e5183((void*)__hosihikari_shim_handle, (void*)dst.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public double deltaE00(nint dst) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public double deltaE76(nint dst) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public double deltaE94(nint dst) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public double distanceTo(nint dst) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromHexString(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint linearToLMS() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint linearToXYZ() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint linearTosRGB() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint c) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint sRGBToLinear() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int toABGR()
+    public double deltaE76(global::Hosihikari.Bindings.Bedrock.Interop.mce.Color dst)
     {
-        return NativeMethods.TablePtr->hs_method_26fb089f((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_03d1f844((void*)__hosihikari_shim_handle, (void*)dst.Handle);
     }
 
-    public int toARGB()
+    public double deltaE94(global::Hosihikari.Bindings.Bedrock.Interop.mce.Color dst)
     {
-        return NativeMethods.TablePtr->hs_method_b2214485((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_4c238ddc((void*)__hosihikari_shim_handle, (void*)dst.Handle);
     }
 
-    public string toHexString()
+    public double distanceTo(global::Hosihikari.Bindings.Bedrock.Interop.mce.Color dst)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_4e1c0312((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return NativeMethods.TablePtr->C4.hs_method_70f0f0e4((void*)__hosihikari_shim_handle, (void*)dst.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toVec3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color fromHexString(string hexStr)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(hexStr);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hexStr, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_3d42aff9(__hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color fromRGBHexString(string hexStr)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(hexStr);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hexStr, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_14812539(__hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color linearToLMS()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_ae105ef6((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color linearToXYZ()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_f8c93820((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color linearTosRGB()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_1df1e128((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color sRGBToLinear()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C4.hs_method_e6618e89((void*)__hosihikari_shim_handle));
+    }
+
+    public uint toARGB()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_6f664b0b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 toVec3()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C4.hs_method_7b58537b((void*)__hosihikari_shim_handle));
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_352874ee((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

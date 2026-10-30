@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest;
 
-public sealed unsafe partial class ScriptGameTestHelper
+public sealed unsafe partial class ScriptGameTestHelper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptGameTestHelper(nint handle) : this(handle, true) { }
 
     internal ScriptGameTestHelper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptGameTestHelper Borrow(nint handle) => new ScriptGameTestHelper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,322 +33,349 @@ public sealed unsafe partial class ScriptGameTestHelper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptGameTestHelper Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ScriptGameTestHelper Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_633dc70f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptGameTestHelper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new ScriptGameTestHelper((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _callClosure_0abb56af(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ScriptGameTestHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptGameTestHelper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5d5fb819((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertBlockState(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+        return new ScriptGameTestHelper((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertBlockTypePresent(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'BlockType *' is not supported.", false)]
+    public nint _getBlockFromVariant(nint block) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'BlockType *' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertCanReachLocation(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertBlockState(nint position, nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertCondition(bool arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertBlockTypePresent(nint block, nint position, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertContainerContains(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertCanReachLocation(nint mob, nint position, bool canReach) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertContainerEmpty(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertCondition(bool condition, nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertEntityHasArmor(nint arg0, int arg1, nint arg2, int arg3, nint arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertContainerContains(nint item, nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertEntityHasComponent(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertContainerEmpty(nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertEntityInstancePresent(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertEntityHasArmor(nint actorIdentifier, int armorSlot, nint armorName, int dataValue, nint position, bool hasArmor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertEntityInstancePresentInArea(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertEntityHasComponent(nint actorIdentifier, nint componentIdentifier, nint position, bool hasComponent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertEntityPresent(nint arg0, nint arg1, float arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertEntityInstancePresent(nint scriptActor, nint position, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertEntityPresentInArea(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertEntityInstancePresentInArea(nint scriptActor, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertEntityState(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertEntityPresent(nint entityIdentifier, nint position, float distance, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertEntityTouching(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertEntityPresentInArea(nint entityIdentifier, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertIsWaterlogged(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertEntityState(nint position, nint entityIdentifier, nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertItemEntityCountIs(nint arg0, nint arg1, float arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertEntityTouching(nint entityIdentifier, nint position, bool isTouching) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertItemEntityPresent(nint arg0, nint arg1, float arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertIsWaterlogged(nint position, bool isWaterlogged) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint assertRedstonePower(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertItemEntityCountIs(nint itemTypeOrId, nint position, float searchDistance, int count) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint destroyBlock(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertItemEntityPresent(nint itemTypeOrId, nint position, float searchDistance, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint fail(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint assertRedstonePower(nint position, int power) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint failIf_ca62621d(nint fn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_dd8f2c1d());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint failIf_5e10d4cc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint destroyBlock(nint position, bool dropResources) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBlock(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint fail(nint error) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptDimension>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint failIf(nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getBlock(nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptDimension>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getDimension() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptDimension>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptDimension>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestConnectivity>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getFenceConnectivity(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestConnectivity>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestConnectivity>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getFenceConnectivity(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestConnectivity>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptSculkSpreader>>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSculkSpreader(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptSculkSpreader>>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptSculkSpreader>>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getSculkSpreader(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptSculkSpreader>>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    public sbyte getTestDirection()
-    {
-        return NativeMethods.TablePtr->hs_method_43f71d88((void*)_handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<ScriptModuleMinecraft::ScriptFacing, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getTestDirection() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<ScriptModuleMinecraft::ScriptFacing, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Promise<void,Scripting::Error,void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint idle(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Promise<void,Scripting::Error,void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint idle(nint factory, int tickDelay) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint killAllEntities() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerJump(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint pressButton(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint print(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint pullLever(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint pulseRedstone(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint relativeBlockPosition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint relativePosition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    public void removeSimulatedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptSimulatedPlayer arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
     {
-        NativeMethods.TablePtr->hs_method_b7d4dcb0((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2c4550ed((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<ScriptModuleMinecraft::ScriptFacing,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint rotateDirection(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<ScriptModuleMinecraft::ScriptFacing,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0e7843de((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint rotateVector(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSequences_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cff19fb5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint runAfterDelay_07b8d456(int arg0, nint fn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTestHelper_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b3a00ccc((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint runAfterDelay_486eb04b(int arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint onPlayerJump(nint mob, int jumpAmount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint runAtTickTime_383562eb(int arg0, nint fn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptGameTestHelper operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptGameTestHelper arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptGameTestHelper((nint)NativeMethods.TablePtr->C3.hs_method_d5c13dbb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint runAtTickTime_c42f863e(int arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint pressButton(nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setBlockPermutation(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint print(nint text) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setBlockType(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint pullLever(nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setFluidContainer(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint pulseRedstone(nint position, int duration) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setTntFuse(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint relativeBlockPosition(nint worldPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawn(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint relativePosition(nint worldPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnAtLocation(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint removeSimulatedPlayer(nint scriptSimulatedPlayer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnItem(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<ScriptModuleMinecraft::ScriptFacing, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint rotateDirection(nint direction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<ScriptModuleMinecraft::ScriptFacing, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptSimulatedPlayer>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnSimulatedPlayer(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptSimulatedPlayer>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint rotateVector(nint scriptVector) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnWithoutBehaviors(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint runAfterDelay(int ticksToDelay, nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnWithoutBehaviorsAtLocation(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint runAtTickTime(int tickTime, nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spreadFromFaceTowardDirection(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint runOnFinish(nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setBlockPermutation(nint block, nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setBlockType(nint block, nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setFluidContainer(nint position, nint type) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setTntFuse(nint tnt, int fuseLength) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawn(nint entityIdentifier, nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnAtLocation(nint entityIdentifier, nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnItem(nint item, nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptSimulatedPlayer>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnSimulatedPlayer(nint position, nint name, nint gameMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptSimulatedPlayer>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnWithoutBehaviors(nint entityIdentifier, nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnWithoutBehaviorsAtLocation(nint entityIdentifier, nint position) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spreadFromFaceTowardDirection(nint pos, nint fromFace, nint direction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint startSequence() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint succeed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint succeedIf_cb6b9935(nint fn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint succeedIf(nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint succeedIf_59067c09(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint succeedOnTick(int tick) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint succeedOnTick(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint succeedOnTickWhen(int tick, nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint succeedOnTickWhen_a4da87ba(int tick, nint fn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint succeedWhen(nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint succeedOnTickWhen_9c0f2aec(int arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint succeedWhenBlockPresent(nint block, nint position, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint succeedWhen_740f58ac(nint fn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint succeedWhenEntityHasComponent(nint actorIdentifier, nint componentName, nint position, bool hasComponent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint succeedWhen_60bd4ade(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint succeedWhenEntityPresent(nint entityIdentifier, nint position, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint succeedWhenBlockPresent(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint triggerInternalBlockEvent(nint pos, nint @event, nint parameters) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint succeedWhenEntityHasComponent(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint until(nint factory, nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint succeedWhenEntityPresent(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint walkTo(nint mob, nint position, float speedModifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint triggerInternalBlockEvent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint walkToLocation(nint mob, nint position, float speedModifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint until_034d0066(nint factory, nint fn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint worldBlockPosition(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Promise<void,Scripting::Error,void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint until_4d4d7839(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Promise<void,Scripting::Error,void>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint worldPosition(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint walkTo(nint arg0, nint arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_60082a9a((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint walkToLocation(nint arg0, nint arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint worldBlockPosition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint worldPosition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a23d7d71() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

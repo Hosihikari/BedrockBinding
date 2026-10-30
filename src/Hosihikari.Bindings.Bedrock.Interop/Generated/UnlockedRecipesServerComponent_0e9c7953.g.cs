@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UnlockedRecipesServerComponent
+public sealed unsafe partial class UnlockedRecipesServerComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UnlockedRecipesServerComponent(nint handle) : this(handle, true) { }
 
     internal UnlockedRecipesServerComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UnlockedRecipesServerComponent Borrow(nint handle) => new UnlockedRecipesServerComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,46 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string COMPONENT_TAG
+    public void _dtor()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_c112a017();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        NativeMethods.TablePtr->C3.hs_method_2b40b2f4((void*)__hosihikari_shim_handle);
     }
 
-    public static string UNLOCKED_RECIPES_TAG
+    public static string COMPONENT_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_44be89d1();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_5c480099();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string USED_CONTEXTS_TAG
+    public static string UNLOCKED_RECIPES_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_22688a00();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_6c6debc1();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static UnlockedRecipesServerComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static UnlockedRecipesServerComponent Create_2b9806e5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static UnlockedRecipesServerComponent Create_e4790f37(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public static string USED_CONTEXTS_TAG()
     {
-        NativeMethods.TablePtr->hs_method_515586cc((void*)_handle, (void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_c572f9ae();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void addChangedInventorySlot(int arg0)
+    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->hs_method_c5de265d((void*)_handle, arg0);
+        NativeMethods.TablePtr->C3.hs_method_0c33825f((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public void addUnlockedRecipe(string arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public void addUnlockingInstruction(nint instruction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    public bool isRecipeUnlocked(string recipeId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(recipeId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -99,143 +82,65 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(recipeId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_02d03811((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C3.hs_method_bd3058e7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void addUnlockingInstruction(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public void clearChangedInventorySlots()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChangedInventorySlots_Address
     {
-        NativeMethods.TablePtr->hs_method_753cc291((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_78a6f595((void*)__hosihikari_shim_handle);
     }
 
-    public void clearUnlockingInstructions()
+    public bool mInitialDataSent
     {
-        NativeMethods.TablePtr->hs_method_20f1e7c5((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_3fb234f2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_3fb234f2((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getChangedInventorySlots_ab2471b4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getChangedInventorySlots_4576885f()
+    public bool mInventoryHasChanged
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4576885f((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_858ec37e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_858ec37e((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getUnlockedRecipes_e318c6d2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getUnlockedRecipes_62477ffd()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnlockedRecipes_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_62477ffd((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_64e4e097((void*)__hosihikari_shim_handle);
     }
 
-    public nint getUnlockingInstructions()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnlockingInstructions_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_daf7ac36((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ead7b0ee((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasContextBeenUsed(int arg0)
+    public uint mUsedContexts
     {
-        return NativeMethods.TablePtr->hs_method_0c00cb79((void*)_handle, arg0) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_145eb0c4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_145eb0c4((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasInitialDataBeenSent()
+    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
-        return NativeMethods.TablePtr->hs_method_3ac8395b((void*)_handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_b79ee048((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle, (void*)arg2.Handle);
     }
 
-    public bool hasInventoryChanged()
-    {
-        return NativeMethods.TablePtr->hs_method_1b0bde2c((void*)_handle) != 0;
-    }
 
-    public bool hasUnlockedRecipes()
+    public void Dispose()
     {
-        return NativeMethods.TablePtr->hs_method_00ef5193((void*)_handle) != 0;
-    }
-
-    public bool hasUnlockingInstructions()
-    {
-        return NativeMethods.TablePtr->hs_method_a9212adb((void*)_handle) != 0;
-    }
-
-    public bool isRecipeUnlocked(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        if (__hosihikari_shim_handle != 0)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_0e9c7953((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_c2be48d2((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
-        }
-    }
-
-    public void markContextAsUsed(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_0cae4ad2((void*)_handle, arg0);
-    }
-
-    public void markInitialDataAsSent()
-    {
-        NativeMethods.TablePtr->hs_method_2ddacc3e((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_c841f9c8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_3533608a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
-    {
-        NativeMethods.TablePtr->hs_method_9a770dd4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    public void removeAllUnlockedRecipes()
-    {
-        NativeMethods.TablePtr->hs_method_dcffc37b((void*)_handle);
-    }
-
-    public void removeUnlockedRecipe(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_6a5c2029((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void resetUsedContexts()
-    {
-        NativeMethods.TablePtr->hs_method_aa530452((void*)_handle);
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerDimensionTransferProxy
+public sealed unsafe partial class PlayerDimensionTransferProxy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerDimensionTransferProxy(nint handle) : this(handle, true) { }
 
     internal PlayerDimensionTransferProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerDimensionTransferProxy Borrow(nint handle) => new PlayerDimensionTransferProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,114 +33,200 @@ public sealed unsafe partial class PlayerDimensionTransferProxy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerDimensionTransferProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerDimensionTransferProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculateAgentSpawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 _calculateAgentSpawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_16f77355((void*)_handle, (void*)arg0.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_f27fbdf3((void*)__hosihikari_shim_handle, (void*)player.Handle));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket createMovePlayerPacket(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, byte arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _createMovePlayerPacket(nint player, nint resetPosition) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.");
+
+    public void _fireWillChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket((nint)NativeMethods.TablePtr->hs_method_f280255f((void*)_handle, (void*)arg0.Handle, arg1));
+        NativeMethods.TablePtr->C2.hs_method_5d44cd0c((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    public void fireWillChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? _getAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_61aba2b6((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_6b9897e1((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_ec25dabe((void*)__hosihikari_shim_handle, (void*)player.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSpawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getSpawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_2b27e137((void*)_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C2.hs_method_87982e1d((void*)__hosihikari_shim_handle, (void*)player.Handle), false);
     }
 
-    public bool hasRespawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public bool _hasRespawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->hs_method_ded0dd88((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_c7aa759e((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<bool,std::optional<SubChunkPos>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint hasSubChunksAt(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<bool,std::optional<SubChunkPos>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<bool, std::optional<SubChunkPos>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _hasSubChunksAt(nint player, nint min, nint max) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<bool, std::optional<SubChunkPos>>' requires --link-carrier or --virtual-dispatch.");
 
-    public bool isRespawnReady(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public bool _isRespawnReady(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->hs_method_567b495f((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_9c2af96f((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
     }
 
-    public bool isRespawningFromTheEnd(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public bool _isRespawningFromTheEnd(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->hs_method_96211c0f((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_a384b87e((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
     }
 
-    public void moveTo(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    public void _moveTo(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 position)
     {
-        NativeMethods.TablePtr->hs_method_d4976184((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_98974fd3((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)position.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void playerDimensionChangedEvent(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
+    public void _playerDimensionChangedEvent(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromDimensionId, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType toDimensionId)
     {
-        NativeMethods.TablePtr->hs_method_be443e99((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_1be33559((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimensionId.Handle, (void*)toDimensionId.Handle);
     }
 
-    public void prepareRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1)
+    public void _prepareRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        NativeMethods.TablePtr->hs_method_29bcd37f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7abf661c((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)dimension.Handle);
     }
 
-    public void resetAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public void _resetAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_cb99ce93((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_131ab156((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    public void resetInterpolation(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public void _resetInterpolation(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_1e0b79c6((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_06ed01ee((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    public void setAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public void _setAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Actor agent)
     {
-        NativeMethods.TablePtr->hs_method_ffec5544((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_be6a9610((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)agent.Handle);
     }
 
-    public void setPreviousPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public void _setPreviousPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_f5b11c26((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_dc86eed7((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    public void stopUsingItem(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public void _stopUsingItem(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_26dd3134((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_89a085b3((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    public void transferTickingArea(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1)
+    public void _transferTickingArea(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        NativeMethods.TablePtr->hs_method_4609f660((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_fbefb0de((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)dimension.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculateAgentSpawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_885dc9e0((void*)__hosihikari_shim_handle, (void*)player.Handle));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint createMovePlayerPacket(nint player, nint resetPosition) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.");
+
+    public void fireWillChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f63d30d2((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_dddc1cac((void*)__hosihikari_shim_handle, (void*)player.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSpawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C2.hs_method_adee1b81((void*)__hosihikari_shim_handle, (void*)player.Handle), false);
+    }
+
+    public bool hasRespawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_d9368ad3((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<bool, std::optional<SubChunkPos>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint hasSubChunksAt(nint player, nint min, nint max) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<bool, std::optional<SubChunkPos>>' requires --link-carrier or --virtual-dispatch.");
+
+    public bool isRespawnReady(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_7bbbbc05((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
+
+    public bool isRespawningFromTheEnd(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_bbf4e63e((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
+
+    public void moveTo(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 position)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f9fcf4db((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)position.Handle);
+    }
+
+    public void playerDimensionChangedEvent(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromDimensionId, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType toDimensionId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d566cd70((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimensionId.Handle, (void*)toDimensionId.Handle);
+    }
+
+    public void prepareRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ea558af7((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)dimension.Handle);
+    }
+
+    public void resetAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6a4f0680((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public void resetInterpolation(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_42ab14b9((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public void setAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Actor agent)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d573190f((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)agent.Handle);
+    }
+
+    public void setPreviousPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_bfb40e20((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public void stopUsingItem(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6b1a09f2((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public void transferTickingArea(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_13e6113c((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)dimension.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_38e0bbd7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

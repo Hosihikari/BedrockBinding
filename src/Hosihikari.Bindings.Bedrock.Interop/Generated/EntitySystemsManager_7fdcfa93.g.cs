@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EntitySystemsManager
+public sealed unsafe partial class EntitySystemsManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EntitySystemsManager(nint handle) : this(handle, true) { }
 
     internal EntitySystemsManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EntitySystemsManager Borrow(nint handle) => new EntitySystemsManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,76 @@ public sealed unsafe partial class EntitySystemsManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntitySystemsManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EntitySystemsManager Create(bool arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntitySystemsManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.EntitySystems getEntitySystems()
+    public nint _ctor(bool isClientSide, byte subClientId, nint entityRegistry, nint pauseManager)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.EntitySystems((nint)NativeMethods.TablePtr->hs_method_7ea8e4b0((void*)_handle), false);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_40d3e81c((void*)__hosihikari_shim_handle, isClientSide, subClientId, (void*)entityRegistry, (void*)pauseManager);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void tickEntitySystems()
+    public static EntitySystemsManager Create()
     {
-        NativeMethods.TablePtr->hs_method_796a7915((void*)_handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_e5553db4();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntitySystemsManager((nint)handle);
+    }
+
+    public static EntitySystemsManager Create(bool isClientSide, byte subClientId, nint entityRegistry, nint pauseManager)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ae0e9ac8(isClientSide, subClientId, (void*)entityRegistry, (void*)pauseManager);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntitySystemsManager((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8f22a83b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntitySystems_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_299390f5((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsClientSide
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_f63430b7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPauseManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_60db37f8((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mSubClientId
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_1a2936c9((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_7fdcfa93((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

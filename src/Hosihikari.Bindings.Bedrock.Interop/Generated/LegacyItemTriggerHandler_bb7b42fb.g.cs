@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LegacyItemTriggerHandler
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LegacyItemTriggerHandler(nint handle) : this(handle, true) { }
 
     internal LegacyItemTriggerHandler(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LegacyItemTriggerHandler Borrow(nint handle) => new LegacyItemTriggerHandler(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,45 +33,30 @@ public sealed unsafe partial class LegacyItemTriggerHandler
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyItemTriggerHandler Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.", false)]
+    public bool _executeTrigger(nint eventHandlers, nint item, nint trigger, nint @params) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static LegacyItemTriggerHandler Create_030aa8f8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyItemTriggerHandler Create_5bd93417(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.", false)]
+    public void _executeEvent(nint eventHandlers, nint item, nint name, nint eventStack, nint @params) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _executeEvent_7df6eef9(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.", false)]
+    public bool executeTrigger(nint eventHandlers, nint item, nint trigger, nint @params) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _forceExecuteTrigger_811ec59a(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool executeTrigger(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool executeTrigger(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1, global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg2, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConfig_Address
     {
-        return NativeMethods.TablePtr->hs_method_b4b36bbb((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2350ec57((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

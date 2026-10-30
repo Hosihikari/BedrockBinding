@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptCameraFadeTimeOptions
+public sealed unsafe partial class ScriptCameraFadeTimeOptions : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptCameraFadeTimeOptions(nint handle) : this(handle, true) { }
 
     internal ScriptCameraFadeTimeOptions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptCameraFadeTimeOptions Borrow(nint handle) => new ScriptCameraFadeTimeOptions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,44 @@ public sealed unsafe partial class ScriptCameraFadeTimeOptions
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptCameraFadeTimeOptions Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptCameraFadeTimeOptions Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBindingBuilder<ScriptModuleMinecraft::ScriptCameraFadeTimeOptions>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBindingBuilder<ScriptModuleMinecraft::ScriptCameraFadeTimeOptions>' requires --link-carrier or --virtual-dispatch.");
-
-    public bool isValid()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
-        return NativeMethods.TablePtr->hs_method_fba623ec((void*)_handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_bf865007());
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mFadeInTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_86192fa9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_86192fa9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mFadeOutTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_50570112((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_50570112((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mHoldTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_00478bf3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_00478bf3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_35820e7f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

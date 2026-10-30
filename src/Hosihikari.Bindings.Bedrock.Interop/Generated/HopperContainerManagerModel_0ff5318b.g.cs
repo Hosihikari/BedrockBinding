@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class HopperContainerManagerModel : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public HopperContainerManagerModel(nint handle) : this(handle, true) { }
 
     internal HopperContainerManagerModel(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static HopperContainerManagerModel Borrow(nint handle) => new HopperContainerManagerModel(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,104 @@ public sealed unsafe partial class HopperContainerManagerModel : global::System.
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HopperContainerManagerModel Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static HopperContainerManagerModel Create(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg2)
+    public sbyte mContainerId
     {
-        var handle = NativeMethods.TablePtr->hs_create_9480acb5(arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_60c5b690((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_60c5b690((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRefresher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_16e5cd57((void*)__hosihikari_shim_handle);
+    }
+
+    public sbyte mContainerType
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_edc1f0f8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_edc1f0f8((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerTypeSubscribers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_eb3833f7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bba6d55b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDynamicContainerTracker_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5ad478b9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInformControllerOfDestructionCallbacks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d4037dfd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastSlots_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8ca017cc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnDynamicContainerChangePublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3ac9cae1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_de153fa9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistryAccess_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a90dfc60((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScreenContext_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f09cafc9((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __postInit() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.");
+
+    public nint _ctor(sbyte containerId, global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uniqueID)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_a991e288((void*)__hosihikari_shim_handle, containerId, (void*)player.Handle, (void*)uniqueID.Handle);
+    }
+
+    public nint _ctor(sbyte containerId, global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_7e8b1093((void*)__hosihikari_shim_handle, containerId, (void*)player.Handle, (void*)blockPos.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static HopperContainerManagerModel Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_adff95d5();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,9 +139,9 @@ public sealed unsafe partial class HopperContainerManagerModel : global::System.
         return new HopperContainerManagerModel((nint)handle);
     }
 
-    public static HopperContainerManagerModel Create(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
+    public static HopperContainerManagerModel Create(sbyte containerId, global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uniqueID)
     {
-        var handle = NativeMethods.TablePtr->hs_create_2b99f01b(arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_91a72100(containerId, (void*)player.Handle, (void*)uniqueID.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,25 +150,50 @@ public sealed unsafe partial class HopperContainerManagerModel : global::System.
         return new HopperContainerManagerModel((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HopperContainerManagerModel Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static HopperContainerManagerModel Create(sbyte containerId, global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_28c7819e(containerId, (void*)player.Handle, (void*)blockPos.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new HopperContainerManagerModel((nint)handle);
+    }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _postInit() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.");
+
+
+    public byte mBlockActorType
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_f19a6b09((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_f19a6b09((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_196ffbc5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityUniqueID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_76fcc9e8((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_0ff5318b((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_0ff5318b((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

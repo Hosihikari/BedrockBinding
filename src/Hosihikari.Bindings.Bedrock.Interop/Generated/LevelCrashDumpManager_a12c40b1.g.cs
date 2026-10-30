@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelCrashDumpManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelCrashDumpManager(nint handle) : this(handle, true) { }
 
     internal LevelCrashDumpManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelCrashDumpManager Borrow(nint handle) => new LevelCrashDumpManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,75 @@ public sealed unsafe partial class LevelCrashDumpManager : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelCrashDumpManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelCrashDumpManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setCrashDumpLogStringID(int arg0)
+    public void _setCrashDumpLogStringID(ushort crashDumpLogStringID)
     {
-        NativeMethods.TablePtr->hs_method_d05d2301((void*)_handle, arg0);
+        NativeMethods.TablePtr->C1.hs_method_bace2e17((void*)__hosihikari_shim_handle, crashDumpLogStringID);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static LevelCrashDumpManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_00b07cd7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelCrashDumpManager((nint)handle);
+    }
+
+    public static LevelCrashDumpManager Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_18ad0953((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelCrashDumpManager((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd9b23f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b5582c97((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf2302b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c5fb2c86((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager((nint)NativeMethods.TablePtr->C1.hs_method_e22a7089((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void setCrashDumpLogStringID(ushort crashDumpLogStringID)
+    {
+        NativeMethods.TablePtr->C1.hs_method_6a27d891((void*)__hosihikari_shim_handle, crashDumpLogStringID);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_a12c40b1((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_a12c40b1((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

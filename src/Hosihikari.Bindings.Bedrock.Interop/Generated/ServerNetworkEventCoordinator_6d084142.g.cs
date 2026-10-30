@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ServerNetworkEventCoordinator
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerNetworkEventCoordinator(nint handle) : this(handle, true) { }
 
     internal ServerNetworkEventCoordinator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerNetworkEventCoordinator Borrow(nint handle) => new ServerNetworkEventCoordinator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,56 @@ public sealed unsafe partial class ServerNetworkEventCoordinator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerNetworkEventCoordinator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerNetworkEventCoordinator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkEventHandler getServerNetworkEventHandler()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventsToProcess_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkEventHandler((nint)NativeMethods.TablePtr->hs_method_2520f9a4((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_28f0a798((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void registerServerNetworkEventHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EventRef<MutableServerNetworkGameplayEvent<CoordinatorResult>>' is not a known bindable declaration.", false)]
-    public nint sendEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EventRef<MutableServerNetworkGameplayEvent<CoordinatorResult>>' is not a known bindable declaration.");
-
-    public void sendMessage(global::Hosihikari.Bindings.Bedrock.Interop.MessageEvent arg0)
+    public bool mHasPendingRegistrations
     {
-        NativeMethods.TablePtr->hs_method_6723767f((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_b2fe5b9f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_b2fe5b9f((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_24fb6647((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingRegistrations_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_89c50ec4((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mThreadCheckIndex
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_0a892f96((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_0a892f96((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mThreadId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_01801345((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mThreadIdInitialized
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_0e260dda((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_0e260dda((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerNetworkEventHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1196f2c4((void*)__hosihikari_shim_handle);
+    }
 }

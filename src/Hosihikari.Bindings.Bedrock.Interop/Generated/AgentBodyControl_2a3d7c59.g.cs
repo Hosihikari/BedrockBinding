@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AgentBodyControl : global::System.IDisposable
+public sealed unsafe partial class AgentBodyControl
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AgentBodyControl(nint handle) : this(handle, true) { }
 
     internal AgentBodyControl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AgentBodyControl Borrow(nint handle) => new AgentBodyControl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,30 @@ public sealed unsafe partial class AgentBodyControl : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static AgentBodyControl Create()
+    public void _clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        var handle = NativeMethods.TablePtr->hs_create_37364b3e();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new AgentBodyControl((nint)handle);
+        NativeMethods.TablePtr->C0.hs_method_9e544d25((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AgentBodyControl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    public void clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->hs_method_2e45f7ef((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_86ee6352((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public float mLastYHeadRot
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_2a3d7c59((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C0.hs_get_c8d03afc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_c8d03afc((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public int mStillTicks
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b66cd3ef((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b66cd3ef((void*)__hosihikari_shim_handle, value);
     }
 }

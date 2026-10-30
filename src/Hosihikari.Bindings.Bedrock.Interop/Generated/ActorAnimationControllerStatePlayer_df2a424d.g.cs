@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorAnimationControllerStatePlayer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorAnimationControllerStatePlayer(nint handle) : this(handle, true) { }
 
     internal ActorAnimationControllerStatePlayer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorAnimationControllerStatePlayer Borrow(nint handle) => new ActorAnimationControllerStatePlayer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,56 @@ public sealed unsafe partial class ActorAnimationControllerStatePlayer : global:
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationControllerStatePlayer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.", false)]
+    public void _applyToPose(nint applyContext, nint renderParams, nint destBoneOrientationsMap, float blendWeight) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.");
 
-    public static ActorAnimationControllerStatePlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPlayer arg1, global::Hosihikari.Bindings.Abi.SharedHandle? arg2, global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent arg3, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg4, nint arg5)
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void _bindParticleEffects(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void _bindSoundEffects(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _findAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString friendlyName)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ed01dfba((void*)arg0.Handle, (void*)arg1.Handle, arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_3160ba5b((void*)__hosihikari_shim_handle, (void*)friendlyName.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public int _getAnimationType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b7d3c738((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString _getRawName()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C0.hs_method_c3bfe141((void*)__hosihikari_shim_handle), false);
+    }
+
+    public bool _hasAnimationFinished()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ac95d7e9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _resetAnimation()
+    {
+        NativeMethods.TablePtr->C0.hs_method_49868745((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void _visit(nint dispatcher) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static ActorAnimationControllerStatePlayer Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1756422d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,93 +91,122 @@ public sealed unsafe partial class ActorAnimationControllerStatePlayer : global:
         return new ActorAnimationControllerStatePlayer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationControllerStatePlayer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool allAnimationsFinished()
+    public static ActorAnimationControllerStatePlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerStatePlayer arg0)
     {
-        return NativeMethods.TablePtr->hs_method_b7d536f3((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_c10a5943((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationControllerStatePlayer((nint)handle);
     }
 
-    public bool anyAnimationsFinished()
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.", false)]
+    public void applyToPose(nint applyContext, nint renderParams, nint destBoneOrientationsMap, float blendWeight) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void bindParticleEffects(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void bindSoundEffects(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? findAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString friendlyName)
     {
-        return NativeMethods.TablePtr->hs_method_686d4a2e((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void applyToPose(nint renderParams, nint destBoneOrientationsMap, float blendWeight) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void applyToPose(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0, nint arg1, float arg2)
-    {
-        NativeMethods.TablePtr->hs_method_5f22b7f6((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void bindParticleEffects_9e6bb8c7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void bindParticleEffects_42154b95(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_42154b95((void*)_handle, (void*)arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void bindSoundEffects_ff35975b(nint actorSoundEffectMap) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void bindSoundEffects_428921f3(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_428921f3((void*)_handle, (void*)arg0);
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? findAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_ef4c017d((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_56ecda1f((void*)__hosihikari_shim_handle, (void*)friendlyName.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public int getAnimationType()
     {
-        return NativeMethods.TablePtr->hs_method_007baf8b((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_0c2b87ec((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getRawName()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_3a32c7ba((void*)_handle), false);
-    }
-
-    public float getStateTime()
-    {
-        return NativeMethods.TablePtr->hs_method_56f2a0e6((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C0.hs_method_5af442df((void*)__hosihikari_shim_handle), false);
     }
 
     public bool hasAnimationFinished()
     {
-        return NativeMethods.TablePtr->hs_method_bd782131((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_17ac4a31((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAnimationPlayers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_44fed170((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControllerState_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f5becb0f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwner_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ef14ee39((void*)__hosihikari_shim_handle);
+    }
+
+    public float mStateTime
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_61fbd94b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_61fbd94b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerStatePlayer operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerStatePlayer arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerStatePlayer((nint)NativeMethods.TablePtr->C0.hs_method_3e0a7311((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void resetAnimation()
     {
-        NativeMethods.TablePtr->hs_method_4e379850((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_4e379850((void*)__hosihikari_shim_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void visit(nint dispatcher) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public bool mAnimationFinished
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_e952f693((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_e952f693((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlendExpression_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1a6ad2bd((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mExpanded
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_7bb04a53((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_7bb04a53((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFriendlyName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_71c4828a((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_df2a424d((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_df2a424d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

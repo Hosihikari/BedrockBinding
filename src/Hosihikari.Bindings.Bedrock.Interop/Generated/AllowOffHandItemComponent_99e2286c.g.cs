@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class AllowOffHandItemComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AllowOffHandItemComponent(nint handle) : this(handle, true) { }
 
     internal AllowOffHandItemComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AllowOffHandItemComponent Borrow(nint handle) => new AllowOffHandItemComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,34 @@ public sealed unsafe partial class AllowOffHandItemComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static AllowOffHandItemComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public void _initializeComponent()
+    public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->hs_method_16188720((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_3f6d3adf((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void bindType(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
+    public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_5eb47fdd(), false);
+        NativeMethods.TablePtr->C0.hs_method_dedd2f4f((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
+
+    public bool mAllowOffHand
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_55537a11((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_55537a11((void*)__hosihikari_shim_handle, value);
+    }
+
+    public nint mOwner
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_47a4f3e7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_47a4f3e7((void*)__hosihikari_shim_handle, (void*)value);
     }
 }

@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptContainerSlot
+public sealed unsafe partial class ScriptContainerSlot : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptContainerSlot(nint handle) : this(handle, true) { }
 
     internal ScriptContainerSlot(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptContainerSlot Borrow(nint handle) => new ScriptContainerSlot(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,152 +33,146 @@ public sealed partial class ScriptContainerSlot
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptContainerSlot Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptContainerWrapper>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint itemContext, nint scriptContainerHandle, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptContainerWrapper>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptContainerSlot Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public nint _ctor(nint itemContext, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptContainerSlot Create_f597cd1a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptContainerSlot arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_9784bddd((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptContainerSlot Create_a511cae8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_268c096a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptContainerSlot>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptContainerSlot>' requires --link-carrier or --virtual-dispatch.");
+    public static ScriptContainerSlot Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7216ee6b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint clearDynamicProperties(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        return new ScriptContainerSlot((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<int,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptContainerWrapper>' is not a known bindable declaration.", false)]
+    public static ScriptContainerSlot Create(nint itemContext, nint scriptContainerHandle, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptContainerWrapper>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static ScriptContainerSlot Create(nint itemContext, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    public static ScriptContainerSlot Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptContainerSlot arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9ce472ba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptContainerSlot((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_d918d608());
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<int, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getAmount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<int,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<int, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getCanDestroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getCanPlaceOn() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::variant<double,float,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Vec3>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDynamicProperty(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::variant<double,float,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Vec3>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDynamicPropertyIds(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<int,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDynamicPropertyTotalByteCount(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<int,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getItem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getKeepOnDeath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<ItemLockMode,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLockMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<ItemLockMode,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getLore() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<int,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<int, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getMaxAmount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<int,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<int, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNameTag() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getTags() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemType>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemType>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTypeId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint hasItem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint hasTag(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint isStackable() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint isStackableWith(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemContext_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_26f61495((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_c5241763(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7549f7b5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_12e6f6d3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptContainerHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a46a54ff((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setAmount(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptContainerSlot operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptContainerSlot arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptContainerSlot((nint)NativeMethods.TablePtr->C3.hs_method_12e6f6d3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setCanDestroy(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptInvalidContainerSlotError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setCanDestroy(nint blockIdentifiers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptInvalidContainerSlotError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setCanPlaceOn(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptInvalidContainerSlotError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setCanPlaceOn(nint blockIdentifiers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptInvalidContainerSlotError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setDynamicProperty(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptInvalidContainerSlotError, Scripting::ArgumentOutOfBoundsError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint setDynamicProperty(nint contextConfig, nint key, nint optionalValue) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptInvalidContainerSlotError, Scripting::ArgumentOutOfBoundsError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setItem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setKeepOnDeath(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_385f61ab((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setLockMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setLore(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setNameTag(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidContainerSlotError,Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

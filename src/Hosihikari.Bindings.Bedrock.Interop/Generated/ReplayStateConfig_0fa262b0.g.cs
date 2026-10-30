@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ReplayStateConfig
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ReplayStateConfig(nint handle) : this(handle, true) { }
 
     internal ReplayStateConfig(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ReplayStateConfig Borrow(nint handle) => new ReplayStateConfig(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,38 @@ public sealed unsafe partial class ReplayStateConfig
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReplayStateConfig Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ReplayStateConfig Create_d639d012(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReplayStateConfig Create_a5e5bc96(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public ulong getSanitizedHistorySize()
+    public ushort mHistorySize
     {
-        return NativeMethods.TablePtr->hs_method_d8d0d3e9((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_86207945((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_86207945((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setReplayStateConfigThresholds(float arg0)
+    public byte mMaxCorrectionDelay
     {
-        NativeMethods.TablePtr->hs_method_42415840((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_2e9063d9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2e9063d9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mMinCorrectionDelay
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_51bae1ce((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_51bae1ce((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mMode
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_83a15cff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_83a15cff((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSupportedThresholds_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_73ca7700((void*)__hosihikari_shim_handle);
     }
 }

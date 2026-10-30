@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ExperienceRewardCommitObject : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExperienceRewardCommitObject(nint handle) : this(handle, true) { }
 
     internal ExperienceRewardCommitObject(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExperienceRewardCommitObject Borrow(nint handle) => new ExperienceRewardCommitObject(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,39 @@ public sealed unsafe partial class ExperienceRewardCommitObject : global::System
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExperienceRewardCommitObject Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExperienceRewardCommitObject Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ExperienceRewardCommitObject Create(int arg0)
+    public int mType
     {
-        var handle = NativeMethods.TablePtr->hs_create_da136c3f(arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_71363a2d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_71363a2d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool _append(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationCommitObject? other)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2611cdaa((void*)__hosihikari_shim_handle, (void*)(other?.Handle ?? 0)) != 0;
+    }
+
+    public bool _canCommit(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_457fca01((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public void _commit(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
+    {
+        NativeMethods.TablePtr->C1.hs_method_9072a073((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ExperienceRewardCommitObject Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5bd671fd();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,36 +74,54 @@ public sealed unsafe partial class ExperienceRewardCommitObject : global::System
         return new ExperienceRewardCommitObject((nint)handle);
     }
 
-    public bool append(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationCommitObject? arg0)
+    public static ExperienceRewardCommitObject Create(global::Hosihikari.Bindings.Bedrock.Interop.ExperienceRewardCommitObject arg0)
     {
-        return NativeMethods.TablePtr->hs_method_0a22d52b((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
+        var handle = NativeMethods.TablePtr->C1.hs_create_855bd613((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExperienceRewardCommitObject((nint)handle);
+    }
+
+    public bool append(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationCommitObject? other)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6db709e4((void*)__hosihikari_shim_handle, (void*)(other?.Handle ?? 0)) != 0;
     }
 
     public bool canCommit(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
     {
-        return NativeMethods.TablePtr->hs_method_54f25d34((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_2c2a6e78((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void commit(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
+    public void commit(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
-        NativeMethods.TablePtr->hs_method_6038da58((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_581a223b((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7b9635_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4b30584b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ExperienceRewardCommitObject operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ExperienceRewardCommitObject arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ExperienceRewardCommitObject((nint)NativeMethods.TablePtr->C1.hs_method_cbd1e3e8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_9c0082bf((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_9c0082bf((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

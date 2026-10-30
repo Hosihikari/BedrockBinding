@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LibraryScreenCapabilities : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LibraryScreenCapabilities(nint handle) : this(handle, true) { }
 
     internal LibraryScreenCapabilities(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LibraryScreenCapabilities Borrow(nint handle) => new LibraryScreenCapabilities(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,89 @@ public sealed unsafe partial class LibraryScreenCapabilities : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LibraryScreenCapabilities Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LibraryScreenCapabilities Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LibraryScreenCapabilities Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_33e365e1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isOfType(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new LibraryScreenCapabilities((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static LibraryScreenCapabilities Create(global::Hosihikari.Bindings.Bedrock.Interop.LibraryScreenCapabilities arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7bd8672b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LibraryScreenCapabilities((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk127e67_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_28364567((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk680c44_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b3f0d14e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7c9d7d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b1ea0776((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9285e2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_44da92cf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk96074b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_957106ce((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkddf326_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_810f90fb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LibraryScreenCapabilities operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LibraryScreenCapabilities arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LibraryScreenCapabilities((nint)NativeMethods.TablePtr->C1.hs_method_79dd834c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_1bf83b93((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_1bf83b93((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GameSession : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameSession(nint handle) : this(handle, true) { }
 
     internal GameSession(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameSession Borrow(nint handle) => new GameSession(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,95 @@ public sealed unsafe partial class GameSession : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameSession Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level,std::default_delete<Level>>,OwnerPtr<EntityContext>>' is not a known bindable declaration.", false)]
-    public static GameSession Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level,std::default_delete<Level>>,OwnerPtr<EntityContext>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameSession Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getServerNetworkHandler()
+    public static GameSession Create()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_71fece62((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        var handle = NativeMethods.TablePtr->C1.hs_create_59ea2a07();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameSession((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static GameSession Create(global::Hosihikari.Bindings.Bedrock.Interop.GameSession arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f0ee2f8d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level,std::default_delete<Level>>,OwnerPtr<EntityContext>>' is not a known bindable declaration.", false)]
-    public void setLevel(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level,std::default_delete<Level>>,OwnerPtr<EntityContext>>' is not a known bindable declaration.");
+        return new GameSession((nint)handle);
+    }
+
+    public byte mClientSubId
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_96093be8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_96093be8((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLegacyClientNetworkHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e31d8b5a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3e56875a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_193f19f4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLoopbackPacketSender_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_21fc0150((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetwork_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_beae977b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerNetworkHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0278f8c4((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameSession operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.GameSession arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameSession((nint)NativeMethods.TablePtr->C1.hs_method_477f681f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void tick()
+    {
+        NativeMethods.TablePtr->C1.hs_method_d4ad186c((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_0f8acedd((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_0f8acedd((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

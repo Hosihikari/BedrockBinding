@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ScreenHandlerBeacon : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScreenHandlerBeacon(nint handle) : this(handle, true) { }
 
     internal ScreenHandlerBeacon(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScreenHandlerBeacon Borrow(nint handle) => new ScreenHandlerBeacon(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,35 @@ public sealed unsafe partial class ScreenHandlerBeacon : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScreenHandlerBeacon Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ScreenHandlerBeacon Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionHandler arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRequestHandler_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_e10e46af((void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cd7c1cb5((void*)__hosihikari_shim_handle);
+    }
+
+    public byte _endRequest()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_864c1faf((void*)__hosihikari_shim_handle);
+    }
+
+    public byte _handleAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestAction requestAction)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_1e2e285b((void*)__hosihikari_shim_handle, (void*)requestAction.Handle);
+    }
+
+    public void _postRequest(bool wasSuccess)
+    {
+        NativeMethods.TablePtr->C3.hs_method_656c60a0((void*)__hosihikari_shim_handle, wasSuccess);
+    }
+
+    public static ScreenHandlerBeacon Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0e548a18();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,25 +70,78 @@ public sealed unsafe partial class ScreenHandlerBeacon : global::System.IDisposa
         return new ScreenHandlerBeacon((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScreenHandlerBeacon Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ScreenHandlerBeacon Create(global::Hosihikari.Bindings.Bedrock.Interop.ScreenHandlerBeacon arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_dc62c174((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ScreenHandlerBeacon((nint)handle);
+    }
+
+    public byte endRequest()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_33b3fb07((void*)__hosihikari_shim_handle);
+    }
+
+    public byte handleAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestAction requestAction)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_d8ca3816((void*)__hosihikari_shim_handle, (void*)requestAction.Handle);
+    }
+
+    public nint mBeaconBlockActor
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d36d2610((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d36d2610((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public bool mIsPaymentAction
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_94cca4e3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_94cca4e3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mPrimaryEffectId
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9e22f946((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9e22f946((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScreenContext_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_51a68ad8((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSecondaryEffectId
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a2799e1b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a2799e1b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScreenHandlerBeacon operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScreenHandlerBeacon arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScreenHandlerBeacon((nint)NativeMethods.TablePtr->C3.hs_method_470fc226((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void postRequest(bool wasSuccess)
+    {
+        NativeMethods.TablePtr->C3.hs_method_e638d77d((void*)__hosihikari_shim_handle, wasSuccess);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_63bfcb63((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_63bfcb63((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

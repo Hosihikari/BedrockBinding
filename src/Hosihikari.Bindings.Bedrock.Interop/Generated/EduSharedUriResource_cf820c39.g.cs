@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class EduSharedUriResource : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EduSharedUriResource(nint handle) : this(handle, true) { }
 
     internal EduSharedUriResource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EduSharedUriResource Borrow(nint handle) => new EduSharedUriResource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,24 @@ public sealed unsafe partial class EduSharedUriResource : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_1508de21((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_25ba09dd((void*)__hosihikari_shim_handle);
     }
 
     public static EduSharedUriResource Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_e5b6a7d0();
+        var handle = NativeMethods.TablePtr->C1.hs_create_e5b6a7d0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,63 +59,58 @@ public sealed unsafe partial class EduSharedUriResource : global::System.IDispos
         return new EduSharedUriResource((nint)handle);
     }
 
-    public static EduSharedUriResource Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public static EduSharedUriResource Create(global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_5dec1b4e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_0b79f664((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
 
         return new EduSharedUriResource((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint buttonName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c66fec19((void*)__hosihikari_shim_handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource fromTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource((nint)NativeMethods.TablePtr->C1.hs_method_ca8e4e41((void*)tag.Handle));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint linkUri_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_35261478((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static EduSharedUriResource Create_c0a80490(nint arg0) =>
+    public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EduSharedUriResource Create_0b79f664(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource fromTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource((nint)NativeMethods.TablePtr->hs_method_074973bf((void*)arg0.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource((nint)NativeMethods.TablePtr->C1.hs_method_a6bfbcd0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mButtonName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a6e64da3((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLinkUri_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0a3da15a((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? toTag(global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_060ac615((void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public static nint toTag(nint resource) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_cf820c39((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_cf820c39((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum StructureBlockActionType : int
 {
+    Unknown = -1,
+    Save = 0,
+    Load = 1,
+    Export = 2,
+    Export3D = 3,
+    LeaveScreen = 4,
+    Import = 5,
 }

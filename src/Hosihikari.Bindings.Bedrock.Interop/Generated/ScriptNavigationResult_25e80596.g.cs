@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest;
 
 public sealed unsafe partial class ScriptNavigationResult : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptNavigationResult(nint handle) : this(handle, true) { }
 
     internal ScriptNavigationResult(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptNavigationResult Borrow(nint handle) => new ScriptNavigationResult(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,44 @@ public sealed unsafe partial class ScriptNavigationResult : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleGameTest::ScriptNavigationResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleGameTest::ScriptNavigationResult>' requires --link-carrier or --virtual-dispatch.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3[] getPath()
+    public void _dtor()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c0253f70((void*)_handle);
-        var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.Vec3>() : new global::Hosihikari.Bindings.Bedrock.Interop.Vec3[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_items[__hs_i]);
-        }
-        return __hs_result;
+        NativeMethods.TablePtr->C3.hs_method_ff34a33b((void*)__hosihikari_shim_handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_581ed4ef());
     }
 
     public bool mIsFullPath
     {
-        get => NativeMethods.TablePtr->hs_get_a9d1a713((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_a9d1a713((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_a9d1a713((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_a9d1a713((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPath_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fe0d9dd5((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fe0d9dd5((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_25e80596((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_25e80596((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

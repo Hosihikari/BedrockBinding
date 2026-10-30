@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class HitResultWrapper
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public HitResultWrapper(nint handle) : this(handle, true) { }
 
     internal HitResultWrapper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static HitResultWrapper Borrow(nint handle) => new HitResultWrapper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,47 @@ public sealed unsafe partial class HitResultWrapper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HitResultWrapper Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HitResultWrapper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult getHitResult()
+    public void _onActorRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->hs_method_d974815b((void*)_handle), false);
+        NativeMethods.TablePtr->C1.hs_method_be56ec9d((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult getLiquidHitResult()
+    public void _onGameplayUserRemoved(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->hs_method_896fdfd6((void*)_handle), false);
+        NativeMethods.TablePtr->C1.hs_method_7374c906((void*)__hosihikari_shim_handle, (void*)entity.Handle);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.ActorManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.GameplayUserManager arg1)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.IActorManagerConnector actorManagerConnector, global::Hosihikari.Bindings.Bedrock.Interop.IGameplayUserManagerConnector gameplayUserManagerConnector)
     {
-        NativeMethods.TablePtr->hs_method_4d6e2da0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_60078515((void*)__hosihikari_shim_handle, (void*)actorManagerConnector.Handle, (void*)gameplayUserManagerConnector.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHitResult_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8c9bf64b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLiquidHitResult_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_331e44a9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserRemoved_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cd2ca0f1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnRemoveActorEntityReferences_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ce6905c6((void*)__hosihikari_shim_handle);
+    }
 }

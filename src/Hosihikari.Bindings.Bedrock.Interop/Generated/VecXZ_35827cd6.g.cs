@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class VecXZ
+public sealed unsafe partial class VecXZ : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VecXZ(nint handle) : this(handle, true) { }
 
     internal VecXZ(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VecXZ Borrow(nint handle) => new VecXZ(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,20 +33,75 @@ public sealed partial class VecXZ
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VecXZ Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public float b
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_7089c612((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7089c612((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VecXZ Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public float g
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_fc0d583a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_fc0d583a((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float p
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_27df248d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_27df248d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float r
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_6227ae0b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_6227ae0b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float s
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_37131aaf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_37131aaf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float t
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_6847da3c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_6847da3c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float x
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_74c17212((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_74c17212((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float y
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_1e4fca66((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_1e4fca66((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float z
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_19f1d24c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_19f1d24c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_35827cd6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

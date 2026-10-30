@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EntitySubsensor
+public sealed unsafe partial class EntitySubsensor : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EntitySubsensor(nint handle) : this(handle, true) { }
 
     internal EntitySubsensor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EntitySubsensor Borrow(nint handle) => new EntitySubsensor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,107 @@ public sealed unsafe partial class EntitySubsensor
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntitySubsensor Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EntitySubsensor Create_e0e26f91(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntitySubsensor Create_e45f61e5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static int NO_MAX_COUNT
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.EntitySubsensor arg0)
     {
-        get => NativeMethods.TablePtr->hs_get_dd56ac41();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_f15a6789((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void senseEntities_e8108389(nint arg0, nint arg1, nint arg2, bool arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void senseEntities(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg2, bool arg3, bool arg4)
+    public static EntitySubsensor Create()
     {
-        NativeMethods.TablePtr->hs_method_ffe7f883((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3, arg4);
+        var handle = NativeMethods.TablePtr->C1.hs_create_50637ece();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntitySubsensor((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_6a1f3fd0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static EntitySubsensor Create(global::Hosihikari.Bindings.Bedrock.Interop.EntitySubsensor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e45f61e5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntitySubsensor((nint)handle);
+    }
+
+    public ulong mCooldownInTicks
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_cb5333b1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_cb5333b1((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_42e7b3f7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d10c5649((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMaximumCount
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_f5d340ba((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_f5d340ba((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinimumCount
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_62dd51b7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_62dd51b7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNextSensingTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_21a6fafb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_653c8c00((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mRequireAll
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_7d2eb7cf((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_7d2eb7cf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mYOffset
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_b7bd99fc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_b7bd99fc((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EntitySubsensor operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EntitySubsensor arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EntitySubsensor((nint)NativeMethods.TablePtr->C1.hs_method_64c04f3c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_901edb6d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

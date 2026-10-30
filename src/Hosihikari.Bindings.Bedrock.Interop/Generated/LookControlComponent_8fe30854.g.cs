@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LookControlComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LookControlComponent(nint handle) : this(handle, true) { }
 
     internal LookControlComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LookControlComponent Borrow(nint handle) => new LookControlComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,98 +33,61 @@ public sealed unsafe partial class LookControlComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LookControlComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LookControlComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool getHasWantedPosition()
+    public bool mHasWantedPosition
     {
-        return NativeMethods.TablePtr->hs_method_6d754979((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_d43caf85((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_d43caf85((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getHasWantedRotation()
+    public bool mHasWantedRotation
     {
-        return NativeMethods.TablePtr->hs_method_0eabb654((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_b8e11055((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_b8e11055((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getWantedPosition()
+    public uint mLookAtPositionLockedTicks
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_1370f80c((void*)_handle));
+        get => NativeMethods.TablePtr->C2.hs_get_d41c0229((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d41c0229((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getWantedRotation()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLookControl_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_ae81b184((void*)_handle));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fd6fcfd4((void*)__hosihikari_shim_handle);
     }
 
-    public float getXMax()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWantedPosition_Address
     {
-        return NativeMethods.TablePtr->hs_method_67b7c8f7((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f0d8f3f5((void*)__hosihikari_shim_handle);
     }
 
-    public float getYMax()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWantedRotation_Address
     {
-        return NativeMethods.TablePtr->hs_method_cfcee544((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f1b398fb((void*)__hosihikari_shim_handle);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    public float mXMax
     {
-        NativeMethods.TablePtr->hs_method_e91f0166((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_7085e903((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7085e903((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_1d63a1e3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_defb29d3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setHasWantedPosition(bool arg0)
+    public float mYMax
     {
-        NativeMethods.TablePtr->hs_method_a12fea0e((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_ab5ac126((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ab5ac126((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setHasWantedRotation(bool arg0)
+    public void setLookAtPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor? target, float yMax, float xMax)
     {
-        NativeMethods.TablePtr->hs_method_9520bc5a((void*)_handle, arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setInternalType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void setLookAtPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, float arg1, float arg2)
-    {
-        NativeMethods.TablePtr->hs_method_9a7f420e((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2);
-    }
-
-    public void setLookAtPosition(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1, float arg2)
-    {
-        NativeMethods.TablePtr->hs_method_69441dca((void*)_handle, (void*)arg0.Handle, arg1, arg2);
-    }
-
-    public void setLookAtRotation(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1, float arg2)
-    {
-        NativeMethods.TablePtr->hs_method_134a2e66((void*)_handle, (void*)arg0.Handle, arg1, arg2);
-    }
-
-    public void setYMax(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_edcd9b74((void*)_handle, arg0);
-    }
-
-    public void update(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
-    {
-        NativeMethods.TablePtr->hs_method_869c2bc0((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_cd41834b((void*)__hosihikari_shim_handle, (void*)(target?.Handle ?? 0), yMax, xMax);
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AcaciaTreeTrunk
+public sealed unsafe partial class AcaciaTreeTrunk : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AcaciaTreeTrunk(nint handle) : this(handle, true) { }
 
     internal AcaciaTreeTrunk(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AcaciaTreeTrunk Borrow(nint handle) => new AcaciaTreeTrunk(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,36 +33,130 @@ public sealed unsafe partial class AcaciaTreeTrunk
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AcaciaTreeTrunk Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AcaciaTreeTrunk Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getTreeHeight(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    public int _getTreeHeight(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->hs_method_395f9558((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_c6161790((void*)__hosihikari_shim_handle, (void*)random.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? placeTrunk(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg4, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams arg5, global::Hosihikari.Bindings.Bedrock.Interop.ITreeCanopy? arg6)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _placeTrunk(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int treeHeight, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams, global::Hosihikari.Bindings.Bedrock.Interop.ITreeCanopy? canopy)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_e977442e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)arg4.Handle, (void*)arg5.Handle, (void*)(arg6?.Handle ?? 0), &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_1367ec68((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)random.Handle, treeHeight, (void*)renderParams.Handle, (void*)treeParams.Handle, (void*)(canopy?.Handle ?? 0), &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int getTreeHeight(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9b4f3fda((void*)__hosihikari_shim_handle, (void*)random.Handle);
+    }
+
+    public bool mAllowDiagonalGrowth
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_a7900bbf((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_a7900bbf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mBaseHeight
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_53b00246((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_53b00246((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBranchCanopy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_026c2919((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBranchChance_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_54e3ebf5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBranchLength_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2ef618b0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBranchPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f2d343dc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDecoration_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_42a979e0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHeightIntervals_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8889d640((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLeanHeight_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9312077a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLeanLength_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1b050eb9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLeanSteps_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3aae0ed3((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMinHeightForCanopy
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_4f737613((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_4f737613((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTrunkBlockDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9867c2ce((void*)__hosihikari_shim_handle);
+    }
+
+    public int mTrunkWidth
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_1fd89557((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_1fd89557((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? placeTrunk(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int treeHeight, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams, global::Hosihikari.Bindings.Bedrock.Interop.ITreeCanopy? canopy)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_1a516dd7((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)random.Handle, treeHeight, (void*)renderParams.Handle, (void*)treeParams.Handle, (void*)(canopy?.Handle ?? 0), &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0b59bf9b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

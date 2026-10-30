@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DataStructures;
 
-public sealed unsafe partial class ByteQueue
+public sealed unsafe partial class ByteQueue : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ByteQueue(nint handle) : this(handle, true) { }
 
     internal ByteQueue(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ByteQueue Borrow(nint handle) => new ByteQueue(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,50 @@ public sealed unsafe partial class ByteQueue
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ByteQueue Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ByteQueue Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void Clear(nint arg0, uint arg1)
+    public bool WriteBytes(nint @in, uint length, nint file, uint line)
     {
-        NativeMethods.TablePtr->hs_method_5affde1e((void*)_handle, (void*)arg0, arg1);
+        return NativeMethods.TablePtr->C1.hs_method_f033b1fa((void*)__hosihikari_shim_handle, (void*)@in, length, (void*)file, line) != 0;
     }
 
-    public uint GetBytesWritten()
+    public nint data
     {
-        return NativeMethods.TablePtr->hs_method_5867a2d0((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_215a3a11((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_215a3a11((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    public void IncrementReadOffset(uint arg0)
+    public uint lengthAllocated
     {
-        NativeMethods.TablePtr->hs_method_34a0f04f((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_dbc8f840((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_dbc8f840((void*)__hosihikari_shim_handle, value);
     }
 
-    public nint PeekContiguousBytes(nint arg0)
+    public uint readOffset
     {
-        return (nint)NativeMethods.TablePtr->hs_method_69dd525c((void*)_handle, (void*)arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_e0e3eb0c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e0e3eb0c((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool ReadBytes(nint arg0, uint arg1, bool arg2)
+    public uint writeOffset
     {
-        return NativeMethods.TablePtr->hs_method_a0a73f56((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_dafc98f5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_dafc98f5((void*)__hosihikari_shim_handle, value);
     }
 
-    public void WriteBytes(nint arg0, uint arg1, nint arg2, uint arg3)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_f6ab62e4((void*)_handle, (void*)arg0, arg1, (void*)arg2, arg3);
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_1a4a361c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

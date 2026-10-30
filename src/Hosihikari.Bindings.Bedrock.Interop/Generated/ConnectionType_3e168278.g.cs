@@ -4,17 +4,16 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Social;
 
-public enum ConnectionType : int
+public enum ConnectionType : short
 {
-    Success = 0,
-    CannotReadFromFile = 1,
-    CannotWriteToFile = 2,
-    FileAlreadyExists = 3,
-    CleanupFailed = 4,
-    InvalidStatusCode = 5,
-    InvalidUrl = 6,
-    InternalError = 7,
-    UserNotSignedIn = 8,
-    NotInitialized = 9,
-    UnknownError = 10,
+    Undefined = -1,
+    Local = 0,
+    IPv4 = 1,
+    IPv6 = 2,
+    WebSocketsWebRTCSignaling = 3,
+    LANWebRTCSignaling = 4,
+    Nat = 5,
+    Upnp = 6,
+    WebSocketsWebRTCJsonRpcSignaling = 7,
+    UnknownIP = 8,
 }

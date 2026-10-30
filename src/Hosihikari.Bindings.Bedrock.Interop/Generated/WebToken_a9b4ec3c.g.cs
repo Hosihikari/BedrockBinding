@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WebToken : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WebToken(nint handle) : this(handle, true) { }
 
     internal WebToken(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WebToken Borrow(nint handle) => new WebToken(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,103 @@ public sealed unsafe partial class WebToken : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static WebToken Create(string arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.WebToken arg0)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_778b27ff((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C4.hs_method_200daa04((void*)__hosihikari_shim_handle);
+    }
+
+    public static WebToken Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_998315f9();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WebToken((nint)handle);
+    }
+
+    public static WebToken Create(global::Hosihikari.Bindings.Bedrock.Interop.WebToken arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4cf1f2ac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WebToken((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'WebToken' is not supported.", false)]
+    public static nint createFromData(nint dataInfo, nint manager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'WebToken' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'WebToken' is not supported.", false)]
+    public static nint createFromData(nint dataInfo, nint manager, nint extraHeaders, nint signatureType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'WebToken' is not supported.");
+
+    public string getKeyId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_d2df05ad((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e34abbcd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDataInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f29a1322((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHeader_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d3b12873((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHeaderInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_26e44c80((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSignature_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c5353a96((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.WebToken operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WebToken arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WebToken((nint)NativeMethods.TablePtr->C4.hs_method_c0996adb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'WebToken' is not supported.", false)]
+    public static nint parse(nint token, ulong maxLength) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'WebToken' is not supported.");
+
+    public bool verifyWithExternalKey(string publicKey, int? expectedSystem)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(publicKey);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -50,62 +139,16 @@ public sealed unsafe partial class WebToken : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b238da46(__hs_stringData0, (nuint)__hs_stringByteCount0);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new WebToken((nint)handle);
+            return NativeMethods.TablePtr->C4.hs_method_349f7d1c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, expectedSystem ?? default(int), expectedSystem.HasValue) != 0;
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<PublicKeySignatureType,CertificateThumbprintSignatureType>' is not a known bindable declaration.", false)]
-    public static nint createFromData(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<PublicKeySignatureType,CertificateThumbprintSignatureType>' is not a known bindable declaration.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mData_Address
+    public bool verifyWithIncludedKey(string[] trustedKeys)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e34abbcd((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDataInfo_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f29a1322((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mHeader_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d3b12873((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mHeaderInfo_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_26e44c80((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSignature_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c5353a96((void*)_handle);
-    }
-
-    public string toString()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_6d255590((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public bool verifyWithIncludedKey(string[] arg0)
-    {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
+        var __hs_vectorItems0 = trustedKeys ?? global::System.Array.Empty<string>();
         var __hs_vectorCount0 = __hs_vectorItems0.Length;
         var __hs_vectorByteTotal0 = 0;
         for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
@@ -125,21 +168,21 @@ public sealed unsafe partial class WebToken : global::System.IDisposable
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            return NativeMethods.TablePtr->hs_method_6cc6e18a((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_e8de1529((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(trustedKeys?.Length ?? 0)) != 0;
         }
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_a9b4ec3c((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_a9b4ec3c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

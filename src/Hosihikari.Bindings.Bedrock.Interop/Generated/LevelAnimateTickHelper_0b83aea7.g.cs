@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelAnimateTickHelper
+public sealed unsafe partial class LevelAnimateTickHelper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelAnimateTickHelper(nint handle) : this(handle, true) { }
 
     internal LevelAnimateTickHelper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelAnimateTickHelper Borrow(nint handle) => new LevelAnimateTickHelper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,66 @@ public sealed unsafe partial class LevelAnimateTickHelper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelAnimateTickHelper Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelAnimateTickHelper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion MIN_TIME_LIMITED_JAVA_PARITY_VERSION
+    public static LevelAnimateTickHelper Create()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_get_babccc09(), false);
+        var handle = NativeMethods.TablePtr->C1.hs_create_7094daef();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelAnimateTickHelper((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static LevelAnimateTickHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5090ab1f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelAnimateTickHelper((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3e3067_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_86044deb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk623737_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_269fe08a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd511a7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_81b117e5((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper((nint)NativeMethods.TablePtr->C1.hs_method_1ee6dbd0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0b83aea7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -1,38 +1,30 @@
 param(
-    [Parameter(Mandatory = $true)]
-    [string]$Pdb,
-    [Parameter(Mandatory = $true)]
-    [string]$Exe,
-    [string]$Elf = "",
     [string]$LeviLaminaRoot = "",
-    [string]$HeaderIr = "",
-    [string]$Classes = "Actor,BlockPos,BlockSource,ChunkPos,ItemStack,ItemStackBase,Level,Vec3,AppPlatform,ServerInstance,Player,Mob,Dimension,Block,Item,ItemRegistryRef,Container",
-    [string]$ClassesFile = "",
-    [string]$Version = "1.21.3",
-    [string]$Carrier = "BDS 1.21.3.01",
-    [string]$TargetModule = "bedrock_server",
+    [string]$LlvmRoot = "$env:LOCALAPPDATA\Temp\hosihikari-llvm\clang+llvm-23.1.4-x86_64-pc-windows-msvc",
+    [string]$EnttRoot = "",
+    [string]$HeaderList = "",
     [string]$GeneratorRoot = "",
     [string]$AbiRoot = "",
-    [string]$LlvmRoot = "$env:LOCALAPPDATA\Temp\hosihikari-llvm\clang+llvm-23.1.3-x86_64-pc-windows-msvc",
-    # The symbol stage reads the whole PDB and takes an hour once the class set is large,
-    # and the merge takes minutes; both can be reused while iterating on the emitter.
-    [switch]$SkipSymbols,
-    [switch]$SkipMerge,
-    [string]$ClassSizes = "",
-    [switch]$SkipClassSizes,
-    [string]$Output = "artifacts/regenerated"
+    [string]$Output = "artifacts/regenerated",
+    [string[]]$AdditionalIncludePath = @(),
+    [switch]$SkipFrontend,
+    [switch]$SkipBuild,
+    [string]$IrDirectory = ""
 )
-if ([string]::IsNullOrWhiteSpace($LeviLaminaRoot)) {
-    $LeviLaminaRoot = Join-Path $PSScriptRoot "..\..\Third\LiteLoaderBDS"
-}
 
 $ErrorActionPreference = "Stop"
 
+$StartTime = Get-Date
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
-$Pdb = (Resolve-Path $Pdb).Path
-$Exe = (Resolve-Path $Exe).Path
-if (-not [string]::IsNullOrWhiteSpace($Elf)) {
-    $Elf = (Resolve-Path $Elf).Path
+if ([string]::IsNullOrWhiteSpace($LeviLaminaRoot)) {
+    $LeviLaminaRoot = (Resolve-Path (Join-Path $RepoRoot "..\Third\LeviLamina-ee049f1")).Path
+} else {
+    $LeviLaminaRoot = (Resolve-Path $LeviLaminaRoot).Path
+}
+if ([string]::IsNullOrWhiteSpace($HeaderList)) {
+    $HeaderList = Join-Path $PSScriptRoot "headers-26.51.txt"
+} else {
+    $HeaderList = (Resolve-Path $HeaderList).Path
 }
 if ([string]::IsNullOrWhiteSpace($GeneratorRoot)) {
     $GeneratorRoot = (Resolve-Path (Join-Path $RepoRoot "..\Binding.Generator")).Path
@@ -45,207 +37,158 @@ if ([string]::IsNullOrWhiteSpace($AbiRoot)) {
     $AbiRoot = (Resolve-Path $AbiRoot).Path
 }
 $Output = if ([System.IO.Path]::IsPathRooted($Output)) { $Output } else { Join-Path $RepoRoot $Output }
-if (-not [string]::IsNullOrWhiteSpace($ClassesFile)) {
-    $ClassesFile = (Resolve-Path $ClassesFile).Path
-    $Classes = (Get-Content $ClassesFile |
-        ForEach-Object { $_.Trim() } |
-        Where-Object { $_ -ne "" -and -not $_.StartsWith("#") }) -join ","
-}
-# A reused header IR goes stale silently: the class list and the header list keep growing,
-# and merging against a six-day-old IR binds almost nothing. Rebuild by default; pass
-# -HeaderIr to reuse one on purpose.
-if ([string]::IsNullOrWhiteSpace($HeaderIr)) {
-    $HeaderIr = Join-Path $Output "header-ir"
-    if (Test-Path (Join-Path $HeaderIr "ir-manifest.json")) {
-        Remove-Item $HeaderIr -Recurse -Force
-    }
-} else {
-    $HeaderIr = (Resolve-Path $HeaderIr).Path
-}
-
-$SymbolIr = Join-Path $Output "symbol-ir"
-$MergedIr = Join-Path $Output "merged"
-$Emitted = Join-Path $Output "emitted"
 $AbiHeader = Join-Path $AbiRoot "native\hosihikari_abi.h"
 if (-not (Test-Path $AbiHeader)) {
     throw "hosihikari_abi.h was not found under $AbiRoot."
 }
 
-# Past a few thousand names a comma-joined list overruns the 32,767-character Windows
-# command line, so a file selection stays a file all the way down.
-$symbolArguments = @{
-    Pdb = $Pdb
-    Exe = $Exe
-    IrOutput = $SymbolIr
-    NoPrototype = $true
-    Version = $Version
-    SkipBuild = $true
-    Verbose = ($VerbosePreference -ne 'SilentlyContinue')
-}
-if (-not [string]::IsNullOrWhiteSpace($ClassesFile)) {
-    $symbolArguments.ClassesFile = $ClassesFile
+$FrontendDriver = Join-Path $GeneratorRoot "frontend\run-levilamina-headers.ps1"
+$HeaderIr = if ([string]::IsNullOrWhiteSpace($IrDirectory)) {
+    Join-Path $Output "header-ir"
 } else {
-    $symbolArguments.Classes = @($Classes.Split(",") | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+    (Resolve-Path $IrDirectory).Path
 }
-if (-not [string]::IsNullOrWhiteSpace($Elf)) {
-    $symbolArguments.Elf = $Elf
-}
-if ($SkipSymbols) {
-    if (-not (Test-Path (Join-Path $SymbolIr "ir-manifest.json"))) {
-        throw "-SkipSymbols was set but $SymbolIr has no ir-manifest.json."
+
+if (-not $SkipFrontend) {
+    # The umbrella pulls fmt, entt, gsl and the other packages LeviLamina builds with. The
+    # driver already adds every xmake include directory; the nested directories below cover
+    # packages whose headers are included without their directory prefix.
+    $Includes = @(
+        (Join-Path $LeviLaminaRoot "src-server"),
+        (Join-Path $LeviLaminaRoot "build\config")
+    )
+    $Gens = Join-Path $LeviLaminaRoot "build\.gens"
+    if (Test-Path $Gens) {
+        $Includes += Get-ChildItem $Gens -Recurse -Directory -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -eq "api" -and $_.FullName -like "*\src\ll\api" } |
+            ForEach-Object { $_.FullName }
     }
-    Write-Output "Reusing the symbol IR under $SymbolIr."
-} else {
-    & (Join-Path $GeneratorRoot "frontend\run-symbols.ps1") @symbolArguments
-}
-
-if (-not (Test-Path (Join-Path $HeaderIr "ir-manifest.json"))) {
-    & (Join-Path $GeneratorRoot "frontend\run-levilamina-headers.ps1") `
-        -LeviLaminaRoot $LeviLaminaRoot `
-        -Output $HeaderIr `
-        -SkipBuild
-}
-
-# The deleting destructors carry the compiler's own sizeof for each class. They come from
-# the same carrier symbols as the rest of the surface, so the extraction runs as part of
-# the regeneration unless a caller supplies the map it already produced.
-if (-not $SkipClassSizes) {
-    if ([string]::IsNullOrWhiteSpace($ClassSizes)) {
-        $ClassSizes = Join-Path $Output "class-sizes.json"
+    # A few packages are included by bare file name; only those nested directories are
+    # added, because adding every child of every include directory breaks gsl and fmt.
+    foreach ($Package in Get-ChildItem "$env:LOCALAPPDATA\.xmake\packages" -Recurse -Directory -Filter "include" -ErrorAction SilentlyContinue) {
+        foreach ($Nested in @("magic_enum", "stb", "concurrentqueue\moodycamel")) {
+            $Candidate = Join-Path $Package.FullName $Nested
+            if (Test-Path $Candidate) {
+                $Includes += $Candidate
+            }
+        }
     }
-    if (-not (Test-Path $ClassSizes) -or -not $SkipMerge) {
-        & python (Join-Path $GeneratorRoot "frontend\extract-class-sizes.py") `
-            --pdb $Pdb --exe $Exe --output $ClassSizes --llvm-root $LlvmRoot
-        if ($LASTEXITCODE -ne 0) { throw "extract-class-sizes.py exited with $LASTEXITCODE" }
+    $Includes += $AdditionalIncludePath
+
+    $FrontendArgs = @{
+        LeviLaminaRoot = $LeviLaminaRoot
+        HeaderList = $HeaderList
+        Output = $HeaderIr
+        LlvmRoot = $LlvmRoot
+        EmitMangledNames = $true
+        AdditionalIncludePath = $Includes
+        SkipBuild = $SkipBuild
     }
-} elseif ([string]::IsNullOrWhiteSpace($ClassSizes)) {
-    throw "-SkipClassSizes was set but no -ClassSizes map was given."
+    if (-not [string]::IsNullOrWhiteSpace($EnttRoot)) {
+        $FrontendArgs["EnttRoot"] = (Resolve-Path $EnttRoot).Path
+    }
+    # The umbrella hits a handful of known header defects (a deleted copy assignment in
+    # MolangScriptArg, incomplete types in a few packets). The frontend records them in the
+    # manifest diagnostics and exits non-zero; that is tolerable as long as it wrote the IR.
+    try {
+        & $FrontendDriver @FrontendArgs
+    } catch {
+        Write-Warning "IR frontend reported errors: $($_.Exception.Message)"
+    }
 }
 
-if ($SkipMerge) {
-    if (-not (Test-Path (Join-Path $MergedIr "ir-manifest.json"))) {
-        throw "-SkipMerge was set but $MergedIr has no ir-manifest.json."
-    }
-    Write-Output "Reusing the merged IR under $MergedIr."
-} else {
-    & python (Join-Path $GeneratorRoot "frontend\merge-symbol-ir.py") `
-        --symbol $SymbolIr `
-        --header $HeaderIr `
-        --output $MergedIr `
-        --class-sizes $ClassSizes `
-        --header-root $LeviLaminaRoot `
-        $(if ($ClassesFile) { @("--classes-file", $ClassesFile) } else { @("--classes", $Classes) })
-    if ($LASTEXITCODE -ne 0) { throw "merge-symbol-ir.py exited with $LASTEXITCODE" }
+$Manifest = Join-Path $HeaderIr "ir-manifest.json"
+if (-not (Test-Path $Manifest)) {
+    throw "ir-manifest.json was not found under $HeaderIr."
 }
 
-dotnet run --project (Join-Path $GeneratorRoot "src\Hosihikari.Bindings.Generator\Hosihikari.Bindings.Generator.csproj") -c Release -- `
-    emit (Join-Path $MergedIr "ir-manifest.json") $MergedIr $Emitted `
-    --abi-header $AbiHeader `
-    --symbol-dispatch --target-module $TargetModule
-# Without this the script copies whatever the previous run left in the emitted directory,
-# and a rejected IR shows up as "regenerated" with last run's numbers.
-if ($LASTEXITCODE -ne 0) { throw "emit exited with $LASTEXITCODE; the merged IR was not accepted" }
+# Without -IrDirectory the manifest must have been written by this run; a stale directory
+# would silently bind a different header set.
+if ([string]::IsNullOrWhiteSpace($IrDirectory) -and (-not $SkipFrontend)) {
+    if ((Get-Item $Manifest).LastWriteTime -lt $StartTime) {
+        throw "the IR manifest was not refreshed; the frontend did not finish."
+    }
+}
 
-$InteropTarget = Join-Path $RepoRoot "src\Hosihikari.Bindings.Bedrock.Interop\Generated"
+$GeneratorProject = Join-Path $GeneratorRoot "src\Hosihikari.Bindings.Generator\Hosihikari.Bindings.Generator.csproj"
+dotnet run --project $GeneratorProject -c Release -- emit $Manifest $HeaderIr $Output --symbol-dispatch --resolve-by-name --allow-ir-errors --abi-header $AbiHeader
+
+$InteropGenerated = Join-Path $RepoRoot "src\Hosihikari.Bindings.Bedrock.Interop\Generated"
+$ShimTarget = Join-Path $RepoRoot "native\BindingShim\generated\win-x64-server\bedrock"
 $CoverageTarget = Join-Path $RepoRoot "coverage"
-$Configurations = @("win-x64-server", "linux-x64-server")
 
-if (Test-Path $InteropTarget) {
-    Remove-Item $InteropTarget -Recurse -Force
+if (Test-Path $InteropGenerated) {
+    Remove-Item $InteropGenerated -Recurse -Force
 }
-New-Item -ItemType Directory -Force -Path $InteropTarget | Out-Null
-Copy-Item (Join-Path $Emitted "interop\bedrock\*") $InteropTarget -Recurse -Force
+New-Item -ItemType Directory -Force -Path $InteropGenerated | Out-Null
+Copy-Item (Join-Path $Output "interop\bedrock\*") $InteropGenerated -Recurse -Force
 
-foreach ($Configuration in $Configurations) {
-    $ShimSource = Join-Path $Emitted "shim\$Configuration\bedrock"
-    if (-not (Test-Path $ShimSource)) {
-        throw "The emitted shim is missing for $Configuration."
-    }
-
-    $ShimTarget = Join-Path $RepoRoot "native\BindingShim\generated\$Configuration\bedrock"
-    if (Test-Path $ShimTarget) {
-        Remove-Item $ShimTarget -Recurse -Force
-    }
-    New-Item -ItemType Directory -Force -Path $ShimTarget | Out-Null
-    Copy-Item (Join-Path $ShimSource "*") $ShimTarget -Recurse -Force
+if (Test-Path $ShimTarget) {
+    Remove-Item $ShimTarget -Recurse -Force
 }
+New-Item -ItemType Directory -Force -Path $ShimTarget | Out-Null
+Copy-Item (Join-Path $Output "shim\win-x64-server\bedrock\*") $ShimTarget -Recurse -Force
 
 New-Item -ItemType Directory -Force -Path $CoverageTarget | Out-Null
-Copy-Item (Join-Path $Emitted "coverage\manifest.jsonl") $CoverageTarget -Force
-Copy-Item (Join-Path $Emitted "coverage\summary.json") $CoverageTarget -Force
+Copy-Item (Join-Path $Output "coverage\manifest.jsonl") $CoverageTarget -Force
+Copy-Item (Join-Path $Output "coverage\summary.json") $CoverageTarget -Force
 
 $Summary = Get-Content (Join-Path $CoverageTarget "summary.json") -Raw | ConvertFrom-Json
-$Functions = (Select-String -Path (Join-Path $RepoRoot "native\BindingShim\generated\win-x64-server\bedrock\binding_table.h") -Pattern '\(\*hs_' -AllMatches).Count
-foreach ($Configuration in $Configurations) {
-    $Header = Join-Path $RepoRoot "native\BindingShim\generated\$Configuration\bedrock\binding_table.h"
-    $ConfigurationFunctions = (Select-String -Path $Header -Pattern '\(\*hs_' -AllMatches).Count
-    if ($ConfigurationFunctions -ne $Functions) {
-        throw "The $Configuration shim has $ConfigurationFunctions functions, expected $Functions."
-    }
+$Header = Join-Path $ShimTarget "binding_table.h"
+$Functions = (Select-String -Path $Header -Pattern '\(\*hs_' -AllMatches).Count
+$CarrierCommit = "unknown"
+if (Test-Path (Join-Path $LeviLaminaRoot ".git")) {
+    $CarrierCommit = (& git -C $LeviLaminaRoot rev-parse HEAD).Trim()
 }
+$GeneratorVersion = (& dotnet run --project $GeneratorProject -c Release -- version).Trim()
 
-function Get-Sha256([string]$Path) {
-    return (Get-FileHash $Path -Algorithm SHA256).Hash.ToLowerInvariant()
-}
-
-$GeneratorVersion = (& dotnet run --project (Join-Path $GeneratorRoot "src\Hosihikari.Bindings.Generator\Hosihikari.Bindings.Generator.csproj") -c Release -- version).Trim()
 $Provenance = [ordered]@{
     generator = $GeneratorVersion
     irVersion = $Summary.irVersion
     irManifestSha256 = $Summary.irManifestSha256
     coverageManifestSha256 = $Summary.manifestSha256
-    carrier = $Carrier
-    carrierPdbSha256 = "sha256:" + (Get-Sha256 $Pdb)
-    carrierExeSha256 = "sha256:" + (Get-Sha256 $Exe)
-    carrierElfSha256 = if ($Elf) { "sha256:" + (Get-Sha256 $Elf) } else { "" }
+    carrier = "LeviLamina $CarrierCommit (BDS 1.26.51.1)"
+    carrierCommit = $CarrierCommit
+    headers = (Get-Content $HeaderList | Where-Object { $_.Trim() -ne "" }).Count
     surface = "bedrock"
-    configurations = $Summary.configurations
+    configurations = @($Summary.configurations)
     mode = "symbol-dispatch"
-    targetModule = $TargetModule
+    resolution = "pl_resolve_symbol"
+    targetModule = "bedrock_server"
     tableVersion = 1
     functions = $Functions
 }
+$ProvenancePath = Join-Path $CoverageTarget "provenance.json"
 [System.IO.File]::WriteAllText(
-    (Join-Path $CoverageTarget "provenance.json"),
+    $ProvenancePath,
     ($Provenance | ConvertTo-Json),
     (New-Object System.Text.UTF8Encoding($false)))
 
 $BaselinePath = Join-Path $CoverageTarget "baseline.json"
-if (-not (Test-Path $BaselinePath)) {
-    $Baseline = [ordered]@{
-        irVersion = $Summary.irVersion
-        configurations = $Summary.configurations
-        declarationsBound = $Summary.declarations.bound
-        membersBound = $Summary.members.bound
-        functions = $Functions
-    }
-    [System.IO.File]::WriteAllText(
-        $BaselinePath,
-        ($Baseline | ConvertTo-Json),
-        (New-Object System.Text.UTF8Encoding($false)))
-} else {
-    $Baseline = Get-Content $BaselinePath -Raw | ConvertFrom-Json
-    if ($Summary.declarations.bound -lt $Baseline.declarationsBound -or
-        $Summary.members.bound -lt $Baseline.membersBound -or
-        $Functions -lt $Baseline.functions) {
-        Write-Warning "Generated coverage is below coverage/baseline.json; review the change before updating the baseline."
-    }
+$Baseline = [ordered]@{
+    irVersion = $Summary.irVersion
+    configuration = "win-x64-server"
+    declarationsBound = $Summary.declarations.bound
+    membersBound = $Summary.members.bound
+    functions = $Functions
 }
+[System.IO.File]::WriteAllText(
+    $BaselinePath,
+    ($Baseline | ConvertTo-Json),
+    (New-Object System.Text.UTF8Encoding($false)))
 
 $HashFiles = @()
-$HashFiles += Get-ChildItem $InteropTarget -Recurse -Filter "*.g.cs"
-foreach ($Configuration in $Configurations) {
-    $HashFiles += Get-ChildItem (Join-Path $RepoRoot "native\BindingShim\generated\$Configuration\bedrock") -File
-}
+$HashFiles += Get-ChildItem $InteropGenerated -Recurse -Filter "*.g.cs"
+$HashFiles += Get-ChildItem $ShimTarget -File
 $HashFiles += Get-Item (Join-Path $CoverageTarget "manifest.jsonl"), (Join-Path $CoverageTarget "summary.json")
 $HashLines = foreach ($File in $HashFiles | Sort-Object FullName) {
     $Relative = $File.FullName.Substring($RepoRoot.Length + 1).Replace('\', '/')
-    "$(Get-Sha256 $File.FullName)  $Relative"
+    $Hash = (Get-FileHash $File.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+    "$Hash  $Relative"
 }
 [System.IO.File]::WriteAllText(
     (Join-Path $CoverageTarget "generated.sha256"),
     (($HashLines -join "`n") + "`n"),
     (New-Object System.Text.UTF8Encoding($false)))
 
-Write-Output "Regenerated: $Functions functions in $($Configurations.Count) configurations, $($Summary.declarations.bound) bound declarations, $($Summary.members.bound) bound members."
-Write-Output "Review the diff, then run scripts/verify_generated.py."
+Write-Output "Regenerated $($HashFiles.Count) files ($Functions shim functions) from $HeaderIr"

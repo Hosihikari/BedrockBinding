@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MinecraftScriptTelemetryLogger : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MinecraftScriptTelemetryLogger(nint handle) : this(handle, true) { }
 
     internal MinecraftScriptTelemetryLogger(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MinecraftScriptTelemetryLogger Borrow(nint handle) => new MinecraftScriptTelemetryLogger(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,38 @@ public sealed unsafe partial class MinecraftScriptTelemetryLogger : global::Syst
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftScriptTelemetryLogger Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MinecraftScriptTelemetryLogger Create(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing arg0, bool arg1)
+    public void _onDebuggerConnect(bool autoAttach, int retries)
     {
-        var handle = NativeMethods.TablePtr->hs_create_df1b47da((void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C2.hs_method_b473d551((void*)__hosihikari_shim_handle, autoAttach, retries);
+    }
+
+    public void _onDebuggerListen(bool autoAttach)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f5a1547a((void*)__hosihikari_shim_handle, autoAttach);
+    }
+
+    public void _onPluginDiscovery(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManagerResult pluginManagerResult)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6d1e8600((void*)__hosihikari_shim_handle, (void*)pluginManagerResult.Handle);
+    }
+
+    public void _onPluginRun(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManagerResult pluginManagerResult)
+    {
+        NativeMethods.TablePtr->C2.hs_method_14326f10((void*)__hosihikari_shim_handle, (void*)pluginManagerResult.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static MinecraftScriptTelemetryLogger Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_69223c60();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,44 +73,64 @@ public sealed unsafe partial class MinecraftScriptTelemetryLogger : global::Syst
         return new MinecraftScriptTelemetryLogger((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftScriptTelemetryLogger Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void onDebuggerConnect()
+    public static MinecraftScriptTelemetryLogger Create(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftScriptTelemetryLogger arg0)
     {
-        NativeMethods.TablePtr->hs_method_aaba1b43((void*)_handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_5d4cb08b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MinecraftScriptTelemetryLogger((nint)handle);
     }
 
-    public void onDebuggerListen()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2304b6_Address
     {
-        NativeMethods.TablePtr->hs_method_dc7c77d5((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_19e5e714((void*)__hosihikari_shim_handle);
     }
 
-    public void onPluginDiscovery(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginResult arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk44caa9_Address
     {
-        NativeMethods.TablePtr->hs_method_322b8d12((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_77e58e6d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void onPluginRun_f86d473d(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    public void onDebuggerConnect(bool autoAttach, int retries)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6a9f8428((void*)__hosihikari_shim_handle, autoAttach, retries);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onDebuggerListen(bool autoAttach)
+    {
+        NativeMethods.TablePtr->C2.hs_method_fe33952a((void*)__hosihikari_shim_handle, autoAttach);
+    }
 
+    public void onPluginDiscovery(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManagerResult pluginManagerResult)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c6cc1973((void*)__hosihikari_shim_handle, (void*)pluginManagerResult.Handle);
+    }
+
+    public void onPluginRun(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManagerResult pluginManagerResult)
+    {
+        NativeMethods.TablePtr->C2.hs_method_22dd7995((void*)__hosihikari_shim_handle, (void*)pluginManagerResult.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftScriptTelemetryLogger operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftScriptTelemetryLogger arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftScriptTelemetryLogger((nint)NativeMethods.TablePtr->C2.hs_method_0a11aaff((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_3da06a14((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_3da06a14((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

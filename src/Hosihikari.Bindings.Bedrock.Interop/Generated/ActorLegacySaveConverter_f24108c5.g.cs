@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorLegacySaveConverter
+public sealed unsafe partial class ActorLegacySaveConverter : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorLegacySaveConverter(nint handle) : this(handle, true) { }
 
     internal ActorLegacySaveConverter(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorLegacySaveConverter Borrow(nint handle) => new ActorLegacySaveConverter(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,146 @@ public sealed unsafe partial class ActorLegacySaveConverter
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorLegacySaveConverter Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorLegacySaveConverter Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void convertSave(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
+    public static void convertBoat(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->hs_method_e15c0b2c((void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_96e3ab8a((void*)entity.Handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void convertChicken(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_87380544((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertCow(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a7b85165((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertCreeper(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c16d1db2((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertEnderman(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
+    {
+        NativeMethods.TablePtr->C0.hs_method_70e003d8((void*)entity.Handle, (void*)arg1.Handle);
+    }
+
+    public static void convertHorse(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_886948ad((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertIronGolem(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_eb2b5131((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertMinecart(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
+    {
+        NativeMethods.TablePtr->C0.hs_method_f8932f62((void*)entity.Handle, (void*)arg1.Handle);
+    }
+
+    public static void convertMinecartHopper(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5481d92a((void*)entity.Handle, (void*)arg1.Handle);
+    }
+
+    public static void convertMinecartTNT(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b157bbe8((void*)entity.Handle, (void*)arg1.Handle);
+    }
+
+    public static void convertOcelot(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_14bdc2c0((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertPig(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_facb56a3((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertRabbit(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ca2ee6f6((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertSave(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_0b2147fa((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertSheep(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_418fb658((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertSilverfish(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ce5cdbd0((void*)entity.Handle, (void*)arg1.Handle);
+    }
+
+    public static void convertSkeleton(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_de890067((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertSlime(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_114ef1ce((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertSnowgolem(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_4ca5308a((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertSpider(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5eb0003d((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertSquid(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_851146ce((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertVillager(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_035bca53((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertWolf(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_597b6571((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertZombie(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_efaed9ba((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public static void convertZombieVillager(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_87b8cc1d((void*)entity.Handle, (void*)tag.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f24108c5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

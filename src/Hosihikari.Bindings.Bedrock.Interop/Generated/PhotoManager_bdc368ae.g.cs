@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PhotoManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PhotoManager(nint handle) : this(handle, true) { }
 
     internal PhotoManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PhotoManager Borrow(nint handle) => new PhotoManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,26 @@ public sealed unsafe partial class PhotoManager : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PhotoManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint levelStorage, bool isClientSide) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.");
 
-    public static PhotoManager Create(nint arg0, bool arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getPictureTakenConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static PhotoManager Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_08b16934((void*)arg0, arg1);
+        var handle = NativeMethods.TablePtr->C2.hs_create_c0385a01();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,18 +61,24 @@ public sealed unsafe partial class PhotoManager : global::System.IDisposable
         return new PhotoManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PhotoManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.", false)]
+    public static PhotoManager Create(nint levelStorage, bool isClientSide) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.");
+
+    public string _getPhotoStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b6545d60((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public void createPhotoStorage()
     {
-        NativeMethods.TablePtr->hs_method_f4c4ed59((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_f4c4ed59((void*)__hosihikari_shim_handle);
     }
 
-    public void createScreenshotsFolder(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.AppPlatform arg1)
+    public void createScreenshotsFolder(string levelId, global::Hosihikari.Bindings.Bedrock.Interop.AppPlatform appPlatform)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -74,47 +88,57 @@ public sealed unsafe partial class PhotoManager : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_14cfe107((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            NativeMethods.TablePtr->C2.hs_method_12c9243b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)appPlatform.Handle);
         }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage getPhotoStorage()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage((nint)NativeMethods.TablePtr->hs_method_1a61d0bb((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public nint getPictureTakenConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public nint getScreenshotsFolder()
+    public bool mIsClientSide
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9d2ddbb6((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_0ff0b5cb((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void takePicture(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, nint arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelStorage_Address
     {
-        NativeMethods.TablePtr->hs_method_b02b1677((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), (void*)arg3);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2ab0ae99((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPhotoStorage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0c4b2239((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPictureTakenPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_635b1820((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScreenshotsFolder_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3905f934((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_bdc368ae((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_bdc368ae((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

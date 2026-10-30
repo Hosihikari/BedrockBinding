@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.sim;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class NavigateToPositionsIntent
+public sealed unsafe partial class NavigateToPositionsIntent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NavigateToPositionsIntent(nint handle) : this(handle, true) { }
 
     internal NavigateToPositionsIntent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NavigateToPositionsIntent Borrow(nint handle) => new NavigateToPositionsIntent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,31 @@ public sealed partial class NavigateToPositionsIntent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NavigateToPositionsIntent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void finalize(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer player)
+    {
+        NativeMethods.TablePtr->C4.hs_method_732ccb50((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NavigateToPositionsIntent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public ulong mNextTarget
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_2ef7ea10((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_2ef7ea10((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mSpeed
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_796500c7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_796500c7((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_ac59f273() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3109439e((void*)__hosihikari_shim_handle);
+    }
 }

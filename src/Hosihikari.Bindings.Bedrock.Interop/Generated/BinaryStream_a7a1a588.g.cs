@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BinaryStream : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BinaryStream(nint handle) : this(handle, true) { }
 
     internal BinaryStream(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BinaryStream Borrow(nint handle) => new BinaryStream(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,100 +33,98 @@ public sealed unsafe partial class BinaryStream : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static BinaryStream Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_07d5c15d();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void __writeArray(nint sizeWriter, nint writer, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-        return new BinaryStream((nint)handle);
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _branchingWrite_DEPRECATED(nint branchWriter, int controlValue, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _branchingWrite_DEPRECATED(nint branchWriter, int controlValue, int arg2, int arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void _writeBool(bool value, nint docFieldName, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_8c10d69d((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BinaryStream Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: constructors do not accept mutable string references.", false)]
-    public static BinaryStream Create(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors do not accept mutable string references.");
-
-    public string getAndReleaseData()
+    public void _writeByte(byte value, nint arg1, nint arg2)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_054ae187((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        NativeMethods.TablePtr->C0.hs_method_2dbd7671((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public nint mBuffer_0daa8bdb
+    [global::System.Obsolete("BindingShim cannot project this member: optional parameter type 'brstd::function_ref<void (BinaryStream &)>' is not supported.", false)]
+    public void _writeConditional(nint docFieldName, nint conditions, nint writeDefault) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional parameter type 'brstd::function_ref<void (BinaryStream &)>' is not supported.");
+
+    public void _writeDouble(double value, nint arg1, nint arg2)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_acc5ed24((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_acc5ed24((void*)_handle, (void*)value);
+        NativeMethods.TablePtr->C0.hs_method_d0307540((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOwnedBuffer_fba6266d_Address
+    public void _writeEnum_DocHelper(nint arg0, nint arg1)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b31933ba((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_dfb63128((void*)__hosihikari_shim_handle, (void*)arg0, (void*)arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void reset()
+    public void _writeFixedFloat(float value, nint docFieldName, nint docFieldNotes, double size)
     {
-        NativeMethods.TablePtr->hs_method_90bea699((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_885cf785((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)docFieldNotes, size);
     }
 
-    public void writeBool(bool arg0, nint arg1, nint arg2)
+    public void _writeFloat(float value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_285ee7e8((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_af0cd1b9((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeByte(byte arg0, nint arg1, nint arg2)
+    [global::System.Obsolete("BindingShim cannot project this member: optional parameter type 'brstd::function_ref<void (BinaryStream &)>' is not supported.", false)]
+    public void _writeIf(bool controlValue, nint arg1, nint writeIfTrue, nint writeIfFalse) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional parameter type 'brstd::function_ref<void (BinaryStream &)>' is not supported.");
+
+    public void _writeNormalizedFloat(float value, nint docFieldName, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_4b8b2bbc((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_793369b7((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)arg2);
     }
 
-    public void writeDouble(double arg0, nint arg1, nint arg2)
+    public void _writeSignedBigEndianInt(int value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_a730e99a((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_4b863c46((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeFloat(float arg0, nint arg1, nint arg2)
+    public void _writeSignedByte(sbyte value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_43238715((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_61f7eaaa((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeSignedBigEndianInt(int arg0, nint arg1, nint arg2)
+    public void _writeSignedInt(int value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_4eeb098f((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_b696bad2((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeSignedInt(int arg0, nint arg1, nint arg2)
+    public void _writeSignedInt64(long value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_cfd89f5f((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_0d6b95b0((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeSignedInt64(long arg0, nint arg1, nint arg2)
+    public void _writeSignedShort(short value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_ede9cca2((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_900fac13((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeSignedShort(short arg0, nint arg1, nint arg2)
+    public void _writeString(string value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_c0543299((void*)_handle, arg0, (void*)arg1, (void*)arg2);
-    }
-
-    public void writeString(string arg0, nint arg1, nint arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(value);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -136,107 +134,295 @@ public sealed unsafe partial class BinaryStream : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(value, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_d3be669f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)arg2);
+            NativeMethods.TablePtr->C0.hs_method_f9da423b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)arg2);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void writeString(nint data, nint docName, nint docDesc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void writeType_2f36d534(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void writeType_63dd57f1(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void writeType_c638c0ea(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void writeType_b7ed81a4(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void writeUnsignedChar(byte arg0, nint arg1, nint arg2)
+    public bool _writeTypeBegin_DocHelper(nint arg0, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_f7ec5240((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        return NativeMethods.TablePtr->C0.hs_method_22fa64b1((void*)__hosihikari_shim_handle, (void*)arg0, (void*)arg1, (void*)arg2) != 0;
     }
 
-    public void writeUnsignedInt(uint arg0, nint arg1, nint arg2)
+    public void _writeTypeEnd_DocHelper()
     {
-        NativeMethods.TablePtr->hs_method_8b387423((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_992136ab((void*)__hosihikari_shim_handle);
     }
 
-    public void writeUnsignedInt64(ulong arg0, nint arg1, nint arg2)
+    public void _writeUnsignedInt(uint value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_80c43103((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_bb7bd97e((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeUnsignedShort(ushort arg0, nint arg1, nint arg2)
+    public void _writeUnsignedInt64(ulong value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_634a3098((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_af1a376e((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeUnsignedVarInt(uint arg0, nint arg1, nint arg2)
+    public void _writeUnsignedShort(ushort value, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_ea5dda15((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_f976a6a3((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
     }
 
-    public void writeUnsignedVarInt64(ulong arg0, nint arg1, nint arg2)
+    public void _writeUnsignedVarInt(uint uvalue, nint docFieldName, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_9325eeae((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_c0a5a570((void*)__hosihikari_shim_handle, uvalue, (void*)docFieldName, (void*)arg2);
     }
 
-    public void writeVarInt(int arg0, nint arg1, nint arg2)
+    public void _writeUnsignedVarInt64(ulong uvalue, nint docFieldName, nint docFieldNotes)
     {
-        NativeMethods.TablePtr->hs_method_323f7b6f((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_0bd2a17a((void*)__hosihikari_shim_handle, uvalue, (void*)docFieldName, (void*)docFieldNotes);
     }
 
-    public void writeVarInt64(long arg0, nint arg1, nint arg2)
+    public void _writeVarInt(int value, nint docFieldName, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_481691ba((void*)_handle, arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C0.hs_method_989bcb6a((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)arg2);
     }
 
-
-    public nint mBuffer_adf1f0ce
+    public void _writeVarInt64(long value, nint docFieldName, nint docFieldNotes)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1d58d920((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_e01cdd7d((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)docFieldNotes);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
+    public static BinaryStream Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
+    public static BinaryStream Create_0e70cd5b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
+    public static BinaryStream Create_45336a46(nint buffer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _writeArray(nint sizeWriter, nint writer, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void branchingWrite_DEPRECATED(nint branchWriter, int controlValue, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void branchingWrite_DEPRECATED(nint branchWriter, int controlValue, int arg2, int arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_acc5ed24((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream((nint)NativeMethods.TablePtr->C0.hs_method_38b07c01((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void write(nint origin, ulong num)
+    {
+        NativeMethods.TablePtr->C0.hs_method_4a4a75c8((void*)__hosihikari_shim_handle, (void*)origin, num);
+    }
+
+    public void writeBool(bool value, nint docFieldName, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9d5afd2e((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)arg2);
+    }
+
+    public void writeByte(byte value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_34d29176((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional parameter type 'brstd::function_ref<void (BinaryStream &)>' is not supported.", false)]
+    public void writeConditional(nint docFieldName, nint conditions, nint writeDefault) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional parameter type 'brstd::function_ref<void (BinaryStream &)>' is not supported.");
+
+    public void writeDouble(double value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c2e3f495((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeEnum_DocHelper(nint arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->C0.hs_method_61c1da96((void*)__hosihikari_shim_handle, (void*)arg0, (void*)arg1);
+    }
+
+    public void writeFixedFloat(float value, nint docFieldName, nint docFieldNotes, double size)
+    {
+        NativeMethods.TablePtr->C0.hs_method_0bc0500c((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)docFieldNotes, size);
+    }
+
+    public void writeFloat(float value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e736c62f((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional parameter type 'brstd::function_ref<void (BinaryStream &)>' is not supported.", false)]
+    public void writeIf(bool controlValue, nint arg1, nint writeIfTrue, nint writeIfFalse) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional parameter type 'brstd::function_ref<void (BinaryStream &)>' is not supported.");
+
+    public void writeNormalizedFloat(float value, nint docFieldName, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_7d0ea39a((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)arg2);
+    }
+
+    public void writeSignedBigEndianInt(int value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_1f36052e((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeSignedByte(sbyte value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_fed3d27f((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeSignedInt(int value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_853ad9ca((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeSignedInt64(long value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_aed703b5((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeSignedShort(short value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_6f7ac5c0((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeString(string value, nint arg1, nint arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(value);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(value, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_1c2b7a8b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)arg2);
+        }
+    }
+
+    public void writeType(global::Hosihikari.Bindings.Bedrock.Interop.ActorLink arg0, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_7efd3f3d((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeType(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_941052e9((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeType(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_0ce45e68((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeType(global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacketData arg0, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_8f31aac5((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeType(global::Hosihikari.Bindings.Bedrock.Interop.MoveActorAbsoluteData arg0, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_2f36d534((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeType(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ba8a2afc((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+    }
+
+    public bool writeTypeBegin_DocHelper(nint arg0, nint arg1, nint arg2)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3c5c25ce((void*)__hosihikari_shim_handle, (void*)arg0, (void*)arg1, (void*)arg2) != 0;
+    }
+
+    public void writeTypeEnd_DocHelper()
+    {
+        NativeMethods.TablePtr->C0.hs_method_4e6973e6((void*)__hosihikari_shim_handle);
+    }
+
+    public void writeUnsignedInt(uint value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d1effcd5((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeUnsignedInt64(ulong value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_599a2e3f((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeUnsignedShort(ushort value, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a11015ca((void*)__hosihikari_shim_handle, value, (void*)arg1, (void*)arg2);
+    }
+
+    public void writeUnsignedVarInt(uint uvalue, nint docFieldName, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_115e25e2((void*)__hosihikari_shim_handle, uvalue, (void*)docFieldName, (void*)arg2);
+    }
+
+    public void writeUnsignedVarInt64(ulong uvalue, nint docFieldName, nint docFieldNotes)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a6616926((void*)__hosihikari_shim_handle, uvalue, (void*)docFieldName, (void*)docFieldNotes);
+    }
+
+    public void writeVarInt(int value, nint docFieldName, nint arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_1a1dc6ed((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)arg2);
+    }
+
+    public void writeVarInt64(long value, nint docFieldName, nint docFieldNotes)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5c129781((void*)__hosihikari_shim_handle, value, (void*)docFieldName, (void*)docFieldNotes);
+    }
+
 
     public bool mHasOverflowed
     {
-        get => NativeMethods.TablePtr->hs_get_74914d54((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_74914d54((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_74914d54((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_74914d54((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mOwnedBuffer_d3e71f7a_Address
+    public nint mOwnedBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e2ce10a8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e2ce10a8((void*)__hosihikari_shim_handle);
     }
 
     public ulong mReadPointer
     {
-        get => NativeMethods.TablePtr->hs_get_927e8908((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_927e8908((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_927e8908((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_927e8908((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mView_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ea06fb3a((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_a7a1a588((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_a7a1a588((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

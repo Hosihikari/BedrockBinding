@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DwellerComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DwellerComponent(nint handle) : this(handle, true) { }
 
     internal DwellerComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DwellerComponent Borrow(nint handle) => new DwellerComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,215 +33,191 @@ public sealed unsafe partial class DwellerComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DWELLING_ROLES_Address
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public static nint DWELLING_ROLES() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public static nint DWELLING_TYPES() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public bool _isLockedInToProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_83b3017b();
+        return NativeMethods.TablePtr->C1.hs_method_d56b28c8((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DWELLING_TYPES_Address
+    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f3be89c5();
+        NativeMethods.TablePtr->C1.hs_method_a5886e1a((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)owner.Handle);
     }
 
-    public void DecrementDwellingUpdateInterval()
+    public void fixupProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Village? village)
     {
-        NativeMethods.TablePtr->hs_method_06a43d34((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_326a5b63((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)(village?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DwellerComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DwellerComponent Create_303bc49b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DwellerComponent Create_865c90b1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getVillage(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        NativeMethods.TablePtr->hs_method_f7dbe5e6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void checkandUpdateDwellingStatus(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Village? arg1)
-    {
-        NativeMethods.TablePtr->hs_method_86719000((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
-    }
-
-    public void clearPreferredProfession()
-    {
-        NativeMethods.TablePtr->hs_method_08413a08((void*)_handle);
-    }
-
-    public void fixupProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Village? arg1)
-    {
-        NativeMethods.TablePtr->hs_method_dec384a4((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
-    }
-
-    public bool getCanFindPOI()
-    {
-        return NativeMethods.TablePtr->hs_method_1d7ed02f((void*)_handle) != 0;
-    }
-
-    public int getDwellerRole()
-    {
-        return NativeMethods.TablePtr->hs_method_82307687((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getDwellingUniqueID()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_method_c853fb20((void*)_handle));
-    }
-
-    public ulong getDwellingUpdateInterval()
-    {
-        return NativeMethods.TablePtr->hs_method_faa85ef7((void*)_handle);
-    }
-
-    public bool getFixUpRole()
-    {
-        return NativeMethods.TablePtr->hs_method_b3ae7fde((void*)_handle) != 0;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getPreferredProfession()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_fd10cfe2((void*)_handle), false);
-    }
-
-    public ulong getUpdateIntervalBase()
-    {
-        return NativeMethods.TablePtr->hs_method_5eef948a((void*)_handle);
-    }
-
-    public int getUpdateIntervalVariant()
-    {
-        return NativeMethods.TablePtr->hs_method_1413241b((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getVillage(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_4fb082bb((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ee743814((void*)__hosihikari_shim_handle, (void*)owner.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getVillageCenter(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getVillageCenter(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_98cd88a7((void*)_handle, (void*)arg0.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_9b8ce740((void*)__hosihikari_shim_handle, (void*)owner.Handle));
     }
 
-    public bool hasDwelling()
+    public bool hasPreferredProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_3b57c139((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_ea9d15e8((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
     }
 
-    public bool hasPreferredProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_e05fa3e3((void*)_handle, (void*)arg0.Handle) != 0;
+        NativeMethods.TablePtr->C1.hs_method_648fc4d7((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool isWithinRestriction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        NativeMethods.TablePtr->hs_method_ca8227c1((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_ebfb9103((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
     }
 
-    public bool isWithinRestriction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool mCanFindPOI
     {
-        return NativeMethods.TablePtr->hs_method_f6bcfc10((void*)_handle, (void*)arg0.Handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_9b80198f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_9b80198f((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool needsToFixupJobSite(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool mCanMigrate
     {
-        return NativeMethods.TablePtr->hs_method_cd626f90((void*)_handle, (void*)arg0.Handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_3c0d156c((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_3c0d156c((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool needsToFixupProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public float mDwellingBoundsTolerance
     {
-        return NativeMethods.TablePtr->hs_method_d4e7749b((void*)_handle, (void*)arg0.Handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_06686e3a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_06686e3a((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool needsToFixupVillageRole(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Village? arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDwellingUniqueID_Address
     {
-        return NativeMethods.TablePtr->hs_method_4807a7e9((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0)) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_536896e4((void*)__hosihikari_shim_handle);
     }
 
-    public void onDeath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg1)
+    public ulong mDwellingUpdateInterval
     {
-        NativeMethods.TablePtr->hs_method_e32a767f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_ba7cb7c0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ba7cb7c0((void*)__hosihikari_shim_handle, value);
     }
 
-    public void onDimensionChange(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public int mFirstFoundingReward
     {
-        NativeMethods.TablePtr->hs_method_691d1d5c((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_291e333c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_291e333c((void*)__hosihikari_shim_handle, value);
     }
 
-    public void onRemove(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool mFixUpRole
     {
-        NativeMethods.TablePtr->hs_method_d29486c1((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_f597e89d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_f597e89d((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_523697f3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_85b179b0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    public bool mHasJoinedDwelling
     {
-        NativeMethods.TablePtr->hs_method_376b596d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_7c011a88((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_7c011a88((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setDwellingUniqueID(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreferredProfession_Address
     {
-        NativeMethods.TablePtr->hs_method_a8ad43cb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_87b11284((void*)__hosihikari_shim_handle);
     }
 
-    public void setDwellingUpdateInterval(ulong arg0)
+    public bool mRewardPlayersOnFirstFounding
     {
-        NativeMethods.TablePtr->hs_method_48f38df7((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_a66cab78((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_a66cab78((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setFixUpRole(bool arg0)
+    public int mRole
     {
-        NativeMethods.TablePtr->hs_method_f4dc8e99((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_7d8bdf3c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_7d8bdf3c((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setLastHurtByMob(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob? arg1)
+    public int mType
     {
-        NativeMethods.TablePtr->hs_method_5c8f1785((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        get => NativeMethods.TablePtr->C1.hs_get_7714c8b3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_7714c8b3((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool trySetPreferredProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1)
+    public ulong mUpdateIntervalBase
     {
-        return NativeMethods.TablePtr->hs_method_035fc37d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_ba6b16f1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ba6b16f1((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool tryToFixupRole(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Village? arg1)
+    public int mUpdateIntervalVariant
     {
-        return NativeMethods.TablePtr->hs_method_10598c70((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0)) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_3c033e0f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_3c033e0f((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool tryToMigrate(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Village? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Village? arg2)
+    public bool needsToFixupJobSite(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_6389a532((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_0d720a88((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
     }
 
-    public bool wantsToMigrate(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Village? arg1)
+    public bool needsToFixupProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_351a3738((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_253038f1((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_4d0ebdee() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void onDeath(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2192eee0((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)source.Handle);
+    }
+
+    public void onRemove(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
+    {
+        NativeMethods.TablePtr->C1.hs_method_fbf8c8b1((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
+
+    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper dataLoadHelper)
+    {
+        NativeMethods.TablePtr->C1.hs_method_12037e48((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
+    }
+
+    public void setDwellingUniqueID(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID id)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f59bbe63((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)id.Handle);
+    }
+
+    public void setLastHurtByMob(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Mob? mob)
+    {
+        NativeMethods.TablePtr->C1.hs_method_08d5e02c((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)(mob?.Handle ?? 0));
+    }
+
+    public bool trySetPreferredProfession(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.HashedString poi)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_fe9ed889((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)poi.Handle) != 0;
+    }
+
+    public bool tryToFixupRole(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Village? village)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e99eba53((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)(village?.Handle ?? 0)) != 0;
+    }
+
+    public bool tryToMigrate(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Village? oldVillage, global::Hosihikari.Bindings.Bedrock.Interop.Village? newVillage)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_958f01df((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)(oldVillage?.Handle ?? 0), (void*)(newVillage?.Handle ?? 0)) != 0;
+    }
 }

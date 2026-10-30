@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CraftHandleNonImplemented_DEPRECATEDASKTYLAING
+public sealed unsafe partial class CraftHandleNonImplemented_DEPRECATEDASKTYLAING
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CraftHandleNonImplemented_DEPRECATEDASKTYLAING(nint handle) : this(handle, true) { }
 
     internal CraftHandleNonImplemented_DEPRECATEDASKTYLAING(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CraftHandleNonImplemented_DEPRECATEDASKTYLAING Borrow(nint handle) => new CraftHandleNonImplemented_DEPRECATEDASKTYLAING(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,64 @@ public sealed partial class CraftHandleNonImplemented_DEPRECATEDASKTYLAING
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CraftHandleNonImplemented_DEPRECATEDASKTYLAING Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public byte __handleCraftAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_1f0165a1((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CraftHandleNonImplemented_DEPRECATEDASKTYLAING Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public byte _handleCraftAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_1ed2a2be((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAllowedAnywhereConsumes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_22d93d44((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mCraftActionType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_c0442b37((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_c0442b37((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCraftRequestHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bba1ed2e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExpectedAnywhereConsumes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_94e46d0f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExpectedSlotConsumes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1dea49fe((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsCraftRequest
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_4e22b067((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_4e22b067((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mNonImplementedTrustClientResults
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_6b9e9617((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_6b9e9617((void*)__hosihikari_shim_handle, value);
+    }
 }

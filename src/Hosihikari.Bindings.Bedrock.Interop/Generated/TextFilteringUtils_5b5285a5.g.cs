@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TextFilteringUtils
+public sealed unsafe partial class TextFilteringUtils : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TextFilteringUtils(nint handle) : this(handle, true) { }
 
     internal TextFilteringUtils(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TextFilteringUtils Borrow(nint handle) => new TextFilteringUtils(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,33 @@ public sealed unsafe partial class TextFilteringUtils
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TextFilteringUtils Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TextFilteringUtils Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static bool checkChatFilteringEventsAndSendChatIfTextProcessorOffline(int[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg1, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg2, nint arg3)
+    public static bool checkIfTextProcessorIsUnhealthyAndSendChat(int[] events, global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? packetSender, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, nint subClientId)
     {
-        fixed (int* __hs_vectorData0 = arg0)
+        fixed (int* __hs_vectorData0 = events)
         {
-            return NativeMethods.TablePtr->hs_method_5583070d((void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C3.hs_method_72f9818f((void*)(packetSender?.Handle ?? 0), (void*)source.Handle, (void*)subClientId, __hs_vectorData0, (nuint)(events?.Length ?? 0)) != 0;
         }
     }
 
-    public static void checkChatFilteringEventsAndSendToastIfClientWasMuted(int[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg1, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg2, nint arg3)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Safety::TextFilterResult>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint processMessagesWithClientsideDebugTimingsAsync(nint player, nint taskGroup, nint textFilteringProcessor, nint processOrigin, nint messages) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Safety::TextFilterResult>' requires --link-carrier or --virtual-dispatch.");
+
+    public void Dispose()
     {
-        fixed (int* __hs_vectorData0 = arg0)
+        if (__hosihikari_shim_handle != 0)
         {
-            NativeMethods.TablePtr->hs_method_00a16f95((void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_5b5285a5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    public static bool findChatFilteringEvent(int[] arg0, int arg1)
-    {
-        fixed (int* __hs_vectorData0 = arg0)
-        {
-            return NativeMethods.TablePtr->hs_method_7dcfce5f(arg1, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

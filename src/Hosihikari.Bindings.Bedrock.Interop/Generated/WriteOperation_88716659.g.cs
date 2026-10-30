@@ -2,9 +2,30 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum WriteOperation : int
 {
+    WriteFile = 0,
+    FlushFile = 1,
+    SetFileSize = 2,
+    CreateFileOp = 3,
+    DeleteFileOp = 4,
+    CreateDirectoryOp = 5,
+    DeleteDirectory = 6,
+    DeleteDirectoryRecursively = 7,
+    CleanDirectoryRecursively = 8,
+    RenameFile = 9,
+    RenameDirectory = 10,
+    Commit = 11,
+    CommitSaveData = 12,
+    ExtendSaveData = 13,
+    CreateCacheStorage = 14,
+    DeleteCacheStorage = 15,
+    SaveScreenshot = 16,
+    SaveAndShareScreenshot = 17,
+    Mount = 18,
+    CreateApplicationArea = 19,
+    Flush = 20,
+    MountCacheStorage = 21,
 }

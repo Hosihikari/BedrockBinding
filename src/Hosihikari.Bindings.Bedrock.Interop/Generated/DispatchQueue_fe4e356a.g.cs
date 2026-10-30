@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http;
 
 public sealed unsafe partial class DispatchQueue : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DispatchQueue(nint handle) : this(handle, true) { }
 
     internal DispatchQueue(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DispatchQueue Borrow(nint handle) => new DispatchQueue(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,24 @@ public sealed unsafe partial class DispatchQueue : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DispatchQueue Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DispatchQueue Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static DispatchQueue Create(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_f7ada357(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f9bcfd38((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::Http::Response>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _send(nint request) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::Http::Response>' requires --link-carrier or --virtual-dispatch.");
+
+    public static DispatchQueue Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ee251979();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,25 +59,78 @@ public sealed unsafe partial class DispatchQueue : global::System.IDisposable
         return new DispatchQueue((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static DispatchQueue Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.DispatchQueue arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_be5f3968((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public nint send(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+        return new DispatchQueue((nint)handle);
+    }
 
+    public void _handlePendingRequest()
+    {
+        NativeMethods.TablePtr->C0.hs_method_f5537b84((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk122c3e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4757ef09((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2e83d9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6e96fbba((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk458717_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bb8d15f2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk88bbd3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4715d200((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd0e8a3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ea0ded98((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.DispatchQueue operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.DispatchQueue arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.DispatchQueue((nint)NativeMethods.TablePtr->C0.hs_method_7510d392((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::Http::Response>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint send(nint request) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::Http::Response>' requires --link-carrier or --virtual-dispatch.");
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk757a87_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_571e491e((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_fe4e356a((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_fe4e356a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

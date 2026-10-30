@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ResourceInformation
+public sealed unsafe partial class ResourceInformation : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ResourceInformation(nint handle) : this(handle, true) { }
 
     internal ResourceInformation(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ResourceInformation Borrow(nint handle) => new ResourceInformation(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,342 @@ public sealed unsafe partial class ResourceInformation
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResourceInformation Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResourceInformation Create_d9bbfced(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResourceInformation Create_61e4e840(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResourceInformation Create_be9f8d88(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint ResourceTypeFromString_d380953b(nint value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static string StringFromResourceType(int arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ResourceInformation arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_4e36f477(arg0);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return (nint)NativeMethods.TablePtr->C2.hs_method_0b4fcef2((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool satisfies(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
+    public nint _ctor(string description, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid, int type, string language, string entry)
     {
-        return NativeMethods.TablePtr->hs_method_81f4b636((void*)_handle, (void*)arg0.Handle) != 0;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes0);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(language);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(language, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(entry);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(entry, __hs_stringBytes5);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                {
+                    return (nint)NativeMethods.TablePtr->C2.hs_method_150e26d9((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)version.Handle, (void*)uuid.Handle, type, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                }
+            }
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_6879d8b7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public nint _ctor(string description, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid, string type, string language, string entry)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes0);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(language);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(language, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(entry);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(entry, __hs_stringBytes5);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                {
+                    fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                    {
+                        return (nint)NativeMethods.TablePtr->C2.hs_method_54c019d0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)version.Handle, (void*)uuid.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_82b04fdf((void*)__hosihikari_shim_handle);
+    }
+
+    public static ResourceInformation Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d2613218();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceInformation((nint)handle);
+    }
+
+    public static ResourceInformation Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceInformation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3f51a70c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceInformation((nint)handle);
+    }
+
+    public static ResourceInformation Create(string description, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid, int type, string language, string entry)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes0);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(language);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(language, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(entry);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(entry, __hs_stringBytes5);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                {
+                    var handle = NativeMethods.TablePtr->C2.hs_create_b086147e(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)version.Handle, (void*)uuid.Handle, type, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                    if (handle == null)
+                    {
+                        throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                    }
+
+                    return new ResourceInformation((nint)handle);
+                }
+            }
+        }
+    }
+
+    public static ResourceInformation Create(string description, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid, string type, string language, string entry)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes0);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(language);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(language, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(entry);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(entry, __hs_stringBytes5);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                {
+                    fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                    {
+                        var handle = NativeMethods.TablePtr->C2.hs_create_03810400(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)version.Handle, (void*)uuid.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                        if (handle == null)
+                        {
+                            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                        }
+
+                        return new ResourceInformation((nint)handle);
+                    }
+                }
+            }
+        }
+    }
+
+    public static int ResourceTypeFromString(string value)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(value);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(value, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_d380953b(__hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_86684c37((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_730a226c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLanguage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_14f56051((void*)__hosihikari_shim_handle);
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5c92d1bb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5c92d1bb((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUUID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_681c8ce3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_745119f6((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourceInformation operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ResourceInformation arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceInformation((nint)NativeMethods.TablePtr->C2.hs_method_2e00b5ff((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_026e6910((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

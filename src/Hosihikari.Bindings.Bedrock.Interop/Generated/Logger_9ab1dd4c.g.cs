@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Puv;
 
-public sealed unsafe partial class Logger
+public sealed unsafe partial class Logger : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Logger(nint handle) : this(handle, true) { }
 
     internal Logger(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Logger Borrow(nint handle) => new Logger(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,54 @@ public sealed unsafe partial class Logger
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Logger Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Logger Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::iterable_adaptor<Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<cereal::SerializerContext::LogEntry>>>>,Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<cereal::SerializerContext::LogEntry>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getParseLog_0bed4d84(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::iterable_adaptor<Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<cereal::SerializerContext::LogEntry>>>>,Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<cereal::SerializerContext::LogEntry>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getParseLog_99a313a2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::iterable_adaptor<Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Puv::Logger::UpgradeLogEntry>>>>,Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Puv::Logger::UpgradeLogEntry>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getUpgradeLog_4b0fe1e8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::iterable_adaptor<Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Puv::Logger::UpgradeLogEntry>>>>,Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Puv::Logger::UpgradeLogEntry>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getUpgradeLog_53ff892c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::iterable_adaptor<Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Puv::Logger::ValidationLogEntry>>>>,Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Puv::Logger::ValidationLogEntry>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getValidationLog_e477782e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::iterable_adaptor<Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Puv::Logger::ValidationLogEntry>>>>,Puv::LoggerIterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Puv::Logger::ValidationLogEntry>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getValidationLog_96be5553(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool hasErrors()
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger arg0)
     {
-        return NativeMethods.TablePtr->hs_method_c5fe1667((void*)_handle) != 0;
+        return (nint)NativeMethods.TablePtr->C2.hs_method_12bae36a((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void log_8c42213c(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_8b6b2372((void*)__hosihikari_shim_handle);
+    }
+
+    public static Logger Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4ec7f23e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Logger((nint)handle);
+    }
+
+    public static Logger Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_66fd613f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Logger((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static nint contextString(nint contextStack) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void log_16ef57c7(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public nint log(nint res, nint src, nint dst, nint msg) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    public void log(int arg0, string arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger log(byte res, string msg)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(msg);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -95,34 +90,79 @@ public sealed unsafe partial class Logger
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(msg, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_de8001db((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger((nint)NativeMethods.TablePtr->C2.hs_method_c9e29b6f((void*)__hosihikari_shim_handle, res, __hs_stringData1, (nuint)__hs_stringByteCount1), false);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void log_df00a46a(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void log_f073df7d(nint arg0, nint arg1, nint arg2) =>
+    public nint log(nint res, nint path, nint msg) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void merge(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2f69a4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3f2710ed((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_23cc10ef(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3c26f9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d26af342((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_08ee7537(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9fdd72_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_06836a7a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_70204e87() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka0317f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a55c4efa((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka1ba32_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_18a56928((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb27419_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f15c4305((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkbcb18b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_961c65ca((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public void merge(nint log) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger((nint)NativeMethods.TablePtr->C2.hs_method_08ee7537((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_9ab1dd4c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SaveResultCode : int
 {
+    Success = 0,
+    FailedToOpen = 1,
+    FailedToWrite = 2,
+    IncorrectBytesWrittenCount = 3,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WorldHistoryPackSource : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WorldHistoryPackSource(nint handle) : this(handle, true) { }
 
     internal WorldHistoryPackSource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WorldHistoryPackSource Borrow(nint handle) => new WorldHistoryPackSource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,60 @@ public sealed unsafe partial class WorldHistoryPackSource : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldHistoryPackSource Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static WorldHistoryPackSource Create(nint arg0, sbyte arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_c7be9905((void*)arg0, arg1);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f9187ed6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6b1e85be((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIO_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_2aadb2a4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTaskGroup_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d6d2e557((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __loadImpl(nint options) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'WorldHistoryPackSourceOptions' is not a known bindable declaration.", false)]
+    public nint _ctor(nint options) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'WorldHistoryPackSourceOptions' is not a known bindable declaration.");
+
+    public byte _getPackOrigin()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_14aa1b89((void*)__hosihikari_shim_handle);
+    }
+
+    public sbyte _getPackType()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_72606836((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static WorldHistoryPackSource Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2bf378b8();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,58 +95,75 @@ public sealed unsafe partial class WorldHistoryPackSource : global::System.IDisp
         return new WorldHistoryPackSource((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldHistoryPackSource Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'WorldHistoryPackSourceOptions' is not a known bindable declaration.", false)]
+    public static WorldHistoryPackSource Create(nint options) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'WorldHistoryPackSourceOptions' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachPack(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachPackConst(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public static string generateHistoryFilePath(nint arg0, sbyte arg1)
+    public static WorldHistoryPackSource Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_fc269106((void*)arg0, arg1);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        var handle = NativeMethods.TablePtr->C4.hs_create_ea828ff9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldHistoryPackSource((nint)handle);
     }
 
-    public sbyte getPackOrigin()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _loadImpl(nint options) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+
+    public byte getPackOrigin()
     {
-        return NativeMethods.TablePtr->hs_method_69c525da((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_e9539685((void*)__hosihikari_shim_handle);
     }
 
     public sbyte getPackType()
     {
-        return NativeMethods.TablePtr->hs_method_39fa21ec((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_52c4ebca((void*)__hosihikari_shim_handle);
     }
 
-    public nint getPathToWorld()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4f8c50_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_55b07d99((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_130e7791((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceReport' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint load(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceReport' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk521049_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9a37c440((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk712674_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_30efc7cf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb16dc9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_1c58bde1((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource((nint)NativeMethods.TablePtr->C4.hs_method_93303c7a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_431f97a1((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_431f97a1((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

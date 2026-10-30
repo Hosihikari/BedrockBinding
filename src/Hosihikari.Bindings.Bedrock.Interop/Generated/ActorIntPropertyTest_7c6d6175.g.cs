@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorIntPropertyTest : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorIntPropertyTest(nint handle) : this(handle, true) { }
 
     internal ActorIntPropertyTest(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorIntPropertyTest Borrow(nint handle) => new ActorIntPropertyTest(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,146 @@ public sealed unsafe partial class ActorIntPropertyTest : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorIntPropertyTest Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorIntPropertyTest Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool evaluate(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value __serializeDomain()
     {
-        return NativeMethods.TablePtr->hs_method_a5b8c227((void*)_handle, (void*)arg0) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C0.hs_method_77cae481((void*)__hosihikari_shim_handle));
     }
 
-    public string getName_0c9e042e()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value __serializeValue()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_0c9e042e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C0.hs_method_7c324d08((void*)__hosihikari_shim_handle));
+    }
+
+    public bool _evaluate(nint context)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_83a1c48a((void*)__hosihikari_shim_handle, (void*)context) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
+    public nint _getDomain() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
+
+    public string _getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_3da3bc6b((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_4243ac58() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
+    public nint _getValue() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool setup(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition arg0, global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs arg1)
+    public bool _setup(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition definition, global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs inputs)
     {
-        return NativeMethods.TablePtr->hs_method_f5e57f1c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_cab0ecb1((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
     }
 
+    public static ActorIntPropertyTest Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_17151aac();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorIntPropertyTest((nint)handle);
+    }
+
+    public static ActorIntPropertyTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorIntPropertyTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5e055cc0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorIntPropertyTest((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value _serializeDomain()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C0.hs_method_a1c9334a((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value _serializeValue()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C0.hs_method_3a0233ce((void*)__hosihikari_shim_handle));
+    }
+
+    public bool evaluate(nint context)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a64c8508((void*)__hosihikari_shim_handle, (void*)context) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
+    public nint getDomain() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
+
+    public string getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_4243ac58((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
+    public nint getValue() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk95a519_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b8946eae((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke3c128_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ad113e2e((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorIntPropertyTest operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ActorIntPropertyTest arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorIntPropertyTest((nint)NativeMethods.TablePtr->C0.hs_method_7dc6068d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public bool setup(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition definition, global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs inputs)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b1be7d90((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk20eb73_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_85241717((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4242cc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ea5426df((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk995088_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_63669b2a((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7c6d6175((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_7c6d6175((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

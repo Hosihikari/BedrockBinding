@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MovementAbilitiesComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MovementAbilitiesComponent(nint handle) : this(handle, true) { }
 
     internal MovementAbilitiesComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MovementAbilitiesComponent Borrow(nint handle) => new MovementAbilitiesComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,26 @@ public sealed unsafe partial class MovementAbilitiesComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MovementAbilitiesComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MovementAbilitiesComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool getBool(int arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlagValues_Address
     {
-        return NativeMethods.TablePtr->hs_method_bc27eaf9((void*)_handle, arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_da3fa994((void*)__hosihikari_shim_handle);
     }
 
-    public float getFlySpeed()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFloatValues_Address
     {
-        return NativeMethods.TablePtr->hs_method_3e75f095((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8547014d((void*)__hosihikari_shim_handle);
     }
 
-    public static int getMovementAbilitiesFromAbilitiesIndex(short arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOverrides_Address
     {
-        return NativeMethods.TablePtr->hs_method_6e42eee4(arg0);
-    }
-
-    public void inheritFrom(global::Hosihikari.Bindings.Bedrock.Interop.AbilitiesComponent arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f548da17((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setBool(int arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_d0756031((void*)_handle, arg0, arg1);
-    }
-
-    public void setFlySpeed(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f9966ab9((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_17a4f2b2((void*)__hosihikari_shim_handle);
     }
 }

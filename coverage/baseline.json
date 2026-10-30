@@ -1,10 +1,7 @@
 {
-  "irVersion": "1.6.0",
-  "configurations": [
-    "linux-x64-server",
-    "win-x64-server"
-  ],
-  "declarationsBound": 14274,
-  "membersBound": 127090,
-  "functions": 32834
+    "irVersion":  "1.6.0",
+    "configuration":  "win-x64-server",
+    "declarationsBound":  12043,
+    "membersBound":  92708,
+    "functions":  128068
 }

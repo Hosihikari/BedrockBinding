@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.persona;
 
-public enum AnimatedTextureType : int
+public enum AnimatedTextureType : uint
 {
     None = 0,
     Face = 1,

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Tick : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Tick(nint handle) : this(handle, true) { }
 
     internal Tick(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Tick Borrow(nint handle) => new Tick(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,41 @@ public sealed unsafe partial class Tick : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Tick MAX
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Tick MAX()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_get_1a05e0a4(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->C3.hs_method_41072c7f(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Tick Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint operator_compare(nint other) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Tick Create(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Tick Create(ulong v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ulong operator_unsigned_long_long() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public ulong t
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.Tick other)
     {
-        get => NativeMethods.TablePtr->hs_get_028880af((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_028880af((void*)_handle, value);
+        return NativeMethods.TablePtr->C3.hs_method_c1581b04((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
+
+    public ulong tickID
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b3509f82((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b3509f82((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_5d409d35((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_5d409d35((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

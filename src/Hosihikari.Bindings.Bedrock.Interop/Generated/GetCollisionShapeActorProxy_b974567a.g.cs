@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GetCollisionShapeActorProxy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GetCollisionShapeActorProxy(nint handle) : this(handle, true) { }
 
     internal GetCollisionShapeActorProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GetCollisionShapeActorProxy Borrow(nint handle) => new GetCollisionShapeActorProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,68 @@ public sealed unsafe partial class GetCollisionShapeActorProxy : global::System.
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GetCollisionShapeActorProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static GetCollisionShapeActorProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool _canDescendThroughBlock()
     {
-        var handle = NativeMethods.TablePtr->hs_create_3e81002f((void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_36f2e0a8((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _canStandOnPowderSnow()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_71010f19((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB _getAABB()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->C1.hs_method_2d6b8d95((void*)__hosihikari_shim_handle), false);
+    }
+
+    public int _getEntityTypeId()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_86dc8299((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getFallDistance()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ac3728ed((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getFeetAttachPosY()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ba157692((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _hasPassenger()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_3b8f6025((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isRiding()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_756a4749((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isWearingLeatherBoots()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f4ece3e7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isWorldBuilder()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_b439f920((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static GetCollisionShapeActorProxy Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b99bfd86();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,75 +103,88 @@ public sealed unsafe partial class GetCollisionShapeActorProxy : global::System.
         return new GetCollisionShapeActorProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GetCollisionShapeActorProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static GetCollisionShapeActorProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeActorProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_94675964((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GetCollisionShapeActorProxy((nint)handle);
+    }
 
     public bool canDescendThroughBlock()
     {
-        return NativeMethods.TablePtr->hs_method_aff3bdb1((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_038cf302((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool canStandOnPowderSnow()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5314dbc9((void*)__hosihikari_shim_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB getAABB()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_e2eebf52((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->C1.hs_method_3483a8e4((void*)__hosihikari_shim_handle), false);
     }
 
     public int getEntityTypeId()
     {
-        return NativeMethods.TablePtr->hs_method_56f5a8fc((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_dffcf8a7((void*)__hosihikari_shim_handle);
     }
 
     public float getFallDistance()
     {
-        return NativeMethods.TablePtr->hs_method_d34dd0b7((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_ddfd8dea((void*)__hosihikari_shim_handle);
     }
 
     public float getFeetAttachPosY()
     {
-        return NativeMethods.TablePtr->hs_method_1c227470((void*)_handle);
-    }
-
-    public bool hasLightWeightFamilyTag()
-    {
-        return NativeMethods.TablePtr->hs_method_4151c859((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_43094df4((void*)__hosihikari_shim_handle);
     }
 
     public bool hasPassenger()
     {
-        return NativeMethods.TablePtr->hs_method_56942036((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_465fecc7((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isRiding()
     {
-        return NativeMethods.TablePtr->hs_method_7f001550((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_abb6d5d1((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isWearingLeatherBoots()
     {
-        return NativeMethods.TablePtr->hs_method_88866456((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_9d696034((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isWorldBuilder()
     {
-        return NativeMethods.TablePtr->hs_method_6ca1b169((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_b8705014((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_68dd2f9e((void*)__hosihikari_shim_handle);
+    }
 
+    public global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeActorProxy operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeActorProxy arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeActorProxy((nint)NativeMethods.TablePtr->C1.hs_method_7d7d29ec((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_b974567a((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_b974567a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

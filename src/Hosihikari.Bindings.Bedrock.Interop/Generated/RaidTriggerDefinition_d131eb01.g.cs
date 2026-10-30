@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RaidTriggerDefinition
+public sealed unsafe partial class RaidTriggerDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RaidTriggerDefinition(nint handle) : this(handle, true) { }
 
     internal RaidTriggerDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RaidTriggerDefinition Borrow(nint handle) => new RaidTriggerDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,59 @@ public sealed unsafe partial class RaidTriggerDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RaidTriggerDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RaidTriggerDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static nint JSONUTIL_DROP_UNRECOGNIZED_FIELDS_VERSION()
     {
-        NativeMethods.TablePtr->hs_method_fdb9621e(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        return (nint)NativeMethods.TablePtr->C2.hs_method_eac4a010();
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getStrictParsingVersion()
+    public static RaidTriggerDefinition Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_adc86382());
+        var handle = NativeMethods.TablePtr->C2.hs_create_ff0897ef();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RaidTriggerDefinition((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static RaidTriggerDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.RaidTriggerDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7d6fc5d6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RaidTriggerDefinition((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfea261_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1eac86ab((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RaidTriggerDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RaidTriggerDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RaidTriggerDefinition((nint)NativeMethods.TablePtr->C2.hs_method_ac10d143((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_d131eb01((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

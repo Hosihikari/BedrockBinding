@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class I18nImpl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public I18nImpl(nint handle) : this(handle, true) { }
 
     internal I18nImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static I18nImpl Borrow(nint handle) => new I18nImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,79 +33,33 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static I18nImpl Create()
+    public void _addI18nObserver(global::Hosihikari.Bindings.Bedrock.Interop.I18nObserver observer)
     {
-        var handle = NativeMethods.TablePtr->hs_create_09005fdf();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new I18nImpl((nint)handle);
+        NativeMethods.TablePtr->C1.hs_method_b83553e9((void*)__hosihikari_shim_handle, (void*)observer.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static I18nImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _appendAdditionalTranslations(nint translations, nint keyPrefix) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _findAvailableLanguageNames_27bc2a6b(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void addI18nObserver(global::Hosihikari.Bindings.Bedrock.Interop.I18nObserver arg0)
+    public void _appendLanguageStrings(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? accessStrategy)
     {
-        NativeMethods.TablePtr->hs_method_b63e046a((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_19524ef0((void*)__hosihikari_shim_handle, (void*)(accessStrategy?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendAdditionalTranslations(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void appendAdditionalTranslations(nint arg0, string arg1)
+    public void _appendLanguageStringsFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, nint localizationMapping)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_661e837b((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
+        NativeMethods.TablePtr->C1.hs_method_ac9689b4((void*)__hosihikari_shim_handle, (void*)manifest.Handle, (void*)localizationMapping);
     }
 
-    public void appendLanguageStrings(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? arg0)
+    public void _chooseLanguage(string code)
     {
-        NativeMethods.TablePtr->hs_method_940b4990((void*)_handle, (void*)(arg0?.Handle ?? 0));
-    }
-
-    public void appendLanguageStringsFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, nint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_83ef472f((void*)_handle, (void*)arg0.Handle, (void*)arg1);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendLanguageStringsFromPack(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendTranslations(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void appendTranslations(string arg0, nint arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -115,48 +69,30 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_9cd52ca1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
+            NativeMethods.TablePtr->C1.hs_method_f2058b04((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void chooseLanguage(string arg0)
+    public void _clearLanguages()
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_5632450d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
+        NativeMethods.TablePtr->C1.hs_method_e7225ffc((void*)__hosihikari_shim_handle);
     }
 
-    public void clearLanguages()
+    public nint _ctor()
     {
-        NativeMethods.TablePtr->hs_method_bf6fd4cc((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_bb43ddc0((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::equal_to<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint findAvailableLanguageNames_f2ae5b29(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::equal_to<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint _findAvailableLanguageNames(nint resourcePackManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint findAvailableLanguageNames_77dbed75(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string[] findAvailableLanguages(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
+    public string[] _findAvailableLanguages(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_39cd13ab((void*)_handle, (void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_b197a761((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -166,9 +102,9 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         return __hs_result;
     }
 
-    public string get(string arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    public string _get(string langString, global::Hosihikari.Bindings.Abi.SharedHandle? locale)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(langString);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -178,17 +114,17 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(langString, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_a17d3412((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_e9ba0759((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, locale?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
-    public string get(string arg0, string[] arg1, global::Hosihikari.Bindings.Abi.SharedHandle? arg2)
+    public string _get(string id, string[] @params, global::Hosihikari.Bindings.Abi.SharedHandle? locale)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(id);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -198,8 +134,8 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<string>();
+        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes0);
+        var __hs_vectorItems1 = @params ?? global::System.Array.Empty<string>();
         var __hs_vectorCount1 = __hs_vectorItems1.Length;
         var __hs_vectorByteTotal1 = 0;
         for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++) { __hs_vectorByteTotal1 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems1[__hs_i1] ?? string.Empty); }
@@ -221,19 +157,19 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
             }
             fixed (byte* __hs_stringData0 = __hs_stringBytes0)
             {
-                var __hs_view = NativeMethods.TablePtr->hs_method_dd748b96((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_e1d5ccf9((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, locale?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), __hs_vectorData1, (nuint)(@params?.Length ?? 0));
                 return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
             }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<Localization const>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCurrentLanguage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<Localization const>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<const Localization>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getCurrentLanguage() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<const Localization>>' requires --link-carrier or --virtual-dispatch.");
 
-    public string[] getLanguageCodesFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg0)
+    public string[] _getLanguageCodesFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy accessStrategy)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_55e62fbc((void*)_handle, (void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_cceeb36d((void*)__hosihikari_shim_handle, (void*)accessStrategy.Handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -243,17 +179,13 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::equal_to<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLanguageKeywordsFromPack_a796d529(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::equal_to<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint _getLanguageKeywordsFromPack(nint manifest, nint keyword) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLanguageKeywordsFromPack_5b7e36c9(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getLanguageName(string arg0)
+    public string _getLanguageName(string code)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -263,17 +195,17 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_d75c5d9d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_e59de269((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
-    public string getLocaleCodeFor(string arg0)
+    public string _getLocaleCodeFor_997bf979(string code)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -283,17 +215,17 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_1f8b5bf5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_997bf979((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getLocaleFor(string arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getLocaleFor(string code)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -303,17 +235,17 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_7b0c8b29((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_501901f0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
-    public string getLocalizedAssetFileWithFallback(string arg0, string arg1)
+    public string _getLocalizedAssetFileWithFallback(string fileNamePrefix, string fileNameSuffix)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fileNamePrefix);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -323,8 +255,8 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(fileNamePrefix, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(fileNameSuffix);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -334,20 +266,20 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(fileNameSuffix, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_view = NativeMethods.TablePtr->hs_method_37869cfe((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_de188c7b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
                 return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
             }
         }
     }
 
-    public string getPackKeywordValue(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, string arg1)
+    public string _getPackKeywordValue(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string key)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(key);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -357,17 +289,17 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_0ba963b0((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_443cb3ce((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
-    public string getPackKeywordValueForTelemetry(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, string arg1)
+    public string _getPackKeywordValueForTelemetry(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string key)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(key);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -377,22 +309,459 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_9d21fd06((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_b51f7e5f((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    public nint _getSupportedLanguageCodes()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_79c22d05((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _hasPackKeyEntry(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string key)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_88c003d0((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+        }
+    }
+
+    public bool _isPackKeyword(string key)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_e99127a2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
+
+    public bool _languageSupportsHypenSplitting()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_866f453f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _loadAllLanguages(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager)
+    {
+        NativeMethods.TablePtr->C1.hs_method_14551bf6((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle);
+    }
+
+    public void _loadLangaugesByLocale(nint storeLocalization)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e79d654b((void*)__hosihikari_shim_handle, (void*)storeLocalization);
+    }
+
+    public void _loadLanguageKeywordsFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy accessStrategy)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b5784152((void*)__hosihikari_shim_handle, (void*)manifest.Handle, (void*)accessStrategy.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char>>' is abstract or not copy-constructible.", false)]
+    public void _loadLanguageKeywordsFromPack(nint manifest, nint accessStrategy, nint languageCodes, nint additionalLocKeys) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char>>' is abstract or not copy-constructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _loadLanguages(nint resourcePackManager, nint resourceLoadManager, nint initLang) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+
+    public static I18nImpl Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_09005fdf();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new I18nImpl((nint)handle);
+    }
+
+    public void _chooseLanguage(global::Hosihikari.Bindings.Abi.SharedHandle? chosen, byte notify)
+    {
+        NativeMethods.TablePtr->C1.hs_method_cc8e4486((void*)__hosihikari_shim_handle, chosen?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), notify);
+    }
+
+    public static void _findAvailableLanguages(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root, string[] destination)
+    {
+        var __hs_vectorItems1 = destination ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount1 = __hs_vectorItems1.Length;
+        var __hs_vectorByteTotal1 = 0;
+        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++) { __hs_vectorByteTotal1 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems1[__hs_i1] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena1;
+        if (__hs_vectorByteTotal1 <= 1024) { __hs_vectorArena1 = stackalloc byte[__hs_vectorByteTotal1 == 0 ? 1 : __hs_vectorByteTotal1]; } else { __hs_vectorArena1 = new byte[__hs_vectorByteTotal1]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews1;
+        if (__hs_vectorCount1 <= 64) { __hs_vectorViews1 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1 == 0 ? 1 : __hs_vectorCount1]; } else { __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1]; }
+        fixed (byte* __hs_vectorArenaPtr1 = __hs_vectorArena1)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
+        {
+            var __hs_vectorOffset1 = 0;
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++)
+            {
+                var __hs_item1 = __hs_vectorItems1[__hs_i1] ?? string.Empty;
+                var __hs_length1 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item1);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item1, __hs_vectorArena1.Slice(__hs_vectorOffset1, __hs_length1));
+                __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
+                __hs_vectorOffset1 += __hs_length1;
+            }
+            NativeMethods.TablePtr->C1.hs_method_96fbbfed((void*)root.Handle, __hs_vectorData1, (nuint)(destination?.Length ?? 0));
+        }
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _findLocaleFor(string code)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ce3fc807((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        }
+    }
+
+    public string _generatePackKeyPrefix(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_9526436c((void*)__hosihikari_shim_handle, (void*)manifest.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getLocaleCodeFor_44765a9f(string code)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_44765a9f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<ImmutableLocalization>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getPackKeywordLocale(nint langCode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<ImmutableLocalization>>' requires --link-carrier or --virtual-dispatch.");
+
+    public void addI18nObserver(global::Hosihikari.Bindings.Bedrock.Interop.I18nObserver observer)
+    {
+        NativeMethods.TablePtr->C1.hs_method_bd262fce((void*)__hosihikari_shim_handle, (void*)observer.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void appendAdditionalTranslations(nint translations, nint keyPrefix) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void appendLanguageStrings(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? accessStrategy)
+    {
+        NativeMethods.TablePtr->C1.hs_method_25065a73((void*)__hosihikari_shim_handle, (void*)(accessStrategy?.Handle ?? 0));
+    }
+
+    public void appendLanguageStringsFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, nint localizationMapping)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c2c929cb((void*)__hosihikari_shim_handle, (void*)manifest.Handle, (void*)localizationMapping);
+    }
+
+    public void chooseLanguage(string code)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_abf5f7ff((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void clearLanguages()
+    {
+        NativeMethods.TablePtr->C1.hs_method_bf6fd4cc((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint findAvailableLanguageNames(nint resourcePackManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public string[] findAvailableLanguages(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_f782e1bb((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    public string get(string langString, global::Hosihikari.Bindings.Abi.SharedHandle? locale)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(langString);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(langString, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_5bd6f056((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, locale?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    public string get(string id, string[] @params, global::Hosihikari.Bindings.Abi.SharedHandle? locale)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(id);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes0);
+        var __hs_vectorItems1 = @params ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount1 = __hs_vectorItems1.Length;
+        var __hs_vectorByteTotal1 = 0;
+        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++) { __hs_vectorByteTotal1 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems1[__hs_i1] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena1;
+        if (__hs_vectorByteTotal1 <= 1024) { __hs_vectorArena1 = stackalloc byte[__hs_vectorByteTotal1 == 0 ? 1 : __hs_vectorByteTotal1]; } else { __hs_vectorArena1 = new byte[__hs_vectorByteTotal1]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews1;
+        if (__hs_vectorCount1 <= 64) { __hs_vectorViews1 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1 == 0 ? 1 : __hs_vectorCount1]; } else { __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1]; }
+        fixed (byte* __hs_vectorArenaPtr1 = __hs_vectorArena1)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
+        {
+            var __hs_vectorOffset1 = 0;
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++)
+            {
+                var __hs_item1 = __hs_vectorItems1[__hs_i1] ?? string.Empty;
+                var __hs_length1 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item1);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item1, __hs_vectorArena1.Slice(__hs_vectorOffset1, __hs_length1));
+                __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
+                __hs_vectorOffset1 += __hs_length1;
+            }
+            fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+            {
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_d71a5dfb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, locale?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), __hs_vectorData1, (nuint)(@params?.Length ?? 0));
+                return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<const Localization>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getCurrentLanguage() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<const Localization>>' requires --link-carrier or --virtual-dispatch.");
+
+    public string[] getLanguageCodesFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy accessStrategy)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_b2d047c8((void*)__hosihikari_shim_handle, (void*)accessStrategy.Handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint getLanguageKeywordsFromPack(nint manifest, nint keyword) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public string getLanguageName(string code)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_78e528ea((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    public string getLocaleCodeFor(string code)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_fd0769d3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLocaleFor(string code)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_e7edbe39((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        }
+    }
+
+    public string getLocalizedAssetFileWithFallback(string fileNamePrefix, string fileNameSuffix)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fileNamePrefix);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fileNamePrefix, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(fileNameSuffix);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fileNameSuffix, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var __hs_view = NativeMethods.TablePtr->C1.hs_method_7e048c03((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            }
+        }
+    }
+
+    public string getPackKeywordValue(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string key)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_fcf14519((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    public string getPackKeywordValueForTelemetry(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string key)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_0cdba094((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
     public nint getSupportedLanguageCodes()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f2445d0a((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_edd9119b((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasPackKeyEntry(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, string arg1)
+    public bool hasPackKeyEntry(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string key)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(key);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -402,16 +771,16 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_1a5f9d24((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_75efdeb6((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
-    public bool isPackKeyword(string arg0)
+    public bool isPackKeyword(string key)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -421,82 +790,129 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_f3e7b11e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_33d62c46((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool languageSupportsHypenSplitting()
     {
-        return NativeMethods.TablePtr->hs_method_40bdf677((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_40bdf677((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void loadAllLanguages(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
+    public void loadAllLanguages(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager)
     {
-        NativeMethods.TablePtr->hs_method_9fecca54((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_d243f544((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void loadLangaugesByLocale_10a2ba84(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void loadLangaugesByLocale_5fd17269(nint arg0)
+    public void loadLangaugesByLocale(nint storeLocalization)
     {
-        NativeMethods.TablePtr->hs_method_5fd17269((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C1.hs_method_10a2ba84((void*)__hosihikari_shim_handle, (void*)storeLocalization);
     }
 
-    public void loadLanguageKeywordsFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg1)
+    public void loadLanguageKeywordsFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy accessStrategy)
     {
-        NativeMethods.TablePtr->hs_method_f5487f3f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_3fdae7ff((void*)__hosihikari_shim_handle, (void*)manifest.Handle, (void*)accessStrategy.Handle);
     }
 
-    public void loadLanguageKeywordsFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg1, string[] arg2)
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char>>' is abstract or not copy-constructible.", false)]
+    public void loadLanguageKeywordsFromPack(nint manifest, nint accessStrategy, nint languageCodes, nint additionalLocKeys) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char>>' is abstract or not copy-constructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint loadLanguages(nint resourcePackManager, nint resourceLoadManager, nint initLang) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAdditionalTranslationsBackup_Address
     {
-        var __hs_vectorItems2 = arg2 ?? global::System.Array.Empty<string>();
-        var __hs_vectorCount2 = __hs_vectorItems2.Length;
-        var __hs_vectorByteTotal2 = 0;
-        for (var __hs_i2 = 0; __hs_i2 < __hs_vectorCount2; __hs_i2++) { __hs_vectorByteTotal2 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems2[__hs_i2] ?? string.Empty); }
-        scoped global::System.Span<byte> __hs_vectorArena2;
-        if (__hs_vectorByteTotal2 <= 1024) { __hs_vectorArena2 = stackalloc byte[__hs_vectorByteTotal2 == 0 ? 1 : __hs_vectorByteTotal2]; } else { __hs_vectorArena2 = new byte[__hs_vectorByteTotal2]; }
-        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews2;
-        if (__hs_vectorCount2 <= 64) { __hs_vectorViews2 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount2 == 0 ? 1 : __hs_vectorCount2]; } else { __hs_vectorViews2 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount2]; }
-        fixed (byte* __hs_vectorArenaPtr2 = __hs_vectorArena2)
-        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData2 = __hs_vectorViews2)
-        {
-            var __hs_vectorOffset2 = 0;
-            for (var __hs_i2 = 0; __hs_i2 < __hs_vectorCount2; __hs_i2++)
-            {
-                var __hs_item2 = __hs_vectorItems2[__hs_i2] ?? string.Empty;
-                var __hs_length2 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item2);
-                global::System.Text.Encoding.UTF8.GetBytes(__hs_item2, __hs_vectorArena2.Slice(__hs_vectorOffset2, __hs_length2));
-                __hs_vectorData2[__hs_i2] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr2 + __hs_vectorOffset2, Size = (nuint)__hs_length2 };
-                __hs_vectorOffset2 += __hs_length2;
-            }
-            NativeMethods.TablePtr->hs_method_b268f2ef((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_vectorData2, (nuint)(arg2?.Length ?? 0));
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cfa6639b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>' is not a known bindable declaration.", false)]
-    public void loadLanguages(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>' is not a known bindable declaration.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAdditionalTranslationsBackupMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_13a1a4ea((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrentLanguageInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5e1107e4((void*)__hosihikari_shim_handle);
+    }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEmptyLanguage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b963dce0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLanguageCodes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9d835ba5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLanguageNames_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a3de8cad((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mLanguageSupportsHypenSplitting
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_f5d79cab((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_f5d79cab((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLanguages_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_91f61473((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalizationMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_577d228d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackKeywordLanguages_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d259295c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackReservedKeys_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5eb2fa32((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mResourcePackManager
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6d0574d1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_6d0574d1((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubject_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_33fbaa35((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f50247ec((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_f50247ec((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

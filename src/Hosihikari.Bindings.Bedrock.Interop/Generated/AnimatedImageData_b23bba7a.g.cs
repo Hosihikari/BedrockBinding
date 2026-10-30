@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class AnimatedImageData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AnimatedImageData(nint handle) : this(handle, true) { }
 
     internal AnimatedImageData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AnimatedImageData Borrow(nint handle) => new AnimatedImageData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,24 @@ public sealed unsafe partial class AnimatedImageData : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static AnimatedImageData Create(global::Hosihikari.Bindings.Bedrock.Interop.AnimatedImageData arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.AnimatedImageData rhs)
     {
-        var handle = NativeMethods.TablePtr->hs_create_f9ee3dad((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_feb1228b((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
+    }
+
+    public nint _ctor(uint type, uint animationExpression, global::Hosihikari.Bindings.Bedrock.Interop.mce.Image animatedImage, float frames)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_865d812c((void*)__hosihikari_shim_handle, type, animationExpression, (void*)animatedImage.Handle, frames);
+    }
+
+    public static AnimatedImageData Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7ae8a19f();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,9 +59,9 @@ public sealed unsafe partial class AnimatedImageData : global::System.IDisposabl
         return new AnimatedImageData((nint)handle);
     }
 
-    public static AnimatedImageData Create(int arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.mce.Image arg2, float arg3)
+    public static AnimatedImageData Create(global::Hosihikari.Bindings.Bedrock.Interop.AnimatedImageData rhs)
     {
-        var handle = NativeMethods.TablePtr->hs_create_b2bdfe1f(arg0, arg1, (void*)arg2.Handle, arg3);
+        var handle = NativeMethods.TablePtr->C0.hs_create_f4a77ddc((void*)rhs.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,44 +70,61 @@ public sealed unsafe partial class AnimatedImageData : global::System.IDisposabl
         return new AnimatedImageData((nint)handle);
     }
 
-    public int mAnimationExpression
+    public static AnimatedImageData Create(uint type, uint animationExpression, global::Hosihikari.Bindings.Bedrock.Interop.mce.Image animatedImage, float frames)
     {
-        get => NativeMethods.TablePtr->hs_get_18b5436b((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_18b5436b((void*)_handle, value);
+        var handle = NativeMethods.TablePtr->C0.hs_create_c9294b82(type, animationExpression, (void*)animatedImage.Handle, frames);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AnimatedImageData((nint)handle);
+    }
+
+    public uint mAnimationExpression
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_18b5436b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_18b5436b((void*)__hosihikari_shim_handle, value);
     }
 
     public float mFrames
     {
-        get => NativeMethods.TablePtr->hs_get_48475b47((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_48475b47((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_48475b47((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_48475b47((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mImage_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_04338c39((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_04338c39((void*)__hosihikari_shim_handle);
     }
 
-    public int mType
+    public uint mType
     {
-        get => NativeMethods.TablePtr->hs_get_e33902f7((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_e33902f7((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_e33902f7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_e33902f7((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.AnimatedImageData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.AnimatedImageData rhs)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AnimatedImageData((nint)NativeMethods.TablePtr->C0.hs_method_cc8880ff((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
+    }
+
+    public void setSkinImage(global::Hosihikari.Bindings.Bedrock.Interop.SkinImage image)
+    {
+        NativeMethods.TablePtr->C0.hs_method_3c9a9c1b((void*)__hosihikari_shim_handle, (void*)image.Handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_b23bba7a((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_b23bba7a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

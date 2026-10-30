@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockDisplayNameVersioning;
 
-public sealed unsafe partial class BlockDisplayName11930Upgrade : global::System.IDisposable
+public sealed unsafe partial class BlockDisplayName11930Upgrade
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockDisplayName11930Upgrade(nint handle) : this(handle, true) { }
 
     internal BlockDisplayName11930Upgrade(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockDisplayName11930Upgrade Borrow(nint handle) => new BlockDisplayName11930Upgrade(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,52 @@ public sealed unsafe partial class BlockDisplayName11930Upgrade : global::System
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static BlockDisplayName11930Upgrade Create()
+    public bool _previousSchema(nint component)
     {
-        var handle = NativeMethods.TablePtr->hs_create_81e7e2ef();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BlockDisplayName11930Upgrade((nint)handle);
+        return NativeMethods.TablePtr->C0.hs_method_49668760((void*)__hosihikari_shim_handle, (void*)component) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockDisplayName11930Upgrade Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool previousSchema_c95926da(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool previousSchema_f0db9a3e(nint arg0)
+    public void _upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
-        return NativeMethods.TablePtr->hs_method_f0db9a3e((void*)_handle, (void*)arg0) != 0;
+        NativeMethods.TablePtr->C0.hs_method_f6ce8b32((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void upgradeToNext(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void upgradeToNext(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public bool previousSchema(nint component)
     {
-        NativeMethods.TablePtr->hs_method_a5a4a4c9((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_c95926da((void*)__hosihikari_shim_handle, (void*)component) != 0;
     }
 
-
-    public void Dispose()
+    public void upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_d7d132a8((void*)_handle);
-            }
+        NativeMethods.TablePtr->C0.hs_method_a98269fc((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
+    }
 
-            _handle = 0;
-        }
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk40e0d7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6da0a3b1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb0e3c9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a83cd84c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc96bdc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a131e45c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd8210b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_23f75ddb((void*)__hosihikari_shim_handle);
     }
 }

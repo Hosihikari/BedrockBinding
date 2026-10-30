@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScriptPluginManager
+public sealed unsafe partial class ScriptPluginManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptPluginManager(nint handle) : this(handle, true) { }
 
     internal ScriptPluginManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptPluginManager Borrow(nint handle) => new ScriptPluginManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,67 +33,169 @@ public sealed unsafe partial class ScriptPluginManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPluginManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptPluginManager Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPluginManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint discoverPlugins_0fc8e222(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint discoverPlugins_884eeeb6(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackCapability' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getPackCapability() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackCapability' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScriptPluginStats' is not supported.", false)]
-    public nint getPluginStats() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScriptPluginStats' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPlugins_0e4461a1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getPlugins_fba2a2e0()
+    public void _dtor()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_fba2a2e0((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_74f3af61((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void releaseAll()
+    public static ScriptPluginManager Create()
     {
-        NativeMethods.TablePtr->hs_method_3639b572((void*)_handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_a45eb9ef();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPluginManager((nint)handle);
     }
 
-    public void releasePlugins()
+    public static ScriptPluginManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_a12836d3((void*)_handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_624caae5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPluginManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint runAll(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.", false)]
+    public nint _collectHandleCountStats(ulong arg0, ulong arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f8ed0259() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.", false)]
+    public nint _collectMemoryStats(ulong arg0, ulong arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.", false)]
+    public nint _collectQuickJsStats(ulong arg0, ulong arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.", false)]
+    public nint _collectScriptingStats(nint serverLevel, ulong arg1, ulong arg2, ulong arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.", false)]
+    public nint _collectSubscriberCountStats(nint serverLevel, nint locator, ulong arg2, ulong arg3, ulong arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.");
+
+    public void _disableHandleCounter()
+    {
+        NativeMethods.TablePtr->C3.hs_method_3cba4748((void*)__hosihikari_shim_handle);
+    }
+
+    public void _enableHandleCounter()
+    {
+        NativeMethods.TablePtr->C3.hs_method_60d2440e((void*)__hosihikari_shim_handle);
+    }
+
+    public void _reloadHandleCounter(bool publisherEnabled)
+    {
+        NativeMethods.TablePtr->C3.hs_method_34c13bc2((void*)__hosihikari_shim_handle, publisherEnabled);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::RuntimeStats' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint collectRuntimeStats() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::RuntimeStats' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::function<ScriptModuleFilters::FilterResult (const PackManifest &, const Scripting::ModuleDescriptor &, const Scripting::ModuleDescriptor &, ScriptPluginResult &)>' is not supported.", false)]
+    public nint discoverPlugins(nint moduleType, nint pluginEnumerator, nint moduleFilters, nint excludeModuleIDs, nint pluginExecutionGroupSelector) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::function<ScriptModuleFilters::FilterResult (const PackManifest &, const Scripting::ModuleDescriptor &, const Scripting::ModuleDescriptor &, ScriptPluginResult &)>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void forEachRuntime(nint func) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Scripting::ModuleDescriptor' is not supported.", false)]
+    public nint getPluginModuleDescriptors() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Scripting::ModuleDescriptor' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScriptPluginManager::PackNameAndWeakScope' is not supported.", false)]
+    public nint getPluginScopes() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScriptPluginManager::PackNameAndWeakScope' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBaseGameVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_869a88ad((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrentRuntimeConditions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_42dcc4ab((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHandleCountStatCollector_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bd005078((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMemoryStatCollector_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_37868c73((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mQuickJsStatCollector_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7f4c47cc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptEngine_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_14b8aa2b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptPlugins_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2ba3d521((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptingStatCollector_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_51819daa((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubscriberCountStatCollector_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_74997a1e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mSystemPackDiscoveryError
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_cd97d330((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_cd97d330((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManager((nint)NativeMethods.TablePtr->C3.hs_method_19f61c6c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_8f16e5f7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScriptAsyncJobCoordinator
+public sealed unsafe partial class ScriptAsyncJobCoordinator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptAsyncJobCoordinator(nint handle) : this(handle, true) { }
 
     internal ScriptAsyncJobCoordinator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptAsyncJobCoordinator Borrow(nint handle) => new ScriptAsyncJobCoordinator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,107 @@ public sealed unsafe partial class ScriptAsyncJobCoordinator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptAsyncJobCoordinator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptAsyncJobCoordinator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public uint addGenerator(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public void clear()
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ServerScriptManagerEvents events)
     {
-        NativeMethods.TablePtr->hs_method_6ad6c774((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_b9b925cd((void*)__hosihikari_shim_handle, (void*)events.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_dc629ab0((void*)__hosihikari_shim_handle);
+    }
+
+    public static ScriptAsyncJobCoordinator Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3b91b0fd();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptAsyncJobCoordinator((nint)handle);
+    }
+
+    public static ScriptAsyncJobCoordinator Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerScriptManagerEvents events)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ee285999((void*)events.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptAsyncJobCoordinator((nint)handle);
+    }
+
+    public static ScriptAsyncJobCoordinator Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptAsyncJobCoordinator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5e3c7e47((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptAsyncJobCoordinator((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public uint addGenerator(nint generator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1652bf_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b6e011d4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk18eeba_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_733b5c3c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk47ca32_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9cfb3fb1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkee32eb_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b9f778af((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptAsyncJobCoordinator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptAsyncJobCoordinator arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptAsyncJobCoordinator((nint)NativeMethods.TablePtr->C3.hs_method_40545ac2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void process_f5b90ca4(nint arg0, nint arg1) =>
+    public void process(nint timeSlice, nint stats) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public void removeGenerator(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
+    public void removeGenerator(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId originatingContextId, uint generatorId)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ec0d6289((void*)__hosihikari_shim_handle, (void*)originatingContextId.Handle, generatorId);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a2f08d43() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_7bebe407((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

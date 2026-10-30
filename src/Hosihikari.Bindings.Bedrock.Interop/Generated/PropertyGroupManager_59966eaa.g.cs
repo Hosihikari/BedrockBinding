@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PropertyGroupManager
+public sealed unsafe partial class PropertyGroupManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PropertyGroupManager(nint handle) : this(handle, true) { }
 
     internal PropertyGroupManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PropertyGroupManager Borrow(nint handle) => new PropertyGroupManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,48 @@ public sealed unsafe partial class PropertyGroupManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PropertyGroupManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PropertyGroupManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getActorPropertyDataTag(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public void _dtor()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_3dceb40c((void*)_handle, (void*)arg0.Handle));
+        NativeMethods.TablePtr->C2.hs_method_3d5f01b9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAllPropertyGroups_17d1aed1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getAllPropertyGroups_0c41916f()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getActorPropertyDataTag(global::Hosihikari.Bindings.Bedrock.Interop.HashedString actorCanonicalName)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0c41916f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->C2.hs_method_d8837881((void*)__hosihikari_shim_handle, (void*)actorCanonicalName.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerGroup(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPropertyGroups_Address
     {
-        NativeMethods.TablePtr->hs_method_4b47215f((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8006ad9d((void*)__hosihikari_shim_handle);
     }
 
-    public void tryInitPropertiesOnActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void registerGroup(global::Hosihikari.Bindings.Bedrock.Interop.HashedString id, global::Hosihikari.Bindings.Abi.SharedHandle? group)
     {
-        NativeMethods.TablePtr->hs_method_d3bcd377((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_f5894285((void*)__hosihikari_shim_handle, (void*)id.Handle, group?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_79164a39() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void tryInitPropertiesOnActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ce071038((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_59966eaa((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SurfaceLevelCache : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SurfaceLevelCache(nint handle) : this(handle, true) { }
 
     internal SurfaceLevelCache(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SurfaceLevelCache Borrow(nint handle) => new SurfaceLevelCache(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,98 @@ public sealed unsafe partial class SurfaceLevelCache : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SurfaceLevelCache Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint startPos, nint preliminarySurfaceProvider, ulong bufferSizeXZ) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static SurfaceLevelCache Create(nint arg0, nint arg1, ulong arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_0987fff4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SurfaceLevelCache Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.", false)]
+    public nint _getPreliminarySurfaceLevel(nint worldQuartPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public nint getPreliminarySurfaceLevel_434892ea(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static SurfaceLevelCache Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_dac60e02();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SurfaceLevelCache((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.", false)]
+    public static SurfaceLevelCache Create(nint startPos, nint preliminarySurfaceProvider, ulong bufferSizeXZ) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
+
+    public static SurfaceLevelCache Create(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceLevelCache arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_063174fc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SurfaceLevelCache((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.", false)]
+    public nint getPreliminarySurfaceLevel(nint worldQuartPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
+
+    public ulong mBufferSizeXZ
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_725222b1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_725222b1((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMinPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8466b91e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreliminarySurfaceProvider_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c36d924c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSurfaceLevelBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_133b4a8a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SurfaceLevelCache operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceLevelCache arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceLevelCache((nint)NativeMethods.TablePtr->C3.hs_method_3442d142((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_70658180((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_70658180((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

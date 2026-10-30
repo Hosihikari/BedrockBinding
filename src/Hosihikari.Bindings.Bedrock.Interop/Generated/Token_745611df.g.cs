@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Token
+public sealed unsafe partial class Token : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Token(nint handle) : this(handle, true) { }
 
     internal Token(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Token Borrow(nint handle) => new Token(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,14 @@ public sealed unsafe partial class Token
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Token Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public string getText(string arg0)
+    public nint _ctor(string str)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(str);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -54,19 +50,138 @@ public sealed unsafe partial class Token
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(str, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_2fe09f8b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            return (nint)NativeMethods.TablePtr->C3.hs_method_d05f2e44((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Token' is not supported.", false)]
-    public static nint tokenize(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Token' is not supported.");
+    public static Token Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_df2f91fc();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_7e9e0c7d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new Token((nint)handle);
+    }
+
+    public static Token Create(global::Hosihikari.Bindings.Bedrock.Interop.Token arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_68642a65((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Token((nint)handle);
+    }
+
+    public static Token Create(string str)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(str);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(str, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C3.hs_create_4cd74cef(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new Token((nint)handle);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: anonymous fields are not projected.", false)]
+    public nint _
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk325bca_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4126d4a1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6cfa59_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d62e2cab((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7bb1f0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_715d2f7c((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Token operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Token arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Token((nint)NativeMethods.TablePtr->C3.hs_method_6d6abbb2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Token[] tokenize(string str)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(str);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(str, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C3.hs_method_2de96ab3(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_items = (void**)__hs_view.Data;
+            var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.Token>() : new global::Hosihikari.Bindings.Bedrock.Interop.Token[checked((int)__hs_view.Size)];
+            for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+            {
+                __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.Token((nint)__hs_items[__hs_i]);
+            }
+            return __hs_result;
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk773835_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2dea5c9c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkdd232c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c2cbac32((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_745611df((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

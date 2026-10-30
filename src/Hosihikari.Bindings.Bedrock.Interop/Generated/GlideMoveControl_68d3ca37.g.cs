@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GlideMoveControl : global::System.IDisposable
+public sealed unsafe partial class GlideMoveControl
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GlideMoveControl(nint handle) : this(handle, true) { }
 
     internal GlideMoveControl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GlideMoveControl Borrow(nint handle) => new GlideMoveControl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,62 @@ public sealed unsafe partial class GlideMoveControl : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static GlideMoveControl Create()
+    public void _initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
-        var handle = NativeMethods.TablePtr->hs_create_a9576d58();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new GlideMoveControl((nint)handle);
+        NativeMethods.TablePtr->C1.hs_method_52d98aa3((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GlideMoveControl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? arg1)
+    public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->hs_method_37dc67f4((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        NativeMethods.TablePtr->C1.hs_method_096999ec((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-
-    public void Dispose()
+    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_68d3ca37((void*)_handle);
-            }
+        NativeMethods.TablePtr->C1.hs_method_2f83796a((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
+    }
 
-            _handle = 0;
-        }
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrentWantedPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cd7ca696((void*)__hosihikari_shim_handle);
+    }
+
+    public int mNumberOfFrontalCollisions
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_d4d5a093((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d4d5a093((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mSpeed
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_f079c4b0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_f079c4b0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mSpeedWhenTurning
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_05729c36((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_05729c36((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mStartSpeed
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_97648199((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_97648199((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C1.hs_method_bbb481dd((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
     }
 }

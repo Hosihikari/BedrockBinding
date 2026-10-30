@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DiscFeature : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DiscFeature(nint handle) : this(handle, true) { }
 
     internal DiscFeature(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DiscFeature Borrow(nint handle) => new DiscFeature(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,23 @@ public sealed unsafe partial class DiscFeature : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DiscFeature Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static DiscFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, int arg1)
+    public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        var handle = NativeMethods.TablePtr->hs_create_26023b59((void*)arg0.Handle, arg1);
+        return NativeMethods.TablePtr->C1.hs_method_dba91c65((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static DiscFeature Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1a5813c7();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,30 +58,73 @@ public sealed unsafe partial class DiscFeature : global::System.IDisposable
         return new DiscFeature((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DiscFeature Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
+    public static DiscFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.DiscFeature arg0)
     {
-        return NativeMethods.TablePtr->hs_method_88628135((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        var handle = NativeMethods.TablePtr->C1.hs_create_95f07f15((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DiscFeature((nint)handle);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_70d11355((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRadius
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_c4edfe4d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c4edfe4d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DiscFeature operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.DiscFeature arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DiscFeature((nint)NativeMethods.TablePtr->C1.hs_method_b30e80e4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_861b56ab((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlacerID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a02b1f33((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mTransaction
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_86d612ed((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_86d612ed((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public bool mCanUseInternalFeature
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_4e7f5d44((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_4e7f5d44((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mInternal
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_36f1e3d1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_36f1e3d1((void*)__hosihikari_shim_handle, value);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_09cfff6f((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_09cfff6f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LegacyBodyControl : global::System.IDisposable
+public sealed unsafe partial class LegacyBodyControl
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LegacyBodyControl(nint handle) : this(handle, true) { }
 
     internal LegacyBodyControl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LegacyBodyControl Borrow(nint handle) => new LegacyBodyControl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,30 @@ public sealed unsafe partial class LegacyBodyControl : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static LegacyBodyControl Create()
+    public float mLastYHeadRot
     {
-        var handle = NativeMethods.TablePtr->hs_create_8e07692d();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new LegacyBodyControl((nint)handle);
+        get => NativeMethods.TablePtr->C1.hs_get_c5334ed6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c5334ed6((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyBodyControl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    public int mStillTicks
     {
-        NativeMethods.TablePtr->hs_method_f6ffdbc1((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_7557e126((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_7557e126((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public void _clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_85608eaa((void*)_handle);
-            }
+        NativeMethods.TablePtr->C1.hs_method_6f7ca593((void*)__hosihikari_shim_handle, (void*)mob.Handle);
+    }
 
-            _handle = 0;
-        }
+    public void clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C1.hs_method_390ff46f((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 }

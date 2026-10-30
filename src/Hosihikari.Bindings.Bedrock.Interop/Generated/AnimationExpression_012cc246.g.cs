@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.persona;
 
-public enum AnimationExpression : int
+public enum AnimationExpression : uint
 {
     Linear = 0,
     Blinking = 1,

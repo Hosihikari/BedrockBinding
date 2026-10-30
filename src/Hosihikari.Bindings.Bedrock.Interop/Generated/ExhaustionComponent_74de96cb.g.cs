@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExhaustionComponent
+public sealed unsafe partial class ExhaustionComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExhaustionComponent(nint handle) : this(handle, true) { }
 
     internal ExhaustionComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExhaustionComponent Borrow(nint handle) => new ExhaustionComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,60 +33,81 @@ public sealed unsafe partial class ExhaustionComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExhaustionComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExhaustionComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float getAttackValue()
+    public float mAttack
     {
-        return NativeMethods.TablePtr->hs_method_0eb090e7((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_5346b224((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_5346b224((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getHealValue()
+    public float mDamage
     {
-        return NativeMethods.TablePtr->hs_method_3b07edc1((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_94a539bc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_94a539bc((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getJumpValue()
+    public float mHeal
     {
-        return NativeMethods.TablePtr->hs_method_f8c869e7((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_c1e3fb64((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c1e3fb64((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getMiningValue()
+    public float mJump
     {
-        return NativeMethods.TablePtr->hs_method_c273bcb5((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_74c107dd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_74c107dd((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getSprintJumpValue()
+    public float mLunge
     {
-        return NativeMethods.TablePtr->hs_method_1a3bbe81((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_c82f1d7d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c82f1d7d((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getSprintValue()
+    public float mMine
     {
-        return NativeMethods.TablePtr->hs_method_4ef9d0dc((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_d6b9b6fd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d6b9b6fd((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getSwimValue()
+    public float mSprint
     {
-        return NativeMethods.TablePtr->hs_method_c1419f12((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_426b427a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_426b427a((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getWalkValue()
+    public float mSprintJump
     {
-        return NativeMethods.TablePtr->hs_method_d752f55b((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_89ef85f7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_89ef85f7((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mSwim
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_8a2e727b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_8a2e727b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mWalk
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_dacee12e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_dacee12e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_74de96cb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

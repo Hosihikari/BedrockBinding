@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetBlockReactionComponent
+public sealed unsafe partial class SetBlockReactionComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SetBlockReactionComponent(nint handle) : this(handle, true) { }
 
     internal SetBlockReactionComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SetBlockReactionComponent Borrow(nint handle) => new SetBlockReactionComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,71 @@ public sealed unsafe partial class SetBlockReactionComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SetBlockReactionComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SetBlockReactionComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    public void __onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        NativeMethods.TablePtr->hs_method_0a8742f9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_fb32341d((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static SetBlockReactionComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_818b3279();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new SetBlockReactionComponent((nint)handle);
+    }
+
+    public static SetBlockReactionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SetBlockReactionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_04d6256b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetBlockReactionComponent((nint)handle);
+    }
+
+    public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9858ad79((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_84b85d92((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1ba475c0((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SetBlockReactionComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SetBlockReactionComponent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SetBlockReactionComponent((nint)NativeMethods.TablePtr->C3.hs_method_a96e82fd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_2486a93c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

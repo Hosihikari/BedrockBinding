@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Crypto.Symmetric;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum OperationMode : int
 {
+    Ecb = 0,
+    Cbc = 1,
+    Cfb = 2,
+    Cfb128 = 3,
+    Ofb = 4,
+    Gcm = 5,
+    Ctr = 6,
 }

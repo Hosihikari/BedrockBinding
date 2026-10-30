@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorDamageSource : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorDamageSource(nint handle) : this(handle, true) { }
 
     internal ActorDamageSource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorDamageSource Borrow(nint handle) => new ActorDamageSource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,145 @@ public sealed unsafe partial class ActorDamageSource : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ActorDamageSource Create(int arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __getDeathMessageInternal(nint deadName, nint dead) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ActorDamageSource' has no accessible destructor.", false)]
+    public nint _clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ActorDamageSource' has no accessible destructor.");
+
+    public nint _ctor(int cause, string deathMessageOverride)
     {
-        var handle = NativeMethods.TablePtr->hs_create_5223f7d3(arg0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(deathMessageOverride);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deathMessageOverride, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C0.hs_method_30639563((void*)__hosihikari_shim_handle, cause, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_a151eed0((void*)__hosihikari_shim_handle);
+    }
+
+    public uint _getDamagingEntityCategories()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_26478779((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _getDamagingEntityIsCreative()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_2dc963c9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _getDamagingEntityIsWorldBuilder()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4416fc29((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public int _getDamagingEntityType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_789a21a3((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID _getDamagingEntityUniqueID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C0.hs_method_77a0163a((void*)__hosihikari_shim_handle));
+    }
+
+    public uint _getEntityCategories()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e5fe22fa((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getEntityType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_289be002((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID _getEntityUniqueID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C0.hs_method_b883af35((void*)__hosihikari_shim_handle));
+    }
+
+    public bool _getIsCreative()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e41ddaf5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _getIsWorldBuilder()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e4e8a3f4((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isBlockSource()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_59cf7586((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isChildEntitySource()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4a599812((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isEntitySource()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c50cc239((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isFallDamage()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_84766ab6((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isFallingBlockDamage()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f054586c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isFire()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_1b4e92a6((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isReducedByArmorReduction()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_62ebb990((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isReducedByEnchantReduction()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_293da8e0((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isReducedByResistanceEffect()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d9fd5dab((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ActorDamageSource Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_da6f36ad();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,148 +180,153 @@ public sealed unsafe partial class ActorDamageSource : global::System.IDisposabl
         return new ActorDamageSource((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource? clone()
+    public static ActorDamageSource Create(int cause, string deathMessageOverride)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_31c05271((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource((nint)__hs_handle) : null;
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(deathMessageOverride);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deathMessageOverride, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var handle = NativeMethods.TablePtr->C0.hs_create_140b4306(cause, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ActorDamageSource((nint)handle);
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDamageCause>' is not supported.", false)]
-    public static nint generateDamageCauseCommandEnum_e8d579d4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDamageCause>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getDeathMessageInternal(nint deadName, nint dead) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint generateDamageCauseCommandEnum_34167f0f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ActorDamageSource' has no accessible destructor.", false)]
+    public nint clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ActorDamageSource' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDamageCause>' is not supported.", false)]
-    public static nint generateNewDamageCauseCommandEnum_283ce01e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDamageCause>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char>, SharedTypes::Legacy::ActorDamageCause>' is not supported.", false)]
+    public static nint generateDamageCauseCommandEnum(nint scriptVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char>, SharedTypes::Legacy::ActorDamageCause>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint generateNewDamageCauseCommandEnum_2b5c4e9f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char>, SharedTypes::Legacy::ActorDamageCause>' is not supported.", false)]
+    public static nint generateNewDamageCauseCommandEnum(nint scriptVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char>, SharedTypes::Legacy::ActorDamageCause>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'VersionedActorDamageCause' is not supported.", false)]
     public static nint generateVersionedDamageCauseCommandEnum() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'VersionedActorDamageCause' is not supported.");
 
-    public int getCause()
-    {
-        return NativeMethods.TablePtr->hs_method_80b0b6d7((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static nint getCauseMapVersionCutoffInclusive(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
     public uint getDamagingEntityCategories()
     {
-        return NativeMethods.TablePtr->hs_method_763eb338((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_e7d71f6c((void*)__hosihikari_shim_handle);
     }
 
     public bool getDamagingEntityIsCreative()
     {
-        return NativeMethods.TablePtr->hs_method_097ac6e9((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_030bc673((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool getDamagingEntityIsWorldBuilder()
     {
-        return NativeMethods.TablePtr->hs_method_0d9ff8a0((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_2d302e2b((void*)__hosihikari_shim_handle) != 0;
     }
 
     public int getDamagingEntityType()
     {
-        return NativeMethods.TablePtr->hs_method_6e25c879((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_7af10ac9((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getDamagingEntityUniqueID()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_2d2c32ff((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C0.hs_method_b5b22f44((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDeathMessage(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getDeathMessage(nint deadName, nint dead) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.");
 
     public uint getEntityCategories()
     {
-        return NativeMethods.TablePtr->hs_method_23b1789d((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_501b7679((void*)__hosihikari_shim_handle);
     }
 
     public int getEntityType()
     {
-        return NativeMethods.TablePtr->hs_method_58ff2c2f((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_f86bfd48((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getEntityUniqueID()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_a5002160((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C0.hs_method_878ed629((void*)__hosihikari_shim_handle));
     }
 
     public bool getIsCreative()
     {
-        return NativeMethods.TablePtr->hs_method_568dfbc3((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_2df1bf0f((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool getIsWorldBuilder()
     {
-        return NativeMethods.TablePtr->hs_method_7cf552c3((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_a2a24b16((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isBlockSource()
     {
-        return NativeMethods.TablePtr->hs_method_0cb90e80((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_88db5c65((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isChildEntitySource()
     {
-        return NativeMethods.TablePtr->hs_method_d2f9dee2((void*)_handle) != 0;
-    }
-
-    public static bool isDamageCausedByMob(int arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_e6966b43(arg0) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_03dce8b3((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isEntitySource()
     {
-        return NativeMethods.TablePtr->hs_method_6ffa9055((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c4ddbf0c((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isFallDamage()
     {
-        return NativeMethods.TablePtr->hs_method_93bb6318((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_fbf04fc4((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isFallingBlockDamage()
     {
-        return NativeMethods.TablePtr->hs_method_1e38571a((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_d1531ff2((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isFire()
     {
-        return NativeMethods.TablePtr->hs_method_77d65225((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_7c6823df((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isReducedByArmorReduction()
     {
-        return NativeMethods.TablePtr->hs_method_3eaaf4d8((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_e2d9d9a9((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isReducedByEnchantReduction()
     {
-        return NativeMethods.TablePtr->hs_method_fdacd8c5((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_af84be60((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isReducedByResistanceEffect()
     {
-        return NativeMethods.TablePtr->hs_method_eeff7301((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c53116cf((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public static int lookupCause(string arg0)
+    public static int lookupCause(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -200,41 +336,42 @@ public sealed unsafe partial class ActorDamageSource : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_f1791bd5(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C0.hs_method_85efb287(__hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public static string lookupCauseName(int arg0)
+    public static string lookupCauseName(int cause)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b800f558(arg0);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_193ca59b(cause);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int mCause
     {
-        get => NativeMethods.TablePtr->hs_get_118377a7((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_118377a7((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_118377a7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_118377a7((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setCause(int arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeathMessageOverride_Address
     {
-        NativeMethods.TablePtr->hs_method_4b001bb3((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4a5b95ab((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_a9195cf7((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_a9195cf7((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum AreaLimitCheck : int
 {
+    None = 0,
+    ActiveStandalone = 1,
+    ActiveAndPendingStandalone = 2,
 }

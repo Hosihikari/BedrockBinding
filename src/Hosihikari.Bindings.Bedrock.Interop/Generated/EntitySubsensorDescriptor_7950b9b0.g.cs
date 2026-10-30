@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class EntitySubsensorDescriptor
+public sealed unsafe partial class EntitySubsensorDescriptor
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EntitySubsensorDescriptor(nint handle) : this(handle, true) { }
 
     internal EntitySubsensorDescriptor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EntitySubsensorDescriptor Borrow(nint handle) => new EntitySubsensorDescriptor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,56 @@ public sealed partial class EntitySubsensorDescriptor
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntitySubsensorDescriptor Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public float mCooldownInSeconds
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_5285ec67((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_5285ec67((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EntitySubsensorDescriptor Create_294c0cb6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b2f56685((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dd411390((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_969cd11d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int mMaximumCount
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_1f74b28f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_1f74b28f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinimumCount
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_b0c23329((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_b0c23329((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_140cadb2((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mRequireAll
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_26ebf7e6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_26ebf7e6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mYOffset
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_7ab08148((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_7ab08148((void*)__hosihikari_shim_handle, value);
+    }
 }

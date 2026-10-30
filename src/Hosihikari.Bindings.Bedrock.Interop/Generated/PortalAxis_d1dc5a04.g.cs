@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum PortalAxis : int
 {
+    Unknown = 0,
+    X = 1,
+    Z = 2,
+    Count = 3,
 }

@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-public sealed unsafe partial class HandleCache
+public sealed unsafe partial class HandleCache : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public HandleCache(nint handle) : this(handle, true) { }
 
     internal HandleCache(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static HandleCache Borrow(nint handle) => new HandleCache(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,74 @@ public sealed unsafe partial class HandleCache
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HandleCache Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HandleCache Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void remove(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ObjectHandle arg0)
+    public static HandleCache Create()
     {
-        NativeMethods.TablePtr->hs_method_a0a111f4((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_7ef6ec2b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HandleCache((nint)handle);
+    }
+
+    public static HandleCache Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.HandleCache arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7b91f3bc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HandleCache((nint)handle);
+    }
+
+    public void _add(ulong typeHash, ulong keyHash, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        NativeMethods.TablePtr->C3.hs_method_eaa0a836((void*)__hosihikari_shim_handle, typeHash, keyHash, (void*)handle.Handle);
+    }
+
+    public void _remove(ulong typeHash, ulong keyHash)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4bfcaab3((void*)__hosihikari_shim_handle, typeHash, keyHash);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ObjectHandle' is not supported.", false)]
+    public nint _tryGetHandle(ulong typeHash, ulong keyHash) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ObjectHandle' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8ba42a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dfa04845((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk98778d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_45d75f66((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.HandleCache operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.HandleCache arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.HandleCache((nint)NativeMethods.TablePtr->C3.hs_method_e0c9318d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_7fcd21ce((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

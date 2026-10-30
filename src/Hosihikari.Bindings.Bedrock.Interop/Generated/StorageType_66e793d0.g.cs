@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.StaticOptimizedString_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum StorageType : int
 {
+    Static = 0,
+    Dynamic = 1,
 }

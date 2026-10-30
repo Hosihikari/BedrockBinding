@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PublisherItemComponent;
 
-public sealed unsafe partial class OnUseOn : global::System.IDisposable
+public sealed unsafe partial class OnUseOn
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OnUseOn(nint handle) : this(handle, true) { }
 
     internal OnUseOn(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OnUseOn Borrow(nint handle) => new OnUseOn(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,60 @@ public sealed unsafe partial class OnUseOn : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static OnUseOn Create()
+    public uint mSubscriberCount
     {
-        var handle = NativeMethods.TablePtr->hs_create_5407d3df();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new OnUseOn((nint)handle);
+        get => NativeMethods.TablePtr->C2.hs_get_0242f74b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0242f74b((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OnUseOn Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubscriptions_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_864877b3((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f1a12354((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
+    public nint mOwner
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_004c9d4e(), false);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7f92bccc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7f92bccc((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    public bool initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint _buildNetworkTag(nint ctx) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
+
+    public bool _initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
-        return NativeMethods.TablePtr->hs_method_e2f11958((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_84ae7c02((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)ctx.Handle) != 0;
+    }
+
+    public bool _isNetworkComponent()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_41cf504c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint buildNetworkTag(nint ctx) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
+
+    public bool initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_d9fdee53((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)ctx.Handle) != 0;
     }
 
     public bool isNetworkComponent()
     {
-        return NativeMethods.TablePtr->hs_method_c044f3a3((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_83d16683((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void Dispose()
+    public bool mAutoSucceedOnClient
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_f7607b8b((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C2.hs_get_58279e4e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_58279e4e((void*)__hosihikari_shim_handle, value);
     }
 }

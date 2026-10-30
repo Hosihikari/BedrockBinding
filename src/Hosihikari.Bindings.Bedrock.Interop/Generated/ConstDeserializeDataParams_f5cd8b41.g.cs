@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ConstDeserializeDataParams
+public sealed unsafe partial class ConstDeserializeDataParams : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ConstDeserializeDataParams(nint handle) : this(handle, true) { }
 
     internal ConstDeserializeDataParams(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ConstDeserializeDataParams Borrow(nint handle) => new ConstDeserializeDataParams(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,88 @@ public sealed partial class ConstDeserializeDataParams
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConstDeserializeDataParams Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_4c001541((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConstDeserializeDataParams Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_04f12982((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ConstDeserializeDataParams Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a7fc3a24();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_58830b8b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new ConstDeserializeDataParams((nint)handle);
+    }
+
+    public static ConstDeserializeDataParams Create(global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f3cd041a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConstDeserializeDataParams((nint)handle);
+    }
+
+    public static ConstDeserializeDataParams Create(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cf975000((void*)deserializeDataParams.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConstDeserializeDataParams((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk25c848_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6bef255c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk53e6e0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4fe7b5f0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcb3186_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b09ce1ca((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams((nint)NativeMethods.TablePtr->C0.hs_method_08d2a02d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f5cd8b41((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

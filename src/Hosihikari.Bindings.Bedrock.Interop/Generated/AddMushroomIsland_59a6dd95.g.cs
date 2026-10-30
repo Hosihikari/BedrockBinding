@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class AddMushroomIsland
+public sealed unsafe partial class AddMushroomIsland : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AddMushroomIsland(nint handle) : this(handle, true) { }
 
     internal AddMushroomIsland(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AddMushroomIsland Borrow(nint handle) => new AddMushroomIsland(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,60 @@ public sealed partial class AddMushroomIsland
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AddMushroomIsland Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static AddMushroomIsland Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_694f587a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AddMushroomIsland Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new AddMushroomIsland((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AddMushroomIsland Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static AddMushroomIsland Create(global::Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters.AddMushroomIsland arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_43220be2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new AddMushroomIsland((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e615c789((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMushroomBiome_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_82a5250a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters.AddMushroomIsland operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters.AddMushroomIsland arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters.AddMushroomIsland((nint)NativeMethods.TablePtr->C2.hs_method_d33660c6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_59a6dd95((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

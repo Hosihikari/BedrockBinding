@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BoneAnimationChannel
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BoneAnimationChannel(nint handle) : this(handle, true) { }
 
     internal BoneAnimationChannel(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BoneAnimationChannel Borrow(nint handle) => new BoneAnimationChannel(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,25 @@ public sealed unsafe partial class BoneAnimationChannel
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BoneAnimationChannel Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BoneAnimationChannel Create_5be1630f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform addKeyFrame(float arg0)
+    public void animate(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams, global::Hosihikari.Bindings.Bedrock.Interop.BoneOrientation destBoneOrientation, float scale, nint boneAnimationChannelPlayer)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform((nint)NativeMethods.TablePtr->hs_method_7b02b6c8((void*)_handle, arg0), false);
+        NativeMethods.TablePtr->C0.hs_method_28212048((void*)__hosihikari_shim_handle, (void*)renderParams.Handle, (void*)destBoneOrientation.Handle, scale, (void*)boneAnimationChannelPlayer);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void sortKeyFrames()
+    public int mBoneTransformType
     {
-        NativeMethods.TablePtr->hs_method_5ae5dc3c((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_b3e35585((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b3e35585((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mKeyFrames_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_294872be((void*)__hosihikari_shim_handle);
     }
 }

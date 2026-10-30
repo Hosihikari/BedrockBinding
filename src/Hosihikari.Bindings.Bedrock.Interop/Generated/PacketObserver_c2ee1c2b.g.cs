@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PacketObserver : global::System.IDisposable
+public sealed unsafe partial class PacketObserver
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PacketObserver(nint handle) : this(handle, true) { }
 
     internal PacketObserver(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PacketObserver Borrow(nint handle) => new PacketObserver(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,28 +33,20 @@ public sealed unsafe partial class PacketObserver : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b0d64a52((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b0d64a52((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PacketObserver Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PacketObserver Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void dataReceivedFrom(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, string arg1)
+    public void _dataReceivedFrom(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, string data)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -64,16 +56,16 @@ public sealed unsafe partial class PacketObserver : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_7ce7abb8((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C2.hs_method_b4642012((void*)__hosihikari_shim_handle, (void*)source.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
-    public void dataSentTo(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, string arg1)
+    public void _dataSentTo(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier target, string data)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -83,47 +75,88 @@ public sealed unsafe partial class PacketObserver : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_3cf41120((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C2.hs_method_4b7ddec9((void*)__hosihikari_shim_handle, (void*)target.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void dataSentTo(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void packetReceivedFrom(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Packet arg1, uint arg2)
+    public void _packetReceivedFrom(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet, uint size)
     {
-        NativeMethods.TablePtr->hs_method_c9e83332((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C2.hs_method_d7ac02db((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)packet.Handle, size);
     }
 
-    public void packetSentTo(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Packet arg1, uint arg2)
+    public void _packetSentTo(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier target, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet, uint size)
     {
-        NativeMethods.TablePtr->hs_method_ded7e7cd((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C2.hs_method_70e6a6a3((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)packet.Handle, size);
+    }
+
+    public void _reset()
+    {
+        NativeMethods.TablePtr->C2.hs_method_9649ffcc((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void dataReceivedFrom(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, string data)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_0de6b7bf((void*)__hosihikari_shim_handle, (void*)source.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void dataSentTo(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier target, string data)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_32d39784((void*)__hosihikari_shim_handle, (void*)target.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mQueuedStatsInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8278fa56((void*)__hosihikari_shim_handle);
+    }
+
+    public void packetReceivedFrom(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet, uint size)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c4a24500((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)packet.Handle, size);
+    }
+
+    public void packetSentTo(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier target, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet, uint size)
+    {
+        NativeMethods.TablePtr->C2.hs_method_594d3c4a((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)packet.Handle, size);
     }
 
     public void reset()
     {
-        NativeMethods.TablePtr->hs_method_8ee2e651((void*)_handle);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c2ee1c2b((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        NativeMethods.TablePtr->C2.hs_method_8ee2e651((void*)__hosihikari_shim_handle);
     }
 }

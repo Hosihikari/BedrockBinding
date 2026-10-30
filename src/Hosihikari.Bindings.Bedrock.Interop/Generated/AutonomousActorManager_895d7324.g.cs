@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AutonomousActorManager
+public sealed unsafe partial class AutonomousActorManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AutonomousActorManager(nint handle) : this(handle, true) { }
 
     internal AutonomousActorManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AutonomousActorManager Borrow(nint handle) => new AutonomousActorManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,84 +33,143 @@ public sealed unsafe partial class AutonomousActorManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string AUTONOMOUS_ACTOR_KEY
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint entityRegistry, nint actorManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.");
+
+    public void _dtor()
     {
-        get
+        NativeMethods.TablePtr->C0.hs_method_7dfa6367((void*)__hosihikari_shim_handle);
+    }
+
+    public static AutonomousActorManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f43df7c7();
+        if (handle == null)
         {
-            var view = NativeMethods.TablePtr->hs_get_1225c921();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AutonomousActorManager((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.", false)]
+    public static AutonomousActorManager Create(nint entityRegistry, nint actorManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.");
+
+    public void _onChunkDiscarded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        NativeMethods.TablePtr->C0.hs_method_cf5c3db8((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+    }
+
+    public void _onRemoveActorEntityReferences(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C0.hs_method_795aa20d((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public void _saveAllAutonomousActors(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a8767c1a((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
+    public nint addAutonomousActorEntity_8c0e1faf(nint dimension, nint entity) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
+    public nint addAutonomousActorEntity_9780c04e(nint addActorEntityProxy, nint entity) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
+
+    public bool hasOwnedInactiveAutonomousActorWithUniqueID(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorUniqueID)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_218c25ff((void*)__hosihikari_shim_handle, (void*)actorUniqueID.Handle) != 0;
+    }
+
+    public void loadAutonomousActorsFromDisk(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory actorFactory)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b2bac4fa((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle, (void*)actorFactory.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActiveAutonomousActors_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f9a9e11d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d7a9560b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_98b3cac1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAutonomousActorRemovedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f8a50cb0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnChunkDiscarded_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7ccff9a8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnChunkLoaded_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_27898385((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnRemoveActorEntityReferences_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_17c8f233((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnSaveGameDataSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4e6c15ec((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnedInactiveAutonomousActors_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a650eff5((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector levelChunkEventManagerConnector)
+    {
+        NativeMethods.TablePtr->C0.hs_method_2ddecb13((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
+    }
+
+    public void registerLevelStorageManagerListener(global::Hosihikari.Bindings.Bedrock.Interop.ILevelStorageManagerConnector levelStorageManagerConnector)
+    {
+        NativeMethods.TablePtr->C0.hs_method_3e6fb506((void*)__hosihikari_shim_handle, (void*)levelStorageManagerConnector.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_895d7324((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    public static string AUTONOMOUS_ACTOR_LIST_KEY
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_3ce36461();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AutonomousActorManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AutonomousActorManager Create_00124570(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AutonomousActorManager Create_5d4fb1b3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public nint addAutonomousActorEntity_50e41745(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public nint addAutonomousActorEntity_b76f6883(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public bool hasOwnedInactiveAutonomousActorWithUniqueID(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_da10b25f((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    public void initializeWithActorManager(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_72d78000((void*)_handle, (void*)arg0);
-    }
-
-    public void loadAutonomousActorsFromDisk(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory arg1)
-    {
-        NativeMethods.TablePtr->hs_method_07b27d0c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void onLevelTearingDown()
-    {
-        NativeMethods.TablePtr->hs_method_5874bbbd((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f4e24a04((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void registerLevelStorageManagerListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)
-    {
-        NativeMethods.TablePtr->hs_method_a9bc29b0((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_4b9627b7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

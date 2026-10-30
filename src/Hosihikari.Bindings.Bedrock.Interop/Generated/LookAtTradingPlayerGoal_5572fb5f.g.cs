@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LookAtTradingPlayerGoal
+public sealed unsafe partial class LookAtTradingPlayerGoal : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LookAtTradingPlayerGoal(nint handle) : this(handle, true) { }
 
     internal LookAtTradingPlayerGoal(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LookAtTradingPlayerGoal Borrow(nint handle) => new LookAtTradingPlayerGoal(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,161 @@ public sealed unsafe partial class LookAtTradingPlayerGoal
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LookAtTradingPlayerGoal Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_28d5556f((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LookAtTradingPlayerGoal Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int mRequiredControlFlags
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_1eea06cc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1eea06cc((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mTypeId
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_b4afeea1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b4afeea1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mAngleOfViewX
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_4f6bf786((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4f6bf786((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mAngleOfViewY
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_a9a62590((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a9a62590((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLookAt_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5e080069((void*)__hosihikari_shim_handle);
+    }
+
+    public float mLookDistance
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_7560f12b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7560f12b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mLookTime
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_0669de9a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0669de9a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMaxLookTime
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_350de3d9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_350de3d9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinLookTime
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_db7690f8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_db7690f8((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMob_4df5bc6e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b1de7170((void*)__hosihikari_shim_handle);
+    }
+
+    public float mProbability
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_429752f2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_429752f2((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5d9713d1((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendDebugInfo(nint arg0) =>
+    public void _appendDebugInfo(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public bool _canContinueToUse()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_7ddb5ea5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _canUse()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_3ee009d5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public static LookAtTradingPlayerGoal Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_304ab95a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LookAtTradingPlayerGoal((nint)handle);
+    }
+
+    public static LookAtTradingPlayerGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.LookAtTradingPlayerGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1b38ccc3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LookAtTradingPlayerGoal((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     public bool canContinueToUse()
     {
-        return NativeMethods.TablePtr->hs_method_7f83b579((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_7f83b579((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool canUse()
     {
-        return NativeMethods.TablePtr->hs_method_31534249((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_31534249((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMob_dc57d84d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cca9ab9e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.LookAtTradingPlayerGoal operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LookAtTradingPlayerGoal arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LookAtTradingPlayerGoal((nint)NativeMethods.TablePtr->C2.hs_method_3a0a427f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_5572fb5f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

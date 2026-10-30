@@ -4,11 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SerializedAbilitiesData_Nested;
 
-public enum SerializedAbilitiesLayer : short
+public enum SerializedAbilitiesLayer : ushort
 {
     CustomCache = 0,
     Base = 1,
     Spectator = 2,
     Commands = 3,
     Editor = 4,
+    LoadingScreen = 5,
 }

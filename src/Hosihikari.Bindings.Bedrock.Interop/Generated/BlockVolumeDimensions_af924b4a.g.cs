@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.WorldGenerator_Nested;
 
 public sealed unsafe partial class BlockVolumeDimensions : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockVolumeDimensions(nint handle) : this(handle, true) { }
 
     internal BlockVolumeDimensions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockVolumeDimensions Borrow(nint handle) => new BlockVolumeDimensions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,39 @@ public sealed unsafe partial class BlockVolumeDimensions : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public uint mDepth
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_9c23a235((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_9c23a235((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mHeight
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_919b5607((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_919b5607((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mWidth
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_29baf6dd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_29baf6dd((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_af924b4a((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_af924b4a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

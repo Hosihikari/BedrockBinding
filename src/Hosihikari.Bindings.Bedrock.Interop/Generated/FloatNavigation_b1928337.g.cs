@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class FloatNavigation
+public sealed unsafe partial class FloatNavigation
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FloatNavigation(nint handle) : this(handle, true) { }
 
     internal FloatNavigation(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FloatNavigation Borrow(nint handle) => new FloatNavigation(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,66 @@ public sealed partial class FloatNavigation
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FloatNavigation Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
+    public nint _createPath_c373ef9b(nint parent, nint mob, nint target) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FloatNavigation Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
+    public nint _createPath_1bb28f88(nint parent, nint mob, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool _moveTo(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Actor target, float speed)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_521c9cf1((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)target.Handle, speed) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public bool _moveTo(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, float speed)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0f8444f7((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)pos.Handle, speed) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public bool _moveTo(nint parent, nint mob, nint newPath, float speed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public bool _travel(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, nint xa, nint ya, nint za)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6c54413e((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)xa, (void*)ya, (void*)za) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
+    public nint createPath_5fbf6d07(nint parent, nint mob, nint target) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
+    public nint createPath_008d3c4c(nint parent, nint mob, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.");
+
+    public bool moveTo(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Actor target, float speed)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_30f89459((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)target.Handle, speed) != 0;
+    }
+
+    public bool moveTo(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, float speed)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e0d2545d((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)pos.Handle, speed) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public bool moveTo(nint parent, nint mob, nint newPath, float speed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public bool travel(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, nint xa, nint ya, nint za)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2b38d210((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)xa, (void*)ya, (void*)za) != 0;
+    }
 }

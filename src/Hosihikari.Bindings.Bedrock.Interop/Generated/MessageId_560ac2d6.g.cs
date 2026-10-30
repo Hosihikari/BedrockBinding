@@ -4,8 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage_Nested;
 
-public enum MessageId : int
+public enum MessageId : uint
 {
-    CREATE = 1,
-    DESTROY = 2,
+    None = 0,
+    Create = 1,
+    Destroy = 2,
 }

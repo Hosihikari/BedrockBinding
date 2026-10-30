@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MobEffect_Nested;
 
-public sealed unsafe partial class FactorCalculationData : global::System.IDisposable
+public sealed unsafe partial class FactorCalculationData
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FactorCalculationData(nint handle) : this(handle, true) { }
 
     internal FactorCalculationData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FactorCalculationData Borrow(nint handle) => new FactorCalculationData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,62 @@ public sealed unsafe partial class FactorCalculationData : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Dispose()
+    public float mFactorCurrent
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_e6f4701c((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C2.hs_get_41c00e37((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_41c00e37((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public float mFactorPreviousFrame
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_a0aa7cb7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a0aa7cb7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mFactorStart
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ff885f25((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ff885f25((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mFactorTarget
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_20f00705((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_20f00705((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mHadApplied
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_98bc126d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_98bc126d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mHadEffectLastTick
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_f7a2ca14((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_f7a2ca14((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mPaddingDuration
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_670abd84((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_670abd84((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mTicksActive
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_70f49df3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_70f49df3((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUpdateFn_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1c2cb82c((void*)__hosihikari_shim_handle);
     }
 }

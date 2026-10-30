@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.IApplicationDataStores_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum DataStores : int
 {
+    GlobalSettings = 0,
+    UserSettings = 1,
+    BootstrapSettings = 2,
+    Count = 3,
 }

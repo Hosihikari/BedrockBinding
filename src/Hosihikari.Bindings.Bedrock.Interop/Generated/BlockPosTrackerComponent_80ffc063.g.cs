@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BlockPosTrackerComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockPosTrackerComponent(nint handle) : this(handle, true) { }
 
     internal BlockPosTrackerComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockPosTrackerComponent Borrow(nint handle) => new BlockPosTrackerComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,42 @@ public sealed unsafe partial class BlockPosTrackerComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockPosTrackerComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockPosTrackerComponent Create(bool arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockPosTrackerComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void onRemove(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public nint mCurrentBlock
     {
-        NativeMethods.TablePtr->hs_method_918971e8((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c6eda341((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrentBlockPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fb08c8c5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreviousBlockPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_749f9a8d((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mPreviousOnGround
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b5ddafbd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b5ddafbd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mShouldTriggerOnStandOn
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3e69368b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_3e69368b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void onRemove(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
+    {
+        NativeMethods.TablePtr->C0.hs_method_97e9f15e((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TrimMaterialRegistry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TrimMaterialRegistry(nint handle) : this(handle, true) { }
 
     internal TrimMaterialRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TrimMaterialRegistry Borrow(nint handle) => new TrimMaterialRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,19 @@ public sealed unsafe partial class TrimMaterialRegistry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TrimMaterialRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TrimMaterialRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public nint getAllEntries()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_7a965237((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'TrimMaterial' is not supported.", false)]
-    public nint getTrimMaterialByItemName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'TrimMaterial' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'TrimMaterial' is not supported.", false)]
-    public nint getTrimMaterialByMaterialId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'TrimMaterial' is not supported.");
-
     public void initializeServer()
     {
-        NativeMethods.TablePtr->hs_method_71132378((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_71132378((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTrimMaterials_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_502ebf0b((void*)__hosihikari_shim_handle);
+    }
 }

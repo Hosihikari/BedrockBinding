@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VanillaBlockUpdater
+public sealed unsafe partial class VanillaBlockUpdater : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VanillaBlockUpdater(nint handle) : this(handle, true) { }
 
     internal VanillaBlockUpdater(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VanillaBlockUpdater Borrow(nint handle) => new VanillaBlockUpdater(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,175 @@ public sealed unsafe partial class VanillaBlockUpdater
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaBlockUpdater Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaBlockUpdater Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void destroy()
+    public static void addBaseUpdater(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
     {
-        NativeMethods.TablePtr->hs_method_b136b7bb();
+        NativeMethods.TablePtr->C3.hs_method_a6869d21((void*)context.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext get()
+    public static void addRailUpdater_1_14_0(string railName, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext((nint)NativeMethods.TablePtr->hs_method_edd4f3d4(), false);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(railName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(railName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C3.hs_method_45664061(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)context.Handle);
+        }
+    }
+
+    public static void addUpdaters_1_10_0(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5fb66292((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_12_0(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_716473ff((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_13_0(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_21b9c234((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_14_0(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bb2edb49((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_15_0(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_7628a8be((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_16_0(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_73447419((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_16_210(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_df8e0a53((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_18_10(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5c518824((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_19_70(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_312fd427((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_19_80(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4d642501((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_0(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_57d3bb51((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_10(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8d45fd89((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_20(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1fa884f2((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_30(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_57209845((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_40(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_40ae1b02((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_50(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_16bf43d6((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_60(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_41165ed7((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_70(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_2c757f4e((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_20_80(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_01c6a218((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_21_0(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5f7d4f45((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_21_10(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a094ed28((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_21_20(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_db73e42e((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_21_30(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_3dee3edb((void*)context.Handle);
+    }
+
+    public static void addUpdaters_1_21_60(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext context)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d35e99be((void*)context.Handle);
     }
 
     public static void initialize()
     {
-        NativeMethods.TablePtr->hs_method_c9463c87();
+        NativeMethods.TablePtr->C3.hs_method_c9463c87();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mContext_Address
+    public static nint mContext()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3512799d();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_f8a36a30();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_3addf5d3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

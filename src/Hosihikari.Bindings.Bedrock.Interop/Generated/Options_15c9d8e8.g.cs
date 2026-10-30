@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Ability_Nested;
 
-public enum Options : sbyte
+public enum Options : byte
 {
     None = 0,
     NoSave = 1,

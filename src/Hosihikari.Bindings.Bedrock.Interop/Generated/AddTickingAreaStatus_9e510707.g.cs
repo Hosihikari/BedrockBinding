@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum AddTickingAreaStatus : int
 {
+    ExceededChunkLimit = 0,
+    ExceededTickingAreaLimit = 1,
+    ConflictingName = 2,
+    UnknownDimension = 3,
+    Success = 4,
+    Undefined = 5,
 }

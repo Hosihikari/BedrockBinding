@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelSeed64 : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelSeed64(nint handle) : this(handle, true) { }
 
     internal LevelSeed64(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelSeed64 Borrow(nint handle) => new LevelSeed64(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,27 @@ public sealed unsafe partial class LevelSeed64 : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelSeed64 Create(ulong value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 fromUnsigned32(uint arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64((nint)NativeMethods.TablePtr->hs_method_04335c10(arg0));
     }
 
     public ulong mValue
     {
-        get => NativeMethods.TablePtr->hs_get_773c3f24((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_773c3f24((void*)_handle, value);
-    }
-
-    public uint to32BitRandomSeed()
-    {
-        return NativeMethods.TablePtr->hs_method_2cff6b40((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_773c3f24((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_773c3f24((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_c4c236ad((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_c4c236ad((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

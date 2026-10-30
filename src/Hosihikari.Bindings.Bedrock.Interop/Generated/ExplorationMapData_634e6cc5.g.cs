@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ExplorationMapData
+public sealed unsafe partial class ExplorationMapData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExplorationMapData(nint handle) : this(handle, true) { }
 
     internal ExplorationMapData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExplorationMapData Borrow(nint handle) => new ExplorationMapData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,82 @@ public sealed partial class ExplorationMapData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExplorationMapData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint mapType, nint markerType, nint featureName, nint structureType, bool featureMustBeInNewChunks, nint biomeTag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExplorationMapData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_eface771((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ExplorationMapData Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_81fcc399();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_e5b3a68f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new ExplorationMapData((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static ExplorationMapData Create(nint mapType, nint markerType, nint featureName, nint structureType, bool featureMustBeInNewChunks, nint biomeTag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeTag_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_afa62381((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mFeatureMustBeInNewChunks
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_11fa646f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_11fa646f((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFeatureName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_604d934c((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMapType
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_e7565b15((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e7565b15((void*)__hosihikari_shim_handle, value);
+    }
+
+    public sbyte mMarkerType
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_8f7c0e92((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_8f7c0e92((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureType_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d6ffeb7a((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_634e6cc5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

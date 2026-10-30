@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AngerLevelComponent
+public sealed unsafe partial class AngerLevelComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AngerLevelComponent(nint handle) : this(handle, true) { }
 
     internal AngerLevelComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AngerLevelComponent Borrow(nint handle) => new AngerLevelComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,101 +33,144 @@ public sealed unsafe partial class AngerLevelComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AngerLevelComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AngerLevelComponent Create_ea8908fa(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AngerLevelComponent Create_b853a33f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public static float DEFAULT_ANGER_DECREMENT_INTERVAL_SECONDS
+    public void _dtor()
     {
-        get => NativeMethods.TablePtr->hs_get_bff07699();
+        NativeMethods.TablePtr->C0.hs_method_4f49baf9((void*)__hosihikari_shim_handle);
     }
 
-    public static int DEFAULT_ANGRY_BOOST
+    public void _decrementAnger(global::Hosihikari.Bindings.Bedrock.Interop.Actor? owner, global::Hosihikari.Bindings.Bedrock.Interop.ILevel level)
     {
-        get => NativeMethods.TablePtr->hs_get_9087a83f();
+        NativeMethods.TablePtr->C0.hs_method_4952035e((void*)__hosihikari_shim_handle, (void*)(owner?.Handle ?? 0), (void*)level.Handle);
     }
 
-    public static int DEFAULT_ANGRY_THRESHOLD
+    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        get => NativeMethods.TablePtr->hs_get_2b4b23e5();
+        NativeMethods.TablePtr->C0.hs_method_cc5ed972((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public static int DEFAULT_MAX_ANGER_LEVEL
+    public bool belowAngryThreshold(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID id)
     {
-        get => NativeMethods.TablePtr->hs_get_a2b71ec1();
+        return NativeMethods.TablePtr->C0.hs_method_5df84327((void*)__hosihikari_shim_handle, (void*)id.Handle) != 0;
     }
 
-    public static bool DEFAULT_SHOULD_REMOVE_TARGET
+    public bool canBeNuisance(global::Hosihikari.Bindings.Bedrock.Interop.Actor? owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor? target)
     {
-        get => NativeMethods.TablePtr->hs_get_fded014c() != 0;
+        return NativeMethods.TablePtr->C0.hs_method_fbc1a505((void*)__hosihikari_shim_handle, (void*)(owner?.Handle ?? 0), (void*)(target?.Handle ?? 0)) != 0;
     }
 
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public int getAngerForAnimations(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        NativeMethods.TablePtr->hs_method_a9113b75((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_20a20d85((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public bool belowAngryThreshold(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::pair<Actor *, int>' is not supported.", false)]
+    public nint getTopActiveNuisance(nint owner, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::pair<Actor *, int>' is not supported.");
+
+    public int mAngerDecrementIntervalTicks
     {
-        return NativeMethods.TablePtr->hs_method_94b95bd0((void*)_handle, (void*)arg0.Handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_f989f002((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f989f002((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool canBeNuisance(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1)
+    public int mAngryBoost
     {
-        return NativeMethods.TablePtr->hs_method_a5a2eccc((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0)) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_da9de892((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_da9de892((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getAngerForAnimations(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public int mAngryThreshold
     {
-        return NativeMethods.TablePtr->hs_method_7ffe5c3b((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_1348411c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_1348411c((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::pair<Actor*,int>' is not supported.", false)]
-    public nint getTopActiveNuisance(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::pair<Actor*,int>' is not supported.");
-
-    public bool isAngry()
+    public int mDefaultAnnoyingness
     {
-        return NativeMethods.TablePtr->hs_method_73b17266((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_7273ba88((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_7273ba88((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_cc1ca781(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_972ff652(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    public int mDefaultProjectileAnnoyingness
     {
-        NativeMethods.TablePtr->hs_method_de62dec7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_1adb99bf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_1adb99bf((void*)__hosihikari_shim_handle, value);
     }
 
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg1)
+    public int mMaxAngerLevel
     {
-        NativeMethods.TablePtr->hs_method_79f92085((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_14d0e302((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_14d0e302((void*)__hosihikari_shim_handle, value);
     }
 
-    public void tryIncreaseAngerAt(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, int arg2, bool arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNextAngerDecrementTick_Address
     {
-        NativeMethods.TablePtr->hs_method_d846d16a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2d5c9932((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_d72b0a20() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNuisanceCompare_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fa0222e5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNuisanceFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_88b6296c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNuisances_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7e815d03((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnIncreaseSoundDefinitions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d7d497b0((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mRemoveTargetWhenBelowAngryThreshold
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_713b7e07((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_713b7e07((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mTopAnger
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3a4ae2e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_3a4ae2e2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_832e084a((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle, (void*)arg2.Handle);
+    }
+
+    public void tryIncreaseAngerAt(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor nuisance, int anger, bool playSounds)
+    {
+        NativeMethods.TablePtr->C0.hs_method_77ce9b61((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)nuisance.Handle, anger, playSounds);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_568ffe98((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

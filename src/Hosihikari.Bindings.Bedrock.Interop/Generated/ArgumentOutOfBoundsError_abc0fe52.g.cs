@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ArgumentOutOfBoundsError
+public sealed unsafe partial class ArgumentOutOfBoundsError : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ArgumentOutOfBoundsError(nint handle) : this(handle, true) { }
 
     internal ArgumentOutOfBoundsError(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ArgumentOutOfBoundsError Borrow(nint handle) => new ArgumentOutOfBoundsError(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,158 @@ public sealed partial class ArgumentOutOfBoundsError
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ArgumentOutOfBoundsError Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(string propertyName, int index_, double? value_, double? minValue_, double? maxValue_)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(propertyName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(propertyName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return (nint)NativeMethods.TablePtr->C3.hs_method_9836538b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, index_, value_ ?? default(double), minValue_ ?? default(double), maxValue_ ?? default(double), value_.HasValue, minValue_.HasValue, maxValue_.HasValue);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ArgumentOutOfBoundsError Create_f846626c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ArgumentOutOfBoundsError Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_71d561ed();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ArgumentOutOfBoundsError Create_fadebe2d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new ArgumentOutOfBoundsError((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ArgumentOutOfBoundsError Create(nint arg0, double arg1, double arg2, double arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ArgumentOutOfBoundsError Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ArgumentOutOfBoundsError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_fadebe2d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ArgumentOutOfBoundsError((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_4ebdd4c2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static ArgumentOutOfBoundsError Create(string propertyName, int index_, double? value_, double? minValue_, double? maxValue_)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(propertyName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(propertyName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C3.hs_create_90e2eeae(__hs_stringData0, (nuint)__hs_stringByteCount0, index_, value_ ?? default(double), minValue_ ?? default(double), maxValue_ ?? default(double), value_.HasValue, minValue_.HasValue, maxValue_.HasValue);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ArgumentOutOfBoundsError((nint)handle);
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk34f2c4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cd765934((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk676da1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e66acf38((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk952d53_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_749a76bf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc8e614_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d0f506fb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ArgumentOutOfBoundsError operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ArgumentOutOfBoundsError arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ArgumentOutOfBoundsError((nint)NativeMethods.TablePtr->C3.hs_method_c7f8bdd5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1599d8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_86ad20dd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk364254_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_82c110f3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk724204_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_01fa9d0f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7b9e22_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_15c8f55a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka1db66_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f4a0fe73((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkacfaf5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8d2b7b55((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaf2820_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4609429e((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_abc0fe52((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StrictEntityContext : global::System.IDisposable
+public sealed unsafe partial class StrictEntityContext
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StrictEntityContext(nint handle) : this(handle, true) { }
 
     internal StrictEntityContext(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StrictEntityContext Borrow(nint handle) => new StrictEntityContext(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,95 +33,20 @@ public sealed unsafe partial class StrictEntityContext : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    public static StrictEntityContext Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_7d0cc777();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StrictEntityContext((nint)handle);
-    }
-
-    public static StrictEntityContext Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_f37dc34c((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StrictEntityContext((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static StrictEntityContext Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static StrictEntityContext Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public static StrictEntityContext Create(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_3387b480((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StrictEntityContext((nint)handle);
-    }
-
-    public bool isNull()
-    {
-        return NativeMethods.TablePtr->hs_method_7d37c510((void*)_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1077b471((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1077b471((void*)__hosihikari_shim_handle);
     }
 
     public uint mRegistryId
     {
-        get => NativeMethods.TablePtr->hs_get_ac018495((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ac018495((void*)_handle, value);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_not_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_f52c36bb(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_3f081763(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_003e2a13((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C3.hs_get_ac018495((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ac018495((void*)__hosihikari_shim_handle, value);
     }
 }

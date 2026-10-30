@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Interactions.Mining;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum MineBlockItemEffectType : int
 {
+    Default = 0,
+    DoNothing = 1,
+    ComponentItem = 2,
+    DiggerItem = 3,
+    ShearsItem = 4,
 }

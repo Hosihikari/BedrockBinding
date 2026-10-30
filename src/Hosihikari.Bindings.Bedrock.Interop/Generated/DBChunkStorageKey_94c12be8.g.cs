@@ -7,24 +7,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 [global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
 public sealed partial class DBChunkStorageKey
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DBChunkStorageKey(nint handle) : this(handle, true) { }
 
     internal DBChunkStorageKey(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DBChunkStorageKey Borrow(nint handle) => new DBChunkStorageKey(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +34,8 @@ public sealed partial class DBChunkStorageKey
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 }

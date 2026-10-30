@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptV010Events : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptV010Events(nint handle) : this(handle, true) { }
 
     internal ScriptV010Events(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptV010Events Borrow(nint handle) => new ScriptV010Events(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,138 @@ public sealed unsafe partial class ScriptV010Events : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptV010Events Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.Level? level)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_9020dd59((void*)__hosihikari_shim_handle, (void*)scope.Handle, (void*)(level?.Handle ?? 0));
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_2c557f6b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Level _getLevel()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->C3.hs_method_202cf716((void*)__hosihikari_shim_handle), false);
+    }
+
+    public void _onActorHitBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a4f70f9c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorHitEntity(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1715d31e((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorHurt(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_20fe5cd4((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorRemoved(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_14843ee9((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptChatSendBeforeEvent>' is not supported.", false)]
+    public nint _onBeforeChat(nint chatEvent, nint player) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptChatSendBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseBeforeEvent>' is not supported.", false)]
+    public nint _onBeforeItemUse(nint player, nint itemEvent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseBeforeEvent>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseOnBeforeEvent>' is not supported.", false)]
+    public nint _onBeforeItemUseOn(nint player, nint itemEvent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseOnBeforeEvent>' is not supported.");
+
+    public void _onDataDrivenActorEventSend(global::Hosihikari.Bindings.Abi.SharedHandle? dataDrivenActorEventSend)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d261832e((void*)__hosihikari_shim_handle, dataDrivenActorEventSend?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemCompleteUse(global::Hosihikari.Bindings.Abi.SharedHandle? itemEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_df0440ed((void*)__hosihikari_shim_handle, itemEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemReleaseUse(global::Hosihikari.Bindings.Abi.SharedHandle? itemEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_78baca63((void*)__hosihikari_shim_handle, itemEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemStartUse(global::Hosihikari.Bindings.Abi.SharedHandle? itemEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8b25d5d6((void*)__hosihikari_shim_handle, itemEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemStopUse(global::Hosihikari.Bindings.Abi.SharedHandle? itemEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5cd74e31((void*)__hosihikari_shim_handle, itemEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemUseOn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_7e0c7138((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerJoin(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d5e062ef((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerLeave(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8d0b79e1((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onWeatherChanged(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0e3b44fd((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onWorldInitialize(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_38301daf((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForIScriptWorldAfterEvents() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForIScriptWorldBeforeEvents() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ScriptV010Events Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_99c64d9b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptV010Events((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static ScriptV010Events Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public static ScriptV010Events Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.WeakLifetimeScope arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level? arg1)
+    public static ScriptV010Events Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptV010Events arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_8a92ae70((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->C3.hs_create_cef95de8((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,9 +173,9 @@ public sealed unsafe partial class ScriptV010Events : global::System.IDisposable
         return new ScriptV010Events((nint)handle);
     }
 
-    public static ScriptV010Events Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptV010Events arg0)
+    public static ScriptV010Events Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.Level? level)
     {
-        var handle = NativeMethods.TablePtr->hs_create_cef95de8((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_468be9a8((void*)scope.Handle, (void*)(level?.Handle ?? 0));
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,126 +184,253 @@ public sealed unsafe partial class ScriptV010Events : global::System.IDisposable
         return new ScriptV010Events((nint)handle);
     }
 
-    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleBindingBuilder arg0)
+    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder moduleBuilder)
     {
-        NativeMethods.TablePtr->hs_method_f0c5f31c((void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_c5611c1a((void*)moduleBuilder.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Level getLevel()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->hs_method_eccc3d28((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->C3.hs_method_3a39f1de((void*)__hosihikari_shim_handle), false);
     }
 
-    public void onActorCreated(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBeforeChatSignal_Address
     {
-        NativeMethods.TablePtr->hs_method_73225109((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8572e661((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorHitBlock(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDataDrivenEntityEventSend_Address
     {
-        NativeMethods.TablePtr->hs_method_6840cacd((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fc08d9d2((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorHitEntity(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityCreateSignal_Address
     {
-        NativeMethods.TablePtr->hs_method_2812cc9d((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d89519c3((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorHurt(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityHitSignal_Address
     {
-        NativeMethods.TablePtr->hs_method_2a2d066d((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8f3cf8f0((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorRemoved(nint arg0, nint arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityHurtSignal_Address
     {
-        NativeMethods.TablePtr->hs_method_aa544d0e((void*)_handle, (void*)arg0, (void*)arg1);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4a8a5e21((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mGlobalEventListeners
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_67d1571d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_67d1571d((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b94d946b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemBeforeUseEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4d4454fd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemBeforeUseOnEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2b63428f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemCompleteChargeEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_04983f14((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemReleaseChargeEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3e48680c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemStartChargeEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_10259f1c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemStopChargeEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fa7d9d7a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemUseOnEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f73b2568((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2964e4ff((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerJoinEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dd8ad9ec((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerLeaveEventSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e82ff67a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_51cb46d0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTickSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_620dcad7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWeatherChangeSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9aaece1a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWorldInitializeSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f79e0bcc((void*)__hosihikari_shim_handle);
+    }
+
+    public void onActorCreated(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_73015c13((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onActorHitBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5008f879((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onActorHitEntity(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_25ea2d84((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onActorHurt(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_af7a9096((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onActorRemoved(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0447a199((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptChatSendBeforeEvent>' is not supported.", false)]
-    public nint onBeforeChat(nint arg0, nint arg1) =>
+    public nint onBeforeChat(nint chatEvent, nint player) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptChatSendBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseBeforeEvent>' is not supported.", false)]
-    public nint onBeforeItemUse(nint arg0, nint arg1) =>
+    public nint onBeforeItemUse(nint player, nint itemEvent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseBeforeEvent>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseOnBeforeEvent>' is not supported.", false)]
-    public nint onBeforeItemUseOn(nint arg0, nint arg1) =>
+    public nint onBeforeItemUseOn(nint player, nint itemEvent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemUseOnBeforeEvent>' is not supported.");
 
-    public void onDataDrivenActorEventSend(nint arg0)
+    public void onDataDrivenActorEventSend(global::Hosihikari.Bindings.Abi.SharedHandle? dataDrivenActorEventSend)
     {
-        NativeMethods.TablePtr->hs_method_03b4dae1((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_4c00ca17((void*)__hosihikari_shim_handle, dataDrivenActorEventSend?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemCompleteUse(nint arg0)
+    public void onItemCompleteUse(global::Hosihikari.Bindings.Abi.SharedHandle? itemEvent)
     {
-        NativeMethods.TablePtr->hs_method_e40fb6ce((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_ed46c36e((void*)__hosihikari_shim_handle, itemEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemReleaseUse(nint arg0)
+    public void onItemReleaseUse(global::Hosihikari.Bindings.Abi.SharedHandle? itemEvent)
     {
-        NativeMethods.TablePtr->hs_method_bb048662((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_07dc5b4d((void*)__hosihikari_shim_handle, itemEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemStartUse(nint arg0)
+    public void onItemStartUse(global::Hosihikari.Bindings.Abi.SharedHandle? itemEvent)
     {
-        NativeMethods.TablePtr->hs_method_4787d843((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_f9d81abb((void*)__hosihikari_shim_handle, itemEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemStopUse(nint arg0)
+    public void onItemStopUse(global::Hosihikari.Bindings.Abi.SharedHandle? itemEvent)
     {
-        NativeMethods.TablePtr->hs_method_61bdfa00((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_c6be898f((void*)__hosihikari_shim_handle, itemEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemUseOn(nint arg0)
+    public void onItemUseOn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_602c229b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_a0b9f347((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerJoin(nint arg0)
+    public void onPlayerJoin(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_95f52b29((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_50ca6a04((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerLeave(nint arg0)
+    public void onPlayerLeave(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_f2dc0c45((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_c8d86a37((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onWeatherChanged(nint arg0)
+    public void onWeatherChanged(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_f2a57de0((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_9d578fa9((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onWorldInitialize(nint arg0)
+    public void onWorldInitialize(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_3ddd8989((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_c135a9e0((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_c97338ca(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_888da329(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptV010Events operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptV010Events arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptV010Events((nint)NativeMethods.TablePtr->C3.hs_method_888da329((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::TypedObjectHandle<ScriptModuleMinecraft::ScriptV010Events>' is not a known bindable declaration.", false)]
-    public void registerListener(nint arg0) =>
+    public void registerListener(nint handle, nint globalEventListeners) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::TypedObjectHandle<ScriptModuleMinecraft::ScriptV010Events>' is not a known bindable declaration.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_3778df7e((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_3778df7e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

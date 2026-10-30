@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum PathCompletionType : sbyte
+public enum PathCompletionType : byte
 {
     Empty = 0,
     Partial = 1,

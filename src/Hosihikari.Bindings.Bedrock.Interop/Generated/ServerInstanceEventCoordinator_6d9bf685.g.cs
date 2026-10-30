@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerInstanceEventCoordinator : global::System.IDisposable
+public sealed unsafe partial class ServerInstanceEventCoordinator
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerInstanceEventCoordinator(nint handle) : this(handle, true) { }
 
     internal ServerInstanceEventCoordinator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerInstanceEventCoordinator Borrow(nint handle) => new ServerInstanceEventCoordinator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,88 +33,56 @@ public sealed unsafe partial class ServerInstanceEventCoordinator : global::Syst
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerInstanceEventCoordinator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerInstanceEventCoordinator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void registerServerInstanceEventHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void sendEvent(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventsToProcess_Address
     {
-        NativeMethods.TablePtr->hs_method_2c10b8ad((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_75b35813((void*)__hosihikari_shim_handle);
     }
 
-    public void sendServerInitializeEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    public bool mHasPendingRegistrations
     {
-        NativeMethods.TablePtr->hs_method_774df73b((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_395e37dd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_395e37dd((void*)__hosihikari_shim_handle, value);
     }
 
-    public void sendServerInitializeStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListeners_Address
     {
-        NativeMethods.TablePtr->hs_method_f5eba15c((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2d04c362((void*)__hosihikari_shim_handle);
     }
 
-    public void sendServerLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingRegistrations_Address
     {
-        NativeMethods.TablePtr->hs_method_4df13e34((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1f8bee70((void*)__hosihikari_shim_handle);
     }
 
-    public void sendServerMinecraftInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0, nint arg1)
+    public uint mThreadCheckIndex
     {
-        NativeMethods.TablePtr->hs_method_b6f2314f((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        get => NativeMethods.TablePtr->C3.hs_get_7f20ca08((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7f20ca08((void*)__hosihikari_shim_handle, value);
     }
 
-    public void sendServerThreadStarted(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mThreadId_Address
     {
-        NativeMethods.TablePtr->hs_method_82c2841a((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cfe6b3ae((void*)__hosihikari_shim_handle);
     }
 
-    public void sendServerThreadStopped(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    public bool mThreadIdInitialized
     {
-        NativeMethods.TablePtr->hs_method_a20c883a((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_be129c13((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_be129c13((void*)__hosihikari_shim_handle, value);
     }
 
-    public void sendServerUpdateEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerInstanceEventHandler_Address
     {
-        NativeMethods.TablePtr->hs_method_fa574484((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void sendServerUpdateStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
-    {
-        NativeMethods.TablePtr->hs_method_95446f3c((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void sendStartLeaveGame(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
-    {
-        NativeMethods.TablePtr->hs_method_6bb9d2e6((void*)_handle, (void*)arg0.Handle);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_6d9bf685((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_aa8c6798((void*)__hosihikari_shim_handle);
     }
 }

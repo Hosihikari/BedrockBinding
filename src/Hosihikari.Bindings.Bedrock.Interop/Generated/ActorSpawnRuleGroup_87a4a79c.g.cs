@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorSpawnRuleGroup(nint handle) : this(handle, true) { }
 
     internal ActorSpawnRuleGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorSpawnRuleGroup Borrow(nint handle) => new ActorSpawnRuleGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,20 +33,19 @@ public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSpawnDelayStartMap_Address
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider registries, nint spawnPlacements, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, nint linkedAssetValidator, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c75c8947((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_4bda669e((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle, (void*)registries.Handle, (void*)spawnPlacements, (void*)ctx.Handle, (void*)linkedAssetValidator, (void*)experiments.Handle, (void*)eventing.Handle);
     }
 
-    public static ActorSpawnRuleGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg1)
+    public static ActorSpawnRuleGroup Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_a4b1810f((void*)arg0.Handle, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_30abf617();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,14 +54,36 @@ public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposa
         return new ActorSpawnRuleGroup((nint)handle);
     }
 
-    public int getActorSpawnPool(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0)
+    public static ActorSpawnRuleGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider registries, nint spawnPlacements, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, nint linkedAssetValidator, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
     {
-        return NativeMethods.TablePtr->hs_method_f9c722b7((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_3c23e21c((void*)resourcePackManager.Handle, (void*)registries.Handle, (void*)spawnPlacements, (void*)ctx.Handle, (void*)linkedAssetValidator, (void*)experiments.Handle, (void*)eventing.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorSpawnRuleGroup((nint)handle);
     }
 
-    public int getDelayEnd(string arg0)
+    public static ActorSpawnRuleGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup arg0)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var handle = NativeMethods.TablePtr->C0.hs_create_4318e975((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorSpawnRuleGroup((nint)handle);
+    }
+
+    public int getActorSpawnPool(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier id)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ddb2a1b1((void*)__hosihikari_shim_handle, (void*)id.Handle);
+    }
+
+    public int getDelayEnd(string id)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(id);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -72,37 +93,51 @@ public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposa
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_141a8ba1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C0.hs_method_d484de81((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void offSetDelayByCurrentTick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCategoryLookup_Address
     {
-        NativeMethods.TablePtr->hs_method_dcb073ae((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_150d46f3((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void readResourceFiles_e0ac98af(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventing_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d6e1cf90((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void resetDelayEnd(nint arg0, ulong arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpawnDelayStartMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_43dfca8f((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup((nint)NativeMethods.TablePtr->C0.hs_method_8b3b623b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public void resetDelayEnd(nint spawnRules, ulong age, nint random) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_87a4a79c((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_87a4a79c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

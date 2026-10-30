@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-public sealed unsafe partial class RegistryManager
+public sealed unsafe partial class RegistryManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RegistryManager(nint handle) : this(handle, true) { }
 
     internal RegistryManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RegistryManager Borrow(nint handle) => new RegistryManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,64 @@ public sealed unsafe partial class RegistryManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RegistryManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RegistryManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.LifetimeRegistry? createLifetimeRegistry()
+    public static RegistryManager Create()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_97389df1((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.LifetimeRegistry((nint)__hs_handle) : null;
+        var handle = NativeMethods.TablePtr->C3.hs_create_b9ac2f00();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RegistryManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public nint getRegistryByContextId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
+    public static RegistryManager Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.RegistryManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_94a37ea6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new RegistryManager((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Scripting::LifetimeRegistry' has no accessible destructor.", false)]
+    public nint createLifetimeRegistry() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Scripting::LifetimeRegistry' has no accessible destructor.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk15b833_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8698b715((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfe9f34_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0a87ecc9((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.RegistryManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.RegistryManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.RegistryManager((nint)NativeMethods.TablePtr->C3.hs_method_32e9983f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_16026ea1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ShiftedValueAmplifier
+public sealed unsafe partial class ShiftedValueAmplifier : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ShiftedValueAmplifier(nint handle) : this(handle, true) { }
 
     internal ShiftedValueAmplifier(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ShiftedValueAmplifier Borrow(nint handle) => new ShiftedValueAmplifier(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,48 @@ public sealed unsafe partial class ShiftedValueAmplifier
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ShiftedValueAmplifier Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ShiftedValueAmplifier Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float getAmount(int arg0, float arg1)
+    public float _getAmount(int amplification, float scale)
     {
-        return NativeMethods.TablePtr->hs_method_22a1fba0((void*)_handle, arg0, arg1);
+        return NativeMethods.TablePtr->C3.hs_method_06f5abce((void*)__hosihikari_shim_handle, amplification, scale);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public float getAmount(int amplification, float scale)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b039900c((void*)__hosihikari_shim_handle, amplification, scale);
+    }
+
+    public float mScalar
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_7e8d370a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7e8d370a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mShiftedValue
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_bb2d5bef((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_bb2d5bef((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_d57a9e77((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

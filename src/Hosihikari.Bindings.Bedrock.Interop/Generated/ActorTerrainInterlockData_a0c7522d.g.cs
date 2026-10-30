@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorTerrainInterlockData
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorTerrainInterlockData(nint handle) : this(handle, true) { }
 
     internal ActorTerrainInterlockData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorTerrainInterlockData Borrow(nint handle) => new ActorTerrainInterlockData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,26 @@ public sealed unsafe partial class ActorTerrainInterlockData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorTerrainInterlockData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorTerrainInterlockData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setCreationTime()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCreationTime_Address
     {
-        NativeMethods.TablePtr->hs_method_4642875d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_91e1e4dc((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mHasBeenDelayedDeleted
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_804bab4d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_804bab4d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mRenderVisibilityState
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_a9e11071((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a9e11071((void*)__hosihikari_shim_handle, value);
     }
 }

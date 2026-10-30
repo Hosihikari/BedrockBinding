@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Puv.@internal;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LoaderBase
+public sealed unsafe partial class LoaderBase : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LoaderBase(nint handle) : this(handle, true) { }
 
     internal LoaderBase(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LoaderBase Borrow(nint handle) => new LoaderBase(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,73 @@ public sealed partial class LoaderBase
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LoaderBase Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LoaderBase Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_905461d1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LoaderBase Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new LoaderBase((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static LoaderBase Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.LoaderBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_dfc0f64e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoaderBase((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Puv.LoadResultAny doLoad(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Input input, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion parserVersion, byte contextArea)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.LoadResultAny((nint)NativeMethods.TablePtr->C2.hs_method_247d617b((void*)__hosihikari_shim_handle, (void*)input.Handle, (void*)parserVersion.Handle, contextArea));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8c6785_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9d094745((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkeaa9c8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f1977616((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.LoaderBase operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.LoaderBase arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.LoaderBase((nint)NativeMethods.TablePtr->C2.hs_method_08ffbc38((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void registerParser(nint arg0) =>
+    public void registerParser(nint parser) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void registerUpgrader(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'Puv::UpgraderBase' has no generated wrapper.", false)]
+    public void registerUpgrader(nint upgrader) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'Puv::UpgraderBase' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_97572fda((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

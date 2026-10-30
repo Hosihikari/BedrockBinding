@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class GameEventListenerRegistry
+public sealed unsafe partial class GameEventListenerRegistry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameEventListenerRegistry(nint handle) : this(handle, true) { }
 
     internal GameEventListenerRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameEventListenerRegistry Borrow(nint handle) => new GameEventListenerRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,18 @@ public sealed partial class GameEventListenerRegistry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameEventListenerRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_76b88ec2((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameEventListenerRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint registerListener_eb67e447(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void (void)>>' is not supported.", false)]
-    public nint registerListener_ac9ce49f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void (void)>>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void ()>>' is not supported.", false)]
+    public nint registerListener(nint gameEventListener) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void ()>>' is not supported.");
 }

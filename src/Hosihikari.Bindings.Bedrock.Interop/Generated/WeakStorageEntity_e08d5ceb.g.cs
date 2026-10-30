@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WeakStorageEntity
+public sealed unsafe partial class WeakStorageEntity : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WeakStorageEntity(nint handle) : this(handle, true) { }
 
     internal WeakStorageEntity(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WeakStorageEntity Borrow(nint handle) => new WeakStorageEntity(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,32 +33,68 @@ public sealed unsafe partial class WeakStorageEntity
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WeakStorageEntity Create_7bc6342e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static WeakStorageEntity Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_d10c6967();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WeakStorageEntity((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static WeakStorageEntity Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static WeakStorageEntity Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakStorageEntity arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7bc6342e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WeakStorageEntity((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e39b8c75((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e39b8c75((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d72eb904((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d72eb904((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint w) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WeakStorageEntity operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WeakStorageEntity arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WeakStorageEntity((nint)NativeMethods.TablePtr->C4.hs_method_e05d2daa((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_e08d5ceb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -2,9 +2,13 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ScriptActorLifetimeState : int
 {
+    Instantiated = 0,
+    Loading = 1,
+    Loaded = 2,
+    Removed = 3,
+    Unloaded = 4,
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorDamageByBlockSource : global::System.IDisposable
+public sealed unsafe partial class ActorDamageByBlockSource
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorDamageByBlockSource(nint handle) : this(handle, true) { }
 
     internal ActorDamageByBlockSource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorDamageByBlockSource Borrow(nint handle) => new ActorDamageByBlockSource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,57 @@ public sealed unsafe partial class ActorDamageByBlockSource : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ActorDamageByBlockSource Create(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, int arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_2139fc41((void*)arg0.Handle, arg1);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __getDeathMessageInternal(nint deadName, nint dead) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.");
 
-        return new ActorDamageByBlockSource((nint)handle);
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ActorDamageSource' has no accessible destructor.", false)]
+    public nint _clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ActorDamageSource' has no accessible destructor.");
+
+    public bool _isBlockSource()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_2854fae9((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource? clone()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_71681353((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource((nint)__hs_handle) : null;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getDeathMessageInternal(nint deadName, nint dead) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDeathMessage(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ActorDamageSource' has no accessible destructor.", false)]
+    public nint clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ActorDamageSource' has no accessible destructor.");
 
     public bool isBlockSource()
     {
-        return NativeMethods.TablePtr->hs_method_f01c328f((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_29d37318((void*)__hosihikari_shim_handle) != 0;
     }
 
     public nint mBlock
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f2fd277e((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f2fd277e((void*)__hosihikari_shim_handle);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b690daa9((void*)__hosihikari_shim_handle);
+    }
 
     public int mCause
     {
-        get => NativeMethods.TablePtr->hs_get_ea5d13e2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ea5d13e2((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_ea5d13e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_ea5d13e2((void*)__hosihikari_shim_handle, value);
     }
 
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeathMessageOverride_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0d0ac260((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7c0c9b83((void*)__hosihikari_shim_handle);
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Biome : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Biome(nint handle) : this(handle, true) { }
 
     internal Biome(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Biome Borrow(nint handle) => new Biome(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,33 @@ public sealed unsafe partial class Biome : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string BACKCOMPAT_FOG_NAME
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BiomeIdType id, string name)
     {
-        get
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
         {
-            var view = NativeMethods.TablePtr->hs_get_b57054be();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C0.hs_method_582f2ac2((void*)__hosihikari_shim_handle, (void*)id.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Biome Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Biome Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static Biome Create(int arg0)
+    public static Biome Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_7b4a6548(arg0);
+        var handle = NativeMethods.TablePtr->C0.hs_create_951cac8d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,201 +68,183 @@ public sealed unsafe partial class Biome : global::System.IDisposable
         return new Biome((nint)handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_FOG_COLOR
+    public static Biome Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeIdType id, string name)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_9d8ecec4(), false);
-    }
-
-    public static string DEFAULT_FOG_ID
-    {
-        get
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
         {
-            var view = NativeMethods.TablePtr->hs_get_6c566732();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var handle = NativeMethods.TablePtr->C0.hs_create_2fe971fa((void*)id.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new Biome((nint)handle);
         }
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_UNDERWATER_COLOR
+    public static void buildCachedTemperatureNoise(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_cc89276e(), false);
+        NativeMethods.TablePtr->C0.hs_method_e1917290((void*)chunk.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_WATER_COLOR
+    public float getTemperature(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_9dec6d98(), false);
+        return NativeMethods.TablePtr->C0.hs_method_ddeed90b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
     }
 
-    public static float RAIN_TEMP_THRESHOLD
+    public float mAshDensity
     {
-        get => NativeMethods.TablePtr->hs_get_6639a00f();
+        get => NativeMethods.TablePtr->C0.hs_get_22b29d22((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_22b29d22((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint addTag(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
-
-    public static void buildCachedTemperatureNoise(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeComponentStorage_Address
     {
-        NativeMethods.TablePtr->hs_method_c6c2822b((void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_364204f0((void*)__hosihikari_shim_handle);
     }
 
-    public void cacheClientComponentData()
+    public float mBlueSporeDensity
     {
-        NativeMethods.TablePtr->hs_method_03074b01((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_4376c36d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_4376c36d((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool canHaveSnowfall(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public float mDepth
     {
-        return NativeMethods.TablePtr->hs_method_f82a38d8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_bba709d8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_bba709d8((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getBiomeType()
+    public float mDownfall
     {
-        return NativeMethods.TablePtr->hs_method_aae5981b((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_c7786654((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_c7786654((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getBirchFoliageColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnvironmentAttributes_Address
     {
-        return NativeMethods.TablePtr->hs_method_1d76f04e((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_56fefcfa((void*)__hosihikari_shim_handle);
     }
 
-    public float getDefaultBiomeTemperature()
+    public float mFoliageSnow
     {
-        return NativeMethods.TablePtr->hs_method_c6e07881((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_0a2872dd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_0a2872dd((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getDownfall()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHash_Address
     {
-        return NativeMethods.TablePtr->hs_method_55907b2e((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_04df475b((void*)__hosihikari_shim_handle);
     }
 
-    public int getEvergreenFoliageColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
     {
-        return NativeMethods.TablePtr->hs_method_73aa55cf((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_374266fd((void*)__hosihikari_shim_handle);
     }
 
-    public int getFoliageColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public int mMapWaterColor
     {
-        return NativeMethods.TablePtr->hs_method_8658b0b0((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_0a64a047((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_0a64a047((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getMapBirchFoliageColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public float mMapWaterTransparency
     {
-        return NativeMethods.TablePtr->hs_method_2f99f3be((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_93eb6e32((void*)__hosihikari_shim_handle);
     }
 
-    public int getMapEvergreenFoliageColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public float mMaxSnowLevel
     {
-        return NativeMethods.TablePtr->hs_method_8d0f4237((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_a55a5434((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a55a5434((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getMapFoliageColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public float mMinSnowLevel
     {
-        return NativeMethods.TablePtr->hs_method_76d3dd03((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_d7dff32d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d7dff32d((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getMapGrassColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMobs_Address
     {
-        return NativeMethods.TablePtr->hs_method_d1c99350((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_05aefe0c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getMobs_381c3acb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getMobs_69d4f54f()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMobsMap_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_69d4f54f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3242bb15((void*)__hosihikari_shim_handle);
     }
 
-    public nint getMobsMutable_14a30965()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOceanRuinConfig_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_14a30965((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d140c8c5((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getMobsMutable_c7ccda97() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int getSnowAccumulationLayers()
+    public bool mRain
     {
-        return NativeMethods.TablePtr->hs_method_522342c2((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_59f0dfea((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_59f0dfea((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getTemperature(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public float mRedSporeDensity
     {
-        return NativeMethods.TablePtr->hs_method_3e04430b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_d391db38((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d391db38((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getTemperatureCategory_43d2d966() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public float getTemperatureWorldGen(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, short arg1)
+    public float mScale
     {
-        return NativeMethods.TablePtr->hs_method_d620151b((void*)_handle, (void*)arg0.Handle, arg1);
+        get => NativeMethods.TablePtr->C0.hs_get_701d2429((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_701d2429((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasTag(nint arg0, nint arg1)
+    public float mSnowAccumulation
     {
-        return NativeMethods.TablePtr->hs_method_4a7909e7((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_cf62e9d9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_cf62e9d9((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasTag(nint arg0)
+    public float mTemperature
     {
-        return NativeMethods.TablePtr->hs_method_21b825f3((void*)_handle, (void*)arg0) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_6015ab0b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_6015ab0b((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasTag(ulong arg0, nint arg1)
+    public float mWhiteAshDensity
     {
-        return NativeMethods.TablePtr->hs_method_541bb40e((void*)_handle, arg0, (void*)arg1) != 0;
-    }
-
-    public bool isHumid()
-    {
-        return NativeMethods.TablePtr->hs_method_b929ce76((void*)_handle) != 0;
-    }
-
-    public bool isSnowCovered()
-    {
-        return NativeMethods.TablePtr->hs_method_f6d390dd((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome setMapWaterColor(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)NativeMethods.TablePtr->hs_method_5b381342((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome setNoRain()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)NativeMethods.TablePtr->hs_method_8e58eeea((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome setOceanRuinConfig(nint arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)NativeMethods.TablePtr->hs_method_4c3ae1c2((void*)_handle, (void*)arg0), false);
-    }
-
-    public void writePacketData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_c0da01a2((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        get => NativeMethods.TablePtr->C0.hs_get_5992d005((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_5992d005((void*)__hosihikari_shim_handle, value);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_59202f34((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_59202f34((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

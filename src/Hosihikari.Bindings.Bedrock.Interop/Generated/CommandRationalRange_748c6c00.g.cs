@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandRationalRange
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandRationalRange(nint handle) : this(handle, true) { }
 
     internal CommandRationalRange(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandRationalRange Borrow(nint handle) => new CommandRationalRange(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,68 +33,55 @@ public sealed unsafe partial class CommandRationalRange
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CommandRationalRange Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandRationalRange Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CommandRationalRange Create(float arg0, float arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CommandRationalRange Create(int arg0, int arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandRationalRange' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint changeToValueType(nint arg0) =>
+    public nint changeToValueType(nint valueType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandRationalRange' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
-    public nint getMaxValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
-    public nint getMinValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
-
-    public bool hasBoundType(nint arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_99d2e7af((void*)_handle, (void*)arg0) != 0;
-    }
-
-    public bool isOfValueType_18b6697a(nint arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_18b6697a((void*)_handle, (void*)arg0) != 0;
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool isWithinRange(nint arg0) =>
+    public bool isWithinRange(nint value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void resetToValueType(nint arg0)
+    public byte mBoundType
     {
-        NativeMethods.TablePtr->hs_method_c4f20020((void*)_handle, (void*)arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_b928dc79((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b928dc79((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setInvert(bool arg0)
+    public bool mInclusive
     {
-        NativeMethods.TablePtr->hs_method_2f545a76((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_49bdd759((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_49bdd759((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mInvert
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3d2549b4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_3d2549b4((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bef95896((void*)__hosihikari_shim_handle);
+    }
+
+    public int mValueType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_8639ad1b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_8639ad1b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void setInvert(bool val)
+    {
+        NativeMethods.TablePtr->C0.hs_method_2f545a76((void*)__hosihikari_shim_handle, val);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setValue(nint arg0, nint arg1) =>
+    public void setValue(nint value, nint type) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 }

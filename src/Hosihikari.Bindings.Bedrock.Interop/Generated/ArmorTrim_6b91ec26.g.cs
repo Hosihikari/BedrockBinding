@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ArmorTrim
+public sealed unsafe partial class ArmorTrim : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ArmorTrim(nint handle) : this(handle, true) { }
 
     internal ArmorTrim(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ArmorTrim Borrow(nint handle) => new ArmorTrim(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,108 +33,95 @@ public sealed unsafe partial class ArmorTrim
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ArmorTrim Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint patternId, nint materialId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ArmorTrim Create_f6c321d8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ArmorTrim Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ArmorTrim Create_11b0410d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static string TAG_TRIM
+    public void _dtor()
     {
-        get
+        NativeMethods.TablePtr->C0.hs_method_b11006c3((void*)__hosihikari_shim_handle);
+    }
+
+    public static ArmorTrim Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9a2b8ba8();
+        if (handle == null)
         {
-            var view = NativeMethods.TablePtr->hs_get_d9929d20();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
+
+        return new ArmorTrim((nint)handle);
     }
 
-    public static string TAG_TRIM_MATERIAL
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static ArmorTrim Create(nint patternId, nint materialId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public static string TAG_TRIM()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_4c47886a();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_e7e43ff9();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string TAG_TRIM_PATTERN
+    public static string TAG_TRIM_MATERIAL()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_50c5af60();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_d53bd3f0();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string UPGRADE_DESCRIPTION
+    public static string TAG_TRIM_PATTERN()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_15cdc53e();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_3daba2cd();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string UPGRADE_DESCRIPTION_FORMAT
+    public static string WRONG_VERSION_OR_ITEM_ERROR()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_b30d1c75();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_c590bc53();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string WRONG_VERSION_OR_ITEM_ERROR
+    public static void appendUpgradeHoverText(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase stack, global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString hovertext)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_a15a5134();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static void appendUpgradeHoverText(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getMaterialId()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_47a3d01f((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getPatternId()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_92b85d2e((void*)_handle), false);
+        NativeMethods.TablePtr->C0.hs_method_08954a1f((void*)stack.Handle, (void*)level.Handle, (void*)hovertext.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ArmorTrim' is not supported.", false)]
-    public static nint getTrim(nint arg0) =>
+    public static nint getTrim(nint instance) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'ArmorTrim' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMaterialId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c060c77d((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static void setTrim(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPatternId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b0811a84((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_afb89774() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static void setTrim(nint instance, nint trim) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6b91ec26((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

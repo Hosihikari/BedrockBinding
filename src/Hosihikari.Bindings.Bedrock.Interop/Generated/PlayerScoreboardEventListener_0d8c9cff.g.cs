@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerScoreboardEventListener : global::System.IDisposable
+public sealed unsafe partial class PlayerScoreboardEventListener
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerScoreboardEventListener(nint handle) : this(handle, true) { }
 
     internal PlayerScoreboardEventListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerScoreboardEventListener Borrow(nint handle) => new PlayerScoreboardEventListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,14 @@ public sealed unsafe partial class PlayerScoreboardEventListener : global::Syste
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static PlayerScoreboardEventListener Create()
+    public int _onScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, string objective, int score)
     {
-        var handle = NativeMethods.TablePtr->hs_create_8e7f495c();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PlayerScoreboardEventListener((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerScoreboardEventListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.SubscribedObjectives getPlayerSubscriptions(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SubscribedObjectives((nint)NativeMethods.TablePtr->hs_method_55dd2cfe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
-    }
-
-    public int onScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, string arg1, int arg2)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -70,33 +50,40 @@ public sealed unsafe partial class PlayerScoreboardEventListener : global::Syste
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_279f3f44((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+            return NativeMethods.TablePtr->C2.hs_method_12409c1e((void*)__hosihikari_shim_handle, (void*)id.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, score);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removePlayerSubscriptions(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SubscribedObjectives getPlayerSubscriptions(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_d943444c((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SubscribedObjectives((nint)NativeMethods.TablePtr->C2.hs_method_f2333362((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)player.Handle), false);
     }
 
-
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubscribedObjectives_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0d8c9cff((void*)_handle);
-            }
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0bb2cb7a((void*)__hosihikari_shim_handle);
+    }
 
-            _handle = 0;
+    public int onScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, string objective, int score)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_c1a0c58c((void*)__hosihikari_shim_handle, (void*)id.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, score);
         }
     }
 }

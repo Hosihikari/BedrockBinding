@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-public sealed unsafe partial class FileOpenMode
+public sealed unsafe partial class FileOpenMode : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FileOpenMode(nint handle) : this(handle, true) { }
 
     internal FileOpenMode(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FileOpenMode Borrow(nint handle) => new FileOpenMode(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,132 @@ public sealed unsafe partial class FileOpenMode
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileOpenMode Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(int openMode)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_e2a9cc4a((void*)__hosihikari_shim_handle, openMode);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FileOpenMode Create_6b7309e4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static FileOpenMode Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_80d0f064();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileOpenMode Create_b904854f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new FileOpenMode((nint)handle);
+    }
+
+    public static FileOpenMode Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b904854f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileOpenMode((nint)handle);
+    }
+
+    public static FileOpenMode Create(int openMode)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_83046001(openMode);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileOpenMode((nint)handle);
+    }
 
     public nint cModeWide()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ec2fbc32((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_0c013d23((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnk379bb9
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnk7357bd
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnk7660af
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnk8dc531
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnkac531a
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnkb28032
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnkd21c33
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnke8464a
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mUnkf14fe5
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode((nint)NativeMethods.TablePtr->C0.hs_method_765086b3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2bf98a87((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

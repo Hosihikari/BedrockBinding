@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelChunkGarbageCollector : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelChunkGarbageCollector(nint handle) : this(handle, true) { }
 
     internal LevelChunkGarbageCollector(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelChunkGarbageCollector Borrow(nint handle) => new LevelChunkGarbageCollector(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,14 @@ public sealed unsafe partial class LevelChunkGarbageCollector : global::System.I
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkGarbageCollector Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static LevelChunkGarbageCollector Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
+    public static LevelChunkGarbageCollector Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_2be5cd94((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_10303fb5();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,30 +49,65 @@ public sealed unsafe partial class LevelChunkGarbageCollector : global::System.I
         return new LevelChunkGarbageCollector((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkGarbageCollector Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public ulong getPendingDeletesCount()
+    public static LevelChunkGarbageCollector Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector arg0)
     {
-        return NativeMethods.TablePtr->hs_method_cad00e16((void*)_handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_93f30aac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkGarbageCollector((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void acquireDiscardedChunk(nint discarded) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    public void flush()
+    {
+        NativeMethods.TablePtr->C1.hs_method_e5b5423a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimension_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_daae2370((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelChunksToDiscard_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e64145d9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0a9a2af8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingDeletes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bc094eea((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector((nint)NativeMethods.TablePtr->C1.hs_method_2524c2fd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_cb5d5a79((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_cb5d5a79((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

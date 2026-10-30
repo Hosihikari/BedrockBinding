@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Zombie_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ZombieType : int
 {
+    Default = 0,
+    Villager = 1,
+    Husk = 2,
+    PigZombie = 3,
+    Drowned = 4,
 }

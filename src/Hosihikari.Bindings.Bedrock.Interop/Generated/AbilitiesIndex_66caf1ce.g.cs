@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum AbilitiesIndex : short
+public enum AbilitiesIndex : sbyte
 {
     Invalid = -1,
     Build = 0,
@@ -26,5 +26,6 @@ public enum AbilitiesIndex : short
     WorldBuilder = 16,
     NoClip = 17,
     PrivilegedBuilder = 18,
-    AbilityCount = 19,
+    VerticalFlySpeed = 19,
+    AbilityCount = 20,
 }

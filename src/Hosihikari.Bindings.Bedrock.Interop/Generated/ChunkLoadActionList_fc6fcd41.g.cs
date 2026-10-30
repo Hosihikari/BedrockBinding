@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkLoadActionList
+public sealed unsafe partial class ChunkLoadActionList : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkLoadActionList(nint handle) : this(handle, true) { }
 
     internal ChunkLoadActionList(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkLoadActionList Borrow(nint handle) => new ChunkLoadActionList(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,94 +33,115 @@ public sealed unsafe partial class ChunkLoadActionList
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChunkLoadActionList Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkLoadActionList Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_af773ef5((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.", false)]
-    public void addChunkLoadedRequest(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public void _addChunkLoadedRequest(nint chunkLoadedRequest, nint dimensionPrefix, nint chunksLoadedStatus, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.");
-
-    public void loadRequests(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.ICommandOriginLoader arg1, string arg2)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_8fe5d71e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
-        }
-    }
-
-    public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg3, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg4)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_ba392385((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle, (void*)arg4.Handle);
-        }
-    }
-
-    public void onStaticTickingAreaAdded(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg3)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_0ea9e83b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.", false)]
-    public nint queueRequestOrExecuteAction(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public void _addChunkLoadedRequestToTickingList(nint chunkLoadedRequest, nint dimensionPrefix, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.");
 
-    public void tickRequests(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1)
+    public int _clearRequest(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.IRequestAction? actionToRemove, string tickingAreaName)
     {
-        NativeMethods.TablePtr->hs_method_a554bd6b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(tickingAreaName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tickingAreaName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            return NativeMethods.TablePtr->C0.hs_method_d90ad3a0((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle, (void*)(actionToRemove?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_fdaa8099() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.", false)]
+    public void _loadRequests(nint storage, nint loader, nint dimensionPrefix, nint elementReg, nint type, nint unknownBlockTypeRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.");
+
+    public void _saveRequest(global::Hosihikari.Bindings.Bedrock.Interop.ChunkLoadedRequest request, string dimensionPrefix, byte chunkRequestListType, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionPrefix);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(dimensionPrefix, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C0.hs_method_1676b59b((void*)__hosihikari_shim_handle, (void*)request.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, chunkRequestListType, (void*)levelStorage.Handle);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _updateAsyncList(nint levelStorage, nint dimension, nint chunksLoadedCheckFunction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _updateTickingList(nint serverLevel, nint dimension, nint chunksLoadedCheckFunction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.", false)]
+    public void loadRequests(nint storage, nint loader, nint dimensionPrefix, nint type, nint elementReg, nint unknownBlockTypeRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkLoadedRequests_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_40c6aa16((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkLoadedRequestsWaitForTicking_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2cbd79a8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionDataSerializer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1decb285((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.", false)]
+    public nint queueRequestActionWithoutDuplicates(nint chunkLoadedRequest, nint serverLevel, nint dimension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.", false)]
+    public nint queueRequestOrExecuteAction(nint chunkLoadedRequest, nint serverLevel, nint dimension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_fc6fcd41((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

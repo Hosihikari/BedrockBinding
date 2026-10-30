@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum InHandUpdateType : int
+public enum InHandUpdateType : sbyte
 {
+    None = 0,
+    Update = 1,
+    Swap = 2,
 }

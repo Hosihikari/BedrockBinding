@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class PlainData
+public sealed unsafe partial class PlainData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlainData(nint handle) : this(handle, true) { }
 
     internal PlainData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlainData Borrow(nint handle) => new PlainData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,84 @@ public sealed partial class PlainData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static PlainData Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ac92439b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlainData((nint)handle);
+    }
+
+    public static PlainData Create(global::Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested.PlainData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3f168d59((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlainData((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1e75b0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_15f0a5d7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2dde30_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2c2061b9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk36ff99_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_35bfa4d3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7d8120_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9e993b6f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9a24f2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a29989bd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkad3962_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_72e674b1((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested.PlainData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested.PlainData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested.PlainData((nint)NativeMethods.TablePtr->C3.hs_method_9b2b2658((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_44cf7b7b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

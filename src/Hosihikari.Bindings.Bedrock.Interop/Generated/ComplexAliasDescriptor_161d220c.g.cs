@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ComplexAliasDescriptor : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ComplexAliasDescriptor(nint handle) : this(handle, true) { }
 
     internal ComplexAliasDescriptor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ComplexAliasDescriptor Borrow(nint handle) => new ComplexAliasDescriptor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,18 @@ public sealed unsafe partial class ComplexAliasDescriptor : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ComplexAliasDescriptor Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.", false)]
+    public nint _clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ComplexAliasDescriptor Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ComplexAliasDescriptor Create(string arg0)
+    public nint _ctor(string fullName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fullName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -58,10 +54,88 @@ public sealed unsafe partial class ComplexAliasDescriptor : global::System.IDisp
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(fullName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_c11d0cd2(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C0.hs_method_20f91b89((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public bool _forEachItemUntil(nint func) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public string _getFullName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_a34f5ceb((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public ulong _getHash()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_345ac698((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry _getItem()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->C0.hs_method_c83c8cb0((void*)__hosihikari_shim_handle));
+    }
+
+    public byte _getType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d6b190d7((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _sameItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry otherItem, bool arg1)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_dac15d6e((void*)__hosihikari_shim_handle, (void*)otherItem.Handle, arg1) != 0;
+    }
+
+    public bool _sameItems(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor otherDescriptor, bool compareAux)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b19ac8a4((void*)__hosihikari_shim_handle, (void*)otherDescriptor.Handle, compareAux) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'CompoundTag' is not supported.", false)]
+    public nint _save() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'CompoundTag' is not supported.");
+
+    public void _serialize(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
+    {
+        NativeMethods.TablePtr->C0.hs_method_87967c20((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _toMap() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    public static ComplexAliasDescriptor Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8e0ed52e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComplexAliasDescriptor((nint)handle);
+    }
+
+    public static ComplexAliasDescriptor Create(string fullName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fullName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fullName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C0.hs_create_01b9f241(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,87 +145,80 @@ public sealed unsafe partial class ComplexAliasDescriptor : global::System.IDisp
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor? clone()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_f27447a4((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor((nint)__hs_handle) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::unique_ptr<ComplexAliasDescriptor,std::default_delete<ComplexAliasDescriptor>>,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint deserialize_cd728973(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::unique_ptr<ComplexAliasDescriptor,std::default_delete<ComplexAliasDescriptor>>,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint deserialize_cdb83ff2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.", false)]
+    public nint clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool forEachItemUntil(nint arg0) =>
+    public bool forEachItemUntil(nint func) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public string getFullName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_611dfa9e((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_76be6071((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public ulong getHash()
     {
-        return NativeMethods.TablePtr->hs_method_6b91b0fb((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_9d26c201((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry getItem()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->hs_method_53525ac8((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->C0.hs_method_e49c2bd5((void*)__hosihikari_shim_handle));
     }
 
-    public sbyte getType()
+    public byte getType()
     {
-        return NativeMethods.TablePtr->hs_method_decae700((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_a849e27b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool sameItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry arg0, bool arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultItem_Address
     {
-        return NativeMethods.TablePtr->hs_method_595b9fd3((void*)_handle, (void*)arg0.Handle, arg1) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7af2bfc2((void*)__hosihikari_shim_handle);
     }
 
-    public bool sameItems(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor arg0, bool arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFullName_Address
     {
-        return NativeMethods.TablePtr->hs_method_cf62f66b((void*)_handle, (void*)arg0.Handle, arg1) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_40f2acd0((void*)__hosihikari_shim_handle);
+    }
+
+    public bool sameItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry otherItem, bool arg1)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f2c6c165((void*)__hosihikari_shim_handle, (void*)otherItem.Handle, arg1) != 0;
+    }
+
+    public bool sameItems(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor otherDescriptor, bool compareAux)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c6efff7b((void*)__hosihikari_shim_handle, (void*)otherDescriptor.Handle, compareAux) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'CompoundTag' is not supported.", false)]
     public nint save() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'CompoundTag' is not supported.");
 
-    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->hs_method_cc76480e((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_bdc4acf5((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint toMap_9010a743() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toMap_aa356a6b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint toMap() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_161d220c((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_161d220c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

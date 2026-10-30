@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested.ZipUtils;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core.ZipUtils;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ZipSettings
+public sealed unsafe partial class ZipSettings : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ZipSettings(nint handle) : this(handle, true) { }
 
     internal ZipSettings(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ZipSettings Borrow(nint handle) => new ZipSettings(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,69 @@ public sealed partial class ZipSettings
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ZipSettings Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_d08463b1((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ZipSettings Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int mCompressionLevel
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_70833725((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_70833725((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFileAccess_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e5d36b93((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f76171f2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPassword_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_873b6513((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRestrictions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_695937e7((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mSkipInaccessibleFiles
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_260df342((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_260df342((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mZip64
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_d522e24a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d522e24a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mZipDirectoryContents
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_23dbcb32((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_23dbcb32((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_caa96b0b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

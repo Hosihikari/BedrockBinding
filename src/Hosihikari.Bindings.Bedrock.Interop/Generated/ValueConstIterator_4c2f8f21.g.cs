@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Json_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Json;
 
 public sealed unsafe partial class ValueConstIterator
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ValueConstIterator(nint handle) : this(handle, true) { }
 
     internal ValueConstIterator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ValueConstIterator Borrow(nint handle) => new ValueConstIterator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,45 @@ public sealed unsafe partial class ValueConstIterator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void __autoclassinit2(ulong arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value operator_multiply()
     {
-        NativeMethods.TablePtr->hs_method_c5ac0c86((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C1.hs_method_d397ba9a((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_444f513d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator operator_operator__()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator((nint)NativeMethods.TablePtr->C1.hs_method_4740e90a((void*)__hosihikari_shim_handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Json::ValueConstIterator' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint operator_operator__(int arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Json::ValueConstIterator' requires --link-carrier or --virtual-dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIteratorBase other)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator((nint)NativeMethods.TablePtr->C1.hs_method_28b51496((void*)__hosihikari_shim_handle, (void*)other.Handle), false);
+    }
+
+    public bool isArray_
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_7d1e342b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_7d1e342b((void*)__hosihikari_shim_handle, value);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint current__Address
+    public nint array__Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ed584615((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f66fe9f1((void*)__hosihikari_shim_handle);
     }
 
-    public bool isNull_
+    // The native field type is not projected; this is the address of the field storage.
+    public nint map__Address
     {
-        get => NativeMethods.TablePtr->hs_get_9dcfed52((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_9dcfed52((void*)_handle, value);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4317238((void*)__hosihikari_shim_handle);
     }
 }

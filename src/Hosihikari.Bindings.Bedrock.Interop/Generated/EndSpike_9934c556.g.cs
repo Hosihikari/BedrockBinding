@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SpikeFeature_Nested;
 
-public sealed unsafe partial class EndSpike : global::System.IDisposable
+public sealed unsafe partial class EndSpike
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EndSpike(nint handle) : this(handle, true) { }
 
     internal EndSpike(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EndSpike Borrow(nint handle) => new EndSpike(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,39 @@ public sealed unsafe partial class EndSpike : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Dispose()
+    public int mCenterX
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_9934c556((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C3.hs_get_65d180d5((void*)__hosihikari_shim_handle);
+    }
 
-            _handle = 0;
-        }
+    public int mCenterZ
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a353900e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mGuarded
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_27cc0ee9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public int mHeight
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ed5bb2ba((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRadius
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_4ee006a5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTopBoundingBox_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_afb58cdd((void*)__hosihikari_shim_handle);
     }
 }

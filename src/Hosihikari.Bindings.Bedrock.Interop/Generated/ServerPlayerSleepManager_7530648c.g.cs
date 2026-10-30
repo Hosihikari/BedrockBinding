@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ServerPlayerSleepManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerPlayerSleepManager(nint handle) : this(handle, true) { }
 
     internal ServerPlayerSleepManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerPlayerSleepManager Borrow(nint handle) => new ServerPlayerSleepManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,131 @@ public sealed unsafe partial class ServerPlayerSleepManager : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerPlayerSleepManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerPlayerSleepManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ServerPlayerSleepManager Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public bool enoughPlayersDeepSleeping()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAnyGameplayUsersRemovedSubscription_Address
     {
-        return NativeMethods.TablePtr->hs_method_ce58033e((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cc2bfbd3((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint registerOnWakeUpAllPlayers_533efe1e(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerOnWakeUpAllPlayers_00ed5809(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    public void registerWithPlayerDimensionTransferConnector(global::Hosihikari.Bindings.Bedrock.Interop.IPlayerDimensionTransferConnector arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerSleepStatus_Address
     {
-        NativeMethods.TablePtr->hs_method_fa699a9b((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_30194fed((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnWakeUpAllPlayersConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getPlayerWakeUpConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void _updateSleepingPlayerList()
+    {
+        NativeMethods.TablePtr->C3.hs_method_1cfb9176((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onPlayerDeath()
+    {
+        NativeMethods.TablePtr->C3.hs_method_f97968d4((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnWakeUpAllPlayersConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getPlayerWakeUpConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public bool mEnoughPlayersAreSleeping
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_af08455f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_af08455f((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameplayUserManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e0f2ec00((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelEventManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bbc3c067((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAnyPlayerChangeDimensionPrepareRegionCompleteSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_425b4805((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserAddedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_55d3fd57((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserRemovedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_41408628((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnPlayerDeathSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dc22997e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnPlayerWakeUpPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_17f45503((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnWakeUpAllPlayersPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6d687be2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerSleepPercentageGetter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_32c763d6((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mShouldSendSleepMessage
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b3470222((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_b3470222((void*)__hosihikari_shim_handle, value);
     }
 
     public void updateSleepingPlayerList()
     {
-        NativeMethods.TablePtr->hs_method_a4913b21((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_a4913b21((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7530648c((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_7530648c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

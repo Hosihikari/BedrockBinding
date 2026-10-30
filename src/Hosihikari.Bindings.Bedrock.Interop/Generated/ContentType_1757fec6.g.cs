@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.EducationMetadata_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ContentType : int
+public enum ContentType : uint
 {
+    Invalid = 0,
+    WorldLesson = 1,
+    NonWorldLesson = 2,
+    Count = 3,
 }

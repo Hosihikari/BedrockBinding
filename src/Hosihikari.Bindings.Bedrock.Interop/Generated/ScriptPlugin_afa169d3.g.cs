@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ScriptPlugin : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptPlugin(nint handle) : this(handle, true) { }
 
     internal ScriptPlugin(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptPlugin Borrow(nint handle) => new ScriptPlugin(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,284 @@ public sealed unsafe partial class ScriptPlugin : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPlugin Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ScriptPlugin Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public static ScriptPlugin Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPlugin arg0)
+    public void _onError(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, string message)
     {
-        var handle = NativeMethods.TablePtr->hs_create_d7cef4f5((void*)arg0.Handle);
-        if (handle == null)
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
         {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
         }
-
-        return new ScriptPlugin((nint)handle);
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_c8731ac6((void*)__hosihikari_shim_handle, (void*)contextId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ScriptPlugin Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor getModuleDescriptor()
+    public void _onException(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint errorAny)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor((nint)NativeMethods.TablePtr->hs_method_8785d52a((void*)_handle), false);
+        NativeMethods.TablePtr->C3.hs_method_06767cdd((void*)__hosihikari_shim_handle, (void*)contextId.Handle, (void*)error.Handle, (void*)errorAny);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptContext getScriptContext_546165f3()
+    public void _onInfo(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, string message)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptContext((nint)NativeMethods.TablePtr->hs_method_546165f3((void*)_handle), false);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_1064c9a0((void*)__hosihikari_shim_handle, (void*)contextId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.", false)]
-    public nint onLoadScript(nint arg0, nint arg1) =>
+    public nint _onLoadScript(nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _onPromiseRejection(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint errorAny, bool isHandled)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9ed9ab94((void*)__hosihikari_shim_handle, (void*)contextId.Handle, (void*)error.Handle, (void*)errorAny, isHandled);
+    }
+
+    public void _onWarn(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_55ecd56a((void*)__hosihikari_shim_handle, (void*)contextId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public bool _shouldPrintException(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint errorAny)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_2b09be20((void*)__hosihikari_shim_handle, (void*)contextId.Handle, (void*)error.Handle, (void*)errorAny) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.", false)]
+    public nint _loadScript(nint fileName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.");
+
+    public void enableHandleCounter(bool enabled)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c4d1e10e((void*)__hosihikari_shim_handle, enabled);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCapabilities_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d1a79608((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContext_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_df14e47b((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mExecutionGroup
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_2b26a6fd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHandleCounter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5b947582((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMainScriptFilePath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b1310651((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMinEngineVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f8b14541((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mModuleDependencies_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_093afba5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mModuleDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6872ffe9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_76da9bb3((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mPackOrigin
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_0271bb67((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_0271bb67((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPluginSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_65a28b5c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPrintLogger_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e54cf86f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRuntimeFileExt_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7af95d55((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRuntimeName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5239188e((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRuntimeType
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b2fd2cc4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b2fd2cc4((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptPaths_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9d8d85b4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSentryLogger_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3a73f0f0((void*)__hosihikari_shim_handle);
+    }
+
+    public void onError(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_fbad0664((void*)__hosihikari_shim_handle, (void*)contextId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void onException(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint errorAny)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f615d16d((void*)__hosihikari_shim_handle, (void*)contextId.Handle, (void*)error.Handle, (void*)errorAny);
+    }
+
+    public void onInfo(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_c03a91ea((void*)__hosihikari_shim_handle, (void*)contextId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.", false)]
+    public nint onLoadScript(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.");
+
+    public void onPromiseRejection(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint errorAny, bool isHandled)
+    {
+        NativeMethods.TablePtr->C3.hs_method_cf2b40e9((void*)__hosihikari_shim_handle, (void*)contextId.Handle, (void*)error.Handle, (void*)errorAny, isHandled);
+    }
+
+    public void onWarn(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_c060df45((void*)__hosihikari_shim_handle, (void*)contextId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public bool shouldPrintException(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint errorAny)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_35aec607((void*)__hosihikari_shim_handle, (void*)contextId.Handle, (void*)error.Handle, (void*)errorAny) != 0;
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_afa169d3((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_afa169d3((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

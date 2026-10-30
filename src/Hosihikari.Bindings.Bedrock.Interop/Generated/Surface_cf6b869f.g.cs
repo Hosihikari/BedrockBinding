@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SnapToSurfaceFeature_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Surface : int
 {
+    Ceiling = 0,
+    Floor = 1,
+    Wall = 2,
+    RandomHorizontal = 3,
 }

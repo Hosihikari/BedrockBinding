@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ResourceDropsContext
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ResourceDropsContext(nint handle) : this(handle, true) { }
 
     internal ResourceDropsContext(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ResourceDropsContext Borrow(nint handle) => new ResourceDropsContext(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,62 +33,54 @@ public sealed unsafe partial class ResourceDropsContext
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResourceDropsContext Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResourceDropsContext Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ResourceDropsContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromExplosion(nint arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ResourceDropsContext' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ResourceDropsContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromOtherCause(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ResourceDropsContext' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ResourceDropsContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromPlayerMining(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ResourceDropsContext' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ResourceDropsContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromProjectileHit(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ResourceDropsContext' requires --link-carrier or --virtual-dispatch.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockActor? getBlockActor()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_1a1932d3((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockActor((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ILevel getLevel()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ILevel((nint)NativeMethods.TablePtr->hs_method_b14587fe((void*)_handle), false);
     }
 
     public int getMiningLootBonusLevel()
     {
-        return NativeMethods.TablePtr->hs_method_66f32fb5((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Random getRandom()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Random((nint)NativeMethods.TablePtr->hs_method_07b3ceeb((void*)_handle), false);
+        return NativeMethods.TablePtr->C2.hs_method_1decdb05((void*)__hosihikari_shim_handle);
     }
 
     public bool isUsingSilkTouch()
     {
-        return NativeMethods.TablePtr->hs_method_a55d686f((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_7fb8e894((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d152812c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1145df7b((void*)__hosihikari_shim_handle);
+    }
+
+    public int mCause
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5262b9d6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5262b9d6((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionType_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d68b94a9((void*)__hosihikari_shim_handle);
+    }
+
+    public float mExplosionRadius
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c8d25417((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c8d25417((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUsedItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_40b58be8((void*)__hosihikari_shim_handle);
+    }
 }

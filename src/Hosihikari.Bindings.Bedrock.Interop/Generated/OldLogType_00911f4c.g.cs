@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum OldLogType : int
 {
+    Oak = 0,
+    Spruce = 1,
+    Birch = 2,
+    Jungle = 3,
+    Count = 4,
 }

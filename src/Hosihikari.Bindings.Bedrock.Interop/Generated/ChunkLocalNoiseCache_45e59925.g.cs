@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkLocalNoiseCache : global::System.IDisposable
+public sealed unsafe partial class ChunkLocalNoiseCache
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkLocalNoiseCache(nint handle) : this(handle, true) { }
 
     internal ChunkLocalNoiseCache(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkLocalNoiseCache Borrow(nint handle) => new ChunkLocalNoiseCache(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,71 +33,25 @@ public sealed unsafe partial class ChunkLocalNoiseCache : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ChunkLocalNoiseCache Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_88e2db96();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ChunkLocalNoiseCache((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static ChunkLocalNoiseCache Create(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkLocalNoiseCache Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getCacheEntry_ad821637(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public int mCellCountXZ
     {
-        get => NativeMethods.TablePtr->hs_get_14af4feb((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_14af4feb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFirstQuartPos_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c600cc4c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c600cc4c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNoiseCacheEntries_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f9274be6((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setCacheEntry(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache_Nested.CacheEntry arg1)
-    {
-        NativeMethods.TablePtr->hs_method_ad8a7ab1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_45e59925((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f9274be6((void*)__hosihikari_shim_handle);
     }
 }

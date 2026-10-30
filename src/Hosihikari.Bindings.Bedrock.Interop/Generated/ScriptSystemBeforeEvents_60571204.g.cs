@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptSystemBeforeEvents
+public sealed unsafe partial class ScriptSystemBeforeEvents : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptSystemBeforeEvents(nint handle) : this(handle, true) { }
 
     internal ScriptSystemBeforeEvents(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptSystemBeforeEvents Borrow(nint handle) => new ScriptSystemBeforeEvents(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,111 @@ public sealed unsafe partial class ScriptSystemBeforeEvents
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptSystemBeforeEvents Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptSystemBeforeEvents Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptSystemBeforeEvents Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleBindingBuilder arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel? level)
     {
-        NativeMethods.TablePtr->hs_method_f1afbfdc((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_8aee0067((void*)__hosihikari_shim_handle, (void*)scope.Handle, (void*)(level?.Handle ?? 0));
     }
 
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_bea9c8f4((void*)__hosihikari_shim_handle);
+    }
+
+    public static ScriptSystemBeforeEvents Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0acdd10f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSystemBeforeEvents((nint)handle);
+    }
+
+    public static ScriptSystemBeforeEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel? level)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f62aed60((void*)scope.Handle, (void*)(level?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSystemBeforeEvents((nint)handle);
+    }
+
+    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder moduleBuilder)
+    {
+        NativeMethods.TablePtr->C3.hs_method_58564170((void*)moduleBuilder.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptSystemBeforeEvents::SignalNameSubscriberCount' is not supported.", false)]
+    public nint getFineGrainedSignalSubscriberStats() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptSystemBeforeEvents::SignalNameSubscriberCount' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBeforeModuleShutdownSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_aa381980((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBeforeModuleStartupSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_96c4a1e3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBeforeWatchdogTerminateSignal_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fbc5aee3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a4ba7251((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1aa87904((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f94b789f((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptModuleShutdownBeforeEvent>' is not a known bindable declaration.", false)]
+    public void onBeforeModuleShutdown(nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptModuleShutdownBeforeEvent>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptModuleStartupBeforeEvent>' is not a known bindable declaration.", false)]
+    public void onBeforeModuleStartup(nint eventData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptModuleStartupBeforeEvent>' is not a known bindable declaration.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWatchdogTerminateBeforeEvent>' is not a known bindable declaration.", false)]
-    public void onBeforeWatchdogTerminate(nint arg0) =>
+    public void onBeforeWatchdogTerminate(nint beforeWatchdogTerminateEvent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptWatchdogTerminateBeforeEvent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::TypedObjectHandle<ScriptModuleMinecraft::ScriptSystemBeforeEvents>' is not a known bindable declaration.", false)]
-    public void registerHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::TypedObjectHandle<ScriptModuleMinecraft::ScriptSystemBeforeEvents>' is not a known bindable declaration.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_60571204((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_ebbbf977() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

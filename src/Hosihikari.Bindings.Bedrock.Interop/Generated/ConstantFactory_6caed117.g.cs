@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ConstantFactory
+public sealed unsafe partial class ConstantFactory : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ConstantFactory(nint handle) : this(handle, true) { }
 
     internal ConstantFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ConstantFactory Borrow(nint handle) => new ConstantFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,97 @@ public sealed partial class ConstantFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConstantFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ConstantFactory arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_68d5f23e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ConstantFactory Create_2e97494b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::meta_type' is not a known bindable declaration.", false)]
+    public nint _ctor(nint name_, nint type_, bool primitive_, nint func_) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::meta_type' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ConstantFactory Create_405ab2f9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_6aac4d5e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ConstantFactory Create(nint arg0, nint arg1, bool arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ConstantFactory Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_af497268();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ConstantFactory((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_6afdd1f6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static ConstantFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ConstantFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4d9e8638((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConstantFactory((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::meta_type' is not a known bindable declaration.", false)]
+    public static ConstantFactory Create(nint name_, nint type_, bool primitive_, nint func_) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::meta_type' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2f1d92_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_570e4954((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk35e387_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b1bc9b4a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk88f6ea_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d8ded39f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9acbec_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_681fabaa((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ConstantFactory operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ConstantFactory arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ConstantFactory((nint)NativeMethods.TablePtr->C3.hs_method_b57ed33d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1ec4ac_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b3473745((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_6caed117((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

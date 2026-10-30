@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ChunkTickRangeManager
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkTickRangeManager(nint handle) : this(handle, true) { }
 
     internal ChunkTickRangeManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkTickRangeManager Borrow(nint handle) => new ChunkTickRangeManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,53 +33,46 @@ public sealed unsafe partial class ChunkTickRangeManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkTickRangeManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkTickRangeManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChunkTickRangeManager Create(uint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public uint getAdjustedChunkTickRange(global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg0)
+    public void _onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int closestPlayerDistanceSquared)
     {
-        return NativeMethods.TablePtr->hs_method_8f619a51((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_72d1698e((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)levelChunk.Handle, closestPlayerDistanceSquared);
     }
 
-    public bool isChunkInTickRange(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1, bool arg2, float arg3, int arg4, int arg5)
+    public bool isChunkInTickRange(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, bool shouldServerGenerate, float serverBuildRatio, int chunkViewRadius, int numActiveUsers)
     {
-        return NativeMethods.TablePtr->hs_method_5fd35fbc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_23fa99ee((void*)__hosihikari_shim_handle, (void*)chunkPos.Handle, (void*)dimension.Handle, shouldServerGenerate, serverBuildRatio, chunkViewRadius, numActiveUsers) != 0;
     }
 
-    public bool isChunkInTickRange(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, int? arg1)
+    public bool isChunkInTickRange(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, int? minDistToPlayer)
     {
-        return NativeMethods.TablePtr->hs_method_c9c1afbe((void*)_handle, (void*)arg0.Handle, arg1 ?? default(int), arg1.HasValue) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_3821f48a((void*)__hosihikari_shim_handle, (void*)lc.Handle, minDistToPlayer ?? default(int), minDistToPlayer.HasValue) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector arg0)
+    public uint mChunkTickRange
     {
-        NativeMethods.TablePtr->hs_method_5b49c290((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_a1333676((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a1333676((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setChunkTickRange(uint arg0)
+    public uint mMaxSimRadiusInChunks
     {
-        NativeMethods.TablePtr->hs_method_98751034((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_f8af8cc6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f8af8cc6((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_1a495abb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnChunkLoaded_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8a601f92((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector levelChunkEventManagerConnector)
+    {
+        NativeMethods.TablePtr->C0.hs_method_350851ad((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
+    }
 }

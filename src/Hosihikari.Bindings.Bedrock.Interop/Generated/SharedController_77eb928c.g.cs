@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities;
 
 public sealed unsafe partial class SharedController
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SharedController(nint handle) : this(handle, true) { }
 
     internal SharedController(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SharedController Borrow(nint handle) => new SharedController(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,58 @@ public sealed unsafe partial class SharedController
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SharedController Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SharedController Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool canChat(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData arg0)
+    public bool _canChat(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
     {
-        return NativeMethods.TablePtr->hs_method_c1f0b384((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_741cf5e1((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
     }
 
-    public bool canOpenChat(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData arg0)
+    public bool _canMessage(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
     {
-        return NativeMethods.TablePtr->hs_method_075ca9fe((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_65212843((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
     }
 
-    public bool canTell(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData arg0)
+    public bool _canOpenChat(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
     {
-        return NativeMethods.TablePtr->hs_method_5180dc5e((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_8e1557de((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool _canTell(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0e640266((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public bool canChat(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_ace1b6da((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
+
+    public bool canMessage(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_aba4218e((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
+
+    public bool canOpenChat(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_59077f5c((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
+
+    public bool canTell(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_fec11dd3((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mShared_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cf70370f((void*)__hosihikari_shim_handle);
+    }
 }

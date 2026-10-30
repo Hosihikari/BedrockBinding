@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayerSleepManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerSleepManager(nint handle) : this(handle, true) { }
 
     internal PlayerSleepManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerSleepManager Borrow(nint handle) => new PlayerSleepManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,56 +33,53 @@ public sealed unsafe partial class PlayerSleepManager : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static PlayerSleepManager Create()
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_f1e1178a();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PlayerSleepManager((nint)handle);
+        NativeMethods.TablePtr->C2.hs_method_6404cc25((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerSleepManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public nint getPlayerSleepStatus()
+    public void _updateSleepingPlayerList()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a64ca5e8((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_ab6a7803((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public void setSleepStatus(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAnyGameplayUsersRemovedSubscription_Address
     {
-        NativeMethods.TablePtr->hs_method_b25ef0b2((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_917e5fa3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerSleepStatus_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_eae17333((void*)__hosihikari_shim_handle);
     }
 
     public void updateSleepingPlayerList()
     {
-        NativeMethods.TablePtr->hs_method_45fd8bcb((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_45fd8bcb((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_007f2ac8((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_007f2ac8((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

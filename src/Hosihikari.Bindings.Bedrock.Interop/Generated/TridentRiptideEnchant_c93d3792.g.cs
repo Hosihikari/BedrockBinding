@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TridentRiptideEnchant : global::System.IDisposable
+public sealed unsafe partial class TridentRiptideEnchant
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TridentRiptideEnchant(nint handle) : this(handle, true) { }
 
     internal TridentRiptideEnchant(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TridentRiptideEnchant Borrow(nint handle) => new TridentRiptideEnchant(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,97 +33,102 @@ public sealed unsafe partial class TridentRiptideEnchant : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TridentRiptideEnchant Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static TridentRiptideEnchant Create(sbyte arg0, int arg1, string arg2, string arg3, int arg4, bool arg5, int arg6)
+    public int mCompatibility
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-            {
-                var handle = NativeMethods.TablePtr->hs_create_254b4b65(arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, arg5, arg6);
-                if (handle == null)
-                {
-                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-                }
-
-                return new TridentRiptideEnchant((nint)handle);
-            }
-        }
+        get => NativeMethods.TablePtr->C3.hs_get_bce34bf8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TridentRiptideEnchant Create(nint type, nint frequency, nint stringId, nint description, int primarySlots, bool isLootable, int secondarySlots) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TridentRiptideEnchant Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getMaxCost(int arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescription_Address
     {
-        return NativeMethods.TablePtr->hs_method_d9034d82((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_267f554a((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mEnchantType
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_3b9c0e19((void*)__hosihikari_shim_handle);
+    }
+
+    public int mFrequency
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_26888c69((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsAvailableInVillagerTrading
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_489bc8cd((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool mIsDisabled
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a8e74615((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_a8e74615((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mPrimarySlots
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ab119304((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptStringId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bfc31cf8((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSecondarySlots
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_6dce1c65((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStringId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5041ff86((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getMaxCost(int level)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_141a343a((void*)__hosihikari_shim_handle, level);
+    }
+
+    public int _getMaxLevel()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_8345f383((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getMinCost(int level)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_4db13c24((void*)__hosihikari_shim_handle, level);
+    }
+
+    public bool _isCompatibleWith(byte type)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_2dd9eaf2((void*)__hosihikari_shim_handle, type) != 0;
+    }
+
+    public int getMaxCost(int level)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_5c03257d((void*)__hosihikari_shim_handle, level);
     }
 
     public int getMaxLevel()
     {
-        return NativeMethods.TablePtr->hs_method_fc8d235f((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_d7451032((void*)__hosihikari_shim_handle);
     }
 
-    public int getMinCost(int arg0)
+    public int getMinCost(int level)
     {
-        return NativeMethods.TablePtr->hs_method_0030c27f((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_2fb57d5b((void*)__hosihikari_shim_handle, level);
     }
 
-    public bool isCompatibleWith(sbyte arg0)
+    public bool isCompatibleWith(byte type)
     {
-        return NativeMethods.TablePtr->hs_method_39f9f14b((void*)_handle, arg0) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c93d3792((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return NativeMethods.TablePtr->C3.hs_method_591a6e53((void*)__hosihikari_shim_handle, type) != 0;
     }
 }

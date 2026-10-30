@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DebugUtils;
 
-public sealed unsafe partial class ComposedAssertMessage
+public sealed unsafe partial class ComposedAssertMessage : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ComposedAssertMessage(nint handle) : this(handle, true) { }
 
     internal ComposedAssertMessage(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ComposedAssertMessage Borrow(nint handle) => new ComposedAssertMessage(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,60 @@ public sealed unsafe partial class ComposedAssertMessage
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ComposedAssertMessage Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ComposedAssertMessage Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void compose(global::Hosihikari.Bindings.Bedrock.Interop.AssertHandlerContext arg0)
+    public static ComposedAssertMessage Create()
     {
-        NativeMethods.TablePtr->hs_method_71854ea3((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_4bc28fcf();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComposedAssertMessage((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ComposedAssertMessage Create(global::Hosihikari.Bindings.Bedrock.Interop.DebugUtils.ComposedAssertMessage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_916c38ea((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new ComposedAssertMessage((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk46006e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_23c651d2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc7921f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c9f7142a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DebugUtils.ComposedAssertMessage operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.DebugUtils.ComposedAssertMessage arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DebugUtils.ComposedAssertMessage((nint)NativeMethods.TablePtr->C1.hs_method_b0b435a2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_78352ed1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

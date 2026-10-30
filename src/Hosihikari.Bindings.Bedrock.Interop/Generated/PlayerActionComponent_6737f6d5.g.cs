@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerActionComponent
+public sealed unsafe partial class PlayerActionComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerActionComponent(nint handle) : this(handle, true) { }
 
     internal PlayerActionComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerActionComponent Borrow(nint handle) => new PlayerActionComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,96 @@ public sealed unsafe partial class PlayerActionComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerActionComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerActionComponent Create_adaa1ae6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerActionComponent Create_4c8b5acd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void addAbortDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_8172f3c7((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C2.hs_method_7bd439d3((void*)__hosihikari_shim_handle);
     }
 
-    public void addContinueDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
+    public static PlayerActionComponent Create()
     {
-        NativeMethods.TablePtr->hs_method_153cfc0e((void*)_handle, (void*)arg0.Handle, arg1);
+        var handle = NativeMethods.TablePtr->C2.hs_create_b2832f30();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerActionComponent((nint)handle);
     }
 
-    public void addStartDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static PlayerActionComponent Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static PlayerActionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerActionComponent arg0)
     {
-        NativeMethods.TablePtr->hs_method_5355d8a9((void*)_handle, (void*)arg0.Handle, arg1);
+        var handle = NativeMethods.TablePtr->C2.hs_create_4c8b5acd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerActionComponent((nint)handle);
     }
 
-    public void addStopDestroyBlock()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemStackRequest_Address
     {
-        NativeMethods.TablePtr->hs_method_0bb918bb((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_21de3cd2((void*)__hosihikari_shim_handle);
     }
 
-    public void clear()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemUseTransaction_Address
     {
-        NativeMethods.TablePtr->hs_method_9dc1e08e((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_13436c5f((void*)__hosihikari_shim_handle);
     }
 
-    public static string getDiffOfPlayerAuthInputPacket(global::Hosihikari.Bindings.Bedrock.Interop.PlayerActionComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerActionComponent arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerActions_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b8331418((void*)arg0.Handle, (void*)arg1.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4b27dd8a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_b9f57e61(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerBlockActions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7e28d6fe((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_98fde0f3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreSimulationRotation_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_03911752((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_998777d6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerActionComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PlayerActionComponent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerActionComponent((nint)NativeMethods.TablePtr->C2.hs_method_98fde0f3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_6737f6d5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

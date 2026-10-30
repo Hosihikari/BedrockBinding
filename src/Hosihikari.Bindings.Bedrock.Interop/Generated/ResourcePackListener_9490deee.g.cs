@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ResourcePackListener
+public sealed unsafe partial class ResourcePackListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ResourcePackListener(nint handle) : this(handle, true) { }
 
     internal ResourcePackListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ResourcePackListener Borrow(nint handle) => new ResourcePackListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,80 @@ public sealed unsafe partial class ResourcePackListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResourcePackListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _onBaseGamePackDownloadComplete()
+    {
+        NativeMethods.TablePtr->C2.hs_method_d66e38a0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResourcePackListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _onFullPackStackInvalid()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_40510066((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _onJsonResourcesChanged(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager)
+    {
+        NativeMethods.TablePtr->C2.hs_method_54912e69((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle);
+    }
+
+    public void _onLanguageSubpacksChanged()
+    {
+        NativeMethods.TablePtr->C2.hs_method_7e4054e4((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onResourceManagerDestroyed(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_60f19bea((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void onActiveResourcePacksChanged(nint mgr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public void onBaseGamePackDownloadComplete()
     {
-        NativeMethods.TablePtr->hs_method_48174aa2((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_48174aa2((void*)__hosihikari_shim_handle);
     }
 
-    public void onFullPackStackInvalid()
+    public bool onFullPackStackInvalid()
     {
-        NativeMethods.TablePtr->hs_method_182e2813((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_3ad802cc((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void onJsonResourcesChanged(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager)
+    {
+        NativeMethods.TablePtr->C2.hs_method_53705e62((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle);
     }
 
     public void onLanguageSubpacksChanged()
     {
-        NativeMethods.TablePtr->hs_method_3c71e8a6((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_3c71e8a6((void*)__hosihikari_shim_handle);
     }
 
     public void onResourceManagerDestroyed(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_2877584d((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_50ff39fb((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_b858a35c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_9490deee((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

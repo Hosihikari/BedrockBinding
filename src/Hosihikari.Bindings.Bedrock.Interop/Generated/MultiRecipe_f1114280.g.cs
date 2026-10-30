@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MultiRecipe
+public sealed unsafe partial class MultiRecipe : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MultiRecipe(nint handle) : this(handle, true) { }
 
     internal MultiRecipe(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MultiRecipe Borrow(nint handle) => new MultiRecipe(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,140 @@ public sealed partial class MultiRecipe
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MultiRecipe Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint recipeId, nint tag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MultiRecipe Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _hasDataDrivenResult()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_4c6e6a7a((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static MultiRecipe Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool _isMultiRecipe()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_6cfb0c49((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool _isShapeless()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_498c99d3((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static MultiRecipe Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3ed9d5e9();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MultiRecipe((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static MultiRecipe Create(nint recipeId, nint tag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public bool hasDataDrivenResult()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_07a91930((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isMultiRecipe()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_c75261ae((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isShapeless()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_56e90680((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public int mHeight
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_7319b763((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7319b763((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMyId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dee2378a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMyIngredients_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0e44ec7a((void*)__hosihikari_shim_handle);
+    }
+
+    public int mPriority
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_116d0281((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_116d0281((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeDataVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_84bde89c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_20db6846((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeNetId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0065149e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResults_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_40774324((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTag_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_43b8f5c1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnlockingRequirement_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_578728e7((void*)__hosihikari_shim_handle);
+    }
+
+    public int mWidth
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_88b0119f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_88b0119f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_f1114280((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

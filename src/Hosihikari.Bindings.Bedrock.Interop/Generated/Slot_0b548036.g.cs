@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptTickSignal_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptTickSignal_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Slot
+public sealed unsafe partial class Slot : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Slot(nint handle) : this(handle, true) { }
 
     internal Slot(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Slot Borrow(nint handle) => new Slot(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,63 @@ public sealed partial class Slot
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_89dbf4aa((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint closure_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ab26499f((void*)__hosihikari_shim_handle);
+    }
+
+    public uint currentInterval
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_62f38df4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_62f38df4((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint id
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_922da810((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_922da810((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint initialInterval
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a7b8ff93((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a7b8ff93((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint lastTick
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_5d7f062e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5d7f062e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint status
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b5d90f20((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b5d90f20((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_0b548036((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

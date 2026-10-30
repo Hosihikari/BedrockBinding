@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TimeAccumulator
+public sealed unsafe partial class TimeAccumulator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TimeAccumulator(nint handle) : this(handle, true) { }
 
     internal TimeAccumulator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TimeAccumulator Borrow(nint handle) => new TimeAccumulator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,39 @@ public sealed unsafe partial class TimeAccumulator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TimeAccumulator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TimeAccumulator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public ulong getCount()
+    public ulong mCount
     {
-        return NativeMethods.TablePtr->hs_method_dfe31c0b((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_e88b4c4d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e88b4c4d((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getTimeSumAverageMS()
+    public ulong mMaxSample
     {
-        return NativeMethods.TablePtr->hs_method_54ef3c3d((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_af2446f5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_af2446f5((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getTimeSumAverageSeconds()
+    public ulong mNanoseconds
     {
-        return NativeMethods.TablePtr->hs_method_e301d0b0((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_18c3d2d1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_18c3d2d1((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_9fd3839b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

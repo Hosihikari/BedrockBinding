@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Social.Events;
 
-public sealed unsafe partial class ScreenFlow
+public sealed unsafe partial class ScreenFlow : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScreenFlow(nint handle) : this(handle, true) { }
 
     internal ScreenFlow(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScreenFlow Borrow(nint handle) => new ScreenFlow(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,72 +33,98 @@ public sealed unsafe partial class ScreenFlow
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void AddScreen(nint arg0, double arg1, double arg2, nint arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void AddScreen(nint screenName, double timestamp, double seconds, nint additionalProperties, bool isDeepLink) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void AddScreen(string arg0, double arg1, double arg2, nint arg3, bool arg4)
+    public void PopulateEvent(nint @event, bool clear)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_fc8aeeff((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, (void*)arg3, arg4);
-        }
+        NativeMethods.TablePtr->C3.hs_method_b3563355((void*)__hosihikari_shim_handle, (void*)@event, clear);
     }
 
-    public void PopulateEvent(global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.Event arg0, bool arg1)
+    public static ScreenFlow Create()
     {
-        NativeMethods.TablePtr->hs_method_1e20547d((void*)_handle, (void*)arg0.Handle, arg1);
+        var handle = NativeMethods.TablePtr->C3.hs_create_d50a64a0();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScreenFlow((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScreenFlow Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScreenFlow Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void SetApplicationId(string arg0)
+    public static ScreenFlow Create(global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow arg0)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        var handle = NativeMethods.TablePtr->C3.hs_create_86d04271((void*)arg0.Handle);
+        if (handle == null)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_a2e75c48((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
+
+        return new ScreenFlow((nint)handle);
     }
 
     public bool ShouldSendEvent()
     {
-        return NativeMethods.TablePtr->hs_method_28314cbd((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_24ddeb73((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk246e53_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_aae3acaf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk28e73f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2208f404((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5d55ec_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e21dfe9c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk639462_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_057cf87b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7be49c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_915e98cb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk890a72_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2c6d9f4b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow((nint)NativeMethods.TablePtr->C3.hs_method_f7ecf5ac((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_8cbee0de((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

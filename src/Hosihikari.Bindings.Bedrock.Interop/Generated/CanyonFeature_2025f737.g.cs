@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CanyonFeature : global::System.IDisposable
+public sealed unsafe partial class CanyonFeature
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CanyonFeature(nint handle) : this(handle, true) { }
 
     internal CanyonFeature(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CanyonFeature Borrow(nint handle) => new CanyonFeature(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,71 +33,59 @@ public sealed unsafe partial class CanyonFeature : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CanyonFeature Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CanyonFeature Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static CanyonFeature Create(short arg0)
+    public bool __carve(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume blocks, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource localBiomeSource, nint canyonConfig, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 startPos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 originalStartPos, int x0, int x1, int y0, int y1, int z0, int z1, float horizontalRadius, float verticalRadius, float[] widthRandomization, global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext context, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
     {
-        var handle = NativeMethods.TablePtr->hs_create_83a29026(arg0);
-        if (handle == null)
+        fixed (float* __hs_vectorData15 = widthRandomization)
         {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            return NativeMethods.TablePtr->C0.hs_method_a8ff7ab6((void*)__hosihikari_shim_handle, (void*)blocks.Handle, (void*)localBiomeSource.Handle, (void*)canyonConfig, (void*)arg3.Handle, (void*)pos.Handle, (void*)startPos.Handle, (void*)originalStartPos.Handle, x0, x1, y0, y1, z0, z1, horizontalRadius, verticalRadius, (void*)context.Handle, (void*)biomeRegistry.Handle, __hs_vectorData15, (nuint)(widthRandomization?.Length ?? 0)) != 0;
         }
-
-        return new CanyonFeature((nint)handle);
     }
 
-    public void apply(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg2, nint arg3, global::Hosihikari.Bindings.Bedrock.Interop.Random arg4, uint arg5, global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext arg6)
+    public bool __isDiggable(global::Hosihikari.Bindings.Bedrock.Interop.BlockType block)
     {
-        NativeMethods.TablePtr->hs_method_5e852802((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, (void*)arg4.Handle, arg5, (void*)arg6.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_20c27fdb((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool carve_dfbc5301(nint blocks, nint localBiomeSource, nint random, nint pos, nint startPos, nint originalStartPos, int x0, int x1, int y0, int y1, int z0, int z1, float rad, float yRad, nint rs, nint context) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public static bool isDiggable(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
+    public void _addFeature(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume blocks, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource localBiomeSource, nint canyonConfig, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int chunkX, int chunkZ, global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext context, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
     {
-        return NativeMethods.TablePtr->hs_method_88a0d0c0((void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        NativeMethods.TablePtr->C0.hs_method_05780846((void*)__hosihikari_shim_handle, (void*)blocks.Handle, (void*)localBiomeSource.Handle, (void*)canyonConfig, (void*)pos.Handle, (void*)random.Handle, chunkX, chunkZ, (void*)context.Handle, (void*)biomeRegistry.Handle);
     }
 
-    public bool mAllowMegaRavines
+    public bool _carve(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume blocks, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource localBiomeSource, nint canyonConfig, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 startPos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 originalStartPos, int x0, int x1, int y0, int y1, int z0, int z1, float horizontalRadius, float verticalRadius, float[] widthRandomization, global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext context, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
     {
-        get => NativeMethods.TablePtr->hs_get_6546b9e6((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_6546b9e6((void*)_handle, value);
+        fixed (float* __hs_vectorData15 = widthRandomization)
+        {
+            return NativeMethods.TablePtr->C0.hs_method_7f00ee05((void*)__hosihikari_shim_handle, (void*)blocks.Handle, (void*)localBiomeSource.Handle, (void*)canyonConfig, (void*)arg3.Handle, (void*)pos.Handle, (void*)startPos.Handle, (void*)originalStartPos.Handle, x0, x1, y0, y1, z0, z1, horizontalRadius, verticalRadius, (void*)context.Handle, (void*)biomeRegistry.Handle, __hs_vectorData15, (nuint)(widthRandomization?.Length ?? 0)) != 0;
+        }
+    }
+
+    public bool _isDiggable(global::Hosihikari.Bindings.Bedrock.Interop.BlockType block)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9f6544a7((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+    }
+
+    public void apply(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume blocks, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource localBiomeSource, nint canyonConfig, global::Hosihikari.Bindings.Bedrock.Interop.Random random, uint levelSeed, global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext context, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
+    {
+        NativeMethods.TablePtr->C0.hs_method_265df291((void*)__hosihikari_shim_handle, (void*)blocks.Handle, (void*)pos.Handle, (void*)localBiomeSource.Handle, (void*)canyonConfig, (void*)random.Handle, levelSeed, (void*)context.Handle, (void*)biomeRegistry.Handle);
+    }
+
+    public bool mAllowMegaCanyons
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_5984e9a7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_5984e9a7((void*)__hosihikari_shim_handle, value);
     }
 
     public short mSeaLevel
     {
-        get => NativeMethods.TablePtr->hs_get_00f17b2e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_00f17b2e((void*)_handle, value);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_2025f737((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C0.hs_get_00f17b2e((void*)__hosihikari_shim_handle);
     }
 }

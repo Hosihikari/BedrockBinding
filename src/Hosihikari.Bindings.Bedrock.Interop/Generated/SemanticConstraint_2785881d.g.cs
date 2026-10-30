@@ -4,12 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum SemanticConstraint : sbyte
+public enum SemanticConstraint : byte
 {
     None = 0,
     RequiresCheatsEnabled = 1,
     RequiresElevatedPermissions = 2,
     RequiresHostPermissions = 4,
     RequiresAllowAliases = 8,
-    VALUE_MASK = 15,
+    ValueMask = 15,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WorldTemplatePackSource : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WorldTemplatePackSource(nint handle) : this(handle, true) { }
 
     internal WorldTemplatePackSource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WorldTemplatePackSource Borrow(nint handle) => new WorldTemplatePackSource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,137 @@ public sealed unsafe partial class WorldTemplatePackSource : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldTemplatePackSource Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_abfff4bf((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldTemplatePackSource Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCommands_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ac1cbf09((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceReport' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint load(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceReport' requires --link-carrier or --virtual-dispatch.");
+    public bool mDiscovered
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_e15f272b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_e15f272b((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mIsDevDirectory
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_1de7c54c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool mIsRediscoverable
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_c7f39fb0((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public byte mPackOrigin
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_afff4cab((void*)__hosihikari_shim_handle);
+    }
+
+    public sbyte mPackType
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_e4a5cf0b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_91dde7a2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_deee5eaa((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIO_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_bf4eb00f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTaskGroup_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_02ae1e35((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __loadImpl(nint options) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+
+    public static WorldTemplatePackSource Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_40f16aad();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldTemplatePackSource((nint)handle);
+    }
+
+    public static WorldTemplatePackSource Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e2701d64((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldTemplatePackSource((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _loadImpl(nint options) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk866f94_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_84ad6bf8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcf7de5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b1595792((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkedfcff_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f0a41bd5((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource((nint)NativeMethods.TablePtr->C4.hs_method_d59b75ab((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_469213ca((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_469213ca((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

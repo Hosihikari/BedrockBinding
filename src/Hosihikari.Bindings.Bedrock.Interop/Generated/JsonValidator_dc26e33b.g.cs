@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class JsonValidator
+public sealed unsafe partial class JsonValidator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public JsonValidator(nint handle) : this(handle, true) { }
 
     internal JsonValidator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static JsonValidator Borrow(nint handle) => new JsonValidator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,47 @@ public sealed unsafe partial class JsonValidator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static JsonValidator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static JsonValidator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static bool validate(global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, string[] arg2)
+    public static bool validate(global::Hosihikari.Bindings.Bedrock.Interop.I18n loc, global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property rootProp, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value rootData, string[] errors)
     {
-        var __hs_vectorItems2 = arg2 ?? global::System.Array.Empty<string>();
-        var __hs_vectorCount2 = __hs_vectorItems2.Length;
-        var __hs_vectorByteTotal2 = 0;
-        for (var __hs_i2 = 0; __hs_i2 < __hs_vectorCount2; __hs_i2++) { __hs_vectorByteTotal2 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems2[__hs_i2] ?? string.Empty); }
-        scoped global::System.Span<byte> __hs_vectorArena2;
-        if (__hs_vectorByteTotal2 <= 1024) { __hs_vectorArena2 = stackalloc byte[__hs_vectorByteTotal2 == 0 ? 1 : __hs_vectorByteTotal2]; } else { __hs_vectorArena2 = new byte[__hs_vectorByteTotal2]; }
-        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews2;
-        if (__hs_vectorCount2 <= 64) { __hs_vectorViews2 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount2 == 0 ? 1 : __hs_vectorCount2]; } else { __hs_vectorViews2 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount2]; }
-        fixed (byte* __hs_vectorArenaPtr2 = __hs_vectorArena2)
-        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData2 = __hs_vectorViews2)
+        var __hs_vectorItems3 = errors ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount3 = __hs_vectorItems3.Length;
+        var __hs_vectorByteTotal3 = 0;
+        for (var __hs_i3 = 0; __hs_i3 < __hs_vectorCount3; __hs_i3++) { __hs_vectorByteTotal3 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems3[__hs_i3] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena3;
+        if (__hs_vectorByteTotal3 <= 1024) { __hs_vectorArena3 = stackalloc byte[__hs_vectorByteTotal3 == 0 ? 1 : __hs_vectorByteTotal3]; } else { __hs_vectorArena3 = new byte[__hs_vectorByteTotal3]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews3;
+        if (__hs_vectorCount3 <= 64) { __hs_vectorViews3 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount3 == 0 ? 1 : __hs_vectorCount3]; } else { __hs_vectorViews3 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount3]; }
+        fixed (byte* __hs_vectorArenaPtr3 = __hs_vectorArena3)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData3 = __hs_vectorViews3)
         {
-            var __hs_vectorOffset2 = 0;
-            for (var __hs_i2 = 0; __hs_i2 < __hs_vectorCount2; __hs_i2++)
+            var __hs_vectorOffset3 = 0;
+            for (var __hs_i3 = 0; __hs_i3 < __hs_vectorCount3; __hs_i3++)
             {
-                var __hs_item2 = __hs_vectorItems2[__hs_i2] ?? string.Empty;
-                var __hs_length2 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item2);
-                global::System.Text.Encoding.UTF8.GetBytes(__hs_item2, __hs_vectorArena2.Slice(__hs_vectorOffset2, __hs_length2));
-                __hs_vectorData2[__hs_i2] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr2 + __hs_vectorOffset2, Size = (nuint)__hs_length2 };
-                __hs_vectorOffset2 += __hs_length2;
+                var __hs_item3 = __hs_vectorItems3[__hs_i3] ?? string.Empty;
+                var __hs_length3 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item3);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item3, __hs_vectorArena3.Slice(__hs_vectorOffset3, __hs_length3));
+                __hs_vectorData3[__hs_i3] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr3 + __hs_vectorOffset3, Size = (nuint)__hs_length3 };
+                __hs_vectorOffset3 += __hs_length3;
             }
-            return NativeMethods.TablePtr->hs_method_1580d1bf((void*)arg0.Handle, (void*)arg1.Handle, __hs_vectorData2, (nuint)(arg2?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_b43187cd((void*)loc.Handle, (void*)rootProp.Handle, (void*)rootData.Handle, __hs_vectorData3, (nuint)(errors?.Length ?? 0)) != 0;
+        }
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_dc26e33b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

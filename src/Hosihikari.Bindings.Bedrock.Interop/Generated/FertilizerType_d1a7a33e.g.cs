@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum FertilizerType : int
+public enum FertilizerType : byte
 {
+    Bonemeal = 0,
+    Rapid = 1,
 }

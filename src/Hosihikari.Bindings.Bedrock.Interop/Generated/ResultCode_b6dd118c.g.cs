@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ResultCode : int
+public enum ResultCode : sbyte
 {
+    Ok = 0,
+    NotFound = 1,
+    UpdatePending = 2,
+    Error = 3,
 }

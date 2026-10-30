@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScoreboardEventCoordinator : global::System.IDisposable
+public sealed unsafe partial class ScoreboardEventCoordinator
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScoreboardEventCoordinator(nint handle) : this(handle, true) { }
 
     internal ScoreboardEventCoordinator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScoreboardEventCoordinator Borrow(nint handle) => new ScoreboardEventCoordinator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,60 +33,56 @@ public sealed unsafe partial class ScoreboardEventCoordinator : global::System.I
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEventsToProcess_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_caaae9a0((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_caaae9a0((void*)__hosihikari_shim_handle);
     }
 
     public bool mHasPendingRegistrations
     {
-        get => NativeMethods.TablePtr->hs_get_fd44f81e((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_fd44f81e((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_fd44f81e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_fd44f81e((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mListeners_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_83fb6255((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_83fb6255((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPendingRegistrations_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_baff779c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_baff779c((void*)__hosihikari_shim_handle);
     }
 
     public uint mThreadCheckIndex
     {
-        get => NativeMethods.TablePtr->hs_get_ecbad7ca((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ecbad7ca((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ecbad7ca((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ecbad7ca((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mThreadId_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_28cf1ea6((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_28cf1ea6((void*)__hosihikari_shim_handle);
     }
 
     public bool mThreadIdInitialized
     {
-        get => NativeMethods.TablePtr->hs_get_3e12ed62((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_3e12ed62((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_3e12ed62((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_3e12ed62((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScoreboardEventCoordinator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void sendOnObjectiveAdded(string arg0)
+    public void sendOnObjectiveAdded(string objective)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -96,16 +92,16 @@ public sealed unsafe partial class ScoreboardEventCoordinator : global::System.I
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_21621ae8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C3.hs_method_e7f70cba((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void sendOnObjectiveRemoved(string arg0)
+    public void sendOnObjectiveRemoved(string objective)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -115,16 +111,16 @@ public sealed unsafe partial class ScoreboardEventCoordinator : global::System.I
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_81dba90c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C3.hs_method_a39716c2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void sendOnScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, string arg1, int arg2)
+    public void sendOnScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, string objective, int score)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -134,29 +130,10 @@ public sealed unsafe partial class ScoreboardEventCoordinator : global::System.I
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_25fd3ce1((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
-        }
-    }
-
-    public void sendOnScoreboardIdentityRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
-    {
-        NativeMethods.TablePtr->hs_method_51868550((void*)_handle, (void*)arg0.Handle);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_93c33e87((void*)_handle);
-            }
-
-            _handle = 0;
+            NativeMethods.TablePtr->C3.hs_method_f7defb97((void*)__hosihikari_shim_handle, (void*)id.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, score);
         }
     }
 }

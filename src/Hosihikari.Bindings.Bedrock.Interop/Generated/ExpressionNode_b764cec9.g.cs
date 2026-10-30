@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ExpressionNode : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExpressionNode(nint handle) : this(handle, true) { }
 
     internal ExpressionNode(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExpressionNode Borrow(nint handle) => new ExpressionNode(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,47 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Molang::details::SourceTree' is not a known bindable declaration.", false)]
+    public nint _ctor(nint root) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Molang::details::SourceTree' is not a known bindable declaration.");
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.MolangParseConfig config)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_5ff99502((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)config.Handle);
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg value, short op)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_2d493081((void*)__hosihikari_shim_handle, (void*)value.Handle, op);
+    }
+
+    public nint _ctor(string expression, short molangVersion)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(expression);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(expression, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return (nint)NativeMethods.TablePtr->C1.hs_method_905114be((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, molangVersion);
+        }
     }
 
     public static ExpressionNode Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_6c1bbdef();
+        var handle = NativeMethods.TablePtr->C1.hs_create_6c1bbdef();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -48,10 +81,14 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
 
         return new ExpressionNode((nint)handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Molang::details::SourceTree' is not a known bindable declaration.", false)]
+    public static ExpressionNode Create(nint root) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Molang::details::SourceTree' is not a known bindable declaration.");
 
     public static ExpressionNode Create(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_d4935463((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_7518750b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,21 +97,9 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         return new ExpressionNode((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ExpressionNode Create_56ef19d1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
-    public static ExpressionNode Create_fb0b0560(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
-    public static ExpressionNode Create_d205a73f(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
-
-    public static ExpressionNode Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg0, int arg1)
+    public static ExpressionNode Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.MolangParseConfig config)
     {
-        var handle = NativeMethods.TablePtr->hs_create_61e5e7ac((void*)arg0.Handle, arg1);
+        var handle = NativeMethods.TablePtr->C1.hs_create_f04ac1af((void*)value.Handle, (void*)config.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -83,25 +108,9 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         return new ExpressionNode((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExpressionNode Create_f4302fae(nint value, nint molangVersion, nint querySetID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExpressionNode Create_6dce75af(nint value, nint molangVersion, nint querySetID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExpressionNode Create_debfa923(nint expression, nint molangVersion, nint querySetID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExpressionNode Create_35e4aa87(nint expression, nint molangVersion, nint querySetID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ExpressionNode Create(float arg0)
+    public static ExpressionNode Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg value, short op)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ff8e0db1(arg0);
+        var handle = NativeMethods.TablePtr->C1.hs_create_9f7ca7f0((void*)value.Handle, op);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -110,255 +119,135 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         return new ExpressionNode((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
-    public static ExpressionNode Create_c53c406c(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
-    public static ExpressionNode Create_b3133880(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint _defaultUnknownQueryFunction_Address
+    public static ExpressionNode Create(string expression, short molangVersion)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d2aef873();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _hasDisallowedQueryPtrs_e5859285(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _readNextToken_c10af752(nint expression, nint idSet, nint molangVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _tokenize_f5780f8b(nint expression, nint usedTokenFlags, nint idSet, nint molangVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
-    {
-        NativeMethods.TablePtr->hs_method_ed8039ff((void*)arg0.Handle);
-    }
-
-    public static void buildExpressionOpTable()
-    {
-        NativeMethods.TablePtr->hs_method_f1d17194();
-    }
-
-    public void clear()
-    {
-        NativeMethods.TablePtr->hs_method_7ad322a1((void*)_handle);
-    }
-
-    public float evalAsFloat(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_18f73ec7((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg evalGeneric(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_ffea2cb3((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static float fast_atof_positiveOnly(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9d7c97ff((void*)_handle);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Experiments getExperiments()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Experiments((nint)NativeMethods.TablePtr->hs_method_7d8a8cc0(), false);
-    }
-
-    public string getExpressionString_1459129d()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_1459129d((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public string getExpressionString_73b6f291()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_73b6f291((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public int getMolangVersion()
-    {
-        return NativeMethods.TablePtr->hs_method_895feccc((void*)_handle);
-    }
-
-    public static nint getOpFriendlyName(int arg0)
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_29401888(arg0);
-    }
-
-    public static nint getQueryFunctionMutex()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_d91be1ee();
-    }
-
-    public ulong getTreeHash(bool arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_869102e1((void*)_handle, arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool getTreeString(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    public bool hasDisallowedQueries(string[] arg0)
-    {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
-        var __hs_vectorCount0 = __hs_vectorItems0.Length;
-        var __hs_vectorByteTotal0 = 0;
-        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
-        scoped global::System.Span<byte> __hs_vectorArena0;
-        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
-        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
-        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
-        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
-        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(expression);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
         {
-            var __hs_vectorOffset0 = 0;
-            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(expression, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C1.hs_create_33184c57(__hs_stringData0, (nuint)__hs_stringByteCount0, molangVersion);
+            if (handle == null)
             {
-                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
-                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
-                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
-                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
-                __hs_vectorOffset0 += __hs_length0;
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
             }
-            return NativeMethods.TablePtr->hs_method_410a27c8((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+
+            return new ExpressionNode((nint)handle);
         }
     }
 
-    public bool hasMadd()
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const HashedString' is not supported.", false)]
+    public static ExpressionNode Create(nint expression, nint molangVersion, nint querySetID) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const HashedString' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _defaultUnknownQueryFunction() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'MolangScriptArg' is not supported.", false)]
+    public nint _getValueIfConstant() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'MolangScriptArg' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static bool _initializeMolangQueries(nint queries) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
-        return NativeMethods.TablePtr->hs_method_0a28439e((void*)_handle) != 0;
+        NativeMethods.TablePtr->C1.hs_method_45871d25((void*)ctx.Handle);
     }
 
-    public bool hasSideEffects(bool arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg evalGeneric(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams)
     {
-        return NativeMethods.TablePtr->hs_method_09fa51e3((void*)_handle, arg0) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C1.hs_method_58110497((void*)__hosihikari_shim_handle, (void*)renderParams.Handle), false);
     }
 
-    public bool isInitialized()
+    public string getExpressionString()
     {
-        return NativeMethods.TablePtr->hs_method_7b2b5fb6((void*)_handle) != 0;
-    }
-
-    public bool isValid()
-    {
-        return NativeMethods.TablePtr->hs_method_36c537f6((void*)_handle) != 0;
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_6e140806((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int link()
     {
-        return NativeMethods.TablePtr->hs_method_c32b8c4e((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_f478e6b9((void*)__hosihikari_shim_handle);
     }
-
-    public int link(int arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_16df3245((void*)_handle, arg0);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mAliasOpTokens_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_47fa57fa();
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage mExperiments
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage((nint)NativeMethods.TablePtr->hs_get_d7e155ac(), false);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mExpressionOpTokens_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fb7e47f9();
-    }
-
-    public static bool mMolangInitialized
-    {
-        get => NativeMethods.TablePtr->hs_get_d3c5160d() != 0;
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mQueryFunctionAccessors_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8ba5dd24();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mQuerySets_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_aa01f0d4();
-    }
-
-    public void moveConstantChildToValueIfFloatOrHashType(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f83c3f6c((void*)_handle, arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_0bc75c74(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_a7d62e11(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(float value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool parse_9c1966ae(nint inputExpression, nint molangVersion, nint idSet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
-    public bool parse_96e0e3e2(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public static nint queryFunctionAccessorFromString(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public static nint mGetParticleTintFunc() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'MolangScriptArg const&' is not supported.", false)]
-    public static nint registerQueryFunction(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, ulong arg5, ulong arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'MolangScriptArg const&' is not supported.");
-
-    public static void setExperiments(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mImpl_Address
     {
-        NativeMethods.TablePtr->hs_method_059d0e7c((void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ff8eae63((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void unregisterQueryFunction(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static nint mQueryFunctionAccessors()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_bd0f7bac();
+    }
 
+    public static nint mQuerySets()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_ab939c19();
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode rhs)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode((nint)NativeMethods.TablePtr->C1.hs_method_a7d62e11((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
+    }
+
+    public bool parse(string expression, global::Hosihikari.Bindings.Bedrock.Interop.MolangParseConfig config)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(expression);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(expression, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_ea5bd912((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)config.Handle) != 0;
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'const MolangScriptArg &' is not supported.", false)]
+    public static nint registerQueryFunction(nint queryFunctionName, nint accessor, nint documentation, nint returnType, nint querySetIdentifier, ulong minArgumentCount, ulong maxArgumentCount, nint experiments) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'const MolangScriptArg &' is not supported.");
+
+    public static void setExperiments(global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
+    {
+        NativeMethods.TablePtr->C1.hs_method_09ea9eae((void*)experiments.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static void unregisterQueryFunction(nint queryFunctionName, nint querySetIdentifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_b764cec9((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_b764cec9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum LevelChunkNeighbor : int
+public enum LevelChunkNeighbor : byte
 {
+    North = 1,
+    NorthEast = 2,
+    East = 4,
+    SouthEast = 8,
+    South = 16,
+    SouthWest = 32,
+    West = 64,
+    NorthWest = 128,
 }

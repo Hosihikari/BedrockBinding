@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class EncryptedZipTransforms : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EncryptedZipTransforms(nint handle) : this(handle, true) { }
 
     internal EncryptedZipTransforms(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EncryptedZipTransforms Borrow(nint handle) => new EncryptedZipTransforms(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,34 @@ public sealed unsafe partial class EncryptedZipTransforms : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EncryptedZipTransforms Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EncryptedZipTransforms Create_c5ca2891(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static EncryptedZipTransforms Create_370f86c4(nint arg0)
+    public bool _readTransform(byte[] stream)
     {
-        var handle = NativeMethods.TablePtr->hs_create_370f86c4((void*)arg0);
+        fixed (byte* __hs_vectorData0 = stream)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_be0efe45((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(stream?.Length ?? 0)) != 0;
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public bool _writeTransform(byte[] stream)
+    {
+        fixed (byte* __hs_vectorData0 = stream)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_500fd92d((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(stream?.Length ?? 0)) != 0;
+        }
+    }
+
+    public static EncryptedZipTransforms Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a88452be();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,37 +69,54 @@ public sealed unsafe partial class EncryptedZipTransforms : global::System.IDisp
         return new EncryptedZipTransforms((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool readTransform(byte[] arg0)
+    public static EncryptedZipTransforms Create(global::Hosihikari.Bindings.Bedrock.Interop.EncryptedZipTransforms arg0)
     {
-        fixed (byte* __hs_vectorData0 = arg0)
+        var handle = NativeMethods.TablePtr->C1.hs_create_c5ca2891((void*)arg0.Handle);
+        if (handle == null)
         {
-            return NativeMethods.TablePtr->hs_method_cb48d4fa((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EncryptedZipTransforms((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk766005_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d9ae2d2d((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EncryptedZipTransforms operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EncryptedZipTransforms arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EncryptedZipTransforms((nint)NativeMethods.TablePtr->C1.hs_method_49459877((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public bool readTransform(byte[] stream)
+    {
+        fixed (byte* __hs_vectorData0 = stream)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_da0b32d5((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(stream?.Length ?? 0)) != 0;
         }
     }
 
-    public bool writeTransform(byte[] arg0)
+    public bool writeTransform(byte[] stream)
     {
-        fixed (byte* __hs_vectorData0 = arg0)
+        fixed (byte* __hs_vectorData0 = stream)
         {
-            return NativeMethods.TablePtr->hs_method_24814f77((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_bebed868((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(stream?.Length ?? 0)) != 0;
         }
     }
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_88474249((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_88474249((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

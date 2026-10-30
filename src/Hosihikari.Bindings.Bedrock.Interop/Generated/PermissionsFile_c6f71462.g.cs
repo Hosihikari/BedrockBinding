@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PermissionsFile
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PermissionsFile(nint handle) : this(handle, true) { }
 
     internal PermissionsFile(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PermissionsFile Borrow(nint handle) => new PermissionsFile(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,52 +33,42 @@ public sealed unsafe partial class PermissionsFile
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PermissionsFile Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PermissionsFile Create_a5f82fd9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PermissionsFile Create_edbe3d55(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void applyPlayerPermissionsFromDisk(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent arg1, byte arg2)
+    public static string _getPermissionIdForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_8c89fe61((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_af73ac96((void*)player.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPermissions_af3b464a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getPermissions_70cc4b49()
+    public void applyPlayerPermissionsFromDisk(global::Hosihikari.Bindings.Bedrock.Interop.Player player, byte opCommandPermissionLevel)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_70cc4b49((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_baa14a98((void*)__hosihikari_shim_handle, (void*)player.Handle, opCommandPermissionLevel);
     }
 
-    public string[] getXUIDsByPermission(sbyte arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilePath_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c88f8daa((void*)_handle, arg0);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_28207037((void*)__hosihikari_shim_handle);
     }
 
-    public bool isPermissionsSet(string arg0, sbyte arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPermissions_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4ef33bd6((void*)__hosihikari_shim_handle);
+    }
+
+    public void persistPlayerPermissionsToDisk(global::Hosihikari.Bindings.Bedrock.Interop.Player player, sbyte permission)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6b995daa((void*)__hosihikari_shim_handle, (void*)player.Handle, permission);
+    }
+
+    public void persistPlayerPermissionsToDisk(string playerId, sbyte permission)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(playerId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -88,47 +78,23 @@ public sealed unsafe partial class PermissionsFile
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(playerId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_b1edac62((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1) != 0;
+            NativeMethods.TablePtr->C2.hs_method_c45c42c4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, permission);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void persistPlayerPermissionsToDisk(global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent arg0, sbyte arg1)
-    {
-        NativeMethods.TablePtr->hs_method_12cdec8b((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    public void persistPlayerPermissionsToDisk(string arg0, sbyte arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_61afc389((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<FileReadResult, Json::Value>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint readPermissionFile() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<FileReadResult, Json::Value>' requires --link-carrier or --virtual-dispatch.");
 
     public int reload()
     {
-        return NativeMethods.TablePtr->hs_method_b87bd9cd((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_b87bd9cd((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_cc4d06c6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.", false)]
+    public nint reloadAndApply(nint userManager, nint opCommandPermissionLevel) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.");
 }

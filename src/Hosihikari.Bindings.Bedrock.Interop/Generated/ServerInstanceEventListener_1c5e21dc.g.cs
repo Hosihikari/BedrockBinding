@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerInstanceEventListener
+public sealed unsafe partial class ServerInstanceEventListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerInstanceEventListener(nint handle) : this(handle, true) { }
 
     internal ServerInstanceEventListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerInstanceEventListener Borrow(nint handle) => new ServerInstanceEventListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,142 @@ public sealed unsafe partial class ServerInstanceEventListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerInstanceEventListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerInstanceEventListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int onServerInitializeEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstanceNotificationEvent @event)
     {
-        return NativeMethods.TablePtr->hs_method_cae6503a((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_d135e4d5((void*)__hosihikari_shim_handle, (void*)@event.Handle);
     }
 
-    public int onServerInitializeStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    public int _onServerInitializeEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
     {
-        return NativeMethods.TablePtr->hs_method_4b21be61((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_4415bc33((void*)__hosihikari_shim_handle, (void*)instance.Handle);
     }
 
-    public int onServerMinecraftInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0, nint arg1)
+    public int _onServerInitializeStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
     {
-        return NativeMethods.TablePtr->hs_method_b549bf98((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return NativeMethods.TablePtr->C3.hs_method_05fb36cb((void*)__hosihikari_shim_handle, (void*)instance.Handle);
     }
 
-    public int onServerResume(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    public int _onServerLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance, global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->hs_method_9bd45d54((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_6bddce6d((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)level.Handle);
     }
 
-    public int onServerSuspend(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    public int _onServerMinecraftInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance, nint minecraft)
     {
-        return NativeMethods.TablePtr->hs_method_93044cee((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_1cb9153e((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)minecraft);
     }
 
-    public int onServerUpdateEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    public int _onServerResume(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
     {
-        return NativeMethods.TablePtr->hs_method_f26337cb((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_09d04cf7((void*)__hosihikari_shim_handle, (void*)instance.Handle);
     }
 
-    public int onStartLeaveGame(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    public int _onServerSuspend(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
     {
-        return NativeMethods.TablePtr->hs_method_9eea7e54((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_a9694619((void*)__hosihikari_shim_handle, (void*)instance.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int _onServerThreadStarted(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_a1c0e076((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int _onServerThreadStopped(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_84e3bd46((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int _onServerUpdateEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_a563130c((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int _onServerUpdateStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_41ee85a5((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int _onStartLeaveGame(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_9d3353c9((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstanceNotificationEvent @event)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_1d16f920((void*)__hosihikari_shim_handle, (void*)@event.Handle);
+    }
+
+    public int onServerInitializeEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_cb7a4433((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onServerInitializeStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_21993ce1((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onServerLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance, global::Hosihikari.Bindings.Bedrock.Interop.Level level)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_973a45bd((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)level.Handle);
+    }
+
+    public int onServerMinecraftInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance, nint minecraft)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_6fea89fd((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)minecraft);
+    }
+
+    public int onServerResume(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_020676ac((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onServerSuspend(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_137144d6((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onServerThreadStarted(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_5c2d0524((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onServerThreadStopped(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_51797575((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onServerUpdateEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_1c458296((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onServerUpdateStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_8e344d23((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+    public int onStartLeaveGame(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance instance)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_9cfcd9b8((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_1c5e21dc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

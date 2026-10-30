@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelChunkEventManagerProxy
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelChunkEventManagerProxy(nint handle) : this(handle, true) { }
 
     internal LevelChunkEventManagerProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelChunkEventManagerProxy Borrow(nint handle) => new LevelChunkEventManagerProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,78 @@ public sealed unsafe partial class LevelChunkEventManagerProxy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkEventManagerProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkEventManagerProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getClosestPlayerDistanceSquared(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public int _getClosestPlayerDistanceSquared(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->hs_method_c2a0b7a7((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_8d89b61d((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
-    public bool isOwnedByTickingThread(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public bool _isOwnedByTickingThread(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->hs_method_7eeb9d95((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_f449927a((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
-    public bool isReadOnly(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public bool _isReadOnly(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->hs_method_e2622fd0((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_9d76168e((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
-    public void onTickingStarted(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public void _onTickingStarted(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->hs_method_f2f374dc((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_9f207b18((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
-    public void onTickingStopped(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public void _onTickingStopped(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->hs_method_20f3047f((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_7b9c1f5f((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool setOnChunkLoadedCalled(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public bool _setOnChunkLoadedCalled(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->hs_method_1e32cc83((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_a0faf9e8((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
-    public void setupRedstoneCircuit(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
+    public void _setupRedstoneCircuit(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource chunkSource, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->hs_method_6a227b04((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_d6e61c40((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int getClosestPlayerDistanceSquared(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5e9babe8((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+    }
+
+    public bool isOwnedByTickingThread(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_51f40858((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+    }
+
+    public bool isReadOnly(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_629558e1((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+    }
+
+    public void onTickingStarted(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f2ac1beb((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+    }
+
+    public void onTickingStopped(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_470d020d((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+    }
+
+    public bool setOnChunkLoadedCalled(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_4f7f1632((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+    }
+
+    public void setupRedstoneCircuit(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource chunkSource, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_4db946ee((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle);
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class InventoryTransactionItemGroup : global::System.IDisposable
+public sealed unsafe partial class InventoryTransactionItemGroup
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public InventoryTransactionItemGroup(nint handle) : this(handle, true) { }
 
     internal InventoryTransactionItemGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static InventoryTransactionItemGroup Borrow(nint handle) => new InventoryTransactionItemGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,43 @@ public sealed unsafe partial class InventoryTransactionItemGroup : global::Syste
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getItemInstance()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_a1db6711((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C1.hs_method_923d173b((void*)__hosihikari_shim_handle));
     }
 
     public int mCount
     {
-        get => NativeMethods.TablePtr->hs_get_5d9d2b94((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_5d9d2b94((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_5d9d2b94((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_5d9d2b94((void*)__hosihikari_shim_handle, value);
     }
 
     public int mItemAux
     {
-        get => NativeMethods.TablePtr->hs_get_1c86259f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1c86259f((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_1c86259f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_1c86259f((void*)__hosihikari_shim_handle, value);
     }
 
     public int mItemId
     {
-        get => NativeMethods.TablePtr->hs_get_9982586f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9982586f((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_9982586f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_9982586f((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mOverflow
     {
-        get => NativeMethods.TablePtr->hs_get_dc3a352b((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_dc3a352b((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_dc3a352b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_dc3a352b((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTag_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b2d642a4((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0a85e6af((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b2d642a4((void*)__hosihikari_shim_handle);
     }
 }

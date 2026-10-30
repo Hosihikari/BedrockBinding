@@ -4,7 +4,23 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LegacyTreeFeature_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Type : int
 {
+    BambooJungle = 0,
+    BirchForest = 1,
+    BirchForestMutated = 2,
+    ExtremeHillsPlusTrees = 3,
+    FlowerForest = 4,
+    Meadow = 5,
+    Forest = 6,
+    Ice = 7,
+    Jungle = 8,
+    JungleEdge = 9,
+    MesaForest = 10,
+    Plains = 11,
+    Savanna = 12,
+    SavannaMutated = 13,
+    Taiga = 14,
+    TaigaMega = 15,
+    TaigaMegaSpruce = 16,
 }

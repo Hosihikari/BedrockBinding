@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TerrainBurstReactionComponent
+public sealed unsafe partial class TerrainBurstReactionComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TerrainBurstReactionComponent(nint handle) : this(handle, true) { }
 
     internal TerrainBurstReactionComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TerrainBurstReactionComponent Borrow(nint handle) => new TerrainBurstReactionComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,62 @@ public sealed unsafe partial class TerrainBurstReactionComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TerrainBurstReactionComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TerrainBurstReactionComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    public void __onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        NativeMethods.TablePtr->hs_method_33eb59a4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_44387c8e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
+    {
+        NativeMethods.TablePtr->C3.hs_method_149a9a07((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int mCount
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_2af0d5f7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_2af0d5f7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mData
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_7953f8f7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7953f8f7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDims_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c4f21880((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mDirOneWay
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a339aec7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_a339aec7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDirRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9c9519c3((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_0a53f6fa((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

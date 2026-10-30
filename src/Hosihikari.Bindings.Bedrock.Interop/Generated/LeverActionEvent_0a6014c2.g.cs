@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LeverActionEvent : global::System.IDisposable
+public sealed unsafe partial class LeverActionEvent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LeverActionEvent(nint handle) : this(handle, true) { }
 
     internal LeverActionEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LeverActionEvent Borrow(nint handle) => new LeverActionEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,32 @@ public sealed unsafe partial class LeverActionEvent : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LeverActionEvent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static LeverActionEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.LeverActionEvent arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockSourceHandle_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_3334bb9a((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new LeverActionEvent((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6cc4719e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public bool mIsPowered
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0a6014c2((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C1.hs_get_78b6c8d2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_78b6c8d2((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLeverBlockPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dac95e54((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerRef_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1ebe2a1a((void*)__hosihikari_shim_handle);
     }
 }

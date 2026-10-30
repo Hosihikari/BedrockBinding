@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CachedChunkBlockSource
+public sealed unsafe partial class CachedChunkBlockSource : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CachedChunkBlockSource(nint handle) : this(handle, true) { }
 
     internal CachedChunkBlockSource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CachedChunkBlockSource Borrow(nint handle) => new CachedChunkBlockSource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,102 @@ public sealed unsafe partial class CachedChunkBlockSource
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CachedChunkBlockSource Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CachedChunkBlockSource Create_e2d7e56d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CachedChunkBlockSource Create_b8841100(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public static CachedChunkBlockSource Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_d86cd9d9((void*)_handle, (void*)arg0.Handle), false);
+        var handle = NativeMethods.TablePtr->C0.hs_create_13b99b3a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CachedChunkBlockSource((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockSource getBlockSource()
+    public static CachedChunkBlockSource Create(global::Hosihikari.Bindings.Bedrock.Interop.CachedChunkBlockSource arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockSource((nint)NativeMethods.TablePtr->hs_method_9ef5da34((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C0.hs_create_b8841100((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CachedChunkBlockSource((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block getLiquidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public ushort _updateCacheAndGetIndex(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_861dded3((void*)_handle, (void*)arg0.Handle), false);
+        return NativeMethods.TablePtr->C0.hs_method_83d63e95((void*)__hosihikari_shim_handle, (void*)position.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->hs_method_30066286((void*)_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C0.hs_method_703435bb((void*)__hosihikari_shim_handle, (void*)position.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void prefetchForPosition(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getLiquidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position)
     {
-        NativeMethods.TablePtr->hs_method_ef753ae8((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C0.hs_method_eb039b6a((void*)__hosihikari_shim_handle, (void*)position.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->C0.hs_method_6f11816f((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f30a5821((void*)__hosihikari_shim_handle);
+    }
+
+    public short mMinHeight
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_75a4f447((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_75a4f447((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreviousChunkPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7a4b90cf((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mPreviousLevelChunk
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0f5642a8((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mPreviousSubChunk
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_afa31b6e((void*)__hosihikari_shim_handle);
+    }
+
+    public short mPreviousSubChunkHeight
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_ea32eb41((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_ea32eb41((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CachedChunkBlockSource operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CachedChunkBlockSource arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CachedChunkBlockSource((nint)NativeMethods.TablePtr->C0.hs_method_e27afc60((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_9307fac5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

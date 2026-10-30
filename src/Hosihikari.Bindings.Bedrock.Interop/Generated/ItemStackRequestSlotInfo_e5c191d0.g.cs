@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestSlotInfo : global::System.IDisposable
+public sealed unsafe partial class ItemStackRequestSlotInfo
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemStackRequestSlotInfo(nint handle) : this(handle, true) { }
 
     internal ItemStackRequestSlotInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemStackRequestSlotInfo Borrow(nint handle) => new ItemStackRequestSlotInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,26 @@ public sealed unsafe partial class ItemStackRequestSlotInfo : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFullContainerName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_181a2255((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNetIdVariant_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e2cd5471((void*)_handle);
-    }
-
-    public sbyte mOpenContainerNetId
-    {
-        get => NativeMethods.TablePtr->hs_get_c27aa5f0((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c27aa5f0((void*)_handle, value);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e2cd5471((void*)__hosihikari_shim_handle);
     }
 
     public byte mSlot
     {
-        get => NativeMethods.TablePtr->hs_get_6e8ee41c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6e8ee41c((void*)_handle, value);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_e5c191d0((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C1.hs_get_6e8ee41c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_6e8ee41c((void*)__hosihikari_shim_handle, value);
     }
 }

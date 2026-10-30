@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.gametest;
 
-public sealed unsafe partial class IGameTestListener
+public sealed unsafe partial class IGameTestListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IGameTestListener(nint handle) : this(handle, true) { }
 
     internal IGameTestListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IGameTestListener Borrow(nint handle) => new IGameTestListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,82 @@ public sealed unsafe partial class IGameTestListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IGameTestListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IGameTestListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    public void _onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
     {
-        NativeMethods.TablePtr->hs_method_12cfef3a((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_5646c2b5((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
     }
 
-    public void onTestPassed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    public void _onTestPassed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
     {
-        NativeMethods.TablePtr->hs_method_c40fc68a((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_98e26d26((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
+    }
+
+    public void _onTestRetryFinished(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_19d9d5c3((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _onTestRetryStarted(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_1dd62af7((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _onTestStarted(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_f25d1fca((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _onTestStructureLoaded(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
+    {
+        NativeMethods.TablePtr->C4.hs_method_f18bdbd2((void*)__hosihikari_shim_handle, (void*)test.Handle);
+    }
+
+    public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
+    {
+        NativeMethods.TablePtr->C4.hs_method_7c9f4d78((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
+    }
+
+    public void onTestPassed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
+    {
+        NativeMethods.TablePtr->C4.hs_method_905af8b5((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
     }
 
     public void onTestRetryFinished(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
     {
-        NativeMethods.TablePtr->hs_method_fb78d563((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_f4c7564e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void onTestRetryStarted(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
     {
-        NativeMethods.TablePtr->hs_method_a79d6f14((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_c0a442fe((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void onTestStarted(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
     {
-        NativeMethods.TablePtr->hs_method_786617e4((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_bc348f4c((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    public void onTestStructureLoaded(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    public void onTestStructureLoaded(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
     {
-        NativeMethods.TablePtr->hs_method_01e401c8((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_4abf7819((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_9244bd22((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

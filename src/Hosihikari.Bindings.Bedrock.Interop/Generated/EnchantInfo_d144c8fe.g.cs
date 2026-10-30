@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class EnchantInfo
+public sealed unsafe partial class EnchantInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EnchantInfo(nint handle) : this(handle, true) { }
 
     internal EnchantInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EnchantInfo Borrow(nint handle) => new EnchantInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,60 @@ public sealed partial class EnchantInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static EnchantInfo Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_26ed858b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnchantInfo((nint)handle);
+    }
+
+    public static EnchantInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition_Nested.EnchantInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4d1b6b4f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnchantInfo((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk925f0a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5ef1a014((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkeb6509_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_76cb167c((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition_Nested.EnchantInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition_Nested.EnchantInfo arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition_Nested.EnchantInfo((nint)NativeMethods.TablePtr->C2.hs_method_433ee2a3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_d144c8fe((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

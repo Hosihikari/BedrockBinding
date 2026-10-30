@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class VolumeEntityManagerServer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VolumeEntityManagerServer(nint handle) : this(handle, true) { }
 
     internal VolumeEntityManagerServer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VolumeEntityManagerServer Borrow(nint handle) => new VolumeEntityManagerServer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,95 +33,74 @@ public sealed unsafe partial class VolumeEntityManagerServer : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mControlBlock_Address
+    public static VolumeEntityManagerServer Create()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6dfe2b32((void*)_handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_e51e6e30();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VolumeEntityManagerServer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VolumeEntityManagerServer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static VolumeEntityManagerServer Create(global::Hosihikari.Bindings.Bedrock.Interop.VolumeEntityManagerServer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_a8ce5eda((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'StackRefResult<EntityRegistry>' is not a known bindable declaration.", false)]
-    public static VolumeEntityManagerServer Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'StackRefResult<EntityRegistry>' is not a known bindable declaration.");
+        return new VolumeEntityManagerServer((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VolumeEntityManagerServer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<VolumeEntityManagerServer::CreateVolumeResult,StackRefResult<EntityContext>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createVolume(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<VolumeEntityManagerServer::CreateVolumeResult,StackRefResult<EntityContext>>' requires --link-carrier or --virtual-dispatch.");
+    public void _sendVolumeToClient(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent userIdentifier, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, global::Hosihikari.Bindings.Bedrock.Interop.PacketSender packetSender)
+    {
+        NativeMethods.TablePtr->C4.hs_method_764ac6c4((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)userIdentifier.Handle, (void*)source.Handle, (void*)packetSender.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'WeakRef<EntityContext>' is not supported.", false)]
-    public nint getAllVolumesOverlappingChunkPosition_25171f6d(nint arg0, nint arg1) =>
+    public nint getAllVolumesOverlappingChunkPosition(nint pos, nint chunkDimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'WeakRef<EntityContext>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAllVolumesOverlappingChunkPosition_52748130(nint pos, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void loadVolumeFiles(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, bool arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3d4c19_Address
     {
-        NativeMethods.TablePtr->hs_method_ab8f3147((void*)_handle, (void*)arg0.Handle, arg1);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_4c0f0a61((void*)__hosihikari_shim_handle);
     }
 
-    public void loadVolumeInstances(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, bool arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6e629a_Address
     {
-        NativeMethods.TablePtr->hs_method_4564610d((void*)_handle, (void*)arg0.Handle, arg1);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_1b212cc6((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'OwnerPtr<EntityContext>' is not supported.", false)]
-    public nint removeAllVolumes_9aaa5dbf(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'OwnerPtr<EntityContext>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint removeAllVolumes_c8e87251(nint levelStorage, nint dimensionId, nint packetSender) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'OwnerPtr<EntityContext>' is not supported.", false)]
-    public nint removeVolumes_7c944a04(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'OwnerPtr<EntityContext>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'OwnerPtr<EntityContext>' is not supported.", false)]
-    public nint removeVolumes_861bcfa7(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'OwnerPtr<EntityContext>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint removeVolumes_10bd8a0c(nint levelStorage, nint pos, nint dimensionId, nint packetSender) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint removeVolumes_16f14373(nint levelStorage, nint name, nint dimensionId, nint packetSender) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void sendAllVolumesToClient(global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.PacketSender arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.VolumeEntityManagerServer operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.VolumeEntityManagerServer arg0)
     {
-        NativeMethods.TablePtr->hs_method_fea423b4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VolumeEntityManagerServer((nint)NativeMethods.TablePtr->C4.hs_method_db09b42b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+    public void sendAllVolumesToClient(global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent userIdentifier, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, global::Hosihikari.Bindings.Bedrock.Interop.PacketSender packetSender)
+    {
+        NativeMethods.TablePtr->C4.hs_method_79fb9e09((void*)__hosihikari_shim_handle, (void*)userIdentifier.Handle, (void*)source.Handle, (void*)packetSender.Handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_c0afdb8f((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_c0afdb8f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

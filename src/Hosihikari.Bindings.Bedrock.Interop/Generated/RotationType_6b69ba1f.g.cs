@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockTransformationComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class RotationType
+public sealed unsafe partial class RotationType
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RotationType(nint handle) : this(handle, true) { }
 
     internal RotationType(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RotationType Borrow(nint handle) => new RotationType(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,32 @@ public sealed partial class RotationType
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint pivot_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f70fcb43((void*)__hosihikari_shim_handle);
+    }
+
+    public int x
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3c248725((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_3c248725((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int y
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_a8e19a1f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a8e19a1f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int z
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_fd15ae48((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_fd15ae48((void*)__hosihikari_shim_handle, value);
     }
 }

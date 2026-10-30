@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MerchantRecipe(nint handle) : this(handle, true) { }
 
     internal MerchantRecipe(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MerchantRecipe Borrow(nint handle) => new MerchantRecipe(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,29 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MerchantRecipe Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buy, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance sell)
     {
-        var handle = NativeMethods.TablePtr->hs_create_88a02ce6((void*)arg0.Handle, (void*)arg1.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_d1e81f69((void*)__hosihikari_shim_handle, (void*)buy.Handle, (void*)sell.Handle);
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyA, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyB, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance sell)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_29eccb27((void*)__hosihikari_shim_handle, (void*)buyA.Handle, (void*)buyB.Handle, (void*)sell.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_353dfbaf((void*)__hosihikari_shim_handle);
+    }
+
+    public static MerchantRecipe Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_227cc4bf();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,9 +64,9 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
         return new MerchantRecipe((nint)handle);
     }
 
-    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
+    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buy, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance sell)
     {
-        var handle = NativeMethods.TablePtr->hs_create_825edad0((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_020ea772((void*)buy.Handle, (void*)sell.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,9 +75,9 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
         return new MerchantRecipe((nint)handle);
     }
 
-    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe arg0)
+    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyA, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyB, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance sell)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ea62fc29((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_a70bb8de((void*)buyA.Handle, (void*)buyB.Handle, (void*)sell.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,255 +86,115 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
         return new MerchantRecipe((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void calculateDemandPrices(int arg0, int arg1, int arg2, int arg3, bool arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void calculateDemandPrices(int minorPositiveGossip, int majorPositiveGossip, int nearbyCuredDiscount, int heroEffectAmplifier, bool hasHeroOfTheVillage, nint baseGameVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void calculateDemandPricesDefaults()
+    public bool isSame(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe lhs)
     {
-        NativeMethods.TablePtr->hs_method_03c41d18((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_7d43f0f7((void*)__hosihikari_shim_handle, (void*)lhs.Handle) != 0;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? createTag(bool arg0)
+    public void legacyCalculateDemandPrices(int lowTierDiscount, int highTierDiscount)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_52a9f582((void*)_handle, arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
-    }
-
-    public int getBaseCountA()
-    {
-        return NativeMethods.TablePtr->hs_method_a0fe0e89((void*)_handle);
-    }
-
-    public int getBaseCountB()
-    {
-        return NativeMethods.TablePtr->hs_method_9acdd12d((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getBuyAItem()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_b5b68f15((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getBuyBItem()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_f91f753f((void*)_handle), false);
-    }
-
-    public int getDemand()
-    {
-        return NativeMethods.TablePtr->hs_method_55bd2087((void*)_handle);
-    }
-
-    public int getMaxUses()
-    {
-        return NativeMethods.TablePtr->hs_method_2db4eab7((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getSellItem()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_ee2014cd((void*)_handle), false);
-    }
-
-    public int getTier()
-    {
-        return NativeMethods.TablePtr->hs_method_d0d24f17((void*)_handle);
-    }
-
-    public uint getTraderExp()
-    {
-        return NativeMethods.TablePtr->hs_method_92b5393f((void*)_handle);
-    }
-
-    public int getUses()
-    {
-        return NativeMethods.TablePtr->hs_method_308022c4((void*)_handle);
-    }
-
-    public bool hasSecondaryBuyItem()
-    {
-        return NativeMethods.TablePtr->hs_method_b3f5483d((void*)_handle) != 0;
-    }
-
-    public void increaseMaxUses(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_a60baa9e((void*)_handle, arg0);
-    }
-
-    public void increaseUses()
-    {
-        NativeMethods.TablePtr->hs_method_35be4d74((void*)_handle);
-    }
-
-    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
-    {
-        NativeMethods.TablePtr->hs_method_eff1bdbb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    public bool isOutOfUses()
-    {
-        return NativeMethods.TablePtr->hs_method_f1cd04a9((void*)_handle) != 0;
-    }
-
-    public bool isSame(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_5a179db9((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    public void legacyCalculateDemandPrices(int arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_531d0245((void*)_handle, arg0, arg1);
-    }
-
-    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f7dc2c5c((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_531d0245((void*)__hosihikari_shim_handle, lowTierDiscount, highTierDiscount);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBuyA_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9d5d8ad2((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9d5d8ad2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBuyB_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e71fc1d9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e71fc1d9((void*)__hosihikari_shim_handle);
     }
 
     public int mBuyCountA
     {
-        get => NativeMethods.TablePtr->hs_get_60050143((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_60050143((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_60050143((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_60050143((void*)__hosihikari_shim_handle, value);
     }
 
     public int mBuyCountB
     {
-        get => NativeMethods.TablePtr->hs_get_22b0445c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_22b0445c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_22b0445c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_22b0445c((void*)__hosihikari_shim_handle, value);
     }
 
     public int mDemand
     {
-        get => NativeMethods.TablePtr->hs_get_59f837f0((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_59f837f0((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_59f837f0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_59f837f0((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMaxUses
     {
-        get => NativeMethods.TablePtr->hs_get_f860b10c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f860b10c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_f860b10c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f860b10c((void*)__hosihikari_shim_handle, value);
     }
 
     public float mPriceMultiplierA
     {
-        get => NativeMethods.TablePtr->hs_get_62b72de5((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_62b72de5((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_62b72de5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_62b72de5((void*)__hosihikari_shim_handle, value);
     }
 
     public float mPriceMultiplierB
     {
-        get => NativeMethods.TablePtr->hs_get_7f3160ce((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7f3160ce((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_7f3160ce((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7f3160ce((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRecipeNetId_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9a04fcae((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9a04fcae((void*)__hosihikari_shim_handle);
     }
 
     public bool mRewardExp
     {
-        get => NativeMethods.TablePtr->hs_get_15e25aa9((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_15e25aa9((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_15e25aa9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_15e25aa9((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSell_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3ba0c7eb((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3ba0c7eb((void*)__hosihikari_shim_handle);
     }
 
     public int mTier
     {
-        get => NativeMethods.TablePtr->hs_get_e2fcfe41((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_e2fcfe41((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_e2fcfe41((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e2fcfe41((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mTraderExp
     {
-        get => NativeMethods.TablePtr->hs_get_352b671e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_352b671e((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_352b671e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_352b671e((void*)__hosihikari_shim_handle, value);
     }
 
     public int mUses
     {
-        get => NativeMethods.TablePtr->hs_get_700341e1((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_700341e1((void*)_handle, value);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setDemand(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_b96f5e3a((void*)_handle, arg0);
-    }
-
-    public void setMaxUses(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_88d479ab((void*)_handle, arg0);
-    }
-
-    public void setPriceMultiplierA(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_3b520e5c((void*)_handle, arg0);
-    }
-
-    public void setPriceMultiplierB(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_e35e550f((void*)_handle, arg0);
-    }
-
-    public void setRewardExp(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_de85423b((void*)_handle, arg0);
-    }
-
-    public void setTier(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_63f2a042((void*)_handle, arg0);
-    }
-
-    public void setTraderExp(uint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_122c3eb1((void*)_handle, arg0);
-    }
-
-    public void setUses(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_c02a28b3((void*)_handle, arg0);
-    }
-
-    public bool shouldRewardExp()
-    {
-        return NativeMethods.TablePtr->hs_method_6696c039((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_700341e1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_700341e1((void*)__hosihikari_shim_handle, value);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_66a93e84((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_66a93e84((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

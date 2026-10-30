@@ -4,7 +4,15 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum LeverDirection : int
 {
+    DownEastWest = 0,
+    East = 1,
+    West = 2,
+    South = 3,
+    North = 4,
+    UpNorthSouth = 5,
+    UpEastWest = 6,
+    DownNorthSouth = 7,
+    Count = 8,
 }

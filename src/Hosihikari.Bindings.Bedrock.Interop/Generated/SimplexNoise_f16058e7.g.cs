@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SimplexNoise : global::System.IDisposable
+public sealed unsafe partial class SimplexNoise
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SimplexNoise(nint handle) : this(handle, true) { }
 
     internal SimplexNoise(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SimplexNoise Borrow(nint handle) => new SimplexNoise(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,66 +33,30 @@ public sealed unsafe partial class SimplexNoise : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimplexNoise Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static SimplexNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, bool arg1)
+    public float _getValue(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 vin)
     {
-        var handle = NativeMethods.TablePtr->hs_create_6a572f4a((void*)arg0.Handle, arg1);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SimplexNoise((nint)handle);
+        return NativeMethods.TablePtr->C3.hs_method_68debed1((void*)__hosihikari_shim_handle, (void*)vin.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimplexNoise Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float _getValue(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg0)
+    public float _getValue(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 vin)
     {
-        return NativeMethods.TablePtr->hs_method_bf93e3a1((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public float _getValue(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_a84162f8((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_c6eba7f3((void*)__hosihikari_shim_handle, (void*)vin.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNoiseMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1f8a7769((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1f8a7769((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOrigin_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_bbbf6774((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_f16058e7((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bbbf6774((void*)__hosihikari_shim_handle);
     }
 }

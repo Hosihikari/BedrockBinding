@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub;
 
 public sealed unsafe partial class SubscriptionBase
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SubscriptionBase(nint handle) : this(handle, true) { }
 
     internal SubscriptionBase(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SubscriptionBase Borrow(nint handle) => new SubscriptionBase(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,28 +33,24 @@ public sealed unsafe partial class SubscriptionBase
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public void disconnect()
     {
-        NativeMethods.TablePtr->hs_method_69ca24af((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_69ca24af((void*)__hosihikari_shim_handle);
     }
 
     public void disconnect_async()
     {
-        NativeMethods.TablePtr->hs_method_763488ca((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_763488ca((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBody_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_da8a39a5((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_da8a39a5((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

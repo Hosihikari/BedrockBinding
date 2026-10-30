@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Cavifier
+public sealed unsafe partial class Cavifier : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Cavifier(nint handle) : this(handle, true) { }
 
     internal Cavifier(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Cavifier Borrow(nint handle) => new Cavifier(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,71 @@ public sealed unsafe partial class Cavifier
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Cavifier Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Cavifier Create(nint arg0, float arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Cavifier Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float cavify(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, int arg1, float arg2)
+    public static Cavifier Create()
     {
-        return NativeMethods.TablePtr->hs_method_bb07bf40((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+        var handle = NativeMethods.TablePtr->C0.hs_create_c2829e10();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Cavifier((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static Cavifier Create(global::Hosihikari.Bindings.Bedrock.Interop.Cavifier arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_efcb93ee((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Cavifier((nint)handle);
+    }
+
+    public float cavify(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 worldPos, int arg1, float density)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3d81ed58((void*)__hosihikari_shim_handle, (void*)worldPos.Handle, arg1, density);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCavifierNoises_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b07c07a0((void*)__hosihikari_shim_handle);
+    }
+
+    public float mDensityBoost
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_08b2fcf1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_08b2fcf1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMinCellY
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_a0628efb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a0628efb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Cavifier operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Cavifier arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Cavifier((nint)NativeMethods.TablePtr->C0.hs_method_4071bc4c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_aeb10611((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

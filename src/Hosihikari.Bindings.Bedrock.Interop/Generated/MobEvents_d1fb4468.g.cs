@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MobEvents : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MobEvents(nint handle) : this(handle, true) { }
 
     internal MobEvents(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MobEvents Borrow(nint handle) => new MobEvents(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,25 @@ public sealed unsafe partial class MobEvents : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string EVENTS_ENABLED_STRING
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_87d79aa6();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        return (nint)NativeMethods.TablePtr->C2.hs_method_515f9a6f((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobEvents Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MobEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0)
+    public static string EVENTS_ENABLED_STRING()
     {
-        var handle = NativeMethods.TablePtr->hs_create_7f2caa73((void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_40ecd17e();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static MobEvents Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e3812250();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,23 +60,36 @@ public sealed unsafe partial class MobEvents : global::System.IDisposable
         return new MobEvents((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobEvents Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool areEventsEnabled()
+    public static MobEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
     {
-        return NativeMethods.TablePtr->hs_method_1055b671((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C2.hs_create_d0eaf2c4((void*)levelStorage.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEvents((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobEvent getEvent(int arg0)
+    public static MobEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEvents arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEvent((nint)NativeMethods.TablePtr->hs_method_6afb5cb9((void*)_handle, arg0), false);
+        var handle = NativeMethods.TablePtr->C2.hs_create_b47b0eba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEvents((nint)handle);
     }
 
-    public int getIndexFromName(string arg0)
+    public void _onSaveEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_51326196((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public short getIndexFromName(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -88,74 +99,81 @@ public sealed unsafe partial class MobEvents : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_1dc4a745((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C2.hs_method_4f3e43c0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void initializeWithLevelStorageManager(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)
+    public void initializeWithLevelStorageManagerConnector(global::Hosihikari.Bindings.Bedrock.Interop.ILevelStorageManagerConnector levelStorageManagerConnector)
     {
-        NativeMethods.TablePtr->hs_method_d7a62162((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_46c0df2b((void*)__hosihikari_shim_handle, (void*)levelStorageManagerConnector.Handle);
     }
 
-    public bool isEnabled(int arg0)
+    public bool mEventsEnabled
     {
-        return NativeMethods.TablePtr->hs_method_82d06d0b((void*)_handle, arg0) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_1c6e793c((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1c6e793c((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readFromLevelStorage()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelStorage_Address
     {
-        NativeMethods.TablePtr->hs_method_26ca5027((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b348d67b((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? serialize()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMobEvents_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_dee587d7((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_59fd5d24((void*)__hosihikari_shim_handle);
     }
 
-    public void setEnabled(int arg0, bool arg1)
+    public bool mNeedsToSave
     {
-        NativeMethods.TablePtr->hs_method_0de32c1e((void*)_handle, arg0, arg1);
+        get => NativeMethods.TablePtr->C2.hs_get_1e0fe305((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1e0fe305((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setEventsEnabled(bool arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLevelStorageManagerStartLeaveGameSubscription_Address
     {
-        NativeMethods.TablePtr->hs_method_08f0b2a2((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_38ab64a0((void*)__hosihikari_shim_handle);
     }
 
-    public void setMarketplaceDefaults()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnSaveSubscription_Address
     {
-        NativeMethods.TablePtr->hs_method_cad4a91d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_999373c7((void*)__hosihikari_shim_handle);
     }
 
-    public void tick()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSaveTimer_Address
     {
-        NativeMethods.TablePtr->hs_method_bb73dd92((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8c108677((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobEvents operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MobEvents arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEvents((nint)NativeMethods.TablePtr->C2.hs_method_df8c195d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void writeToLevelStorage()
     {
-        NativeMethods.TablePtr->hs_method_e64e60ea((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_e64e60ea((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d1fb4468((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_d1fb4468((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

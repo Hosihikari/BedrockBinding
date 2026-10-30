@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ClubsEngagementTargetType : int
 {
+    Unknown = 0,
+    ImageFeedPost = 1,
+    TextFeedPost = 2,
+    Comment = 3,
+    RealmEvent = 4,
+    Gamertag = 5,
 }

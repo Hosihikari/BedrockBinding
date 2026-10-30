@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ReplayCorrectionResult : int
 {
+    NoCorrection = 0,
+    CorrectedWithRewind = 1,
+    CorrectedWithoutRewind = 2,
 }

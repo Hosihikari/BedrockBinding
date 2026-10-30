@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class WorldPacksHistoryFile
+public sealed unsafe partial class WorldPacksHistoryFile : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WorldPacksHistoryFile(nint handle) : this(handle, true) { }
 
     internal WorldPacksHistoryFile(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WorldPacksHistoryFile Borrow(nint handle) => new WorldPacksHistoryFile(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,75 @@ public sealed partial class WorldPacksHistoryFile
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldPacksHistoryFile Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C4.hs_method_0f9aca37((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldPacksHistoryFile Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static WorldPacksHistoryFile Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_47b9a33a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint initializeFromJson_da1a7c40(nint value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new WorldPacksHistoryFile((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static WorldPacksHistoryFile Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldPacksHistoryFile arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3d8f9def((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldPacksHistoryFile((nint)handle);
+    }
+
+    public int initializeFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_da1a7c40((void*)__hosihikari_shim_handle, (void*)value.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd187cb_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_02a0e95a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldPacksHistoryFile operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WorldPacksHistoryFile arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldPacksHistoryFile((nint)NativeMethods.TablePtr->C4.hs_method_6d58aef5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void removePack(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion packId)
+    {
+        NativeMethods.TablePtr->C4.hs_method_696aaf47((void*)__hosihikari_shim_handle, (void*)packId.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value toJsonValue()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C4.hs_method_1c29511d((void*)__hosihikari_shim_handle));
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_91b7261f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

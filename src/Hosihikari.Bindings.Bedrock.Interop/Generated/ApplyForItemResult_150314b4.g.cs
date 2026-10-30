@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SetItemDataFunction_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ApplyForItemResult : int
+public enum ApplyForItemResult : byte
 {
+    AsNewItem = 0,
+    SetAuxValue = 1,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TickingAreaListBase : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TickingAreaListBase(nint handle) : this(handle, true) { }
 
     internal TickingAreaListBase(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TickingAreaListBase Borrow(nint handle) => new TickingAreaListBase(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,133 +33,71 @@ public sealed unsafe partial class TickingAreaListBase : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickingAreaListBase Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickingAreaListBase Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_1bfff542((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void add(nint arg0) =>
+    public bool _removeDistantEntityAreasAndCheckForRemoved(nint playerPositions, nint requeue, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public uint countEntityTickingAreas()
-    {
-        return NativeMethods.TablePtr->hs_method_79fbbeda((void*)_handle);
-    }
-
-    public void destroyAreas()
-    {
-        NativeMethods.TablePtr->hs_method_da3a4fce((void*)_handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public nint findStandaloneAreasContaining_324a8995(nint arg0) =>
+    public nint findStandaloneAreasContaining(nint position) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint findStandaloneAreasContaining_70bf9324(nint position) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public nint findStandaloneAreasNamed_2613e830(nint arg0) =>
+    public nint findStandaloneAreasNamed(nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint findStandaloneAreasNamed_27582dcb(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getAreaFor(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getAreaFor(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID entityId)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_de837f08((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_ac883bf2((void*)__hosihikari_shim_handle, (void*)entityId.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAreas_3ec348ea() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getAreas_0a60267a()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_0a60267a((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
     public nint getStandaloneTickingAreaDescriptions() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
 
-    public bool hasTickingAreaNamed(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTickingAreas_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_48d5ba6b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void processRemoves()
-    {
-        NativeMethods.TablePtr->hs_method_eb9aa3ae((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3c73c758((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint removeAllStandaloneAreas(nint arg0) =>
+    public nint removeAllStandaloneAreas(nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint removeAreas_89291e4a(nint arg0, nint arg1) =>
+    public nint removeAreas(nint areasToRemove, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint removeAreas_87c2ba25(nint areasToRemove, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool removeDistantEntityAreasAndCheckForRemoved(nint arg0, nint arg1, nint arg2) =>
+    public bool removeDistantEntityAreasAndCheckForRemoved(nint playerPositions, nint requeue, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void tickSeasons(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f2dc3f0a((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void updateBlockSourceCurrentTick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
-    {
-        NativeMethods.TablePtr->hs_method_caf6ce92((void*)_handle, (void*)arg0.Handle);
-    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_fabf5b16((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_fabf5b16((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

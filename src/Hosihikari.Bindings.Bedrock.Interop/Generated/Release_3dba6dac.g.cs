@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-public sealed unsafe partial class Release
+public sealed unsafe partial class Release : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Release(nint handle) : this(handle, true) { }
 
     internal Release(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Release Borrow(nint handle) => new Release(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,80 @@ public sealed unsafe partial class Release
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Release Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Scripting::RemovedInMajorVersion' is abstract or not copy-constructible.", false)]
+    public nint _ctor(nint comparison_, nint version_, nint exclusiveMajorVersionLimit_) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Scripting::RemovedInMajorVersion' is abstract or not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Release Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool satisfies(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.Version arg0)
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_b2753827((void*)_handle, (void*)arg0.Handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_ad6f1905((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_33c227a1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static Release Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_970a0940();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Release((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Scripting::RemovedInMajorVersion' is abstract or not copy-constructible.", false)]
+    public static Release Create(nint comparison_, nint version_, nint exclusiveMajorVersionLimit_) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Scripting::RemovedInMajorVersion' is abstract or not copy-constructible.");
+
+    public static Release Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Release arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_170da435((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Release((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk63e5f1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bacf377b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd7338f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cde2eeec((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf154f7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c1e333c6((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Release operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Release arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Release((nint)NativeMethods.TablePtr->C3.hs_method_2eab6d95((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_3dba6dac((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

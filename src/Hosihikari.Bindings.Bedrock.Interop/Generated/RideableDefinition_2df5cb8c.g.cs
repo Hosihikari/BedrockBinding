@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RideableDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RideableDefinition(nint handle) : this(handle, true) { }
 
     internal RideableDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RideableDefinition Borrow(nint handle) => new RideableDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,14 @@ public sealed unsafe partial class RideableDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RideableDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RideableDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addFamilyTypeByName(string arg0)
+    public void addFamilyTypeByName(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -58,24 +50,111 @@ public sealed unsafe partial class RideableDefinition
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_9dd2dd4f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_f101e4ba((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_82485d87(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_867f6a7d(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.RideableComponent arg1)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.RideableComponent component)
     {
-        NativeMethods.TablePtr->hs_method_e502001d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_0cc66c56((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)component.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int mControllingSeat
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d8471a2e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d8471a2e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mDismountMode
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_3fa06ab2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3fa06ab2((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFamilyTypes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_01921db5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInteractText_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cb703364((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnRiderEnterEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_46c144d8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnRiderExitEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a7acac05((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mPassengerCanPick
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_1b4e0e05((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1b4e0e05((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mPassengerMaxWidth
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_cf99b033((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_cf99b033((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mPullInEntities
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c5d1415d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_c5d1415d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mSeatCount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_298cbd4c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_298cbd4c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSeats_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8d32bd67((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mSkipInteractIfCrouching
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_2e4b34bd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_2e4b34bd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void setDismountMode(string mode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(mode);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(mode, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_1868760d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
 }

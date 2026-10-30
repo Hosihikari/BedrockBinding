@@ -2,9 +2,10 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum EncryptionCipherMode : int
+public enum EncryptionCipherMode : byte
 {
+    Cfb8 = 0,
+    Cfb128 = 1,
 }

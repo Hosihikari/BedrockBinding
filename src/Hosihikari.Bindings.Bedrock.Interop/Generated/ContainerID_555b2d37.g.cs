@@ -13,5 +13,6 @@ public enum ContainerID : sbyte
     Offhand = 119,
     Armor = 120,
     SelectionSlots = 122,
-    PlayerUIOnly = 124,
+    PlayerOnlyUi = 124,
+    Registry = 125,
 }

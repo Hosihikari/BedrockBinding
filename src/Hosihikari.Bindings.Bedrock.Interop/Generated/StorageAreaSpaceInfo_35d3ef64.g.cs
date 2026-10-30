@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class StorageAreaSpaceInfo
+public sealed unsafe partial class StorageAreaSpaceInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StorageAreaSpaceInfo(nint handle) : this(handle, true) { }
 
     internal StorageAreaSpaceInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StorageAreaSpaceInfo Borrow(nint handle) => new StorageAreaSpaceInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,72 @@ public sealed partial class StorageAreaSpaceInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static StorageAreaSpaceInfo Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7892fec8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StorageAreaSpaceInfo((nint)handle);
+    }
+
+    public static StorageAreaSpaceInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ac843cc2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StorageAreaSpaceInfo((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk545140_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_df8fd3fe((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka44c95_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4a232442((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka493f5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2c03d8c9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd44356_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_36baa7cb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->C0.hs_method_1cbe648c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_35d3ef64((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

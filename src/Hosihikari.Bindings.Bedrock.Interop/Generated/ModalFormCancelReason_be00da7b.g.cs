@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum ModalFormCancelReason : sbyte
+public enum ModalFormCancelReason : byte
 {
     UserClosed = 0,
     UserBusy = 1,

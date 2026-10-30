@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EntityEnterVolumeSystem
+public sealed unsafe partial class EntityEnterVolumeSystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EntityEnterVolumeSystem(nint handle) : this(handle, true) { }
 
     internal EntityEnterVolumeSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EntityEnterVolumeSystem Borrow(nint handle) => new EntityEnterVolumeSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,45 +33,59 @@ public sealed unsafe partial class EntityEnterVolumeSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntityEnterVolumeSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static EntityEnterVolumeSystem Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fd81e9d7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntityEnterVolumeSystem Create_cc9f2abb(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new EntityEnterVolumeSystem((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel const>>' is not a known bindable declaration.", false)]
-    public static EntityEnterVolumeSystem Create_37f9db77(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel const>>' is not a known bindable declaration.");
+    public static EntityEnterVolumeSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityEnterVolumeSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_cc9f2abb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new EntityEnterVolumeSystem((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerEvents(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkdcbed4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_427ea440((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void singleTick_5ec13ec1(nint registry, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void singleTick_af41d1b8(nint registry, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.EntityEnterVolumeSystem operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EntityEnterVolumeSystem arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EntityEnterVolumeSystem((nint)NativeMethods.TablePtr->C1.hs_method_bbb88d3c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0)
     {
-        NativeMethods.TablePtr->hs_method_51434df9((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_d03e8d95((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_20411689((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

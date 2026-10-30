@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TimerComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TimerComponent(nint handle) : this(handle, true) { }
 
     internal TimerComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TimerComponent Borrow(nint handle) => new TimerComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,77 @@ public sealed unsafe partial class TimerComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TimerComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TimerComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->hs_method_2960e4e6((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_2c862f3e((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public bool getHasExecuted()
+    public bool mHasExecuted
     {
-        return NativeMethods.TablePtr->hs_method_3737201a((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_5b7d81ea((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_5b7d81ea((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getLooping()
+    public bool mLooping
     {
-        return NativeMethods.TablePtr->hs_method_f602bc14((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_d66a7355((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_d66a7355((void*)__hosihikari_shim_handle, value);
     }
 
-    public ulong getTimeStamp(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    public int mMaxTime
     {
-        return NativeMethods.TablePtr->hs_method_118bbc16((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_d27c9674((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d27c9674((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_21612156(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_4338a292(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    public int mMinTime
     {
-        NativeMethods.TablePtr->hs_method_2094806f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_95d1bf34((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_95d1bf34((void*)__hosihikari_shim_handle, value);
     }
 
-    public void restartTimer(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool mRandomInterval
     {
-        NativeMethods.TablePtr->hs_method_915c7934((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_4a92d6c6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_4a92d6c6((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setHasExecuted(bool arg0)
+    public int mStartTime
     {
-        NativeMethods.TablePtr->hs_method_519f840e((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C3.hs_get_fa42297f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_fa42297f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b1b50955((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b1b50955((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTimeChoices_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ad22135f((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong mTimeStamp
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f4e03713((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f4e03713((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    {
+        NativeMethods.TablePtr->C3.hs_method_633b7f22((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle, (void*)arg2.Handle);
+    }
+
+    public void restartTimer(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b446b3b3((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 }

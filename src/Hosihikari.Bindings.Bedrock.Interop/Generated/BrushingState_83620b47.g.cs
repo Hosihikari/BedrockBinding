@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BrushableBlockActor_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum BrushingState : int
 {
+    Ongoing = 0,
+    Completed = 1,
 }

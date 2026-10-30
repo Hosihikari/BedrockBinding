@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RakNetServerLocator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakNetServerLocator(nint handle) : this(handle, true) { }
 
     internal RakNetServerLocator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakNetServerLocator Borrow(nint handle) => new RakNetServerLocator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,57 @@ public sealed unsafe partial class RakNetServerLocator : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakNetServerLocator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakNetServerLocator Create_874e0bd2(nint arg0, nint ipInterface, nint arg2, bool isServer, nint arg4, nint arg5, nint arg6, nint appPlatform, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface,void (*)(RakNet::RakPeerInterface*)>' is not supported.", false)]
-    public static RakNetServerLocator Create_8e62bd43(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface,void (*)(RakNet::RakPeerInterface*)>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakNetServerLocator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver arg0, int arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1d223d_Address
     {
-        NativeMethods.TablePtr->hs_method_a6db9a4b((void*)_handle, (void*)arg0.Handle, arg1);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_56e19593((void*)__hosihikari_shim_handle);
     }
 
-    public void addCustomServer(string arg0, int arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaf3b65_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_f317a308((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-        }
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0f382c0b((void*)__hosihikari_shim_handle);
+    }
+
+    public void __onDisable()
+    {
+        NativeMethods.TablePtr->C2.hs_method_e3b985f8((void*)__hosihikari_shim_handle);
+    }
+
+    public void __onEnable()
+    {
+        NativeMethods.TablePtr->C2.hs_method_997fa253((void*)__hosihikari_shim_handle);
+    }
+
+    public void _addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver futureIP, int port)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a45faa72((void*)__hosihikari_shim_handle, (void*)futureIP.Handle, port);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void checkCanConnectToCustomServerAsync(nint arg0, int arg1, nint arg2) =>
+    public void _checkCanConnectToCustomServerAsync(nint hostIpAddress, int port, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void clearServerList()
-    {
-        NativeMethods.TablePtr->hs_method_1e7b1205((void*)_handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface, void (*)(RakNet::RakPeerInterface *)>' is not supported.", false)]
+    public nint _ctor(nint rakNetConnector, nint ipInterface, nint overrideBroadcastAddresses, bool isServer, nint serverLanVisibility, nint permissionLAN, nint permissionIPv6, nint appPlatform, nint createUniqueRakPeerFunc) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface, void (*)(RakNet::RakPeerInterface *)>' is not supported.");
 
-    public float getPingTimeForGUID(string arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint _getPingTimeForGUID(nint guid) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.", false)]
+    public nint _getServerList() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.");
+
+    public void _startAnnouncingServer(string playerName, string worldName, int gameType, int numPlayers, int maxNumPlayers, bool isJoinableThroughServerScreen, bool isEditorWorld, bool isHardcore, global::Hosihikari.Bindings.Bedrock.Interop.ServerSupportedAuthenticationTypes supportedAuth, global::Hosihikari.Bindings.Bedrock.Interop.Social.Nonce arg9)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(playerName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -99,24 +93,407 @@ public sealed unsafe partial class RakNetServerLocator : global::System.IDisposa
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(playerName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldName, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_049891e2((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_7bb39e0d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, gameType, numPlayers, maxNumPlayers, isJoinableThroughServerScreen, isEditorWorld, isHardcore, (void*)supportedAuth.Handle, (void*)arg9.Handle);
+            }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.", false)]
+    public void _startServerDiscovery_ce08759f(nint ports) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.");
+
+    public void _stopAnnouncingServer_4e272221()
+    {
+        NativeMethods.TablePtr->C2.hs_method_4e272221((void*)__hosihikari_shim_handle);
+    }
+
+    public void _stopServerDiscovery_2ecf371a()
+    {
+        NativeMethods.TablePtr->C2.hs_method_2ecf371a((void*)__hosihikari_shim_handle);
+    }
+
+    public void _update()
+    {
+        NativeMethods.TablePtr->C2.hs_method_0de01115((void*)__hosihikari_shim_handle);
+    }
+
+    public static RakNetServerLocator Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_19ddeda7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetServerLocator((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface, void (*)(RakNet::RakPeerInterface *)>' is not supported.", false)]
+    public static RakNetServerLocator Create(nint rakNetConnector, nint ipInterface, nint overrideBroadcastAddresses, bool isServer, nint serverLanVisibility, nint permissionLAN, nint permissionIPv6, nint appPlatform, nint createUniqueRakPeerFunc) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface, void (*)(RakNet::RakPeerInterface *)>' is not supported.");
+
+    public static RakNetServerLocator Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNetServerLocator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_678d9b9b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetServerLocator((nint)handle);
+    }
+
+    public void _activate()
+    {
+        NativeMethods.TablePtr->C2.hs_method_d68218a5((void*)__hosihikari_shim_handle);
+    }
+
+    public void _addCustomServerFromIpResolver(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver futureIP, int port)
+    {
+        NativeMethods.TablePtr->C2.hs_method_69408231((void*)__hosihikari_shim_handle, (void*)futureIP.Handle, port);
+    }
+
+    public void _announceServer(global::Hosihikari.Bindings.Bedrock.Interop.RakNetServerLocator_Nested.AnnounceServerData serverData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e4dc0c0f((void*)__hosihikari_shim_handle, (void*)serverData.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.", false)]
+    public void _enqueueStateChangeRequest(nint newState, nint newAnnounceData, nint newPorts) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.");
+
+    public string _getHostGuid(string address, int port)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(address);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(address, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C2.hs_method_3e69814a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, port);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void _getServerOriginalAddress(nint originalAddressToSet, nint ip) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public void _onDisable()
+    {
+        NativeMethods.TablePtr->C2.hs_method_37ebd77c((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onEnable()
+    {
+        NativeMethods.TablePtr->C2.hs_method_758592f3((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onPingSend(string guid, string addr, int ipVersion)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(guid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(guid, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(addr);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(addr, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_5e6509d4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, ipVersion);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: mutable duration references are not supported.", false)]
+    public bool _onPongReceive(nint latencyToSet, nint guid, nint receivedTime, int ipVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: mutable duration references are not supported.");
+
+    public bool _pingServerV4(string address, int port)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(address);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(address, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_5608c5c0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, port) != 0;
+        }
+    }
+
+    public bool _pingServerV6(string address, int port)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(address);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(address, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_b40dc983((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, port) != 0;
+        }
+    }
+
+    public void _startAnnouncingServer(global::Hosihikari.Bindings.Bedrock.Interop.RakNetServerLocator_Nested.AnnounceServerData announceData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7f8a5a5d((void*)__hosihikari_shim_handle, (void*)announceData.Handle);
+    }
+
+    public void _startServerDiscovery_af0a842c(nint ports)
+    {
+        NativeMethods.TablePtr->C2.hs_method_af0a842c((void*)__hosihikari_shim_handle, (void*)ports);
+    }
+
+    public void _stopAnnouncingServer_256833c7()
+    {
+        NativeMethods.TablePtr->C2.hs_method_256833c7((void*)__hosihikari_shim_handle);
+    }
+
+    public void _stopServerDiscovery_155e0377()
+    {
+        NativeMethods.TablePtr->C2.hs_method_155e0377((void*)__hosihikari_shim_handle);
+    }
+
+    public void addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver futureIP, int port)
+    {
+        NativeMethods.TablePtr->C2.hs_method_bc324d02((void*)__hosihikari_shim_handle, (void*)futureIP.Handle, port);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void checkCanConnectToCustomServerAsync(nint hostIpAddress, int port, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint getPingTimeForGUID(nint guid) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.", false)]
     public nint getServerList() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static bool parseUnconnectedPongPacketData(string arg0, string[] arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2218c2_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c18aa761((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk26b996_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0cb57323((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2876ef_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_343b9fe0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2a510a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d8cb4aba((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2c445a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_663863df((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3bbb85_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bc3ab843((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk471f4b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e906d5b2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk518100_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_30b5aa83((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5542ff_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7c0ee6bf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5f4202_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_26e45a86((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7ba1da_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ffacbf4c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7ebf28_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2d905e78((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk87606a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9056e104((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8970d6_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cacfdb9d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8d92b1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7ada2403((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk992e9d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1e9e3854((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb30369_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_33b95930((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkbc5f1b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_48357505((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc145b0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e9bd751a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc78041_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_41a6ed8b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc98a78_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a38589f0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd55261_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7a148bb0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd855a4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e17e700b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkde3b17_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1cd1bea4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf403ed_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fcf63319((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf988f6_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3184e380((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfa3d98_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dc3c3f1c((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNetServerLocator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNetServerLocator arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNetServerLocator((nint)NativeMethods.TablePtr->C2.hs_method_62f4c30b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void startAnnouncingServer(string playerName, string worldName, int gameType, int numPlayers, int maxNumPlayers, bool isJoinableThroughServerScreen, bool isEditorWorld, bool isHardcore, global::Hosihikari.Bindings.Bedrock.Interop.ServerSupportedAuthenticationTypes supportedAuth, global::Hosihikari.Bindings.Bedrock.Interop.Social.Nonce arg9)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(playerName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -126,67 +503,57 @@ public sealed unsafe partial class RakNetServerLocator : global::System.IDisposa
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<string>();
-        var __hs_vectorCount1 = __hs_vectorItems1.Length;
-        var __hs_vectorByteTotal1 = 0;
-        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++) { __hs_vectorByteTotal1 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems1[__hs_i1] ?? string.Empty); }
-        scoped global::System.Span<byte> __hs_vectorArena1;
-        if (__hs_vectorByteTotal1 <= 1024) { __hs_vectorArena1 = stackalloc byte[__hs_vectorByteTotal1 == 0 ? 1 : __hs_vectorByteTotal1]; } else { __hs_vectorArena1 = new byte[__hs_vectorByteTotal1]; }
-        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews1;
-        if (__hs_vectorCount1 <= 64) { __hs_vectorViews1 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1 == 0 ? 1 : __hs_vectorCount1]; } else { __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1]; }
-        fixed (byte* __hs_vectorArenaPtr1 = __hs_vectorArena1)
-        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
+        global::System.Text.Encoding.UTF8.GetBytes(playerName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
         {
-            var __hs_vectorOffset1 = 0;
-            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++)
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_item1 = __hs_vectorItems1[__hs_i1] ?? string.Empty;
-                var __hs_length1 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item1);
-                global::System.Text.Encoding.UTF8.GetBytes(__hs_item1, __hs_vectorArena1.Slice(__hs_vectorOffset1, __hs_length1));
-                __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
-                __hs_vectorOffset1 += __hs_length1;
-            }
-            fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-            {
-                return NativeMethods.TablePtr->hs_method_e2b32315(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_vectorData1, (nuint)(arg1?.Length ?? 0)) != 0;
+                NativeMethods.TablePtr->C2.hs_method_1721b364((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, gameType, numPlayers, maxNumPlayers, isJoinableThroughServerScreen, isEditorWorld, isHardcore, (void*)supportedAuth.Handle, (void*)arg9.Handle);
             }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.", false)]
-    public void startAnnouncingServer(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, bool arg6, bool arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.", false)]
-    public void startServerDiscovery(nint arg0) =>
+    public void startServerDiscovery(nint ports) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.", false)]
-    public void stopAnnouncingServer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.");
+    public void stopAnnouncingServer()
+    {
+        NativeMethods.TablePtr->C2.hs_method_10052d28((void*)__hosihikari_shim_handle);
+    }
 
     public void stopServerDiscovery()
     {
-        NativeMethods.TablePtr->hs_method_d78d5892((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_d78d5892((void*)__hosihikari_shim_handle);
     }
 
     public void update()
     {
-        NativeMethods.TablePtr->hs_method_fc9118ad((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_fc9118ad((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_256ba86e((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_256ba86e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

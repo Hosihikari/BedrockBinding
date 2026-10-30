@@ -12,7 +12,7 @@ public enum DataItemType : byte
     Float = 3,
     String = 4,
     CompoundTag = 5,
-    BlockPos = 6,
+    Pos = 6,
     Int64 = 7,
     Vec3 = 8,
     Unknown = 9,

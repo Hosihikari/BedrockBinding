@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WorkerPool : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WorkerPool(nint handle) : this(handle, true) { }
 
     internal WorkerPool(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WorkerPool Borrow(nint handle) => new WorkerPool(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,122 +33,125 @@ public sealed unsafe partial class WorkerPool : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_353c9653((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_353c9653((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorkerPool Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorkerPool Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static WorkerPool Create(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler arg1)
+    public static void _registerPool(global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool pool)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_ab9b0fbc(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new WorkerPool((nint)handle);
-        }
+        NativeMethods.TablePtr->C4.hs_method_1de525ca((void*)pool.Handle);
     }
 
-    public static WorkerPool Create(string arg0, ulong arg1, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.OSThreadPriority arg2, ulong? arg3, bool arg4, int? arg5)
+    public bool mAsync
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_b22ecb3a(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle, arg3 ?? default(ulong), arg4, arg5 ?? default(int), arg3.HasValue, arg5.HasValue);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new WorkerPool((nint)handle);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void queue(global::Hosihikari.Bindings.Abi.SharedHandle? arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_6a645c48((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), arg1);
-    }
-
-    public void resortPriorityQueue()
-    {
-        NativeMethods.TablePtr->hs_method_75d8a1ec((void*)_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_ee0098b7((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint sAllPools_Address
+    public nint mLastPerfInfoUpdate_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c08c3ab0();
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_644c3853((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sAllPoolsMutex
+    public float mMinBacklogDurationSeconds
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_9336abc9(), false);
+        get => NativeMethods.TablePtr->C4.hs_get_fe231024((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_fe231024((void*)__hosihikari_shim_handle, value);
     }
 
-    public ulong size()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
     {
-        return NativeMethods.TablePtr->hs_method_77f2ef33((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c32d176e((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? tryPop(int arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNextPendingWorkTime_Address
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_c43ce23e((void*)_handle, arg0);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f52db7a9((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mOwnerScheduler
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6dfcf207((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_6dfcf207((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingWorkQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9deb5bc0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingWorkQueueLock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_0349225c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPerfInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_1615a53f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPoolPriority_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f50f8828((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSuspendLock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_fe6ecc47((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTaskQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_aa8fa158((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWorkers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_2e95e5a1((void*)__hosihikari_shim_handle);
+    }
+
+    public void queue(global::Hosihikari.Bindings.Abi.SharedHandle? task, bool queueImmediate)
+    {
+        NativeMethods.TablePtr->C4.hs_method_6a645c48((void*)__hosihikari_shim_handle, task?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), queueImmediate);
+    }
+
+    public static nint sAllPools()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_720790ba();
+    }
+
+    public static nint sAllPoolsMutex()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_cf2a3157();
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_59151585((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_59151585((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

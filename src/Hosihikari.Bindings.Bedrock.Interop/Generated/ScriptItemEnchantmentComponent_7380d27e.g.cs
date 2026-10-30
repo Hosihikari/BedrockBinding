@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptItemEnchantmentComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptItemEnchantmentComponent(nint handle) : this(handle, true) { }
 
     internal ScriptItemEnchantmentComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptItemEnchantmentComponent Borrow(nint handle) => new ScriptItemEnchantmentComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,81 +33,57 @@ public sealed unsafe partial class ScriptItemEnchantmentComponent : global::Syst
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptItemEnchantmentComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ScriptItemEnchantmentComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptItemEnchantmentComponent arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_21a41f5a((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ScriptItemEnchantmentComponent((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0b46bf15((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,ScriptModuleMinecraft::ScriptItemEnchantmentLevelOutOfBoundsError,ScriptModuleMinecraft::ScriptItemEnchantmentTypeNotCompatibleError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint addEnchantment(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,ScriptModuleMinecraft::ScriptItemEnchantmentLevelOutOfBoundsError,ScriptModuleMinecraft::ScriptItemEnchantmentTypeNotCompatibleError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8351cc1e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,ScriptModuleMinecraft::ScriptItemEnchantmentLevelOutOfBoundsError,ScriptModuleMinecraft::ScriptItemEnchantmentTypeNotCompatibleError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint addEnchantments(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,ScriptModuleMinecraft::ScriptItemEnchantmentLevelOutOfBoundsError,ScriptModuleMinecraft::ScriptItemEnchantmentTypeNotCompatibleError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemStackHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9986f5ae((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptItemEnchantmentComponent>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptItemEnchantmentComponent>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemType_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6edd381e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,ScriptModuleMinecraft::ScriptItemEnchantmentLevelOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint canAddEnchantment(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,ScriptModuleMinecraft::ScriptItemEnchantmentLevelOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_b0b26e31());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<ScriptModuleMinecraft::ScriptItemEnchantmentInstance>,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getEnchantment(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<ScriptModuleMinecraft::ScriptItemEnchantmentInstance>,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<ScriptModuleMinecraft::ScriptItemEnchantmentInstance,std::allocator<ScriptModuleMinecraft::ScriptItemEnchantmentInstance>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getEnchantments(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<ScriptModuleMinecraft::ScriptItemEnchantmentInstance,std::allocator<ScriptModuleMinecraft::ScriptItemEnchantmentInstance>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Enchant::Slot,std::allocator<Enchant::Slot>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSlots() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Enchant::Slot,std::allocator<Enchant::Slot>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint hasEnchantment(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint removeAllEnchantments() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint removeEnchantment(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,Scripting::Error>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnchants_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_11759c47((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7380d27e((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_7380d27e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

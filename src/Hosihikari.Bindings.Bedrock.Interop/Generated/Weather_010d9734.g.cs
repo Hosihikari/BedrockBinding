@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Weather : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Weather(nint handle) : this(handle, true) { }
 
     internal Weather(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Weather Borrow(nint handle) => new Weather(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,23 @@ public sealed unsafe partial class Weather : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Weather Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static Weather Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg1)
+    public void _levelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int data)
     {
-        var handle = NativeMethods.TablePtr->hs_create_a49ec55b((void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C4.hs_method_1f457f87((void*)__hosihikari_shim_handle, type, (void*)arg1.Handle, data);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static Weather Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_8ba758af();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,135 +58,150 @@ public sealed unsafe partial class Weather : global::System.IDisposable
         return new Weather((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Weather Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static int calcLightningCycleTime(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0)
+    public static Weather Create(global::Hosihikari.Bindings.Bedrock.Interop.Weather arg0)
     {
-        return NativeMethods.TablePtr->hs_method_f4fcdc39((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_f5657f22((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Weather((nint)handle);
     }
 
-    public static int calcRainCycleTime(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0)
+    public int calcSnowBlockDepth(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int maxLayerDepth)
     {
-        return NativeMethods.TablePtr->hs_method_12e7280b((void*)arg0.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_0d02b061((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, maxLayerDepth);
     }
 
-    public static int calcRainDuration(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0)
+    public bool canPlaceTopSnow(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool fromFallingSnow, bool checkSnowDepthLevel, nint newHeightAfterPlacement)
     {
-        return NativeMethods.TablePtr->hs_method_bbf99c3a((void*)arg0.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_e57716c7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, fromFallingSnow, checkSnowDepthLevel, (void*)newHeightAfterPlacement) != 0;
     }
 
-    public int calcSnowBlockDepth(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2)
+    public bool isPrecipitatingAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        return NativeMethods.TablePtr->hs_method_92d2aac4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        return NativeMethods.TablePtr->C4.hs_method_da6059d8((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle) != 0;
     }
 
-    public bool canPlaceTopSnow(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2, bool arg3, nint arg4)
+    public bool isRainingAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        return NativeMethods.TablePtr->hs_method_a28f519b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, (void*)arg4) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_2ca2d32d((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle) != 0;
     }
 
-    public float getFogLevel()
+    public void levelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int data)
     {
-        return NativeMethods.TablePtr->hs_method_da59c359((void*)_handle);
+        NativeMethods.TablePtr->C4.hs_method_e5dec343((void*)__hosihikari_shim_handle, type, (void*)arg1.Handle, data);
     }
 
-    public float getLightningLevel(float arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimension_Address
     {
-        return NativeMethods.TablePtr->hs_method_b489edc1((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f177b222((void*)__hosihikari_shim_handle);
     }
 
-    public float getRainLevel(float arg0)
+    public float mFogLevel
     {
-        return NativeMethods.TablePtr->hs_method_1222875c((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C4.hs_get_c7605ce2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_c7605ce2((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isLightning()
+    public float mLightningLevel
     {
-        return NativeMethods.TablePtr->hs_method_0de9df6a((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C4.hs_get_bca544e1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_bca544e1((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isPrecipitatingAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNoise_Address
     {
-        return NativeMethods.TablePtr->hs_method_3a300ce9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_171d1034((void*)__hosihikari_shim_handle);
     }
 
-    public bool isRaining()
+    public float mOldLightningLevel
     {
-        return NativeMethods.TablePtr->hs_method_701775bd((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C4.hs_get_3a0ab06a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_3a0ab06a((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isRainingAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public float mOldRainLevel
     {
-        return NativeMethods.TablePtr->hs_method_ee31950d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C4.hs_get_f4c373bf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_f4c373bf((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isSnowingAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public float mRainLevel
     {
-        return NativeMethods.TablePtr->hs_method_bdd90550((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C4.hs_get_76e78e2f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_76e78e2f((void*)__hosihikari_shim_handle, value);
     }
 
-    public void levelEvent(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRandom_Address
     {
-        NativeMethods.TablePtr->hs_method_056cdb63((void*)_handle, arg0, (void*)arg1.Handle, arg2);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e74def84((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void rebuildTopSnowToDepth(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2)
+    public int mSkyFlashTime
     {
-        NativeMethods.TablePtr->hs_method_9f7f112d((void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        get => NativeMethods.TablePtr->C4.hs_get_9490462c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_9490462c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mTargetLightningLevel
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_f251cb93((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_f251cb93((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mTargetRainLevel
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_af18f1d2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_af18f1d2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mTick
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_d678762b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_d678762b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Weather operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Weather arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Weather((nint)NativeMethods.TablePtr->C4.hs_method_22d287b9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public static void rebuildTopSnowToDepth(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos testPos, int desiredDepth)
+    {
+        NativeMethods.TablePtr->C4.hs_method_8befe47d((void*)region.Handle, (void*)testPos.Handle, desiredDepth);
     }
 
     public void serverTick()
     {
-        NativeMethods.TablePtr->hs_method_c79ada5b((void*)_handle);
-    }
-
-    public void setSkyFlashTime(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_51e14b9d((void*)_handle, arg0);
-    }
-
-    public void setTargetLightningLevel(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f6fe7104((void*)_handle, arg0);
-    }
-
-    public void setTargetRainLevel(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_7614712d((void*)_handle, arg0);
-    }
-
-    public void stop()
-    {
-        NativeMethods.TablePtr->hs_method_869b4ded((void*)_handle);
+        NativeMethods.TablePtr->C4.hs_method_c79ada5b((void*)__hosihikari_shim_handle);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_73c20dd8((void*)_handle);
+        NativeMethods.TablePtr->C4.hs_method_73c20dd8((void*)__hosihikari_shim_handle);
     }
 
-    public bool tryToPlaceTopSnow(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2, bool arg3)
+    public bool tryToPlaceTopSnow(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool fromFallingSnow, bool fillLowerNeighborsFirst)
     {
-        return NativeMethods.TablePtr->hs_method_10293a73((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_93601b1b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, fromFallingSnow, fillLowerNeighborsFirst) != 0;
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_010d9734((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_010d9734((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

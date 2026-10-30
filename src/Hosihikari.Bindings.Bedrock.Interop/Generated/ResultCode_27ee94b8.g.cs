@@ -4,7 +4,21 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ResultCode : int
+public enum ResultCode : ushort
 {
+    Info = 1,
+    Warning = 2,
+    UnrecognizedField = 4,
+    Error = 8,
+    MalformedInput = 16,
+    UndefinedSchema = 32,
+    ConstraintViolation = 64,
+    MissingRequiredField = 128,
+    UnsupportedType = 256,
+    DeprecatedMember = 512,
+    UnrecognizedComponent = 1024,
+    UnsupportedVersion = 2048,
+    InvalidEnumValue = 4096,
+    All = 65535,
+    EnttEnumAsBitmask = 65535,
 }

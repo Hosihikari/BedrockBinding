@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FoodItemVersioning;
 
-public sealed unsafe partial class FoodItem118Upgrade : global::System.IDisposable
+public sealed unsafe partial class FoodItem118Upgrade
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FoodItem118Upgrade(nint handle) : this(handle, true) { }
 
     internal FoodItem118Upgrade(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FoodItem118Upgrade Borrow(nint handle) => new FoodItem118Upgrade(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,52 @@ public sealed unsafe partial class FoodItem118Upgrade : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static FoodItem118Upgrade Create()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk40e0d7_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_2c63a944();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new FoodItem118Upgrade((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4d5f353((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FoodItem118Upgrade Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool previousSchema_5d188149(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool previousSchema_111ec019(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb0e3c9_Address
     {
-        return NativeMethods.TablePtr->hs_method_111ec019((void*)_handle, (void*)arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_18055b83((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void upgradeToNext(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void upgradeToNext(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc96bdc_Address
     {
-        NativeMethods.TablePtr->hs_method_2299744a((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_db5a51e9((void*)__hosihikari_shim_handle);
     }
 
-
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd8210b_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_1c201e63((void*)_handle);
-            }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_04f14a6b((void*)__hosihikari_shim_handle);
+    }
 
-            _handle = 0;
-        }
+    public bool _previousSchema(nint component)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_705e9949((void*)__hosihikari_shim_handle, (void*)component) != 0;
+    }
+
+    public void _upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a96c26aa((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
+    }
+
+    public bool previousSchema(nint component)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5d188149((void*)__hosihikari_shim_handle, (void*)component) != 0;
+    }
+
+    public void upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    {
+        NativeMethods.TablePtr->C1.hs_method_48d79efb((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 }

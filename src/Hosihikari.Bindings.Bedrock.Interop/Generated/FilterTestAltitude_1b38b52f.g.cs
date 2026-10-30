@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FilterTestAltitude : global::System.IDisposable
+public sealed unsafe partial class FilterTestAltitude
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FilterTestAltitude(nint handle) : this(handle, true) { }
 
     internal FilterTestAltitude(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FilterTestAltitude Borrow(nint handle) => new FilterTestAltitude(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,54 @@ public sealed unsafe partial class FilterTestAltitude : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilterTestAltitude Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilterTestAltitude Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool evaluate(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk20eb73_Address
     {
-        return NativeMethods.TablePtr->hs_method_006c48ad((void*)_handle, (void*)arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c5fd2331((void*)__hosihikari_shim_handle);
     }
 
-    public string getName_6711b60c()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4242cc_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_6711b60c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3d052d36((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk995088_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2fc0087c((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _evaluate(nint context)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_4a7e3b6e((void*)__hosihikari_shim_handle, (void*)context) != 0;
+    }
+
+    public string _getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_946ab405((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_5076ba0a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public bool evaluate(nint context)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_1b38b52f((void*)_handle);
-            }
+        return NativeMethods.TablePtr->C1.hs_method_ab0d4ea5((void*)__hosihikari_shim_handle, (void*)context) != 0;
+    }
 
-            _handle = 0;
-        }
+    public string getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_5076ba0a((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8e0558_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bf6a7b74((void*)__hosihikari_shim_handle);
     }
 }

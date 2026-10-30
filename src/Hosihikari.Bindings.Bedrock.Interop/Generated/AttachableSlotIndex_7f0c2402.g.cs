@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum AttachableSlotIndex : int
 {
+    Head = 0,
+    Torso = 1,
+    Legs = 2,
+    Feet = 3,
+    Body = 4,
+    CarriedItem = 5,
+    OffhandItem = 6,
+    Count = 7,
 }

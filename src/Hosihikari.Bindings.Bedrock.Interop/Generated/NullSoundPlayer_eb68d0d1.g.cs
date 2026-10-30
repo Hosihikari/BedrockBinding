@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NullSoundPlayer
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NullSoundPlayer(nint handle) : this(handle, true) { }
 
     internal NullSoundPlayer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NullSoundPlayer Borrow(nint handle) => new NullSoundPlayer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,71 @@ public sealed unsafe partial class NullSoundPlayer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b61afd79((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b61afd79((void*)__hosihikari_shim_handle);
     }
 
-    public void fadeOut(ulong arg0, float arg1)
+    public void _fade(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1, float arg2)
     {
-        NativeMethods.TablePtr->hs_method_83100377((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_1b4e80b6((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
-    public void fadeToStopMusic(float arg0)
+    public void _fadeOut(ulong arg0, float arg1)
     {
-        NativeMethods.TablePtr->hs_method_4ac7e84a((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_643f948a((void*)__hosihikari_shim_handle, arg0, arg1);
     }
 
-    public string getCurrentlyPlayingMusicName()
+    public void _fadeToStopMusic(float arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_75563f92((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        NativeMethods.TablePtr->C2.hs_method_d0dd192b((void*)__hosihikari_shim_handle, arg0);
     }
 
-    public bool getItem(string arg0, nint arg1, nint arg2)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathView' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getCurrentlyPlayingMusicPath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathView' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool _getItem(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    public string? _getSubtitle(string arg0)
+    {
+        var __hs_hasValue = false;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C2.hs_method_25586dbc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
+            return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+        }
+    }
+
+    public bool _isLoadingMusic()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_dfafd9b7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool _isPlayingMusic(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    public bool _isPlayingMusicEvent(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -75,19 +112,251 @@ public sealed unsafe partial class NullSoundPlayer
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_d302ec18((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)arg2) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_75321131((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
+
+    public bool _isPlayingSound(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0d158fca((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool _isPlayingSound(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path arg0)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_f905792e((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool _isPlayingSound(ulong arg0)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_08e1675e((void*)__hosihikari_shim_handle, arg0) != 0;
+    }
+
+    public void _pause(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, byte arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ed08916d((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void _pauseAllPlayingSounds(byte arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_efb08472((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void _pauseMusic(bool arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_86da9321((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlaySoundOptions' is not a known bindable declaration.", false)]
+    public ulong _play(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlaySoundOptions' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public ulong _play(nint arg0, nint arg1, float arg2, float arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public ulong _playAttached(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _playMusic(string arg0, float arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_abe7f225((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+        }
+    }
+
+    public void _playMusic(string arg0, float arg1, nint arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_4d5e203c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2);
+        }
+    }
+
+    public ulong _playUI(string arg0, float arg1, float arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_2d0d4142((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public ulong _registerLoop(nint arg0, nint arg1, float arg2, float arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _resume(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, byte arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_06337b95((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void _resumeAllPreviouslyPlayingSounds(byte arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c190cd6c((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void _setMusicCommandVolumeMultiplier(float arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3d56361c((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void _setPitch(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0559d081((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void _setPlaybackPosition(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f14ccc3c((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void _setVolume(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6537f0b7((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void _stop(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_731740a6((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _stop(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_70eb3439((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _stop(ulong arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d4a479ad((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void _stopAllSounds()
+    {
+        NativeMethods.TablePtr->C2.hs_method_64dfe6a8((void*)__hosihikari_shim_handle);
+    }
+
+    public void _stopMusic()
+    {
+        NativeMethods.TablePtr->C2.hs_method_1447c71e((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'LoopingSoundAttributes' is not supported.", false)]
+    public nint _tryGetLoopingSoundAttributes(ulong arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'LoopingSoundAttributes' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.", false)]
+    public nint _tryGetPlayingSoundAttributes(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.", false)]
+    public nint _tryGetPlayingSoundAttributes(ulong arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.");
+
+    public void _unregisterLoop(ulong arg0, bool arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_94c5ca7e((void*)__hosihikari_shim_handle, arg0, arg1);
+    }
+
+    public void fade(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1, float arg2)
+    {
+        NativeMethods.TablePtr->C2.hs_method_65047672((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, arg2);
+    }
+
+    public void fadeOut(ulong arg0, float arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_83100377((void*)__hosihikari_shim_handle, arg0, arg1);
+    }
+
+    public void fadeToStopMusic(float arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4ac7e84a((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathView' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getCurrentlyPlayingMusicPath() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathView' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool getItem(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    public string? getSubtitle(string arg0)
+    {
+        var __hs_hasValue = false;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C2.hs_method_2723f6b7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
+            return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
         }
     }
 
     public bool isLoadingMusic()
     {
-        return NativeMethods.TablePtr->hs_method_6a144dfa((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_c811ecf5((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public bool isPlayingMusic(nint arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_855b6abe((void*)_handle, (void*)arg0) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool isPlayingMusic(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
     public bool isPlayingMusicEvent(string arg0)
     {
@@ -104,38 +373,47 @@ public sealed unsafe partial class NullSoundPlayer
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_bea9654d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_97c3251f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public bool isPlayingSound(nint arg0)
+    public bool isPlayingSound(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0)
     {
-        return NativeMethods.TablePtr->hs_method_0487e177((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_ec9abfa8((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool isPlayingSound(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path arg0)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_23a6fe58((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool isPlayingSound(ulong arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5b213790((void*)_handle, arg0) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_c10a0377((void*)__hosihikari_shim_handle, arg0) != 0;
     }
 
-    public ulong play(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, float arg3)
+    public void pause(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, byte arg1)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_1cf4f393((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, arg3);
-        }
+        NativeMethods.TablePtr->C2.hs_method_b9d41b18((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
     }
+
+    public void pauseAllPlayingSounds(byte arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_335cd4bf((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void pauseMusic(bool arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5e501c40((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlaySoundOptions' is not a known bindable declaration.", false)]
+    public ulong play(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlaySoundOptions' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public ulong play(nint arg0, nint arg1, float arg2, float arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public ulong playAttached(nint arg0, nint arg1) =>
@@ -156,7 +434,7 @@ public sealed unsafe partial class NullSoundPlayer
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_c2603795((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            NativeMethods.TablePtr->C2.hs_method_5fb4aec4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
         }
     }
 
@@ -175,7 +453,7 @@ public sealed unsafe partial class NullSoundPlayer
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_ec881015((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2);
+            NativeMethods.TablePtr->C2.hs_method_38eedb33((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2);
         }
     }
 
@@ -194,7 +472,7 @@ public sealed unsafe partial class NullSoundPlayer
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_9560be80((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+            return NativeMethods.TablePtr->C2.hs_method_9be28310((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
         }
     }
 
@@ -202,9 +480,39 @@ public sealed unsafe partial class NullSoundPlayer
     public ulong registerLoop(nint arg0, nint arg1, float arg2, float arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void setMusicVolumeMultiplier(float arg0)
+    public void resume(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, byte arg1)
     {
-        NativeMethods.TablePtr->hs_method_65f5edb7((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_d74f48a6((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void resumeAllPreviouslyPlayingSounds(byte arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8697097b((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void setMusicCommandVolumeMultiplier(float arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8febfdb7((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void setPitch(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_724b2048((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void setPlaybackPosition(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9f5f5c8a((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void setVolume(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_218f7015((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void stop(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0)
+    {
+        NativeMethods.TablePtr->C2.hs_method_296aaf9e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void stop(string arg0)
@@ -222,28 +530,23 @@ public sealed unsafe partial class NullSoundPlayer
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_9268bba2((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_b3f36cb0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void stop(ulong arg0)
     {
-        NativeMethods.TablePtr->hs_method_b814148d((void*)_handle, arg0);
-    }
-
-    public void stopAllDelayedSoundActions()
-    {
-        NativeMethods.TablePtr->hs_method_5ddea0f7((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_b814148d((void*)__hosihikari_shim_handle, arg0);
     }
 
     public void stopAllSounds()
     {
-        NativeMethods.TablePtr->hs_method_ed297b07((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_ed297b07((void*)__hosihikari_shim_handle);
     }
 
     public void stopMusic()
     {
-        NativeMethods.TablePtr->hs_method_73e7c563((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_73e7c563((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'LoopingSoundAttributes' is not supported.", false)]
@@ -251,11 +554,15 @@ public sealed unsafe partial class NullSoundPlayer
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'LoopingSoundAttributes' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.", false)]
+    public nint tryGetPlayingSoundAttributes(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.", false)]
     public nint tryGetPlayingSoundAttributes(ulong arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.");
 
     public void unregisterLoop(ulong arg0, bool arg1)
     {
-        NativeMethods.TablePtr->hs_method_d96cafd8((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_d96cafd8((void*)__hosihikari_shim_handle, arg0, arg1);
     }
 }

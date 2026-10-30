@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
 public sealed unsafe partial class UniformHeight
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UniformHeight(nint handle) : this(handle, true) { }
 
     internal UniformHeight(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UniformHeight Borrow(nint handle) => new UniformHeight(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,34 @@ public sealed unsafe partial class UniformHeight
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UniformHeight Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UniformHeight Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'br::worldgen::UniformHeight' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint of(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'br::worldgen::UniformHeight' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, nint arg1)
+    public int _sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom randomSource, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenContext heightAccessor)
     {
-        return NativeMethods.TablePtr->hs_method_f2e67577((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return NativeMethods.TablePtr->C4.hs_method_7d7fbfc0((void*)__hosihikari_shim_handle, (void*)randomSource.Handle, (void*)heightAccessor.Handle);
     }
 
-    public string toString()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMaxInclusive_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_af1210f0((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6dec9230((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMinInclusive_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b61bd0e2((void*)__hosihikari_shim_handle);
+    }
+
+    public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom randomSource, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenContext heightAccessor)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_ce170af1((void*)__hosihikari_shim_handle, (void*)randomSource.Handle, (void*)heightAccessor.Handle);
+    }
 }

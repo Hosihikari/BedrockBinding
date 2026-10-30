@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MovementInterpolatorComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MovementInterpolatorComponent(nint handle) : this(handle, true) { }
 
     internal MovementInterpolatorComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MovementInterpolatorComponent Borrow(nint handle) => new MovementInterpolatorComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,56 @@ public sealed unsafe partial class MovementInterpolatorComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MovementInterpolatorComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MovementInterpolatorComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool isActive()
+    public float mHeadYaw
     {
-        return NativeMethods.TablePtr->hs_method_19702969((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_6eb363c4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6eb363c4((void*)__hosihikari_shim_handle, value);
     }
 
-    public void lerpTo(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg1, int arg2)
+    public int mHeadYawSteps
     {
-        NativeMethods.TablePtr->hs_method_934c3d34((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        get => NativeMethods.TablePtr->C2.hs_get_4675a9ca((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4675a9ca((void*)__hosihikari_shim_handle, value);
     }
 
-    public void lerpToRotation(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg0, int arg1)
+    public bool mMustBeCompleted
     {
-        NativeMethods.TablePtr->hs_method_91b520e3((void*)_handle, (void*)arg0.Handle, arg1);
+        get => NativeMethods.TablePtr->C2.hs_get_192028fa((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_192028fa((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void reset()
+    public bool mPlayerControlServerVehicle
     {
-        NativeMethods.TablePtr->hs_method_b2d54e5b((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_c3ecfddc((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_c3ecfddc((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setHeadYawLerpTarget(float arg0, int arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
     {
-        NativeMethods.TablePtr->hs_method_527ab6c9((void*)_handle, arg0, arg1);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ecfa1aa6((void*)__hosihikari_shim_handle);
     }
 
-    public void start()
+    public int mPositionSteps
     {
-        NativeMethods.TablePtr->hs_method_4243fd49((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_65ca787b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_65ca787b((void*)__hosihikari_shim_handle, value);
     }
 
-    public void stop()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRot_Address
     {
-        NativeMethods.TablePtr->hs_method_bcc39738((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3d2056e8((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRotationSteps
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_54fd1ac1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_54fd1ac1((void*)__hosihikari_shim_handle, value);
     }
 }

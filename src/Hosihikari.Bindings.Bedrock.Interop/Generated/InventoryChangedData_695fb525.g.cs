@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class InventoryChangedData
+public sealed unsafe partial class InventoryChangedData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public InventoryChangedData(nint handle) : this(handle, true) { }
 
     internal InventoryChangedData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static InventoryChangedData Borrow(nint handle) => new InventoryChangedData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,60 @@ public sealed partial class InventoryChangedData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static InventoryChangedData Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9d8a46e3();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InventoryChangedData((nint)handle);
+    }
+
+    public static InventoryChangedData Create(global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_22bba67b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InventoryChangedData((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint allItemSlots_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6bc5bcc6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint changedItemSlotIndices_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_da3381c4((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData((nint)NativeMethods.TablePtr->C2.hs_method_f0934749((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_695fb525((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

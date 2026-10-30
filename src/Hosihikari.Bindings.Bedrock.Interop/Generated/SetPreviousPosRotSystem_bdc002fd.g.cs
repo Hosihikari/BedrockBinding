@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SetPreviousPosRotSystem
+public sealed unsafe partial class SetPreviousPosRotSystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SetPreviousPosRotSystem(nint handle) : this(handle, true) { }
 
     internal SetPreviousPosRotSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SetPreviousPosRotSystem Borrow(nint handle) => new SetPreviousPosRotSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,30 @@ public sealed partial class SetPreviousPosRotSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static SetPreviousPosRotSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EntityModifier<PrevPosRotSetThisTickFlagComponent>' is not a known bindable declaration.", false)]
+    public static void _setPreviousPosRot(nint entity, nint stateVectorComponent, nint actorRotationComponent, nint modifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EntityModifier<PrevPosRotSetThisTickFlagComponent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static SetPreviousPosRotSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    public static void _setPreviousPosRotSystem(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
+    {
+        NativeMethods.TablePtr->C3.hs_method_7768abd1((void*)entity.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static void _setPreviousPosRot(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_bdc002fd((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static void _setPreviousPosRotSystem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum PackAccessAssetGenerationResult : int
 {
+    ReadContentsFile = 0,
+    IteratedThroughDirectory = 1,
+    Failed = 2,
+    AlreadyGenerated = 3,
 }

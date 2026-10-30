@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OnActorLeaveVolumeDefinition
+public sealed unsafe partial class OnActorLeaveVolumeDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OnActorLeaveVolumeDefinition(nint handle) : this(handle, true) { }
 
     internal OnActorLeaveVolumeDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OnActorLeaveVolumeDefinition Borrow(nint handle) => new OnActorLeaveVolumeDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,54 @@ public sealed unsafe partial class OnActorLeaveVolumeDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OnActorLeaveVolumeDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static OnActorLeaveVolumeDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    public static OnActorLeaveVolumeDefinition Create()
     {
-        NativeMethods.TablePtr->hs_method_857b65d1((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_8eb9420d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnActorLeaveVolumeDefinition((nint)handle);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.OnActorLeaveVolumeComponent arg1)
+    public static OnActorLeaveVolumeDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.OnActorLeaveVolumeDefinition arg0)
     {
-        NativeMethods.TablePtr->hs_method_df408447((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_4fee66cd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnActorLeaveVolumeDefinition((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7b4cfd_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d49f68ca((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_06fdacbc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.OnActorLeaveVolumeDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.OnActorLeaveVolumeDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.OnActorLeaveVolumeDefinition((nint)NativeMethods.TablePtr->C2.hs_method_37a5302e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_49171fa1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum JigsawExpansion : int
+public enum JigsawExpansion : byte
 {
+    None = 0,
+    LargestChild = 1,
 }

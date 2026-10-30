@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
 public sealed unsafe partial class AddressOrGUID : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AddressOrGUID(nint handle) : this(handle, true) { }
 
     internal AddressOrGUID(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AddressOrGUID Borrow(nint handle) => new AddressOrGUID(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class AddressOrGUID : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.AddressOrGUID arg0)
+    public static AddressOrGUID Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_aabdbaa5((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_847ae661();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,9 +49,9 @@ public sealed unsafe partial class AddressOrGUID : global::System.IDisposable
         return new AddressOrGUID((nint)handle);
     }
 
-    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID arg0)
+    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.AddressOrGUID arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_f216c84a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_e2da400b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,9 +60,9 @@ public sealed unsafe partial class AddressOrGUID : global::System.IDisposable
         return new AddressOrGUID((nint)handle);
     }
 
-    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakNetGUID input)
     {
-        var handle = NativeMethods.TablePtr->hs_create_070920a6((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_6b19c97b((void*)input.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,33 +71,44 @@ public sealed unsafe partial class AddressOrGUID : global::System.IDisposable
         return new AddressOrGUID((nint)handle);
     }
 
-    public bool IsUndefined()
+    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress input)
     {
-        return NativeMethods.TablePtr->hs_method_73c96481((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C2.hs_create_6148e2ce((void*)input.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddressOrGUID((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.AddressOrGUID operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.AddressOrGUID arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.AddressOrGUID((nint)NativeMethods.TablePtr->C2.hs_method_f543b7f4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint adr_Address
+    public nint rakNetGuid_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_316961d4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0958a069((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint guid_Address
+    public nint systemAddress_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0aa6df8a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a2405e0e((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_23474787((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_23474787((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

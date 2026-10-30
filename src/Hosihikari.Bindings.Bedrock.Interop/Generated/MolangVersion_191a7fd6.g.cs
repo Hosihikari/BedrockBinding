@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum MolangVersion : int
+public enum MolangVersion : short
 {
     Invalid = -1,
     BeforeVersioning = 0,
@@ -15,7 +15,13 @@ public enum MolangVersion : int
     ConditionalOperatorAssociativity = 5,
     ComparisonAndLogicalOperatorPrecedence = 6,
     DivideByNegativeValue = 7,
-    HardcodedMolang = 7,
-    Latest = 7,
-    NumValidVersions = 8,
+    FixedCapeFlapAmountQuery = 8,
+    QueryBlockPropertyRenamedToState = 9,
+    DeprecateOldBlockQueryNames = 10,
+    DeprecatedSnifferAndCamelQueries = 11,
+    LeafSupportingInFirstSolidBlockBelow = 12,
+    CarryingBlockQueryAllActors = 13,
+    HardcodedMolang = 13,
+    Latest = 13,
+    NumValidVersions = 14,
 }

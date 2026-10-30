@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MoveControlHoverDescription : global::System.IDisposable
+public sealed unsafe partial class MoveControlHoverDescription
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MoveControlHoverDescription(nint handle) : this(handle, true) { }
 
     internal MoveControlHoverDescription(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MoveControlHoverDescription Borrow(nint handle) => new MoveControlHoverDescription(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,24 @@ public sealed unsafe partial class MoveControlHoverDescription : global::System.
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MoveControlHoverDescription Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public float mMaxTurn
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_765ebddc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_765ebddc((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MoveControlHoverDescription Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _getJsonName()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_2a33c9bc((void*)__hosihikari_shim_handle);
+    }
 
     public nint getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2741d88a((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_935923f7((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return (nint)NativeMethods.TablePtr->C2.hs_method_abb039ee((void*)__hosihikari_shim_handle);
     }
 }

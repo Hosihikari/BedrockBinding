@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.HorseArmorItem_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Tier : int
 {
+    None = 0,
+    Leather = 1,
+    Iron = 2,
+    Gold = 3,
+    Diamond = 4,
+    Copper = 5,
+    Netherite = 6,
+    Count = 7,
 }

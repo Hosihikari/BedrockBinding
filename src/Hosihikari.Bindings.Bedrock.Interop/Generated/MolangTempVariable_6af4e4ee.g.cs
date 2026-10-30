@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MolangTempVariable : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MolangTempVariable(nint handle) : this(handle, true) { }
 
     internal MolangTempVariable(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MolangTempVariable Borrow(nint handle) => new MolangTempVariable(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,18 @@ public sealed unsafe partial class MolangTempVariable : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public ulong hash
-    {
-        get => NativeMethods.TablePtr->hs_get_f7cb530c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f7cb530c((void*)_handle, value);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public nint lastMatch
+    public static MolangTempVariable Create()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f1b6cd87((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint str_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8fbdbe6b((void*)_handle);
-    }
-
-    public static MolangTempVariable Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_f68f12dc((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_1e93b6e5();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,23 +53,26 @@ public sealed unsafe partial class MolangTempVariable : global::System.IDisposab
         return new MolangTempVariable((nint)handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static MolangTempVariable Create(nint value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
     public ushort mMolangVariableIndex
     {
-        get => NativeMethods.TablePtr->hs_get_d72724a4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d72724a4((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_d72724a4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d72724a4((void*)__hosihikari_shim_handle, value);
     }
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_6af4e4ee((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_6af4e4ee((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

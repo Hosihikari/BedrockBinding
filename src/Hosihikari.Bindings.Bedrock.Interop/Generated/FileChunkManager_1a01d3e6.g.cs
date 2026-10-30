@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class FileChunkManager
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FileChunkManager(nint handle) : this(handle, true) { }
 
     internal FileChunkManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FileChunkManager Borrow(nint handle) => new FileChunkManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,61 @@ public sealed unsafe partial class FileChunkManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FileChunkManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileChunkManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'FileChunkInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getChunkInfo(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'FileChunkInfo' requires --link-carrier or --virtual-dispatch.");
-
-    public nint getChunks()
+    public void _generateChunkInfo()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b3748642((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_81184fc0((void*)__hosihikari_shim_handle);
     }
 
-    public int getTotalNumberOfChunks()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkInfo_Address
     {
-        return NativeMethods.TablePtr->hs_method_5610ab28((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bd371056((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void reset()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkQueue_Address
     {
-        NativeMethods.TablePtr->hs_method_d0d6110a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0b0d7df3((void*)__hosihikari_shim_handle);
     }
 
-    public void reset(ulong arg0, uint arg1)
+    public uint mChunkSize
     {
-        NativeMethods.TablePtr->hs_method_5ff9bb79((void*)_handle, arg0, arg1);
+        get => NativeMethods.TablePtr->C1.hs_get_11656c67((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_11656c67((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public ulong mReceivedChunks
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_9538b4e9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_9538b4e9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mRequestedChunks
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_03741942((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_03741942((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mTotalNbChunks
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_fc46f341((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_fc46f341((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mTotalSize
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_d4852237((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d4852237((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mWrittenChunks
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_cdd08c5c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_cdd08c5c((void*)__hosihikari_shim_handle, value);
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EncryptedFileAccessStrategy
+public sealed unsafe partial class EncryptedFileAccessStrategy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EncryptedFileAccessStrategy(nint handle) : this(handle, true) { }
 
     internal EncryptedFileAccessStrategy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EncryptedFileAccessStrategy Borrow(nint handle) => new EncryptedFileAccessStrategy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,96 +33,324 @@ public sealed unsafe partial class EncryptedFileAccessStrategy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EncryptedFileAccessStrategy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::unordered_map<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::equal_to<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::allocator<std::pair<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' is abstract or not copy-constructible.", false)]
-    public static EncryptedFileAccessStrategy Create_199f4008(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::unordered_map<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::equal_to<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::allocator<std::pair<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' is abstract or not copy-constructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EncryptedFileAccessStrategy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EncryptedFileAccessStrategy Create_eac2f8b3(nint resourceLocation, nint contentIdentity, nint keyProvider, bool canRecurse, nint assetSet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? createSubPack(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5799dd_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_51fd1fc1((void*)_handle, (void*)arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)__hs_handle) : null;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ca2a5e2d((void*)__hosihikari_shim_handle);
     }
 
-    public bool deleteAsset(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7f19e8_Address
     {
-        return NativeMethods.TablePtr->hs_method_3c18b68e((void*)_handle, (void*)arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4e9b2bb((void*)__hosihikari_shim_handle);
     }
 
-    public int generateAssetSet()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8d8c35_Address
     {
-        return NativeMethods.TablePtr->hs_method_db8f07e1((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2d99d4c1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka60262_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4bea9ed9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkee374a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5ea6b2a2((void*)__hosihikari_shim_handle);
+    }
+
+    public string __getContentsFile()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_966360bf((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string __getEncryptedAssetStream(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_9d16a3d0((void*)__hosihikari_shim_handle, (void*)packRelativePath.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string __getRawContentsFile()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_db1dc64e((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.", false)]
+    public nint __loadArchive(nint packRelativePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'PackAccessStrategy' has no accessible destructor.", false)]
+    public nint _createSubPack(nint subPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'PackAccessStrategy' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::unordered_map<Core::Path, EncryptedAssetInfo>' is abstract or not copy-constructible.", false)]
+    public nint _ctor(nint resourceLocation, nint contentIdentity, nint keyProvider, bool canRecurse, nint io, nint assetSet) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::unordered_map<Core::Path, EncryptedAssetInfo>' is abstract or not copy-constructible.");
+
+    public int _generateAssetSet()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_b7114ba4((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool getAsset(nint arg0, nint arg1, bool arg2) =>
+    public bool _getAsset(nint packRelativePath, nint result, bool trustedContentOnly) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    public bool hasAsset(nint arg0, bool arg1, bool arg2)
+    public int _getStrategyType()
     {
-        return NativeMethods.TablePtr->hs_method_7fbc5aa8((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_09a56940((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getStreamableSource(nint packRelativePath, nint tempDirectory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.");
+
+    public bool _hasAsset(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, bool trustedContentOnly, bool caseSensative)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5d66dbb2((void*)__hosihikari_shim_handle, (void*)packRelativePath.Handle, trustedContentOnly, caseSensative) != 0;
+    }
+
+    public bool _isAssetExtractionViable()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1cebc4f5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isTrusted()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2640fa02((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isWritable()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_942d52fe((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _readContentIdentity() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static EncryptedFileAccessStrategy Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4ed57d86();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EncryptedFileAccessStrategy((nint)handle);
+    }
+
+    public static EncryptedFileAccessStrategy Create(global::Hosihikari.Bindings.Bedrock.Interop.EncryptedFileAccessStrategy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_88aaf1b2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EncryptedFileAccessStrategy((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::unordered_map<Core::Path, EncryptedAssetInfo>' is abstract or not copy-constructible.", false)]
+    public static EncryptedFileAccessStrategy Create(nint resourceLocation, nint contentIdentity, nint keyProvider, bool canRecurse, nint io, nint assetSet) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::unordered_map<Core::Path, EncryptedAssetInfo>' is abstract or not copy-constructible.");
+
+    public string _decryptContentsFile(string contents)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(contents);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(contents, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_6fb193e6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public static bool _getContentIdentityFromEncryptedStream(nint stream, nint contentIdentity) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public string _getContentsFile()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_61af2e79((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getEncryptedAssetStream(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_fdbf3025((void*)__hosihikari_shim_handle, (void*)packRelativePath.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getRawContentsFile()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_ce2bd5bd((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.", false)]
+    public nint _loadArchive(nint packRelativeArchiveFile, nint key) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.", false)]
+    public nint _loadArchive(nint packRelativePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Bedrock::Resources::Archive::Reader' is not a known bindable declaration.");
+
+    public static bool _transformStream(sbyte[] input, sbyte[] output, string key, nint bytesWritten, byte mode)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes2);
+        fixed (sbyte* __hs_vectorData0 = input)
+        {
+            fixed (sbyte* __hs_vectorData1 = output)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    return NativeMethods.TablePtr->C1.hs_method_d98610f9(__hs_stringData2, (nuint)__hs_stringByteCount2, (void*)bytesWritten, mode, __hs_vectorData0, (nuint)(input?.Length ?? 0), __hs_vectorData1, (nuint)(output?.Length ?? 0)) != 0;
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public static bool _transformStream(nint stream, nint key, nint contentIdentity, nint mode, ulong offset) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'PackAccessStrategy' has no accessible destructor.", false)]
+    public nint createSubPack(nint subPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'PackAccessStrategy' has no accessible destructor.");
+
+    public int generateAssetSet()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_db8f07e1((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public bool getAsset(nint packRelativePath, nint result, bool trustedContentOnly) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public int getStrategyType()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_102c1f39((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getStreamableSource(nint packRelativePath, nint tempDirectory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.");
+
+    public bool hasAsset(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, bool trustedContentOnly, bool caseSensative)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0b3e1edc((void*)__hosihikari_shim_handle, (void*)packRelativePath.Handle, trustedContentOnly, caseSensative) != 0;
+    }
+
+    public bool isAssetExtractionViable()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a25badd2((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isTrusted()
     {
-        return NativeMethods.TablePtr->hs_method_f3529a65((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_a91cf4e8((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public static bool isValidEncryptedPack(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg1)
+    public static bool isValidEncryptedPack(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path pathToPack, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity contentIdentity)
     {
-        return NativeMethods.TablePtr->hs_method_717a44d0((void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_f139b3de((void*)pathToPack.Handle, (void*)contentIdentity.Handle) != 0;
     }
 
     public bool isWritable()
     {
-        return NativeMethods.TablePtr->hs_method_f2d47bc9((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_c1a3ca04((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity readContentIdentity()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk265e3d_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->hs_method_3ad58e33((void*)_handle));
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_44ef15d3((void*)__hosihikari_shim_handle);
     }
 
-    public bool writeAsset(nint arg0, string arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk564fc9_Address
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            return NativeMethods.TablePtr->hs_method_dfcbd540((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b00dd932((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcc53ff_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b994b549((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EncryptedFileAccessStrategy operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EncryptedFileAccessStrategy arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EncryptedFileAccessStrategy((nint)NativeMethods.TablePtr->C1.hs_method_d4e4f490((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint readContentIdentity() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2ff3dc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4b99a809((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk962cf5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_edfe64f3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb0ada6_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5ad59c78((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_5d89d6fc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EndPortalShape
+public sealed unsafe partial class EndPortalShape : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EndPortalShape(nint handle) : this(handle, true) { }
 
     internal EndPortalShape(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EndPortalShape Borrow(nint handle) => new EndPortalShape(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,117 @@ public sealed unsafe partial class EndPortalShape
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EndPortalShape Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EndPortalShape Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EndPortalShape Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getOrigin()
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_898d4f76((void*)_handle));
+        return (nint)NativeMethods.TablePtr->C1.hs_method_8645816f((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
     }
 
-    public bool isValid(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    public static EndPortalShape Create()
     {
-        return NativeMethods.TablePtr->hs_method_79c984d8((void*)_handle, (void*)arg0.Handle) != 0;
+        var handle = NativeMethods.TablePtr->C1.hs_create_66fb8030();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EndPortalShape((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static EndPortalShape Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c2fb38b8((void*)region.Handle, (void*)pos.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new EndPortalShape((nint)handle);
+    }
+
+    public static EndPortalShape Create(global::Hosihikari.Bindings.Bedrock.Interop.EndPortalShape arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b97e76c7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EndPortalShape((nint)handle);
+    }
+
+    public bool isValid(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_8e5ce5aa((void*)__hosihikari_shim_handle, (void*)region.Handle) != 0;
+    }
+
+    public int mBlockDirection
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_8f578f19((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_8f578f19((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBottomLeft_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c6bb90a5((void*)__hosihikari_shim_handle);
+    }
+
+    public int mDepthDir
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_e3e79cdd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e3e79cdd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mLeftDir
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ccc7e68b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ccc7e68b((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOrigin_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_37f10a62((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPortalPattern_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_695e07d9((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRightDir
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_5b6ce7b2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_5b6ce7b2((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fb7ab657((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EndPortalShape operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EndPortalShape arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EndPortalShape((nint)NativeMethods.TablePtr->C1.hs_method_95938773((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_18f393ab((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

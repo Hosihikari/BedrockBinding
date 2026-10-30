@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VillageManager_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class VillageInfo
+public sealed unsafe partial class VillageInfo
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VillageInfo(nint handle) : this(handle, true) { }
 
     internal VillageInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VillageInfo Borrow(nint handle) => new VillageInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,26 @@ public sealed partial class VillageInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public float distanceToClosestEdgeOfVillage
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a47d0a76((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a47d0a76((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool positionIsWithinVillageBounds
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f14c28c8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_f14c28c8((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint village_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8c00fda0((void*)__hosihikari_shim_handle);
     }
 }

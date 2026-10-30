@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerLimboActorManager
+public sealed unsafe partial class PlayerLimboActorManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerLimboActorManager(nint handle) : this(handle, true) { }
 
     internal PlayerLimboActorManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerLimboActorManager Borrow(nint handle) => new PlayerLimboActorManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,60 +33,97 @@ public sealed unsafe partial class PlayerLimboActorManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerLimboActorManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelStorage>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint levelStorage, nint actorManager, nint actorFactory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelStorage>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerLimboActorManager Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerLimboActorManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clearOwnedEntityLimboForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_2b94b23c((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_fc24a1d3((void*)__hosihikari_shim_handle);
     }
 
-    public static string getOwnedEntityLimboStorageKeyForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    public static PlayerLimboActorManager Create()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_e0671e80((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_43c373c3();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerLimboActorManager((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelStorage>>' is not a known bindable declaration.", false)]
+    public static PlayerLimboActorManager Create(nint levelStorage, nint actorManager, nint actorFactory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelStorage>>' is not a known bindable declaration.");
+
+    public void clearOwnedEntityLimboForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID playerId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_2b94b23c((void*)__hosihikari_shim_handle, (void*)playerId.Handle);
+    }
+
+    public static string getOwnedEntityLimboStorageKeyForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID playerId)
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_02c3817a((void*)playerId.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void loadAllOwnedLimboActors()
     {
-        NativeMethods.TablePtr->hs_method_28da584f((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_28da584f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? processOwnedAgentForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.IAddActorEntityProxy arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorFactory_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_b11aa531((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3eea7d94((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3f8e58e3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelStorage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_63422553((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnedActorsDimensionTransferLimbo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b028202f((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? processOwnedAgentForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag agentCompoundTag, global::Hosihikari.Bindings.Bedrock.Interop.IAddActorEntityProxy addActorEntityProxy, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange heightRange, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 spawnPosition)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_3fe73bf1((void*)__hosihikari_shim_handle, (void*)agentCompoundTag.Handle, (void*)addActorEntityProxy.Handle, (void*)heightRange.Handle, (void*)spawnPosition.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public void processOwnedEntityLimboForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, global::Hosihikari.Bindings.Bedrock.Interop.IAddActorEntityProxy arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    public void transferActorToOwnedEntityLimbo(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID playerUniqueID, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_6c15e0e8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4a97fc9c((void*)__hosihikari_shim_handle, (void*)playerUniqueID.Handle, (void*)actor.Handle);
     }
 
-    public void saveOwnedLimboActorsForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
-    {
-        NativeMethods.TablePtr->hs_method_e7d67a4c((void*)_handle, (void*)arg0.Handle);
-    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_3d11df67() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_80d430f2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

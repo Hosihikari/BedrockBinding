@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Scoreboard : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Scoreboard(nint handle) : this(handle, true) { }
 
     internal Scoreboard(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Scoreboard Borrow(nint handle) => new Scoreboard(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,67 +33,14 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string DEFAULT_CRITERIA
+    public global::Hosihikari.Bindings.Bedrock.Interop.Objective? _clearDisplayObjective(string displaySlotName)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_d7704bb8();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DISPLAY_SLOT_BELOWNAME
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_9e5cb84f();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DISPLAY_SLOT_LIST
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_17be2ca6();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DISPLAY_SLOT_SIDEBAR
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_27c8f950();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static sbyte OBJECTIVES_ENUM
-    {
-        get => NativeMethods.TablePtr->hs_get_2fd137a6();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Scoreboard Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static Scoreboard Create_1982d859(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Scoreboard Create_c108aceb(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Objective? addObjective(string arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(displaySlotName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -103,8 +50,182 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(displaySlotName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_bec6f52b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Objective((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId _createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C2.hs_method_347d3d2c((void*)__hosihikari_shim_handle, (void*)entity.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId _createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C2.hs_method_89c2d466((void*)__hosihikari_shim_handle, (void*)player.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId _createScoreboardId(string fakePlayer)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fakePlayer);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fakePlayer, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C2.hs_method_e9e7df7b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.CommandSoftEnumRegistry registry)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_80a74dd4((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public bool _isClientSide()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_d57aa977((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _onObjectiveAdded(global::Hosihikari.Bindings.Bedrock.Interop.Objective objective)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3c5f91e2((void*)__hosihikari_shim_handle, (void*)objective.Handle);
+    }
+
+    public void _onObjectiveRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Objective objective)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d762848e((void*)__hosihikari_shim_handle, (void*)objective.Handle);
+    }
+
+    public void _onPlayerIdentityUpdated(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId playerId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0ca0bb38((void*)__hosihikari_shim_handle, (void*)playerId.Handle);
+    }
+
+    public void _onPlayerJoined(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_cf4483c1((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public void _onPlayerScoreRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d10bbec4((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)objective.Handle);
+    }
+
+    public void _onScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, global::Hosihikari.Bindings.Bedrock.Interop.Objective obj)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7aa7e973((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)obj.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? _setDisplayObjective(string displaySlotName, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective, byte order)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(displaySlotName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(displaySlotName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_1c644625((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)objective.Handle, order);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public void _setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? sender)
+    {
+        NativeMethods.TablePtr->C2.hs_method_48167c6b((void*)__hosihikari_shim_handle, (void*)(sender?.Handle ?? 0));
+    }
+
+    public void _tick()
+    {
+        NativeMethods.TablePtr->C2.hs_method_530f4b18((void*)__hosihikari_shim_handle);
+    }
+
+    public void _writeToLevelStorage()
+    {
+        NativeMethods.TablePtr->C2.hs_method_8b96f5fc((void*)__hosihikari_shim_handle);
+    }
+
+    public static string DEFAULT_CRITERIA()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_d3dc5c2c();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string DISPLAY_SLOT_BELOWNAME()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_5da7b136();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string DISPLAY_SLOT_LIST()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_78b18efa();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string DISPLAY_SLOT_SIDEBAR()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_8d5efd5f();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint OBJECTIVES_ENUM() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static Scoreboard Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a46c9834();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Scoreboard((nint)handle);
+    }
+
+    public static Scoreboard Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandSoftEnumRegistry registry)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1982d859((void*)registry.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Scoreboard((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Objective? addObjective(string name, string displayName, global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria criteria)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(displayName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -114,39 +235,20 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(displayName, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_handle = NativeMethods.TablePtr->hs_method_3a9011d5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle);
+                var __hs_handle = NativeMethods.TablePtr->C3.hs_method_157b2ea4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)criteria.Handle);
                 return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Objective((nint)__hs_handle, false) : null;
             }
         }
     }
 
-    public void addScoreListener(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, string arg1)
+    public int applyPlayerOperation(nint result, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[] sourceErrorIds, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId target, global::Hosihikari.Bindings.Bedrock.Interop.Objective targetObjective, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[] selector, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective, byte opCode)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_468a3aba((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
-
-    public int applyPlayerOperation(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[] arg1, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg2, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg3, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[] arg4, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg5, sbyte arg6)
-    {
-        var __hs_vectorItems1 = arg1;
+        var __hs_vectorItems1 = sourceErrorIds;
         var __hs_vectorHandles1 = new nint[__hs_vectorItems1?.Length ?? 0];
         for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++)
         {
@@ -155,7 +257,7 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData1 = __hs_vectorHandles1)
         {
             var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
-            var __hs_vectorItems4 = arg4;
+            var __hs_vectorItems4 = selector;
             var __hs_vectorHandles4 = new nint[__hs_vectorItems4?.Length ?? 0];
             for (var __hs_i4 = 0; __hs_i4 < __hs_vectorHandles4.Length; __hs_i4++)
             {
@@ -164,14 +266,14 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
             fixed (nint* __hs_vectorHandleData4 = __hs_vectorHandles4)
             {
                 var __hs_vectorData4 = (void**)__hs_vectorHandleData4;
-                return NativeMethods.TablePtr->hs_method_54aa0f14((void*)_handle, (void*)arg0, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg5.Handle, arg6, __hs_vectorData1, (nuint)(arg1?.Length ?? 0), __hs_vectorData4, (nuint)(arg4?.Length ?? 0));
+                return NativeMethods.TablePtr->C3.hs_method_0702c263((void*)__hosihikari_shim_handle, (void*)result, (void*)target.Handle, (void*)targetObjective.Handle, (void*)objective.Handle, opCode, __hs_vectorData1, (nuint)(sourceErrorIds?.Length ?? 0), __hs_vectorData4, (nuint)(selector?.Length ?? 0));
             }
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Objective? clearDisplayObjective(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Objective? clearDisplayObjective(string displaySlotName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(displaySlotName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -181,27 +283,27 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(displaySlotName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_bca54d44((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_9e04d183((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Objective((nint)__hs_handle, false) : null;
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_0ba0ed9f((void*)_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C3.hs_method_2e82d397((void*)__hosihikari_shim_handle, (void*)entity.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_0941fce6((void*)_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C3.hs_method_7910c5d5((void*)__hosihikari_shim_handle, (void*)player.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(string fakePlayer)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fakePlayer);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -211,24 +313,16 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(fakePlayer, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_d5972ceb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C3.hs_method_67e3ede4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachIdentityRef(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachObjective(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria? getCriteria(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria? getCriteria(string criteriaName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(criteriaName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -238,38 +332,21 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(criteriaName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_9958232e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_a6d4939f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria((nint)__hs_handle, false) : null;
         }
     }
 
-    public string[] getCriteriaNames()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c87aa4bc((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria getDefaultCriteria()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria((nint)NativeMethods.TablePtr->hs_method_eef4aa2b((void*)_handle), false);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PlayerScore' is not supported.", false)]
-    public nint getDisplayInfoFiltered(nint arg0) =>
+    public nint getDisplayInfoFiltered(nint displaySlot) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PlayerScore' is not supported.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? getDisplayObjective(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? getDisplayObjective(string displaySlotName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(displaySlotName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -279,17 +356,17 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(displaySlotName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_1417cabe((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_cebb38b8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective((nint)__hs_handle, false) : null;
         }
     }
 
     public string[] getDisplayObjectiveSlotNames()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_4ff9cbf8((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_2d8eaafe((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -299,13 +376,14 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScoreInfo' is not supported.", false)]
-    public nint getIdScores(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScoreInfo' is not supported.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Objective? getObjective(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getId(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId playerId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C3.hs_method_791edd29((void*)__hosihikari_shim_handle, (void*)playerId.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Objective? getObjective(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -315,29 +393,17 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_929a656f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_366a2e52((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Objective((nint)__hs_handle, false) : null;
         }
     }
 
-    public string[] getObjectiveNames()
+    public nint[] getObjectives()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_2efe5c6d((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    public nint[] getObjectives_70bf0684()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_70bf0684((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_30fd520c((void*)__hosihikari_shim_handle);
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -346,34 +412,14 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         return __hs_result;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardEventCoordinator getScoreboardEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardEventCoordinator((nint)NativeMethods.TablePtr->hs_method_62dea2a8((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C3.hs_method_970bffd7((void*)__hosihikari_shim_handle, (void*)entity.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(string name)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_1eda611d((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_71e5a44e((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_2e1f6fd0((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_11608c9a((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -383,110 +429,126 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_74260eb1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C3.hs_method_6b9c66c7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef? getScoreboardIdentityRef(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
+    public bool isClientSide()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_a2cfe570((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)__hs_handle, false) : null;
+        return NativeMethods.TablePtr->C3.hs_method_66ba9309((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef[] getScoreboardIdentityRefs()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCriteria_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_eb746f5d((void*)_handle);
-        var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef>() : new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)__hs_items[__hs_i]);
-        }
-        return __hs_result;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_64545a25((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[] getTrackedIds()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDisplayObjectives_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_48cccbe0((void*)_handle);
-        var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId>() : new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)__hs_items[__hs_i]);
-        }
-        return __hs_result;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_910e4d67((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasIdentityFor(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentityDict_Address
     {
-        return NativeMethods.TablePtr->hs_method_e943f681((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c2e308b9((void*)__hosihikari_shim_handle);
     }
 
-    public int modifyPlayerScore(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg1, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg2, int arg3, byte arg4)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentityRefs_Address
     {
-        return NativeMethods.TablePtr->hs_method_9741f24d((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_13592327((void*)__hosihikari_shim_handle);
     }
 
-    public int modifyPlayerScore(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg2, int arg3, byte arg4)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mObjectives_Address
     {
-        return NativeMethods.TablePtr->hs_method_dc8a98dd((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, arg3, arg4);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c53168c0((void*)__hosihikari_shim_handle);
     }
 
-    public void onObjectiveAdded(global::Hosihikari.Bindings.Bedrock.Interop.Objective arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mObjectivesHashLookup_Address
     {
-        NativeMethods.TablePtr->hs_method_af3d270c((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_28d06538((void*)__hosihikari_shim_handle);
     }
 
-    public void onObjectiveRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Objective arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerListener_Address
     {
-        NativeMethods.TablePtr->hs_method_f6f0dc47((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_51ae9176((void*)__hosihikari_shim_handle);
     }
 
-    public void onPlayerIdentityUpdated(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistry_Address
     {
-        NativeMethods.TablePtr->hs_method_c7253bdc((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_817abed9((void*)__hosihikari_shim_handle);
     }
 
-    public void onPlayerJoined(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreboardEventCoordinator_Address
     {
-        NativeMethods.TablePtr->hs_method_78218933((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ed5d892b((void*)__hosihikari_shim_handle);
     }
 
-    public void onPlayerScoreRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1)
+    public bool mShouldUpdateUI
     {
-        NativeMethods.TablePtr->hs_method_8eacebda((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_3970b370((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_3970b370((void*)__hosihikari_shim_handle, value);
     }
 
-    public void onScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1)
+    public int modifyPlayerScore(nint result, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective, int scoreValue, byte action)
     {
-        NativeMethods.TablePtr->hs_method_ea999003((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_5e773151((void*)__hosihikari_shim_handle, (void*)result, (void*)id.Handle, (void*)objective.Handle, scoreValue, action);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public void onObjectiveAdded(global::Hosihikari.Bindings.Bedrock.Interop.Objective objective)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_method_37836f07((void*)_handle, (void*)arg0.Handle), false);
+        NativeMethods.TablePtr->C3.hs_method_9cbd2186((void*)__hosihikari_shim_handle, (void*)objective.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
+    public void onObjectiveRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Objective objective)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_method_45d2502d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
+        NativeMethods.TablePtr->C3.hs_method_8c44f5a4((void*)__hosihikari_shim_handle, (void*)objective.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg1)
+    public void onPlayerIdentityUpdated(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId playerId)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_method_50fe5d55((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
+        NativeMethods.TablePtr->C3.hs_method_f221ef2f((void*)__hosihikari_shim_handle, (void*)playerId.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, string arg1)
+    public void onPlayerJoined(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        NativeMethods.TablePtr->C3.hs_method_a3d3bf53((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public void onPlayerScoreRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective)
+    {
+        NativeMethods.TablePtr->C3.hs_method_dff5e276((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)objective.Handle);
+    }
+
+    public void onScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, global::Hosihikari.Bindings.Bedrock.Interop.Objective obj)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0877ad40((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)obj.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId scoreboardId, global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId playerId)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->C3.hs_method_99658417((void*)__hosihikari_shim_handle, (void*)scoreboardId.Handle, (void*)playerId.Handle), false);
+    }
+
+    public bool removeObjective(global::Hosihikari.Bindings.Bedrock.Interop.Objective? objective)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_d2fd58ce((void*)__hosihikari_shim_handle, (void*)(objective?.Handle ?? 0)) != 0;
+    }
+
+    public void removeScoreListener(global::Hosihikari.Bindings.Bedrock.Interop.Player player, string objective)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -496,50 +558,26 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_method_fc286a31((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1), false);
+            NativeMethods.TablePtr->C3.hs_method_8c01a168((void*)__hosihikari_shim_handle, (void*)player.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
-    public bool removeObjective(global::Hosihikari.Bindings.Bedrock.Interop.Objective? arg0)
+    public bool resetPlayerScore(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective)
     {
-        return NativeMethods.TablePtr->hs_method_1eaee96a((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_959c7997((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)objective.Handle) != 0;
     }
 
-    public void removeScoreListener(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, string arg1)
+    public void resetPlayerScore(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_6181be72((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
+        NativeMethods.TablePtr->C3.hs_method_2dbde24b((void*)__hosihikari_shim_handle, (void*)id.Handle);
     }
 
-    public bool resetPlayerScore(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? setDisplayObjective(string displaySlotName, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective, byte order)
     {
-        return NativeMethods.TablePtr->hs_method_9800858f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
-    }
-
-    public void resetPlayerScore(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
-    {
-        NativeMethods.TablePtr->hs_method_4135dd5e((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? setDisplayObjective(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1, byte arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(displaySlotName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -549,44 +587,47 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(displaySlotName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_d5779859((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2);
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_afc9ccea((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)objective.Handle, order);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective((nint)__hs_handle, false) : null;
         }
     }
 
-    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg0)
+    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? sender)
     {
-        NativeMethods.TablePtr->hs_method_b2f96d55((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C3.hs_method_50b568d4((void*)__hosihikari_shim_handle, (void*)(sender?.Handle ?? 0));
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_3ce4d71c((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_3ce4d71c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ScoreInfo' is not supported.", false)]
-    public nint tryGetIdScore(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'ScoreInfo' is not supported.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreInfo? tryGetIdScore(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, nint objectiveHash)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_c9ae977e((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)objectiveHash, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ScoreInfo((nint)__hs_handle) : null;
+    }
 
     public void writeToLevelStorage()
     {
-        NativeMethods.TablePtr->hs_method_5e8871f6((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_5e8871f6((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_6b629579((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_6b629579((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

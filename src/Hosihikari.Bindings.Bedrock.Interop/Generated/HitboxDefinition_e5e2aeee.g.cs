@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class HitboxDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public HitboxDefinition(nint handle) : this(handle, true) { }
 
     internal HitboxDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static HitboxDefinition Borrow(nint handle) => new HitboxDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,19 @@ public sealed unsafe partial class HitboxDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HitboxDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HitboxDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAABB(global::Hosihikari.Bindings.Bedrock.Interop.HitboxJson arg0)
+    public void addAABB(global::Hosihikari.Bindings.Bedrock.Interop.HitboxJson aabb)
     {
-        NativeMethods.TablePtr->hs_method_437a672f((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_c604f689((void*)__hosihikari_shim_handle, (void*)aabb.Handle);
     }
 
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHitboxes_Address
     {
-        NativeMethods.TablePtr->hs_method_4a8e7708(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b0390848((void*)__hosihikari_shim_handle);
     }
-
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.HitboxComponent arg1)
-    {
-        NativeMethods.TablePtr->hs_method_13f5d26a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

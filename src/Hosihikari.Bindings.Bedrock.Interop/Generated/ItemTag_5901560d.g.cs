@@ -4,26 +4,27 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemTag
+[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
+public sealed partial class ItemTag
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemTag(nint handle) : this(handle, true) { }
 
     internal ItemTag(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemTag Borrow(nint handle) => new ItemTag(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +34,8 @@ public sealed unsafe partial class ItemTag
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
-
-    public ulong hash
-    {
-        get => NativeMethods.TablePtr->hs_get_2300532c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_2300532c((void*)_handle, value);
-    }
-
-    public nint lastMatch
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c181af29((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint str_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4a3f1a5a((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_32f2a99d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

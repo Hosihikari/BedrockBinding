@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MapDataManagerOptions : global::System.IDisposable
+public sealed unsafe partial class MapDataManagerOptions
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MapDataManagerOptions(nint handle) : this(handle, true) { }
 
     internal MapDataManagerOptions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MapDataManagerOptions Borrow(nint handle) => new MapDataManagerOptions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,65 +33,58 @@ public sealed unsafe partial class MapDataManagerOptions : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MapDataManagerOptions Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MapDataManagerOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getWorldCenter()
     {
-        var handle = NativeMethods.TablePtr->hs_create_f08ab4ac((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new MapDataManagerOptions((nint)handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C2.hs_method_b6274e62((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MapDataManagerOptions Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _hasMapsCenteredToOrigin()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_96ecfc2c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isLegacyLevel()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_16e5f4ad((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isPremiumWorldTemplate()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_6dccce41((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getWorldCenter()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_d49482ff((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C2.hs_method_0b911d9d((void*)__hosihikari_shim_handle), false);
     }
 
     public bool hasMapsCenteredToOrigin()
     {
-        return NativeMethods.TablePtr->hs_method_a2581405((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_078c8f12((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isLegacyLevel()
     {
-        return NativeMethods.TablePtr->hs_method_ea3d3754((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_1bada62c((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isPremiumWorldTemplate()
     {
-        return NativeMethods.TablePtr->hs_method_1756ad0e((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_0da75893((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelData_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_cc9282e5((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a540f69a((void*)__hosihikari_shim_handle);
     }
 }

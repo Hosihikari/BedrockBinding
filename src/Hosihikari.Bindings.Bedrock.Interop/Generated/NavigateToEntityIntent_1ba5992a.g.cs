@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.sim;
 
-public sealed unsafe partial class NavigateToEntityIntent
+public sealed unsafe partial class NavigateToEntityIntent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NavigateToEntityIntent(nint handle) : this(handle, true) { }
 
     internal NavigateToEntityIntent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NavigateToEntityIntent Borrow(nint handle) => new NavigateToEntityIntent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,32 @@ public sealed unsafe partial class NavigateToEntityIntent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NavigateToEntityIntent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NavigateToEntityIntent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int execute(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer arg0)
+    public void finalize(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer player)
     {
-        return NativeMethods.TablePtr->hs_method_bb8ee598((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_0ed44aa5((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mSpeed
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_88ec3d38((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_88ec3d38((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_1ba5992a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

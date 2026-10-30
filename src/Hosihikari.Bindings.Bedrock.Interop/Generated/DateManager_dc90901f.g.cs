@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DateManager
+public sealed unsafe partial class DateManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DateManager(nint handle) : this(handle, true) { }
 
     internal DateManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DateManager Borrow(nint handle) => new DateManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,101 +33,156 @@ public sealed unsafe partial class DateManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c7f00049((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c7f00049((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DateManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DateManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static DateManager Create(global::Hosihikari.Bindings.Bedrock.Interop.DateManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9e7b0e04((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DateManager((nint)handle);
+    }
+
+    public long _getUnixTime()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1abe26e5((void*)__hosihikari_shim_handle);
+    }
+
+    public static int _parseTime(nint str, ulong len, nint hours, nint minutes, nint seconds)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_77ca7e9d((void*)str, len, (void*)hours, (void*)minutes, (void*)seconds);
+    }
+
+    public static int _parseTimeZone(nint str, ulong len, nint type, nint hours, nint minutes)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ae1e196a((void*)str, len, (void*)type, (void*)hours, (void*)minutes);
+    }
 
     public static string getCurrentTimestampFileName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_1107627d();
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_81853420();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'tm' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getRealDateTime(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'tm' requires --link-carrier or --virtual-dispatch.");
 
     public static long getRealTime()
     {
-        return NativeMethods.TablePtr->hs_method_86545dd7();
+        return NativeMethods.TablePtr->C1.hs_method_86545dd7();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'tm' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint toDateTime(long arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'tm' requires --link-carrier or --virtual-dispatch.");
-
-    public static string toString(nint arg0, int arg1, string arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1c37a7_Address
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d05f6cd7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk38358c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8bb19d8d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6da9eb_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_19371a31((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk79feed_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_86d59d31((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8d6b0a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4a0acdc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka25ee2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_436c637d((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DateManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.DateManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DateManager((nint)NativeMethods.TablePtr->C1.hs_method_f027b6a5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint parseImfFixdate(nint dateHeader) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::chrono::duration<long long>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint parseNetTimeSpan(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::chrono::duration<long long>>' requires --link-carrier or --virtual-dispatch.");
+
+    public static bool toEpochTime(string strTime, nint result, nint resultType, nint resultTimeZoneMinutes)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(strTime);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
         {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
         }
         else
         {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        global::System.Text.Encoding.UTF8.GetBytes(strTime, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_4ed9dd7e((void*)arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            return NativeMethods.TablePtr->C1.hs_method_e1b9336f(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)result, (void*)resultType, (void*)resultTimeZoneMinutes) != 0;
         }
     }
 
-    public static string toString(nint arg0, string arg1)
+    public static long toEpochTime(nint dateTime, int inputType)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            var __hs_view = NativeMethods.TablePtr->hs_method_42960207((void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-        }
+        return NativeMethods.TablePtr->C1.hs_method_b5601dfd((void*)dateTime, inputType);
     }
 
-    public static string toString_DateTime_a9a6b2cb(nint arg0, int arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::locale' is abstract or not copy-constructible.", false)]
+    public static nint toString(nint time, nint format, nint locale) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::locale' is abstract or not copy-constructible.");
+
+    public static string toString_DateTime(nint time, int outputType)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_a9a6b2cb((void*)arg0, arg1);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_9cbb4e27((void*)time, outputType);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string toString_DateTime_c3a6835c(nint arg0, int arg1)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c3a6835c((void*)arg0, arg1);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static nint toString_NetTimeSpan(nint value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_dc90901f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

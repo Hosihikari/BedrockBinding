@@ -18,4 +18,5 @@ public enum Type : byte
     List = 9,
     Compound = 10,
     IntArray = 11,
+    NumTagTypes = 12,
 }

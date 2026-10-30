@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.sim;
 
 public sealed unsafe partial class BuildIntent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BuildIntent(nint handle) : this(handle, true) { }
 
     internal BuildIntent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BuildIntent Borrow(nint handle) => new BuildIntent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,14 @@ public sealed unsafe partial class BuildIntent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BuildIntent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BuildIntent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int execute(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mType_Address
     {
-        return NativeMethods.TablePtr->hs_method_822423c9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void finalize(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer arg0)
-    {
-        NativeMethods.TablePtr->hs_method_fac0556d((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void reset()
-    {
-        NativeMethods.TablePtr->hs_method_a53728a9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f0748ad6((void*)__hosihikari_shim_handle);
     }
 }

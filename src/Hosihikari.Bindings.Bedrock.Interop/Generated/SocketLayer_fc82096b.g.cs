@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-public sealed unsafe partial class SocketLayer
+public sealed unsafe partial class SocketLayer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SocketLayer(nint handle) : this(handle, true) { }
 
     internal SocketLayer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SocketLayer Borrow(nint handle) => new SocketLayer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,31 @@ public sealed unsafe partial class SocketLayer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static void GetMyAdapters(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.NetworkAdapter? arg0)
+    public static void GetMyAdapters(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.NetworkAdapter? adapters)
     {
-        NativeMethods.TablePtr->hs_method_26c811a1((void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_7bc8c916((void*)(adapters?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::RakString' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint GetSubNetForSocketAndIp(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::RakString' requires --link-carrier or --virtual-dispatch.");
-
-    public static void SetSocketOptions(ulong arg0, bool arg1, bool arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString GetSubNetForSocketAndIp(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString inIpString)
     {
-        NativeMethods.TablePtr->hs_method_815f01e9(arg0, arg1, arg2);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString((nint)NativeMethods.TablePtr->C2.hs_method_f38a562a((void*)inIpString.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SocketLayer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SocketLayer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mPlatformAdapterOverride
+    public void Dispose()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_fc82096b((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

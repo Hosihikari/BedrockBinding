@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.mce.Blob_Nested;
 
 public sealed unsafe partial class Deleter : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Deleter(nint handle) : this(handle, true) { }
 
     internal Deleter(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Deleter Borrow(nint handle) => new Deleter(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,47 @@ public sealed unsafe partial class Deleter : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static Deleter Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_8ef32100();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Deleter((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(unsigned char *)' is not supported.", false)]
+    public static Deleter Create(nint f) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(unsigned char *)' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint m_func_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c637d98a((void*)__hosihikari_shim_handle);
+    }
+
+    public void operator_call(nint p)
+    {
+        NativeMethods.TablePtr->C4.hs_method_2db03f23((void*)__hosihikari_shim_handle, (void*)p);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_15f667d1((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_15f667d1((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

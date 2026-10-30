@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Social.Events;
 
-public sealed unsafe partial class AchievementEventing
+public sealed unsafe partial class AchievementEventing : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AchievementEventing(nint handle) : this(handle, true) { }
 
     internal AchievementEventing(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AchievementEventing Borrow(nint handle) => new AchievementEventing(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,69 +33,69 @@ public sealed unsafe partial class AchievementEventing
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AchievementEventing Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AchievementEventing Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void AwardAchievement(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1)
+    public static AchievementEventing Create()
     {
-        NativeMethods.TablePtr->hs_method_6f53c1ef((void*)_handle, (void*)arg0.Handle, arg1);
+        var handle = NativeMethods.TablePtr->C3.hs_create_e4195ba3();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AchievementEventing((nint)handle);
     }
 
-    public void BlockBroken(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, ushort arg4)
+    public static AchievementEventing Create(global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.AchievementEventing arg0)
     {
-        NativeMethods.TablePtr->hs_method_240c6c06((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
+        var handle = NativeMethods.TablePtr->C3.hs_create_6bc009e8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AchievementEventing((nint)handle);
     }
 
-    public void CaravanChanged(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, int arg1)
+    public void AwardAchievement(global::Hosihikari.Bindings.Bedrock.Interop.Player player, byte achievementId)
     {
-        NativeMethods.TablePtr->hs_method_1816d5f0((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C3.hs_method_74452d78((void*)__hosihikari_shim_handle, (void*)player.Handle, achievementId);
     }
 
-    public void ItemUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, uint arg2)
+    public void MobEffectChanged(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effectInstance, int change)
     {
-        NativeMethods.TablePtr->hs_method_79903c84((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C3.hs_method_262bcbc8((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)effectInstance.Handle, change);
     }
 
-    public void JukeboxUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
+    public void PlayerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player player, float metersTravelled, int cause, int sourceType)
     {
-        NativeMethods.TablePtr->hs_method_bdceed91((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_7e8e0f43((void*)__hosihikari_shim_handle, (void*)player.Handle, metersTravelled, cause, sourceType);
     }
 
-    public void MobEffectChanged(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg1, int arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk266bfd_Address
     {
-        NativeMethods.TablePtr->hs_method_235cf969((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ae8630e7((void*)__hosihikari_shim_handle);
     }
 
-    public void PlayerBounced(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.AchievementEventing operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.AchievementEventing arg0)
     {
-        NativeMethods.TablePtr->hs_method_aac95aa2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.AchievementEventing((nint)NativeMethods.TablePtr->C3.hs_method_349777e0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    public void PlayerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, float arg1, int arg2, int arg3)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_35077f07((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_5959473c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    public void PlayerTravelled(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, float arg1, int arg2, int arg3)
-    {
-        NativeMethods.TablePtr->hs_method_f2a168cc((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockCustomComponentsComponent : global::System.IDisposable
+public sealed unsafe partial class BlockCustomComponentsComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockCustomComponentsComponent(nint handle) : this(handle, true) { }
 
     internal BlockCustomComponentsComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockCustomComponentsComponent Borrow(nint handle) => new BlockCustomComponentsComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,76 +33,51 @@ public sealed unsafe partial class BlockCustomComponentsComponent : global::Syst
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static BlockCustomComponentsComponent Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_ab6399b9();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'BlockCustomComponentsComponent::ExecutableComponent' is not supported.", false)]
+    public nint _gatherComponentsToExecute() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'BlockCustomComponentsComponent::ExecutableComponent' is not supported.");
 
-        return new BlockCustomComponentsComponent((nint)handle);
+    public void finalize(nint registry, nint parameterCache)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e0a27858((void*)__hosihikari_shim_handle, (void*)registry, (void*)parameterCache);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockCustomComponentsComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void generateOrderDocumentationForVersion(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCustomComponentData_Address
     {
-        NativeMethods.TablePtr->hs_method_21030005((void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6015f663((void*)__hosihikari_shim_handle);
     }
 
-    public nint getCustomComponentData()
+    public bool mHasPlayerInteractEvent
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7ee255d2((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_b9ec9481((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b9ec9481((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasTickingComponent()
+    public bool mHasPlayerPlacingEvent
     {
-        return NativeMethods.TablePtr->hs_method_9a0e87d5((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_382f1a33((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_382f1a33((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool onFlushBlockCustomComponentsAfterEvents()
+    public bool mIsCustomComponentsV1
     {
-        return NativeMethods.TablePtr->hs_method_f2c6b532((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_32b4e253((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_32b4e253((void*)__hosihikari_shim_handle, value);
     }
 
-    public void onPlayerDestroy(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptRegistry_Address
     {
-        NativeMethods.TablePtr->hs_method_e3a0a690((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b966bea9((void*)__hosihikari_shim_handle);
     }
 
-    public void onPostFlushAfterEvents()
-    {
-        NativeMethods.TablePtr->hs_method_816906f8((void*)_handle);
-    }
-
-    public void onPreFlushAfterEvents()
-    {
-        NativeMethods.TablePtr->hs_method_b0513aa7((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0979e716((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptCustomComponentToExecute<const ScriptModuleMinecraft::ScriptBlockCustomComponentInterface &, void>' is not supported.", false)]
+    public nint tryGetComponentsToExecute(nint baseBlock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptCustomComponentToExecute<const ScriptModuleMinecraft::ScriptBlockCustomComponentInterface &, void>' is not supported.");
 }

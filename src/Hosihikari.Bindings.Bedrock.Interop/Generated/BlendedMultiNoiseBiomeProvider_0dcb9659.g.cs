@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlendedMultiNoiseBiomeProvider
+public sealed unsafe partial class BlendedMultiNoiseBiomeProvider : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlendedMultiNoiseBiomeProvider(nint handle) : this(handle, true) { }
 
     internal BlendedMultiNoiseBiomeProvider(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlendedMultiNoiseBiomeProvider Borrow(nint handle) => new BlendedMultiNoiseBiomeProvider(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,86 @@ public sealed unsafe partial class BlendedMultiNoiseBiomeProvider
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlendedMultiNoiseBiomeProvider Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public nint _ctor(nint overworldNoises, nint parameterList, nint attenuatorFactory, nint biomeRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlendedMultiNoiseBiomeProvider Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlendedMultiNoiseBiomeProvider Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool hasBiome(ulong arg0)
+    public static BlendedMultiNoiseBiomeProvider Create()
     {
-        return NativeMethods.TablePtr->hs_method_fac7e3dc((void*)_handle, arg0) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_1771189f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlendedMultiNoiseBiomeProvider((nint)handle);
     }
 
-    public bool hasBiomeByHashId(ulong arg0)
+    public static BlendedMultiNoiseBiomeProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.BlendedMultiNoiseBiomeProvider arg0)
     {
-        return NativeMethods.TablePtr->hs_method_3aa403f2((void*)_handle, arg0) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_2c9548e5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlendedMultiNoiseBiomeProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static BlendedMultiNoiseBiomeProvider Create(nint overworldNoises, nint parameterList, nint attenuatorFactory, nint biomeRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? tryGetBiome(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttenuationFactory_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_4f16c59f((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cf4d40f2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4bcb36ab((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOverworldNoises_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fe795194((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParameterList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_46398ab7((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlendedMultiNoiseBiomeProvider operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BlendedMultiNoiseBiomeProvider arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlendedMultiNoiseBiomeProvider((nint)NativeMethods.TablePtr->C0.hs_method_901574e7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? tryGetBiome(nint getBiomeOptions)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_6abbfbbb((void*)__hosihikari_shim_handle, (void*)getBiomeOptions);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? tryGetBiome(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache_Nested.CacheEntry arg1, global::Hosihikari.Bindings.Bedrock.Interop.RTree_Nested.Hint? arg2)
+    public void Dispose()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_dd95707c((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0dcb9659((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

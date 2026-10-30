@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScoreboardCommand_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SetScoreOutput
+public sealed unsafe partial class SetScoreOutput
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SetScoreOutput(nint handle) : this(handle, true) { }
 
     internal SetScoreOutput(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SetScoreOutput Borrow(nint handle) => new SetScoreOutput(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,26 @@ public sealed partial class SetScoreOutput
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public int mFirstNewScore
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9784dc9e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9784dc9e((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFirstSuccess_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_81745ada((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSuccessCount
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_5cafe7eb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5cafe7eb((void*)__hosihikari_shim_handle, value);
     }
 }

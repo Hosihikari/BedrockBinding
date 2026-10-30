@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-public sealed unsafe partial class BitStream
+public sealed unsafe partial class BitStream : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BitStream(nint handle) : this(handle, true) { }
 
     internal BitStream(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BitStream Borrow(nint handle) => new BitStream(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,167 +33,117 @@ public sealed unsafe partial class BitStream
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void AddBitsAndReallocate(uint arg0)
+    public bool AddBitsAndReallocate(uint numberOfBitsToWrite)
     {
-        NativeMethods.TablePtr->hs_method_b534bb97((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C2.hs_method_f157360d((void*)__hosihikari_shim_handle, numberOfBitsToWrite) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BitStream Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BitStream Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BitStream Create(nint arg0, uint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BitStream Create(uint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void IgnoreBits(uint arg0)
+    public bool Read(nint outByteArray, uint numberOfBytes)
     {
-        NativeMethods.TablePtr->hs_method_161f1d73((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C2.hs_method_e55f7ae4((void*)__hosihikari_shim_handle, (void*)outByteArray, numberOfBytes) != 0;
     }
 
-    public void IgnoreBytes(uint arg0)
+    public bool ReadAlignedBytes(nint inOutByteArray, uint numberOfBytesToRead)
     {
-        NativeMethods.TablePtr->hs_method_57ea84fd((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C2.hs_method_bf343d84((void*)__hosihikari_shim_handle, (void*)inOutByteArray, numberOfBytesToRead) != 0;
     }
 
-    public static bool IsNetworkOrder()
+    public bool ReadAlignedVar16(nint inOutByteArray)
     {
-        return NativeMethods.TablePtr->hs_method_2d2e0795() != 0;
+        return NativeMethods.TablePtr->C2.hs_method_29bb4693((void*)__hosihikari_shim_handle, (void*)inOutByteArray) != 0;
     }
 
-    public static bool IsNetworkOrderInternal()
+    public bool ReadAlignedVar32(nint inOutByteArray)
     {
-        return NativeMethods.TablePtr->hs_method_49b3d55b() != 0;
+        return NativeMethods.TablePtr->C2.hs_method_a3eb5456((void*)__hosihikari_shim_handle, (void*)inOutByteArray) != 0;
     }
 
-    public void PadWithZeroToByteLength(uint arg0)
+    public bool ReadBits(nint inOutByteArray, uint numberOfBitsToRead, bool alignBitsToRight)
     {
-        NativeMethods.TablePtr->hs_method_9783fdc1((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C2.hs_method_2c366bfb((void*)__hosihikari_shim_handle, (void*)inOutByteArray, numberOfBitsToRead, alignBitsToRight) != 0;
     }
 
-    public bool Read_46812a0a(nint arg0, uint arg1)
+    public void Write(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.BitStream? bitStream, uint numberOfBits)
     {
-        return NativeMethods.TablePtr->hs_method_46812a0a((void*)_handle, (void*)arg0, arg1) != 0;
+        NativeMethods.TablePtr->C2.hs_method_3c7e6639((void*)__hosihikari_shim_handle, (void*)(bitStream?.Handle ?? 0), numberOfBits);
     }
 
-    public bool ReadAlignedBytes(nint arg0, uint arg1)
+    public void Write(nint inputByteArray, uint numberOfBytes)
     {
-        return NativeMethods.TablePtr->hs_method_b079a866((void*)_handle, (void*)arg0, arg1) != 0;
+        NativeMethods.TablePtr->C2.hs_method_88b728c1((void*)__hosihikari_shim_handle, (void*)inputByteArray, numberOfBytes);
     }
 
-    public bool ReadAlignedVar16(nint arg0)
+    public void WriteAlignedBytes(nint inByteArray, uint numberOfBytesToWrite)
     {
-        return NativeMethods.TablePtr->hs_method_eb7d1f4e((void*)_handle, (void*)arg0) != 0;
+        NativeMethods.TablePtr->C2.hs_method_5ee3702b((void*)__hosihikari_shim_handle, (void*)inByteArray, numberOfBytesToWrite);
     }
 
-    public bool ReadAlignedVar32(nint arg0)
+    public void WriteAlignedVar16(nint inByteArray)
     {
-        return NativeMethods.TablePtr->hs_method_3223065c((void*)_handle, (void*)arg0) != 0;
+        NativeMethods.TablePtr->C2.hs_method_c4111cab((void*)__hosihikari_shim_handle, (void*)inByteArray);
     }
 
-    public bool ReadAlignedVar8(nint arg0)
+    public void WriteAlignedVar32(nint inByteArray)
     {
-        return NativeMethods.TablePtr->hs_method_35bd076c((void*)_handle, (void*)arg0) != 0;
+        NativeMethods.TablePtr->C2.hs_method_f8405c38((void*)__hosihikari_shim_handle, (void*)inByteArray);
     }
 
-    public bool ReadBits(nint arg0, uint arg1, bool arg2)
+    public void WriteBits(nint inByteArray, uint numberOfBitsToWrite, bool rightAlignedBits)
     {
-        return NativeMethods.TablePtr->hs_method_409b46f9((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+        NativeMethods.TablePtr->C2.hs_method_6bcf4323((void*)__hosihikari_shim_handle, (void*)inByteArray, numberOfBitsToWrite, rightAlignedBits);
     }
 
-    public void Reset()
+    public bool copyData
     {
-        NativeMethods.TablePtr->hs_method_ed0cb03c((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_ec258963((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ec258963((void*)__hosihikari_shim_handle, value);
     }
 
-    public void ResetReadPointer()
+    public nint data
     {
-        NativeMethods.TablePtr->hs_method_03a50534((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c3c89e95((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c3c89e95((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    public void ResetWritePointer()
+    public uint numberOfBitsAllocated
     {
-        NativeMethods.TablePtr->hs_method_ff329477((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_46b3661a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_46b3661a((void*)__hosihikari_shim_handle, value);
     }
 
-    public static void ReverseBytes(nint arg0, nint arg1, uint arg2)
+    public uint numberOfBitsUsed
     {
-        NativeMethods.TablePtr->hs_method_9047a36f((void*)arg0, (void*)arg1, arg2);
+        get => NativeMethods.TablePtr->C2.hs_get_2e5e3fac((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2e5e3fac((void*)__hosihikari_shim_handle, value);
     }
 
-    public void SetWriteOffset(uint arg0)
+    public uint readOffset
     {
-        NativeMethods.TablePtr->hs_method_6ae9fea4((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_b33239a6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b33239a6((void*)__hosihikari_shim_handle, value);
     }
 
-    public void Write_f51e8c55(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg0, uint arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint stackData_Address
     {
-        NativeMethods.TablePtr->hs_method_f51e8c55((void*)_handle, (void*)arg0.Handle, arg1);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_27cb53df((void*)__hosihikari_shim_handle);
     }
 
-    public void Write_62b6cc20(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream? arg0, uint arg1)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_62b6cc20((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_9a819809((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    public void Write(nint arg0, uint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_eb517336((void*)_handle, (void*)arg0, arg1);
-    }
-
-    public void Write0()
-    {
-        NativeMethods.TablePtr->hs_method_84a317e5((void*)_handle);
-    }
-
-    public void Write1()
-    {
-        NativeMethods.TablePtr->hs_method_fffdd829((void*)_handle);
-    }
-
-    public void WriteAlignedBytes(nint arg0, uint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_625380cc((void*)_handle, (void*)arg0, arg1);
-    }
-
-    public void WriteAlignedVar16(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_94ca7937((void*)_handle, (void*)arg0);
-    }
-
-    public void WriteAlignedVar32(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_318b3e71((void*)_handle, (void*)arg0);
-    }
-
-    public void WriteAlignedVar8(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_8eab8819((void*)_handle, (void*)arg0);
-    }
-
-    public void WriteBits(nint arg0, uint arg1, bool arg2)
-    {
-        NativeMethods.TablePtr->hs_method_23f2c814((void*)_handle, (void*)arg0, arg1, arg2);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_de850f63() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

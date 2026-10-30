@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class IWebviewTelemetry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IWebviewTelemetry(nint handle) : this(handle, true) { }
 
     internal IWebviewTelemetry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IWebviewTelemetry Borrow(nint handle) => new IWebviewTelemetry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,66 @@ public sealed unsafe partial class IWebviewTelemetry : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IWebviewTelemetry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static IWebviewTelemetry Create(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing arg0)
+    public nint mpSubject
     {
-        var handle = NativeMethods.TablePtr->hs_create_f50811de((void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bbbec253((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_bbbec253((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireCodeBuilderLoadPerformance(nint stage, ulong tutorialSize, ulong downloadSize, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireCodeBuilderRunPerformance(nint stage, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _onDownloadBegin(nint downloadInfo)
+    {
+        NativeMethods.TablePtr->C1.hs_method_1ff924a2((void*)__hosihikari_shim_handle, (void*)downloadInfo);
+    }
+
+    public void _onDownloadCanceled(nint downloadInfo)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8f4e2c80((void*)__hosihikari_shim_handle, (void*)downloadInfo);
+    }
+
+    public void _onDownloadComplete(nint downloadInfo)
+    {
+        NativeMethods.TablePtr->C1.hs_method_59d50a4c((void*)__hosihikari_shim_handle, (void*)downloadInfo);
+    }
+
+    public void _onMessageRecieved(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_68c8464f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static IWebviewTelemetry Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8b1d5737();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,44 +101,80 @@ public sealed unsafe partial class IWebviewTelemetry : global::System.IDisposabl
         return new IWebviewTelemetry((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IWebviewTelemetry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void onDownloadBegin(nint arg0)
+    public static IWebviewTelemetry Create(global::Hosihikari.Bindings.Bedrock.Interop.IWebviewTelemetry arg0)
     {
-        NativeMethods.TablePtr->hs_method_1154e273((void*)_handle, (void*)arg0);
+        var handle = NativeMethods.TablePtr->C1.hs_create_7f79fae5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IWebviewTelemetry((nint)handle);
     }
 
-    public void onDownloadCanceled(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireCodeBuilderLoadPerformance(nint stage, ulong tutorialSize, ulong downloadSize, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireCodeBuilderRunPerformance(nint stage, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3b1452_Address
     {
-        NativeMethods.TablePtr->hs_method_9be6db02((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_aa5d98d0((void*)__hosihikari_shim_handle);
     }
 
-    public void onDownloadComplete(nint arg0)
+    public void onDownloadBegin(nint downloadInfo)
     {
-        NativeMethods.TablePtr->hs_method_a2f354a7((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C1.hs_method_a104807f((void*)__hosihikari_shim_handle, (void*)downloadInfo);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onDownloadCanceled(nint downloadInfo)
+    {
+        NativeMethods.TablePtr->C1.hs_method_08b4a16d((void*)__hosihikari_shim_handle, (void*)downloadInfo);
+    }
 
+    public void onDownloadComplete(nint downloadInfo)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8506c95c((void*)__hosihikari_shim_handle, (void*)downloadInfo);
+    }
+
+    public void onMessageRecieved(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_4ba7664e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IWebviewTelemetry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.IWebviewTelemetry arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IWebviewTelemetry((nint)NativeMethods.TablePtr->C1.hs_method_220991c5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_48aee1db((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_48aee1db((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

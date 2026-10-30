@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RailActivatorDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RailActivatorDefinition(nint handle) : this(handle, true) { }
 
     internal RailActivatorDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RailActivatorDefinition Borrow(nint handle) => new RailActivatorDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,55 @@ public sealed unsafe partial class RailActivatorDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RailActivatorDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RailActivatorDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_e6befde6(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_1c54f688(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mCheckBlockTypes
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_2aca6e32((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_2aca6e32((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mEjectOnActivate
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ea2325b9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ea2325b9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mEjectOnDeactivate
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_42997eaf((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_42997eaf((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnActivate_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cb1f47a4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnDeactivate_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a0a73cc0((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mTickCommandBlockOnActivate
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_2c05d19b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_2c05d19b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mTickCommandBlockOnDeactivate
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_4b4d1425((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_4b4d1425((void*)__hosihikari_shim_handle, value);
+    }
 }

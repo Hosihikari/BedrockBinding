@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptWorldSoundOptions
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptWorldSoundOptions(nint handle) : this(handle, true) { }
 
     internal ScriptWorldSoundOptions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptWorldSoundOptions Borrow(nint handle) => new ScriptWorldSoundOptions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,41 @@ public sealed unsafe partial class ScriptWorldSoundOptions
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptWorldSoundOptions Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptWorldSoundOptions Create_9363b772(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptWorldSoundOptions Create_a85cfd60(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBindingBuilder<ScriptModuleMinecraft::ScriptWorldSoundOptions>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBindingBuilder<ScriptModuleMinecraft::ScriptWorldSoundOptions>' requires --link-carrier or --virtual-dispatch.");
-
-    public float getPitch()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
-        return NativeMethods.TablePtr->hs_method_1c78de34((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_4b50ec00());
     }
 
-    public float getVolume()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIsBroadcast_Address
     {
-        return NativeMethods.TablePtr->hs_method_54a9688a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_430c16ba((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLoopCount_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_99efb457((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Error' is not supported.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPitch_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8b6e2080((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVolume_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5c47a07a((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::PropertyOutOfBoundsError' is not supported.", false)]
     public nint validate() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Error' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::PropertyOutOfBoundsError' is not supported.");
 }

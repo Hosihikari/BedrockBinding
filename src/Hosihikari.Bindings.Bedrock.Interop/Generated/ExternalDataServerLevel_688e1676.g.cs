@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExternalDataServerLevel
+public sealed unsafe partial class ExternalDataServerLevel : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExternalDataServerLevel(nint handle) : this(handle, true) { }
 
     internal ExternalDataServerLevel(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExternalDataServerLevel Borrow(nint handle) => new ExternalDataServerLevel(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,58 +33,129 @@ public sealed unsafe partial class ExternalDataServerLevel
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExternalDataServerLevel Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings _getAdventureSettings()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->C1.hs_method_2942fdf3((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExternalDataServerLevel Create_80679a08(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int _getDefaultGameType()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_173e5831((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel const>>' is not a known bindable declaration.", false)]
-    public static ExternalDataServerLevel Create_ee00467d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel const>>' is not a known bindable declaration.");
+    public uint _getInputMode()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a57a3257((void*)__hosihikari_shim_handle);
+    }
+
+    public uint _getPlayMode()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a7f2c2f0((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getSmoothRotationSpeed()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a9d3d7ab((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _isInWorldAndNotShowingAnyMenuScreens()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_45afa794((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isPausingGame()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6426c7d5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ExternalDataServerLevel Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d31f34f7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExternalDataServerLevel((nint)handle);
+    }
+
+    public static ExternalDataServerLevel Create(global::Hosihikari.Bindings.Bedrock.Interop.ExternalDataServerLevel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_80679a08((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExternalDataServerLevel((nint)handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->hs_method_7869f207((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->C1.hs_method_de5a4782((void*)__hosihikari_shim_handle), false);
     }
 
     public int getDefaultGameType()
     {
-        return NativeMethods.TablePtr->hs_method_c96c217e((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_a7ab99db((void*)__hosihikari_shim_handle);
     }
 
-    public int getInputMode()
+    public uint getInputMode()
     {
-        return NativeMethods.TablePtr->hs_method_8e1513ca((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_986c5d3c((void*)__hosihikari_shim_handle);
     }
 
-    public int getPlayMode()
+    public uint getPlayMode()
     {
-        return NativeMethods.TablePtr->hs_method_bb3c1c9d((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_b2118f4e((void*)__hosihikari_shim_handle);
     }
 
     public float getSmoothRotationSpeed()
     {
-        return NativeMethods.TablePtr->hs_method_9957d14f((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_04deddb4((void*)__hosihikari_shim_handle);
     }
 
     public bool isInWorldAndNotShowingAnyMenuScreens()
     {
-        return NativeMethods.TablePtr->hs_method_11be7aaf((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_0db8f124((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool isPausingGame()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f7ad1f96((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke4525e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cf84ca67((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ExternalDataServerLevel operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ExternalDataServerLevel arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ExternalDataServerLevel((nint)NativeMethods.TablePtr->C1.hs_method_cfa2e2a4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_688e1676((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

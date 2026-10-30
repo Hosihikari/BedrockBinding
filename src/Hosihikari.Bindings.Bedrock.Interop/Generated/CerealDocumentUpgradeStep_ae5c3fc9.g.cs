@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CerealDocumentUpgradeStep : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CerealDocumentUpgradeStep(nint handle) : this(handle, true) { }
 
     internal CerealDocumentUpgradeStep(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CerealDocumentUpgradeStep Borrow(nint handle) => new CerealDocumentUpgradeStep(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,25 @@ public sealed unsafe partial class CerealDocumentUpgradeStep : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CerealDocumentUpgradeStep Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static CerealDocumentUpgradeStep Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b89e64d2();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CerealDocumentUpgradeStep((nint)handle);
+    }
 
     public static CerealDocumentUpgradeStep Create(global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgradeStep arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_4eb2fe83((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_0a898d76((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,56 +60,39 @@ public sealed unsafe partial class CerealDocumentUpgradeStep : global::System.ID
         return new CerealDocumentUpgradeStep((nint)handle);
     }
 
-    public static CerealDocumentUpgradeStep Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
+    public bool apply(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion documentVersion)
     {
-        var handle = NativeMethods.TablePtr->hs_create_4f831ea7((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CerealDocumentUpgradeStep((nint)handle);
+        return NativeMethods.TablePtr->C0.hs_method_0296bc5a((void*)__hosihikari_shim_handle, (void*)document, (void*)documentVersion.Handle) != 0;
     }
 
-    public void addUpgrade(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd390b2_Address
     {
-        NativeMethods.TablePtr->hs_method_fcbeaa2f((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cfbb4d55((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool apply(nint document, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool apply(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkdb1730_Address
     {
-        return NativeMethods.TablePtr->hs_method_7a92d91e((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7b095f61((void*)__hosihikari_shim_handle);
     }
 
-    public bool canUpgrade(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgradeStep operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgradeStep arg0)
     {
-        return NativeMethods.TablePtr->hs_method_2dd7c39f((void*)_handle, (void*)arg0.Handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgradeStep((nint)NativeMethods.TablePtr->C0.hs_method_bb89e309((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getTargetVersion()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_3ccb473e((void*)_handle), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ae5c3fc9((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_ae5c3fc9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

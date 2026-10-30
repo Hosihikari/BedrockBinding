@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DurationFieldKeys
+public sealed unsafe partial class DurationFieldKeys : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DurationFieldKeys(nint handle) : this(handle, true) { }
 
     internal DurationFieldKeys(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DurationFieldKeys Borrow(nint handle) => new DurationFieldKeys(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,464 @@ public sealed partial class DurationFieldKeys
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DurationFieldKeys Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(string days, string hours, string minutes, string seconds)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(days);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(days, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(hours);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hours, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(minutes);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(minutes, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(seconds);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(seconds, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        return (nint)NativeMethods.TablePtr->C1.hs_method_a196c391((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DurationFieldKeys Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(string days, string hours, string minutes, string seconds, string day, string hour, string minute, string second)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(days);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(days, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(hours);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hours, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(minutes);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(minutes, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(seconds);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(seconds, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(day);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(day, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(hour);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hour, __hs_stringBytes5);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(minute);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(minute, __hs_stringBytes6);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(second);
+        scoped global::System.Span<byte> __hs_stringBytes7;
+        if (__hs_stringByteCount7 <= 256)
+        {
+            __hs_stringBytes7 = stackalloc byte[__hs_stringByteCount7 == 0 ? 1 : __hs_stringByteCount7];
+        }
+        else
+        {
+            __hs_stringBytes7 = new byte[__hs_stringByteCount7];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(second, __hs_stringBytes7);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                        {
+                            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                            {
+                                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                                {
+                                    fixed (byte* __hs_stringData7 = __hs_stringBytes7)
+                                    {
+                                        return (nint)NativeMethods.TablePtr->C1.hs_method_f52cd9b0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, __hs_stringData6, (nuint)__hs_stringByteCount6, __hs_stringData7, (nuint)__hs_stringByteCount7);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DurationFieldKeys Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static DurationFieldKeys Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a8f25838();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DurationFieldKeys Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new DurationFieldKeys((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static DurationFieldKeys Create(global::Hosihikari.Bindings.Bedrock.Interop.DurationFieldKeys arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_dc508eaa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new DurationFieldKeys((nint)handle);
+    }
+
+    public static DurationFieldKeys Create(string days, string hours, string minutes, string seconds)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(days);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(days, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(hours);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hours, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(minutes);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(minutes, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(seconds);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(seconds, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        var handle = NativeMethods.TablePtr->C1.hs_create_acef6c77(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                        if (handle == null)
+                        {
+                            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                        }
+
+                        return new DurationFieldKeys((nint)handle);
+                    }
+                }
+            }
+        }
+    }
+
+    public static DurationFieldKeys Create(string days, string hours, string minutes, string seconds, string day, string hour, string minute, string second)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(days);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(days, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(hours);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hours, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(minutes);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(minutes, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(seconds);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(seconds, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(day);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(day, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(hour);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hour, __hs_stringBytes5);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(minute);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(minute, __hs_stringBytes6);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(second);
+        scoped global::System.Span<byte> __hs_stringBytes7;
+        if (__hs_stringByteCount7 <= 256)
+        {
+            __hs_stringBytes7 = stackalloc byte[__hs_stringByteCount7 == 0 ? 1 : __hs_stringByteCount7];
+        }
+        else
+        {
+            __hs_stringBytes7 = new byte[__hs_stringByteCount7];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(second, __hs_stringBytes7);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                        {
+                            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                            {
+                                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                                {
+                                    fixed (byte* __hs_stringData7 = __hs_stringBytes7)
+                                    {
+                                        var handle = NativeMethods.TablePtr->C1.hs_create_58a60aa4(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, __hs_stringData6, (nuint)__hs_stringByteCount6, __hs_stringData7, (nuint)__hs_stringByteCount7);
+                                        if (handle == null)
+                                        {
+                                            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                                        }
+
+                                        return new DurationFieldKeys((nint)handle);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk25b82e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b9ddfbf3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk39e877_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_942ce955((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk507db7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_158fc945((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk62919f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9b52b86d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7c5a2d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b9cac658((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkbcb79a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4eb9e6f9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd5cc90_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d6798fe0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf68457_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7da1d838((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DurationFieldKeys operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.DurationFieldKeys arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DurationFieldKeys((nint)NativeMethods.TablePtr->C1.hs_method_2b1c919c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_040e0545((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

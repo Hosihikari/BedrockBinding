@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ShareableComponent
+public sealed unsafe partial class ShareableComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ShareableComponent(nint handle) : this(handle, true) { }
 
     internal ShareableComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ShareableComponent Borrow(nint handle) => new ShareableComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,60 +33,66 @@ public sealed unsafe partial class ShareableComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ShareableComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ShareableComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getCountToPickUp(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemActor arg1)
+    public static bool _canPickupItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack carriedItem, int maxAmount, bool singularPickupOnly)
     {
-        return NativeMethods.TablePtr->hs_method_da2efb30((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_c0ac031b((void*)item.Handle, (void*)carriedItem.Handle, maxAmount, singularPickupOnly) != 0;
     }
 
-    public int getCountToPickUp(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    public static bool _shouldReplaceItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack itemToReplace, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack newItem, global::Hosihikari.Bindings.Bedrock.Interop.ShareableDefinition shareable, bool canPickupAnyItem)
     {
-        return NativeMethods.TablePtr->hs_method_e763b60c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_350cefb1((void*)itemToReplace.Handle, (void*)newItem.Handle, (void*)shareable.Handle, canPickupAnyItem) != 0;
     }
 
-    public int getSlotToSwap(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemActor arg1)
+    public static bool _useLegacySurplusRules(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->hs_method_9dd67c07((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_7f6c2055((void*)level.Handle) != 0;
     }
 
-    public int hasSurplus(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2, bool arg3)
+    public int getCountToPickUp(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        return NativeMethods.TablePtr->hs_method_b7cd6d8e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
+        return NativeMethods.TablePtr->C3.hs_method_0449a484((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)item.Handle);
     }
 
-    public int hasSurplus(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, bool arg2)
+    public int getSlotToSwap(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ItemActor itemActor)
     {
-        return NativeMethods.TablePtr->hs_method_0101fb0f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        return NativeMethods.TablePtr->C3.hs_method_e2dbea6e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)itemActor.Handle);
     }
 
-    public bool itemBelongsInInventory(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, bool arg2)
+    public int hasSurplus(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack resultStack, bool includeStackSizeofItem)
     {
-        return NativeMethods.TablePtr->hs_method_6d8794c7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_5956380c((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)item.Handle, (void*)resultStack.Handle, includeStackSizeofItem);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int wantsMore(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    public bool itemBelongsInInventory(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, bool canPickupToHandOrEquipment)
     {
-        return NativeMethods.TablePtr->hs_method_3c06e520((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_fdc7e39b((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)item.Handle, canPickupToHandOrEquipment) != 0;
     }
 
-    public bool willPickup(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, bool arg2, bool arg3)
+    public int wantsMore(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        return NativeMethods.TablePtr->hs_method_4c358394((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_7440e53a((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)item.Handle);
+    }
+
+    public bool willPickup(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, bool canPickupAnyItem, bool canPickupToHandOrEquipment)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_d56bee7a((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)item.Handle, canPickupAnyItem, canPickupToHandOrEquipment) != 0;
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_59228b59((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

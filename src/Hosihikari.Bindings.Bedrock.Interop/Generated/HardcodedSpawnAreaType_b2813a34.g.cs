@@ -10,8 +10,8 @@ public enum HardcodedSpawnAreaType : byte
     NetherFortress = 1,
     WitchHut = 2,
     OceanMonument = 3,
-    DEPRECATED_Village = 4,
+    VillageDeprecated = 4,
     PillagerOutpost = 5,
-    DEPRECATED_NewVillage = 6,
+    NewVillageDeprecated = 6,
     Count = 7,
 }

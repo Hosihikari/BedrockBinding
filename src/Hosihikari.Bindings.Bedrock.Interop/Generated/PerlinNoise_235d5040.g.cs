@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PerlinNoise : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PerlinNoise(nint handle) : this(handle, true) { }
 
     internal PerlinNoise(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PerlinNoise Borrow(nint handle) => new PerlinNoise(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,29 @@ public sealed unsafe partial class PerlinNoise : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PerlinNoise Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static PerlinNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, global::Hosihikari.Bindings.Bedrock.Interop.YBlendingBugSettings arg1, int arg2, int arg3)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random, int levels)
     {
-        var handle = NativeMethods.TablePtr->hs_create_83439719((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_0b3e5746((void*)__hosihikari_shim_handle, (void*)random.Handle, levels);
+    }
+
+    public nint _ctor(uint seed, int levels)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_6af013dc((void*)__hosihikari_shim_handle, seed, levels);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_86043bfa((void*)__hosihikari_shim_handle);
+    }
+
+    public static PerlinNoise Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6bcc6da6();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,9 +64,9 @@ public sealed unsafe partial class PerlinNoise : global::System.IDisposable
         return new PerlinNoise((nint)handle);
     }
 
-    public static PerlinNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, int arg1, int arg2)
+    public static PerlinNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random, int levels)
     {
-        var handle = NativeMethods.TablePtr->hs_create_997d8c01((void*)arg0.Handle, arg1, arg2);
+        var handle = NativeMethods.TablePtr->C2.hs_create_c6c55127((void*)random.Handle, levels);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,9 +75,9 @@ public sealed unsafe partial class PerlinNoise : global::System.IDisposable
         return new PerlinNoise((nint)handle);
     }
 
-    public static PerlinNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.PerlinNoise arg0)
+    public static PerlinNoise Create(uint seed, int levels)
     {
-        var handle = NativeMethods.TablePtr->hs_create_2cb7f4df((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_42e4b2a0(seed, levels);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,74 +86,39 @@ public sealed unsafe partial class PerlinNoise : global::System.IDisposable
         return new PerlinNoise((nint)handle);
     }
 
-    public static PerlinNoise Create(uint arg0, int arg1, int arg2)
+    public float getValue(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {
-        var handle = NativeMethods.TablePtr->hs_create_682ae728(arg0, arg1, arg2);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PerlinNoise((nint)handle);
-    }
-
-    public void getRegion(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg4, float arg5)
-    {
-        NativeMethods.TablePtr->hs_method_7af62dea((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, arg3, (void*)arg4.Handle, arg5);
-    }
-
-    public void getRegion(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, int arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg5)
-    {
-        NativeMethods.TablePtr->hs_method_9ff8e9b5((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, arg3, arg4, (void*)arg5.Handle);
-    }
-
-    public float getValue(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_55ae7336((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public float getValueNormalized(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_c8be1ba1((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_d0867a0f((void*)__hosihikari_shim_handle, (void*)pos.Handle);
     }
 
     public int mLevels
     {
-        get => NativeMethods.TablePtr->hs_get_5a86acbb((void*)_handle);
-    }
-
-    public int mMinLevel
-    {
-        get => NativeMethods.TablePtr->hs_get_aad4e250((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_5a86acbb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNoiseLevels_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1a375cba((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1a375cba((void*)__hosihikari_shim_handle);
     }
 
     public float mNormalizationFactor
     {
-        get => NativeMethods.TablePtr->hs_get_174a1660((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_174a1660((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_174a1660((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_174a1660((void*)__hosihikari_shim_handle, value);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_235d5040((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_235d5040((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ItemEventCoordinator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemEventCoordinator(nint handle) : this(handle, true) { }
 
     internal ItemEventCoordinator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemEventCoordinator Borrow(nint handle) => new ItemEventCoordinator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,64 +33,78 @@ public sealed unsafe partial class ItemEventCoordinator : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ItemEventCoordinator Create()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventsToProcess_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_658eaf42();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ItemEventCoordinator((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1d408b75((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemEventCoordinator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemGameplayHandler getItemGameplayHandler()
+    public bool mHasPendingRegistrations
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemGameplayHandler((nint)NativeMethods.TablePtr->hs_method_8f60b807((void*)_handle), false);
+        get => NativeMethods.TablePtr->C1.hs_get_2c9344fa((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_2c9344fa((void*)__hosihikari_shim_handle, value);
     }
 
-    public void onItemModifiedActor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListeners_Address
     {
-        NativeMethods.TablePtr->hs_method_c68ed0b3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c75654ac((void*)__hosihikari_shim_handle);
     }
 
-    public void onItemSpawnedActor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingRegistrations_Address
     {
-        NativeMethods.TablePtr->hs_method_c0939b85((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b5220538((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public uint mThreadCheckIndex
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_9afd3407((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_9afd3407((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void registerItemGameplayHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mThreadId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_90dc8faf((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mThreadIdInitialized
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_c6c02634((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_c6c02634((void*)__hosihikari_shim_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemGameplayHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_31ad40d6((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EventRef<MutableItemGameplayEvent<CoordinatorResult>>' is not a known bindable declaration.", false)]
-    public nint sendEvent_0dffda01(nint arg0) =>
+    public nint sendEvent(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EventRef<MutableItemGameplayEvent<CoordinatorResult>>' is not a known bindable declaration.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_fb7ab9a0((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_fb7ab9a0((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

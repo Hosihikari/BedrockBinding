@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
 public sealed unsafe partial class ContextConfig : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ContextConfig(nint handle) : this(handle, true) { }
 
     internal ContextConfig(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ContextConfig Borrow(nint handle) => new ContextConfig(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,28 @@ public sealed unsafe partial class ContextConfig : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContextConfig Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ContextConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ContextConfig arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_69276439((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_905ea81e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Scripting::ContextMolangVersion' is abstract or not copy-constructible.", false)]
+    public nint _ctor(nint runtimeName_, nint manifestUUID_, nint moduleDescriptor_, nint capabilities_, nint runtimeConditions_, nint dependencyResolutionBehavior_, nint molangVersion_, nint commandVersion_, nint baseGameVersion_) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Scripting::ContextMolangVersion' is abstract or not copy-constructible.");
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_907d6322((void*)__hosihikari_shim_handle);
+    }
+
+    public static ContextConfig Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e83b6387();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,29 +63,101 @@ public sealed unsafe partial class ContextConfig : global::System.IDisposable
         return new ContextConfig((nint)handle);
     }
 
+    public static ContextConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3c8e85af((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContextConfig((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Scripting::ContextMolangVersion' is abstract or not copy-constructible.", false)]
+    public static ContextConfig Create(nint runtimeName_, nint manifestUUID_, nint moduleDescriptor_, nint capabilities_, nint runtimeConditions_, nint dependencyResolutionBehavior_, nint molangVersion_, nint commandVersion_, nint baseGameVersion_) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Scripting::ContextMolangVersion' is abstract or not copy-constructible.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3c790a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b2deefa2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk67ca24_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7c116b78((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk785f32_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_11426f83((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8946f9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e9fc95b3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8d4a5a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_92ec98e5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8dcce4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ac7fb909((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkae7c5b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b502c37c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc9edc0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_29de2670((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcb7615_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f7e15b49((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke423f8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a213d1f9((void*)__hosihikari_shim_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ContextConfig Create_079b4816(nint arg0) =>
+    public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_f7a8795a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_aca52e2c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig((nint)NativeMethods.TablePtr->C3.hs_method_aca52e2c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7738cc85((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_7738cc85((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

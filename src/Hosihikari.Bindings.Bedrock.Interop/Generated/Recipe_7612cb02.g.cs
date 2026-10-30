@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Recipe : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Recipe(nint handle) : this(handle, true) { }
 
     internal Recipe(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Recipe Borrow(nint handle) => new Recipe(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,67 @@ public sealed unsafe partial class Recipe : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Recipe Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public static Recipe Create(global::Hosihikari.Bindings.Bedrock.Interop.Recipe arg0)
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_8b38a3ec((void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_39926c05((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID _getId()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C2.hs_method_cce68082((void*)__hosihikari_shim_handle), false);
+    }
+
+    public ulong _getIngredientsHash()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_2f53c194((void*)__hosihikari_shim_handle);
+    }
+
+    public nint _getResultItems()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_594877ae((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _hasDataDrivenResult()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_fb03e7b5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isMultiRecipe()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0e1fcecb((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _itemValidForRecipe(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor recipeItem, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_357c40b6((void*)__hosihikari_shim_handle, (void*)recipeItem.Handle, (void*)item.Handle) != 0;
+    }
+
+    public bool _itemsMatch(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor lhs, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor rhs)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_6a079282((void*)__hosihikari_shim_handle, (void*)lhs.Handle, (void*)rhs.Handle) != 0;
+    }
+
+    public bool _itemsMatch(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor lhs, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor rhs, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? rhsTag)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_671f6e3b((void*)__hosihikari_shim_handle, (void*)lhs.Handle, (void*)rhs.Handle, (void*)(rhsTag?.Handle ?? 0)) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static Recipe Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7aa0280c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,143 +102,161 @@ public sealed unsafe partial class Recipe : global::System.IDisposable
         return new Recipe((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint assemble(nint craftSlots, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static Recipe Create(nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public int countQuantityOfIngredient(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint assemble(nint craftSlots, nint craftingContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public int countQuantityOfIngredient(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance ingredient)
     {
-        return NativeMethods.TablePtr->hs_method_b519cc06((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_858e60c8((void*)__hosihikari_shim_handle, (void*)ingredient.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getConstructionContext_bed23efd() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public int getCraftingSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int getHeight()
-    {
-        return NativeMethods.TablePtr->hs_method_f3399719((void*)_handle);
-    }
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getId()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_method_cf9c4123((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C2.hs_method_19d612b1((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getIngredient(int x, int y) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public ulong getIngredientsHash()
     {
-        return NativeMethods.TablePtr->hs_method_b181d830((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_ getNetId_d1f54b8e()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_((nint)NativeMethods.TablePtr->hs_method_d1f54b8e((void*)_handle), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getNetId_e6b3b1ef() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getRecipeId()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_65e10bd0((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return NativeMethods.TablePtr->C2.hs_method_f4a79c74((void*)__hosihikari_shim_handle);
     }
 
     public nint getResultItems()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4f812d38((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getTag()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_3cb1fe45((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingRequirement getUnlockingRequirement()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingRequirement((nint)NativeMethods.TablePtr->hs_method_b6f2cadf((void*)_handle), false);
-    }
-
-    public int getWidth()
-    {
-        return NativeMethods.TablePtr->hs_method_8c1a8a05((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_f35e810a((void*)__hosihikari_shim_handle);
     }
 
     public bool hasDataDrivenResult()
     {
-        return NativeMethods.TablePtr->hs_method_318cc48c((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_fa02eeb7((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public static bool isAnyAuxValue(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
+    public static bool isAnyAuxValue(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor ii)
     {
-        return NativeMethods.TablePtr->hs_method_6a76dd4c((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_ba3b53b5((void*)ii.Handle) != 0;
     }
 
     public bool isMultiRecipe()
     {
-        return NativeMethods.TablePtr->hs_method_76f0d520((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_8b4200ae((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool isShapeless() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    public bool itemValidForRecipe(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    public bool itemValidForRecipe(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor recipeItem, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        return NativeMethods.TablePtr->hs_method_18a7c1c7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_785c73d8((void*)__hosihikari_shim_handle, (void*)recipeItem.Handle, (void*)item.Handle) != 0;
     }
 
-    public bool itemsMatch(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
+    public bool itemsMatch(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor lhs, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor rhs)
     {
-        return NativeMethods.TablePtr->hs_method_e72ab2fa((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_94df81c7((void*)__hosihikari_shim_handle, (void*)lhs.Handle, (void*)rhs.Handle) != 0;
     }
 
-    public bool itemsMatch(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg2)
+    public bool itemsMatch(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor lhs, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor rhs, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? rhsTag)
     {
-        return NativeMethods.TablePtr->hs_method_5a41fcab((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_28ce3e91((void*)__hosihikari_shim_handle, (void*)lhs.Handle, (void*)rhs.Handle, (void*)(rhsTag?.Handle ?? 0)) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool matches(nint craftSlots, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setNetId(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_ arg0)
+    public int mHeight
     {
-        NativeMethods.TablePtr->hs_method_592ce871((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_6f587d7a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6f587d7a((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setNetId_b8830121(nint recipeNetId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMyId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4f95c1d5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMyIngredients_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b65416b4((void*)__hosihikari_shim_handle);
+    }
+
+    public int mPriority
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_b73776f2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b73776f2((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeDataVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_31189819((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_944aad6b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeNetId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9ccb96da((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResults_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1e8694d7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTag_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cba2c00f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnlockingRequirement_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4e4709b4((void*)__hosihikari_shim_handle);
+    }
+
+    public int mWidth
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_2764d0a2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2764d0a2((void*)__hosihikari_shim_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool matches(nint craftSlots, nint craftingContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public int size() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7612cb02((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_7612cb02((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

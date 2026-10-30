@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SynchedActorDataEntityWrapper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SynchedActorDataEntityWrapper(nint handle) : this(handle, true) { }
 
     internal SynchedActorDataEntityWrapper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SynchedActorDataEntityWrapper Borrow(nint handle) => new SynchedActorDataEntityWrapper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,19 @@ public sealed unsafe partial class SynchedActorDataEntityWrapper : global::Syste
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static SynchedActorDataEntityWrapper Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ea0e1018((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_361643e2((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+    }
+
+    public static SynchedActorDataEntityWrapper Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_05e4fcb4();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,126 +54,97 @@ public sealed unsafe partial class SynchedActorDataEntityWrapper : global::Syste
         return new SynchedActorDataEntityWrapper((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getCompoundTag(ushort arg0)
+    public static SynchedActorDataEntityWrapper Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_e6fee3a7((void*)_handle, arg0), false);
+        var handle = NativeMethods.TablePtr->C3.hs_create_f4721daa((void*)entity.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SynchedActorDataEntityWrapper((nint)handle);
     }
 
-    public float getFloat(ushort arg0)
+    public float getFloat(ushort id)
     {
-        return NativeMethods.TablePtr->hs_method_b4871dc0((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_bbbbf0cf((void*)__hosihikari_shim_handle, id);
     }
 
-    public int getInt(ushort arg0)
+    public int getInt(ushort id)
     {
-        return NativeMethods.TablePtr->hs_method_e4f29e6c((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_0ebe2498((void*)__hosihikari_shim_handle, id);
     }
 
-    public long getInt64(ushort arg0)
+    public long getInt64(ushort id)
     {
-        return NativeMethods.TablePtr->hs_method_a3632017((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_27cb30ef((void*)__hosihikari_shim_handle, id);
     }
 
-    public sbyte getInt8(ushort arg0)
+    public sbyte getInt8(ushort id)
     {
-        return NativeMethods.TablePtr->hs_method_d42d858e((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_0b7b5989((void*)__hosihikari_shim_handle, id);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getPosition(ushort arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getPosition(ushort id)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_85fab897((void*)_handle, arg0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_bf20058e((void*)__hosihikari_shim_handle, id));
     }
 
-    public short getShort(ushort arg0)
+    public short getShort(ushort id)
     {
-        return NativeMethods.TablePtr->hs_method_2bcd5d5a((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_997ea6c0((void*)__hosihikari_shim_handle, id);
     }
 
-    public string getString(ushort arg0)
+    public string getString(ushort id)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_912f97b9((void*)_handle, arg0);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_2abc57dd((void*)__hosihikari_shim_handle, id);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getVec3(ushort arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getVec3(ushort id)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_b3d31562((void*)_handle, arg0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C3.hs_method_499a7e26((void*)__hosihikari_shim_handle, id));
     }
 
-    public bool hasData(ushort arg0)
+    public bool hasData(ushort id)
     {
-        return NativeMethods.TablePtr->hs_method_75a7a111((void*)_handle, arg0) != 0;
-    }
-
-    public bool isDirty()
-    {
-        return NativeMethods.TablePtr->hs_method_f1ca45a0((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_909ef2e8((void*)__hosihikari_shim_handle, id) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mActorDataDirtyFlag_Address
+    public nint mData_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c70d5e1f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_02301131((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mActorDataFlag_Address
+    public nint mDirtyFlags_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_57105847((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6c335e62((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mSynchedActorData_Address
+    public nint mEntityContext_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a4b2adde((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0bd552f0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mWeakEntity_Address
+    public nint mFlagData_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ce8aa585((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0b8ba7b5((void*)__hosihikari_shim_handle);
     }
-
-    public void markDirty(ushort arg0)
-    {
-        NativeMethods.TablePtr->hs_method_52f928a7((void*)_handle, arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::unique_ptr<DataItem,std::default_delete<DataItem>>' is not supported.", false)]
-    public nint packAll_517b4f1f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<DataItem,std::default_delete<DataItem>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint packAll_59d2fd6e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::unique_ptr<DataItem,std::default_delete<DataItem>>' is not supported.", false)]
-    public nint packDirty_aecb7d89() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<DataItem,std::default_delete<DataItem>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint packDirty_c4a7ed42() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SynchedActorDataReader' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint reader() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SynchedActorDataReader' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SynchedActorDataWriter' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint writer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SynchedActorDataWriter' requires --link-carrier or --virtual-dispatch.");
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_1612c33c((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_1612c33c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

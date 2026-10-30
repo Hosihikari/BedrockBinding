@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MinecraftCommands : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MinecraftCommands(nint handle) : this(handle, true) { }
 
     internal MinecraftCommands(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MinecraftCommands Borrow(nint handle) => new MinecraftCommands(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,22 @@ public sealed unsafe partial class MinecraftCommands : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftCommands Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint args) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public static MinecraftCommands Create(global::Hosihikari.Bindings.Bedrock.Interop.Minecraft arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static MinecraftCommands Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_f5d8e6b0((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_cdc31f8d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,132 +57,136 @@ public sealed unsafe partial class MinecraftCommands : global::System.IDisposabl
         return new MinecraftCommands((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftCommands Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static MinecraftCommands Create(nint args) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static MinecraftCommands Create(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_70d513ad((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MinecraftCommands((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public nint compileCommand(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public nint compileCommand(nint commandStr, nint origin, nint commandVersion, nint onParserError) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void enqueueDeferredCommand(nint arg0, bool arg1, bool arg2, nint arg3) =>
+    public void enqueueDeferredCommand(nint context, bool suppressOutput, bool isRequest, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void enqueueDeferredCompiledCommand(nint arg0, nint arg1) =>
+    public void enqueueDeferredCompiledCommand(nint command, nint origin) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool enqueueDeferredScriptCommand(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT executeCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandContext arg0, bool arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT executeCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandContext context, bool suppressOutput)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT((nint)NativeMethods.TablePtr->hs_method_ea3ac6f1((void*)_handle, (void*)arg0.Handle, arg1));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT((nint)NativeMethods.TablePtr->C2.hs_method_f83d3c65((void*)__hosihikari_shim_handle, (void*)context.Handle, suppressOutput));
     }
 
-    public static int getOutputType(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0)
+    public static int getOutputType(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin)
     {
-        return NativeMethods.TablePtr->hs_method_1787c393((void*)arg0.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_3d02deaa((void*)origin.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry getRegistry_e3c8d0e1()
+    public void handleOutput(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry((nint)NativeMethods.TablePtr->hs_method_e3c8d0e1((void*)_handle), false);
-    }
-
-    public void handleOutput(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
-    {
-        NativeMethods.TablePtr->hs_method_580cfaaf((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public static void initBlockEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
-    {
-        NativeMethods.TablePtr->hs_method_ea364c1e((void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_dcb32e9b((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void initCoreEnums(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+    public void initCoreEnums(nint itemRegistry, nint level, nint actorFactory, nint experiments, nint worldBaseGameVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void initCoreEnumsServer(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup arg0, global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets arg1, global::Hosihikari.Bindings.Bedrock.Interop.Recipes arg2)
+    public void initCoreEnumsServer(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup actorDefinitionGroup, global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets cameraPresets, global::Hosihikari.Bindings.Bedrock.Interop.Recipes recipes)
     {
-        NativeMethods.TablePtr->hs_method_73d2c38b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_a8b09f66((void*)__hosihikari_shim_handle, (void*)actorDefinitionGroup.Handle, (void*)cameraPresets.Handle, (void*)recipes.Handle);
     }
 
-    public static void initEntityEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChatPermissionsCallback_Address
     {
-        NativeMethods.TablePtr->hs_method_6a3976c9((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_398789a2((void*)__hosihikari_shim_handle);
     }
 
-    public static void initEntityPropertyEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCompiledCommandMap_Address
     {
-        NativeMethods.TablePtr->hs_method_7d1f59ab((void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_48b5202a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static void initItemEnum(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static void initItemTagEnum(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public static void initStructureFeatureEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContextProvider_Address
     {
-        NativeMethods.TablePtr->hs_method_5cc441bf((void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8290757c((void*)__hosihikari_shim_handle);
     }
 
-    public static void initUnlockableRecipesEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.Recipes arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeferredCommands_Address
     {
-        NativeMethods.TablePtr->hs_method_269163f2((void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ff1a10dd((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void registerSharedClientServerEnums(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0)
+    public ulong mDeferredScriptCommandCount
     {
-        NativeMethods.TablePtr->hs_method_3f5bb936((void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_6960fa7d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6960fa7d((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT requestCommandExecution(global::Hosihikari.Bindings.Bedrock.Interop.CommandContext arg0, bool arg1)
+    public byte mOpPermissionLevel
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT((nint)NativeMethods.TablePtr->hs_method_72b97095((void*)_handle, (void*)arg0.Handle, arg1));
+        get => NativeMethods.TablePtr->C2.hs_get_fcbc1ac9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_fcbc1ac9((void*)__hosihikari_shim_handle, value);
     }
 
-    public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.Command arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOutputSender_Address
     {
-        NativeMethods.TablePtr->hs_method_645481f9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_758ff845((void*)__hosihikari_shim_handle);
     }
 
-    public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, int arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistry_Address
     {
-        NativeMethods.TablePtr->hs_method_db5d9f4b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c6f73483((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setRegistryNetworkUpdateCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands((nint)NativeMethods.TablePtr->C2.hs_method_1ee03317((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public static void registerSharedClientServerEnums(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ce08c40b((void*)registry.Handle);
+    }
+
+    public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.HashedString commandStr, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, int commandVersion)
+    {
+        NativeMethods.TablePtr->C2.hs_method_41a42581((void*)__hosihikari_shim_handle, (void*)commandStr.Handle, (void*)origin.Handle, commandVersion);
+    }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_228f3057((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_228f3057((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_57ad992d((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_57ad992d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

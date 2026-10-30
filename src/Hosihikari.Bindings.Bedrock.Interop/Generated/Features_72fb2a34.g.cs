@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Json_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Json;
 
 public sealed unsafe partial class Features : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Features(nint handle) : this(handle, true) { }
 
     internal Features(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Features Borrow(nint handle) => new Features(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,38 @@ public sealed unsafe partial class Features : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public bool allowNumericKeys_
+    public bool allowComments_
     {
-        get => NativeMethods.TablePtr->hs_get_a68271bd((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_a68271bd((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_1e928bc3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_1e928bc3((void*)__hosihikari_shim_handle, value);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Features strictMode()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Json.Features strictMode()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Features((nint)NativeMethods.TablePtr->hs_method_25705af7());
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Features((nint)NativeMethods.TablePtr->C1.hs_method_25705af7());
     }
 
     public bool strictRoot_
     {
-        get => NativeMethods.TablePtr->hs_get_be1c1601((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_be1c1601((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_be1c1601((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_be1c1601((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_72fb2a34((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_72fb2a34((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

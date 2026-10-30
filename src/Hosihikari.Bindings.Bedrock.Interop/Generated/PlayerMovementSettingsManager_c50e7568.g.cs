@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayerMovementSettingsManager
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerMovementSettingsManager(nint handle) : this(handle, true) { }
 
     internal PlayerMovementSettingsManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerMovementSettingsManager Borrow(nint handle) => new PlayerMovementSettingsManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,24 @@ public sealed unsafe partial class PlayerMovementSettingsManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerMovementSettingsManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerMovementSettingsManager Create_003dbd04(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerMovementSettingsManager Create_2edfd1d7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings getPlayerMovementSettings()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings((nint)NativeMethods.TablePtr->hs_method_52d73da4((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings((nint)NativeMethods.TablePtr->C2.hs_method_3720bcaa((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setPlayerMovementSettings(global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityRegistry_Address
     {
-        NativeMethods.TablePtr->hs_method_4dd964c7((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d5e2d201((void*)__hosihikari_shim_handle);
+    }
+
+    public void setPlayerMovementSettings(global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings settings)
+    {
+        NativeMethods.TablePtr->C2.hs_method_69f0a297((void*)__hosihikari_shim_handle, (void*)settings.Handle);
     }
 }

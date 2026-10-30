@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EndPodiumFeature : global::System.IDisposable
+public sealed unsafe partial class EndPodiumFeature
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EndPodiumFeature(nint handle) : this(handle, true) { }
 
     internal EndPodiumFeature(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EndPodiumFeature Borrow(nint handle) => new EndPodiumFeature(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,80 +33,57 @@ public sealed unsafe partial class EndPodiumFeature : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static float CORNER_ROUNDING
+    public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        get => NativeMethods.TablePtr->hs_get_6b0b7f9f();
+        return NativeMethods.TablePtr->C1.hs_method_fcc26125((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos END_PODIUM_CHUNK_POSITION
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos END_PODIUM_LOCATION()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_get_6fb8c99a(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_833eabc2(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos END_PODIUM_LOCATION
+    public bool mActive
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_get_793b4ef5(), false);
+        get => NativeMethods.TablePtr->C1.hs_get_6e8880f2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_6e8880f2((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EndPodiumFeature Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static EndPodiumFeature Create(bool arg0)
+    public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        var handle = NativeMethods.TablePtr->hs_create_c900c2a8(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new EndPodiumFeature((nint)handle);
+        return NativeMethods.TablePtr->C1.hs_method_8df9fcb7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EndPodiumFeature Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static int PODIUM_PILLAR_HEIGHT
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlacerID_Address
     {
-        get => NativeMethods.TablePtr->hs_get_35994989();
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_773e257f((void*)__hosihikari_shim_handle);
     }
 
-    public static int PODIUM_RADIUS
+    public nint mTransaction
     {
-        get => NativeMethods.TablePtr->hs_get_a827d382();
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dee88868((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_dee88868((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    public static int RIM_RADIUS
+    public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->hs_get_50427cef();
+        get => NativeMethods.TablePtr->C1.hs_get_2926c09a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_2926c09a((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
+    public bool mInternal
     {
-        return NativeMethods.TablePtr->hs_method_100314b9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0fd6ced8((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C1.hs_get_c6eb53a2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_c6eb53a2((void*)__hosihikari_shim_handle, value);
     }
 }

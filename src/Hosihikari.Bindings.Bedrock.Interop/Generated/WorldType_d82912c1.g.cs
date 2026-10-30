@@ -6,7 +6,8 @@ namespace Hosihikari.Bindings.Bedrock.Interop.Editor;
 
 public enum WorldType : int
 {
-    NotEditor = 0,
-    Project = 1,
-    TestLevel = 2,
+    NonEditor = 0,
+    EditorProject = 1,
+    EditorTestLevel = 2,
+    EditorRealmsUpload = 3,
 }

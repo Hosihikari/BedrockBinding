@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ParticleOnHitSubcomponent : global::System.IDisposable
+public sealed unsafe partial class ParticleOnHitSubcomponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ParticleOnHitSubcomponent(nint handle) : this(handle, true) { }
 
     internal ParticleOnHitSubcomponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ParticleOnHitSubcomponent Borrow(nint handle) => new ParticleOnHitSubcomponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,78 @@ public sealed unsafe partial class ParticleOnHitSubcomponent : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ParticleOnHitSubcomponent Create()
+    public void _doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
-        var handle = NativeMethods.TablePtr->hs_create_9d31fbdf();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ParticleOnHitSubcomponent((nint)handle);
+        NativeMethods.TablePtr->C2.hs_method_842bcdfb((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ParticleOnHitSubcomponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
+    public nint _getName()
     {
-        NativeMethods.TablePtr->hs_method_8327ef03((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_fa8fd22c((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f8c4a1f0((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+    public void _writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
+    {
+        NativeMethods.TablePtr->C2.hs_method_dbd2cde5((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9b110c40((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);
     }
 
     public nint getName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_95e99cb6((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_5da9d963((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readfromJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
     {
-        NativeMethods.TablePtr->hs_method_8c74833e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_be240003((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
-    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
+    public int mNumParticles
     {
-        NativeMethods.TablePtr->hs_method_377121bd((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_94bb63c4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_94bb63c4((void*)__hosihikari_shim_handle, value);
     }
 
-
-    public void Dispose()
+    public bool mOnEntityHit
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c309a22b((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C2.hs_get_44f14d0b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_44f14d0b((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public bool mOnOtherHit
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_f1b47605((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_f1b47605((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParticleItemName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_47214ea7((void*)__hosihikari_shim_handle);
+    }
+
+    public int mParticleType
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_6302aea7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6302aea7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4ae812de((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 }

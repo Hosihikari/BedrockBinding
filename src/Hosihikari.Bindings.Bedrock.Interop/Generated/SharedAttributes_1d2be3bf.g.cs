@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SharedAttributes
+public sealed unsafe partial class SharedAttributes : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SharedAttributes(nint handle) : this(handle, true) { }
 
     internal SharedAttributes(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SharedAttributes Borrow(nint handle) => new SharedAttributes(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,91 +33,123 @@ public sealed unsafe partial class SharedAttributes
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute ABSORPTION
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute ABSORPTION()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_520e92da(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_5b491390(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute ATTACK_DAMAGE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute AIR_DRAG_MODIFIER()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_0909ca7b(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_43ff85f7(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute FOLLOW_RANGE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute ATTACK_DAMAGE()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_c5142c3d(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_766ef6b9(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute HEALTH
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute BOUNCINESS()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_27e8dcc9(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_99d72da2(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute JUMP_STRENGTH
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute FOLLOW_RANGE()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_521b3784(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_11b7e62c(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute KNOCKBACK_RESISTANCE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute FRICTION_MODIFIER()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_3634f2d6(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_7eba0035(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute LAVA_MOVEMENT_SPEED
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute HEALTH()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_b41efb77(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_da4ccab4(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute LUCK
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute JUMP_STRENGTH()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_73bb3a23(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_8e258dab(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute MOVEMENT_SPEED
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute KNOCKBACK_RESISTANCE()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_ca719a51(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_1e9846c4(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SharedAttributes Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SharedAttributes Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute UNDERWATER_MOVEMENT_SPEED
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute LAVA_MOVEMENT_SPEED()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_0c43328c(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_f4ee3e75(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static bool checkIsDeprecated(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? loadAttributeModifier(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute LUCK()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_bd04dfd4((void*)arg0.Handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_a32df52e(), false);
     }
 
-    public static void loadAttributes(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ListTag? arg1)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute MOVEMENT_SPEED()
     {
-        NativeMethods.TablePtr->hs_method_fed43b13((void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_769b9e64(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ListTag? saveAttributes(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap? arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute UNDERWATER_MOVEMENT_SPEED()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_f7020294((void*)(arg0?.Handle ?? 0));
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ListTag((nint)__hs_handle) : null;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C3.hs_method_172d5e3e(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AttributeInstanceRef' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint _legacyGetInstance(nint attributes, nint attributeName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AttributeInstanceRef' requires --link-carrier or --virtual-dispatch.");
+
+    public static string _legacyGetName(string attributeName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(attributeName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(attributeName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C3.hs_method_1a021d1a(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public static nint _saveAttribute(nint instance) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
+
+    public static void loadAttributes(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap? attributes, global::Hosihikari.Bindings.Bedrock.Interop.ListTag? list)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a1dc2317((void*)(attributes?.Handle ?? 0), (void*)(list?.Handle ?? 0));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ListTag' has no accessible destructor.", false)]
+    public static nint saveAttributes(nint attributes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ListTag' has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_1d2be3bf((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

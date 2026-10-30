@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RamAttackGoalUtils;
 
-public sealed unsafe partial class RamGoalItemDropperImpl
+public sealed unsafe partial class RamGoalItemDropperImpl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RamGoalItemDropperImpl(nint handle) : this(handle, true) { }
 
     internal RamGoalItemDropperImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RamGoalItemDropperImpl Borrow(nint handle) => new RamGoalItemDropperImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,90 @@ public sealed unsafe partial class RamGoalItemDropperImpl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RamGoalItemDropperImpl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RamGoalItemDropperImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void checkForHornDropOnCollision(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    public void _checkForHornDropOnCollision(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 collisionPos)
     {
-        NativeMethods.TablePtr->hs_method_36581359((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_e42d5333((void*)__hosihikari_shim_handle, (void*)collisionPos.Handle);
+    }
+
+    public void _dontDropHorn()
+    {
+        NativeMethods.TablePtr->C2.hs_method_993def98((void*)__hosihikari_shim_handle);
+    }
+
+    public void _tryDropHorn(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 dropPos)
+    {
+        NativeMethods.TablePtr->C2.hs_method_bf5dea03((void*)__hosihikari_shim_handle, (void*)dropPos.Handle);
+    }
+
+    public static RamGoalItemDropperImpl Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3d3d586d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RamGoalItemDropperImpl((nint)handle);
+    }
+
+    public static RamGoalItemDropperImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.RamAttackGoalUtils.RamGoalItemDropperImpl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_77cf4b4e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RamGoalItemDropperImpl((nint)handle);
+    }
+
+    public void checkForHornDropOnCollision(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 collisionPos)
+    {
+        NativeMethods.TablePtr->C2.hs_method_36581359((void*)__hosihikari_shim_handle, (void*)collisionPos.Handle);
     }
 
     public void dontDropHorn()
     {
-        NativeMethods.TablePtr->hs_method_d803e8ff((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_d803e8ff((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void tryDropHorn(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMob_Address
     {
-        NativeMethods.TablePtr->hs_method_2be1b394((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d56a746c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public bool mShouldTryToDropHorn
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d42823a5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_d42823a5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RamAttackGoalUtils.RamGoalItemDropperImpl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RamAttackGoalUtils.RamGoalItemDropperImpl arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RamAttackGoalUtils.RamGoalItemDropperImpl((nint)NativeMethods.TablePtr->C2.hs_method_5e27bcb9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void tryDropHorn(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 dropPos)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d36dcb13((void*)__hosihikari_shim_handle, (void*)dropPos.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_66fe929b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

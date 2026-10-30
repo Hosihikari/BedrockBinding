@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptActorQuery
+public sealed unsafe partial class ScriptActorQuery : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptActorQuery(nint handle) : this(handle, true) { }
 
     internal ScriptActorQuery(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptActorQuery Borrow(nint handle) => new ScriptActorQuery(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,64 +33,57 @@ public sealed partial class ScriptActorQuery
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptActorQuery Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::UnsupportedAPIError' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint _incompatableWorldQueryOptionError(nint propertyName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::UnsupportedAPIError' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptActorQuery Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<ActorSelectorArgs, Scripting::InvalidArgumentError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint constructSelectorArgs(nint selectionType, nint options, nint dimension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<ActorSelectorArgs, Scripting::InvalidArgumentError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<ActorSelectorArgs>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint constructSelectorArgs(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<ActorSelectorArgs>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>>, ScriptModuleMinecraft::ScriptCommandError, Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getAllPlayers(nint scope, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>>, ScriptModuleMinecraft::ScriptCommandError, Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getAllPlayers_d73bffbf(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>>>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, Scripting::InvalidArgumentError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint matches_84ced7c6(nint actor, nint options) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, Scripting::InvalidArgumentError, Scripting::UnsupportedAPIError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getAllPlayers_de8f28b9(nint scope, nint level) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint matches_14d3496d(nint actor, nint args) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint matches_762a3b93(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>>, ScriptModuleMinecraft::ScriptCommandError, Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint queryActors(nint selectionType, nint options, nint scope, nint dimension, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>>, ScriptModuleMinecraft::ScriptCommandError, Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint matches_a324eb90(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorIterator>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint queryActors_V010(nint selectionType, nint options, nint scope, nint dimension, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorIterator>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>>, ScriptModuleMinecraft::ScriptCommandError, Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint queryPlayers(nint options, nint scope, nint dimension, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>>, ScriptModuleMinecraft::ScriptCommandError, Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint queryActors_902a8ca5(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActor>>>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerIterator>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint queryPlayers_V010(nint options, nint scope, nint dimension, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerIterator>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint queryActors_b1c3242b(nint arg0, nint options, nint scope, nint dimension, nint level) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_cf58cc93((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorIterator>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint queryActors_V010(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorIterator>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint queryPlayers_0512ac6f(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>,std::allocator<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint queryPlayers_3302736e(nint options, nint scope, nint dimension, nint level) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerIterator>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint queryPlayers_V010(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayerIterator>>' requires --link-carrier or --virtual-dispatch.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

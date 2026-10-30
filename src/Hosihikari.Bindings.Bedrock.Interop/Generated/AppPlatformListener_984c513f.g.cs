@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class AppPlatformListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AppPlatformListener(nint handle) : this(handle, true) { }
 
     internal AppPlatformListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AppPlatformListener Borrow(nint handle) => new AppPlatformListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,88 +33,218 @@ public sealed unsafe partial class AppPlatformListener : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AppPlatformListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static AppPlatformListener Create(bool arg0)
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_4f63018a(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new AppPlatformListener((nint)handle);
+        NativeMethods.TablePtr->C0.hs_method_669e419a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AppPlatformListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void initListener(float arg0)
+    public void _onAppFocusGained()
     {
-        NativeMethods.TablePtr->hs_method_a69dddf5((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_0164ad99((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppFocusLost()
+    {
+        NativeMethods.TablePtr->C0.hs_method_ef7ae852((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppPaused()
+    {
+        NativeMethods.TablePtr->C0.hs_method_72d442bc((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppPreSuspended()
+    {
+        NativeMethods.TablePtr->C0.hs_method_e8d0652d((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppResumed()
+    {
+        NativeMethods.TablePtr->C0.hs_method_ff8e09de((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppSurfaceCreated()
+    {
+        NativeMethods.TablePtr->C0.hs_method_550c4d8f((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppSurfaceDestroyed()
+    {
+        NativeMethods.TablePtr->C0.hs_method_534bef31((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppSuspended()
+    {
+        NativeMethods.TablePtr->C0.hs_method_0aef94e4((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppTerminated()
+    {
+        NativeMethods.TablePtr->C0.hs_method_074ed0df((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onAppUnpaused()
+    {
+        NativeMethods.TablePtr->C0.hs_method_8cde15e7((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onClipboardCopy(string clipString)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(clipString);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(clipString, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_fcc6502a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _onClipboardPaste(string clipString)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(clipString);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(clipString, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_ef156192((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _onDeviceLost()
+    {
+        NativeMethods.TablePtr->C0.hs_method_1636e315((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onLowMemory(int arg0)
+    {
+        NativeMethods.TablePtr->C0.hs_method_db2f9d95((void*)__hosihikari_shim_handle, arg0);
+    }
+
+    public void _onOperationModeChanged(int operationMode)
+    {
+        NativeMethods.TablePtr->C0.hs_method_3b6ac257((void*)__hosihikari_shim_handle, operationMode);
+    }
+
+    public void _onPerformanceModeChanged(bool boost)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b00968a7((void*)__hosihikari_shim_handle, boost);
+    }
+
+    public void _onPushNotificationReceived(nint msg)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e6d5072a((void*)__hosihikari_shim_handle, (void*)msg);
+    }
+
+    public void _onRefreshRateChanged(int refreshRate)
+    {
+        NativeMethods.TablePtr->C0.hs_method_4d119a5c((void*)__hosihikari_shim_handle, refreshRate);
+    }
+
+    public void _onResizeBegin()
+    {
+        NativeMethods.TablePtr->C0.hs_method_ae966f48((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onResizeEnd()
+    {
+        NativeMethods.TablePtr->C0.hs_method_1710fc07((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void initListener(float priority)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a69dddf5((void*)__hosihikari_shim_handle, priority);
+    }
+
+    public bool mListenerRegistered
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_ba92197b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_ba92197b((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLowMemorySubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ae1409af((void*)__hosihikari_shim_handle);
     }
 
     public void onAppFocusGained()
     {
-        NativeMethods.TablePtr->hs_method_1f9c2937((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_1f9c2937((void*)__hosihikari_shim_handle);
     }
 
     public void onAppFocusLost()
     {
-        NativeMethods.TablePtr->hs_method_cac571d6((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_cac571d6((void*)__hosihikari_shim_handle);
     }
 
     public void onAppPaused()
     {
-        NativeMethods.TablePtr->hs_method_81afa766((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_81afa766((void*)__hosihikari_shim_handle);
     }
 
     public void onAppPreSuspended()
     {
-        NativeMethods.TablePtr->hs_method_b167cfe0((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_b167cfe0((void*)__hosihikari_shim_handle);
     }
 
     public void onAppResumed()
     {
-        NativeMethods.TablePtr->hs_method_a05b8ea2((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_a05b8ea2((void*)__hosihikari_shim_handle);
     }
 
     public void onAppSurfaceCreated()
     {
-        NativeMethods.TablePtr->hs_method_9ad2ff2d((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_9ad2ff2d((void*)__hosihikari_shim_handle);
     }
 
     public void onAppSurfaceDestroyed()
     {
-        NativeMethods.TablePtr->hs_method_423c42eb((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_423c42eb((void*)__hosihikari_shim_handle);
     }
 
     public void onAppSuspended()
     {
-        NativeMethods.TablePtr->hs_method_45ff0edc((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_45ff0edc((void*)__hosihikari_shim_handle);
     }
 
     public void onAppTerminated()
     {
-        NativeMethods.TablePtr->hs_method_d8397715((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_d8397715((void*)__hosihikari_shim_handle);
     }
 
     public void onAppUnpaused()
     {
-        NativeMethods.TablePtr->hs_method_e73b8924((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_e73b8924((void*)__hosihikari_shim_handle);
     }
 
-    public void onClipboardCopy(string arg0)
+    public void onClipboardCopy(string clipString)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(clipString);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -124,16 +254,16 @@ public sealed unsafe partial class AppPlatformListener : global::System.IDisposa
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(clipString, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_52a410cf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_442f84c3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void onClipboardPaste(string arg0)
+    public void onClipboardPaste(string clipString)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(clipString);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -143,68 +273,64 @@ public sealed unsafe partial class AppPlatformListener : global::System.IDisposa
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(clipString, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_0ae26506((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_04d1ef23((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void onDeviceLost()
     {
-        NativeMethods.TablePtr->hs_method_e9fc530b((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_e9fc530b((void*)__hosihikari_shim_handle);
     }
 
-    public void onLowMemory()
+    public void onLowMemory(int arg0)
     {
-        NativeMethods.TablePtr->hs_method_4c16dfd5((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_a55347af((void*)__hosihikari_shim_handle, arg0);
     }
 
-    public void onOperationModeChanged(int arg0)
+    public void onOperationModeChanged(int operationMode)
     {
-        NativeMethods.TablePtr->hs_method_5a036f61((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_8771dcaf((void*)__hosihikari_shim_handle, operationMode);
     }
 
-    public void onPerformanceModeChanged(bool arg0)
+    public void onPerformanceModeChanged(bool boost)
     {
-        NativeMethods.TablePtr->hs_method_87752ec4((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_051172d9((void*)__hosihikari_shim_handle, boost);
     }
 
-    public void onPushNotificationReceived(nint arg0)
+    public void onPushNotificationReceived(nint msg)
     {
-        NativeMethods.TablePtr->hs_method_cf78ca42((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C0.hs_method_c0c76c33((void*)__hosihikari_shim_handle, (void*)msg);
+    }
+
+    public void onRefreshRateChanged(int refreshRate)
+    {
+        NativeMethods.TablePtr->C0.hs_method_3f8373ea((void*)__hosihikari_shim_handle, refreshRate);
     }
 
     public void onResizeBegin()
     {
-        NativeMethods.TablePtr->hs_method_0488c928((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_0488c928((void*)__hosihikari_shim_handle);
     }
 
     public void onResizeEnd()
     {
-        NativeMethods.TablePtr->hs_method_67802d90((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void terminate()
-    {
-        NativeMethods.TablePtr->hs_method_ee7b7a22((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_67802d90((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_984c513f((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_984c513f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

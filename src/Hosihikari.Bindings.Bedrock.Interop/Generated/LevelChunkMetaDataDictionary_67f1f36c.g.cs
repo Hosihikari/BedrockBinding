@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelChunkMetaDataDictionary
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelChunkMetaDataDictionary(nint handle) : this(handle, true) { }
 
     internal LevelChunkMetaDataDictionary(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelChunkMetaDataDictionary Borrow(nint handle) => new LevelChunkMetaDataDictionary(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,41 @@ public sealed unsafe partial class LevelChunkMetaDataDictionary
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkMetaDataDictionary Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkMetaDataDictionary Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _registerMetaData(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData candidateMetaData)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_9ae6e429((void*)__hosihikari_shim_handle, (void*)candidateMetaData.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void checkAndSerialize(nint arg0) =>
+    public void checkAndSerialize(nint postSerializeWriteCallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
+    public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput stream)
     {
-        NativeMethods.TablePtr->hs_method_a14e7534((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_4baf1264((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getMetaData(ulong arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDictionary_Address
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_14284dfb((void*)_handle, arg0);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d2b54558((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? registerMetaData(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData arg0)
+    public bool mDictionaryDirty
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_a0404305((void*)_handle, (void*)arg0.Handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        get => NativeMethods.TablePtr->C1.hs_get_1b61479f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_1b61479f((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSharedMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_591eae1b((void*)__hosihikari_shim_handle);
     }
 }

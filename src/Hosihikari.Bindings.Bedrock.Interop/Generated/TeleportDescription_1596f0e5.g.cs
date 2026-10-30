@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TeleportDescription : global::System.IDisposable
+public sealed unsafe partial class TeleportDescription
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TeleportDescription(nint handle) : this(handle, true) { }
 
     internal TeleportDescription(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TeleportDescription Borrow(nint handle) => new TeleportDescription(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,90 @@ public sealed unsafe partial class TeleportDescription : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static TeleportDescription Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_530630dd();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _deserializeData(nint deserializeDataParams) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-        return new TeleportDescription((nint)handle);
+    public nint _getJsonName()
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_2a6a1ddf((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TeleportDescription Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void deserializeData(nint arg0) =>
+    public void deserializeData(nint deserializeDataParams) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public nint getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_158c85e5((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_5bea380b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public float mDarkTeleportChance
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_1596f0e5((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C3.hs_get_17be8087((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_17be8087((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public float mLightTeleportChance
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_5c9594d4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5c9594d4((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMaxTeleportTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_5eb46d30((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5eb46d30((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMinTeleportTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_eaed818c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_eaed818c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProjectileFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bd2b04b5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRandomTeleportCube_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9ff9108f((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mRandomTeleports
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_685521e6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_685521e6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mTargetDistance
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_31fa45a5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_31fa45a5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mTargetTeleportChance
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ba7b3c01((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ba7b3c01((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mTeleportsOnProjectileHit
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_3e25a2bc((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_3e25a2bc((void*)__hosihikari_shim_handle, value);
     }
 }

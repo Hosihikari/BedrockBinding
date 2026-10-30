@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ResourceInformation_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ResourceType : int
 {
+    Invalid = 0,
+    Resources = 1,
+    DataAddOn = 2,
+    ScriptAddOn = 3,
+    ClientScriptAddOn = 4,
+    Mandatory = 5,
+    WorldTemplate = 6,
+    Count = 7,
 }

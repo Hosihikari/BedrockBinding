@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GroundedConstraint : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GroundedConstraint(nint handle) : this(handle, true) { }
 
     internal GroundedConstraint(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GroundedConstraint Borrow(nint handle) => new GroundedConstraint(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,24 @@ public sealed unsafe partial class GroundedConstraint : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GroundedConstraint Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static GroundedConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structure, int groundLevel)
     {
-        var handle = NativeMethods.TablePtr->hs_create_18f98497((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_b439eabb((void*)__hosihikari_shim_handle, (void*)structure.Handle, groundLevel);
+    }
+
+    public bool _isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a79232f0((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
+    }
+
+    public static GroundedConstraint Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d73538ea();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,30 +59,39 @@ public sealed unsafe partial class GroundedConstraint : global::System.IDisposab
         return new GroundedConstraint((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GroundedConstraint Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2)
+    public static GroundedConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structure, int groundLevel)
     {
-        return NativeMethods.TablePtr->hs_method_8da1af9d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        var handle = NativeMethods.TablePtr->C1.hs_create_b9ba1951((void*)structure.Handle, groundLevel);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GroundedConstraint((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_3eae097e((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFoundationOffsets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3f9c773d((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d047a414((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_d047a414((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

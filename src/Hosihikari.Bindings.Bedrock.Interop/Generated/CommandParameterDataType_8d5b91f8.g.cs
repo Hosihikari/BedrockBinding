@@ -10,4 +10,5 @@ public enum CommandParameterDataType : int
     Enum = 1,
     SoftEnum = 2,
     Postfix = 3,
+    ChainedSubcommand = 4,
 }

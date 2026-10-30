@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ManifestType : int
+public enum ManifestType : sbyte
 {
+    Pack = 0,
+    WorldTemplate = 1,
+    Catalog = 2,
 }

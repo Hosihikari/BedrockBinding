@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CameraPresets : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CameraPresets(nint handle) : this(handle, true) { }
 
     internal CameraPresets(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CameraPresets Borrow(nint handle) => new CameraPresets(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,19 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_d498bf3d((void*)__hosihikari_shim_handle);
     }
 
     public static CameraPresets Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_72abfded();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CameraPresets((nint)handle);
-    }
-
-    public static CameraPresets Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_bed23cd2((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_72abfded();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,7 +56,7 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
 
     public static CameraPresets Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_af85b51a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_af85b51a((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,22 +65,18 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         return new CameraPresets((nint)handle);
     }
 
-    public string[] buildCameraPresetList()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void _storeCameraList(nint list) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_50d83d30((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
+        NativeMethods.TablePtr->C0.hs_method_d64866b3((void*)ctx.Handle);
     }
 
-    public uint? getCameraPresetIndex(string arg0)
+    public static bool isAllowedEaseTarget(string easeTarget)
     {
-        var __hs_hasValue = false;
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(easeTarget);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -96,22 +86,16 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(easeTarget, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_value = NativeMethods.TablePtr->hs_method_32e7e1f5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
-            return __hs_hasValue ? __hs_value : (uint?)null;
+            return NativeMethods.TablePtr->C0.hs_method_355cd6e3(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public nint getPresets()
+    public static bool isVanillaCamera(string cameraName)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_aa054314((void*)_handle);
-    }
-
-    public static bool isAllowedEaseTarget(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(cameraName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -121,69 +105,49 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(cameraName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_3d498910(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C0.hs_method_a76a198c(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public bool isEmpty()
-    {
-        return NativeMethods.TablePtr->hs_method_5198c5ee((void*)_handle) != 0;
-    }
-
-    public void loadPresets(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
-    {
-        NativeMethods.TablePtr->hs_method_72799681((void*)_handle, (void*)arg0.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
+    public void loadPresets(nint resourcePackManager, nint experiments, nint validator, nint eventing) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLists_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_da6dfb7f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_da6dfb7f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPresets_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_29c77109((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_29c77109((void*)__hosihikari_shim_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mReflectionCtx_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_acc9af3e((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<CameraPresets,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint read_a09a0823(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<CameraPresets,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint read_c294d9fa(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets arg0)
     {
-        NativeMethods.TablePtr->hs_method_71cbb7bf((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets((nint)NativeMethods.TablePtr->C0.hs_method_c0ffaf1a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_687b216f((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_687b216f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

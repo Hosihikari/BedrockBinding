@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AmbientSoundIntervalDefinition
+public sealed unsafe partial class AmbientSoundIntervalDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AmbientSoundIntervalDefinition(nint handle) : this(handle, true) { }
 
     internal AmbientSoundIntervalDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AmbientSoundIntervalDefinition Borrow(nint handle) => new AmbientSoundIntervalDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,87 @@ public sealed unsafe partial class AmbientSoundIntervalDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AmbientSoundIntervalDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AmbientSoundIntervalDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addDynamic(global::Hosihikari.Bindings.Bedrock.Interop.DynamicAmbientSound arg0)
+    public static AmbientSoundIntervalDefinition Create()
     {
-        NativeMethods.TablePtr->hs_method_686a9170((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_51441a3b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AmbientSoundIntervalDefinition((nint)handle);
     }
 
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static AmbientSoundIntervalDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundIntervalDefinition arg0)
     {
-        NativeMethods.TablePtr->hs_method_21fdd591(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        var handle = NativeMethods.TablePtr->C0.hs_create_d9b14c99((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AmbientSoundIntervalDefinition((nint)handle);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent arg1)
+    public void addDynamic(global::Hosihikari.Bindings.Bedrock.Interop.DynamicAmbientSound definition)
     {
-        NativeMethods.TablePtr->hs_method_d0f3f5b6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_8299835e((void*)__hosihikari_shim_handle, (void*)definition.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d8a86fc9(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent component)
+    {
+        NativeMethods.TablePtr->C0.hs_method_fbb57560((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)component.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1307bf_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2917f9ce((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2c49f2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_219e20f4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkae8549_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_eb4cc5f6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc810b5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_60f39b42((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundIntervalDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundIntervalDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundIntervalDefinition((nint)NativeMethods.TablePtr->C0.hs_method_370dee54((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_522dca4d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

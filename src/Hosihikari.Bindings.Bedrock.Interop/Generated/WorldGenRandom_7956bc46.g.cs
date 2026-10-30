@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class WorldGenRandom : global::System.IDisposable
+public sealed unsafe partial class WorldGenRandom
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WorldGenRandom(nint handle) : this(handle, true) { }
 
     internal WorldGenRandom(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WorldGenRandom Borrow(nint handle) => new WorldGenRandom(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,136 +33,120 @@ public sealed unsafe partial class WorldGenRandom : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static WorldGenRandom Create()
+    public void _consumeCount(uint count)
     {
-        var handle = NativeMethods.TablePtr->hs_create_8123932b();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new WorldGenRandom((nint)handle);
+        NativeMethods.TablePtr->C4.hs_method_a927bc03((void*)__hosihikari_shim_handle, count);
     }
 
-    public static WorldGenRandom Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_8092a43c((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
+    public nint _forkPositional() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.");
 
-        return new WorldGenRandom((nint)handle);
+    public bool _nextBoolean()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_b9ba9e60((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void consumeCount(uint arg0)
+    public double _nextDouble()
     {
-        NativeMethods.TablePtr->hs_method_ac9185ac((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C4.hs_method_2957b068((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom create(long arg0)
+    public float _nextFloat()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom((nint)NativeMethods.TablePtr->hs_method_9390b4b7(arg0));
+        return NativeMethods.TablePtr->C4.hs_method_1783e712((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.IRandom? fork()
+    public double _nextGaussianDouble()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_df444025((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)__hs_handle) : null;
+        return NativeMethods.TablePtr->C4.hs_method_81c052ac((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom forkPositional(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public int _nextInt()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom((nint)NativeMethods.TablePtr->hs_method_edcbf1c3((void*)_handle, (void*)arg0.Handle));
+        return NativeMethods.TablePtr->C4.hs_method_a55ea901((void*)__hosihikari_shim_handle);
     }
+
+    public int _nextInt(int bound)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_92f25443((void*)__hosihikari_shim_handle, bound);
+    }
+
+    public long _nextLong()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_88d6ad7c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void consumeCount(uint count)
+    {
+        NativeMethods.TablePtr->C4.hs_method_ac9185ac((void*)__hosihikari_shim_handle, count);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'br::worldgen::WorldGenRandom' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint forkPositional(nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'br::worldgen::WorldGenRandom' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
     public nint forkPositional() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.");
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c186cb97((void*)__hosihikari_shim_handle);
+    }
+
     public bool nextBoolean()
     {
-        return NativeMethods.TablePtr->hs_method_c55fc7ce((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_c55fc7ce((void*)__hosihikari_shim_handle) != 0;
     }
 
     public double nextDouble()
     {
-        return NativeMethods.TablePtr->hs_method_3e0febcd((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_3e0febcd((void*)__hosihikari_shim_handle);
     }
 
     public float nextFloat()
     {
-        return NativeMethods.TablePtr->hs_method_ed462261((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_ed462261((void*)__hosihikari_shim_handle);
     }
 
     public double nextGaussianDouble()
     {
-        return NativeMethods.TablePtr->hs_method_624a8e24((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_624a8e24((void*)__hosihikari_shim_handle);
     }
 
     public int nextInt()
     {
-        return NativeMethods.TablePtr->hs_method_e1f82b27((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_e1f82b27((void*)__hosihikari_shim_handle);
     }
 
-    public int nextInt(int arg0)
+    public int nextInt(int bound)
     {
-        return NativeMethods.TablePtr->hs_method_db838509((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C4.hs_method_db838509((void*)__hosihikari_shim_handle, bound);
     }
 
     public long nextLong()
     {
-        return NativeMethods.TablePtr->hs_method_3c8eb6f4((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_3c8eb6f4((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Seed128Bit' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint seed128() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Seed128Bit' requires --link-carrier or --virtual-dispatch.");
-
-    public long seed64()
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom setDecorationSeed(long seed, int chunkX, int chunkZ)
     {
-        return NativeMethods.TablePtr->hs_method_f34cc1ee((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom((nint)NativeMethods.TablePtr->C4.hs_method_5da4534e((void*)__hosihikari_shim_handle, seed, chunkX, chunkZ), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom setLargeFeatureSeed(long arg0, int arg1, int arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom setLargeFeatureSeed(long seed, int chunkX, int chunkZ)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom((nint)NativeMethods.TablePtr->hs_method_bbbadefa((void*)_handle, arg0, arg1, arg2), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom setLargeFeatureWithSalt(long arg0, int arg1, int arg2, int arg3)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom((nint)NativeMethods.TablePtr->hs_method_ce14ab42((void*)_handle, arg0, arg1, arg2, arg3), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Seed128Bit' is not a known bindable declaration.", false)]
-    public void setSeed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Seed128Bit' is not a known bindable declaration.");
-
-    public void setSeed(long arg0)
-    {
-        NativeMethods.TablePtr->hs_method_e9b12403((void*)_handle, arg0);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7956bc46((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom((nint)NativeMethods.TablePtr->C4.hs_method_85a44937((void*)__hosihikari_shim_handle, seed, chunkX, chunkZ), false);
     }
 }

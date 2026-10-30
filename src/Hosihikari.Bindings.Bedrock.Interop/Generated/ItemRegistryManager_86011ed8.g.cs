@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemRegistryManager
+public sealed unsafe partial class ItemRegistryManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemRegistryManager(nint handle) : this(handle, true) { }
 
     internal ItemRegistryManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemRegistryManager Borrow(nint handle) => new ItemRegistryManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,30 @@ public sealed unsafe partial class ItemRegistryManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemRegistryManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemRegistryManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint getItemRegistry() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mThreadLocalRegistry_Address
+    public static nint mThreadLocalRegistry()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0226b5a6();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_a2b7a5a2();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void resetItemRegistry()
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_dd6fb137();
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_86011ed8((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static void setItemRegistry(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

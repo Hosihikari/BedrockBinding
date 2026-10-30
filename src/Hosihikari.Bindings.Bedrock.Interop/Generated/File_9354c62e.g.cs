@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-public sealed unsafe partial class File
+public sealed unsafe partial class File : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public File(nint handle) : this(handle, true) { }
 
     internal File(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static File Borrow(nint handle) => new File(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,57 +33,78 @@ public sealed unsafe partial class File
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static File Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static File Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void __autoclassinit2(ulong arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_e8e58e1c((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_3d213fd5((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint cleanPath(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.");
+    public static File Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3ed2af73();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint cleanPathSeparators(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.");
+        return new File((nint)handle);
+    }
+
+    public static File Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.File arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7928a64e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new File((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::BasicStackString<char, 1024>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint cleanPath(nint entryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::BasicStackString<char, 1024>>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public nint close() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6dd4a2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_79f398dd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7813fc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e5a72b38((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.File operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.File arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.File((nint)NativeMethods.TablePtr->C0.hs_method_e502811e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint open(nint arg0, nint arg1, nint arg2) =>
+    public static nint writeCreateOrAppendFileData(nint path, ulong offset, ulong numBytesToWrite, nint buffer, nint sourceLocation) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint write(nint arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_9354c62e((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint writeCreateOrAppendFileData_4fc20506(nint arg0, ulong arg1, ulong arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint writeCreateOrAppendFileData_ea0ed61e(nint arg0, ulong arg1, ulong arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_394d5095() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

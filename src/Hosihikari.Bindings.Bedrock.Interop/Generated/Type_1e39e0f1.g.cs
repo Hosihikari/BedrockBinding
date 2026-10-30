@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ComplexInventoryTransaction_Nested;
 
-public enum Type : int
+public enum Type : uint
 {
     NormalTransaction = 0,
     InventoryMismatch = 1,

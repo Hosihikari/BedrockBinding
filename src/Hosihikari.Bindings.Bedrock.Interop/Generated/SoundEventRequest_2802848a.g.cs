@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SoundEventRequest
+public sealed unsafe partial class SoundEventRequest
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SoundEventRequest(nint handle) : this(handle, true) { }
 
     internal SoundEventRequest(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SoundEventRequest Borrow(nint handle) => new SoundEventRequest(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,38 @@ public sealed partial class SoundEventRequest
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SoundEventRequest Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_134c2ba0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SoundEventRequest Create_9ed2d7b1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public uint mEvent
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_fc61be4c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_fc61be4c((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SoundEventRequest Create_f00f85d6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7c96f89f((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'SoundEventRequest' is not supported.", false)]
-    public static nint tryPlaySound(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5) =>
+    public static nint tryPlayPredictiveSynchronizedSound(nint actorFlags, nint identifier, nint actorId, nint dimension, nint type, nint entity, nint location, int data, bool isGlobal) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'SoundEventRequest' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f7a853dc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'SoundEventRequest' is not supported.", false)]
+    public static nint tryPlayPredictiveSynchronizedSound(nint actorFlags, nint identifier, nint actorId, nint dimension, nint type, nint pos, int data, bool isGlobal) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'SoundEventRequest' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'SoundEventRequest' is not supported.", false)]
+    public static nint tryPlaySound(nint actorFlags, nint identifier, nint actorId, nint dimension, nint type, nint entity, nint location, int data) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'SoundEventRequest' is not supported.");
 }

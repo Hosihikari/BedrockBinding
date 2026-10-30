@@ -4,8 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum PacketCompressionAlgorithm : int
+public enum PacketCompressionAlgorithm : ushort
 {
     ZLib = 0,
     Snappy = 1,
+    None = 65535,
 }

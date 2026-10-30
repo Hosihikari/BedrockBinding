@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CommandRationalRange_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum BoundType : int
+public enum BoundType : byte
 {
+    Undefined = 0,
+    Min = 1,
+    Max = 2,
 }

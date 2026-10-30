@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ClipParameters : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ClipParameters(nint handle) : this(handle, true) { }
 
     internal ClipParameters(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ClipParameters Borrow(nint handle) => new ClipParameters(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,14 @@ public sealed unsafe partial class ClipParameters : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ClipParameters Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ClipParameters Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    public static ClipParameters Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_fbabe7d6((void*)arg0.Handle, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_c12a2e4d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,81 +49,92 @@ public sealed unsafe partial class ClipParameters : global::System.IDisposable
         return new ClipParameters((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ClipParameters Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ClipParameters Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public nint mA
+    public static ClipParameters Create(global::Hosihikari.Bindings.Bedrock.Interop.ClipParameters arg0)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_10b80c9d((void*)_handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_2d4bfc5d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClipParameters((nint)handle);
     }
 
-    public nint mB
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mA_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c58377a4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_10b80c9d((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mActor
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3df62a97((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_3df62a97((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mB_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c58377a4((void*)__hosihikari_shim_handle);
     }
 
     public bool mFullOnly
     {
-        get => NativeMethods.TablePtr->hs_get_8e82e2eb((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_8e82e2eb((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_8e82e2eb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_8e82e2eb((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mIgnoreBorderBlocks
     {
-        get => NativeMethods.TablePtr->hs_get_a1a0b712((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_a1a0b712((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_a1a0b712((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_a1a0b712((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mLiquid
     {
-        get => NativeMethods.TablePtr->hs_get_40ed5295((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_40ed5295((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_40ed5295((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_40ed5295((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMaxDistance
     {
-        get => NativeMethods.TablePtr->hs_get_3f9b80d0((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_3f9b80d0((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_3f9b80d0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_3f9b80d0((void*)__hosihikari_shim_handle, value);
     }
 
-    public nint mPlayer
+    public byte mShapeType
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5b8fed78((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_5b8fed78((void*)_handle, (void*)value);
+        get => NativeMethods.TablePtr->C0.hs_get_153eddc0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_153eddc0((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mShouldCheckBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ef759726((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ef759726((void*)__hosihikari_shim_handle);
     }
 
-    public bool mSolidOnly
+    public bool mStopOnFirstLiquidHit
     {
-        get => NativeMethods.TablePtr->hs_get_11d4bdcc((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_11d4bdcc((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_2f743b46((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_2f743b46((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
+    public global::Hosihikari.Bindings.Bedrock.Interop.ClipParameters operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ClipParameters arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClipParameters((nint)NativeMethods.TablePtr->C0.hs_method_783f4e54((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2c2fd397((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_2c2fd397((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

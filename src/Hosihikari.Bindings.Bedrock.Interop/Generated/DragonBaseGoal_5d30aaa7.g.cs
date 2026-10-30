@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DragonBaseGoal : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DragonBaseGoal(nint handle) : this(handle, true) { }
 
     internal DragonBaseGoal(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DragonBaseGoal Borrow(nint handle) => new DragonBaseGoal(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,97 @@ public sealed unsafe partial class DragonBaseGoal : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DragonBaseGoal Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ee0a595e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DragonBaseGoal Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int mRequiredControlFlags
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_3305abef((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_3305abef((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ushort mTypeId
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_3da2bdc8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_3da2bdc8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static DragonBaseGoal Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_aa4fe68c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DragonBaseGoal((nint)handle);
+    }
+
+    public static DragonBaseGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.DragonBaseGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2f2f8ff9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DragonBaseGoal((nint)handle);
+    }
+
+    public float mActiveSpeed
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_fc6650ee((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_fc6650ee((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDragon_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_950f3671((void*)__hosihikari_shim_handle);
+    }
+
+    public float mFlightSpeed
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_07b88369((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_07b88369((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetZone_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6331a484((void*)__hosihikari_shim_handle);
+    }
+
+    public float mTurnSpeed
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_630844f3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_630844f3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DragonBaseGoal operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.DragonBaseGoal arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DragonBaseGoal((nint)NativeMethods.TablePtr->C1.hs_method_b7ad8b6b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_5d30aaa7((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_5d30aaa7((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

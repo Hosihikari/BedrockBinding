@@ -2,11 +2,10 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public enum ScriptFacing : sbyte
+public enum ScriptFacing : int
 {
-    Unknown = -1,
     Down = 0,
     Up = 1,
     North = 2,

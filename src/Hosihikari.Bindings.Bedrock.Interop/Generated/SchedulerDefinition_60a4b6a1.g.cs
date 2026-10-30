@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SchedulerDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SchedulerDefinition(nint handle) : this(handle, true) { }
 
     internal SchedulerDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SchedulerDefinition Borrow(nint handle) => new SchedulerDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,41 @@ public sealed unsafe partial class SchedulerDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SchedulerDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SchedulerDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_290291c7(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_053ac9b6(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.SchedulerComponent arg1)
+    public uint mMaxDelayTicks
     {
-        NativeMethods.TablePtr->hs_method_10353a9b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_ea028fd4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ea028fd4((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setMaxDelayTicks(nint arg0)
+    public uint mMinDelayTicks
     {
-        NativeMethods.TablePtr->hs_method_120f02ab((void*)_handle, (void*)arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_33db04fb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_33db04fb((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setMinDelayTicks(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTriggerDefs_Address
     {
-        NativeMethods.TablePtr->hs_method_bf1b2000((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a6bf8be1((void*)__hosihikari_shim_handle);
+    }
+
+    public void setMaxDelayTicks(nint seconds)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3b6fdaac((void*)__hosihikari_shim_handle, (void*)seconds);
+    }
+
+    public void setMinDelayTicks(nint seconds)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b66e5072((void*)__hosihikari_shim_handle, (void*)seconds);
     }
 }

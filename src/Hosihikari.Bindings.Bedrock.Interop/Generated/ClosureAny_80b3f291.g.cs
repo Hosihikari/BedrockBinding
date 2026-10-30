@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
 public sealed unsafe partial class ClosureAny : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ClosureAny(nint handle) : this(handle, true) { }
 
     internal ClosureAny(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ClosureAny Borrow(nint handle) => new ClosureAny(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,27 @@ public sealed unsafe partial class ClosureAny : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<Scripting::ClosureType>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint runtime, nint contextId, nint scope, nint handle, nint inspector) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<Scripting::ClosureType>' is not a known bindable declaration.");
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_f83ab6b0((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
     public static ClosureAny Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_da273b89();
+        var handle = NativeMethods.TablePtr->C3.hs_create_da273b89();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,62 +62,86 @@ public sealed unsafe partial class ClosureAny : global::System.IDisposable
         return new ClosureAny((nint)handle);
     }
 
-    public static ClosureAny Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ClosureAny arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<Scripting::ClosureType>' is not a known bindable declaration.", false)]
+    public static ClosureAny Create(nint runtime, nint contextId, nint scope, nint handle, nint inspector) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<Scripting::ClosureType>' is not a known bindable declaration.");
+
+    public static ClosureAny Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClosureAny arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_d0de7621((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_d2f7fdba((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
 
         return new ClosureAny((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ResultAny _callGeneric(nint args, uint argc, nint expectedReturnType, byte? privilege)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ResultAny((nint)NativeMethods.TablePtr->C3.hs_method_c818811f((void*)__hosihikari_shim_handle, (void*)args, argc, (void*)expectedReturnType, privilege ?? default(byte), privilege.HasValue));
+    }
+
+    public bool compareTo(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClosureAny rhs)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_2d04a9eb((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1d806b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a959c01b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke4d77a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b4f74989((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ClosureAny Create_38e165a6(nint arg0) =>
+    public nint operator_assign(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public static ClosureAny Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint callGeneric(nint arg0, uint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.");
-
-    public bool compareTo(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ClosureAny arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClosureAny operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClosureAny rhs)
     {
-        return NativeMethods.TablePtr->hs_method_13204af6((void*)_handle, (void*)arg0.Handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClosureAny((nint)NativeMethods.TablePtr->C3.hs_method_b2e9c09a((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::TypedObjectHandle<Scripting::ClosureType>' is not supported.", false)]
-    public nint getClosureHandle() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::TypedObjectHandle<Scripting::ClosureType>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_0bd296ee(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_b2e9c09a(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool valid()
     {
-        return NativeMethods.TablePtr->hs_method_f4b02ec2((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_9a7a08af((void*)__hosihikari_shim_handle) != 0;
     }
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5510fe_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_99856e93((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7e6933_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1edd9b8f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk979b85_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_22ce24f8((void*)__hosihikari_shim_handle);
+    }
+
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_80b3f291((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_80b3f291((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

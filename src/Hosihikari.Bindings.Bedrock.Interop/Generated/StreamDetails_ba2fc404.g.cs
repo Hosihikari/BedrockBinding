@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MemoryMappedFileAccess_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class StreamDetails
+public sealed unsafe partial class StreamDetails : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StreamDetails(nint handle) : this(handle, true) { }
 
     internal StreamDetails(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StreamDetails Borrow(nint handle) => new StreamDetails(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,78 @@ public sealed partial class StreamDetails
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static StreamDetails Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6e044624();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StreamDetails((nint)handle);
+    }
+
+    public static StreamDetails Create(global::Hosihikari.Bindings.Bedrock.Interop.MemoryMappedFileAccess_Nested.StreamDetails arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_93956c35((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StreamDetails((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5a024e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_99fb36f0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk775850_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_107d24a5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb136e2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_751d9c49((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb6b825_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_801c0634((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkec4701_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1acf497d((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MemoryMappedFileAccess_Nested.StreamDetails operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MemoryMappedFileAccess_Nested.StreamDetails arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MemoryMappedFileAccess_Nested.StreamDetails((nint)NativeMethods.TablePtr->C2.hs_method_5ca00b47((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ba2fc404((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

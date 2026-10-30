@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MultifaceSpreader_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum SpreadType : int
+public enum SpreadType : byte
 {
+    SamePosition = 0,
+    SamePlane = 1,
+    WrapAround = 2,
 }

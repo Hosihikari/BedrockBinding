@@ -4,7 +4,20 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ClientInputLockCategory : int
+public enum ClientInputLockCategory : byte
 {
+    Undefined = 0,
+    Camera = 1,
+    Movement = 2,
+    Emoting = 3,
+    LateralMovement = 4,
+    Sneak = 5,
+    Jump = 6,
+    Mount = 7,
+    Dismount = 8,
+    MoveForward = 9,
+    MoveBackward = 10,
+    MoveLeft = 11,
+    MoveRight = 12,
+    Count = 13,
 }

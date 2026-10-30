@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum HandSlot : int
+public enum HandSlot : byte
 {
+    Mainhand = 0,
+    Offhand = 1,
+    Count = 2,
 }

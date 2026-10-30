@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.FlatteningUtils_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.FlatteningUtils;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LegacyBlockInfo
+public sealed unsafe partial class LegacyBlockInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LegacyBlockInfo(nint handle) : this(handle, true) { }
 
     internal LegacyBlockInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LegacyBlockInfo Borrow(nint handle) => new LegacyBlockInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,88 @@ public sealed partial class LegacyBlockInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyBlockInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'FlatteningUtils::BlockNameRefAuxVariant' is not supported.", false)]
+    public nint _ctor(int legacyId_, nint legacyFullName_, nint legacyRawName_, byte maxAuxValue_, nint newBlockNameAuxVariants_, int startVariant) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'FlatteningUtils::BlockNameRefAuxVariant' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyBlockInfo Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LegacyBlockInfo Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2b591d0d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LegacyBlockInfo Create(int arg0, nint arg1, nint arg2, byte arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new LegacyBlockInfo((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'FlatteningUtils::BlockNameRefAuxVariant' is not supported.", false)]
+    public static LegacyBlockInfo Create(int legacyId_, nint legacyFullName_, nint legacyRawName_, byte maxAuxValue_, nint newBlockNameAuxVariants_, int startVariant) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'FlatteningUtils::BlockNameRefAuxVariant' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c8d856f7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint legacyFullName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_02e9c413((void*)__hosihikari_shim_handle);
+    }
+
+    public int legacyId
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_cd6e5e86((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_cd6e5e86((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint legacyRawName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a8b37118((void*)__hosihikari_shim_handle);
+    }
+
+    public byte maxAuxValue
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_0efde663((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_0efde663((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint newBlockFullNamesByAux_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_729e0f4e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint newBlockFullNamesByVariant_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a8e28152((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint newBlockNameAuxVariants_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_091caa2d((void*)__hosihikari_shim_handle);
+    }
+
+    public int startVariant
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_d93d3cdd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d93d3cdd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0c86d5fb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

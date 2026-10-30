@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum ContainerEnumName : sbyte
+public enum ContainerEnumName : byte
 {
     AnvilInputContainer = 0,
     AnvilMaterialContainer = 1,
@@ -69,4 +69,8 @@ public enum ContainerEnumName : sbyte
     CreatedOutputContainer = 60,
     SmithingTableTemplateContainer = 61,
     CrafterLevelEntityContainer = 62,
+    DynamicContainer = 63,
+    RecipeFoodContainer = 64,
+    RecipeBlocksContainer = 65,
+    RecipeFurnaceItemsContainer = 66,
 }

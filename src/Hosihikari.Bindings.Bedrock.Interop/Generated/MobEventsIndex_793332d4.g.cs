@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum MobEventsIndex : int
+public enum MobEventsIndex : short
 {
+    Invalid = -1,
+    PillagerPatrolsEvent = 0,
+    WanderingTraderEvent = 1,
+    EnderDragonEvent = 2,
+    EventCount = 3,
 }

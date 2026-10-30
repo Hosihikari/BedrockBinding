@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SystemFilePicker(nint handle) : this(handle, true) { }
 
     internal SystemFilePicker(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SystemFilePicker Borrow(nint handle) => new SystemFilePicker(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,66 @@ public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static SystemFilePicker Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_12d81c15();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SystemFilePicker((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SystemFilePicker Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void initFilePick(nint arg0, nint arg1) =>
+    public void _initFilePick(nint filePath, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public ulong readBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0, ulong arg1, ulong arg2, byte[] arg3)
+    public ulong _readBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, ulong offset, ulong bufferSize, byte[] buffer)
     {
-        fixed (byte* __hs_vectorData3 = arg3)
+        fixed (byte* __hs_vectorData3 = buffer)
         {
-            return NativeMethods.TablePtr->hs_method_499e7c5c((void*)_handle, (void*)arg0.Handle, arg1, arg2, __hs_vectorData3, (nuint)(arg3?.Length ?? 0));
+            return NativeMethods.TablePtr->C3.hs_method_9559d5ad((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0));
         }
     }
 
-    public bool writeBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0, ulong arg1, ulong arg2, byte[] arg3)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public bool _writeBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, ulong offset, ulong bufferSize, byte[] buffer)
     {
-        fixed (byte* __hs_vectorData3 = arg3)
+        fixed (byte* __hs_vectorData3 = buffer)
         {
-            return NativeMethods.TablePtr->hs_method_ee2a28a1((void*)_handle, (void*)arg0.Handle, arg1, arg2, __hs_vectorData3, (nuint)(arg3?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C3.hs_method_fe57e798((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0)) != 0;
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void initFilePick(nint filePath, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public ulong readBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, ulong offset, ulong bufferSize, byte[] buffer)
+    {
+        fixed (byte* __hs_vectorData3 = buffer)
+        {
+            return NativeMethods.TablePtr->C3.hs_method_1fcb5796((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0));
+        }
+    }
+
+    public bool writeBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, ulong offset, ulong bufferSize, byte[] buffer)
+    {
+        fixed (byte* __hs_vectorData3 = buffer)
+        {
+            return NativeMethods.TablePtr->C3.hs_method_d3ae8fb1((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0)) != 0;
         }
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_643ace1e((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_643ace1e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

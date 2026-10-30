@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum TransportLayer : int
 {
+    RakNet = 0,
+    Default = 2,
+    NetherWebSockets = 2,
+    Unknown = 4,
 }

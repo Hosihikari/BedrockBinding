@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DigGoal_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum CanUseResult : int
 {
+    CanDig = 0,
+    IsDigging = 1,
+    NamedAndNotAllowedToDigWhenNamed = 2,
+    NotOnGoundOrInWaterOrInLava = 3,
+    CanSeeDaylightAndShouldDigInDaylight = 4,
+    DisturbedByVibration = 5,
+    DisturbedBySuspicion = 6,
+    IdlingBeforeStartingGoalAgain = 7,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class OnFireSystem
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OnFireSystem(nint handle) : this(handle, true) { }
 
     internal OnFireSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OnFireSystem Borrow(nint handle) => new OnFireSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,28 @@ public sealed unsafe partial class OnFireSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OnFireSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OnFireSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void extinguishFire(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public static void _setOnFireImpl(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, int seconds, bool isInWaterOrRain, int fireProtectionLevels)
     {
-        NativeMethods.TablePtr->hs_method_75bf9c69((void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_03ec34e1((void*)actor.Handle, seconds, isInWaterOrRain, fireProtectionLevels);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void setOnFire(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    public static void setOnFire(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, int seconds)
     {
-        NativeMethods.TablePtr->hs_method_b32d8fbe((void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C2.hs_method_5c8e2658((void*)actor.Handle, seconds);
     }
 
-    public static void setOnFireNoEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    public static void setOnFireNoEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, int seconds)
     {
-        NativeMethods.TablePtr->hs_method_732fdab2((void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C2.hs_method_88feb3a9((void*)actor.Handle, seconds);
     }
 
-    public static void stopFire(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public static void stopFire(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_354405a0((void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_39a38c5f((void*)actor.Handle);
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerBlockActions : global::System.IDisposable
+public sealed unsafe partial class PlayerBlockActions
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerBlockActions(nint handle) : this(handle, true) { }
 
     internal PlayerBlockActions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerBlockActions Borrow(nint handle) => new PlayerBlockActions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,71 +33,23 @@ public sealed unsafe partial class PlayerBlockActions : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerBlockActions Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerBlockActions Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerBlockActionData? findFirstOfType(int arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_40fd74ae((void*)_handle, arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PlayerBlockActionData((nint)__hs_handle, false) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'PlayerBlockActionData const' is not supported.", false)]
-    public nint get_76c0735c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'PlayerBlockActionData const' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint get_049eda9c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const PlayerBlockActionData' is not supported.", false)]
+    public nint get() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const PlayerBlockActionData' is not supported.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActions_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_56e02abc((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_56e02abc((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_c2685e43(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_816f1fa7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<PlayerBlockActions,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint read_c32c143c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<PlayerBlockActions,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint read_30819aa5(nint stream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void write(global::Hosihikari.Bindings.Bedrock.Interop.PlayerBlockActions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg1)
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.PlayerBlockActions other)
     {
-        NativeMethods.TablePtr->hs_method_4f802257((void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_ef46ee8f((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return NativeMethods.TablePtr->C2.hs_method_fdd00e64((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 }

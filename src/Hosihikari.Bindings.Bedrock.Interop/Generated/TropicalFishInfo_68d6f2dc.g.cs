@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class TropicalFishInfo
+public sealed unsafe partial class TropicalFishInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TropicalFishInfo(nint handle) : this(handle, true) { }
 
     internal TropicalFishInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TropicalFishInfo Borrow(nint handle) => new TropicalFishInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,106 @@ public sealed partial class TropicalFishInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TropicalFishInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(int color, int color2, int variant, int markVariant, string name)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            return (nint)NativeMethods.TablePtr->C3.hs_method_9a5be6e5((void*)__hosihikari_shim_handle, color, color2, variant, markVariant, __hs_stringData4, (nuint)__hs_stringByteCount4);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TropicalFishInfo Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static TropicalFishInfo Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d3e9fc95();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new TropicalFishInfo((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static TropicalFishInfo Create(int color, int color2, int variant, int markVariant, string name)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            var handle = NativeMethods.TablePtr->C3.hs_create_b5f62752(color, color2, variant, markVariant, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new TropicalFishInfo((nint)handle);
+        }
+    }
+
+    public int mColor
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_13232aaa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_13232aaa((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mColor2
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_99bfb10c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_99bfb10c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMarkVariant
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_2fc0b4ef((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_2fc0b4ef((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6f54cc32((void*)__hosihikari_shim_handle);
+    }
+
+    public int mVariant
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_51d35eca((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_51d35eca((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_68d6f2dc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

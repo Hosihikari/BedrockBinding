@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum RealmConnectionLambda : int
 {
+    CompletedCallback = 0,
+    RetryCallback = 1,
+    ProgressScreenTickCallback = 2,
+    ProgressScreenOnCancelCallback = 3,
+    GameServerConnectProgressCallback = 4,
 }

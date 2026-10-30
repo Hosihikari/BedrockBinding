@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MingleComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MingleComponent(nint handle) : this(handle, true) { }
 
     internal MingleComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MingleComponent Borrow(nint handle) => new MingleComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,26 @@ public sealed unsafe partial class MingleComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MingleComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MingleComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MingleComponent clearPreviousPartnerId()
+    public int mMingleState
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MingleComponent((nint)NativeMethods.TablePtr->hs_method_82a79fba((void*)_handle), false);
+        get => NativeMethods.TablePtr->C2.hs_get_3d52190e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3d52190e((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchCurrentPartner(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPartnerId_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_f55fd879((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2f71770f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void resetState()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreviousPartnerId_Address
     {
-        NativeMethods.TablePtr->hs_method_76c0975e((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MingleComponent setMingleState(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MingleComponent((nint)NativeMethods.TablePtr->hs_method_c391721a((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MingleComponent setPartnerId(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MingleComponent((nint)NativeMethods.TablePtr->hs_method_9dfe8f2f((void*)_handle, (void*)arg0.Handle), false);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6e05c604((void*)__hosihikari_shim_handle);
     }
 }

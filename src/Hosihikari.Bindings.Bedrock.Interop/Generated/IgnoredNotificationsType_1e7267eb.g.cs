@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum IgnoredNotificationsType : int
 {
+    UnreadPost = 0,
+    RealmsInvite = 1,
+    Count = 2,
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TargetNearbyComponent
+public sealed unsafe partial class TargetNearbyComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TargetNearbyComponent(nint handle) : this(handle, true) { }
 
     internal TargetNearbyComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TargetNearbyComponent Borrow(nint handle) => new TargetNearbyComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,45 @@ public sealed unsafe partial class TargetNearbyComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TargetNearbyComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TargetNearbyComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool getWasInsideRange()
+    public float mPreviousDistance
     {
-        return NativeMethods.TablePtr->hs_method_441234c0((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_781f2534((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_781f2534((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getWasOutsideRange()
+    public bool mWasInsideRange
     {
-        return NativeMethods.TablePtr->hs_method_9460d41d((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_fbb4b4ba((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_fbb4b4ba((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getWasSeenLastTick()
+    public bool mWasOutsideRange
     {
-        return NativeMethods.TablePtr->hs_method_097b2a56((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_1ecb81ac((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_1ecb81ac((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setPreviousDistance(float arg0)
+    public bool mWasSeenLastTick
     {
-        NativeMethods.TablePtr->hs_method_086ac4e1((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C3.hs_get_7d0061d6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_7d0061d6((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setWasInsideRange(bool arg0)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_98d8378b((void*)_handle, arg0);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f94f3994((void*)__hosihikari_shim_handle);
+            }
 
-    public void setWasOutsideRange(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_75232378((void*)_handle, arg0);
-    }
-
-    public void setWasSeenLastTick(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_7dbafbc5((void*)_handle, arg0);
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

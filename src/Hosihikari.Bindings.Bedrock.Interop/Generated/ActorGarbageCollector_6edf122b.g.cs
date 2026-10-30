@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorGarbageCollector
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorGarbageCollector(nint handle) : this(handle, true) { }
 
     internal ActorGarbageCollector(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorGarbageCollector Borrow(nint handle) => new ActorGarbageCollector(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,36 @@ public sealed unsafe partial class ActorGarbageCollector
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorGarbageCollector Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorGarbageCollector Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clearChunkDiscardedEntities()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDiscardedSerializingEntities_Address
     {
-        NativeMethods.TablePtr->hs_method_ea308814((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_472d8c34((void*)__hosihikari_shim_handle);
     }
 
-    public void clearPendingEntities()
+    public bool mIsTearingDown
     {
-        NativeMethods.TablePtr->hs_method_3f508953((void*)_handle);
+        get => NativeMethods.TablePtr->C0.hs_get_ca0f4256((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_ca0f4256((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void garbageCollectEntity(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPendingEntitiesToRemove_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c51ce2b1((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void teardown()
+    {
+        NativeMethods.TablePtr->C0.hs_method_bec10795((void*)__hosihikari_shim_handle);
+    }
 
     public void update()
     {
-        NativeMethods.TablePtr->hs_method_70c47930((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_70c47930((void*)__hosihikari_shim_handle);
     }
 }

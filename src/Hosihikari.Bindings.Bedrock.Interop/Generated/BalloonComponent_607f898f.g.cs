@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BalloonComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BalloonComponent(nint handle) : this(handle, true) { }
 
     internal BalloonComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BalloonComponent Borrow(nint handle) => new BalloonComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,114 +33,85 @@ public sealed unsafe partial class BalloonComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string ATTACHED_TAG
+    public static string ATTACHED_TAG()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_20a919d0();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_2c9ce20f();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BalloonComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BalloonComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static float FENCE_BALLOON_RANGE
+    public static string MAX_HEIGHT_TAG()
     {
-        get => NativeMethods.TablePtr->hs_get_221a41c5();
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_0153ea23();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static float MAX_BALLOON_RANGE
+    public static string SHOULD_DROP_TAG()
     {
-        get => NativeMethods.TablePtr->hs_get_dcde25a6();
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_388f24ce();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string MAX_HEIGHT_TAG
+    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_2a32f114();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        NativeMethods.TablePtr->C0.hs_method_74d468e7((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public static string SHOULD_DROP_TAG
+    public void detach(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_f419186b();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        NativeMethods.TablePtr->C0.hs_method_81fba9cc((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? getBalloonForActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_7e3d926c((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void computeMaxHeight(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
-    {
-        NativeMethods.TablePtr->hs_method_c6ff83c1((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void detach(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f68df898((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getAttachedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_5d0e0234((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_c0792769((void*)actor.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? getBalloonForActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void integrate(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d8001798((void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+        NativeMethods.TablePtr->C0.hs_method_cc5c7c08((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public float getMaxHeight()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttachedID_Address
     {
-        return NativeMethods.TablePtr->hs_method_39ac4c90((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6b3cc5e6((void*)__hosihikari_shim_handle);
     }
 
-    public void integrate(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public float mMaxHeight
     {
-        NativeMethods.TablePtr->hs_method_530c47cc((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_a2080a5f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a2080a5f((void*)__hosihikari_shim_handle, value);
     }
 
-    public void onRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1)
+    public bool mShouldDropAttached
     {
-        NativeMethods.TablePtr->hs_method_c3a8bcfc((void*)_handle, (void*)arg0.Handle, arg1);
+        get => NativeMethods.TablePtr->C0.hs_get_49843e9a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_49843e9a((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    public void onRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, bool shouldPop)
     {
-        NativeMethods.TablePtr->hs_method_6428ee6b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C0.hs_method_9ce2f157((void*)__hosihikari_shim_handle, (void*)owner.Handle, shouldPop);
     }
 
-    public void setAttachedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper dataLoadHelper)
     {
-        NativeMethods.TablePtr->hs_method_c0bc1547((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_009414cc((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
-    public bool shouldPop(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    public void setAttachedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor toAttach)
     {
-        return NativeMethods.TablePtr->hs_method_6d07cfb0((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        NativeMethods.TablePtr->C0.hs_method_eda6e745((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)toAttach.Handle);
+    }
+
+    public bool shouldPop(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, nint removeAttached)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_48d4df39((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)removeAttached) != 0;
     }
 }

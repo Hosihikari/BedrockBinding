@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AppConfigs_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum MaelstromEduUsabilityStatus : int
+public enum MaelstromEduUsabilityStatus : byte
 {
+    Unknown = 0,
+    Unallowed = 1,
+    Allowed = 2,
 }

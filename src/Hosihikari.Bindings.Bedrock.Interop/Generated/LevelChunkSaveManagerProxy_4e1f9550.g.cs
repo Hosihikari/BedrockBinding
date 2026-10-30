@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelChunkSaveManagerProxy(nint handle) : this(handle, true) { }
 
     internal LevelChunkSaveManagerProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelChunkSaveManagerProxy Borrow(nint handle) => new LevelChunkSaveManagerProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,60 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkSaveManagerProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static LevelChunkSaveManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler arg1)
+    public bool _doesLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave)
     {
-        var handle = NativeMethods.TablePtr->hs_create_3becb938((void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_d269c5f0((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
+    }
+
+    public bool _doesNonActorDataInLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_57f6b4a9((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_22958140((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)chunkPos.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getRandomChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_d22a91b1((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getRandomDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager dimensionManager)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_699d98d1((void*)__hosihikari_shim_handle, (void*)dimensionManager.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
+    public void _queueTaskForChunkSave(nint task) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
+
+    public void _saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7248e82e((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)levelChunk.Handle);
+    }
+
+    public void _startLeaveGame()
+    {
+        NativeMethods.TablePtr->C1.hs_method_983ce2d4((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static LevelChunkSaveManagerProxy Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_853a6f14();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,71 +95,87 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
         return new LevelChunkSaveManagerProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkSaveManagerProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool doesLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, int arg1, int arg2)
+    public static LevelChunkSaveManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy arg0)
     {
-        return NativeMethods.TablePtr->hs_method_bf6e25ad((void*)_handle, (void*)arg0.Handle, arg1, arg2) != 0;
+        var handle = NativeMethods.TablePtr->C1.hs_create_a9bca45e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkSaveManagerProxy((nint)handle);
     }
 
-    public bool doesNonActorDataInLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, int arg1, int arg2)
+    public bool doesLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave)
     {
-        return NativeMethods.TablePtr->hs_method_65935ea8((void*)_handle, (void*)arg0.Handle, arg1, arg2) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_02fd24aa((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1)
+    public bool doesNonActorDataInLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_c2d9b17f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_cf71528a((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_88f810cc((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)chunkPos.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getRandomChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getRandomChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_ebdfc1d7((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_f9ff6cd9((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getRandomDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getRandomDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager dimensionManager)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_ecc109c4((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_b7f9d888((void*)__hosihikari_shim_handle, (void*)dimensionManager.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRandom_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_761e98eb((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void queueTaskForChunkSave_0a9352cf(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTaskGroup_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f6391289((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy((nint)NativeMethods.TablePtr->C1.hs_method_8d6dd182((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
-    public void queueTaskForChunkSave_90371165(nint arg0) =>
+    public void queueTaskForChunkSave(nint task) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
 
-    public void saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
+    public void saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->hs_method_61f49785((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_daca035a((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)levelChunk.Handle);
     }
 
     public void startLeaveGame()
     {
-        NativeMethods.TablePtr->hs_method_c2cf1555((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_c2cf1555((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_4e1f9550((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_4e1f9550((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

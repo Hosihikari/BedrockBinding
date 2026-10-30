@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BossEventSubscriptionManagerImpl : global::System.IDisposable
+public sealed unsafe partial class BossEventSubscriptionManagerImpl
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BossEventSubscriptionManagerImpl(nint handle) : this(handle, true) { }
 
     internal BossEventSubscriptionManagerImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BossEventSubscriptionManagerImpl Borrow(nint handle) => new BossEventSubscriptionManagerImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,69 +33,72 @@ public sealed unsafe partial class BossEventSubscriptionManagerImpl : global::Sy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_40ad1a69((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_40ad1a69((void*)__hosihikari_shim_handle);
     }
 
-    public static BossEventSubscriptionManagerImpl Create()
+    public bool _areBossEventSubscribersReady()
     {
-        var handle = NativeMethods.TablePtr->hs_create_df5798ff();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BossEventSubscriptionManagerImpl((nint)handle);
+        return NativeMethods.TablePtr->C0.hs_method_1389bfcc((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BossEventSubscriptionManagerImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _broadcastBossEvent(byte type)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b23054bf((void*)__hosihikari_shim_handle, type);
+    }
+
+    public void _broadcastBossEvent(byte type, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID id, global::Hosihikari.Bindings.Bedrock.Interop.BossEventPacket packet)
+    {
+        NativeMethods.TablePtr->C0.hs_method_8eb808ae((void*)__hosihikari_shim_handle, type, (void*)id.Handle, (void*)packet.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint _subscribeToBossEvent_ea28ce6f(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint _subscribeToBossEvent_7a691454(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool areBossEventSubscribersReady()
     {
-        return NativeMethods.TablePtr->hs_method_c00f65f4((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_0cb1b0ef((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void broadcastBossEvent(int arg0)
+    public void broadcastBossEvent(byte type)
     {
-        NativeMethods.TablePtr->hs_method_467de69a((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_467de69a((void*)__hosihikari_shim_handle, type);
     }
 
-    public void broadcastBossEvent(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, global::Hosihikari.Bindings.Bedrock.Interop.BossEventPacket arg2)
+    public void broadcastBossEvent(byte type, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID id, global::Hosihikari.Bindings.Bedrock.Interop.BossEventPacket packet)
     {
-        NativeMethods.TablePtr->hs_method_049a1b13((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C0.hs_method_441232b5((void*)__hosihikari_shim_handle, type, (void*)id.Handle, (void*)packet.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint subscribeToBossEvent_5bb2deac(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint subscribeToBossEvent_d1c4ddea(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnBossEvent_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_5dfde9db((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fdfd724b((void*)__hosihikari_shim_handle);
     }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnBossEventWithPacket_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_daaf06fb((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint subscribeToBossEvent_5bb2deac(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint subscribeToBossEvent_72aa22d4(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 }

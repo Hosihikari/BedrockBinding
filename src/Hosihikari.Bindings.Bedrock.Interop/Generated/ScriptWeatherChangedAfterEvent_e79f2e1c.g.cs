@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptWeatherChangedAfterEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptWeatherChangedAfterEvent(nint handle) : this(handle, true) { }
 
     internal ScriptWeatherChangedAfterEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptWeatherChangedAfterEvent Borrow(nint handle) => new ScriptWeatherChangedAfterEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,45 +33,88 @@ public sealed unsafe partial class ScriptWeatherChangedAfterEvent : global::Syst
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptWeatherChangedAfterEvent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Abi.SharedHandle? eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope arg1)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_66643530((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptWeatherChangedAfterEvent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ScriptWeatherChangedAfterEvent Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_78fb1a8e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilderReadOnly<ScriptModuleMinecraft::ScriptWeatherChangedAfterEvent>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilderReadOnly<ScriptModuleMinecraft::ScriptWeatherChangedAfterEvent>' requires --link-carrier or --virtual-dispatch.");
+        return new ScriptWeatherChangedAfterEvent((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilderReadOnly<ScriptModuleMinecraft::ScriptWeatherChangedAfterEvent>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bindV010() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilderReadOnly<ScriptModuleMinecraft::ScriptWeatherChangedAfterEvent>' requires --link-carrier or --virtual-dispatch.");
+    public static ScriptWeatherChangedAfterEvent Create(global::Hosihikari.Bindings.Abi.SharedHandle? eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope arg1)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_638297bb(eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_87ad0528(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ScriptWeatherChangedAfterEvent((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_80edf8ed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_e4d2429b());
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bindV010()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_548d0f65());
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimension_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_47328131((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsLightning
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_15ac7dff((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_15ac7dff((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsRaining
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_cd0c410e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_cd0c410e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWasLightning
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_d4f81250((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_d4f81250((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWasRaining
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_056d4826((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_056d4826((void*)__hosihikari_shim_handle, value);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_e79f2e1c((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_e79f2e1c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

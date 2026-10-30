@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SlotDescriptor
+public sealed unsafe partial class SlotDescriptor : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SlotDescriptor(nint handle) : this(handle, true) { }
 
     internal SlotDescriptor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SlotDescriptor Borrow(nint handle) => new SlotDescriptor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,68 @@ public sealed unsafe partial class SlotDescriptor
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SlotDescriptor Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SlotDescriptor Create_045dfc56(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void addAcceptedItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_1308fba0((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_7c6ba757((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void addAcceptedItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor itemDescriptor)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f5fd1ece((void*)__hosihikari_shim_handle, (void*)itemDescriptor.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_bf569c58() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAcceptedItems_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5874f393((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInteractText_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ac9e760d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_11f8b57b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnEquip_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9718a985((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnUnequip_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e2896f50((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSlot
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_89d96681((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_89d96681((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_72c8e915((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

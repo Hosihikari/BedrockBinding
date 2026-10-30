@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RandomPos
+public sealed unsafe partial class RandomPos : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RandomPos(nint handle) : this(handle, true) { }
 
     internal RandomPos(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RandomPos Borrow(nint handle) => new RandomPos(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,45 +33,63 @@ public sealed unsafe partial class RandomPos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RandomPos Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RandomPos Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static bool getPos(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg1, int arg2, int arg3, int arg4, int arg5)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3? generateRandomPos(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, int xzDist, int yDist, int yOffset, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? dir, bool canFly, bool canSwim, global::Hosihikari.Bindings.Bedrock.Interop.IntRange hoverHeight, int tries, byte blockTest)
     {
-        return NativeMethods.TablePtr->hs_method_aeaf2e2a((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5) != 0;
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_c9a44945((void*)random.Handle, (void*)mob.Handle, xzDist, yDist, yOffset, (void*)(dir?.Handle ?? 0), canFly, canSwim, (void*)hoverHeight.Handle, tries, blockTest, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_handle) : null;
     }
 
-    public static bool getPosAvoid(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg4, int arg5, int arg6)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3? generateRandomSpawnPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 inPos, int numAttempts, int xzDist, int yDist, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? dir)
     {
-        return NativeMethods.TablePtr->hs_method_13ba686e((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, (void*)arg4.Handle, arg5, arg6) != 0;
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_770baf8d((void*)region.Handle, (void*)random.Handle, (void*)inPos.Handle, numAttempts, xzDist, yDist, (void*)(dir?.Handle ?? 0), &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_handle) : null;
     }
 
-    public static bool getPosTowards(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg2, int arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg5)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3? getPos(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, int xzDist, int yDist, int tries, byte blockTest)
     {
-        return NativeMethods.TablePtr->hs_method_cc8ddadd((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, (void*)arg5.Handle) != 0;
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_86f37670((void*)mob.Handle, xzDist, yDist, tries, blockTest, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_handle) : null;
     }
 
-    public static bool getPosTowards(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg4)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3? getPosAvoid(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, int xzDist, int yDist, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 avoidPos, byte blockTest, int tries)
     {
-        return NativeMethods.TablePtr->hs_method_dfc2a79c((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, (void*)arg4.Handle) != 0;
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_67a2f31e((void*)mob.Handle, xzDist, yDist, (void*)avoidPos.Handle, blockTest, tries, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_handle) : null;
     }
 
-    public static bool getSpawnPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, int arg4, int arg5)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3? getPosInDirection(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, int xzDist, int yDist, int yOffset, bool canFly, bool canSwim, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? direction, global::Hosihikari.Bindings.Bedrock.Interop.IntRange hoverHeight, int tries, byte blockTest)
     {
-        return NativeMethods.TablePtr->hs_method_811ab504((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5) != 0;
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_67428cda((void*)mob.Handle, xzDist, yDist, yOffset, canFly, canSwim, (void*)(direction?.Handle ?? 0), (void*)hoverHeight.Handle, tries, blockTest, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3? getPosTowards(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, int xzDist, int yDist, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 towardsPos)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_39327843((void*)mob.Handle, xzDist, yDist, (void*)towardsPos.Handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_handle) : null;
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_62d88e75((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

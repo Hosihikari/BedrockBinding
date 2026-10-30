@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ExitVehicleSystemImpl
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExitVehicleSystemImpl(nint handle) : this(handle, true) { }
 
     internal ExitVehicleSystemImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExitVehicleSystemImpl Borrow(nint handle) => new ExitVehicleSystemImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,62 +33,47 @@ public sealed unsafe partial class ExitVehicleSystemImpl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExitVehicleSystemImpl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExitVehicleSystemImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Optional<FlagComponent<ExitFromPassengerFlag> const>' is not a known bindable declaration.", false)]
-    public static void _tickExitVehicle(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, bool arg13, nint arg14) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Optional<FlagComponent<ExitFromPassengerFlag> const>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createViews_636da5c7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createViews_17a2d402(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerEvents(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void singleTick(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg1)
+    public void _singleTick(nint executionContext, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
     {
-        NativeMethods.TablePtr->hs_method_599f5c1b((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_669dbb46((void*)__hosihikari_shim_handle, (void*)executionContext, (void*)entityContext.Handle);
     }
 
-    public void tick(nint arg0)
+    public void _tick(nint executionContext)
     {
-        NativeMethods.TablePtr->hs_method_faf1188e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C1.hs_method_4e67df85((void*)__hosihikari_shim_handle, (void*)executionContext);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Optional<const ExitFromPassengerFlagComponent>' is not a known bindable declaration.", false)]
+    public static void _tickExitVehicle(nint entity, nint passenger, nint aabb, nint svc, nint offsetsComponent, nint actorDataSeatOffset, nint rotation, nint exitFromPassengerFlag, nint actorIsBeingDestroyedFlag, nint ejectedByActivatorRailFlagComponent, nint baseGameVersion, nint vehicleView, nint modifier, nint executionContext, bool isClientSide, nint region) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Optional<const ExitFromPassengerFlagComponent>' is not a known bindable declaration.");
+
+    public bool mIsClient
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_951b504c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_af4bbd3e((void*)__hosihikari_shim_handle);
+    }
+
+    public void singleTick(nint executionContext, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
+    {
+        NativeMethods.TablePtr->C1.hs_method_dd4d645c((void*)__hosihikari_shim_handle, (void*)executionContext, (void*)entityContext.Handle);
+    }
+
+    public void tick(nint executionContext)
+    {
+        NativeMethods.TablePtr->C1.hs_method_971d5a3d((void*)__hosihikari_shim_handle, (void*)executionContext);
+    }
 }

@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptItemCustomComponentBeforeDurabilityDamageEvent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptItemCustomComponentBeforeDurabilityDamageEvent(nint handle) : this(handle, true) { }
 
     internal ScriptItemCustomComponentBeforeDurabilityDamageEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptItemCustomComponentBeforeDurabilityDamageEvent Borrow(nint handle) => new ScriptItemCustomComponentBeforeDurabilityDamageEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,57 @@ public sealed unsafe partial class ScriptItemCustomComponentBeforeDurabilityDama
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptItemCustomComponentBeforeDurabilityDamageEvent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptItemCustomComponentBeforeDurabilityDamageEvent Create_97919dc2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBinding' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBinding' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_037ff202(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_5c9d0f75(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setReturnValues(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg3)
+    public bool _shouldCancel()
     {
-        NativeMethods.TablePtr->hs_method_6ed5ff70((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_68fd7e08((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _updateEngineEvent(nint durabilityDamage, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg3)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d35d0093((void*)__hosihikari_shim_handle, (void*)durabilityDamage, (void*)item.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_e6bf2500());
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttackingEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_47a88987((void*)__hosihikari_shim_handle);
+    }
+
+    public int mDurabilityDamage
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_14df21cc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_14df21cc((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHitEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_15708cce((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6498a3c0((void*)__hosihikari_shim_handle);
+    }
+
+    public bool shouldCancel()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_72bcd86e((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void updateEngineEvent(nint durabilityDamage, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg3)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5a54d4fe((void*)__hosihikari_shim_handle, (void*)durabilityDamage, (void*)item.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 }

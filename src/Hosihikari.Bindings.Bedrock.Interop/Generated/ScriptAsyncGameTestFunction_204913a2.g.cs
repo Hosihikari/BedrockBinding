@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptAsyncGameTestFunction
+public sealed unsafe partial class ScriptAsyncGameTestFunction : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptAsyncGameTestFunction(nint handle) : this(handle, true) { }
 
     internal ScriptAsyncGameTestFunction(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptAsyncGameTestFunction Borrow(nint handle) => new ScriptAsyncGameTestFunction(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,142 @@ public sealed partial class ScriptAsyncGameTestFunction
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptAsyncGameTestFunction Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_52481dbf((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Scripting::Closure<Scripting::Future<void> (Scripting::TypedObjectHandle<ScriptModuleGameTest::ScriptGameTestHelper>)>' is not supported.", false)]
-    public static ScriptAsyncGameTestFunction Create(nint arg0, nint arg1, nint arg2) =>
+    public nint _ctor(nint scope, nint functionHandle, nint testName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<Scripting::Future<void> (Scripting::TypedObjectHandle<ScriptModuleGameTest::ScriptGameTestHelper>)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptAsyncGameTestFunction Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.", false)]
-    public nint run(nint arg0, nint arg1) =>
+    public nint _run(nint arg0, nint fnContext) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ScriptAsyncGameTestFunction Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_86bb214e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptAsyncGameTestFunction((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Scripting::Closure<Scripting::Future<void> (Scripting::TypedObjectHandle<ScriptModuleGameTest::ScriptGameTestHelper>)>' is not supported.", false)]
+    public static ScriptAsyncGameTestFunction Create(nint scope, nint functionHandle, nint testName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<Scripting::Future<void> (Scripting::TypedObjectHandle<ScriptModuleGameTest::ScriptGameTestHelper>)>' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFunction_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_56762d11((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.", false)]
+    public nint run(nint arg0, nint fnContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk103145_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3b98bf78((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3ffdca_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a9367420((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk42288f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f768d0fc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5533a3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_50fea800((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5b45ab_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a71cb05f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8b439f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ab69cadf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka1ced5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_344b7441((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb17bec_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cff38cac((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd5830f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cc5608df((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke22e3d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_290d50c4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkedce45_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_468fc8b3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf34e45_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_79527dfa((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfb10aa_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_072296eb((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_204913a2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
 public sealed unsafe partial class StorageAreaStateListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StorageAreaStateListener(nint handle) : this(handle, true) { }
 
     internal StorageAreaStateListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StorageAreaStateListener Borrow(nint handle) => new StorageAreaStateListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,69 +33,91 @@ public sealed unsafe partial class StorageAreaStateListener : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static StorageAreaStateListener Create()
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_9c014ee3();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StorageAreaStateListener((nint)handle);
+        NativeMethods.TablePtr->C0.hs_method_760733d6((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StorageAreaStateListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void initListener(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public void _onCriticalDiskError(bool bSet, nint errorCode)
     {
-        NativeMethods.TablePtr->hs_method_c9cc098c((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C0.hs_method_86ce6c70((void*)__hosihikari_shim_handle, bSet, (void*)errorCode);
     }
-
-    public void onCriticalDiskError(bool arg0, nint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_b94ff794((void*)_handle, arg0, (void*)arg1);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onExtendDiskSpace_874fc9e6(bool bSet, nint fileStorageAreaWeakPtr, ulong freeSpace, nint onHandledEventCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void onExtendDiskSpace_57a42ce9(bool arg0, nint arg1, ulong arg2, nint arg3) =>
+    public void _onExtendDiskSpace(nint bSet, nint storageAreaWeakPtr, ulong freeSpace, nint onHandledEventCallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void onLowDiskSpace(bool arg0)
+    public void _onLowDiskSpace(bool bSet, ulong freeSpace)
     {
-        NativeMethods.TablePtr->hs_method_18779a6f((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_1470e5b0((void*)__hosihikari_shim_handle, bSet, freeSpace);
     }
 
-    public void onOutOfDiskSpace(bool arg0)
+    public void _onOutOfDiskSpace(bool bSet, ulong freeSpace)
     {
-        NativeMethods.TablePtr->hs_method_8d940a79((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_4d117660((void*)__hosihikari_shim_handle, bSet, freeSpace);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void initListener(global::Hosihikari.Bindings.Abi.SharedHandle? fileStorageArea)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c9cc098c((void*)__hosihikari_shim_handle, fileStorageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFileStorageArea_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6e1dcdde((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9d338e79((void*)__hosihikari_shim_handle);
+    }
+
+    public void onCriticalDiskError(bool bSet, nint errorCode)
+    {
+        NativeMethods.TablePtr->C0.hs_method_6fd12a79((void*)__hosihikari_shim_handle, bSet, (void*)errorCode);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void onExtendDiskSpace(nint bSet, nint storageAreaWeakPtr, ulong freeSpace, nint onHandledEventCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void onLowDiskSpace(bool bSet, ulong freeSpace)
+    {
+        NativeMethods.TablePtr->C0.hs_method_66c45178((void*)__hosihikari_shim_handle, bSet, freeSpace);
+    }
+
+    public void onOutOfDiskSpace(bool bSet, ulong freeSpace)
+    {
+        NativeMethods.TablePtr->C0.hs_method_dbd48035((void*)__hosihikari_shim_handle, bSet, freeSpace);
+    }
+
+    public void removeListener()
+    {
+        NativeMethods.TablePtr->C0.hs_method_fc876894((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_eaac19c0((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_eaac19c0((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

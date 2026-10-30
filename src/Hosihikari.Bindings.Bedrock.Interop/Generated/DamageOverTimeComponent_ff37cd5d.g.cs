@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DamageOverTimeComponent
+public sealed unsafe partial class DamageOverTimeComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DamageOverTimeComponent(nint handle) : this(handle, true) { }
 
     internal DamageOverTimeComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DamageOverTimeComponent Borrow(nint handle) => new DamageOverTimeComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,39 @@ public sealed unsafe partial class DamageOverTimeComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DamageOverTimeComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DamageOverTimeComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public int mDamageTime
     {
-        NativeMethods.TablePtr->hs_method_a6fde56a((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_c4a60275((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c4a60275((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getDamageTime()
+    public int mDamageTimeInterval
     {
-        return NativeMethods.TablePtr->hs_method_3ed45683((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_90b665f8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_90b665f8((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getDamageTimeInterval()
+    public int mHurtValue
     {
-        return NativeMethods.TablePtr->hs_method_82ecb130((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_ae465d57((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ae465d57((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getHurtValue()
+    public void Dispose()
     {
-        return NativeMethods.TablePtr->hs_method_bb3db2ee((void*)_handle);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ff37cd5d((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
-    {
-        NativeMethods.TablePtr->hs_method_954261ab((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    public void setDamageTime(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_600e4abb((void*)_handle, arg0);
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

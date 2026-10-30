@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ActorDefinitionEventLoader
+public sealed unsafe partial class ActorDefinitionEventLoader : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorDefinitionEventLoader(nint handle) : this(handle, true) { }
 
     internal ActorDefinitionEventLoader(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorDefinitionEventLoader Borrow(nint handle) => new ActorDefinitionEventLoader(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,35 @@ public sealed partial class ActorDefinitionEventLoader
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorDefinitionEventLoader Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static void _loadCollection(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionEvent defEvent, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value collection, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion, global::Hosihikari.Bindings.Bedrock.Interop.ActorEventResponseFactory? responseFactory)
+    {
+        NativeMethods.TablePtr->C0.hs_method_05c58dd8((void*)defEvent.Handle, (void*)collection.Handle, (void*)minEngineVersion.Handle, (void*)(responseFactory?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorDefinitionEventLoader Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionEvent _loadEvent(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion, global::Hosihikari.Bindings.Bedrock.Interop.ActorEventResponseFactory? responseFactory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionEvent((nint)NativeMethods.TablePtr->C0.hs_method_41513d2d((void*)root.Handle, (void*)minEngineVersion.Handle, (void*)(responseFactory?.Handle ?? 0)));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionEvent' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint loadEvent(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionEvent' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static nint loadEvent(nint root, nint minEngineVersion, nint formatVersion, nint responseFactory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2a7bd65f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

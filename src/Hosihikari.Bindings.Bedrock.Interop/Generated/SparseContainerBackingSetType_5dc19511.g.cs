@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SparseContainerBackingSetType : int
 {
+    ClientScratchContainer = 0,
+    SetItem = 1,
+    PlayerSetArmor = 2,
+    PlayerSetOffhand = 3,
+    PlayerSetUIItem = 4,
 }

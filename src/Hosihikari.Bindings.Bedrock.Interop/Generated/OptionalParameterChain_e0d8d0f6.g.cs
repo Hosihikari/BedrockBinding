@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested;
 
-public sealed unsafe partial class OptionalParameterChain : global::System.IDisposable
+public sealed unsafe partial class OptionalParameterChain
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OptionalParameterChain(nint handle) : this(handle, true) { }
 
     internal OptionalParameterChain(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OptionalParameterChain Borrow(nint handle) => new OptionalParameterChain(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,26 @@ public sealed unsafe partial class OptionalParameterChain : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Dispose()
+    public int followingRuleIndex
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_e0d8d0f6((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C0.hs_get_c0c99a2e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_c0c99a2e((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    // The native field type is not projected; this is the address of the field storage.
+    public nint paramSymbol_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_05a4aa18((void*)__hosihikari_shim_handle);
+    }
+
+    public int parameterCount
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_34243992((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_34243992((void*)__hosihikari_shim_handle, value);
     }
 }

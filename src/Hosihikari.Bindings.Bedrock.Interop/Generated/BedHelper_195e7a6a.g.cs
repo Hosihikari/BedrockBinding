@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BedHelper
+public sealed unsafe partial class BedHelper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BedHelper(nint handle) : this(handle, true) { }
 
     internal BedHelper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BedHelper Borrow(nint handle) => new BedHelper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,81 @@ public sealed unsafe partial class BedHelper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BedHelper Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BedHelper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float getBedRotation(int arg0)
+    public float mBedOffsetX
     {
-        return NativeMethods.TablePtr->hs_method_a744b710((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_d902fd09((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d902fd09((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setBedPositionOffsets(int arg0, nint arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    public float mBedOffsetZ
     {
-        NativeMethods.TablePtr->hs_method_7a0a2f42((void*)_handle, arg0, (void*)arg1, (void*)arg2, (void*)arg3.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_6a3f1f50((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_6a3f1f50((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mEastDir
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_25bcfc69((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_25bcfc69((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMobOffsetEastX
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_8077dd96((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_8077dd96((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMobOffsetNorthZ
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_56a5c048((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_56a5c048((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMobOffsetSouthZ
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_89bf3b62((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_89bf3b62((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMobOffsetWestX
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_2899a97e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_2899a97e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNorthDir
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_71091d2f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_71091d2f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mSouthDir
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_faa76a80((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_faa76a80((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mWestDir
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_c27e503d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_c27e503d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_195e7a6a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum PackScope : int
+public enum PackScope : byte
 {
+    Global = 1,
+    AddOn = 2,
+    Level = 4,
+    World = 6,
+    Any = 7,
+    Default = 7,
+    System = 8,
 }

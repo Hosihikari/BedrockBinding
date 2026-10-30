@@ -4,7 +4,17 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BannerPatternItem_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Type : int
 {
+    CreeperCharge = 0,
+    SkullCharge = 1,
+    FlowerCharge = 2,
+    Thing = 3,
+    FieldMasoned = 4,
+    BordureIndented = 5,
+    Snout = 6,
+    Globe = 7,
+    Flow = 8,
+    Guster = 9,
+    Count = 10,
 }

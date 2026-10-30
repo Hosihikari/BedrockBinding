@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BinaryHeap
+public sealed unsafe partial class BinaryHeap : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BinaryHeap(nint handle) : this(handle, true) { }
 
     internal BinaryHeap(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BinaryHeap Borrow(nint handle) => new BinaryHeap(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,51 +33,50 @@ public sealed unsafe partial class BinaryHeap
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BinaryHeap Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BinaryHeap Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void changeCost(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? arg0, float arg1)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_20e84fe9((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+        NativeMethods.TablePtr->C0.hs_method_ff6b031a((void*)__hosihikari_shim_handle);
     }
 
-    public void clear()
+    public void changeCost(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? node, float newCost)
     {
-        NativeMethods.TablePtr->hs_method_13fbdfdd((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_a1aa80fe((void*)__hosihikari_shim_handle, (void*)(node?.Handle ?? 0), newCost);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? insert(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint heap_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d1c96213((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5a6b0c52((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? insert(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? node)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_c97eb395((void*)__hosihikari_shim_handle, (void*)(node?.Handle ?? 0));
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode((nint)__hs_handle, false) : null;
     }
 
-    public bool isEmpty()
+    public int sizeVar
     {
-        return NativeMethods.TablePtr->hs_method_56e0e79b((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_54357d56((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_54357d56((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? pop()
+    public void Dispose()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_548ee00b((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode((nint)__hs_handle, false) : null;
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_bc35d9a7((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

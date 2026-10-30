@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DepenetrationComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Bit : int
 {
+    IsAlwaysOneWayCollision = 0,
+    WasPenetratingLastFrame = 1,
+    IsStuckInCollider = 2,
+    IsStuckItem = 3,
+    PushTowardsClosestSpace = 4,
+    Count = 5,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayerContainerSetter : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerContainerSetter(nint handle) : this(handle, true) { }
 
     internal PlayerContainerSetter(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerContainerSetter Borrow(nint handle) => new PlayerContainerSetter(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,33 @@ public sealed unsafe partial class PlayerContainerSetter : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerContainerSetter Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static PlayerContainerSetter Create(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public void _setArmor(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        var handle = NativeMethods.TablePtr->hs_create_fbcb076c((void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_f26a6353((void*)__hosihikari_shim_handle, slot, (void*)item.Handle);
+    }
+
+    public void _setOffhandSlot(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ae984f0f((void*)__hosihikari_shim_handle, (void*)item.Handle);
+    }
+
+    public void _setPlayerUIItem(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        NativeMethods.TablePtr->C2.hs_method_23000772((void*)__hosihikari_shim_handle, slot, (void*)item.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static PlayerContainerSetter Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_98a783df();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,40 +68,54 @@ public sealed unsafe partial class PlayerContainerSetter : global::System.IDispo
         return new PlayerContainerSetter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerContainerSetter Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setArmor(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    public static PlayerContainerSetter Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerContainerSetter arg0)
     {
-        NativeMethods.TablePtr->hs_method_4795b09d((void*)_handle, arg0, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_cbec43cd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerContainerSetter((nint)handle);
     }
 
-    public void setOffhandSlot(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayer_Address
     {
-        NativeMethods.TablePtr->hs_method_c5313882((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_92d9220c((void*)__hosihikari_shim_handle);
     }
 
-    public void setPlayerUIItem(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerContainerSetter operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PlayerContainerSetter arg0)
     {
-        NativeMethods.TablePtr->hs_method_58472fa2((void*)_handle, arg0, (void*)arg1.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerContainerSetter((nint)NativeMethods.TablePtr->C2.hs_method_95e46b17((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void setArmor(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        NativeMethods.TablePtr->C2.hs_method_46fade01((void*)__hosihikari_shim_handle, slot, (void*)item.Handle);
+    }
+
+    public void setOffhandSlot(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d6d266d3((void*)__hosihikari_shim_handle, (void*)item.Handle);
+    }
+
+    public void setPlayerUIItem(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        NativeMethods.TablePtr->C2.hs_method_786d1a3c((void*)__hosihikari_shim_handle, slot, (void*)item.Handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_a3b30252((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_a3b30252((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

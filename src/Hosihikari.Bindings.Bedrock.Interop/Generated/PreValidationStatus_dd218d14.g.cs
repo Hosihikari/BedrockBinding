@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionMineBlock_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum PreValidationStatus : int
+public enum PreValidationStatus : byte
 {
+    Valid = 0,
+    Invalid = 1,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading;
 
 public sealed unsafe partial class PrioritizeSharedOwnership
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PrioritizeSharedOwnership(nint handle) : this(handle, true) { }
 
     internal PrioritizeSharedOwnership(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PrioritizeSharedOwnership Borrow(nint handle) => new PrioritizeSharedOwnership(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,58 @@ public sealed unsafe partial class PrioritizeSharedOwnership
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public void @lock()
     {
-        NativeMethods.TablePtr->hs_method_3c679db7((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_3c679db7((void*)__hosihikari_shim_handle);
     }
 
     public void lock_shared()
     {
-        NativeMethods.TablePtr->hs_method_13fd78ee((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_13fd78ee((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a0029710((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a0029710((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mReaderCount_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_15a1c61c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_15a1c61c((void*)__hosihikari_shim_handle);
     }
 
     public const ulong mWaitForZeroBit = 9223372036854775808;
 
-    public ulong mWaitingWriterCount
-    {
-        get => NativeMethods.TablePtr->hs_get_eddeb3d7((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_eddeb3d7((void*)_handle, value);
-    }
-
     // The native field type is not projected; this is the address of the field storage.
     public nint mZeroReaders_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_87242a01((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_87242a01((void*)__hosihikari_shim_handle);
     }
 
     public bool try_lock()
     {
-        return NativeMethods.TablePtr->hs_method_3f75b371((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_3f75b371((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool try_lock_shared()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b9ac5276((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void unlock()
     {
-        NativeMethods.TablePtr->hs_method_7a4a7976((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_7a4a7976((void*)__hosihikari_shim_handle);
     }
 
     public void unlock_shared()
     {
-        NativeMethods.TablePtr->hs_method_1c999482((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_1c999482((void*)__hosihikari_shim_handle);
     }
 }

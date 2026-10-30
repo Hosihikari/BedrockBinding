@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class IScriptItemCustomComponentRegistry
+public sealed unsafe partial class IScriptItemCustomComponentRegistry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IScriptItemCustomComponentRegistry(nint handle) : this(handle, true) { }
 
     internal IScriptItemCustomComponentRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IScriptItemCustomComponentRegistry Borrow(nint handle) => new IScriptItemCustomComponentRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,41 @@ public sealed partial class IScriptItemCustomComponentRegistry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getEventListener() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void setCerealContext(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        NativeMethods.TablePtr->C3.hs_method_96d2366e((void*)__hosihikari_shim_handle, (void*)ctx.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInitializeCompleteSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_63551e7b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreReloadSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_982a3e2d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStartupCompleteSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6824e474((void*)__hosihikari_shim_handle);
+    }
+
+    public int mState
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ee6fa5a1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ee6fa5a1((void*)__hosihikari_shim_handle, value);
     }
 }

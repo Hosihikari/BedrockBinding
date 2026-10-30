@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.PoolAliasBindingInternal;
 
 public sealed unsafe partial class RandomGroupPoolAliasBinding
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RandomGroupPoolAliasBinding(nint handle) : this(handle, true) { }
 
     internal RandomGroupPoolAliasBinding(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RandomGroupPoolAliasBinding Borrow(nint handle) => new RandomGroupPoolAliasBinding(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,36 @@ public sealed unsafe partial class RandomGroupPoolAliasBinding
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RandomGroupPoolAliasBinding Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RandomGroupPoolAliasBinding Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void appendResolvedAliases(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBinding_Nested.PoolAliasLookup arg1)
+    public void _appendResolvedAliases(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random, global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBinding_Nested.PoolAliasLookup inOutResolvedAliases)
     {
-        NativeMethods.TablePtr->hs_method_df7d4102((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_298a039d((void*)__hosihikari_shim_handle, (void*)random.Handle, (void*)inOutResolvedAliases.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forAllTargets(nint arg0) =>
+    public void _forAllTargets(nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void appendResolvedAliases(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random, global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBinding_Nested.PoolAliasLookup inOutResolvedAliases)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6975586a((void*)__hosihikari_shim_handle, (void*)random.Handle, (void*)inOutResolvedAliases.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void forAllTargets(nint fn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGroups_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a414bac5((void*)__hosihikari_shim_handle);
+    }
 }

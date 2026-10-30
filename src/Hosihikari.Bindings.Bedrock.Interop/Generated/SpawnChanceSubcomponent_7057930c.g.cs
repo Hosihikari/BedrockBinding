@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SpawnChanceSubcomponent : global::System.IDisposable
+public sealed unsafe partial class SpawnChanceSubcomponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SpawnChanceSubcomponent(nint handle) : this(handle, true) { }
 
     internal SpawnChanceSubcomponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SpawnChanceSubcomponent Borrow(nint handle) => new SpawnChanceSubcomponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,90 @@ public sealed unsafe partial class SpawnChanceSubcomponent : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static SpawnChanceSubcomponent Create()
+    public void _doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_93e07b35();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SpawnChanceSubcomponent((nint)handle);
+        NativeMethods.TablePtr->C3.hs_method_684d42c0((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SpawnChanceSubcomponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
+    public nint _getName()
     {
-        NativeMethods.TablePtr->hs_method_66d4dec7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_a8610a1e((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
+    {
+        NativeMethods.TablePtr->C3.hs_method_dacdf9c2((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+    public void _writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
+    {
+        NativeMethods.TablePtr->C3.hs_method_589ae651((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
+    {
+        NativeMethods.TablePtr->C3.hs_method_aa94efb0((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)arg1.Handle);
     }
 
     public nint getName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_46963252((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_631df9a4((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readfromJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
     {
-        NativeMethods.TablePtr->hs_method_48ccd0b6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_c8249dfb((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
-    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
+    public float mFirstSpawnChance
     {
-        NativeMethods.TablePtr->hs_method_184765d8((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_3c3e0900((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_3c3e0900((void*)__hosihikari_shim_handle, value);
     }
 
-
-    public void Dispose()
+    public int mFirstSpawnCount
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7057930c((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C3.hs_get_00168038((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_00168038((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public float mSecondSpawnChance
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a13155ac((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a13155ac((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mSecondSpawnCount
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_51a6cde5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_51a6cde5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mSpawnBaby
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b8322634((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_b8322634((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpawnDefinition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_73a9dd7e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpawnTriggers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_02fa1800((void*)__hosihikari_shim_handle);
+    }
+
+    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8e005780((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 }

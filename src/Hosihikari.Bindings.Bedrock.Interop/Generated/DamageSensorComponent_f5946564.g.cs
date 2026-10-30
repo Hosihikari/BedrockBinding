@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DamageSensorComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DamageSensorComponent(nint handle) : this(handle, true) { }
 
     internal DamageSensorComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DamageSensorComponent Borrow(nint handle) => new DamageSensorComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,52 +33,57 @@ public sealed unsafe partial class DamageSensorComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DamageSensorComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DamageSensorComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public float getAdjustedDamage(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg1, float arg2)
+    public static void _fillParameters(global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList inOutParameters, global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor? sender, global::Hosihikari.Bindings.Bedrock.Interop.Actor? damager)
     {
-        return NativeMethods.TablePtr->hs_method_c05cdabe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C1.hs_method_92407566((void*)inOutParameters.Handle, (void*)owner.Handle, (void*)(sender?.Handle ?? 0), (void*)(damager?.Handle ?? 0));
     }
 
-    public int getCause()
+    public byte _recordDamageAndCheckIfDealt(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor? sender, nint cause, global::Hosihikari.Bindings.Bedrock.Interop.Actor? damager, float amount, float preDamageHealth, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList parameters, bool willTrigger)
     {
-        return NativeMethods.TablePtr->hs_method_09eed6fe((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_9800d3de((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)(sender?.Handle ?? 0), (void*)cause, (void*)(damager?.Handle ?? 0), amount, preDamageHealth, (void*)parameters.Handle, willTrigger);
     }
 
-    public bool isFatal()
+    public float getAdjustedDamage(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float amount)
     {
-        return NativeMethods.TablePtr->hs_method_d19b80d5((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_21d5e813((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)source.Handle, amount);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_64538049(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_fba5fd5c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool recordBlockDamage(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, float arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
+    public int mDamageAmount
     {
-        return NativeMethods.TablePtr->hs_method_f5937398((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3.Handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_05c5e91d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_05c5e91d((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public bool recordGenericDamage(nint arg0, nint arg1, nint arg2, float arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    public int mDamageCause
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_d3ca446b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d3ca446b((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public bool recordGenericDamage(nint arg0, nint arg1, float arg2, float arg3, nint arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    public bool mDamageIsFatal
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_5634cfe6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_5634cfe6((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTriggers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_742dc8ea((void*)__hosihikari_shim_handle);
+    }
+
+    public byte recordBlockDamageAndCheckIfDealt(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, int cause, float amount, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos standingOnPos)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a209d920((void*)__hosihikari_shim_handle, (void*)owner.Handle, cause, amount, (void*)standingOnPos.Handle);
+    }
+
+    public byte recordGenericDamageAndCheckIfDealt(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float amount, float preDamageHealth, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList parameters, bool willTrigger)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_fbf29c2e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)source.Handle, amount, preDamageHealth, (void*)parameters.Handle, willTrigger);
+    }
 }

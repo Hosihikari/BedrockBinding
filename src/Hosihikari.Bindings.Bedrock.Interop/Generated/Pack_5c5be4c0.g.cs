@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Pack : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Pack(nint handle) : this(handle, true) { }
 
     internal Pack(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Pack Borrow(nint handle) => new Pack(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,155 +33,103 @@ public sealed unsafe partial class Pack : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mControlBlock_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_062340f2((void*)_handle);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__ EDUCATION_METADATA_FILE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->hs_get_00c9d190(), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Pack Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Pack Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static Pack Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public nint _ctor(nint loc, nint manifest, nint accessStrategy, nint subpacks, nint metadata) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Pack? createPack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, sbyte arg1, sbyte arg2, global::Hosihikari.Bindings.Bedrock.Interop.IPackManifestFactory arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport? arg5)
+    public void _dtor()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_a7e9fe9e((void*)arg0.Handle, arg1, arg2, (void*)arg3.Handle, (void*)arg4, (void*)(arg5?.Handle ?? 0));
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Pack((nint)__hs_handle) : null;
+        NativeMethods.TablePtr->C2.hs_method_3a45c110((void*)__hosihikari_shim_handle);
     }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ EDUCATION_METADATA_FILE()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_450bd491(), false);
+    }
+
+    public static Pack Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8a7f2bef();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Pack((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static Pack Create(nint loc, nint manifest, nint accessStrategy, nint subpacks, nint metadata) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Pack' has no accessible destructor.", false)]
+    public static nint createPack(nint io, nint fileLocation, nint type, nint origin, nint manifestFactory, nint keyProvider, nint report, nint zipSubDir) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Pack' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'PackMetadata' has no accessible destructor.", false)]
-    public static nint createPackMetadata(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static nint createPackMetadata(nint type, nint manifest, nint accessStrategy, nint report) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'PackMetadata' has no accessible destructor.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? getAccessStrategy_cfd14407()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_cfd14407((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest getManifest_09e5060b()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)NativeMethods.TablePtr->hs_method_09e5060b((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest getManifest_8b03b44b()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)NativeMethods.TablePtr->hs_method_8b03b44b((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest? getManifestPtr_6ba85a21()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_6ba85a21((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfoCollection? getSubpackInfoStack_c3d957aa()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c3d957aa((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfoCollection((nint)__hs_handle, false) : null;
-    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAccessStrategy_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b81ef798((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b81ef798((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDependenciesUpgrade_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a570440a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mManifest_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_47c22945((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_47c22945((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMetadata_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f6e6057d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f6e6057d((void*)__hosihikari_shim_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPackDeletedCallbacks_Address
+    public byte mRevision
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_12897f1d((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPackUpdatedCallbacks_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7a2d60c4((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_479864a0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_479864a0((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSubpackInfoStack_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_7aa7990f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7aa7990f((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public void move(nint arg0) =>
+    public void move(nint pack) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public void notifyDeleted()
-    {
-        NativeMethods.TablePtr->hs_method_0a02343d((void*)_handle);
-    }
-
-    public void notifyUpdated()
-    {
-        NativeMethods.TablePtr->hs_method_84ea0517((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void registerPackDeletedCallback(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void registerPackUpdatedCallback(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void unregisterPackDeletedCallback(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_99b12e57((void*)_handle, (void*)arg0);
-    }
-
-    public void unregisterPackUpdatedCallback(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_c7454131((void*)_handle, (void*)arg0);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<PackIdVersion>' has no generated wrapper.", false)]
+    public void upgradeLegacyDependencies(nint upgrade) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<PackIdVersion>' has no generated wrapper.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_5c5be4c0((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_5c5be4c0((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

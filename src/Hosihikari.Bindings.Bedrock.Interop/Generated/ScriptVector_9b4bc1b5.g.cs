@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptVector
+public sealed unsafe partial class ScriptVector : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptVector(nint handle) : this(handle, true) { }
 
     internal ScriptVector(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptVector Borrow(nint handle) => new ScriptVector(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,36 +33,84 @@ public sealed partial class ScriptVector
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptVector Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_a591a7d7());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptVector Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<ScriptModuleMinecraft::ScriptVector>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint divide(nint a, nint b) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<ScriptModuleMinecraft::ScriptVector>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptVector>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptVector>' requires --link-carrier or --virtual-dispatch.");
+    public float b
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_833dc7c4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_833dc7c4((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<ScriptModuleMinecraft::ScriptVector>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint divide(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<ScriptModuleMinecraft::ScriptVector>' requires --link-carrier or --virtual-dispatch.");
+    public float g
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ab1009bd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ab1009bd((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScriptModuleMinecraft::ScriptVector' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint normalized() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScriptModuleMinecraft::ScriptVector' requires --link-carrier or --virtual-dispatch.");
+    public float p
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_e031e0c1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e031e0c1((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float r
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_ee06232a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ee06232a((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float s
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9911b658((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9911b658((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float t
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_99283df4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_99283df4((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float x
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_25a7d58d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_25a7d58d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float y
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9ec5ad12((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9ec5ad12((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float z
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a5c4d738((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a5c4d738((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_9b4bc1b5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

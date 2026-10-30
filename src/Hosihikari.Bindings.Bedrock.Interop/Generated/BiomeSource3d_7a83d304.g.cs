@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BiomeSource3d
+public sealed unsafe partial class BiomeSource3d : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BiomeSource3d(nint handle) : this(handle, true) { }
 
     internal BiomeSource3d(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BiomeSource3d Borrow(nint handle) => new BiomeSource3d(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,79 +33,143 @@ public sealed unsafe partial class BiomeSource3d
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BiomeSource3d Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BiomeSource3d Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool containsOnly_584265d3(int xo, int yo, int zo, int r, nint allowed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool containsOnly(int arg0, int arg1, int arg2, int arg3, ulong[] arg4)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? __getBiome(nint getBiomeOptions)
     {
-        fixed (ulong* __hs_vectorData4 = arg4)
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_6a069387((void*)__hosihikari_shim_handle, (void*)getBiomeOptions);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.", false)]
+    public bool _containsOnly(int xo, int yo, int zo, int r, nint allowed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint biomeProvider, nint dimensionHeight) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public void _fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache? chunkLocalNoiseCache)
+    {
+        NativeMethods.TablePtr->C0.hs_method_703db671((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, (void*)(chunkLocalNoiseCache?.Handle ?? 0));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea _getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox box, uint scale)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->C0.hs_method_e7f242e6((void*)__hosihikari_shim_handle, (void*)box.Handle, scale));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea _getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox box, uint scale, nint getBiomeOptionsIn)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->C0.hs_method_26e9cce6((void*)__hosihikari_shim_handle, (void*)box.Handle, scale, (void*)getBiomeOptionsIn));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkVolume::VolumeOf<Biome>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getBiomeVolumeToFill(short chunkHeight, nint chunkMin, uint levelSeed, nint chunkLocalNoiseCache) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkVolume::VolumeOf<Biome>' requires --link-carrier or --virtual-dispatch.");
+
+    public int _getType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_cd94638e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _hasBiomeById(global::Hosihikari.Bindings.Bedrock.Interop.BiomeIdType id)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c75fa826((void*)__hosihikari_shim_handle, (void*)id.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BiomeHashType' is not a known bindable declaration.", false)]
+    public bool _hasBiomeByNameHash(nint hash) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BiomeHashType' is not a known bindable declaration.");
+
+    public static BiomeSource3d Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_91178283();
+        if (handle == null)
         {
-            return NativeMethods.TablePtr->hs_method_23e230d8((void*)_handle, arg0, arg1, arg2, arg3, __hs_vectorData4, (nuint)(arg4?.Length ?? 0)) != 0;
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeSource3d((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static BiomeSource3d Create(nint biomeProvider, nint dimensionHeight) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? _getBiome(nint getBiomeOptions)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_3a3871c8((void*)__hosihikari_shim_handle, (void*)getBiomeOptions);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
+    }
+
+    public void _populateBiomeSamples(nint biomeSamples, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache chunkLocalNoiseCache)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b7cd9aec((void*)__hosihikari_shim_handle, (void*)biomeSamples, (void*)chunkLocalNoiseCache.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.", false)]
+    public bool containsOnly(int xo, int yo, int zo, int r, nint allowed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.");
+
+    public void fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache? chunkLocalNoiseCache)
+    {
+        NativeMethods.TablePtr->C0.hs_method_1ee5d132((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, (void*)(chunkLocalNoiseCache?.Handle ?? 0));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox box, uint scale)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->C0.hs_method_1d23edc7((void*)__hosihikari_shim_handle, (void*)box.Handle, scale));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox box, uint scale, nint getBiomeOptionsIn)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->C0.hs_method_bcc33376((void*)__hosihikari_shim_handle, (void*)box.Handle, scale, (void*)getBiomeOptionsIn));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkVolume::VolumeOf<Biome>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getBiomeVolumeToFill(short chunkHeight, nint chunkMin, uint levelSeed, nint chunkLocalNoiseCache) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkVolume::VolumeOf<Biome>' requires --link-carrier or --virtual-dispatch.");
+
+    public int getType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4dc8e5b3((void*)__hosihikari_shim_handle);
+    }
+
+    public bool hasBiomeById(global::Hosihikari.Bindings.Bedrock.Interop.BiomeIdType id)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_92d8d476((void*)__hosihikari_shim_handle, (void*)id.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BiomeHashType' is not a known bindable declaration.", false)]
+    public bool hasBiomeByNameHash(nint hash) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BiomeHashType' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeProvider_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_97efb578((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionHeight_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bb506c8d((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_7a83d304((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    public void fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache arg1)
-    {
-        NativeMethods.TablePtr->hs_method_11cf7aaf((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? getBiome(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d1a30bca((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? getBiome(nint arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_cccb5fdf((void*)_handle, (void*)arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? getBiome(int arg0, int arg1, int arg2)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c302ea85((void*)_handle, arg0, arg1, arg2);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, uint arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->hs_method_0c9675a9((void*)_handle, (void*)arg0.Handle, arg1));
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, uint arg1, nint arg2)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->hs_method_10cd515d((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2));
-    }
-
-    public bool has(ulong arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_6a197394((void*)_handle, arg0) != 0;
-    }
-
-    public bool hasByHashId(ulong arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_0830d383((void*)_handle, arg0) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

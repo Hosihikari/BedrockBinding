@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockActorLevelListener
+public sealed unsafe partial class BlockActorLevelListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockActorLevelListener(nint handle) : this(handle, true) { }
 
     internal BlockActorLevelListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockActorLevelListener Borrow(nint handle) => new BlockActorLevelListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,56 @@ public sealed unsafe partial class BlockActorLevelListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockActorLevelListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockActorLevelListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
+    public void _onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
     {
-        NativeMethods.TablePtr->hs_method_e68336e0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_55150902((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
     }
 
-    public void onChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public void _onChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
     {
-        NativeMethods.TablePtr->hs_method_691e6461((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_715d46d6((void*)__hosihikari_shim_handle, (void*)lc.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _onSubChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, short absoluteSubChunkIndex, bool subChunkVisibilityChanged)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e2ee3a0d((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)lc.Handle, absoluteSubChunkIndex, subChunkVisibilityChanged);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        NativeMethods.TablePtr->C0.hs_method_1850639b((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
+    }
+
+    public void onChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        NativeMethods.TablePtr->C0.hs_method_8741d056((void*)__hosihikari_shim_handle, (void*)lc.Handle);
+    }
+
+    public void onSubChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, short absoluteSubChunkIndex, bool subChunkVisibilityChanged)
+    {
+        NativeMethods.TablePtr->C0.hs_method_6561e67c((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)lc.Handle, absoluteSubChunkIndex, subChunkVisibilityChanged);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a7d44717((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

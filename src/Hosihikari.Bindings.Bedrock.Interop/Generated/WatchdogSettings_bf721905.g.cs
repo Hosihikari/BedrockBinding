@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-public sealed unsafe partial class WatchdogSettings : global::System.IDisposable
+public sealed unsafe partial class WatchdogSettings
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WatchdogSettings(nint handle) : this(handle, true) { }
 
     internal WatchdogSettings(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WatchdogSettings Borrow(nint handle) => new WatchdogSettings(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,56 @@ public sealed unsafe partial class WatchdogSettings : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Dispose()
+    public bool mEnableExceptionHandling
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_bf721905((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C3.hs_get_0821f3c6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_0821f3c6((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public bool mEnableShutdown
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f95ef690((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_f95ef690((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mHangException
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_31c004e8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_31c004e8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mHangThresholdMs
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9f9dba03((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9f9dba03((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMemoryLimitMB
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_42bb8c2a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_42bb8c2a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMemoryWarningMB
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_3893ea42((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_3893ea42((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSlowThresholdMs_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_53322768((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpikeThresholdMs_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_157eaf2c((void*)__hosihikari_shim_handle);
     }
 }

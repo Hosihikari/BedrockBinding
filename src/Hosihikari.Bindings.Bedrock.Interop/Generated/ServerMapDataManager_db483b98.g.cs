@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerMapDataManager
+public sealed unsafe partial class ServerMapDataManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerMapDataManager(nint handle) : this(handle, true) { }
 
     internal ServerMapDataManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerMapDataManager Borrow(nint handle) => new ServerMapDataManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,43 +33,135 @@ public sealed unsafe partial class ServerMapDataManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerMapDataManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerMapDataManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData createMapSavedData(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeferredLoadData_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)NativeMethods.TablePtr->hs_method_db371007((void*)_handle, (void*)arg0.Handle), false);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_716abb16((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerOnCreateMapSavedDataCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    public void registerOnGameplayUserAddedSubscription(global::Hosihikari.Bindings.Bedrock.Interop.GameplayUserManager arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionManager_Address
     {
-        NativeMethods.TablePtr->hs_method_9d176866((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_68f4d517((void*)__hosihikari_shim_handle);
     }
 
-    public void requestMapInfo(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, bool arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGetNewUniqueID_Address
     {
-        NativeMethods.TablePtr->hs_method_790b22ce((void*)_handle, (void*)arg0.Handle, arg1);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b3a64f82((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public nint mLevelStorage
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2912e985((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_2912e985((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMapData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_620c14e4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMapDataManagerOptions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6a4029be((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnSaveLevelData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f363a07c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPacketSender_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ac9d9967((void*)__hosihikari_shim_handle);
+    }
+
+    public void __copyAndLockMap(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID originalMapUuid, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID newMapUuid)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b3e56945((void*)__hosihikari_shim_handle, (void*)originalMapUuid.Handle, (void*)newMapUuid.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData _createMapSavedData(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uuid)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)NativeMethods.TablePtr->C3.hs_method_1aff5f53((void*)__hosihikari_shim_handle, (void*)uuid.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnCreateMapSavedDataConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void _registerOnGameplayUserAddedSubscription(global::Hosihikari.Bindings.Bedrock.Interop.IGameplayUserManagerConnector gameplayUserManagerConnector)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ed9a0018((void*)__hosihikari_shim_handle, (void*)gameplayUserManagerConnector.Handle);
+    }
+
+    public void _requestMapInfo(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uuid, bool forceUpdate)
+    {
+        NativeMethods.TablePtr->C3.hs_method_41929740((void*)__hosihikari_shim_handle, (void*)uuid.Handle, forceUpdate);
+    }
+
+    public void _copyAndLockMap(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID originalMapUuid, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID newMapUuid)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a22e33a4((void*)__hosihikari_shim_handle, (void*)originalMapUuid.Handle, (void*)newMapUuid.Handle);
+    }
+
+    public void _onGameplayUserAdded(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a600c65b((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData createMapSavedData(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uuid)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)NativeMethods.TablePtr->C3.hs_method_665bd675((void*)__hosihikari_shim_handle, (void*)uuid.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnCreateMapSavedDataConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnCreateMapSavedData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b4fe13f9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserAdded_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_814954a0((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerOnGameplayUserAddedSubscription(global::Hosihikari.Bindings.Bedrock.Interop.IGameplayUserManagerConnector gameplayUserManagerConnector)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a852a52c((void*)__hosihikari_shim_handle, (void*)gameplayUserManagerConnector.Handle);
+    }
+
+    public void requestMapInfo(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uuid, bool forceUpdate)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0e1dcbbe((void*)__hosihikari_shim_handle, (void*)uuid.Handle, forceUpdate);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_db483b98((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

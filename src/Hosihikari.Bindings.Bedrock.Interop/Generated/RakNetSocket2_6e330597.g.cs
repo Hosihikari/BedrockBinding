@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
 public sealed unsafe partial class RakNetSocket2 : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakNetSocket2(nint handle) : this(handle, true) { }
 
     internal RakNetSocket2(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakNetSocket2 Borrow(nint handle) => new RakNetSocket2(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,78 +33,88 @@ public sealed unsafe partial class RakNetSocket2 : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetBoundAddress()
+    public static RakNetSocket2 Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_c6b40a2a((void*)_handle));
+        var handle = NativeMethods.TablePtr->C2.hs_create_b63baa8f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetSocket2((nint)handle);
     }
 
-    public static void GetMyAdapters(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.NetworkAdapter? arg0)
+    public static RakNetSocket2 Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakNetSocket2 arg0)
     {
-        NativeMethods.TablePtr->hs_method_0a8707dd((void*)(arg0?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->C2.hs_create_2d1babfa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetSocket2((nint)handle);
     }
 
-    public static void GetMyIP(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress? arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public int Send(nint sendParameters, nint file, uint line) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void SetMulticastInterface(int interfaceIndex)
     {
-        NativeMethods.TablePtr->hs_method_8249548a((void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_c7fb62c7((void*)__hosihikari_shim_handle, interfaceIndex);
     }
 
-    public int GetSocketType()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk164a1f_Address
     {
-        return NativeMethods.TablePtr->hs_method_a65f2987((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b3f7d159((void*)__hosihikari_shim_handle);
     }
 
-    public uint GetUserConnectionSocketIndex()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk45c154_Address
     {
-        return NativeMethods.TablePtr->hs_method_bdbd256d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_59376159((void*)__hosihikari_shim_handle);
     }
 
-    public bool IsBerkleySocket()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk71ae1a_Address
     {
-        return NativeMethods.TablePtr->hs_method_177dfa0b((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3c7d5111((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakNetSocket2 Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakNetSocket2 Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void SetMulticastInterface(int arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk923992_Address
     {
-        NativeMethods.TablePtr->hs_method_c7fb62c7((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_46be48ba((void*)__hosihikari_shim_handle);
     }
 
-    public void SetUserConnectionSocketIndex(uint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf42590_Address
     {
-        NativeMethods.TablePtr->hs_method_c1f675da((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_50151cf7((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakNetSocket2 operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakNetSocket2 arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakNetSocket2((nint)NativeMethods.TablePtr->C2.hs_method_84e676ee((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_6e330597((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_6e330597((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

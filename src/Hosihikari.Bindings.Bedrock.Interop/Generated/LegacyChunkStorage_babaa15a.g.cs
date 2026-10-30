@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LegacyChunkStorage
+public sealed unsafe partial class LegacyChunkStorage : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LegacyChunkStorage(nint handle) : this(handle, true) { }
 
     internal LegacyChunkStorage(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LegacyChunkStorage Borrow(nint handle) => new LegacyChunkStorage(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,222 @@ public sealed unsafe partial class LegacyChunkStorage
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ef46e2bb((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ef46e2bb((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyChunkStorage Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int mChunkSide
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_665de9e4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_665de9e4((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyChunkStorage Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint mDimension
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_86edeb70((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_86edeb70((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mLevel
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5520aa3e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_5520aa3e((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mLevelChunkBuilderData
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c4b9e4d9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c4b9e4d9((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLevelStorageAppSuspendSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7494c6de((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnSaveSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_44896d57((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnedParent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a733ad13((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mParent
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0059178a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_0059178a((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mShuttingDown_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_74a88929((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk, LevelChunkFinalDeleter>' is not a known bindable declaration.", false)]
+    public void _acquireDiscarded(nint ptr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk, LevelChunkFinalDeleter>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static LegacyChunkStorage Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public nint _ctor(nint parent, nint levelStorage, nint v, nint defaultBiome) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk,LevelChunkFinalDeleter>' is not a known bindable declaration.", false)]
-    public void acquireDiscarded(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk,LevelChunkFinalDeleter>' is not a known bindable declaration.");
-
-    public void loadChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, bool arg1)
+    public void _loadChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, bool forceImmediateReplacementDataLoad)
     {
-        NativeMethods.TablePtr->hs_method_3aa49a7e((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C1.hs_method_c0a5ee3a((void*)__hosihikari_shim_handle, (void*)lc.Handle, forceImmediateReplacementDataLoad);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public bool _saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
     {
-        return NativeMethods.TablePtr->hs_method_1af2f148((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_6c975a66((void*)__hosihikari_shim_handle, (void*)lc.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static LegacyChunkStorage Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fa7bd2a4();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyChunkStorage((nint)handle);
+    }
+
+    public static LegacyChunkStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyChunkStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c530abdf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyChunkStorage((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static LegacyChunkStorage Create(nint parent, nint levelStorage, nint v, nint defaultBiome) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _markChunkAsImported(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c99d28fe((void*)__hosihikari_shim_handle, (void*)pos.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk, LevelChunkFinalDeleter>' is not a known bindable declaration.", false)]
+    public void acquireDiscarded(nint ptr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk, LevelChunkFinalDeleter>' is not a known bindable declaration.");
+
+    public void loadChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, bool forceImmediateReplacementDataLoad)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f0608803((void*)__hosihikari_shim_handle, (void*)lc.Handle, forceImmediateReplacementDataLoad);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkBlockEntities_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_da934f33((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkEntities_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4f433b7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkMapMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ad2c421d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultBiome_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_89a3e300((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mDone
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_cf362500((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_cf362500((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntitiesFile_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5e54eec2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGrassNoise_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1d746872((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mImportedChunksPath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6de8530d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelPath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9fa39789((void*)__hosihikari_shim_handle);
+    }
+
+    public int mLoadedStorageVersion
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_42edfdba((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_42edfdba((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegionFile_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6b642c88((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegionFileMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8324d63e((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LegacyChunkStorage operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LegacyChunkStorage arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyChunkStorage((nint)NativeMethods.TablePtr->C1.hs_method_6aa3873e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public bool saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f37dc505((void*)__hosihikari_shim_handle, (void*)lc.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_babaa15a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

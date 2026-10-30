@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelEventManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelEventManager(nint handle) : this(handle, true) { }
 
     internal LevelEventManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelEventManager Borrow(nint handle) => new LevelEventManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,55 @@ public sealed unsafe partial class LevelEventManager : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelEventManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelEventCoordinator>>' is not a known bindable declaration.", false)]
+    public nint _ctor(bool isClientSide, nint levelEventCoordinator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelEventCoordinator>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelEventManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getLevelEventCompoundTagConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public void broadcastLevelEvent(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? arg3)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getLevelEventDataConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static LevelEventManager Create()
     {
-        NativeMethods.TablePtr->hs_method_99dfba58((void*)_handle, arg0, (void*)arg1.Handle, arg2, (void*)(arg3?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->C1.hs_create_f13b5f30();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelEventManager((nint)handle);
     }
 
-    public void broadcastLocalEvent(global::Hosihikari.Bindings.Bedrock.Interop.IDimension arg0, short arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelEventCoordinator>>' is not a known bindable declaration.", false)]
+    public static LevelEventManager Create(bool isClientSide, nint levelEventCoordinator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelEventCoordinator>>' is not a known bindable declaration.");
+
+    public void broadcastLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? userIdentifierToExclude)
     {
-        NativeMethods.TablePtr->hs_method_493493cf((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3);
+        NativeMethods.TablePtr->C1.hs_method_112b8397((void*)__hosihikari_shim_handle, type, (void*)tag.Handle, (void*)(userIdentifierToExclude?.Handle ?? 0));
+    }
+
+    public void broadcastLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? userIdentifierToExclude)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d5bfe682((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data, (void*)(userIdentifierToExclude?.Handle ?? 0));
+    }
+
+    public void broadcastLocalEvent(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d9111146((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, data);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -64,21 +92,51 @@ public sealed unsafe partial class LevelEventManager : global::System.IDisposabl
     public nint getLevelEventDataConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mIsClientSide
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_fa0db114((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelEventCompoundTagPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0d6b9962((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4ef2714((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelEventDataPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_490f085b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPacketSender_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bf7289f7((void*)__hosihikari_shim_handle);
+    }
+
+    public void potionSplash(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color color, bool instantaneousEffect)
+    {
+        NativeMethods.TablePtr->C1.hs_method_6206cd18((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)color.Handle, instantaneousEffect);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_422203f2((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_422203f2((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

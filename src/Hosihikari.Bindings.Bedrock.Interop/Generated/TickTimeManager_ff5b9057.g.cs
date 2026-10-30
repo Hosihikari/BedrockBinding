@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TickTimeManager
+public sealed unsafe partial class TickTimeManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TickTimeManager(nint handle) : this(handle, true) { }
 
     internal TickTimeManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TickTimeManager Borrow(nint handle) => new TickTimeManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,53 +33,58 @@ public sealed unsafe partial class TickTimeManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickTimeManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TickTimeManager Create(bool arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickTimeManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void incrementCurrentTick()
+    public void _update()
     {
-        NativeMethods.TablePtr->hs_method_c23fc35d((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_589c1435((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getWorldClockRegistry_c2df79bc() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    public void registerForGameplayUserManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.GameplayUserManager arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getWorldClockRegistry_d5880b48() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelData_Address
     {
-        NativeMethods.TablePtr->hs_method_d19c88c0((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e473360a((void*)__hosihikari_shim_handle);
     }
 
-    public void registerForPlayerSleepManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayerSleepManager arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPacketSender_Address
     {
-        NativeMethods.TablePtr->hs_method_3b850783((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1abed119((void*)__hosihikari_shim_handle);
     }
 
-    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWorldClockSubscriptions_Address
     {
-        NativeMethods.TablePtr->hs_method_7273f79d((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0a4bd173((void*)__hosihikari_shim_handle);
     }
 
     public void update()
     {
-        NativeMethods.TablePtr->hs_method_eef5d91e((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_eef5d91e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_71b254a9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_ff5b9057((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

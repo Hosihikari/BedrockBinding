@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AmbientSoundComponent
+public sealed unsafe partial class AmbientSoundComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AmbientSoundComponent(nint handle) : this(handle, true) { }
 
     internal AmbientSoundComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AmbientSoundComponent Borrow(nint handle) => new AmbientSoundComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,50 @@ public sealed unsafe partial class AmbientSoundComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AmbientSoundComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AmbientSoundComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void setAmbientSoundRemainingTime(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, float arg1)
+    public int mMaxAdditionalTimeTicks
     {
-        NativeMethods.TablePtr->hs_method_a3da8a38((void*)arg0.Handle, arg1);
+        get => NativeMethods.TablePtr->C0.hs_get_d4a545f2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d4a545f2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinimumTimeTicks
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_6b384cff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_6b384cff((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mNeedsInitialization
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b18162cb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b18162cb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mRemainingTimeTicks
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_09454848((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_09454848((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static void setAmbientSoundRemainingTime(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, float seconds)
+    {
+        NativeMethods.TablePtr->C0.hs_method_64c9a32b((void*)owner.Handle, seconds);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_275f1b45((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DimensionManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DimensionManager(nint handle) : this(handle, true) { }
 
     internal DimensionManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DimensionManager Borrow(nint handle) => new DimensionManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,41 @@ public sealed unsafe partial class DimensionManager : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DimensionManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IDimensionFactory>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint dimensionFactory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IDimensionFactory>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DimensionManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnNewDimensionCreatedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static DimensionManager Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnReadyForCustomDimensionRegistrationConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachDimension_b6d335e5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachDimension_03981ac4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getDimension(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0)
+    public static DimensionManager Create()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_1aba08b1((void*)_handle, (void*)arg0.Handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        var handle = NativeMethods.TablePtr->C1.hs_create_5d822022();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DimensionManager((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionDefinitionGroup_Nested.DimensionDefinition? getDimensionDefinition(string arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IDimensionFactory>>' is not a known bindable declaration.", false)]
+    public static DimensionManager Create(nint dimensionFactory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IDimensionFactory>>' is not a known bindable declaration.");
+
+    public void _registerCustomDimensionWithFactory(string name, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType type)
     {
-        var __hs_hasValue = false;
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -77,88 +77,171 @@ public sealed unsafe partial class DimensionManager : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_89ef6de9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
-            return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DimensionDefinitionGroup_Nested.DimensionDefinition((nint)__hs_handle) : null;
+            NativeMethods.TablePtr->C1.hs_method_1880f4ae((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)type.Handle);
         }
     }
 
-    public nint getDimensionDefinitionGroup()
+    public bool _registerDimensionWithDimensionDefinitionGroup(string name, global::Hosihikari.Bindings.Bedrock.Interop.DimensionDefinitionGroup_Nested.DimensionDefinition jsonDef)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4b4d033e((void*)_handle);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_2f5a09f4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)jsonDef.Handle) != 0;
+        }
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateDimension(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void forEachDimension_7e7159a2(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void forEachDimension_165436d1(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionType)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_b0e382c3((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_8101eb93((void*)__hosihikari_shim_handle, (void*)dimensionType.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getRandomDimension(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    public string getDimensionIdentifier(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType type)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_2a35698d((void*)_handle, (void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_5bd6e3c5((void*)__hosihikari_shim_handle, (void*)type.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnNewDimensionCreatedConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnReadyForCustomDimensionRegistrationConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionType)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_d2ba4389((void*)__hosihikari_shim_handle, (void*)dimensionType.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public bool hasDimensions()
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateDimension(string dimensionName)
     {
-        return NativeMethods.TablePtr->hs_method_23d8575f((void*)_handle) != 0;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(dimensionName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_f58a90a7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        }
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mDimensionDefinitions_Address
+    public nint mDimensionDefinitionGroup_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fa59b6e8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7c4b5a1a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionFactory_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f3cd62d1((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f3cd62d1((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mDimensions_Address
+    public nint mDimensionNameIdStore_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_970a1991((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerOnNewDimensionCreated(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setDimensionDefinitionGroup(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void shutdown()
-    {
-        NativeMethods.TablePtr->hs_method_81cbff23((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ff1c4299((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint unk_Address
+    public nint mDimensionRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b0c6bc88((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e04f7c8d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLevelStorageSaveSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5355ad42((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLevelStorageStartLeaveGameSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_01dee5eb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnNewDimensionCreatedPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2200402e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnReadyForCustomDimensionRegistrationPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fb209d33((void*)__hosihikari_shim_handle);
+    }
+
+    public void serverSaveDimensionNameIdStoreTable(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C1.hs_method_89996618((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionType? tryGetDimensionType(string identifier)
+    {
+        var __hs_hasValue = false;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(identifier, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_92c4dd0d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
+            return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)__hs_handle) : null;
+        }
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_9659e515((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_9659e515((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

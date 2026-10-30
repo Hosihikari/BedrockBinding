@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptStructureTemplate : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptStructureTemplate(nint handle) : this(handle, true) { }
 
     internal ScriptStructureTemplate(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptStructureTemplate Borrow(nint handle) => new ScriptStructureTemplate(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,38 @@ public sealed unsafe partial class ScriptStructureTemplate : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptStructureTemplate Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ScriptStructureTemplate Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptStructureTemplate arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptStructureTemplate arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_e640475e((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_5c027124((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint id, nint structureManager, nint scope, nint scriptStructureManager, nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_18055439((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getContentType()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_6e2b497b((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ScriptStructureTemplate Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6a28d2d0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,64 +73,108 @@ public sealed unsafe partial class ScriptStructureTemplate : global::System.IDis
         return new ScriptStructureTemplate((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptStructureTemplate>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptStructureTemplate>' requires --link-carrier or --virtual-dispatch.");
+    public static ScriptStructureTemplate Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptStructureTemplate arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6419a5dc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,AnimationMode>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bindAnimationModeEnum() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,AnimationMode>' requires --link-carrier or --virtual-dispatch.");
+        return new ScriptStructureTemplate((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Mirror>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bindMirrorEnum() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Mirror>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
+    public static ScriptStructureTemplate Create(nint id, nint structureManager, nint scope, nint scriptStructureManager, nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Rotation>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bindRotationEnum() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Rotation>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::InvalidArgumentError' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _createBoundsError(int index, nint pos, nint size) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::InvalidArgumentError' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,StructureRedstoneSaveMode>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bindStructureSaveModeEnum() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,StructureRedstoneSaveMode>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_4054541e());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>,ScriptModuleMinecraft::ScriptInvalidStructureError,Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBlockPermutation(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>,ScriptModuleMinecraft::ScriptInvalidStructureError,Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EnumBinding bindAnimationModeEnum()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EnumBinding((nint)NativeMethods.TablePtr->C3.hs_method_9134a795());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,ScriptModuleMinecraft::ScriptInvalidStructureError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3,ScriptModuleMinecraft::ScriptInvalidStructureError>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EnumBinding bindMirrorEnum()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EnumBinding((nint)NativeMethods.TablePtr->C3.hs_method_574db769());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidStructureError,Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint isWaterlogged(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool,ScriptModuleMinecraft::ScriptInvalidStructureError,Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EnumBinding bindRotationEnum()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EnumBinding((nint)NativeMethods.TablePtr->C3.hs_method_4d8679cc());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EnumBinding bindStructureSaveModeEnum()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EnumBinding((nint)NativeMethods.TablePtr->C3.hs_method_dd9ea6b2());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptStructureTemplate>,ScriptModuleMinecraft::ScriptInvalidStructureError,Scripting::EngineError,Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint saveAs(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptStructureTemplate>,ScriptModuleMinecraft::ScriptInvalidStructureError,Scripting::EngineError,Scripting::InvalidArgumentError>' requires --link-carrier or --virtual-dispatch.");
+    public string getContentType()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_7b395a68((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidStructureError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint saveToWorld() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,ScriptModuleMinecraft::ScriptInvalidStructureError>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate? getStructureTemplate()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_9be0aa07((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,Scripting::InvalidArgumentError,ScriptModuleMinecraft::ScriptInvalidStructureError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setBlockPermutation(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void,Scripting::InvalidArgumentError,ScriptModuleMinecraft::ScriptInvalidStructureError>' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a3095901((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelStorage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c62da7c6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ea351b95((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptStructureManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4fa44fb0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d0e093fa((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptStructureTemplate operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptStructureTemplate arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptStructureTemplate((nint)NativeMethods.TablePtr->C3.hs_method_81056b23((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_432ec0a9((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_432ec0a9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

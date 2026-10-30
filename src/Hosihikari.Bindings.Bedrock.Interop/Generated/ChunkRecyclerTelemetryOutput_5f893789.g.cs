@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ChunkRecyclerTelemetryOutput
+public sealed unsafe partial class ChunkRecyclerTelemetryOutput
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkRecyclerTelemetryOutput(nint handle) : this(handle, true) { }
 
     internal ChunkRecyclerTelemetryOutput(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkRecyclerTelemetryOutput Borrow(nint handle) => new ChunkRecyclerTelemetryOutput(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,80 @@ public sealed partial class ChunkRecyclerTelemetryOutput
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkRecyclerTelemetryOutput Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public ulong mActiveOverworldChunksAvg
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3eee5262((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_3eee5262((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkRecyclerTelemetryOutput Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBucketPercentages_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7628a965((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong mChunkRadiusAvg
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_bfcc7b05((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_bfcc7b05((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_9671a9fe() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public ulong mDeletedChunks
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_7454f2a6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_7454f2a6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mGeneratedChunks
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_7d19461a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_7d19461a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsClientSideGenerationEnabled
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_460a2e6d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_460a2e6d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsFlatWorld
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_ddea0b5d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_ddea0b5d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mMaximumOverworldPlayers
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_efbda50b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_efbda50b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mOverworldPlayerAvg
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_97395e33((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_97395e33((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mSimulationDistance
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_1baa0999((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_1baa0999((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mTimeSeconds
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_d5201165((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d5201165((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mTotalGenTimeSeconds
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_fa8909b7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_fa8909b7((void*)__hosihikari_shim_handle, value);
+    }
 }

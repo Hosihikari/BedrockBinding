@@ -2,9 +2,22 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.CerealHelpers_Nested.Member_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.CerealHelpers.Member_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum Type : int
+public enum Type : byte
 {
+    Boolean = 0,
+    Number = 1,
+    String = 2,
+    Object = 3,
+    Array = 4,
+    Vec3 = 5,
+    ExpressionNode = 6,
+    IntRange = 7,
+    ItemDescriptor = 8,
+    DefinitionTrigger = 9,
+    IdentifierString = 10,
+    Color255rgb = 11,
+    CraftingTags = 12,
+    Brightness = 13,
 }

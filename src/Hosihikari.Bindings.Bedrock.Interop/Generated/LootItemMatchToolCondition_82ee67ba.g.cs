@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LootItemMatchToolCondition
+public sealed unsafe partial class LootItemMatchToolCondition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LootItemMatchToolCondition(nint handle) : this(handle, true) { }
 
     internal LootItemMatchToolCondition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LootItemMatchToolCondition Borrow(nint handle) => new LootItemMatchToolCondition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,37 +33,125 @@ public sealed unsafe partial class LootItemMatchToolCondition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootItemMatchToolCondition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IntRange' is not copy-constructible.", false)]
-    public static LootItemMatchToolCondition Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IntRange' is not copy-constructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootItemMatchToolCondition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool applies(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7dec2c_Address
     {
-        return NativeMethods.TablePtr->hs_method_0e8e7fa0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_31d4bd67((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint deserialize(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool __applies(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_b470efac((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)context.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int _getConditionType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_5c10e742((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static LootItemMatchToolCondition Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e23a3029();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootItemMatchToolCondition((nint)handle);
+    }
+
+    public static LootItemMatchToolCondition Create(global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c5a0aab9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootItemMatchToolCondition((nint)handle);
+    }
+
+    public bool _applies(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_13e72e97((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)context.Handle) != 0;
+    }
+
+    public bool _doItemTagsMatch(global::Hosihikari.Bindings.Bedrock.Interop.Item item)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_5071c440((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LootItemCondition' has no accessible destructor.", false)]
+    public static nint deserialize(nint @object) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LootItemCondition' has no accessible destructor.");
+
+    public int getConditionType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_852cdd3b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk32586a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0a0b1b31((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk361680_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c86949b5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7efdcf_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_075e0aa0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka00550_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1c8b98ad((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcc3703_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1729d15d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkeb8bef_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a0ebf42d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf68036_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ac0b21c6((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition((nint)NativeMethods.TablePtr->C2.hs_method_dabd0ff4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_82ee67ba((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

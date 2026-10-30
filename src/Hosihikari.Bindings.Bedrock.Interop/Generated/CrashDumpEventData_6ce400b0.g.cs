@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CrashDumpEventData
+public sealed unsafe partial class CrashDumpEventData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CrashDumpEventData(nint handle) : this(handle, true) { }
 
     internal CrashDumpEventData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CrashDumpEventData Borrow(nint handle) => new CrashDumpEventData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,31 +33,76 @@ public sealed partial class CrashDumpEventData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CrashDumpEventData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CrashDumpEventData Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CrashDumpEventData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint kFormat
+    public nint _ctor(ushort tag0, ushort tag1)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C1.hs_method_9b9cb05d((void*)__hosihikari_shim_handle, tag0, tag1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static CrashDumpEventData Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d1562216();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CrashDumpEventData((nint)handle);
+    }
+
+    public static CrashDumpEventData Create(ushort tag0, ushort tag1)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_37f33cd9(tag0, tag1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CrashDumpEventData((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const CrashDumpFormatEntryImpl (&)[4]' is not supported.", false)]
+    public static nint kFormat() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const CrashDumpFormatEntryImpl (&)[4]' is not supported.");
+
+    public int mEventThreadId
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_efd21979((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_efd21979((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mTag0
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ab51076d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ab51076d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mTag1
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_d5c26027((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d5c26027((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mTimeStamp
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_19f0c822((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_19f0c822((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_6ce400b0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

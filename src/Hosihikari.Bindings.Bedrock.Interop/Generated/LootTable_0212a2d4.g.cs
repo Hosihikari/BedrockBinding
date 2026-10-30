@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LootTable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LootTable(nint handle) : this(handle, true) { }
 
     internal LootTable(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LootTable Borrow(nint handle) => new LootTable(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,36 @@ public sealed unsafe partial class LootTable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootTable Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootTable Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
+    public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value table, bool usingUpcomingCreatorFeaturesExperiment, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion jsonVersion)
     {
-        NativeMethods.TablePtr->hs_method_ccb6e3d4((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_f010bb36((void*)__hosihikari_shim_handle, (void*)table.Handle, usingUpcomingCreatorFeaturesExperiment, (void*)jsonVersion.Handle);
     }
 
-    public void fill(global::Hosihikari.Bindings.Bedrock.Interop.Container arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
+    public void fill(global::Hosihikari.Bindings.Bedrock.Interop.Container container, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
-        NativeMethods.TablePtr->hs_method_97624959((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_57d45b85((void*)__hosihikari_shim_handle, (void*)container.Handle, (void*)random.Handle, (void*)context.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ItemStack' is not supported.", false)]
-    public nint getRandomItems(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ItemStack' is not supported.");
+    public string getDir()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_27278249((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dc995e4e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPools_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5e4eae25((void*)__hosihikari_shim_handle);
+    }
 }

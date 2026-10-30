@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
 public sealed unsafe partial class ChunkGeneratorStructureState : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkGeneratorStructureState(nint handle) : this(handle, true) { }
 
     internal ChunkGeneratorStructureState(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkGeneratorStructureState Borrow(nint handle) => new ChunkGeneratorStructureState(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,94 +33,64 @@ public sealed unsafe partial class ChunkGeneratorStructureState : global::System
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkGeneratorStructureState Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ChunkGeneratorStructureState Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState arg0)
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_7346b301((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ChunkGeneratorStructureState((nint)handle);
+        NativeMethods.TablePtr->C4.hs_method_28d9f3f7((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<br::worldgen::StructureSet const>' is not supported.", false)]
-    public static nint createFlat_c603d680(long arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<br::worldgen::StructureSet const>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<const br::worldgen::StructureSet>' is not supported.", false)]
+    public static nint createFlat(long levelSeed, nint biomeSource, nint structureOverrides) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<const br::worldgen::StructureSet>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createFlat_4400de1b(long arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState createNormal(long arg0, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState createNormal(long levelSeed, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource biomeSource, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry allStructures)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState((nint)NativeMethods.TablePtr->hs_method_3afa4893(arg0, (void*)arg1.Handle, (void*)arg2.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState((nint)NativeMethods.TablePtr->C4.hs_method_eb982308(levelSeed, (void*)biomeSource.Handle, (void*)allStructures.Handle));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState createVoid(long arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint findNearestStructureFeature(nint dimension, nint feature, nint origin, nint biomeSource, bool mustBeInNewChunks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public long mLevelSeed
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState((nint)NativeMethods.TablePtr->hs_method_e0c9ffe6(arg0));
+        get => NativeMethods.TablePtr->C4.hs_get_7ffd4803((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_7ffd4803((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? findNearestStructureFeature(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, sbyte arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg3, bool arg4)
+    public ulong mMaxStructureCount
     {
-        var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c33001e0((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3.Handle, arg4, &__hs_hasValue);
-        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
-    }
-
-    public ulong mSeed
-    {
-        get => NativeMethods.TablePtr->hs_get_2ba79c66((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_2ba79c66((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_c9ea2708((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_c9ea2708((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mSeed64_Address
+    public nint mPossibleStructures_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_210915c8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_44ff80be((void*)__hosihikari_shim_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mStructureSetMap_Address
+    public long mRingsSeed
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_38875250((void*)_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_fcf9e5ce((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_fcf9e5ce((void*)__hosihikari_shim_handle, value);
     }
-
-    public ulong mStructureSetMapSize
-    {
-        get => NativeMethods.TablePtr->hs_get_86eded8f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_86eded8f((void*)_handle, value);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_a36e55e5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_f2b2bbc8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_166c48a1((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_166c48a1((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ShiftedDurationAmplifier
+public sealed unsafe partial class ShiftedDurationAmplifier : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ShiftedDurationAmplifier(nint handle) : this(handle, true) { }
 
     internal ShiftedDurationAmplifier(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ShiftedDurationAmplifier Borrow(nint handle) => new ShiftedDurationAmplifier(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,52 @@ public sealed unsafe partial class ShiftedDurationAmplifier
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ShiftedDurationAmplifier Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ShiftedDurationAmplifier Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getTickInterval(int arg0)
+    public int _getTickInterval(int amplification)
     {
-        return NativeMethods.TablePtr->hs_method_df872f34((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_909d728d((void*)__hosihikari_shim_handle, amplification);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool shouldBuff(int arg0, int arg1)
+    public bool _shouldBuff(int remainingDuration, int amplification)
     {
-        return NativeMethods.TablePtr->hs_method_68ce67ee((void*)_handle, arg0, arg1) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_7787dfb5((void*)__hosihikari_shim_handle, remainingDuration, amplification) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public int getTickInterval(int amplification)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_5f100486((void*)__hosihikari_shim_handle, amplification);
+    }
+
+    public int mShiftedValue
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_210fc8bd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_210fc8bd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool shouldBuff(int remainingDuration, int amplification)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_dc3a870a((void*)__hosihikari_shim_handle, remainingDuration, amplification) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_71f03b49((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

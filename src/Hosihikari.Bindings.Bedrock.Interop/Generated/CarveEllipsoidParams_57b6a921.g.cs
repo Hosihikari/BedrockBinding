@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.CaveFeature_Nested.CachedMetaData;
+namespace Hosihikari.Bindings.Bedrock.Interop.CaveFeature_Nested.CachedMetaData_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CarveEllipsoidParams
+public sealed unsafe partial class CarveEllipsoidParams
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CarveEllipsoidParams(nint handle) : this(handle, true) { }
 
     internal CarveEllipsoidParams(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CarveEllipsoidParams Borrow(nint handle) => new CarveEllipsoidParams(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,45 @@ public sealed partial class CarveEllipsoidParams
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCarvingParameters_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b21f1176((void*)__hosihikari_shim_handle);
+    }
+
+    public int mCurrentStep
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_7016ba65((void*)__hosihikari_shim_handle);
+    }
+
+    public float mHorizontalRadius
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_dcfcfd7e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStartPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_aeeb6579((void*)__hosihikari_shim_handle);
+    }
+
+    public float mThickness
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3d011662((void*)__hosihikari_shim_handle);
+    }
+
+    public int mTotalSteps
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_1345911b((void*)__hosihikari_shim_handle);
+    }
+
+    public float mVerticalRadius
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_89c2152c((void*)__hosihikari_shim_handle);
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakWebSocketDataFrame
+public sealed unsafe partial class RakWebSocketDataFrame : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakWebSocketDataFrame(nint handle) : this(handle, true) { }
 
     internal RakWebSocketDataFrame(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakWebSocketDataFrame Borrow(nint handle) => new RakWebSocketDataFrame(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,107 @@ public sealed unsafe partial class RakWebSocketDataFrame
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakWebSocketDataFrame Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakWebSocketDataFrame Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void writeFrameToStream(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg0, nint arg1, uint arg2, int arg3, bool arg4, uint arg5)
+    public static RakWebSocketDataFrame Create()
     {
-        NativeMethods.TablePtr->hs_method_1260d611((void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4, arg5);
+        var handle = NativeMethods.TablePtr->C2.hs_create_9b54b76e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakWebSocketDataFrame((nint)handle);
+    }
+
+    public static RakWebSocketDataFrame Create(global::Hosihikari.Bindings.Bedrock.Interop.RakWebSocketDataFrame arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b14f3e6a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakWebSocketDataFrame((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk22558c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0e46fbf6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk226a4a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_456408af((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2f8588_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7e48febe((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk380434_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fccbc2e5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk61d632_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e105490c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk670dec_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ffcba407((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk892763_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_14fbf4c2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk998e6c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f1e4c66b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf19b36_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d7d81459((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakWebSocketDataFrame operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakWebSocketDataFrame arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakWebSocketDataFrame((nint)NativeMethods.TablePtr->C2.hs_method_20174a3c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public static void writeFrameToStream(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.BitStream stream, nint payload, uint size, byte opCode, bool isFin, uint maskKey)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d52e4d83((void*)stream.Handle, (void*)payload, size, opCode, isFin, maskKey);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e581708a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CraftableCompounds : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CraftableCompounds(nint handle) : this(handle, true) { }
 
     internal CraftableCompounds(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CraftableCompounds Borrow(nint handle) => new CraftableCompounds(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,32 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void __registerCompound(nint input, nint result, nint reaction, nint containerOverride) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public nint _ctor()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_2f9bbaee((void*)__hosihikari_shim_handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_621e1373((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
     public static CraftableCompounds Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_7a6cf7e3();
+        var handle = NativeMethods.TablePtr->C0.hs_create_7a6cf7e3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,43 +67,92 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
         return new CraftableCompounds((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CraftableCompounds Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public nint _getCompoundId(nint input) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public nint getComponents(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
+    public void _registerCompound(global::Hosihikari.Bindings.Bedrock.Interop.ChemistryIngredient[] input, byte result, byte reaction, byte containerOverride, int stackCount)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b0c3387f((void*)_handle, (void*)arg0.Handle);
+        var __hs_vectorItems0 = input;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            NativeMethods.TablePtr->C0.hs_method_015a4f64((void*)__hosihikari_shim_handle, result, reaction, containerOverride, stackCount, __hs_vectorData0, (nuint)(input?.Length ?? 0));
+        }
+    }
+
+    public void _registerCompound(global::Hosihikari.Bindings.Bedrock.Interop.ChemistryIngredient[] input, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack result, byte reaction, byte containerOverride)
+    {
+        var __hs_vectorItems0 = input;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            NativeMethods.TablePtr->C0.hs_method_4f365b2c((void*)__hosihikari_shim_handle, (void*)result.Handle, reaction, containerOverride, __hs_vectorData0, (nuint)(input?.Length ?? 0));
+        }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public nint getCompound(nint arg0) =>
+    public void _registerCompound(nint input, nint result, nint reaction, nint containerOverride) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public nint getReaction(nint arg0) =>
+    public nint getCompound(nint components) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public nint getReaction(nint components) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mComponentsToCompound_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_18d2ee44((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mComponentsToContainerOverride_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7ddf4c4c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mComponentsToReaction_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_66d92176((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCompoundToComponents_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3f4ee92a((void*)__hosihikari_shim_handle);
+    }
 
     public void registerCompounds()
     {
-        NativeMethods.TablePtr->hs_method_49ebc3cd((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_49ebc3cd((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ab1253bb((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_ab1253bb((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

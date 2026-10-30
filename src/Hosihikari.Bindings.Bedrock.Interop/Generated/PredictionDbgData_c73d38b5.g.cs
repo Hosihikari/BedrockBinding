@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class PredictionDbgData
+public sealed unsafe partial class PredictionDbgData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PredictionDbgData(nint handle) : this(handle, true) { }
 
     internal PredictionDbgData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PredictionDbgData Borrow(nint handle) => new PredictionDbgData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,84 @@ public sealed partial class PredictionDbgData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static PredictionDbgData Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6e5182d1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PredictionDbgData((nint)handle);
+    }
+
+    public static PredictionDbgData Create(global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.PredictionDbgData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_89ebd59d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PredictionDbgData((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk683f16_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7dff29d3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk90f739_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d90c0a80((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk933330_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7ec0bdc9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc64f79_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6ebd2cd0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd3d419_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2917c396((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke2b404_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_40c8f6a5((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.PredictionDbgData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.PredictionDbgData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.PredictionDbgData((nint)NativeMethods.TablePtr->C2.hs_method_77255f78((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c73d38b5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

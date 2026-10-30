@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BaseGameVersion : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BaseGameVersion(nint handle) : this(handle, true) { }
 
     internal BaseGameVersion(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BaseGameVersion Borrow(nint handle) => new BaseGameVersion(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,19 +33,24 @@ public sealed unsafe partial class BaseGameVersion : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion ANY
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion rhs)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_get_8e519fd3(), false);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_42fece83((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion ANY()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->C0.hs_method_a6f62d07(), false);
     }
 
     public static BaseGameVersion Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_f8195f44();
+        var handle = NativeMethods.TablePtr->C0.hs_create_f8195f44();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -54,9 +59,9 @@ public sealed unsafe partial class BaseGameVersion : global::System.IDisposable
         return new BaseGameVersion((nint)handle);
     }
 
-    public static BaseGameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
+    public static BaseGameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion rhs)
     {
-        var handle = NativeMethods.TablePtr->hs_create_65b78e83((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_9461d2b5((void*)rhs.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,52 +70,19 @@ public sealed unsafe partial class BaseGameVersion : global::System.IDisposable
         return new BaseGameVersion((nint)handle);
     }
 
-    public static BaseGameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion EMPTY()
     {
-        var handle = NativeMethods.TablePtr->hs_create_cb3f3b55((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BaseGameVersion((nint)handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->C0.hs_method_9584821f(), false);
     }
 
-    public static BaseGameVersion Create(ushort arg0, uint arg1, uint arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion INCOMPATIBLE()
     {
-        var handle = NativeMethods.TablePtr->hs_create_76539209(arg0, arg1, arg2);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BaseGameVersion((nint)handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->C0.hs_method_8568f319(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion EMPTY
+    public static int fromString(string source, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion output)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_get_9cff60c3(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion INCOMPATIBLE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_get_8fc88e66(), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion asSemVersion()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_047f7df4((void*)_handle), false);
-    }
-
-    public string asString()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_a31af8ad((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public static int fromString(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(source);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -120,99 +92,55 @@ public sealed unsafe partial class BaseGameVersion : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(source, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_765cb58c(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            return NativeMethods.TablePtr->C0.hs_method_8a8a66d0(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)output.Handle);
         }
     }
 
-    public ushort getMajor()
+    public bool isCompatibleWith(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
     {
-        return NativeMethods.TablePtr->hs_method_fa5a3721((void*)_handle);
-    }
-
-    public ushort getMinor()
-    {
-        return NativeMethods.TablePtr->hs_method_a1aa8521((void*)_handle);
-    }
-
-    public ushort getPatch()
-    {
-        return NativeMethods.TablePtr->hs_method_30b23bc1((void*)_handle);
-    }
-
-    public bool isAnyVersion()
-    {
-        return NativeMethods.TablePtr->hs_method_91a0a680((void*)_handle) != 0;
-    }
-
-    public bool isCompatibleWith(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_9be1dfca((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    public bool isNeverCompatible()
-    {
-        return NativeMethods.TablePtr->hs_method_3e66ece2((void*)_handle) != 0;
-    }
-
-    public bool isValid()
-    {
-        return NativeMethods.TablePtr->hs_method_ba41125a((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_cc4e8a0f((void*)__hosihikari_shim_handle, (void*)baseGameVersion.Handle) != 0;
     }
 
     public bool mNeverCompatible
     {
-        get => NativeMethods.TablePtr->hs_get_a1c7e272((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_a1c7e272((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_a1c7e272((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_a1c7e272((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSemVersion_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_80800ade((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_80800ade((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_not_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool operator_not_equal(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion rhs)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_640de646((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_less(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->C0.hs_method_1091dc57((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_less_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_greater(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_greater_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion rhs)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d907dcd5((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_68b84144((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_68b84144((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

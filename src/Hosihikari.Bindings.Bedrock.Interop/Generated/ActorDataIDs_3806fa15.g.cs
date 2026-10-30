@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum ActorDataIDs : ushort
+public enum ActorDataIDs : byte
 {
     Reserved0 = 0,
     StructuralIntegrity = 1,
@@ -15,7 +15,7 @@ public enum ActorDataIDs : ushort
     Target = 6,
     AirSupply = 7,
     EffectColor = 8,
-    Reservec009 = 9,
+    Reserved009 = 9,
     Reserved010 = 10,
     Hurt = 11,
     HurtDir = 12,
@@ -29,7 +29,7 @@ public enum ActorDataIDs : ushort
     OldSwell = 20,
     SwellDir = 21,
     ChargeAmount = 22,
-    CarryBlockRuntimeId = 23,
+    DeprecatedCarryBlockRuntimeId = 23,
     ClientEvent = 24,
     UsingItem = 25,
     PlayerFlags = 26,
@@ -39,8 +39,8 @@ public enum ActorDataIDs : ushort
     YPower = 30,
     ZPower = 31,
     AuxPower = 32,
-    FishX = 33,
-    FishZ = 34,
+    Fishx = 33,
+    Fishz = 34,
     Fishangle = 35,
     AuxValueData = 36,
     LeashHolder = 37,
@@ -62,7 +62,7 @@ public enum ActorDataIDs : ushort
     Reserved053 = 53,
     Reserved054 = 54,
     FuseTime = 55,
-    Reservec056 = 56,
+    Reserved056 = 56,
     SeatLockPassengerRotation = 57,
     SeatLockPassengerRotationDegrees = 58,
     SeatRotationOffset = 59,
@@ -119,7 +119,7 @@ public enum ActorDataIDs : ushort
     AmbientSoundEventName = 110,
     FallDamageMultiplier = 111,
     NameRawText = 112,
-    CanRideTarget = 113,
+    Reserved113 = 113,
     LowTierCuredTradeDiscount = 114,
     HighTierCuredTradeDiscount = 115,
     NearbyCuredTradeDiscount = 116,
@@ -138,5 +138,14 @@ public enum ActorDataIDs : ushort
     PlayerHasDied = 129,
     CollisionBox = 130,
     VisibleMobEffects = 131,
-    Count = 132,
+    FilteredName = 132,
+    EnterBedPosition = 133,
+    SeatThirdPersonCameraRadius = 134,
+    SeatCameraRelaxDistanceSmoothing = 135,
+    AimAssistPriorityPresetId = 136,
+    AimAssistPriorityCategoryId = 137,
+    AimAssistPriorityActorId = 138,
+    Reserved139 = 139,
+    NameplateRenderDistanceMax = 140,
+    Count = 141,
 }

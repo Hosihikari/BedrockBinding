@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ActorSpawnRuleDataLoader
+public sealed unsafe partial class ActorSpawnRuleDataLoader : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorSpawnRuleDataLoader(nint handle) : this(handle, true) { }
 
     internal ActorSpawnRuleDataLoader(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorSpawnRuleDataLoader Borrow(nint handle) => new ActorSpawnRuleDataLoader(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,60 @@ public sealed partial class ActorSpawnRuleDataLoader
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorSpawnRuleDataLoader Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, nint packLoadContext, nint spawnPlacements)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_f9584657((void*)__hosihikari_shim_handle, (void*)ctx.Handle, (void*)packLoadContext, (void*)spawnPlacements);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorSpawnRuleDataLoader Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ActorSpawnRuleDataLoader Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_eaeb9dc6();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorSpawnRuleDataLoader Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ActorSpawnRuleDataLoader((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<ActorSpawnRuleData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint load(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<ActorSpawnRuleData>' requires --link-carrier or --virtual-dispatch.");
+    public static ActorSpawnRuleDataLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, nint packLoadContext, nint spawnPlacements)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_00b53dfe((void*)ctx.Handle, (void*)packLoadContext, (void*)spawnPlacements);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ActorSpawnRuleDataLoader((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLoader_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2a016906((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLoaderV0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_38f5408d((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f5927e6b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WindBurstEnchant : global::System.IDisposable
+public sealed unsafe partial class WindBurstEnchant
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WindBurstEnchant(nint handle) : this(handle, true) { }
 
     internal WindBurstEnchant(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WindBurstEnchant Borrow(nint handle) => new WindBurstEnchant(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,112 +33,132 @@ public sealed unsafe partial class WindBurstEnchant : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WindBurstEnchant Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static WindBurstEnchant Create(sbyte arg0, int arg1, string arg2, string arg3, int arg4, int arg5)
+    public int mCompatibility
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-            {
-                var handle = NativeMethods.TablePtr->hs_create_f90394be(arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, arg5);
-                if (handle == null)
-                {
-                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-                }
-
-                return new WindBurstEnchant((nint)handle);
-            }
-        }
+        get => NativeMethods.TablePtr->C4.hs_get_033928b2((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WindBurstEnchant Create(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WindBurstEnchant Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void doPostItemHurtActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, int arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescription_Address
     {
-        NativeMethods.TablePtr->hs_method_09f5a60d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_0a139e23((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mEnchantType
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_2a071da3((void*)__hosihikari_shim_handle);
+    }
+
+    public int mFrequency
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_92987a8b((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsAvailableInVillagerTrading
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_09332727((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool mIsDisabled
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_7e450a07((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_7e450a07((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mPrimarySlots
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_0e9be1c2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptStringId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f73d16a7((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSecondarySlots
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_e8202af5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStringId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_52f1197f((void*)__hosihikari_shim_handle);
+    }
+
+    public void _doPostItemHurtActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor attacker, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, int enchantLevel)
+    {
+        NativeMethods.TablePtr->C4.hs_method_90b4ef0d((void*)__hosihikari_shim_handle, (void*)attacker.Handle, (void*)arg1.Handle, enchantLevel);
+    }
+
+    public float _getDamageBonus(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_25c89298((void*)__hosihikari_shim_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+    }
+
+    public int _getMaxCost(int level)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_7ed321aa((void*)__hosihikari_shim_handle, level);
+    }
+
+    public int _getMaxLevel()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_21c3c3aa((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getMinCost(int level)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_532debff((void*)__hosihikari_shim_handle, level);
+    }
+
+    public bool _isDiscoverable()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_c803be92((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isTreasureOnly()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_3363718c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void doPostItemHurtActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor attacker, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, int enchantLevel)
+    {
+        NativeMethods.TablePtr->C4.hs_method_0706725e((void*)__hosihikari_shim_handle, (void*)attacker.Handle, (void*)arg1.Handle, enchantLevel);
     }
 
     public float getDamageBonus(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2)
     {
-        return NativeMethods.TablePtr->hs_method_d7faa056((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_bb3ba88e((void*)__hosihikari_shim_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public int getMaxCost(int arg0)
+    public int getMaxCost(int level)
     {
-        return NativeMethods.TablePtr->hs_method_f4e3f774((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C4.hs_method_a2550024((void*)__hosihikari_shim_handle, level);
     }
 
     public int getMaxLevel()
     {
-        return NativeMethods.TablePtr->hs_method_f38c51f5((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_7bcf989a((void*)__hosihikari_shim_handle);
     }
 
-    public int getMinCost(int arg0)
+    public int getMinCost(int level)
     {
-        return NativeMethods.TablePtr->hs_method_98c209f4((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C4.hs_method_6ab81b4d((void*)__hosihikari_shim_handle, level);
     }
 
     public bool isDiscoverable()
     {
-        return NativeMethods.TablePtr->hs_method_63ef65c9((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_bdff1b72((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isTreasureOnly()
     {
-        return NativeMethods.TablePtr->hs_method_e712c841((void*)_handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_80030d2b((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return NativeMethods.TablePtr->C4.hs_method_6299f2c0((void*)__hosihikari_shim_handle) != 0;
     }
 }

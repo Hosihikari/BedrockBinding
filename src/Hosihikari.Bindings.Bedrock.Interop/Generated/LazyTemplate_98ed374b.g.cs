@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LazyTemplate
+public sealed unsafe partial class LazyTemplate
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LazyTemplate(nint handle) : this(handle, true) { }
 
     internal LazyTemplate(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LazyTemplate Borrow(nint handle) => new LazyTemplate(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,58 @@ public sealed partial class LazyTemplate
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _getJigsawMarkers()
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_3facdf0c((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getSize(byte rotation)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_eb49d5a8((void*)__hosihikari_shim_handle, rotation));
+    }
+
+    public bool _isLegacyStructure()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_ee1422e2((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.", false)]
+    public static nint _findJigsawBlocks(nint jigsawMarkers, nint blockTagRules) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.");
+
+    public nint getJigsawMarkers()
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_53d20e90((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSize(byte rotation)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_7c722fe3((void*)__hosihikari_shim_handle, rotation));
+    }
+
+    public bool isLegacyStructure()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_8642bcee((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mJigsawMarkers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8851fb92((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureVariant_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_45ea4cc1((void*)__hosihikari_shim_handle);
     }
 }

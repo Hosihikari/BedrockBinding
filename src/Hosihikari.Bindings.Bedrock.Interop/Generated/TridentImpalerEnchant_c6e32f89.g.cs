@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TridentImpalerEnchant : global::System.IDisposable
+public sealed unsafe partial class TridentImpalerEnchant
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TridentImpalerEnchant(nint handle) : this(handle, true) { }
 
     internal TridentImpalerEnchant(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TridentImpalerEnchant Borrow(nint handle) => new TridentImpalerEnchant(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,97 +33,102 @@ public sealed unsafe partial class TridentImpalerEnchant : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TridentImpalerEnchant Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static TridentImpalerEnchant Create(sbyte arg0, int arg1, string arg2, string arg3, int arg4, bool arg5, int arg6)
+    public int mCompatibility
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-            {
-                var handle = NativeMethods.TablePtr->hs_create_5c40b63e(arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, arg5, arg6);
-                if (handle == null)
-                {
-                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-                }
-
-                return new TridentImpalerEnchant((nint)handle);
-            }
-        }
+        get => NativeMethods.TablePtr->C3.hs_get_4d2b5e2c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TridentImpalerEnchant Create(nint type, nint frequency, nint stringId, nint description, int primarySlots, bool isLootable, int secondarySlots) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TridentImpalerEnchant Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float getDamageBonus(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescription_Address
     {
-        return NativeMethods.TablePtr->hs_method_583b3058((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c8ab43e2((void*)__hosihikari_shim_handle);
     }
 
-    public int getMaxCost(int arg0)
+    public byte mEnchantType
     {
-        return NativeMethods.TablePtr->hs_method_b7382d5e((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C3.hs_get_b89155be((void*)__hosihikari_shim_handle);
+    }
+
+    public int mFrequency
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f6bf8429((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsAvailableInVillagerTrading
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_615d4ce3((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool mIsDisabled
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_05f51fbe((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_05f51fbe((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mPrimarySlots
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_36c25c45((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptStringId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_629b7518((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSecondarySlots
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f9d698a3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStringId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4b70c97e((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getDamageBonus(int level, global::Hosihikari.Bindings.Bedrock.Interop.Actor target, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_db020f6b((void*)__hosihikari_shim_handle, level, (void*)target.Handle, (void*)arg2.Handle);
+    }
+
+    public int _getMaxCost(int level)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_fdb4ff81((void*)__hosihikari_shim_handle, level);
+    }
+
+    public int _getMaxLevel()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_c917dfa9((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getMinCost(int level)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b5da3ce4((void*)__hosihikari_shim_handle, level);
+    }
+
+    public float getDamageBonus(int level, global::Hosihikari.Bindings.Bedrock.Interop.Actor target, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_08cf9724((void*)__hosihikari_shim_handle, level, (void*)target.Handle, (void*)arg2.Handle);
+    }
+
+    public int getMaxCost(int level)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_ec9b8406((void*)__hosihikari_shim_handle, level);
     }
 
     public int getMaxLevel()
     {
-        return NativeMethods.TablePtr->hs_method_ac52aa3c((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_340b3f85((void*)__hosihikari_shim_handle);
     }
 
-    public int getMinCost(int arg0)
+    public int getMinCost(int level)
     {
-        return NativeMethods.TablePtr->hs_method_cb8e254c((void*)_handle, arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c6e32f89((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return NativeMethods.TablePtr->C3.hs_method_68d8909b((void*)__hosihikari_shim_handle, level);
     }
 }

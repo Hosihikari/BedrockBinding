@@ -2,7 +2,7 @@ name: verify
 
 on:
   push:
-    branches: [main]
+    branches: [main, v1.26.51]
   pull_request:
 
 jobs:
@@ -41,18 +41,6 @@ jobs:
 
       - name: Validate coverage contract
         run: dotnet run --project Binding.Generator/src/Hosihikari.Bindings.Generator/Hosihikari.Bindings.Generator.csproj -c Release -- validate-coverage coverage/summary.json coverage/manifest.jsonl
-
-  native-linux:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build Linux shim
-        run: |
-          chmod +x native/BindingShim/build.sh
-          ./native/BindingShim/build.sh \
-            --configuration linux-x64-server \
-            --output artifacts/native/libHosihikari.Bindings.Bedrock.Shim.so
 
   native-windows:
     runs-on: windows-latest

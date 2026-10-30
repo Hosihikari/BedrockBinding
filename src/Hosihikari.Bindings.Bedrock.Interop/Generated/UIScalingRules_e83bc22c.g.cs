@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum UIScalingRules : int
 {
+    Desktop = 0,
+    PocketApple = 1,
+    PocketAndroid = 2,
+    PocketWindows = 3,
+    Console = 4,
+    HandheldConsole = 5,
 }

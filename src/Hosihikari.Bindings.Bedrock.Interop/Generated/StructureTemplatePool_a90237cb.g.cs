@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureTemplatePool
+public sealed unsafe partial class StructureTemplatePool : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructureTemplatePool(nint handle) : this(handle, true) { }
 
     internal StructureTemplatePool(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructureTemplatePool Borrow(nint handle) => new StructureTemplatePool(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,69 +33,42 @@ public sealed unsafe partial class StructureTemplatePool
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureTemplatePool Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public nint _ctor(nint name, nint fallback, nint templates) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructureTemplatePool Create_0e745079(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_807c2f81((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureTemplatePool Create_6a29cdcd(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static StructureTemplatePool Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_63280539();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureTemplatePool Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new StructureTemplatePool((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructureTemplatePool Create_070d3fa3(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureTemplatePool Create_df4e329a(nint name, nint fallback, nint templates) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static StructureTemplatePool Create(nint name, nint fallback, nint templates) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'StructureTemplatePool' has no accessible destructor.", false)]
-    public static nint create_5fb7ecf4(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+    public static nint create(nint context, nint name, nint fallback, nint pieces, nint projection) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'StructureTemplatePool' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint create_69204704(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getFallback()
+    public ulong[] getShuffledTemplateIndexes(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ef759762((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public int getMaxHeight()
-    {
-        return NativeMethods.TablePtr->hs_method_90cc21e0((void*)_handle);
-    }
-
-    public string getName()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7d60790a((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement? getRandomTemplate(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_13772789((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement((nint)__hs_handle, false) : null;
-    }
-
-    public ulong[] getShuffledTemplateIndexes(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ba7d880e((void*)_handle, (void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_4018dc0e((void*)__hosihikari_shim_handle, (void*)random.Handle);
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<ulong>() : new ulong[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -104,28 +77,35 @@ public sealed unsafe partial class StructureTemplatePool
         return __hs_result;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement? getTemplate(ulong arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFallback_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d9bb33c1((void*)_handle, arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement((nint)__hs_handle, false) : null;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8fde54ae((void*)__hosihikari_shim_handle);
     }
 
-    public nint getTemplates()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_325ec9c4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5991909b((void*)__hosihikari_shim_handle);
     }
 
-    public bool isValid()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTemplates_Address
     {
-        return NativeMethods.TablePtr->hs_method_84dfda92((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_21419ef8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public ulong size()
+    public void Dispose()
     {
-        return NativeMethods.TablePtr->hs_method_b3b12823((void*)_handle);
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a90237cb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

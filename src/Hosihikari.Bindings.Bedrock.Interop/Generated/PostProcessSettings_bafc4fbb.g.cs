@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum PostProcessSettings : int
+public enum PostProcessSettings : byte
 {
+    None = 0,
+    SupportBlock = 1,
+    Beard = 2,
+    All = 3,
 }

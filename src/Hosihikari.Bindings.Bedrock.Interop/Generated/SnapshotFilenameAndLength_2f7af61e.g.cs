@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SnapshotFilenameAndLength
+public sealed unsafe partial class SnapshotFilenameAndLength : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SnapshotFilenameAndLength(nint handle) : this(handle, true) { }
 
     internal SnapshotFilenameAndLength(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SnapshotFilenameAndLength Borrow(nint handle) => new SnapshotFilenameAndLength(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,104 @@ public sealed unsafe partial class SnapshotFilenameAndLength
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SnapshotFilenameAndLength Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SnapshotFilenameAndLength Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string toString()
+    public nint _ctor(string filename, ulong filesize)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_bd6b93b5((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(filename);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(filename, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return (nint)NativeMethods.TablePtr->C3.hs_method_9a3406ee((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, filesize);
+        }
+    }
+
+    public static SnapshotFilenameAndLength Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6efdd89b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SnapshotFilenameAndLength((nint)handle);
+    }
+
+    public static SnapshotFilenameAndLength Create(global::Hosihikari.Bindings.Bedrock.Interop.SnapshotFilenameAndLength arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_aa7bd58d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SnapshotFilenameAndLength((nint)handle);
+    }
+
+    public static SnapshotFilenameAndLength Create(string filename, ulong filesize)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(filename);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(filename, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C3.hs_create_aa50cb1b(__hs_stringData0, (nuint)__hs_stringByteCount0, filesize);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new SnapshotFilenameAndLength((nint)handle);
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2eae88_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c0cb90b3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb4503f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_da7eda21((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SnapshotFilenameAndLength operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SnapshotFilenameAndLength arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SnapshotFilenameAndLength((nint)NativeMethods.TablePtr->C3.hs_method_17659b77((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_2f7af61e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

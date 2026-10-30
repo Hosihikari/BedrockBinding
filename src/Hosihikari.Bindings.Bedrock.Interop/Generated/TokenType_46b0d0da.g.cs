@@ -2,22 +2,22 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Reader_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Json.Reader_Nested;
 
 public enum TokenType : int
 {
-    EndOfStream = 0,
-    ObjectBegin = 1,
-    ObjectEnd = 2,
-    ArrayBegin = 3,
-    ArrayEnd = 4,
-    String = 5,
-    Number = 6,
-    True = 7,
-    False = 8,
-    Null = 9,
-    ArraySeparator = 10,
-    MemberSeparator = 11,
-    Comment = 12,
-    Error = 13,
+    TokenEndOfStream = 0,
+    TokenObjectBegin = 1,
+    TokenObjectEnd = 2,
+    TokenArrayBegin = 3,
+    TokenArrayEnd = 4,
+    TokenString = 5,
+    TokenNumber = 6,
+    TokenTrue = 7,
+    TokenFalse = 8,
+    TokenNull = 9,
+    TokenArraySeparator = 10,
+    TokenMemberSeparator = 11,
+    TokenComment = 12,
+    TokenError = 13,
 }

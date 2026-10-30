@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MinecraftWorkerPool
+public sealed unsafe partial class MinecraftWorkerPool : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MinecraftWorkerPool(nint handle) : this(handle, true) { }
 
     internal MinecraftWorkerPool(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MinecraftWorkerPool Borrow(nint handle) => new MinecraftWorkerPool(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,128 +33,101 @@ public sealed unsafe partial class MinecraftWorkerPool
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint ASYNC_Address
+    public static nint ASYNC()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_82526a80();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_9b58da14();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint CONNECTEDSTORAGE_Address
+    public static nint CONNECTEDSTORAGE()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a38abff6();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_f0c613e8();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DISK_Address
+    public static nint DISK()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_32ddd18d();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_1cb945ba();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint GAMEFACE_LAYOUT_Address
+    public static nint GAMEFACE_LAYOUT()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_646fa3d7();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_b280f9b5();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint INPUT_Address
+    public static nint INPUT()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e8499497();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_9f00062c();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LEVELDB_Address
+    public static nint LEVELDB()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5b9ee614();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_e3cf3cd0();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LEVELDB_COMPACTION_Address
+    public static nint LEVELDB_COMPACTION()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_67a8cf2f();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_88234ac7();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftWorkerPool Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftWorkerPool Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint NETWORK_Address
+    public static nint NETWORK()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8b38c7e6();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_555bc728();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint PYTHONRUNTIME_Address
+    public static nint RENDERING()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f5023579();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_381584f2();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint RENDERING_Address
+    public static nint RENDERING_HELPERS()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8ec0ec8b();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_40f3c561();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint RENDERING_HELPERS_Address
+    public static nint WATCHDOG()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1b6b24a0();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint VR_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e4345ca7();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint WATCHDOG_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9196e420();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_fad1e76b();
     }
 
     public static void configureMainThread()
     {
-        NativeMethods.TablePtr->hs_method_b5709114();
+        NativeMethods.TablePtr->C2.hs_method_b5709114();
     }
 
     public static void configureServerThread()
     {
-        NativeMethods.TablePtr->hs_method_5d8daf17();
+        NativeMethods.TablePtr->C2.hs_method_5d8daf17();
     }
 
     public static void createSingletons()
     {
-        NativeMethods.TablePtr->hs_method_6d64a383();
+        NativeMethods.TablePtr->C2.hs_method_6d64a383();
     }
 
     public static void destroySingletons()
     {
-        NativeMethods.TablePtr->hs_method_a451a913();
+        NativeMethods.TablePtr->C2.hs_method_a451a913();
     }
 
-    public static void initializeDefaults()
+    public static void loadWorkerConfigurations(uint highPowerCores, uint totalCores)
     {
-        NativeMethods.TablePtr->hs_method_d9928e31();
+        NativeMethods.TablePtr->C2.hs_method_3d6e0e40(highPowerCores, totalCores);
     }
 
-    public static void loadWorkerConfigurations(uint arg0, uint arg1)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_3d6e0e40(arg0, arg1);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_75b68c7f((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

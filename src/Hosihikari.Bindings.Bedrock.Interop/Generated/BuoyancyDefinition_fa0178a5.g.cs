@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BuoyancyDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BuoyancyDefinition(nint handle) : this(handle, true) { }
 
     internal BuoyancyDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BuoyancyDefinition Borrow(nint handle) => new BuoyancyDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,106 @@ public sealed unsafe partial class BuoyancyDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BuoyancyDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BuoyancyDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public void _addLiquidBlockDescriptor(global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor liquidBlockDescriptor)
     {
-        NativeMethods.TablePtr->hs_method_86e9a730(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C0.hs_method_4f7282a6((void*)__hosihikari_shim_handle, (void*)liquidBlockDescriptor.Handle);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.BuoyancyComponent arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value _serialize()
     {
-        NativeMethods.TablePtr->hs_method_b7acfdfd((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C0.hs_method_c7723995((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void uninitialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.BuoyancyComponent arg1)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_1a7fd3fc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_9b56d5c2(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.BuoyancyComponent component)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9270ca84((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)component.Handle);
+    }
+
+    public bool mApplyGravity
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_db185d2e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_db185d2e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mBaseBuoyancy
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_a9298ac9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a9298ac9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mBigWaveProbability
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_bf9af795((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_bf9af795((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mBigWaveSpeedMultiplier
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_9fc7daa6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_9fc7daa6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mCanAutoStepFromLiquid
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_7c58201b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_7c58201b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mDragDownOnRemoval
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_9e30168d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_9e30168d((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFloatData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7deec385((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLiquidBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a08771c3((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mMovementType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_35bbc59b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_35bbc59b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void setMovementType(string movementType)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(movementType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(movementType, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_a644165e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void uninitialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.BuoyancyComponent arg1)
+    {
+        NativeMethods.TablePtr->C0.hs_method_4f8b2d1f((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)arg1.Handle);
     }
 }

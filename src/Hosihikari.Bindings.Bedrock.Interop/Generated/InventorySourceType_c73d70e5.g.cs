@@ -4,12 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum InventorySourceType : int
+public enum InventorySourceType : uint
 {
-    InvalidInventory = -1,
     ContainerInventory = 0,
     GlobalInventory = 1,
     WorldInteraction = 2,
     CreativeInventory = 3,
     NonImplementedFeatureTODO = 99999,
+    InvalidInventory = 4294967295,
 }

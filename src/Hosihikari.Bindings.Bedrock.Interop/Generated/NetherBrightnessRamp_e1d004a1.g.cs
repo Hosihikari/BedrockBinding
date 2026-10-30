@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NetherBrightnessRamp
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetherBrightnessRamp(nint handle) : this(handle, true) { }
 
     internal NetherBrightnessRamp(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetherBrightnessRamp Borrow(nint handle) => new NetherBrightnessRamp(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,23 +33,24 @@ public sealed unsafe partial class NetherBrightnessRamp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBrightnessRamp_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_348dfaab((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_348dfaab((void*)__hosihikari_shim_handle);
+    }
+
+    public float _getBaseAmbientValue()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_e0681658((void*)__hosihikari_shim_handle);
     }
 
     public float getBaseAmbientValue()
     {
-        return NativeMethods.TablePtr->hs_method_4e759716((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_b0292b23((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

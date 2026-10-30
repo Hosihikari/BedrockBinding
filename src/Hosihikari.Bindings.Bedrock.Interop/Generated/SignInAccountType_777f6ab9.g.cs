@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SignInAccountType : int
 {
+    Unknown = 0,
+    PlayFabDevice = 1,
+    XboxLive = 2,
+    Psn = 3,
+    PlayFabXboxLive = 4,
+    PlayFabPsn = 5,
+    PlayFabNsa = 6,
+    GooglePlayGames = 7,
 }

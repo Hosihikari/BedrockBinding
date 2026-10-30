@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GameVersion : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameVersion(nint handle) : this(handle, true) { }
 
     internal GameVersion(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameVersion Borrow(nint handle) => new GameVersion(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,29 @@ public sealed unsafe partial class GameVersion : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ListTag tag)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_c3b6f53f((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+    public nint _ctor(uint major, uint minor, uint patch, uint revision, uint isBeta)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_9d37af9e((void*)__hosihikari_shim_handle, major, minor, patch, revision, isBeta);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_7d14a2a6((void*)__hosihikari_shim_handle);
     }
 
     public static GameVersion Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_103ba1f9();
+        var handle = NativeMethods.TablePtr->C1.hs_create_103ba1f9();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,9 +64,9 @@ public sealed unsafe partial class GameVersion : global::System.IDisposable
         return new GameVersion((nint)handle);
     }
 
-    public static GameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.GameVersion arg0)
+    public static GameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.ListTag tag)
     {
-        var handle = NativeMethods.TablePtr->hs_create_e5321b7a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_4b37fc5b((void*)tag.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,9 +75,9 @@ public sealed unsafe partial class GameVersion : global::System.IDisposable
         return new GameVersion((nint)handle);
     }
 
-    public static GameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.ListTag arg0)
+    public static GameVersion Create(uint major, uint minor, uint patch, uint revision, uint isBeta)
     {
-        var handle = NativeMethods.TablePtr->hs_create_aa136df0((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_2f11dcc0(major, minor, patch, revision, isBeta);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,69 +86,48 @@ public sealed unsafe partial class GameVersion : global::System.IDisposable
         return new GameVersion((nint)handle);
     }
 
-    public static GameVersion Create(uint arg0, uint arg1, uint arg2, uint arg3, uint arg4)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.GameVersion Zero()
     {
-        var handle = NativeMethods.TablePtr->hs_create_2f11dcc0(arg0, arg1, arg2, arg3, arg4);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new GameVersion((nint)handle);
-    }
-
-    public string asString()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_bf65c6f4((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.GameVersion current()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.GameVersion((nint)NativeMethods.TablePtr->hs_method_e61621df());
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameVersion((nint)NativeMethods.TablePtr->C1.hs_method_bbcbac34(), false);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDigit_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8b7e7cbd((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8b7e7cbd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mString_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ddce994c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ddce994c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_less(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_greater_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ListTag? serialize()
+    public bool operator_less(global::Hosihikari.Bindings.Bedrock.Interop.GameVersion other)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c93c49dc((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ListTag((nint)__hs_handle) : null;
+        return NativeMethods.TablePtr->C1.hs_method_de864095((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
+
+    public bool operator_greater_equal(global::Hosihikari.Bindings.Bedrock.Interop.GameVersion other)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f9570c50((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ListTag' has no accessible destructor.", false)]
+    public nint serialize() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ListTag' has no accessible destructor.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_670ea6ea((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_670ea6ea((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

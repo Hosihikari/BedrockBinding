@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
 public sealed unsafe partial class EnableNonOwnerReferences : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EnableNonOwnerReferences(nint handle) : this(handle, true) { }
 
     internal EnableNonOwnerReferences(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EnableNonOwnerReferences Borrow(nint handle) => new EnableNonOwnerReferences(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,37 @@ public sealed unsafe partial class EnableNonOwnerReferences : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static EnableNonOwnerReferences Create()
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_8e6e2e64();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new EnableNonOwnerReferences((nint)handle);
+        NativeMethods.TablePtr->C0.hs_method_ed4d0d2d((void*)__hosihikari_shim_handle);
     }
 
-    public static EnableNonOwnerReferences Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.EnableNonOwnerReferences arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_ae2ab0d0((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new EnableNonOwnerReferences((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_16d11b10((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_16d11b10((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_c0bd1acf((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_c0bd1acf((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

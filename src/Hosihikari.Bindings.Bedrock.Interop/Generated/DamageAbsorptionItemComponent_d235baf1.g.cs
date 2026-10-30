@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DamageAbsorptionItemComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DamageAbsorptionItemComponent(nint handle) : this(handle, true) { }
 
     internal DamageAbsorptionItemComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DamageAbsorptionItemComponent Borrow(nint handle) => new DamageAbsorptionItemComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,24 +33,47 @@ public sealed unsafe partial class DamageAbsorptionItemComponent : global::Syste
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DamageAbsorptionItemComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint data) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DamageAbsorptionItemComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static DamageAbsorptionItemComponent Create(int[] arg0)
+    public nint _ctor(int[] absorbableDamageCauses)
     {
-        fixed (int* __hs_vectorData0 = arg0)
+        fixed (int* __hs_vectorData0 = absorbableDamageCauses)
         {
-            var handle = NativeMethods.TablePtr->hs_create_50adea9d(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            return (nint)NativeMethods.TablePtr->C1.hs_method_d198d839((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(absorbableDamageCauses?.Length ?? 0));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static DamageAbsorptionItemComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_cc8a42b4();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DamageAbsorptionItemComponent((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static DamageAbsorptionItemComponent Create(nint data) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public static DamageAbsorptionItemComponent Create(int[] absorbableDamageCauses)
+    {
+        fixed (int* __hs_vectorData0 = absorbableDamageCauses)
+        {
+            var handle = NativeMethods.TablePtr->C1.hs_create_cb77ed17(__hs_vectorData0, (nuint)(absorbableDamageCauses?.Length ?? 0));
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,32 +83,34 @@ public sealed unsafe partial class DamageAbsorptionItemComponent : global::Syste
         }
     }
 
+    public bool mAbsorbAllDamageCauses
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_33fd4cc5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_33fd4cc5((void*)__hosihikari_shim_handle, value);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
-    public static nint VALID_SLOTS_Address
+    public nint mAbsorbableDamageCauses_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c580abf1();
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_21e79ee9((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
+    public nint mOwner
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_3ef4f868(), false);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bc191129((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_bc191129((void*)__hosihikari_shim_handle, (void*)value);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d235baf1((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_d235baf1((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

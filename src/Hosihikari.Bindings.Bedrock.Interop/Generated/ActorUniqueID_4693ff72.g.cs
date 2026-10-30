@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorUniqueID : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorUniqueID(nint handle) : this(handle, true) { }
 
     internal ActorUniqueID(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorUniqueID Borrow(nint handle) => new ActorUniqueID(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,46 @@ public sealed unsafe partial class ActorUniqueID : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID INVALID_ID
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID INVALID_ID()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_get_fb342580(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID fromUUID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_8b88e5f6((void*)arg0.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C0.hs_method_43bd84a4(), false);
     }
 
     public ulong getHash()
     {
-        return NativeMethods.TablePtr->hs_method_52e0b20e((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_8cdd8f44((void*)__hosihikari_shim_handle);
     }
 
-    public long id
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint operator_compare(nint other) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID other)
     {
-        get => NativeMethods.TablePtr->hs_get_eb7329e4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_eb7329e4((void*)_handle, value);
+        return NativeMethods.TablePtr->C0.hs_method_73aad3a3((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
+
+    public long rawID
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_88a5f77d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_88a5f77d((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_4693ff72((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_4693ff72((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelChunkMetaDataManager
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelChunkMetaDataManager(nint handle) : this(handle, true) { }
 
     internal LevelChunkMetaDataManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelChunkMetaDataManager Borrow(nint handle) => new LevelChunkMetaDataManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,28 +33,24 @@ public sealed unsafe partial class LevelChunkMetaDataManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkMetaDataManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkMetaDataManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelChunkMetaDataDictionary()
+    public void _consolidateLevelChunkMetaData(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_c7b6fdfb((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        NativeMethods.TablePtr->C1.hs_method_d46e5197((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
-    public static void inferInitialMetaDataAfterDeserialization(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg1, int arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg4, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg5, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg6, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData arg7)
+    public void _onNewDimensionCreated(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        NativeMethods.TablePtr->C1.hs_method_82e00ea6((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+    }
+
+    public static void inferInitialMetaDataAfterDeserialization(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 generationSeed, int generatorType, string dimensionName, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange dimensionHeightRange, nint levelChunkMetaDataBaseGameVersionWrapper, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData metaData)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionName);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -64,21 +60,21 @@ public sealed unsafe partial class LevelChunkMetaDataManager
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(dimensionName, __hs_stringBytes3);
         fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
-            NativeMethods.TablePtr->hs_method_b5c289b2((void*)arg0.Handle, (void*)arg1.Handle, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6.Handle, (void*)arg7.Handle);
+            NativeMethods.TablePtr->C1.hs_method_63759f88((void*)lc.Handle, (void*)generationSeed.Handle, generatorType, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)dimensionId.Handle, (void*)dimensionHeightRange.Handle, (void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)metaData.Handle);
         }
     }
 
-    public static void inferTargetMetaData(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData arg2)
+    public static void inferTargetMetaData(nint levelChunkMetaDataBaseGameVersionWrapper, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionID, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData metaData)
     {
-        NativeMethods.TablePtr->hs_method_2b2c1267((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C1.hs_method_95ab411f((void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)dimensionID.Handle, (void*)metaData.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? initializeLevelChunkMetaData(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, bool arg3, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg6)
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? initializeLevelChunkMetaData(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, string dimensionName, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange dimensionHeightRange, bool use3DBiomeMaps, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed, int generatorType, nint levelChunkMetaDataBaseGameVersionWrapper)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -88,39 +84,49 @@ public sealed unsafe partial class LevelChunkMetaDataManager
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(dimensionName, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_646a4cca((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, arg3, (void*)arg4.Handle, arg5, (void*)arg6.Handle);
+            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_2f98ac74((void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)dimensionHeightRange.Handle, use3DBiomeMaps, (void*)levelSeed.Handle, generatorType, (void*)levelChunkMetaDataBaseGameVersionWrapper);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelChunkMetaDataDictionary_Address
     {
-        NativeMethods.TablePtr->hs_method_7ff98969((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_eadf3615((void*)__hosihikari_shim_handle);
     }
 
-    public void registerOnNewDimensionCreated(global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnChunkLoadedSubscription_Address
     {
-        NativeMethods.TablePtr->hs_method_2416172c((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a388ec1c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnNewDimensionCreatedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_290047ab((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector levelChunkEventManagerConnector)
+    {
+        NativeMethods.TablePtr->C1.hs_method_4d0bf418((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
+    }
+
+    public void registerOnNewDimensionCreated(global::Hosihikari.Bindings.Bedrock.Interop.IDimensionManagerConnector dimensionManagerConnector)
+    {
+        NativeMethods.TablePtr->C1.hs_method_795273d4((void*)__hosihikari_shim_handle, (void*)dimensionManagerConnector.Handle);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_b1909af6((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_b1909af6((void*)__hosihikari_shim_handle);
     }
 
-    public void updateLevelChunkMetaDataForSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2)
+    public void updateLevelChunkMetaDataForSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, nint levelChunkMetaDataBaseGameVersionWrapper, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange dimensionHeightRange)
     {
-        NativeMethods.TablePtr->hs_method_0647e383((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C1.hs_method_64dc6b02((void*)__hosihikari_shim_handle, (void*)lc.Handle, (void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)dimensionHeightRange.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_2b78f11d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -6,10 +6,10 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public enum AttributeModifierOperation : int
 {
-    addition = 0,
-    MultiplyBase = 1,
-    MultiplyTotal = 2,
-    Cap = 3,
-    Count = 4,
-    Invalid = 4,
+    OperationAddition = 0,
+    OperationMultiplyBase = 1,
+    OperationMultiplyTotal = 2,
+    OperationCap = 3,
+    OperationInvalid = 4,
+    TotalOperations = 4,
 }

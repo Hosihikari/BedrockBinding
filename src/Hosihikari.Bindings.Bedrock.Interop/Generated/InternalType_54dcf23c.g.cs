@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested;
 
-public enum InternalType : sbyte
+public enum InternalType : byte
 {
     Invalid = 0,
     Default = 1,

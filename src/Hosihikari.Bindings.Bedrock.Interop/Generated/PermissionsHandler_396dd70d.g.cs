@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PermissionsHandler : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PermissionsHandler(nint handle) : this(handle, true) { }
 
     internal PermissionsHandler(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PermissionsHandler Borrow(nint handle) => new PermissionsHandler(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,86 +33,47 @@ public sealed unsafe partial class PermissionsHandler : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string DIFF_COMMAND_PERMISSION
+    public void _dtor()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_3b030eb1();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        NativeMethods.TablePtr->C2.hs_method_106370e9((void*)__hosihikari_shim_handle);
     }
 
-    public static string DIFF_PLAYER_PERMISSION
+    public void addSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_64e5fb36();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        NativeMethods.TablePtr->C2.hs_method_a615bd79((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public static PermissionsHandler Create()
+    public bool loadSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        var handle = NativeMethods.TablePtr->hs_create_9760509d();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PermissionsHandler((nint)handle);
+        return NativeMethods.TablePtr->C2.hs_method_d3266b3e((void*)__hosihikari_shim_handle, (void*)tag.Handle) != 0;
     }
 
-    public static PermissionsHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mClientPlayerPermissionsPublisher_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_837c71fe((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PermissionsHandler((nint)handle);
-    }
-
-    public void addSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
-    {
-        NativeMethods.TablePtr->hs_method_34038a29((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public byte getCommandPermissions()
-    {
-        return NativeMethods.TablePtr->hs_method_43c183eb((void*)_handle);
-    }
-
-    public sbyte getPlayerPermissions()
-    {
-        return NativeMethods.TablePtr->hs_method_448df56b((void*)_handle);
-    }
-
-    public bool loadSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_ddbf24b7((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_472621cd((void*)__hosihikari_shim_handle);
     }
 
     public byte mCommandPermissions
     {
-        get => NativeMethods.TablePtr->hs_get_d9d020e2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d9d020e2((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_d9d020e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d9d020e2((void*)__hosihikari_shim_handle, value);
     }
 
     public sbyte mPlayerPermissions
     {
-        get => NativeMethods.TablePtr->hs_get_1a97871b((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1a97871b((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1a97871b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1a97871b((void*)__hosihikari_shim_handle, value);
     }
 
-    public static sbyte playerPermissionLevelFromString(string arg0)
+    public static sbyte playerPermissionLevelFromString(string s)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(s);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -122,39 +83,30 @@ public sealed unsafe partial class PermissionsHandler : global::System.IDisposab
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(s, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_6682b37f(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C2.hs_method_7e0de78a(__hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public static string playerPermissionLevelToString(nint arg0)
+    public static string playerPermissionLevelToString(nint permission)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_36b8683b((void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_dc0cf691((void*)permission);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void setCommandPermissions(byte arg0)
-    {
-        NativeMethods.TablePtr->hs_method_1ec78243((void*)_handle, arg0);
-    }
-
-    public void setPlayerPermissions(sbyte arg0)
-    {
-        NativeMethods.TablePtr->hs_method_43e6e550((void*)_handle, arg0);
-    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_396dd70d((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_396dd70d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

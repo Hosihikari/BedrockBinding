@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RectLayoutFeature_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class FeatureArea
+public sealed unsafe partial class FeatureArea
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FeatureArea(nint handle) : this(handle, true) { }
 
     internal FeatureArea(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FeatureArea Borrow(nint handle) => new FeatureArea(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,38 @@ public sealed partial class FeatureArea
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFeatureRef_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_04a117c9((void*)__hosihikari_shim_handle);
+    }
+
+    public int mHeight
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_19e68073((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_19e68073((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mWidth
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_435a4b42((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_435a4b42((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mX
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_83b0554e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_83b0554e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mY
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_bf3ac800((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_bf3ac800((void*)__hosihikari_shim_handle, value);
     }
 }

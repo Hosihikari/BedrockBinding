@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PauseScreenCapabilities : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PauseScreenCapabilities(nint handle) : this(handle, true) { }
 
     internal PauseScreenCapabilities(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PauseScreenCapabilities Borrow(nint handle) => new PauseScreenCapabilities(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,95 @@ public sealed unsafe partial class PauseScreenCapabilities : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PauseScreenCapabilities Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PauseScreenCapabilities Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static PauseScreenCapabilities Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5e2b680d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isOfType(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new PauseScreenCapabilities((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static PauseScreenCapabilities Create(global::Hosihikari.Bindings.Bedrock.Interop.PauseScreenCapabilities arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9c9dd141((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PauseScreenCapabilities((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk12ffaf_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_156be000((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk28e16e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3624b68c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk88f9f4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3a7a2c42((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8cf950_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5e746a9e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk972427_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2a67b69c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkace38a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0648cd12((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc36dc1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_db1c34c5((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PauseScreenCapabilities operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PauseScreenCapabilities arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PauseScreenCapabilities((nint)NativeMethods.TablePtr->C2.hs_method_36c9ed58((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_a8d33fb6((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_a8d33fb6((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

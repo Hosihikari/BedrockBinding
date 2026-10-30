@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum FlowerPlacementType : int
 {
+    FlowerForest = 0,
+    Forest = 1,
+    Overworld = 2,
+    Plains = 3,
+    Swamp = 4,
 }

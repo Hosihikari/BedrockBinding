@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class VillageManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VillageManager(nint handle) : this(handle, true) { }
 
     internal VillageManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VillageManager Borrow(nint handle) => new VillageManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,37 @@ public sealed unsafe partial class VillageManager : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2ae248a3((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2ae248a3((void*)__hosihikari_shim_handle);
     }
 
-    public static ulong MAX_POI_QUERIES
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        get => NativeMethods.TablePtr->hs_get_fad5dd20();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_4a813557((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
     }
 
-    public static int MAX_POI_TOLERANCE_DIST
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _fetchClosestVillage(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, int maxDistFromVillageBounds, uint searchRadius)
     {
-        get => NativeMethods.TablePtr->hs_get_de652a50();
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_6feab9e8((void*)__hosihikari_shim_handle, (void*)position.Handle, maxDistFromVillageBounds, searchRadius);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public static int MAX_QUERY_SCAN_ITERATIONS
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getVillageByID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID villageID)
     {
-        get => NativeMethods.TablePtr->hs_get_f2eb32f1();
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_f6024e53((void*)__hosihikari_shim_handle, (void*)villageID.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public static int VILLAGE_HERO_EFFECT_DURATION
+    public static VillageManager Create()
     {
-        get => NativeMethods.TablePtr->hs_get_fb9f501a();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VillageManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static VillageManager Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_5fcc64b7((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_529bf1a2();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -79,119 +72,197 @@ public sealed unsafe partial class VillageManager : global::System.IDisposable
         return new VillageManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VillageManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getVillageWithBedsAvailableMap_ef770e0a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _unclusterDerelictPOIs_643bc519(nint pois) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? fetchClosestVillage(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1, uint arg2)
+    public static VillageManager Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_7eac1032((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+        var handle = NativeMethods.TablePtr->C3.hs_create_408142a9((void*)dimension.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VillageManager((nint)handle);
+    }
+
+    public static VillageManager Create(global::Hosihikari.Bindings.Bedrock.Interop.VillageManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7860319e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VillageManager((nint)handle);
+    }
+
+    public void _assignPOIOnly(global::Hosihikari.Bindings.Abi.SharedHandle? pi)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0458fe55((void*)__hosihikari_shim_handle, pi?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _loadPOIBlueprints()
+    {
+        NativeMethods.TablePtr->C3.hs_method_ffe0c738((void*)__hosihikari_shim_handle);
+    }
+
+    public void _processNextUnclusteredPOIQuery()
+    {
+        NativeMethods.TablePtr->C3.hs_method_13715f1d((void*)__hosihikari_shim_handle);
+    }
+
+    public void _removeEligibleVillages()
+    {
+        NativeMethods.TablePtr->C3.hs_method_08b5ba2a((void*)__hosihikari_shim_handle);
+    }
+
+    public void _saveAllVillages(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8e228fb6((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle);
+    }
+
+    public void _tryAssignPOIOrCreateVillage(global::Hosihikari.Bindings.Abi.SharedHandle? pi)
+    {
+        NativeMethods.TablePtr->C3.hs_method_825d0e4d((void*)__hosihikari_shim_handle, pi?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? fetchClosestVillage(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, int maxDistFromVillageBounds, uint searchRadius)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_aa32468e((void*)__hosihikari_shim_handle, (void*)position.Handle, maxDistFromVillageBounds, searchRadius);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? fetchClosestVillageMostSuitableForDweller(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1, uint arg2)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? fetchClosestVillageMostSuitableForDweller(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, int maxDistFromVillageBounds, uint searchRadius)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_ae1de0f6((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_82e66ed0((void*)__hosihikari_shim_handle, (void*)position.Handle, maxDistFromVillageBounds, searchRadius);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getClosestVillageWithRaid(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getClosestVillageWithRaid(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_8c947179((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_62eb76c3((void*)__hosihikari_shim_handle, (void*)pos.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getPOI(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getVillageByID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID villageID)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_79919cfc((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_dfe8fc84((void*)__hosihikari_shim_handle, (void*)villageID.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getPOIInitEventFromName(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public void initializeWithLevelStorageManagerConnector(global::Hosihikari.Bindings.Bedrock.Interop.ILevelStorageManagerConnector levelStorageManagerConnector)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_8dfd5632((void*)_handle, (void*)arg0.Handle));
+        NativeMethods.TablePtr->C3.hs_method_16bef584((void*)__hosihikari_shim_handle, (void*)levelStorageManagerConnector.Handle);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getVillageByID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mClusteredPOIs_Address
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_c37d03e7((void*)_handle, (void*)arg0.Handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d7cc5734((void*)__hosihikari_shim_handle);
     }
 
-    public void initializeWithLevelStorageManager(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)
+    public int mCurrentXScan
     {
-        NativeMethods.TablePtr->hs_method_83faf9d5((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_07da3585((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_07da3585((void*)__hosihikari_shim_handle, value);
     }
 
-    public void insertPOI(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public int mCurrentYScan
     {
-        NativeMethods.TablePtr->hs_method_5ea3a455((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => NativeMethods.TablePtr->C3.hs_get_c0abd50b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_c0abd50b((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isValidPOIType(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
+    public int mCurrentZScan
     {
-        return NativeMethods.TablePtr->hs_method_8a0fb8dd((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_ca9076c8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ca9076c8((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isWanderingTraderManagedByScheduler(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimension_Address
     {
-        return NativeMethods.TablePtr->hs_method_2fdcae9f((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6a23d1eb((void*)__hosihikari_shim_handle);
     }
 
-    public void loadAllVillages()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFindPOIQueries_Address
     {
-        NativeMethods.TablePtr->hs_method_32d61fe7((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a80d2a45((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removePOI(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public bool mFinishedQueryScan
     {
-        NativeMethods.TablePtr->hs_method_a00188cf((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => NativeMethods.TablePtr->C3.hs_get_3e122183((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_3e122183((void*)__hosihikari_shim_handle, value);
     }
 
-    public void submitFindPOIQuery(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLevelStorageManagerStartLeaveGameSubscription_Address
     {
-        NativeMethods.TablePtr->hs_method_f6939492((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3174f74f((void*)__hosihikari_shim_handle);
     }
 
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnSaveSubscription_Address
     {
-        NativeMethods.TablePtr->hs_method_cca6c37e((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b760d676((void*)__hosihikari_shim_handle);
     }
 
-    public void tickVillages(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPOIBlueprints_Address
     {
-        NativeMethods.TablePtr->hs_method_c1428e81((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3513ffa4((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? tryCreatePOI(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTickCount_Address
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_6c684737((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1c83527e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnclusteredPOIs_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c7e626ff((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVillages_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b60f7085((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWanderingTraderScheduler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ed6691f4((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.VillageManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.VillageManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VillageManager((nint)NativeMethods.TablePtr->C3.hs_method_85127e18((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void submitFindPOIQuery(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorID)
+    {
+        NativeMethods.TablePtr->C3.hs_method_eb08aefb((void*)__hosihikari_shim_handle, (void*)actorID.Handle);
+    }
+
+    public void tickVillages(global::Hosihikari.Bindings.Bedrock.Interop.Tick tick, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 position, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5a64f311((void*)__hosihikari_shim_handle, (void*)tick.Handle, (void*)position.Handle, (void*)region.Handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_0750dc9b((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_0750dc9b((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

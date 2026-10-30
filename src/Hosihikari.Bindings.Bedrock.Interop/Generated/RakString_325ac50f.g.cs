@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-public sealed unsafe partial class RakString
+public sealed unsafe partial class RakString : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakString(nint handle) : this(handle, true) { }
 
     internal RakString(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakString Borrow(nint handle) => new RakString(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,79 +33,92 @@ public sealed unsafe partial class RakString
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public bool Deserialize(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream? arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: variadic methods are not supported.", false)]
+    public nint _ctor(nint format) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variadic methods are not supported.");
+
+    public void Allocate(ulong len)
     {
-        return NativeMethods.TablePtr->hs_method_ff09938d((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
+        NativeMethods.TablePtr->C2.hs_method_d3a49caf((void*)__hosihikari_shim_handle, len);
     }
 
-    public static void FreeMemoryNoMutex()
+    public void Assign(nint str, nint ap)
     {
-        NativeMethods.TablePtr->hs_method_5d3e2220();
+        NativeMethods.TablePtr->C2.hs_method_e845b32e((void*)__hosihikari_shim_handle, (void*)str, (void*)ap);
     }
 
-    public ulong GetLength()
+    public bool Deserialize(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.BitStream? bs)
     {
-        return NativeMethods.TablePtr->hs_method_bc8e6946((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_3cdd187a((void*)__hosihikari_shim_handle, (void*)(bs?.Handle ?? 0)) != 0;
     }
 
-    public bool IPAddressMatch(nint arg0)
+    public void Free()
     {
-        return NativeMethods.TablePtr->hs_method_de506c54((void*)_handle, (void*)arg0) != 0;
+        NativeMethods.TablePtr->C2.hs_method_e64b9c43((void*)__hosihikari_shim_handle);
     }
 
-    public bool IsEmpty()
+    public static RakString Create()
     {
-        return NativeMethods.TablePtr->hs_method_8215c19b((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C2.hs_create_dbe32930();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakString((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RakString Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RakString Create_d5621e12(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RakString Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakString Create_f8b8a4a0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint emptyString
+    public static RakString Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString arg0)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        var handle = NativeMethods.TablePtr->C2.hs_create_77e2f0f2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakString((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint freeList
+    [global::System.Obsolete("BindingShim cannot project this member: variadic constructors are not supported.", false)]
+    public static RakString Create(nint format) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variadic constructors are not supported.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString_Nested.SharedString emptyString()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString_Nested.SharedString((nint)NativeMethods.TablePtr->C2.hs_method_e02922e3(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_baa8df68(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static nint freeList()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_f89d2372();
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_39748394(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk886291_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e97fa077((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString((nint)NativeMethods.TablePtr->C2.hs_method_39748394((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f066e219() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_325ac50f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ServerActorManagerProxy
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerActorManagerProxy(nint handle) : this(handle, true) { }
 
     internal ServerActorManagerProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerActorManagerProxy Borrow(nint handle) => new ServerActorManagerProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,66 @@ public sealed unsafe partial class ServerActorManagerProxy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerActorManagerProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerActorManagerProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void deleteActorFromWorldInLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void _addActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_0b2a3c50((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_78922dbc((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public void initializeActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void _deleteActorFromWorldInLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_c3b9e67b((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_1f7d2473((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void removeActor(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeActorInLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void _initializeActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_8688fc4a((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_6544ff30((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public bool validate(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void _removeActorInLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return NativeMethods.TablePtr->hs_method_c0b88ca4((void*)_handle, (void*)arg0.Handle) != 0;
+        NativeMethods.TablePtr->C3.hs_method_7e20f3da((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _validate(nint actor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void addActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4aa4b122((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public void deleteActorFromWorldInLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C3.hs_method_fc4a7a19((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public void initializeActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c44885e9((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_82f99f2b((void*)__hosihikari_shim_handle);
+    }
+
+    public void removeActorInLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ded0ee13((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint validate(nint actor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
 }

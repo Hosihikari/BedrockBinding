@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IConnectionEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum PlayerJoinWorldAttemptState : int
 {
+    Unknown = 0,
+    AttemptingToJoin = 1,
+    TimedOutAttemptingJoin = 2,
+    FailedToJoin = 3,
+    SuccessfulJoin = 4,
+    Canceled = 5,
+    MissingEventDetected = 6,
 }

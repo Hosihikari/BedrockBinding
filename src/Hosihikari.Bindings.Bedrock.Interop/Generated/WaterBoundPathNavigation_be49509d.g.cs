@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WaterBoundPathNavigation
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WaterBoundPathNavigation(nint handle) : this(handle, true) { }
 
     internal WaterBoundPathNavigation(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WaterBoundPathNavigation Borrow(nint handle) => new WaterBoundPathNavigation(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,144 @@ public sealed unsafe partial class WaterBoundPathNavigation
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WaterBoundPathNavigation Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WaterBoundPathNavigation Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.NavigationDescription? arg1)
+    public bool _canUpdatePath(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->hs_method_e0170af2((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        return NativeMethods.TablePtr->C4.hs_method_e1cedb08((void*)__hosihikari_shim_handle, (void*)mob.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 _getTempMobPos(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C4.hs_method_bc226fb3((void*)__hosihikari_shim_handle, (void*)mob.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void _initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.NavigationDescription? description)
+    {
+        NativeMethods.TablePtr->C4.hs_method_14ef1745((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
+    }
+
+    public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C4.hs_method_28ca7594((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
+
+    public bool _travel(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, nint xa, nint ya, nint za)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_ebba80ec((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)xa, (void*)ya, (void*)za) != 0;
+    }
+
+    public void _updatePath(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C4.hs_method_de435f5b((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public bool canUpdatePath(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_cf75915b((void*)__hosihikari_shim_handle, (void*)mob.Handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getTempMobPos(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C4.hs_method_ff7390cd((void*)__hosihikari_shim_handle, (void*)mob.Handle));
+    }
+
+    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.NavigationDescription? description)
+    {
+        NativeMethods.TablePtr->C4.hs_method_c4c6368c((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
+    }
+
+    public bool mAllowRiverFollow
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_1af35867((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_1af35867((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mCenteredThreshold
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_a8dcd195((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_a8dcd195((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mFollowingRiver
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_867b98fb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_867b98fb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mHeadingTicks
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_15992053((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_15992053((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mLookAheadDistance
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_c90353f4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_c90353f4((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMaxDepth
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_ab43ba86((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_ab43ba86((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMinDepth
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_d2f030e5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_d2f030e5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mSteerDampening
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_8e137222((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_8e137222((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mTerrainAvoidDistance
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_1d2db9ba((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_1d2db9ba((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mXBodyRotation
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_a73a10fe((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_a73a10fe((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mYBodyRotation
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_e86bed22((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_e86bed22((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mZBodyRotation
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_dd6325c8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_dd6325c8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C4.hs_method_bd66fd24((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
+
+    public bool travel(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, nint xa, nint ya, nint za)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_f1686e61((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)xa, (void*)ya, (void*)za) != 0;
+    }
+
+    public void updatePath(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C4.hs_method_a0b14af0((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ExperimentStorage : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExperimentStorage(nint handle) : this(handle, true) { }
 
     internal ExperimentStorage(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExperimentStorage Borrow(nint handle) => new ExperimentStorage(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,24 @@ public sealed unsafe partial class ExperimentStorage : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExperimentStorage Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ExperimentStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_daebbc78((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_8865f8b5((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_2f18c4d1((void*)__hosihikari_shim_handle);
+    }
+
+    public static ExperimentStorage Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3b851b04();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,49 +59,55 @@ public sealed unsafe partial class ExperimentStorage : global::System.IDisposabl
         return new ExperimentStorage((nint)handle);
     }
 
-    public bool isAnyToggleEnabled()
+    public static ExperimentStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage arg0)
     {
-        return NativeMethods.TablePtr->hs_method_b272ac05((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C1.hs_create_daebbc78((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExperimentStorage((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDeprecatedData_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b94cce7e((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b94cce7e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mExperimentData_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_79ea59f5((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_79ea59f5((void*)__hosihikari_shim_handle);
     }
 
     public bool mExperimentsEverToggled
     {
-        get => NativeMethods.TablePtr->hs_get_949ebfad((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_949ebfad((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_949ebfad((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_949ebfad((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public bool wereAnyExperimentsEverToggled()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage arg0)
     {
-        return NativeMethods.TablePtr->hs_method_e25faa20((void*)_handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage((nint)NativeMethods.TablePtr->C1.hs_method_26c516f2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_705049b7((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_705049b7((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

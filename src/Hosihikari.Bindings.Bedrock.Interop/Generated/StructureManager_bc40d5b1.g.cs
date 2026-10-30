@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class StructureManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructureManager(nint handle) : this(handle, true) { }
 
     internal StructureManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructureManager Borrow(nint handle) => new StructureManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,94 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ec90c414((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ec90c414((void*)__hosihikari_shim_handle);
     }
 
-    public static sbyte BEHAVIOR_PACK_STRUCTURES_FOLDER
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager packManager)
     {
-        get => NativeMethods.TablePtr->hs_get_e251b809();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_4bdc695c((void*)__hosihikari_shim_handle, (void*)packManager.Handle);
     }
 
-    public static sbyte LEVEL_STORAGE_STRUCTURE_TEMPLATE_PREFIX
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate _getOrCreate(string structureName)
     {
-        get => NativeMethods.TablePtr->hs_get_6a9822c0();
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)NativeMethods.TablePtr->C3.hs_method_7b598279((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static StructureManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getOrCreateJigsawStructureMetadata(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement structurePoolElement)
     {
-        var handle = NativeMethods.TablePtr->hs_create_33e4bfd8((void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_a6acacae((void*)__hosihikari_shim_handle, (void*)structurePoolElement.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate _getOrCreateLegacy(string structureName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate((nint)NativeMethods.TablePtr->C3.hs_method_f8aabc48((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate? _getStructure(string structureName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_e39863d5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public bool _readStructure(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structureTemplate)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_26c68469((void*)__hosihikari_shim_handle, (void*)structureTemplate.Handle) != 0;
+    }
+
+    public static StructureManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_08e844f3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -69,18 +129,51 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         return new StructureManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clearAndShutdownStructurePlacement()
+    public static StructureManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager packManager)
     {
-        NativeMethods.TablePtr->hs_method_509673e6((void*)_handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_5791fcf9((void*)packManager.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureManager((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate cloneStructure(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0, string arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate? _createAndLoadStructure(string structureName, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? packManager, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage? levelStorage)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_5ae15709((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(packManager?.Handle ?? 0), (void*)(levelStorage?.Handle ?? 0));
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public string _createLevelStorageId(string dimensionPrefix, string saveId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionPrefix);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(dimensionPrefix, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(saveId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -90,16 +183,62 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(saveId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var __hs_view = NativeMethods.TablePtr->C3.hs_method_0a59f01d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public static bool _findResource(nint structurePath, nint pack, nint resourceStream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public static void _removePlacementQueueItem(string dimensionPrefix, global::Hosihikari.Bindings.Bedrock.Interop.StructureAnimationData structureAnimationData)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionPrefix);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(dimensionPrefix, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C3.hs_method_8b2264e2(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)structureAnimationData.Handle);
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate cloneStructure(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structureTemplate, string structureName)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)NativeMethods.TablePtr->hs_method_37dd4e03((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1), false);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)NativeMethods.TablePtr->C3.hs_method_b2c5dd1a((void*)__hosihikari_shim_handle, (void*)structureTemplate.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1), false);
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateDataResponsePacket createStructureDataExportPacket(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage? arg2, int arg3)
+    public byte deleteStructure(string structureName, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -109,16 +248,16 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateDataResponsePacket((nint)NativeMethods.TablePtr->hs_method_583094b3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), arg3));
+            return NativeMethods.TablePtr->C3.hs_method_971855f7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)levelStorage.Handle);
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateDataResponsePacket createStructureDataImportPacket(string arg0, int arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate getOrCreate(string structureName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -128,16 +267,22 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateDataResponsePacket((nint)NativeMethods.TablePtr->hs_method_25d3f2fb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)NativeMethods.TablePtr->C3.hs_method_e4588134((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
-    public int deleteStructure(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg1)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateJigsawStructureMetadata(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement structurePoolElement)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_1a67363f((void*)__hosihikari_shim_handle, (void*)structurePoolElement.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate getOrCreateLegacy(string structureName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -147,94 +292,16 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_c704381f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate((nint)NativeMethods.TablePtr->C3.hs_method_7177b378((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate getOrCreate(string arg0)
+    public string[] getPackStructureNames(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID packUUID)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)NativeMethods.TablePtr->hs_method_284cf872((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate getOrCreateLegacy(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate((nint)NativeMethods.TablePtr->hs_method_eacb5fec((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate? getOrLoadStructure(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage? arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_8aa72b1f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0));
-            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)__hs_handle, false) : null;
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate? getStructure(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_090b7bc9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)__hs_handle, false) : null;
-        }
-    }
-
-    public string[] getStructureNames(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, bool arg1)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c6d8279c((void*)_handle, (void*)arg0.Handle, arg1);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_e75fbd63((void*)__hosihikari_shim_handle, (void*)packUUID.Handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -244,17 +311,9 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getStructurePath(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getStructurePath(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.");
-
-    public void importStructureFromTemplate(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate? getStructure(string structureName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(structureName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -264,26 +323,37 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_6448b743((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_9c7f4d14((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)__hs_handle, false) : null;
         }
     }
 
-    public bool load(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage? arg2)
+    public string[] getStructureNames(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, bool includeUnremovable)
     {
-        return NativeMethods.TablePtr->hs_method_96510ba8((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0)) != 0;
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_362c87cd((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle, includeUnremovable);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
     }
 
-    public void loadPlacementQueue(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2)
-    {
-        NativeMethods.TablePtr->hs_method_61222d70((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::BasicStackString<char, 1024>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getStructurePath(nint structureFullName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::BasicStackString<char, 1024>>' requires --link-carrier or --virtual-dispatch.");
 
-    public void loadPlacementQueueItem(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.Level arg2, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg3)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::BasicStackString<char, 1024>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getStructurePath(nint structureNamespace, nint structureName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::BasicStackString<char, 1024>>' requires --link-carrier or --virtual-dispatch.");
+
+    public void importStructureFromTemplate(string name, global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate temp)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -293,60 +363,127 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_2c27ae51((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+            NativeMethods.TablePtr->C3.hs_method_4631dd5c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)temp.Handle);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void queueLoad(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public bool readStructure(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0)
+    public bool load(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structureTemplate, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? packManager, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage? levelStorage)
     {
-        return NativeMethods.TablePtr->hs_method_f8311f37((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_a6691bcb((void*)__hosihikari_shim_handle, (void*)structureTemplate.Handle, (void*)(packManager?.Handle ?? 0), (void*)(levelStorage?.Handle ?? 0)) != 0;
+    }
+
+    public void loadMetadataRegistries()
+    {
+        NativeMethods.TablePtr->C3.hs_method_f10ddefd((void*)__hosihikari_shim_handle);
+    }
+
+    public void loadPlacementQueue(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage storage, global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        NativeMethods.TablePtr->C3.hs_method_eb99b201((void*)__hosihikari_shim_handle, (void*)storage.Handle, (void*)level.Handle, (void*)dimension.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCerealContext_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_df33c878((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLegacyStructureRepository_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_10094122((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetadataRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_802a9308((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetadataRegistryMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_eb40f566((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_923db166((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRepositoryMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ea639b17((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructurePlacementQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ef0307ac((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mStructurePlacementSaveCounter
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b53f62ff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b53f62ff((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureRepository_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dea6fc0f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnknownBlockRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4e77ae3a((void*)__hosihikari_shim_handle);
+    }
+
+    public bool readStructure(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structureTemplate)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_e96c553d((void*)__hosihikari_shim_handle, (void*)structureTemplate.Handle) != 0;
     }
 
     public void reset()
     {
-        NativeMethods.TablePtr->hs_method_96860bf4((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_96860bf4((void*)__hosihikari_shim_handle);
     }
 
-    public void saveToLevel(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg1)
+    public void saveToLevel(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structureTemplate, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
     {
-        NativeMethods.TablePtr->hs_method_da31d5bb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_d9988114((void*)__hosihikari_shim_handle, (void*)structureTemplate.Handle, (void*)levelStorage.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void setUnknownBlockRegistry(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.", false)]
+    public void setUnknownBlockRegistry(nint unknownBlockRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.");
 
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        NativeMethods.TablePtr->hs_method_aff9ec72((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_63da4dfa((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public nint tryPlaceStructureInWorld(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
+    public nint tryPlaceStructureInWorld(nint cmdArea, nint level, nint dimension, nint bounds, nint loadPosition, nint settings, nint structureTemplate, nint structureAnimationData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_bc40d5b1((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_bc40d5b1((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

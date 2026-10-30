@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockSourceListener
+public sealed unsafe partial class BlockSourceListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockSourceListener(nint handle) : this(handle, true) { }
 
     internal BlockSourceListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockSourceListener Borrow(nint handle) => new BlockSourceListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,64 +33,102 @@ public sealed unsafe partial class BlockSourceListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockSourceListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockSourceListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void onAreaChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
+    public void _onAreaChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos min, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos max)
     {
-        NativeMethods.TablePtr->hs_method_19a3f52c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C0.hs_method_85b9e727((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)min.Handle, (void*)max.Handle);
     }
 
-    public void onBlockChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, uint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, global::Hosihikari.Bindings.Bedrock.Interop.Block arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? arg6, int arg7, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg8)
+    public void _onBlockChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, uint layer, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Block oldBlock, int updateFlags, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? syncMsg, byte eventTarget, global::Hosihikari.Bindings.Bedrock.Interop.Actor? blockChangeSource)
     {
-        NativeMethods.TablePtr->hs_method_844d3cba((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle, arg5, (void*)(arg6?.Handle ?? 0), arg7, (void*)(arg8?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_662e54af((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)pos.Handle, layer, (void*)block.Handle, (void*)oldBlock.Handle, updateFlags, (void*)(syncMsg?.Handle ?? 0), eventTarget, (void*)(blockChangeSource?.Handle ?? 0));
     }
 
-    public void onBlockEntityChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockActor arg1)
+    public void _onBlockEntityChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.BlockActor te)
     {
-        NativeMethods.TablePtr->hs_method_a5d712c8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_e13225fa((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)te.Handle);
     }
 
-    public void onBlockEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, int arg4, int arg5)
+    public void _onBlockEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, int x, int y, int z, int b0, int b1)
     {
-        NativeMethods.TablePtr->hs_method_197a6e35((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4, arg5);
+        NativeMethods.TablePtr->C0.hs_method_db3c54fb((void*)__hosihikari_shim_handle, (void*)source.Handle, x, y, z, b0, b1);
     }
 
-    public void onBrightnessChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public void _onBrightnessChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        NativeMethods.TablePtr->hs_method_9db9ecad((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_f8a3afb8((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)pos.Handle);
     }
 
-    public void onEntityChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public void _onEntityChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.Actor entity)
     {
-        NativeMethods.TablePtr->hs_method_142c2136((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_7765dc23((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)entity.Handle);
     }
 
-    public void onSourceCreated(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    public void _onSourceCreated(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source)
     {
-        NativeMethods.TablePtr->hs_method_f7a2d6aa((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_b8f040fb((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    public void onSourceDestroyed(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    public void _onSourceDestroyed(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source)
     {
-        NativeMethods.TablePtr->hs_method_291c4c16((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_b2e22233((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onAreaChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos min, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos max)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5fc425f6((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)min.Handle, (void*)max.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_6a626191() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void onBlockChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, uint layer, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Block oldBlock, int updateFlags, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? syncMsg, byte eventTarget, global::Hosihikari.Bindings.Bedrock.Interop.Actor? blockChangeSource)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a206363d((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)pos.Handle, layer, (void*)block.Handle, (void*)oldBlock.Handle, updateFlags, (void*)(syncMsg?.Handle ?? 0), eventTarget, (void*)(blockChangeSource?.Handle ?? 0));
+    }
+
+    public void onBlockEntityChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.BlockActor te)
+    {
+        NativeMethods.TablePtr->C0.hs_method_bcf24a19((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)te.Handle);
+    }
+
+    public void onBlockEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, int x, int y, int z, int b0, int b1)
+    {
+        NativeMethods.TablePtr->C0.hs_method_2bee15c7((void*)__hosihikari_shim_handle, (void*)source.Handle, x, y, z, b0, b1);
+    }
+
+    public void onBrightnessChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        NativeMethods.TablePtr->C0.hs_method_87baf403((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)pos.Handle);
+    }
+
+    public void onEntityChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.Actor entity)
+    {
+        NativeMethods.TablePtr->C0.hs_method_4fa7f8ab((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)entity.Handle);
+    }
+
+    public void onSourceCreated(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source)
+    {
+        NativeMethods.TablePtr->C0.hs_method_3f065f17((void*)__hosihikari_shim_handle, (void*)source.Handle);
+    }
+
+    public void onSourceDestroyed(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c7f5c1be((void*)__hosihikari_shim_handle, (void*)source.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d105161a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

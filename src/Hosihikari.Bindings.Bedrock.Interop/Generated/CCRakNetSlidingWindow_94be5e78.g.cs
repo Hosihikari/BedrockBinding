@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
 public sealed unsafe partial class CCRakNetSlidingWindow
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CCRakNetSlidingWindow(nint handle) : this(handle, true) { }
 
     internal CCRakNetSlidingWindow(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CCRakNetSlidingWindow Borrow(nint handle) => new CCRakNetSlidingWindow(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,112 +33,86 @@ public sealed unsafe partial class CCRakNetSlidingWindow
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CCRakNetSlidingWindow Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CCRakNetSlidingWindow Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint GetAndIncrementNextDatagramSequenceNumber() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.");
-
-    public ulong GetBytesPerSecondLimitByCongestionControl()
+    public uint MAXIMUM_MTU_INCLUDING_UDP_HEADER
     {
-        return NativeMethods.TablePtr->hs_method_f75f4932((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_f8f0705f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f8f0705f((void*)__hosihikari_shim_handle, value);
     }
 
-    public uint GetMTU()
+    public bool _isContinuousSend
     {
-        return NativeMethods.TablePtr->hs_method_904580a5((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_e3226aeb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e3226aeb((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint GetNextDatagramSequenceNumber() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.");
-
-    public ulong GetRTOForRetransmission(byte arg0)
+    public bool backoffThisBlock
     {
-        return NativeMethods.TablePtr->hs_method_ad9af44c((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_6bc60e21((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_6bc60e21((void*)__hosihikari_shim_handle, value);
     }
 
-    public int GetRetransmissionBandwidth(ulong arg0, ulong arg1, uint arg2, bool arg3)
+    public double cwnd
     {
-        return NativeMethods.TablePtr->hs_method_5d6c116a((void*)_handle, arg0, arg1, arg2, arg3);
+        get => NativeMethods.TablePtr->C2.hs_get_f1bac16b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f1bac16b((void*)__hosihikari_shim_handle, value);
     }
 
-    public int GetTransmissionBandwidth(ulong arg0, ulong arg1, uint arg2, bool arg3)
+    public double deviationRtt
     {
-        return NativeMethods.TablePtr->hs_method_a3ab3d39((void*)_handle, arg0, arg1, arg2, arg3);
+        get => NativeMethods.TablePtr->C2.hs_get_0b43ba64((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0b43ba64((void*)__hosihikari_shim_handle, value);
     }
 
-    public void Init(ulong arg0, uint arg1)
+    public double estimatedRTT
     {
-        NativeMethods.TablePtr->hs_method_4ba95026((void*)_handle, arg0, arg1);
+        get => NativeMethods.TablePtr->C2.hs_get_73e4c34c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_73e4c34c((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
-    public static bool LessThan(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
-    public void OnAck(ulong arg0, ulong arg1, bool arg2, double arg3, double arg4, double arg5, bool arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
-    public bool OnGotPacket(nint arg0, bool arg1, ulong arg2, uint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
-    public void OnGotPacketPair(nint arg0, uint arg1, ulong arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
-    public void OnNAK(ulong arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
-
-    public void OnResend(ulong arg0, ulong arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint expectedNextSequenceNumber_Address
     {
-        NativeMethods.TablePtr->hs_method_a0eb90dd((void*)_handle, arg0, arg1);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2076b6a1((void*)__hosihikari_shim_handle);
     }
 
-    public void OnSendAck(ulong arg0, uint arg1)
+    public double lastRtt
     {
-        NativeMethods.TablePtr->hs_method_1822b8b2((void*)_handle, arg0, arg1);
+        get => NativeMethods.TablePtr->C2.hs_get_c8b85d0c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c8b85d0c((void*)__hosihikari_shim_handle, value);
     }
 
-    public void OnSendAckGetBAndAS(ulong arg0, nint arg1, nint arg2, nint arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint nextCongestionControlBlock_Address
     {
-        NativeMethods.TablePtr->hs_method_f13ab6c6((void*)_handle, arg0, (void*)arg1, (void*)arg2, (void*)arg3);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_be4c4a50((void*)__hosihikari_shim_handle);
     }
 
-    public void OnSendBytes(ulong arg0, uint arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint nextDatagramSequenceNumber_Address
     {
-        NativeMethods.TablePtr->hs_method_88f73c3a((void*)_handle, arg0, arg1);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_df799086((void*)__hosihikari_shim_handle);
     }
 
-    public bool ShouldSendACKs(ulong arg0, ulong arg1)
+    public ulong oldestUnsentAck
     {
-        return NativeMethods.TablePtr->hs_method_cd25cead((void*)_handle, arg0, arg1) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_88212b9c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_88212b9c((void*)__hosihikari_shim_handle, value);
     }
 
-    public void Update(ulong arg0, bool arg1)
+    public bool speedUpThisBlock
     {
-        NativeMethods.TablePtr->hs_method_af657a29((void*)_handle, arg0, arg1);
+        get => NativeMethods.TablePtr->C2.hs_get_861235a0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_861235a0((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public double ssThresh
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_624af1e9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_624af1e9((void*)__hosihikari_shim_handle, value);
+    }
 }

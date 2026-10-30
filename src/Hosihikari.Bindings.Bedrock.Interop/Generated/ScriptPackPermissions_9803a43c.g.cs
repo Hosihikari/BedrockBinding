@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScriptPackPermissions
+public sealed unsafe partial class ScriptPackPermissions : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptPackPermissions(nint handle) : this(handle, true) { }
 
     internal ScriptPackPermissions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptPackPermissions Borrow(nint handle) => new ScriptPackPermissions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,45 @@ public sealed unsafe partial class ScriptPackPermissions
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPackPermissions Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPackPermissions Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_312819dd((void*)__hosihikari_shim_handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAllowedModules_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ec6e71e0((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ec6e71e0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommandsPermissionLevel_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_45400ec8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_45400ec8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mModulePermissions_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b26c9bf9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b26c9bf9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static string sWildCardModuleName
+    public void Dispose()
     {
-        get
+        if (__hosihikari_shim_handle != 0)
         {
-            var view = NativeMethods.TablePtr->hs_get_e972a279();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_9803a43c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

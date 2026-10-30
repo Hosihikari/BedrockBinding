@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder;
 
 public sealed unsafe partial class Manager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Manager(nint handle) : this(handle, true) { }
 
     internal Manager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Manager Borrow(nint handle) => new Manager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,24 +33,41 @@ public sealed unsafe partial class Manager : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_42c0a53c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_42c0a53c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Manager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static Manager Create(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftApp arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftApp minecraftApp)
     {
-        var handle = NativeMethods.TablePtr->hs_create_d1cbd9a5((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_8560465b((void*)__hosihikari_shim_handle, (void*)minecraftApp.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getAutomationClient()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_764991e4((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getEventing()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_df9d7a34((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static Manager Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cf2a4ee9();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,37 +76,68 @@ public sealed unsafe partial class Manager : global::System.IDisposable
         return new Manager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Manager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static Manager Create(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftApp minecraftApp)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fe7c4097((void*)minecraftApp.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Manager((nint)handle);
+    }
+
+    public static Manager Create(global::Hosihikari.Bindings.Bedrock.Interop.CodeBuilder.Manager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7a75d758((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Manager((nint)handle);
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getAutomationClient()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_f2b5a183((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_9f6d59be((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getEventing()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_4c3a0260((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_4691e3bf((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5e1ae7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_dbacaeac((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk67ed09_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1791132c((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CodeBuilder.Manager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CodeBuilder.Manager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CodeBuilder.Manager((nint)NativeMethods.TablePtr->C0.hs_method_604f6a77((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_109b6bf5((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_109b6bf5((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

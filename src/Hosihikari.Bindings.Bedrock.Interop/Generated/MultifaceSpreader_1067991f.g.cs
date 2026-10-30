@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MultifaceSpreader : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MultifaceSpreader(nint handle) : this(handle, true) { }
 
     internal MultifaceSpreader(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MultifaceSpreader Borrow(nint handle) => new MultifaceSpreader(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,59 @@ public sealed unsafe partial class MultifaceSpreader : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint ALL_SPREAD_TYPES_Address
+    public bool __canSpreadFrom(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte facing)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c2752250();
+        return NativeMethods.TablePtr->C2.hs_method_334068d9((void*)__hosihikari_shim_handle, (void*)block.Handle, facing) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MultifaceSpreader Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MultifaceSpreader Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MultifaceSpreader Create(int[] arg0)
+    public bool __canSpreadInto(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Block self, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte placementDirection)
     {
-        fixed (int* __hs_vectorData0 = arg0)
+        return NativeMethods.TablePtr->C2.hs_method_2dadc773((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)self.Handle, (void*)pos.Handle, placementDirection) != 0;
+    }
+
+    public bool __isOtherBlockValidAsSource(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_79bb2539((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+    }
+
+    public nint _ctor(byte[] spreadTypes)
+    {
+        fixed (byte* __hs_vectorData0 = spreadTypes)
         {
-            var handle = NativeMethods.TablePtr->hs_create_77804327(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            return (nint)NativeMethods.TablePtr->C2.hs_method_b14d0bc0((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(spreadTypes?.Length ?? 0));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static nint ALL_SPREAD_TYPES()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_2847ca3d();
+    }
+
+    public static MultifaceSpreader Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fd733c81();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MultifaceSpreader((nint)handle);
+    }
+
+    public static MultifaceSpreader Create(byte[] spreadTypes)
+    {
+        fixed (byte* __hs_vectorData0 = spreadTypes)
+        {
+            var handle = NativeMethods.TablePtr->C2.hs_create_c5d399fa(__hs_vectorData0, (nuint)(spreadTypes?.Length ?? 0));
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,56 +95,67 @@ public sealed unsafe partial class MultifaceSpreader : global::System.IDisposabl
         }
     }
 
+    public static nint SAME_POSITION_ONLY()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_e16c1626();
+    }
+
+    public bool _canSpreadFrom(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte facing)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_42c90220((void*)__hosihikari_shim_handle, (void*)block.Handle, facing) != 0;
+    }
+
+    public bool _canSpreadInto(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Block self, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte placementDirection)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_edf96f43((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)self.Handle, (void*)pos.Handle, placementDirection) != 0;
+    }
+
+    public bool _isOtherBlockValidAsSource(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_1cc2a5f9((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::pair<const BlockPos, const unsigned char>' is not supported.", false)]
+    public nint getSpreadFromFaceTowardDirection(nint target, nint self, nint block, nint pos, byte startingFace, byte spreadDirection) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::pair<const BlockPos, const unsigned char>' is not supported.");
+
     // The native field type is not projected; this is the address of the field storage.
-    public static nint SAME_POSITION_ONLY_Address
+    public nint mSpreadTypes_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1579c2c8();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4c91c87a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::pair<BlockPos const,unsigned char const>' is not supported.", false)]
-    public nint getSpreadFromFaceTowardDirection(nint arg0, nint arg1, nint arg2, nint arg3, byte arg4, byte arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::pair<BlockPos const,unsigned char const>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int spreadFromAllFacesTowardAllDirections(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
+    public int spreadFromFaceTowardAllDirections(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Block self, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte startingFace)
     {
-        return NativeMethods.TablePtr->hs_method_3a6167eb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_cd92e6e6((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)self.Handle, (void*)block.Handle, (void*)pos.Handle, startingFace);
     }
 
-    public bool spreadFromFaceTowardDirection(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, byte arg4, byte arg5)
+    public bool spreadFromFaceTowardDirection(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Block self, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte startingFace, byte spreadDirection)
     {
-        return NativeMethods.TablePtr->hs_method_e5db0a78((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_306f15f1((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)self.Handle, (void*)block.Handle, (void*)pos.Handle, startingFace, spreadDirection) != 0;
     }
 
-    public bool spreadFromFaceTowardDirectionWorldGen(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, byte arg4, byte arg5)
+    public bool spreadFromFaceTowardRandomDirection(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Block self, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte startingFace)
     {
-        return NativeMethods.TablePtr->hs_method_4bce7fb4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_4cacad51((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)self.Handle, (void*)block.Handle, (void*)pos.Handle, startingFace) != 0;
     }
 
-    public bool spreadFromFaceTowardRandomDirection(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, byte arg4)
+    public bool spreadFromRandomFaceTowardRandomDirection(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Block self, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        return NativeMethods.TablePtr->hs_method_1946f6ca((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4) != 0;
-    }
-
-    public bool spreadFromRandomFaceTowardRandomDirection(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_e32eb129((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_b1c8b549((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)self.Handle, (void*)block.Handle, (void*)pos.Handle) != 0;
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_1067991f((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_1067991f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

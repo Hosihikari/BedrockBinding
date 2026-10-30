@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GameRulesChangedPacketData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameRulesChangedPacketData(nint handle) : this(handle, true) { }
 
     internal GameRulesChangedPacketData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameRulesChangedPacketData Borrow(nint handle) => new GameRulesChangedPacketData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,37 @@ public sealed unsafe partial class GameRulesChangedPacketData : global::System.I
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void __autoclassinit2(ulong arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_877f9c75((void*)_handle, arg0);
-    }
-
-    public void addRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRule arg0)
-    {
-        NativeMethods.TablePtr->hs_method_b65c392f((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public nint getRules()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_bf8bf508((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_8834b2e8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRules_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a36e75e8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a36e75e8((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void setRules(nint arg0) =>
+    public void setRules(nint rules) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_68c84fd3((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_68c84fd3((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum AnimationMode : sbyte
+public enum AnimationMode : byte
 {
     None = 0,
     Layers = 1,

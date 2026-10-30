@@ -9,5 +9,4 @@ public enum DataStatus : int
     HasData = 0,
     NoData = 1,
     BrokenData = 2,
-    ConnectionLost = 3,
 }

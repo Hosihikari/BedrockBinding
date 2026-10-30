@@ -6,9 +6,9 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public enum PacketPriority : int
 {
-    Immediate = 0,
-    High = 1,
-    Medium = 2,
-    Low = 3,
-    Count = 4,
+    ImmediatePriority = 0,
+    HighPriority = 1,
+    MediumPriority = 2,
+    LowPriority = 3,
+    NumberOfPriorities = 4,
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MinecraftEventing_Nested;
 
-public enum InteractionType : int
+public enum InteractionType : byte
 {
     Breeding = 1,
     Taming = 2,
@@ -22,4 +22,5 @@ public enum InteractionType : int
     PetSleep = 14,
     Trusting = 15,
     Commanding = 16,
+    Equipping = 17,
 }

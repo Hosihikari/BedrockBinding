@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen.TerrainAdjustment;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum Type : int
+public enum Type : byte
 {
+    None = 0,
+    Bury = 1,
+    BeardThin = 2,
+    BeardBox = 3,
+    Encapsulate = 4,
 }

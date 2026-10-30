@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SubChunk_Nested;
 
-public enum BlockLayer : sbyte
+public enum BlockLayer : byte
 {
     Standard = 0,
     Extra = 1,

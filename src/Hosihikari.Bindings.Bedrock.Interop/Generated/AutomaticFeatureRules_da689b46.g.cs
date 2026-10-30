@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AutomaticFeatureRules
+public sealed unsafe partial class AutomaticFeatureRules : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AutomaticFeatureRules(nint handle) : this(handle, true) { }
 
     internal AutomaticFeatureRules(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AutomaticFeatureRules Borrow(nint handle) => new AutomaticFeatureRules(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,37 +33,89 @@ public sealed unsafe partial class AutomaticFeatureRules
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AutomaticFeatureRules Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AutomaticFeatureRules Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _parseAndInsertUnsorted_bc50afcb(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, bool arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void attachAutomaticFeatures(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
     {
-        NativeMethods.TablePtr->hs_method_6a929eb1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_0da4c03f((void*)__hosihikari_shim_handle, (void*)ctx.Handle, (void*)eventing.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static AutomaticFeatureRules Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7d640f0f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::unordered_map<HashedString,AutomaticFeatureRules::AutomaticFeatureRule,std::hash<HashedString>,std::equal_to<HashedString>,std::allocator<std::pair<HashedString const,AutomaticFeatureRules::AutomaticFeatureRule>>>,std::hash<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::equal_to<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::unordered_map<HashedString,AutomaticFeatureRules::AutomaticFeatureRule,std::hash<HashedString>,std::equal_to<HashedString>,std::allocator<std::pair<HashedString const,AutomaticFeatureRules::AutomaticFeatureRule>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint parseAutomaticFeatures_159c0436(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::unordered_map<HashedString,AutomaticFeatureRules::AutomaticFeatureRule,std::hash<HashedString>,std::equal_to<HashedString>,std::allocator<std::pair<HashedString const,AutomaticFeatureRules::AutomaticFeatureRule>>>,std::hash<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::equal_to<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::unordered_map<HashedString,AutomaticFeatureRules::AutomaticFeatureRule,std::hash<HashedString>,std::equal_to<HashedString>,std::allocator<std::pair<HashedString const,AutomaticFeatureRules::AutomaticFeatureRule>>>>>>' requires --link-carrier or --virtual-dispatch.");
+        return new AutomaticFeatureRules((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint parseAutomaticFeatures_e34f8b49(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static AutomaticFeatureRules Create(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticFeatureRules arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_285c6066((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AutomaticFeatureRules((nint)handle);
+    }
+
+    public static AutomaticFeatureRules Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cd13c087((void*)ctx.Handle, (void*)eventing.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AutomaticFeatureRules((nint)handle);
+    }
+
+    public static nint SCHEMA_VERSION_1()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_042af9c1();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<SharedTypes::v1_21_20::AutomaticFeatureRulesData>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _parseAndInsertUnsorted(nint filename, nint data, nint minEngineVersion, nint worldRegistries, nint bucketedFeatures, bool isBasePack) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<SharedTypes::v1_21_20::AutomaticFeatureRulesData>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void attachAutomaticFeatures(nint resourcePackManager, nint worldRegistries, nint biomeDecorationFeatureMap) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventing_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_713ece13((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLoader_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_99642fb3((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AutomaticFeatureRules operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticFeatureRules arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AutomaticFeatureRules((nint)NativeMethods.TablePtr->C0.hs_method_df207b6b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_da689b46((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

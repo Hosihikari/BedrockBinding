@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BrushableBlockActor_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Placement : int
 {
+    DesertWell = 0,
+    DesertPyramid = 1,
+    ColdOceanRuin = 2,
+    WarmOceanRuin = 3,
+    TrailRuinsCommon = 4,
+    TrailRuinsRare = 5,
+    Empty = 6,
 }

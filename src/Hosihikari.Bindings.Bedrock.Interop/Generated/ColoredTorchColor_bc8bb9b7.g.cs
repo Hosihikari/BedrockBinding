@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ColoredTorchColor : int
+public enum ColoredTorchColor : byte
 {
+    Red = 0,
+    Green = 1,
+    Blue = 2,
+    Purple = 3,
+    Invalid = 4,
 }

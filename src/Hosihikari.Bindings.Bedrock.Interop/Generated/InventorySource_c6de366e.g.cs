@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class InventorySource : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public InventorySource(nint handle) : this(handle, true) { }
 
     internal InventorySource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static InventorySource Borrow(nint handle) => new InventorySource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,44 @@ public sealed unsafe partial class InventorySource : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public sbyte mContainerId
     {
-        get => NativeMethods.TablePtr->hs_get_02ee50a4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_02ee50a4((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_02ee50a4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_02ee50a4((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mFlags
     {
-        get => NativeMethods.TablePtr->hs_get_257cecab((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_257cecab((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_257cecab((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_257cecab((void*)__hosihikari_shim_handle, value);
     }
 
-    public int mType
+    public uint mType
     {
-        get => NativeMethods.TablePtr->hs_get_0289b62c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_0289b62c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_0289b62c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_0289b62c((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string toString()
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.InventorySource other)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_38bb26dc((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return NativeMethods.TablePtr->C1.hs_method_977e4aa4((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_c6de366e((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_c6de366e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

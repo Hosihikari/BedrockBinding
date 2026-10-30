@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum CreateDirectoryResultCode : int
 {
+    Success = 0,
+    Failure = 1,
 }

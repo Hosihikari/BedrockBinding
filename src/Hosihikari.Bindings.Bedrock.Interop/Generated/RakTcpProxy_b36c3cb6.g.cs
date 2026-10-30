@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakTcpProxy
+public sealed unsafe partial class RakTcpProxy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakTcpProxy(nint handle) : this(handle, true) { }
 
     internal RakTcpProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakTcpProxy Borrow(nint handle) => new RakTcpProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,19 @@ public sealed unsafe partial class RakTcpProxy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakTcpProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakTcpProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void close(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    public void _close(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress address)
     {
-        NativeMethods.TablePtr->hs_method_068a00b6((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4fe6414f((void*)__hosihikari_shim_handle, (void*)address.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress connect(string arg0, ushort arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress _connect(string host, ushort port)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(host);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -63,59 +55,161 @@ public sealed unsafe partial class RakTcpProxy
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(host, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_e504439d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress((nint)NativeMethods.TablePtr->C2.hs_method_083aeb76((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, port));
         }
     }
 
-    public void deallocatePacket(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet? arg0)
+    public void _deallocatePacket(nint packet)
     {
-        NativeMethods.TablePtr->hs_method_56cfa474((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_7aec1744((void*)__hosihikari_shim_handle, (void*)packet);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress nextCompletedConnectionAttempt()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress _nextCompletedConnectionAttempt()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_4c777a18((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress((nint)NativeMethods.TablePtr->C2.hs_method_8c832726((void*)__hosihikari_shim_handle));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress nextFailedConnectionAttempt()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress _nextFailedConnectionAttempt()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_6da5176e((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress((nint)NativeMethods.TablePtr->C2.hs_method_9f61d5e2((void*)__hosihikari_shim_handle));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress nextLostConnection()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress _nextLostConnection()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_d6d655eb((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress((nint)NativeMethods.TablePtr->C2.hs_method_682896f1((void*)__hosihikari_shim_handle));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet? nextPacket()
+    public nint _nextPacket()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_7bf13a32((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet((nint)__hs_handle, false) : null;
+        return (nint)NativeMethods.TablePtr->C2.hs_method_00c420e5((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool _packetsAvailable()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_36d3c85d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _send(nint data, uint length, global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress address)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7f01f917((void*)__hosihikari_shim_handle, (void*)data, length, (void*)address.Handle);
+    }
+
+    public bool _start(ushort port, ushort maxIncomming, ushort maxOutgoing)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_b7ff63f7((void*)__hosihikari_shim_handle, port, maxIncomming, maxOutgoing) != 0;
+    }
+
+    public static RakTcpProxy Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1cbe7a37();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakTcpProxy((nint)handle);
+    }
+
+    public static RakTcpProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.RakTcpProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8fd61b86((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakTcpProxy((nint)handle);
+    }
+
+    public void close(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress address)
+    {
+        NativeMethods.TablePtr->C2.hs_method_068a00b6((void*)__hosihikari_shim_handle, (void*)address.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress connect(string host, ushort port)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(host);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(host, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress((nint)NativeMethods.TablePtr->C2.hs_method_c3854b5d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, port));
+        }
+    }
+
+    public void deallocatePacket(nint packet)
+    {
+        NativeMethods.TablePtr->C2.hs_method_92d4bcea((void*)__hosihikari_shim_handle, (void*)packet);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk30bf73_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c3c3120a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress nextCompletedConnectionAttempt()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress((nint)NativeMethods.TablePtr->C2.hs_method_4c777a18((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress nextFailedConnectionAttempt()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress((nint)NativeMethods.TablePtr->C2.hs_method_6da5176e((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress nextLostConnection()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress((nint)NativeMethods.TablePtr->C2.hs_method_d6d655eb((void*)__hosihikari_shim_handle));
+    }
+
+    public nint nextPacket()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_b027be37((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakTcpProxy operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakTcpProxy arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakTcpProxy((nint)NativeMethods.TablePtr->C2.hs_method_e5ce5a97((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public bool packetsAvailable()
     {
-        return NativeMethods.TablePtr->hs_method_8ed605c0((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_8ed605c0((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void send(nint arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg2)
+    public void send(nint data, uint length, global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress address)
     {
-        NativeMethods.TablePtr->hs_method_c06d7e58((void*)_handle, (void*)arg0, arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7bd92d5b((void*)__hosihikari_shim_handle, (void*)data, length, (void*)address.Handle);
     }
 
-    public bool start(ushort arg0, ushort arg1, ushort arg2)
+    public bool start(ushort port, ushort maxIncomming, ushort maxOutgoing)
     {
-        return NativeMethods.TablePtr->hs_method_a3140267((void*)_handle, arg0, arg1, arg2) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_a3140267((void*)__hosihikari_shim_handle, port, maxIncomming, maxOutgoing) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b36c3cb6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

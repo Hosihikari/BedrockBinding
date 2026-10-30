@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BreakDoorAnnotationComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BreakDoorAnnotationComponent(nint handle) : this(handle, true) { }
 
     internal BreakDoorAnnotationComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BreakDoorAnnotationComponent Borrow(nint handle) => new BreakDoorAnnotationComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,45 +33,69 @@ public sealed unsafe partial class BreakDoorAnnotationComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BreakDoorAnnotationComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BreakDoorAnnotationComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool canMobBreakDoor(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.Path arg1)
+    public void _cleanUp(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        return NativeMethods.TablePtr->hs_method_bff3449c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        NativeMethods.TablePtr->C0.hs_method_01e98d01((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
-    public void clearProgress(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    public bool canMobBreakDoor(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Path path)
     {
-        NativeMethods.TablePtr->hs_method_dff6e4b5((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_8922d94a((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)path.Handle) != 0;
     }
 
-    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void clearProgress(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->hs_method_26f06c61((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_f4b5ed3a((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
-    public void obstructionCheck(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    public int mBreakTicks
     {
-        NativeMethods.TablePtr->hs_method_4f0ee84c((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_5651f36f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_5651f36f((void*)__hosihikari_shim_handle, value);
     }
 
-    public void onComponentRemoved(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    public int mBreakingTime
     {
-        NativeMethods.TablePtr->hs_method_cd0e51bc((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_e248c922((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_e248c922((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong mLastPathIndex
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b3c1b7e3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b3c1b7e3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinDifficulty
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_732ccb02((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_732ccb02((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mObstructionPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_869d801c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fcaff944((void*)__hosihikari_shim_handle);
+    }
+
+    public void obstructionCheck(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C0.hs_method_41a903e9((void*)__hosihikari_shim_handle, (void*)mob.Handle);
+    }
+
+    public void onComponentRemoved(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a5e32654((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+    }
 }

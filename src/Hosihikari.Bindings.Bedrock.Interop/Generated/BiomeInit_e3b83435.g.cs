@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class BiomeInit
+public sealed unsafe partial class BiomeInit : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BiomeInit(nint handle) : this(handle, true) { }
 
     internal BiomeInit(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BiomeInit Borrow(nint handle) => new BiomeInit(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,70 @@ public sealed partial class BiomeInit
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BiomeInit Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.Biome defaultOceanBiome, global::Hosihikari.Bindings.Bedrock.Interop.Biome fallbackBiome, int generator)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_282aa2e8((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)defaultOceanBiome.Handle, (void*)fallbackBiome.Handle, generator);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BiomeInit Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BiomeInit Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e15fc015();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BiomeInit Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new BiomeInit((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static BiomeInit Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.Biome defaultOceanBiome, global::Hosihikari.Bindings.Bedrock.Interop.Biome fallbackBiome, int generator)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_814d9a9e((void*)registry.Handle, (void*)defaultOceanBiome.Handle, (void*)fallbackBiome.Handle, generator);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeInit((nint)handle);
+    }
+
+    public nint mDefaultOcean
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1bfce087((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mFallbackBiome
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_886953ce((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegularBiomes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a6774778((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpecialBiomes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_955f629e((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e3b83435((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

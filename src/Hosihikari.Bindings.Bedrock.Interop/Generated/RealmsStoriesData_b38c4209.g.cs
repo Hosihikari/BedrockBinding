@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RealmsStoriesData
+public sealed unsafe partial class RealmsStoriesData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RealmsStoriesData(nint handle) : this(handle, true) { }
 
     internal RealmsStoriesData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RealmsStoriesData Borrow(nint handle) => new RealmsStoriesData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,56 +33,86 @@ public sealed unsafe partial class RealmsStoriesData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string REALMS_STORIES_PREFIX
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_a105c2b8();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        return (nint)NativeMethods.TablePtr->C2.hs_method_8c1bcdd3((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RealmsStoriesData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RealmsStoriesData Create_fe9e68a6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RealmsStoriesData Create_afb21f31(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clearAllRealmEventsInLevelData()
+    public static string REALMS_STORIES_PREFIX()
     {
-        NativeMethods.TablePtr->hs_method_c94a2296((void*)_handle);
-    }
-
-    public static string getRealmEventInternalName(int arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b0186a95(arg0);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_08dd0dd7();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static RealmsStoriesData Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e92a993e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RealmsStoriesData((nint)handle);
+    }
+
+    public static RealmsStoriesData Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6e5d39c4((void*)levelStorage.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RealmsStoriesData((nint)handle);
+    }
+
+    public static RealmsStoriesData Create(global::Hosihikari.Bindings.Bedrock.Interop.RealmsStoriesData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_afb21f31((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RealmsStoriesData((nint)handle);
+    }
+
+    public static nint mRealmEventInternalNames()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_b8d60354();
+    }
+
     // The native field type is not projected; this is the address of the field storage.
-    public static nint mRealmEventInternalNames_Address
+    public nint mUnk28ab59_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_65bafed2();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c41798ea((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setPlayerRealmEventPublished(int arg0, string arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk61f101_Address
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_02710e1d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6e3afa_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d2150d2a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RealmsStoriesData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RealmsStoriesData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RealmsStoriesData((nint)NativeMethods.TablePtr->C2.hs_method_e6cb3891((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void setPlayerRealmEventPublished(int eventId, string xuid)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(xuid);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -92,21 +122,21 @@ public sealed unsafe partial class RealmsStoriesData
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(xuid, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_e303d81c((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C2.hs_method_1077fb98((void*)__hosihikari_shim_handle, eventId, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
-    public void setWorldRealmEventPublished(int arg0)
+    public void setWorldRealmEventPublished(int eventId)
     {
-        NativeMethods.TablePtr->hs_method_87319ef7((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_87319ef7((void*)__hosihikari_shim_handle, eventId);
     }
 
-    public bool wasPlayerRealmEventPublished(int arg0, string arg1)
+    public bool wasPlayerRealmEventPublished(int eventId, string xuid)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(xuid);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -116,19 +146,23 @@ public sealed unsafe partial class RealmsStoriesData
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(xuid, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_e9fdd748((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_e1232f35((void*)__hosihikari_shim_handle, eventId, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
-    public bool wasWorldRealmEventPublished(int arg0)
+    public void Dispose()
     {
-        return NativeMethods.TablePtr->hs_method_41f0fc6a((void*)_handle, arg0) != 0;
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b38c4209((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

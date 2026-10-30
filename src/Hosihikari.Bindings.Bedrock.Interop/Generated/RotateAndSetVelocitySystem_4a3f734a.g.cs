@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RotateAndSetVelocitySystem
+public sealed unsafe partial class RotateAndSetVelocitySystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RotateAndSetVelocitySystem(nint handle) : this(handle, true) { }
 
     internal RotateAndSetVelocitySystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RotateAndSetVelocitySystem Borrow(nint handle) => new RotateAndSetVelocitySystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,26 @@ public sealed unsafe partial class RotateAndSetVelocitySystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RotateAndSetVelocitySystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RotateAndSetVelocitySystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createSystem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    public static void doTick(global::Hosihikari.Bindings.Bedrock.Interop.MoveInputComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputModeComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.VRMoveAdjustAngleComponent arg2, global::Hosihikari.Bindings.Bedrock.Interop.LocalMoveVelocityComponent arg3)
+    public static void doTick(global::Hosihikari.Bindings.Bedrock.Interop.MoveInputComponent input, global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputModeComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.LocalMoveVelocityComponent localVelocity)
     {
-        NativeMethods.TablePtr->hs_method_81693224((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        NativeMethods.TablePtr->C2.hs_method_da91ac82((void*)input.Handle, (void*)arg1.Handle, (void*)localVelocity.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_4a3f734a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

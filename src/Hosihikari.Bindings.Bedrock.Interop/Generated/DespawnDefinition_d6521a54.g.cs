@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DespawnDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DespawnDefinition(nint handle) : this(handle, true) { }
 
     internal DespawnDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DespawnDefinition Borrow(nint handle) => new DespawnDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,67 @@ public sealed unsafe partial class DespawnDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DespawnDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DespawnDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_13c2f134(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C1.hs_method_f6227d54(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mDespawnFromChance
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ed8965df((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_ed8965df((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mDespawnFromDistance
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_571af573((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_571af573((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDespawnFromDistanceData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d7033c9c((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mDespawnFromInactivity
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_29018032((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_29018032((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mDespawnFromSimulationEdge
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_6a720e98((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_6a720e98((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0be31f42((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMinRangeDespawnChance
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_077bd2ac((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_077bd2ac((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinRangeInactivity
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_3dd530d2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_3dd530d2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mRemoveChildActors
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_d298ab03((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_d298ab03((void*)__hosihikari_shim_handle, value);
+    }
 }

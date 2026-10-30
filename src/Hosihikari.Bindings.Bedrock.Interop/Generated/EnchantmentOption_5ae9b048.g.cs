@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.EnchantBookForTradingFunction_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class EnchantmentOption
+public sealed unsafe partial class EnchantmentOption
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EnchantmentOption(nint handle) : this(handle, true) { }
 
     internal EnchantmentOption(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EnchantmentOption Borrow(nint handle) => new EnchantmentOption(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,26 @@ public sealed partial class EnchantmentOption
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnchantmentName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_64ce6d9b((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMaxLevel
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_be426fdc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_be426fdc((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinLevel
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_eadb1306((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_eadb1306((void*)__hosihikari_shim_handle, value);
     }
 }

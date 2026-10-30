@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ItemEnchantOption
+public sealed unsafe partial class ItemEnchantOption : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemEnchantOption(nint handle) : this(handle, true) { }
 
     internal ItemEnchantOption(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemEnchantOption Borrow(nint handle) => new ItemEnchantOption(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,77 @@ public sealed partial class ItemEnchantOption
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemEnchantOption Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchantOption arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_5f1ec7b1((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemEnchantOption Create_d719ac03(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemEnchantOption Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_539900d4();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemEnchantOption Create_2a76c219(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new ItemEnchantOption((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ItemEnchantOption Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchantOption arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2a76c219((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_d560fef2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new ItemEnchantOption((nint)handle);
+    }
+
+    public int mCost
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_23233c81((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_23233c81((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnchantName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a4c76fb6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnchantNetId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_aab9e9e0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnchants_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_70f2d73a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchantOption operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchantOption arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchantOption((nint)NativeMethods.TablePtr->C1.hs_method_e09a35af((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_d81b2b4d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

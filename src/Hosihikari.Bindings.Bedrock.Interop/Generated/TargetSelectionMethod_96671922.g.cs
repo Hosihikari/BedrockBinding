@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum TargetSelectionMethod : sbyte
+public enum TargetSelectionMethod : byte
 {
     Nearest = 0,
     Random = 1,

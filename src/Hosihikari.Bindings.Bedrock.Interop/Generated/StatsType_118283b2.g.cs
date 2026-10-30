@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelStorage_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum StatsType : int
+public enum StatsType : uint
 {
+    Default = 0,
+    Level0 = 0,
+    Level1 = 1,
+    Level2 = 2,
+    Memory = 3,
 }

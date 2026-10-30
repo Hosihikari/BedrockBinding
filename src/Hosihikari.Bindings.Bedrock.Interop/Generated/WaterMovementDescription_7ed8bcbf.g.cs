@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WaterMovementDescription : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WaterMovementDescription(nint handle) : this(handle, true) { }
 
     internal WaterMovementDescription(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WaterMovementDescription Borrow(nint handle) => new WaterMovementDescription(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,27 @@ public sealed unsafe partial class WaterMovementDescription : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _deserializeData(nint deserializeDataParams) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public nint _getJsonName()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_7e4001da((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
     public static WaterMovementDescription Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_0ed0a355();
+        var handle = NativeMethods.TablePtr->C4.hs_create_0ed0a355();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,34 +62,47 @@ public sealed unsafe partial class WaterMovementDescription : global::System.IDi
         return new WaterMovementDescription((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WaterMovementDescription Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static WaterMovementDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.WaterMovementDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e9f2ac81((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WaterMovementDescription((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void deserializeData(nint arg0) =>
+    public void deserializeData(nint deserializeDataParams) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public nint getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_24ef2ba8((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_e6402933((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk23a354_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_41d42481((void*)__hosihikari_shim_handle);
+    }
 
+    public global::Hosihikari.Bindings.Bedrock.Interop.WaterMovementDescription operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WaterMovementDescription arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WaterMovementDescription((nint)NativeMethods.TablePtr->C4.hs_method_75ad8bb8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7ed8bcbf((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_7ed8bcbf((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

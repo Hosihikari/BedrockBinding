@@ -14,5 +14,5 @@ public enum PacketReliability : int
     UnreliableWithAckReceipt = 5,
     ReliableWithAckReceipt = 6,
     ReliableOrderedWithAckReceipt = 7,
-    Count = 8,
+    NumberOfReliabilities = 8,
 }

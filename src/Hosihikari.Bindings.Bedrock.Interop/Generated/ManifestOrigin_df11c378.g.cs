@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ManifestOrigin : int
+public enum ManifestOrigin : sbyte
 {
+    Directory = 0,
+    Archive = 1,
+    Realms = 2,
+    Catalog = 3,
+    WorldHistory = 4,
+    Invalid = 5,
 }

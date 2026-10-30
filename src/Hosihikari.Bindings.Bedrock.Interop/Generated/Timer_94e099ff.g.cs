@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Timer
+public sealed unsafe partial class Timer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Timer(nint handle) : this(handle, true) { }
 
     internal Timer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Timer Borrow(nint handle) => new Timer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,138 +33,134 @@ public sealed unsafe partial class Timer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public const int MAX_TICKS_PER_UPDATE = 10;
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint MAX_TIME_PER_UPDATE
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Timer Create_3805dd4f(float ticksPerSecond, nint getTimeMSCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static Timer Create_f38297d8(float arg0, nint arg1) =>
+    public nint _ctor(float ticksPerSecond, nint getTimeMSCallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void advanceTime(float arg0)
+    public static Timer Create()
     {
-        NativeMethods.TablePtr->hs_method_7c51b4b9((void*)_handle, arg0);
+        var handle = NativeMethods.TablePtr->C3.hs_create_69fcb4e7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Timer((nint)handle);
     }
 
-    public ulong getTicks()
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static Timer Create(float ticksPerSecond, nint getTimeMSCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void advanceTime(float preferredFrameStep)
     {
-        return NativeMethods.TablePtr->hs_method_985ca8b6((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_7c51b4b9((void*)__hosihikari_shim_handle, preferredFrameStep);
     }
 
-    public float getTimeScale()
+    public static long getMillisecondsSinceLaunch()
     {
-        return NativeMethods.TablePtr->hs_method_a4bc9ed8((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_6aaac204();
     }
 
     public float mAdjustTime
     {
-        get => NativeMethods.TablePtr->hs_get_460e1390((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_460e1390((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_460e1390((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_460e1390((void*)__hosihikari_shim_handle, value);
     }
 
     public float mAlpha
     {
-        get => NativeMethods.TablePtr->hs_get_1bc3c237((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1bc3c237((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_1bc3c237((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_1bc3c237((void*)__hosihikari_shim_handle, value);
     }
 
     public float mFrameStepAlignmentRemainder
     {
-        get => NativeMethods.TablePtr->hs_get_d97cb1fa((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d97cb1fa((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_d97cb1fa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d97cb1fa((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGetTimeMSCallback_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_bd233c55((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bd233c55((void*)__hosihikari_shim_handle);
     }
 
     public long mLastMs
     {
-        get => NativeMethods.TablePtr->hs_get_b7fa44d6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b7fa44d6((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_b7fa44d6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b7fa44d6((void*)__hosihikari_shim_handle, value);
     }
 
     public long mLastMsSysTime
     {
-        get => NativeMethods.TablePtr->hs_get_5ca91104((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_5ca91104((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_5ca91104((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5ca91104((void*)__hosihikari_shim_handle, value);
     }
 
-    public float mLastTimeSeconds
+    public long mLastTimeMs
     {
-        get => NativeMethods.TablePtr->hs_get_06c4728d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_06c4728d((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_6f1e3b3e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_6f1e3b3e((void*)__hosihikari_shim_handle, value);
     }
 
     public float mLastTimestep
     {
-        get => NativeMethods.TablePtr->hs_get_496d0b89((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_496d0b89((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_496d0b89((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_496d0b89((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mOverflowTime
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_41b5cab6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_41b5cab6((void*)__hosihikari_shim_handle, value);
     }
 
     public float mPassedTime
     {
-        get => NativeMethods.TablePtr->hs_get_7cdd4ed5((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7cdd4ed5((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_7cdd4ed5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7cdd4ed5((void*)__hosihikari_shim_handle, value);
     }
 
-    public int mSteppingTick
+    public float mSteppingTick
     {
-        get => NativeMethods.TablePtr->hs_get_b0f77e5c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b0f77e5c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_b0f77e5c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b0f77e5c((void*)__hosihikari_shim_handle, value);
     }
 
     public int mTicks
     {
-        get => NativeMethods.TablePtr->hs_get_4035480e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4035480e((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_4035480e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_4035480e((void*)__hosihikari_shim_handle, value);
     }
 
     public float mTicksPerSecond
     {
-        get => NativeMethods.TablePtr->hs_get_d7b650ae((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d7b650ae((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_d7b650ae((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d7b650ae((void*)__hosihikari_shim_handle, value);
     }
 
     public float mTimeScale
     {
-        get => NativeMethods.TablePtr->hs_get_ee347b04((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ee347b04((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ee347b04((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ee347b04((void*)__hosihikari_shim_handle, value);
     }
 
-    public void resetTimePassed()
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_dd557753((void*)_handle);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_94e099ff((void*)__hosihikari_shim_handle);
+            }
 
-    public void setTimeScale(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_2f629f4c((void*)_handle, arg0);
-    }
-
-    public void stepTick(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_c7b260b0((void*)_handle, arg0);
-    }
-
-    public bool stepping()
-    {
-        return NativeMethods.TablePtr->hs_method_9bbec6b0((void*)_handle) != 0;
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

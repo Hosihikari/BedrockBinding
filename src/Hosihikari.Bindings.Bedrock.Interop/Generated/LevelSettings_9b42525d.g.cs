@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelSettings : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelSettings(nint handle) : this(handle, true) { }
 
     internal LevelSettings(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelSettings Borrow(nint handle) => new LevelSettings(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,32 +33,38 @@ public sealed unsafe partial class LevelSettings : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public string GetScenarioId()
+    public nint _ctor()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7e563bf4((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return (nint)NativeMethods.TablePtr->C1.hs_method_df58b431((void*)__hosihikari_shim_handle);
     }
 
-    public string GetServerId()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LevelData data, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimension)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_4697df00((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return (nint)NativeMethods.TablePtr->C1.hs_method_73bf736b((void*)__hosihikari_shim_handle, (void*)data.Handle, (void*)dimension.Handle);
     }
 
-    public string GetWorldId()
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_809d2d14((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return (nint)NativeMethods.TablePtr->C1.hs_method_34781bc2((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_f9cdc5ff((void*)__hosihikari_shim_handle);
     }
 
     public static LevelSettings Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_4c2d4947();
+        var handle = NativeMethods.TablePtr->C1.hs_create_4c2d4947();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,9 +73,13 @@ public sealed unsafe partial class LevelSettings : global::System.IDisposable
         return new LevelSettings((nint)handle);
     }
 
-    public static LevelSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static LevelSettings Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static LevelSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelData data, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimension)
     {
-        var handle = NativeMethods.TablePtr->hs_create_9a0c469f((void*)arg0.Handle, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_3d41f1c6((void*)data.Handle, (void*)dimension.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -80,7 +90,7 @@ public sealed unsafe partial class LevelSettings : global::System.IDisposable
 
     public static LevelSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_df0526b9((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_35e8ba63((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -89,340 +99,433 @@ public sealed unsafe partial class LevelSettings : global::System.IDisposable
         return new LevelSettings((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static LevelSettings Create_1488c8da(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public void __autoclassinit2(ulong arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings getSpawnSettings()
     {
-        NativeMethods.TablePtr->hs_method_2b4818fa((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings((nint)NativeMethods.TablePtr->C1.hs_method_b92dd9ca((void*)__hosihikari_shim_handle));
     }
 
-    public bool achievementsWillBeDisabledOnLoad()
+    public bool hasCloudSaveAssociation()
     {
-        return NativeMethods.TablePtr->hs_method_503e9e92((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_e5359368((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public bool cloudSaveForWorldIsEnabled()
+    public bool mAchievementsDisabled
     {
-        return NativeMethods.TablePtr->hs_method_8cec47a7((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_bd3f3b88((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_bd3f3b88((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool educationFeaturesEnabled()
+    public bool mAdventureModeOverridesEnabled
     {
-        return NativeMethods.TablePtr->hs_method_00fdf561((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_74a9000a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_74a9000a((void*)__hosihikari_shim_handle, value);
     }
 
-    public string educationProductID()
+    public bool mAllowAnonymousBlockDropsInEditorWorlds
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_36a2d6da((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => NativeMethods.TablePtr->C1.hs_get_f6437785((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_f6437785((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
+    public nint mBaseGameVersion_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0328d7cc((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7c7cb9a2((void*)__hosihikari_shim_handle);
     }
 
-    public bool forceGameType()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeOverride_Address
     {
-        return NativeMethods.TablePtr->hs_method_c912933d((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f8ca843d((void*)__hosihikari_shim_handle);
     }
 
-    public bool getAdventureModeOverridesEnabled()
+    public bool mBonusChestEnabled
     {
-        return NativeMethods.TablePtr->hs_method_51f03c76((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_c2f7ec32((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_c2f7ec32((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getBaseGameVersion()
+    public byte mChatRestrictionLevel
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_d846436d((void*)_handle), false);
+        get => NativeMethods.TablePtr->C1.hs_get_6d02193f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_6d02193f((void*)__hosihikari_shim_handle, value);
     }
 
-    public string getBiomeOverride()
+    public bool mCheatsEnabled
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_842600e2((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => NativeMethods.TablePtr->C1.hs_get_acea3243((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_acea3243((void*)__hosihikari_shim_handle, value);
     }
 
-    public sbyte getChatRestrictionLevel()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCloudSaveInfo_Address
     {
-        return NativeMethods.TablePtr->hs_method_66ba9d5f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b1ab1c7f((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo getCloudSaveInfo()
+    public bool mCommandsEnabled
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo((nint)NativeMethods.TablePtr->hs_method_a0829a33((void*)_handle), false);
+        get => NativeMethods.TablePtr->C1.hs_get_26681812((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_26681812((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getCustomSkinsDisabled()
+    public bool mConfirmedPlatformLockedContent
     {
-        return NativeMethods.TablePtr->hs_method_43270784((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_c10b38ed((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_c10b38ed((void*)__hosihikari_shim_handle, value);
     }
 
-    public sbyte getDaylightCycle()
+    public bool mCustomSkinsDisabled
     {
-        return NativeMethods.TablePtr->hs_method_f8b6e9b3((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_997f2dd2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_997f2dd2((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions()
+    public byte mDaylightCycle
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler((nint)NativeMethods.TablePtr->hs_method_aa834796((void*)_handle), false);
+        get => NativeMethods.TablePtr->C1.hs_get_c98da44a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c98da44a((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getDefaultSpawn()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultPermissions_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_837f54c1((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f7aaa0b3((void*)__hosihikari_shim_handle);
     }
 
-    public bool getDisablePlayerInteractions()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultSpawn_Address
     {
-        return NativeMethods.TablePtr->hs_method_446c40f4((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1c3e45e0((void*)__hosihikari_shim_handle);
     }
 
-    public int getEditorWorldType()
+    public bool mDisablePlayerInteractions
     {
-        return NativeMethods.TablePtr->hs_method_4ae6e581((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_21989cf8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_21989cf8((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource getEduSharedUriResource()
+    public int mEditorWorldType
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource((nint)NativeMethods.TablePtr->hs_method_d2710b8b((void*)_handle), false);
+        get => NativeMethods.TablePtr->C1.hs_get_a4485bee((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_a4485bee((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getEducationEditionOffer()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEduSharedUriResource_Address
     {
-        return NativeMethods.TablePtr->hs_method_039d704b((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ffb2d755((void*)__hosihikari_shim_handle);
     }
 
-    public nint getEducationLevelSettings()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEducationCreatorID_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ae8cf9d8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e38128b6((void*)__hosihikari_shim_handle);
     }
 
-    public bool getEmoteChatMuted()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEducationCreatorWorldID_Address
     {
-        return NativeMethods.TablePtr->hs_method_d14f3006((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9cb925fc((void*)__hosihikari_shim_handle);
     }
 
-    public nint getExcludedScriptModules()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEducationEditionOffer_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c8fa889a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_80120a7b((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Experiments getExperiments()
+    public bool mEducationFeaturesEnabled
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Experiments((nint)NativeMethods.TablePtr->hs_method_37b22f30((void*)_handle), false);
+        get => NativeMethods.TablePtr->C1.hs_get_b5907f78((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_b5907f78((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getGameDifficulty()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEducationLevelSettings_Address
     {
-        return NativeMethods.TablePtr->hs_method_a6894dc6((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1fd66622((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.GameRules getGameRules()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEducationProductID_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.GameRules((nint)NativeMethods.TablePtr->hs_method_b8a945e4((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_650a6aff((void*)__hosihikari_shim_handle);
     }
 
-    public int getGameType()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEducationReferrerID_Address
     {
-        return NativeMethods.TablePtr->hs_method_6aac18e0((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_89c88121((void*)__hosihikari_shim_handle);
     }
 
-    public int getGenerator()
+    public bool mEmoteChatMuted
     {
-        return NativeMethods.TablePtr->hs_method_de93ac76((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_96ca31e5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_96ca31e5((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getImmutableWorld()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExcludedScriptModules_Address
     {
-        return NativeMethods.TablePtr->hs_method_0be03ec0((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_359d52c5((void*)__hosihikari_shim_handle);
     }
 
-    public bool getLanBroadcastIntent()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExperiments_Address
     {
-        return NativeMethods.TablePtr->hs_method_d4185bac((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ba766b73((void*)__hosihikari_shim_handle);
     }
 
-    public float getLightningLevel()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlatWorldOptions_Address
     {
-        return NativeMethods.TablePtr->hs_method_5828ce4c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_15d08ccd((void*)__hosihikari_shim_handle);
     }
 
-    public int getLimitedWorldDepth()
+    public bool mForceGameType
     {
-        return NativeMethods.TablePtr->hs_method_145c2774((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_2dc00cb9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_2dc00cb9((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getLimitedWorldWidth()
+    public int mGameDifficulty
     {
-        return NativeMethods.TablePtr->hs_method_e359fecf((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_0193f61d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_0193f61d((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getMultiplayerGameIntent()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameRules_Address
     {
-        return NativeMethods.TablePtr->hs_method_bb1fd575((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_db83fce0((void*)__hosihikari_shim_handle);
     }
 
-    public sbyte getNetherType()
+    public int mGameType
     {
-        return NativeMethods.TablePtr->hs_method_514cdad3((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_46e819a2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_46e819a2((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getOnlySpawnV1Villagers()
+    public int mGenerator
     {
-        return NativeMethods.TablePtr->hs_method_0c73d006((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_f1714c03((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_f1714c03((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getPersonaDisabled()
+    public bool mHasLockedBehaviorPack
     {
-        return NativeMethods.TablePtr->hs_method_5884d7a1((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_a2bb6433((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_a2bb6433((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getPlatformBroadcastIntent()
+    public bool mHasLockedResourcePack
     {
-        return NativeMethods.TablePtr->hs_method_97efec39((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_3b387200((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_3b387200((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getRainLevel()
+    public bool mImmutableWorld
     {
-        return NativeMethods.TablePtr->hs_method_cd230d86((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_2d35fa57((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_2d35fa57((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 getSeed()
+    public bool mIsCreatedInEditor
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64((nint)NativeMethods.TablePtr->hs_method_32da8d46((void*)_handle));
+        get => NativeMethods.TablePtr->C1.hs_get_762b5371((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_762b5371((void*)__hosihikari_shim_handle, value);
     }
 
-    public uint getServerChunkTickRange()
+    public bool mIsExportedFromEditor
     {
-        return NativeMethods.TablePtr->hs_method_78459fb2((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_2aef1941((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_2aef1941((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings getSpawnSettings()
+    public bool mIsFromLockedTemplate
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings((nint)NativeMethods.TablePtr->hs_method_6b2af0a2((void*)_handle));
+        get => NativeMethods.TablePtr->C1.hs_get_7ca29575((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_7ca29575((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getTime()
+    public bool mIsFromWorldTemplate
     {
-        return NativeMethods.TablePtr->hs_method_dfe0b20d((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_e74367df((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_e74367df((void*)__hosihikari_shim_handle, value);
     }
 
-    public sbyte getWorldVersion()
+    public bool mIsHardcore
     {
-        return NativeMethods.TablePtr->hs_method_1b704b98((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_4ca9c38a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_4ca9c38a((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getXBLBroadcastIntent()
+    public bool mIsRandomSeedAllowed
     {
-        return NativeMethods.TablePtr->hs_method_df3bc4d8((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_f026f7cc((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_f026f7cc((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasAchievementsDisabled()
+    public bool mIsWorldTemplateOptionLocked
     {
-        return NativeMethods.TablePtr->hs_method_da782a26((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_14bae8bb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_14bae8bb((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasBonusChestEnabled()
+    public bool mLANBroadcastIntent
     {
-        return NativeMethods.TablePtr->hs_method_32e17462((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_81550214((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_81550214((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasCheatsEnabled()
+    public float mLightningLevel
     {
-        return NativeMethods.TablePtr->hs_method_a7af717d((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_fef4a818((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_fef4a818((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasCommandsEnabled()
+    public int mLimitedWorldDepth
     {
-        return NativeMethods.TablePtr->hs_method_6ddb715f((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_c3c5239f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c3c5239f((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasConfirmedPlatformLockedContent()
+    public int mLimitedWorldWidth
     {
-        return NativeMethods.TablePtr->hs_method_ba5a6621((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_d7d0ddd5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d7d0ddd5((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasLockedBehaviorPack()
+    public bool mMultiplayerGameIntent
     {
-        return NativeMethods.TablePtr->hs_method_40e85983((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_b0016c73((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_b0016c73((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasLockedResourcePack()
+    public byte mNetherType
     {
-        return NativeMethods.TablePtr->hs_method_3cb9b4f1((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_99881c4c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_99881c4c((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasStartWithMapEnabled()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNewWorldBehaviorPackIdentities_Address
     {
-        return NativeMethods.TablePtr->hs_method_10c93539((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4bdbe804((void*)__hosihikari_shim_handle);
     }
 
-    public bool isCreatedInEditor()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNewWorldResourcePackIdentities_Address
     {
-        return NativeMethods.TablePtr->hs_method_e422d8e8((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2e60ff0b((void*)__hosihikari_shim_handle);
     }
 
-    public bool isEditorWorld()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOverrideForceExperimentalGameplayFlag_Address
     {
-        return NativeMethods.TablePtr->hs_method_5170109d((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_afb40a7b((void*)__hosihikari_shim_handle);
     }
 
-    public bool isExportedFromEditor()
+    public bool mOverrideSettings
     {
-        return NativeMethods.TablePtr->hs_method_d87be228((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_df8fc10d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_df8fc10d((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isFromLockedTemplate()
+    public bool mPersonaDisabled
     {
-        return NativeMethods.TablePtr->hs_method_23164a78((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_3c738ba4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_3c738ba4((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isFromWorldTemplate()
+    public int mPlatformBroadcastIntent
     {
-        return NativeMethods.TablePtr->hs_method_cce67d86((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_bc7531b5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_bc7531b5((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isHardcore()
+    public float mRainLevel
     {
-        return NativeMethods.TablePtr->hs_method_3b286191((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_db30686b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_db30686b((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isRandomSeedAllowed()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSeed_Address
     {
-        return NativeMethods.TablePtr->hs_method_4bf4db42((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_70dd7289((void*)__hosihikari_shim_handle);
     }
 
-    public bool isTexturepacksRequired()
+    public int mServerChunkTickRange
     {
-        return NativeMethods.TablePtr->hs_method_b4e639fa((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_f0e2dade((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_f0e2dade((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isWorldTemplateOptionLocked()
+    public int mServerEditorConnectionPolicy
     {
-        return NativeMethods.TablePtr->hs_method_452ccb8d((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_910e7acf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_910e7acf((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_6890f11b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_664eee8d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void overrideSavedSettings(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpawnSettings_Address
     {
-        NativeMethods.TablePtr->hs_method_7ca98ad1((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5c1bdb88((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64? parseSeedString(string arg0)
+    public bool mSpawnV1Villagers
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_7d179767((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_7d179767((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mStartWithMapEnabled
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_68c87333((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_68c87333((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mTexturePacksRequired
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_221ea1c4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_221ea1c4((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mTime
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_b5ca5431((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_b5ca5431((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mUseMsaGamertagsOnly
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_22e2f7a2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_22e2f7a2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mWorldVersion
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_2bbd5a65((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_2bbd5a65((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mXBLBroadcastIntent
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_c1ace3c1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c1ace3c1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->C1.hs_method_664eee8d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64? parseSeedString(string seedInput)
     {
         var __hs_hasValue = false;
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(seedInput);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -432,239 +535,30 @@ public sealed unsafe partial class LevelSettings : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(seedInput, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_60c58613(__hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_665a6a54(__hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
             return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64((nint)__hs_handle) : null;
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setAdventureModeOverridesEnabled(bool arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setExperiments(global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage experiments)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_0694bb15((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setBaseGameVersion(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_c611ae4a((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setChatRestrictionLevel(sbyte arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_20c83744((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setCommandsEnabled(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_bf42a4f9((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setCustomSkinsDisabled(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_85f9e83f((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setDefaultPlayerPermissions(sbyte arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_d6d82380((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setDifficulty(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_46891ca3((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setDisablePlayerInteractions(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_6d80899a((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEduSharedUriResource(global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_eade3c41((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEducationEditionOffer(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_46791205((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEducationFeaturesEnabled(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_7af78709((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEducationProductID(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_a6a8dade((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEmoteChatMuted(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_3b4ebdf0((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setExperiments(global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_a0cf4e9e((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setForceGameType(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_114c1566((void*)_handle, arg0), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint setGameRules(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setGameType(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_a416c4f5((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setGeneratorType(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_53b5f2fe((void*)_handle, arg0), false);
-    }
-
-    public void setOnlySpawnV1Villagers(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_d5e04a92((void*)_handle, arg0);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setOverrideSavedSettings(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_4dd4747c((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setPlatformBroadcastIntent(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_748cc472((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setRandomSeed(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_593339af((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setScenarioId(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_ab43639f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setServerChunkTickRange(uint arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_cd0153c1((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setServerId(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_1a9ee1ba((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint setSpawnSettings(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setTexturePackRequired(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_a10c77ce((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setUseMsaGamertagsOnly(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_742387cc((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setWorldId(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_2d862782((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setXblBroadcastIntent(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_4f7e5af4((void*)_handle, arg0), false);
-    }
-
-    public bool shouldOverrideSavedSettings()
-    {
-        return NativeMethods.TablePtr->hs_method_ab9ccbc7((void*)_handle) != 0;
-    }
-
-    public bool useMsaGamertagsOnly()
-    {
-        return NativeMethods.TablePtr->hs_method_f73d8b1a((void*)_handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->C1.hs_method_591a211c((void*)__hosihikari_shim_handle, (void*)experiments.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_9b42525d((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_9b42525d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

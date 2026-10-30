@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class EntityId
+public sealed unsafe partial class EntityId : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EntityId(nint handle) : this(handle, true) { }
 
     internal EntityId(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EntityId Borrow(nint handle) => new EntityId(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,16 +33,59 @@ public sealed partial class EntityId
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isNull() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static EntityId Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a1e79e19();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint operator_unsigned_int() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new EntityId((nint)handle);
+    }
+
+    public static EntityId Create(uint rawId)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d0a3d983(rawId);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityId((nint)handle);
+    }
+
+    public bool isNull()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_392373c7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public uint mRawId
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_063a0980((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_063a0980((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint operator_unsigned_int()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ecab5fb5((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_84b92916((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

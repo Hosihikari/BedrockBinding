@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NetherFortressPiece : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetherFortressPiece(nint handle) : this(handle, true) { }
 
     internal NetherFortressPiece(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetherFortressPiece Borrow(nint handle) => new NetherFortressPiece(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,29 @@ public sealed unsafe partial class NetherFortressPiece : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NetherFortressPiece Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NetherFortressPiece Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static NetherFortressPiece Create(int arg0)
+    public void _addHardcodedSpawnAreas(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
     {
-        var handle = NativeMethods.TablePtr->hs_create_e2b842d9(arg0);
+        NativeMethods.TablePtr->C2.hs_method_2ff02438((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public nint _ctor(int genDepth)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_ce6e1e11((void*)__hosihikari_shim_handle, genDepth);
+    }
+
+    public bool _postProcess(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_59d406d7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
+    }
+
+    public static NetherFortressPiece Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b3c7bd6a();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,79 +64,79 @@ public sealed unsafe partial class NetherFortressPiece : global::System.IDisposa
         return new NetherFortressPiece((nint)handle);
     }
 
-    public void addHardcodedSpawnAreas(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public static NetherFortressPiece Create(int genDepth)
     {
-        NativeMethods.TablePtr->hs_method_5215fff4((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_e2b842d9(genDepth);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherFortressPiece((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public nint findAndCreateBridgePieceFactory_b5dc6d8d(nint arg0, nint arg1, nint arg2, int arg3, int arg4, int arg5, int arg6, int arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint findAndCreateBridgePieceFactory_3d05e82f(nint pieceClass, nint pieces, nint random, int footX, int footY, int footZ, int direction, int depth) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint generateAndAddPiece_b2870882(nint startPiece, nint pieces, nint random, int footX, int footY, int footZ, int direction, int depth, bool isCastle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public nint generateAndAddPiece_fd57f01a(nint arg0, nint arg1, nint arg2, int arg3, int arg4, int arg5, int arg6, int arg7, bool arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint generateChildForward_e7f3325a(nint startPiece, nint pieces, nint random, int xOff, int yOff, bool isCastle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public nint generateChildForward_9fbd5a80(nint arg0, nint arg1, nint arg2, int arg3, int arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint generateChildLeft_aea43b90(nint startPiece, nint pieces, nint random, int yOff, int zOff, bool isCastle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public nint generateChildLeft_4bc4fd16(nint arg0, nint arg1, nint arg2, int arg3, int arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint generateChildRight_170a4ba2(nint startPiece, nint pieces, nint random, int yOff, int zOff, bool isCastle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public nint generateChildRight_432366ea(nint arg0, nint arg1, nint arg2, int arg3, int arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public nint generatePiece_95750640(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, int arg6, int arg7, int arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint generatePiece_3cdaa8bb(nint startPiece, nint currentPieces, nint pieces, nint random, int footX, int footY, int footZ, int direction, int depth) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2)
+    public void addHardcodedSpawnAreas(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
     {
-        return NativeMethods.TablePtr->hs_method_e1120d82((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        NativeMethods.TablePtr->C2.hs_method_e3174d89((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
+    public static nint generateAndAddPiece(nint startPiece, nint pieces, nint random, int footX, int footY, int footZ, int direction, int depth, bool isCastle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
+    public nint generateChildForward(nint startPiece, nint pieces, nint random, int xOff, int yOff, bool isCastle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
+    public nint generateChildRight(nint startPiece, nint pieces, nint random, int yOff, int zOff, bool isCastle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a0c6a8e4((void*)__hosihikari_shim_handle);
+    }
+
+    public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_3c732be4((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoundingBox_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c04a833d((void*)__hosihikari_shim_handle);
+    }
+
+    public int mGenDepth
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d7bca9e6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d7bca9e6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mOrientation
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_cfed971e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_cfed971e((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTerrainAdjustmentToken_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a4f03cb9((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f6fc1911((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_f6fc1911((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

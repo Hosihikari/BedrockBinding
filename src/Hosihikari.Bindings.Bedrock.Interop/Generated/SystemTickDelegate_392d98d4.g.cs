@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FallingBlockSystemOnLand;
 
-public sealed unsafe partial class SystemTickDelegate : global::System.IDisposable
+public sealed unsafe partial class SystemTickDelegate
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SystemTickDelegate(nint handle) : this(handle, true) { }
 
     internal SystemTickDelegate(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SystemTickDelegate Borrow(nint handle) => new SystemTickDelegate(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,34 @@ public sealed unsafe partial class SystemTickDelegate : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SystemTickDelegate Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SystemTickDelegate Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void breakBlock(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlockActor arg0)
+    public void _breakBlock(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlockActor fallingBlock)
     {
-        NativeMethods.TablePtr->hs_method_12994024((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_4c448bc5((void*)__hosihikari_shim_handle, (void*)fallingBlock.Handle);
     }
 
-    public void onLand(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlock arg0, global::Hosihikari.Bindings.Bedrock.Interop.IBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
+    public void _onLand(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlock block, global::Hosihikari.Bindings.Bedrock.Interop.IBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        NativeMethods.TablePtr->hs_method_9e51eeec((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C1.hs_method_3e6582e2((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)region.Handle, (void*)pos.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public void breakBlock(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlockActor fallingBlock)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_392d98d4((void*)_handle);
-            }
+        NativeMethods.TablePtr->C1.hs_method_7802b453((void*)__hosihikari_shim_handle, (void*)fallingBlock.Handle);
+    }
 
-            _handle = 0;
-        }
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnLandDataQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_96d88875((void*)__hosihikari_shim_handle);
+    }
+
+    public void onLand(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlock block, global::Hosihikari.Bindings.Bedrock.Interop.IBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        NativeMethods.TablePtr->C1.hs_method_76b4adfe((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)region.Handle, (void*)pos.Handle);
     }
 }

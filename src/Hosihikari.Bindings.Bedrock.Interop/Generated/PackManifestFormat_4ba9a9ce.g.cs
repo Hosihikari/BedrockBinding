@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum PackManifestFormat : int
+public enum PackManifestFormat : byte
 {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
 }

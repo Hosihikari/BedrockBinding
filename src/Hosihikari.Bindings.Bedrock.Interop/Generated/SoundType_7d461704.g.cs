@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PlayJumpSoundSystem;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SoundType : int
 {
+    NormalJump = 0,
+    PowerJump = 1,
 }

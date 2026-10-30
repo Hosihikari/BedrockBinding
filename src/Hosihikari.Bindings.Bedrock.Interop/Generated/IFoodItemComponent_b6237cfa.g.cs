@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IFoodItemComponent
+public sealed unsafe partial class IFoodItemComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IFoodItemComponent(nint handle) : this(handle, true) { }
 
     internal IFoodItemComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IFoodItemComponent Borrow(nint handle) => new IFoodItemComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,58 @@ public sealed unsafe partial class IFoodItemComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string CAN_ALWAYS_EAT
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const char (&)[15]' is not supported.", false)]
+    public static nint CAN_ALWAYS_EAT() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const char (&)[15]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const char (&)[10]' is not supported.", false)]
+    public static nint NUTRITION() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const char (&)[10]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const char (&)[20]' is not supported.", false)]
+    public static nint SATURATION_MODIFIER() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const char (&)[20]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool canAlwaysEat() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint eatItem(nint instance, nint actor, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public int getNutrition() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public float getSaturationModifier() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void use(nint result, nint instance, nint player) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint useTimeDepleted(nint itemUseMethod, nint initialInstance, nint instance, nint player, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
     {
-        get
+        if (__hosihikari_shim_handle != 0)
         {
-            var view = NativeMethods.TablePtr->hs_get_e56ee8f8();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b6237cfa((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IFoodItemComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static IFoodItemComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static string NUTRITION
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_34c80357();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string SATURATION_MODIFIER
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_e544e8fd();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

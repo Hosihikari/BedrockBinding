@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
 public sealed unsafe partial class ScriptEngine : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptEngine(nint handle) : this(handle, true) { }
 
     internal ScriptEngine(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptEngine Borrow(nint handle) => new ScriptEngine(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,24 @@ public sealed unsafe partial class ScriptEngine : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptEngine Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ScriptEngine Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.RegistryManager? arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.RegistryManager? registryManager)
     {
-        var handle = NativeMethods.TablePtr->hs_create_c1487884((void*)(arg0?.Handle ?? 0));
+        return (nint)NativeMethods.TablePtr->C3.hs_method_4a8d7058((void*)__hosihikari_shim_handle, (void*)(registryManager?.Handle ?? 0));
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_69886455((void*)__hosihikari_shim_handle);
+    }
+
+    public static ScriptEngine Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c20f6983();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,48 +59,20 @@ public sealed unsafe partial class ScriptEngine : global::System.IDisposable
         return new ScriptEngine((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptEngine Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addModuleBindingFactory(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addRuntime(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::RuntimeStats' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint computeRuntimeStats(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::RuntimeStats' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ScriptContextResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createScriptingContext(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ScriptContextResult' requires --link-carrier or --virtual-dispatch.");
-
-    public void disableDebugger(string arg0)
+    public static ScriptEngine Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.RegistryManager? registryManager)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        var handle = NativeMethods.TablePtr->C3.hs_create_f4b199c8((void*)(registryManager?.Handle ?? 0));
+        if (handle == null)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_fe9c32b3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
+
+        return new ScriptEngine((nint)handle);
     }
 
-    public void disableWatchdog(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IModuleBindingFactory? _getModuleBindingFactoryByName(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -104,186 +82,69 @@ public sealed unsafe partial class ScriptEngine : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_ddabf78c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.IDebuggerController? enableDebugger(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.IDebuggerTransport arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_cee05982((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
-            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.IDebuggerController((nint)__hs_handle, false) : null;
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.IWatchdog? enableWatchdog(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.WatchdogSettings arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_9f77303a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
-            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.IWatchdog((nint)__hs_handle, false) : null;
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_c2ed43cd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IModuleBindingFactory((nint)__hs_handle, false) : null;
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void executeCoroutines_910a31cf(nint arg0) =>
+    public void addModuleBindingFactory(nint moduleBindingFactory) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public nint createScriptingContext(nint config, nint forModule, nint dependencies, nint loader, nint printer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Version' is not supported.", false)]
+    public nint getLatestVersionOfModuleWithPreRelease(nint name, nint preRelease) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Version' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ModuleDescriptor' is not supported.", false)]
-    public nint getModuleDescriptorByName(nint arg0) =>
+    public nint getModuleDescriptorByName(nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ModuleDescriptor' is not supported.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.RegistryManager getRegistryManager()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.RegistryManager((nint)NativeMethods.TablePtr->hs_method_88e75b2f((void*)_handle), false);
-    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Scripting::SupportedBindingModule' is not supported.", false)]
     public nint getSupportedBindingModules() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Scripting::SupportedBindingModule' is not supported.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.IWatchdog? getWatchdog(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mModuleFactories_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_9e8a398c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.IWatchdog((nint)__hs_handle, false) : null;
-        }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d3d97156((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasModuleBindingFactory(nint arg0)
+    public nint mRegistryManager
     {
-        return NativeMethods.TablePtr->hs_method_4cdebb42((void*)_handle, (void*)arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7f196e5b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7f196e5b((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    public bool hasRuntime(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistryManagerUP_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_4bf03460((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9ddec8b2((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void releaseRuntimes()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRuntimeFactoryFn_Address
     {
-        NativeMethods.TablePtr->hs_method_9ec775fd((void*)_handle);
-    }
-
-    public void startProfiler(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_40778913((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void stopProfiler(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_916cd267((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fb3809fb((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_e1ad7547((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_e1ad7547((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

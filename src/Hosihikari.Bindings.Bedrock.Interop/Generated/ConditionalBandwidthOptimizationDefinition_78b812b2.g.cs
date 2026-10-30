@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ConditionalBandwidthOptimizationDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ConditionalBandwidthOptimizationDefinition(nint handle) : this(handle, true) { }
 
     internal ConditionalBandwidthOptimizationDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ConditionalBandwidthOptimizationDefinition Borrow(nint handle) => new ConditionalBandwidthOptimizationDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,35 @@ public sealed unsafe partial class ConditionalBandwidthOptimizationDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConditionalBandwidthOptimizationDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConditionalBandwidthOptimizationDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addConditionalBandwidthOptimization(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimization arg0)
+    public void addConditionalBandwidthOptimization(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimization optimization)
     {
-        NativeMethods.TablePtr->hs_method_7fa5cdb0((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_96a92888((void*)__hosihikari_shim_handle, (void*)optimization.Handle);
     }
 
-    public void addDefaultBandwidthOptimization(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimization arg0)
+    public void addDefaultBandwidthOptimization(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimization optimization)
     {
-        NativeMethods.TablePtr->hs_method_930e56da((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_89e81da9((void*)__hosihikari_shim_handle, (void*)optimization.Handle);
     }
 
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_51c59bab(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C0.hs_method_a9e2147a(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimizationComponent arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConditionalValues_Address
     {
-        NativeMethods.TablePtr->hs_method_b9f15c56((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_95bf05be((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_7da79b35() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8c7bdf20((void*)__hosihikari_shim_handle);
+    }
 }

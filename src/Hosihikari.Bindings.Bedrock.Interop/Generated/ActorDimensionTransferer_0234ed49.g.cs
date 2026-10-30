@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorDimensionTransferer
+public sealed unsafe partial class ActorDimensionTransferer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorDimensionTransferer(nint handle) : this(handle, true) { }
 
     internal ActorDimensionTransferer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorDimensionTransferer Borrow(nint handle) => new ActorDimensionTransferer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,43 +33,87 @@ public sealed unsafe partial class ActorDimensionTransferer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorDimensionTransferer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint actorDimensionTransferProxy, nint actorManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorDimensionTransferer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ActorDimensionTransferer Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 findTargetPositionAndSetPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2, global::Hosihikari.Bindings.Bedrock.Interop.IDimension arg3, global::Hosihikari.Bindings.Bedrock.Interop.PortalForcer arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? arg5)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 _findTargetPositionAndSetPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, nint actorDimensionTransferRequest, global::Hosihikari.Bindings.Bedrock.Interop.IDimension toDimension, global::Hosihikari.Bindings.Bedrock.Interop.PortalForcer portalForcer)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_46b6c732((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, (void*)(arg5?.Handle ?? 0), arg5 is not null));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C0.hs_method_f1b9c62d((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)actorDimensionTransferRequest, (void*)toDimension.Handle, (void*)portalForcer.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setupActorForTransfer(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void _setupActorForTransfer(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_54a31877((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_fcac283a((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public void transferActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? arg3)
+    public void _transferActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 targetPosition)
     {
-        NativeMethods.TablePtr->hs_method_cb27be75((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), arg3 is not null);
+        NativeMethods.TablePtr->C0.hs_method_c06761b8((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)toDimension.Handle, (void*)targetPosition.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ActorDimensionTransferer Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2a54b6ac();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDimensionTransferer((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.", false)]
+    public static ActorDimensionTransferer Create(nint actorDimensionTransferProxy, nint actorManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 findTargetPositionAndSetPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, nint actorDimensionTransferRequest, global::Hosihikari.Bindings.Bedrock.Interop.IDimension toDimension, global::Hosihikari.Bindings.Bedrock.Interop.PortalForcer portalForcer)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C0.hs_method_f5a16b2e((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)actorDimensionTransferRequest, (void*)toDimension.Handle, (void*)portalForcer.Handle));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorDimensionTransferProxy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a94b421b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e2d90edf((void*)__hosihikari_shim_handle);
+    }
+
+    public void setupActorForTransfer(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c8ad20ec((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public void transferActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 targetPosition)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ea38eaf5((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)toDimension.Handle, (void*)targetPosition.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0234ed49((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

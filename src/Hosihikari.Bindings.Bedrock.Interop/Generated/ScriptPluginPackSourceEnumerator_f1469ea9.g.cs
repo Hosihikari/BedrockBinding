@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ScriptPluginPackSourceEnumerator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptPluginPackSourceEnumerator(nint handle) : this(handle, true) { }
 
     internal ScriptPluginPackSourceEnumerator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptPluginPackSourceEnumerator Borrow(nint handle) => new ScriptPluginPackSourceEnumerator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,68 @@ public sealed unsafe partial class ScriptPluginPackSourceEnumerator : global::Sy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPluginPackSourceEnumerator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPluginPackSourceEnumerator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static ScriptPluginPackSourceEnumerator Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPluginSources_fe63ce01() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getPluginSources_55626b82()
+    public nint _getPluginSources()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_55626b82((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_1b6380af((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ScriptPluginPackSourceEnumerator Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_780da8f7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPluginPackSourceEnumerator((nint)handle);
+    }
+
+    public static ScriptPluginPackSourceEnumerator Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginPackSourceEnumerator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_262d3924((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPluginPackSourceEnumerator((nint)handle);
+    }
+
+    public nint getPluginSources()
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_fe63ce01((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfd5333_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_703d99a1((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginPackSourceEnumerator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginPackSourceEnumerator arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginPackSourceEnumerator((nint)NativeMethods.TablePtr->C3.hs_method_d85ea00c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f1469ea9((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_f1469ea9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

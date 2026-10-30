@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LevelChunkPerformanceTelemetry
+public sealed unsafe partial class LevelChunkPerformanceTelemetry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelChunkPerformanceTelemetry(nint handle) : this(handle, true) { }
 
     internal LevelChunkPerformanceTelemetry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelChunkPerformanceTelemetry Borrow(nint handle) => new LevelChunkPerformanceTelemetry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,104 @@ public sealed partial class LevelChunkPerformanceTelemetry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkPerformanceTelemetry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LevelChunkPerformanceTelemetry Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6767cdb1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkPerformanceTelemetry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new LevelChunkPerformanceTelemetry((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static LevelChunkPerformanceTelemetry Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e631d498((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkPerformanceTelemetry((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventing_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4488d3d6((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsClientSide
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_3cb3830e((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool mPerformanceTelemetryFired
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_9fb534bd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_9fb534bd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mPerformanceTelemetryTimer
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_e7827f2b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e7827f2b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mServerTickRange
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_1b99cd4b((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mShouldTick
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_1f69c9cf((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_1f69c9cf((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTelemetryPeriodicCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_454afff9((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry((nint)NativeMethods.TablePtr->C1.hs_method_9d62e4cb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ChunkPerformanceData>' is not a known bindable declaration.", false)]
-    public void sendPerformanceTelemetry(nint arg0) =>
+    public void reset(nint subClientId, nint chunkPerformanceData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ChunkPerformanceData>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ChunkPerformanceData>' is not a known bindable declaration.", false)]
+    public void sendPerformanceTelemetry(nint chunkPerformanceData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ChunkPerformanceData>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void setPerformanceTelemetryPeriodicCallback(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ChunkPerformanceData>' is not a known bindable declaration.", false)]
+    public void tick(nint chunkPerformanceData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ChunkPerformanceData>' is not a known bindable declaration.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9512e616((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

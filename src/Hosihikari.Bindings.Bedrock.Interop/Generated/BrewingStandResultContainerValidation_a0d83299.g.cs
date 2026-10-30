@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BrewingStandResultContainerValidation
+public sealed unsafe partial class BrewingStandResultContainerValidation : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BrewingStandResultContainerValidation(nint handle) : this(handle, true) { }
 
     internal BrewingStandResultContainerValidation(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BrewingStandResultContainerValidation Borrow(nint handle) => new BrewingStandResultContainerValidation(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,65 +33,72 @@ public sealed unsafe partial class BrewingStandResultContainerValidation
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BrewingStandResultContainerValidation Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BrewingStandResultContainerValidation Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool canDestroy(nint screenContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool canItemMoveToContainer(nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int getAvailableSetCount(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
+    public int _getAllowedAddCount(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
     {
-        return NativeMethods.TablePtr->hs_method_502e0bbf((void*)_handle, arg0, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_d27b0125((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
+    public int _getAvailableSetCount(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
-        return NativeMethods.TablePtr->hs_method_12ef1238((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_7e521a9c((void*)__hosihikari_shim_handle, slot, (void*)item.Handle);
     }
 
-    public int getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.Container arg1)
+    public int _getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
-        return NativeMethods.TablePtr->hs_method_ea6c6f4b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_3fefbbb6((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
-    public bool isItemAllowedInSlot(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg2, int arg3)
+    public int _getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, global::Hosihikari.Bindings.Bedrock.Interop.Container container)
     {
-        return NativeMethods.TablePtr->hs_method_1195c8ae((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_5bbbf05f((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
     }
 
-    public bool isItemAllowedToAdd(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
+    public bool _isItemAllowedInSlot(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, int arg3, bool arg4)
     {
-        return NativeMethods.TablePtr->hs_method_c05228e6((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_5801bb50((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, (void*)item.Handle, arg3, arg4) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isItemAllowedToRemove(nint screenContext, nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int getAllowedAddCount(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_eb09a006((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isValidSlotForContainer(nint screenContext, nint container, int slot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int getAvailableSetCount(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_7a1ffa18((void*)__hosihikari_shim_handle, slot, (void*)item.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0d0033a7((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, global::Hosihikari.Bindings.Bedrock.Interop.Container container)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0826b727((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
+    }
+
+    public bool isItemAllowedInSlot(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, int arg3, bool arg4)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_808afd92((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, (void*)item.Handle, arg3, arg4) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a0d83299((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

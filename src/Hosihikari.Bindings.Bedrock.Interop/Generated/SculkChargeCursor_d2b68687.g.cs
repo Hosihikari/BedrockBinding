@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SculkChargeCursor
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SculkChargeCursor(nint handle) : this(handle, true) { }
 
     internal SculkChargeCursor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SculkChargeCursor Borrow(nint handle) => new SculkChargeCursor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,63 @@ public sealed unsafe partial class SculkChargeCursor
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SculkChargeCursor Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SculkChargeCursor Create_d3971b6b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SculkChargeCursor Create_3379be1e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.DefaultSculkBehavior sDefaultSculkBehavior
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.DefaultSculkBehavior((nint)NativeMethods.TablePtr->hs_get_78f49664(), false);
+        NativeMethods.TablePtr->C3.hs_method_93883ae4((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SculkBlockBehavior sSculkBlockBehavior
+    public int mCharge
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.SculkBlockBehavior((nint)NativeMethods.TablePtr->hs_get_97da71ee(), false);
+        get => NativeMethods.TablePtr->C3.hs_get_21f8d46d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_21f8d46d((void*)__hosihikari_shim_handle, value);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SculkVeinBlockBehavior sSculkVeinBlockBehavior
+    public int mDecayDelay
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.SculkVeinBlockBehavior((nint)NativeMethods.TablePtr->hs_get_2ead801c(), false);
+        get => NativeMethods.TablePtr->C3.hs_get_65678c0e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_65678c0e((void*)__hosihikari_shim_handle, value);
     }
 
-    public void update(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg4, bool arg5)
+    public int mFacingData
     {
-        NativeMethods.TablePtr->hs_method_48f5d3d6((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, arg5);
+        get => NativeMethods.TablePtr->C3.hs_get_76ea27b0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_76ea27b0((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fa059182((void*)__hosihikari_shim_handle);
+    }
+
+    public int mUpdateDelay
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b0fac0a7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b0fac0a7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.DefaultSculkBehavior sDefaultSculkBehavior()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DefaultSculkBehavior((nint)NativeMethods.TablePtr->C3.hs_method_7977d697(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SculkBlockBehavior sSculkBlockBehavior()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SculkBlockBehavior((nint)NativeMethods.TablePtr->C3.hs_method_2d39e3d9(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SculkVeinBlockBehavior sSculkVeinBlockBehavior()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SculkVeinBlockBehavior((nint)NativeMethods.TablePtr->C3.hs_method_aed7e95b(), false);
+    }
+
+    public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b3d87dff((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 }

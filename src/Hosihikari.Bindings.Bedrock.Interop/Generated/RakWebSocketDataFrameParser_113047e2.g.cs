@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakWebSocketDataFrameParser
+public sealed unsafe partial class RakWebSocketDataFrameParser : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakWebSocketDataFrameParser(nint handle) : this(handle, true) { }
 
     internal RakWebSocketDataFrameParser(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakWebSocketDataFrameParser Borrow(nint handle) => new RakWebSocketDataFrameParser(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,98 @@ public sealed unsafe partial class RakWebSocketDataFrameParser
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakWebSocketDataFrameParser Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakWebSocketDataFrameParser Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? readFrame(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg0)
+    public static RakWebSocketDataFrameParser Create()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_cf8a27aa((void*)_handle, (void*)arg0.Handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        var handle = NativeMethods.TablePtr->C2.hs_create_11610498();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakWebSocketDataFrameParser((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static RakWebSocketDataFrameParser Create(global::Hosihikari.Bindings.Bedrock.Interop.RakWebSocketDataFrameParser arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_25365321((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakWebSocketDataFrameParser((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _failReadFrame(string error, ushort code)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(error);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(error, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_shared = NativeMethods.TablePtr->C2.hs_method_8f504941((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, code);
+            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk435c68_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bdd15516((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk860b01_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_03b6d637((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9b171a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5da8931c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc8951a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_26401720((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf9f17c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_42eb2331((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakWebSocketDataFrameParser operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakWebSocketDataFrameParser arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakWebSocketDataFrameParser((nint)NativeMethods.TablePtr->C2.hs_method_3ccc4784((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_113047e2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

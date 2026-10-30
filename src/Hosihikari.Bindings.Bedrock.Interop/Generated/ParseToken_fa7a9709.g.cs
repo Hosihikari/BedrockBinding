@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ParseToken
+public sealed unsafe partial class ParseToken : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ParseToken(nint handle) : this(handle, true) { }
 
     internal ParseToken(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ParseToken Borrow(nint handle) => new ParseToken(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,68 @@ public sealed partial class ParseToken
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_576d2ef0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint child_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_57fe2b62((void*)__hosihikari_shim_handle);
+    }
+
+    public uint length
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_2805264a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_2805264a((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint next_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_27224caf((void*)__hosihikari_shim_handle);
+    }
+
+    public nint parent
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4f2d4885((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_4f2d4885((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint text
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cc42eaff((void*)__hosihikari_shim_handle);
+    }
+
+    public string toString()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_c02db9bd((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint type_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bc1ebe28((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_fa7a9709((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum EAxis : int
 {
+    None = -1,
+    X = 0,
+    Y = 1,
+    Z = 2,
 }

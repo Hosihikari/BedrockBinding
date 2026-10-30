@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CrashDumpLog
+public sealed unsafe partial class CrashDumpLog : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CrashDumpLog(nint handle) : this(handle, true) { }
 
     internal CrashDumpLog(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CrashDumpLog Borrow(nint handle) => new CrashDumpLog(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,137 +33,63 @@ public sealed unsafe partial class CrashDumpLog
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CrashDumpLog Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CrashDumpLog Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void logEvent(global::Hosihikari.Bindings.Bedrock.Interop.CrashDumpEventData arg0)
+    public static void crashDumpLogThreadRoutine()
     {
-        NativeMethods.TablePtr->hs_method_987467dc((void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_b2c5c0c1();
     }
 
-    public static void logFrame(global::Hosihikari.Bindings.Bedrock.Interop.CrashDumpFrameData arg0)
+    public static void logEvent(global::Hosihikari.Bindings.Bedrock.Interop.CrashDumpEventData eventData)
     {
-        NativeMethods.TablePtr->hs_method_4a3720a8((void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_8ff0c2f0((void*)eventData.Handle);
     }
 
-    public static void logKeyValue(global::Hosihikari.Bindings.Bedrock.Interop.CrashDumpKeyValueData arg0)
+    public static void logKeyValue(global::Hosihikari.Bindings.Bedrock.Interop.CrashDumpKeyValueData keyValueData)
     {
-        NativeMethods.TablePtr->hs_method_4b5d2c7b((void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_f9dee77e((void*)keyValueData.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mAllData
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint mAllData() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static nint mCrashDumpLog_logThread()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C1.hs_method_1c3a2954();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mAssertDataMutex
+    public static nint mCrashDumpThreadMutex()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C1.hs_method_f828df21();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mCrashDumpLog_logThread
+    public static nint mCrashDumpThreadMutexCV()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C1.hs_method_7832c996();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mCrashDumpThreadMutex
+    public static nint mDataMutex()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C1.hs_method_a9a109a5();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mCrashDumpThreadMutexCV
+    public static nint mIsThreadRunning()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C1.hs_method_95b80a1d();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mEventDataMutex
+    public static void setAssertMessage(nint desc, int line, nint file, nint function)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        NativeMethods.TablePtr->C1.hs_method_53153779((void*)desc, line, (void*)file, (void*)function);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mFrameDataMutex
+    public static void setBehaviorPackIds(string[] packIds)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mGameplayDataMutex
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mGlobalDataMutex
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static bool mIsThreadRunning
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mKeyValueDataMutex
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mPlayerDataMutex
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mRenderDataMutex
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void setAssertMessage(nint arg0, int arg1, nint arg2, nint arg3)
-    {
-        NativeMethods.TablePtr->hs_method_de1edb74((void*)arg0, arg1, (void*)arg2, (void*)arg3);
-    }
-
-    public static void setBehaviorPackIds(string[] arg0)
-    {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
+        var __hs_vectorItems0 = packIds ?? global::System.Array.Empty<string>();
         var __hs_vectorCount0 = __hs_vectorItems0.Length;
         var __hs_vectorByteTotal0 = 0;
         for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
@@ -183,13 +109,13 @@ public sealed unsafe partial class CrashDumpLog
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            NativeMethods.TablePtr->hs_method_24dd79da(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            NativeMethods.TablePtr->C1.hs_method_13cd2db5(__hs_vectorData0, (nuint)(packIds?.Length ?? 0));
         }
     }
 
-    public static bool setDeviceSessionID(string arg0)
+    public static bool setDeviceID(string str)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(str);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -199,35 +125,52 @@ public sealed unsafe partial class CrashDumpLog
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(str, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_cc929c5d(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_94b25a40(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public static void setGameVersion(nint arg0)
+    public static bool setDeviceSessionID(string str)
     {
-        NativeMethods.TablePtr->hs_method_bb7f7fbc((void*)arg0);
-    }
-
-    public static void setPlatform(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_012c4072((void*)arg0);
-    }
-
-    public static void setTotalMemory(ulong arg0)
-    {
-        NativeMethods.TablePtr->hs_method_105b0ac0(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(str);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(str, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_b934ec53(__hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
     }
 
     public static bool startCrashDumpLogThread()
     {
-        return NativeMethods.TablePtr->hs_method_11babad2() != 0;
+        return NativeMethods.TablePtr->C1.hs_method_11babad2() != 0;
     }
 
     public static void stopCrashDumpLogThread()
     {
-        NativeMethods.TablePtr->hs_method_bed7dacd();
+        NativeMethods.TablePtr->C1.hs_method_bed7dacd();
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_00361cbb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

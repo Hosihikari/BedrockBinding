@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder;
 
-public sealed unsafe partial class Messenger
+public sealed unsafe partial class Messenger : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Messenger(nint handle) : this(handle, true) { }
 
     internal Messenger(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Messenger Borrow(nint handle) => new Messenger(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,142 +33,145 @@ public sealed unsafe partial class Messenger
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Messenger Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8df412ad((void*)__hosihikari_shim_handle);
+    }
+
+    public void _blockBroken(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int method, int variantData, ushort auxType)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e2287933((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)block.Handle, method, variantData, auxType);
+    }
+
+    public void _blockPlaced(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block block, bool underWater, ushort auxType)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d0203ae1((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)block.Handle, underWater, auxType);
+    }
+
+    public void _blockPlacedByCommand(global::Hosihikari.Bindings.Bedrock.Interop.Block block, ushort auxType, int numberOfBlocksPlaced)
+    {
+        NativeMethods.TablePtr->C0.hs_method_33359732((void*)__hosihikari_shim_handle, (void*)block.Handle, auxType, numberOfBlocksPlaced);
+    }
+
+    public void _cameraUsed(bool isSelfie)
+    {
+        NativeMethods.TablePtr->C0.hs_method_995980f2((void*)__hosihikari_shim_handle, isSelfie);
+    }
+
+    public void _chunkChanged(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C0.hs_method_727e70e4((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void _chunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9af185f0((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void _chunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C0.hs_method_6e99b423((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void _codeBuilderRuntimeAction(string action)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(action);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_1c830c26((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _codeBuilderScoreChanged(string objective, int score)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_e83c5372((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, score);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<CodeBuilder::IClient>' is not a known bindable declaration.", false)]
-    public static Messenger Create_128ffa5f(nint arg0) =>
+    public nint _ctor(nint codeBuilderClient) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<CodeBuilder::IClient>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Messenger Create_022e5b4f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void blockBroken(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, ushort arg4)
+    public void _endOfDay(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
     {
-        NativeMethods.TablePtr->hs_method_736fad8e((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3, arg4);
+        NativeMethods.TablePtr->C0.hs_method_000bb4a3((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
     }
 
-    public void blockPlaced(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, bool arg2, ushort arg3)
+    public void _entitySpawned(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int mobType, uint spawnMethod)
     {
-        NativeMethods.TablePtr->hs_method_048a069a((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3);
+        NativeMethods.TablePtr->C0.hs_method_edf18900((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), mobType, spawnMethod);
     }
 
-    public void cameraUsed(bool arg0)
+    public void _itemAcquired(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item, int arg2, uint amountAcquired, int acquisitionMethod)
     {
-        NativeMethods.TablePtr->hs_method_e0e4b99c((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_be2eeba6((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, arg2, amountAcquired, acquisitionMethod);
     }
 
-    public void chunkChanged(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public void _itemCrafted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, bool craftingTable, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance item, bool recipeBook, bool hadSearchString, bool craftedAutomatically, int startingTabId, int endingTabId, int numTabsChanged, bool filterOn, bool recipeBookShown)
     {
-        NativeMethods.TablePtr->hs_method_5cbe9d17((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_a245ab11((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), craftingTable, (void*)item.Handle, recipeBook, hadSearchString, craftedAutomatically, startingTabId, endingTabId, numTabsChanged, filterOn, recipeBookShown);
     }
 
-    public void chunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public void _itemDropped(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
     {
-        NativeMethods.TablePtr->hs_method_5009aeaf((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_218f9f71((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle);
     }
 
-    public void chunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    public void _itemEquipped(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance item, int slot)
     {
-        NativeMethods.TablePtr->hs_method_789e40eb((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_2edeb241((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, slot);
     }
 
-    public void codeBuilderRuntimeAction(string arg0)
+    public void _itemInteracted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance item, int method)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_28014b70((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
+        NativeMethods.TablePtr->C0.hs_method_8d32b90d((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, method);
     }
 
-    public void codeBuilderScoreChanged(string arg0, int arg1)
+    public void _itemSmelted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor lastFuelItem)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_169f08e5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-        }
+        NativeMethods.TablePtr->C0.hs_method_c5e2d6bb((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, (void*)lastFuelItem.Handle);
     }
 
-    public void endOfDay(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0)
+    public void _itemUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item, int useMethod)
     {
-        NativeMethods.TablePtr->hs_method_58319021((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_c92ef3bf((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, useMethod);
     }
 
-    public void entitySpawned(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1, uint arg2)
+    public void _mobInteracted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int legacyInteractedEntityType, int interactionType, int interactedEntityVariant, byte interactedEntityColor)
     {
-        NativeMethods.TablePtr->hs_method_a7b9d478((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2);
+        NativeMethods.TablePtr->C0.hs_method_19186986((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), legacyInteractedEntityType, interactionType, interactedEntityVariant, interactedEntityColor);
     }
 
-    public void itemAcquired(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, int arg2, uint arg3, int arg4)
-    {
-        NativeMethods.TablePtr->hs_method_ea3a1417((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3, arg4);
-    }
-
-    public void itemCrafted(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, bool arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2, bool arg3, bool arg4, bool arg5, int arg6, int arg7, int arg8, bool arg9, bool arg10)
-    {
-        NativeMethods.TablePtr->hs_method_5f7f4163((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, (void*)arg2.Handle, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-    }
-
-    public void itemDropped(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
-    {
-        NativeMethods.TablePtr->hs_method_dffb681a((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle);
-    }
-
-    public void itemEquipped(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_4f516fc1((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
-    }
-
-    public void itemInteracted(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_7cbb2e60((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
-    }
-
-    public void itemSmelted(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg2)
-    {
-        NativeMethods.TablePtr->hs_method_5b4956a9((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    public void itemUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_f7f5676d((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
-    }
-
-    public void mobInteracted(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1, int arg2, int arg3, byte arg4)
-    {
-        NativeMethods.TablePtr->hs_method_584c136a((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, arg3, arg4);
-    }
-
-    public void mobKilled(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg2, uint arg3, string arg4, int arg5)
+    public void _mobKilled(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Actor? entKiller, global::Hosihikari.Bindings.Bedrock.Interop.Mob mobKilled, uint method, string arg4, int traderTier)
     {
         var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
         scoped global::System.Span<byte> __hs_stringBytes4;
@@ -183,13 +186,13 @@ public sealed unsafe partial class Messenger
         global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
         fixed (byte* __hs_stringData4 = __hs_stringBytes4)
         {
-            NativeMethods.TablePtr->hs_method_1eb9f52c((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4, arg5);
+            NativeMethods.TablePtr->C0.hs_method_a6c321d1((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)(entKiller?.Handle ?? 0), (void*)mobKilled.Handle, method, __hs_stringData4, (nuint)__hs_stringByteCount4, traderTier);
         }
     }
 
-    public void onAgentAction(int arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
+    public void _onAgentAction(int actionType, string requestId, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value result)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(requestId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -199,25 +202,21 @@ public sealed unsafe partial class Messenger
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(requestId, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_ee86547d((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle);
+            NativeMethods.TablePtr->C0.hs_method_d102e2f9((void*)__hosihikari_shim_handle, actionType, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)result.Handle);
         }
     }
 
-    public void onCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
+    public void _onCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        NativeMethods.TablePtr->hs_method_20b87228((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_90a6c079((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void piglinBarter(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1, bool arg2)
+    public void _piglinBarter(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, string itemUsed, bool wasTargetingBarteringPlayer)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(itemUsed);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -227,36 +226,36 @@ public sealed unsafe partial class Messenger
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(itemUsed, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_5228c009((void*)_handle, (void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+            NativeMethods.TablePtr->C0.hs_method_6860f758((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, wasTargetingBarteringPlayer);
         }
     }
 
-    public void playerBounced(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3)
+    public void _playerBounced(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int bounceHeight, int auxType)
     {
-        NativeMethods.TablePtr->hs_method_62e8ccbc((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3);
+        NativeMethods.TablePtr->C0.hs_method_cf56eb5d((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)block.Handle, bounceHeight, auxType);
     }
 
-    public void playerDied(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1, int arg2, int arg3, bool arg4)
+    public void _playerDied(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int killerId, int killerVariant, int reason, bool inRaid)
     {
-        NativeMethods.TablePtr->hs_method_e46fab9c((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, arg3, arg4);
+        NativeMethods.TablePtr->C0.hs_method_3cd8913c((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), killerId, killerVariant, reason, inRaid);
     }
 
-    public void playerJoined(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0)
+    public void _playerJoined(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
     {
-        NativeMethods.TablePtr->hs_method_80680706((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_5117d3ec((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
     }
 
-    public void playerLeave(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0)
+    public void _playerLeave(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
     {
-        NativeMethods.TablePtr->hs_method_3a4f2016((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_a4e497e7((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
     }
 
-    public void playerMessage(string arg0, string arg1, string arg2, string arg3)
+    public void _playerMessage(string fromName, string toName, string message, string messageType)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -266,8 +265,8 @@ public sealed unsafe partial class Messenger
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(toName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -277,8 +276,8 @@ public sealed unsafe partial class Messenger
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(toName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -288,8 +287,8 @@ public sealed unsafe partial class Messenger
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(messageType);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -299,7 +298,7 @@ public sealed unsafe partial class Messenger
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(messageType, __hs_stringBytes3);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
@@ -308,35 +307,367 @@ public sealed unsafe partial class Messenger
                 {
                     fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                     {
-                        NativeMethods.TablePtr->hs_method_4d0fb8ec((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                        NativeMethods.TablePtr->C0.hs_method_78adcd11((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
                     }
                 }
             }
         }
     }
 
-    public void playerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, float arg1, int arg2, int arg3)
+    public void _playerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, float metersTravelled, int cause, int sourceType)
     {
-        NativeMethods.TablePtr->hs_method_b5e0a702((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, arg3);
+        NativeMethods.TablePtr->C0.hs_method_5adaa808((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), metersTravelled, cause, sourceType);
     }
 
-    public void playerTransform(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0)
+    public void _playerTransform(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
     {
-        NativeMethods.TablePtr->hs_method_46f52d02((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_3021d382((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
     }
 
-    public void playerTravelled(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, float arg1, int arg2, int arg3)
+    public void _playerTravelled(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, float metersTravelledSinceLastEvent, int travelMethodType, int newBiome)
     {
-        NativeMethods.TablePtr->hs_method_35bab9eb((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, arg3);
+        NativeMethods.TablePtr->C0.hs_method_85ef86ec((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), metersTravelledSinceLastEvent, travelMethodType, newBiome);
     }
 
-    public void targetBlockHit(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1)
+    public void _targetBlockHit(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int redstoneLevel)
     {
-        NativeMethods.TablePtr->hs_method_dd0ebca5((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+        NativeMethods.TablePtr->C0.hs_method_4c203b98((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), redstoneLevel);
     }
 
-    public void tradeCompleted(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg2, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg3, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg4, int arg5)
+    public void _tradeCompleted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Actor? trader, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor itemA, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor itemB, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance tradedFor, int traderEmeraldCount)
     {
-        NativeMethods.TablePtr->hs_method_e291effc((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, arg5);
+        NativeMethods.TablePtr->C0.hs_method_210d4305((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)(trader?.Handle ?? 0), (void*)itemA.Handle, (void*)itemB.Handle, (void*)tradedFor.Handle, traderEmeraldCount);
+    }
+
+    public static Messenger Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_bccde317();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Messenger((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<CodeBuilder::IClient>' is not a known bindable declaration.", false)]
+    public static Messenger Create(nint codeBuilderClient) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<CodeBuilder::IClient>' is not a known bindable declaration.");
+
+    public void blockBroken(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int method, int variantData, ushort auxType)
+    {
+        NativeMethods.TablePtr->C0.hs_method_97849edf((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)block.Handle, method, variantData, auxType);
+    }
+
+    public void blockPlaced(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block block, bool underWater, ushort auxType)
+    {
+        NativeMethods.TablePtr->C0.hs_method_90f14725((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)block.Handle, underWater, auxType);
+    }
+
+    public void blockPlacedByCommand(global::Hosihikari.Bindings.Bedrock.Interop.Block block, ushort auxType, int numberOfBlocksPlaced)
+    {
+        NativeMethods.TablePtr->C0.hs_method_22f646fc((void*)__hosihikari_shim_handle, (void*)block.Handle, auxType, numberOfBlocksPlaced);
+    }
+
+    public void cameraUsed(bool isSelfie)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d5ec90b8((void*)__hosihikari_shim_handle, isSelfie);
+    }
+
+    public void chunkChanged(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b258416f((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void chunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ddca4bef((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void chunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C0.hs_method_bc853800((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void codeBuilderRuntimeAction(string action)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(action);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_33723af0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void codeBuilderScoreChanged(string objective, int score)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_bdf4ff04((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, score);
+        }
+    }
+
+    public void endOfDay(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d02c4cdb((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
+    }
+
+    public void entitySpawned(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int mobType, uint spawnMethod)
+    {
+        NativeMethods.TablePtr->C0.hs_method_0c723125((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), mobType, spawnMethod);
+    }
+
+    public void itemAcquired(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item, int arg2, uint amountAcquired, int acquisitionMethod)
+    {
+        NativeMethods.TablePtr->C0.hs_method_15abce4b((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, arg2, amountAcquired, acquisitionMethod);
+    }
+
+    public void itemCrafted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, bool craftingTable, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance item, bool recipeBook, bool hadSearchString, bool craftedAutomatically, int startingTabId, int endingTabId, int numTabsChanged, bool filterOn, bool recipeBookShown)
+    {
+        NativeMethods.TablePtr->C0.hs_method_7ef7a97d((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), craftingTable, (void*)item.Handle, recipeBook, hadSearchString, craftedAutomatically, startingTabId, endingTabId, numTabsChanged, filterOn, recipeBookShown);
+    }
+
+    public void itemDropped(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
+    {
+        NativeMethods.TablePtr->C0.hs_method_67e6b85c((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle);
+    }
+
+    public void itemEquipped(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance item, int slot)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b752eaee((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, slot);
+    }
+
+    public void itemInteracted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance item, int method)
+    {
+        NativeMethods.TablePtr->C0.hs_method_bd5c0d30((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, method);
+    }
+
+    public void itemSmelted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor lastFuelItem)
+    {
+        NativeMethods.TablePtr->C0.hs_method_305cc602((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, (void*)lastFuelItem.Handle);
+    }
+
+    public void itemUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item, int useMethod)
+    {
+        NativeMethods.TablePtr->C0.hs_method_19da89cf((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)item.Handle, useMethod);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCodeBuilderClient_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d5c4821d((void*)__hosihikari_shim_handle);
+    }
+
+    public void mobInteracted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int legacyInteractedEntityType, int interactionType, int interactedEntityVariant, byte interactedEntityColor)
+    {
+        NativeMethods.TablePtr->C0.hs_method_03541376((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), legacyInteractedEntityType, interactionType, interactedEntityVariant, interactedEntityColor);
+    }
+
+    public void mobKilled(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Actor? entKiller, global::Hosihikari.Bindings.Bedrock.Interop.Mob mobKilled, uint method, string arg4, int traderTier)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            NativeMethods.TablePtr->C0.hs_method_4a8e6b16((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)(entKiller?.Handle ?? 0), (void*)mobKilled.Handle, method, __hs_stringData4, (nuint)__hs_stringByteCount4, traderTier);
+        }
+    }
+
+    public void onAgentAction(int actionType, string requestId, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value result)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(requestId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(requestId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C0.hs_method_219fe920((void*)__hosihikari_shim_handle, actionType, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)result.Handle);
+        }
+    }
+
+    public void onCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
+    {
+        NativeMethods.TablePtr->C0.hs_method_03aeecf5((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
+    }
+
+    public void piglinBarter(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, string itemUsed, bool wasTargetingBarteringPlayer)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(itemUsed);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(itemUsed, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C0.hs_method_928e9bec((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, wasTargetingBarteringPlayer);
+        }
+    }
+
+    public void playerBounced(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int bounceHeight, int auxType)
+    {
+        NativeMethods.TablePtr->C0.hs_method_97a8c854((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)block.Handle, bounceHeight, auxType);
+    }
+
+    public void playerDied(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int killerId, int killerVariant, int reason, bool inRaid)
+    {
+        NativeMethods.TablePtr->C0.hs_method_68682b95((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), killerId, killerVariant, reason, inRaid);
+    }
+
+    public void playerJoined(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b24c52bb((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
+    }
+
+    public void playerLeave(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9a6fa56c((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
+    }
+
+    public void playerMessage(string fromName, string toName, string message, string messageType)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(toName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(toName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(messageType);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(messageType, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C0.hs_method_00ed34cb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void playerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, float metersTravelled, int cause, int sourceType)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d041cd9b((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), metersTravelled, cause, sourceType);
+    }
+
+    public void playerTransform(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c01e497f((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
+    }
+
+    public void playerTravelled(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, float metersTravelledSinceLastEvent, int travelMethodType, int newBiome)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e83028ac((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), metersTravelledSinceLastEvent, travelMethodType, newBiome);
+    }
+
+    public void targetBlockHit(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int redstoneLevel)
+    {
+        NativeMethods.TablePtr->C0.hs_method_22d858d1((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), redstoneLevel);
+    }
+
+    public void tradeCompleted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Actor? trader, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor itemA, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor itemB, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance tradedFor, int traderEmeraldCount)
+    {
+        NativeMethods.TablePtr->C0.hs_method_0d30871a((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)(trader?.Handle ?? 0), (void*)itemA.Handle, (void*)itemB.Handle, (void*)tradedFor.Handle, traderEmeraldCount);
+    }
+
+
+    public nint mpSubject
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8ff008cb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_8ff008cb((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_84a9fbdc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

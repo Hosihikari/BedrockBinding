@@ -6,6 +6,6 @@ namespace Hosihikari.Bindings.Bedrock.Interop.BlockTypeRegistry_Nested;
 
 public enum LookupByNameImplResolve : int
 {
-    BlockLegacy = 0,
+    BlockType = 0,
     Block = 1,
 }

@@ -10,5 +10,5 @@ public enum Type : int
     Address = 1,
     Address6 = 2,
     NetherNet = 3,
-    Generic = 4,
+    Invalid = 4,
 }

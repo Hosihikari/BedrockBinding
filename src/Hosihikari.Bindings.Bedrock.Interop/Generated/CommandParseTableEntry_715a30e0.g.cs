@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CommandParseTableEntry
+public sealed unsafe partial class CommandParseTableEntry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandParseTableEntry(nint handle) : this(handle, true) { }
 
     internal CommandParseTableEntry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandParseTableEntry Borrow(nint handle) => new CommandParseTableEntry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,60 @@ public sealed partial class CommandParseTableEntry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static CommandParseTableEntry Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_545d1a2c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandParseTableEntry((nint)handle);
+    }
+
+    public static CommandParseTableEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested.CommandParseTableEntry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7b01e024((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandParseTableEntry((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk92e4f2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_575d46e1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf81146_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4cc63d8d((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested.CommandParseTableEntry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested.CommandParseTableEntry arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested.CommandParseTableEntry((nint)NativeMethods.TablePtr->C1.hs_method_fbc31d72((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_715a30e0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

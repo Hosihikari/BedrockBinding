@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameTestNetworkAdapter
+public sealed unsafe partial class GameTestNetworkAdapter : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameTestNetworkAdapter(nint handle) : this(handle, true) { }
 
     internal GameTestNetworkAdapter(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameTestNetworkAdapter Borrow(nint handle) => new GameTestNetworkAdapter(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,47 @@ public sealed unsafe partial class GameTestNetworkAdapter
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameTestNetworkAdapter Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static GameTestNetworkAdapter Create_9897cbad(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameTestNetworkAdapter Create_fb4ced78(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void rungametest(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2, global::Hosihikari.Bindings.Bedrock.Interop.gametest.TestParameters arg3)
+    public static GameTestNetworkAdapter Create()
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var handle = NativeMethods.TablePtr->C1.hs_create_b46bb04e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameTestNetworkAdapter((nint)handle);
+    }
+
+    public static GameTestNetworkAdapter Create(global::Hosihikari.Bindings.Bedrock.Interop.GameTestNetworkAdapter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fb4ced78((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameTestNetworkAdapter((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8aa503_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_48d93cd5((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameTestNetworkAdapter operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.GameTestNetworkAdapter arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameTestNetworkAdapter((nint)NativeMethods.TablePtr->C1.hs_method_6f4efa96((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void rungametest(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? packetSender, string testName, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.gametest.TestParameters @params)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(testName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -66,10 +83,23 @@ public sealed unsafe partial class GameTestNetworkAdapter
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(testName, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_d8265ee3((void*)_handle, (void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, (void*)arg3.Handle);
+            NativeMethods.TablePtr->C1.hs_method_9e4520ae((void*)__hosihikari_shim_handle, (void*)(packetSender?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)dimension.Handle, (void*)@params.Handle);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9189301e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ComponentMetadata
+public sealed unsafe partial class ComponentMetadata : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ComponentMetadata(nint handle) : this(handle, true) { }
 
     internal ComponentMetadata(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ComponentMetadata Borrow(nint handle) => new ComponentMetadata(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,94 @@ public sealed partial class ComponentMetadata
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_723010c4((void*)__hosihikari_shim_handle);
+    }
+
+    public static ComponentMetadata Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_736b036d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComponentMetadata((nint)handle);
+    }
+
+    public static ComponentMetadata Create(global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory_Nested.ComponentMetadata arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_23cd31b2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComponentMetadata((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint deprecatedVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7ad787a9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint makeUnique_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_edf1dbb9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint onParseCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_eb295d75((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory_Nested.ComponentMetadata operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory_Nested.ComponentMetadata arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory_Nested.ComponentMetadata((nint)NativeMethods.TablePtr->C0.hs_method_e930d8c1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint releasedMinFormatVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_eaff24ab((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint requirements_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a4bf9e7f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint versionUpgrades_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f21deb14((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_1bf206a5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

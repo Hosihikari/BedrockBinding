@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Spawner
+public sealed unsafe partial class Spawner : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Spawner(nint handle) : this(handle, true) { }
 
     internal Spawner(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Spawner Borrow(nint handle) => new Spawner(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,121 +33,158 @@ public sealed unsafe partial class Spawner
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SPAWN_RING_OFFSETS_Address
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<std::array<SpawnCategory::Type, 8>, unsigned long long>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _filteredSpawningCategories(nint arg0, bool arg1, bool arg2, bool arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<std::array<SpawnCategory::Type, 8>, unsigned long long>' requires --link-carrier or --virtual-dispatch.");
+
+    public void _spawnForChunk(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkVolumeData arg1, global::Hosihikari.Bindings.Bedrock.Interop.br.spawn.State arg2, int[] arg3, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg4)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dd5bc44d();
+        fixed (int* __hs_vectorData3 = arg3)
+        {
+            NativeMethods.TablePtr->C3.hs_method_c2f3fd0a((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg4.Handle, __hs_vectorData3, (nuint)(arg3?.Length ?? 0));
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Spawner Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Spawner Create_d4b2a3d1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Spawner Create_3e732e40(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _tickSpawnStructureMobs_30bf73a0(nint region, nint chunk, nint pos, nint spawnStructureMobCallback, nint getSpawningAreasCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static bool findNextSpawnBlockUnder(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, uint arg2, int arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemActor? _spawnItem(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack inst, global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawner, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int throwTime)
     {
-        return NativeMethods.TablePtr->hs_method_3a1f69ab((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup? getSpawnRules()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_aa9dc774((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup? getSpawnRulesMutable()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_f934dedf((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings getSpawnSettings()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings((nint)NativeMethods.TablePtr->hs_method_a786010f((void*)_handle), false);
-    }
-
-    public void incrementSpawnableTickedMob()
-    {
-        NativeMethods.TablePtr->hs_method_329b789f((void*)_handle);
-    }
-
-    public void initializeServerSide(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg1)
-    {
-        NativeMethods.TablePtr->hs_method_27625f4d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public static bool isSpawnPositionOk(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, bool arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_8dcbc67e((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void postProcessSpawnMobs(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
-    {
-        NativeMethods.TablePtr->hs_method_223267b8((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3.Handle);
-    }
-
-    public void setSpawnSettings(global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings arg0)
-    {
-        NativeMethods.TablePtr->hs_method_78788a59((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemActor? spawnItem(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, int arg4)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_b796827a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, arg4);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_61dec4ae((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)inst.Handle, (void*)(spawner?.Handle ?? 0), (void*)pos.Handle, throwTime);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemActor((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Mob? spawnMob(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, bool arg4, bool arg5, bool arg6)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Mob? _spawnMob(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier id, global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawner, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, bool naturalSpawn, bool surface, bool fromSpawner)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_842adebf((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, arg4, arg5, arg6);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_636bc5c9((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)id.Handle, (void*)(spawner?.Handle ?? 0), (void*)pos.Handle, naturalSpawn, surface, fromSpawner);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Mob((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_set<ActorUniqueID,std::hash<ActorUniqueID>,std::equal_to<ActorUniqueID>,std::allocator<ActorUniqueID>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnMobGroup_0bdc268e(nint arg0, nint arg1, nint arg2, bool arg3, bool arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_set<ActorUniqueID,std::hash<ActorUniqueID>,std::equal_to<ActorUniqueID>,std::allocator<ActorUniqueID>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint spawnMobGroup_5bc9121c(nint region, nint spawnGroupId, nint pos, bool doScatter, bool validateDistToPlayer, nint spawnedCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawnProjectile(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg4)
+    public void _spawnMobsForChunkGeneration(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Biome arg1, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg3)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_27b00797((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, (void*)arg4.Handle);
+        NativeMethods.TablePtr->C3.hs_method_c9416087((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? _spawnProjectile(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier id, global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawner, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 position, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 direction)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_29f391d0((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)id.Handle, (void*)(spawner?.Handle ?? 0), (void*)position.Handle, (void*)direction.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<std::array<SpawnCategory::Type, 8>, unsigned long long>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint filteredSpawningCategories(nint arg0, bool arg1, bool arg2, bool arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<std::array<SpawnCategory::Type, 8>, unsigned long long>' requires --link-carrier or --virtual-dispatch.");
+
+    public static bool findNextSpawnBlockUnder(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte? materialToSpawnIn, byte spawnBlockRequirements)
     {
-        NativeMethods.TablePtr->hs_method_7d0a07b3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_fe5dd91c((void*)region.Handle, (void*)pos.Handle, materialToSpawnIn ?? default(byte), spawnBlockRequirements, materialToSpawnIn.HasValue) != 0;
     }
 
-    public void tickMobCount()
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getEntityTypeCache() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getSpawnGroupRegistry() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getSpawnPlacements() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getSpawnRules() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getSpawnRulesMutable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getSpawnSettings() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public uint getSpawnableTickedMobCountPrevious() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void incrementSpawnableTickedMob() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void initializeServerSide(nint rpm, nint registries) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public static bool isSpawnPositionOk(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules rules, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool validateDistToPlayer)
     {
-        NativeMethods.TablePtr->hs_method_715ebfa1((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_510692a4((void*)rules.Handle, (void*)region.Handle, (void*)pos.Handle, validateDistToPlayer) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_7f63e68a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void postProcessSpawnMobs(nint region, int xo, int zo, nint random) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void setSpawnSettings(nint spawnSettings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void spawnForChunk(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkVolumeData arg1, global::Hosihikari.Bindings.Bedrock.Interop.br.spawn.State arg2, int[] arg3, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg4)
+    {
+        fixed (int* __hs_vectorData3 = arg3)
+        {
+            NativeMethods.TablePtr->C3.hs_method_37c2c6e5((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg4.Handle, __hs_vectorData3, (nuint)(arg3?.Length ?? 0));
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemActor? spawnItem(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack inst, global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawner, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int throwTime)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_a168a6f3((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)inst.Handle, (void*)(spawner?.Handle ?? 0), (void*)pos.Handle, throwTime);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemActor((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Mob? spawnMob(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier id, global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawner, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, bool naturalSpawn, bool surface, bool fromSpawner)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_023d357b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)id.Handle, (void*)(spawner?.Handle ?? 0), (void*)pos.Handle, naturalSpawn, surface, fromSpawner);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Mob((nint)__hs_handle, false) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint spawnMobGroup(nint region, nint spawnGroupId, nint pos, bool doScatter, bool validateDistToPlayer, nint spawnedCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void spawnMobsForChunkGeneration(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Biome arg1, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg3)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9976fca5((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawnProjectile(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier id, global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawner, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 position, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 direction)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_fd489869((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)id.Handle, (void*)(spawner?.Handle ?? 0), (void*)position.Handle, (void*)direction.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void tick(nint region, nint levelChunkVolumeData, nint chunkPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void tickMobCount() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f6c57bb7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

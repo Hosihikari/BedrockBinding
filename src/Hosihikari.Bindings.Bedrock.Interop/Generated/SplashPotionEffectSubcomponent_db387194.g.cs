@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SplashPotionEffectSubcomponent : global::System.IDisposable
+public sealed unsafe partial class SplashPotionEffectSubcomponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SplashPotionEffectSubcomponent(nint handle) : this(handle, true) { }
 
     internal SplashPotionEffectSubcomponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SplashPotionEffectSubcomponent Borrow(nint handle) => new SplashPotionEffectSubcomponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,71 +33,29 @@ public sealed unsafe partial class SplashPotionEffectSubcomponent : global::Syst
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static SplashPotionEffectSubcomponent Create()
+    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
-        var handle = NativeMethods.TablePtr->hs_create_4fa31452();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SplashPotionEffectSubcomponent((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SplashPotionEffectSubcomponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void applyMobEffects(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0, nint[] arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2, global::Hosihikari.Bindings.Abi.SharedHandle? arg3, float arg4, global::Hosihikari.Bindings.Bedrock.Interop.MobEffect? arg5, global::Hosihikari.Bindings.Bedrock.Interop.HitResult arg6, int arg7)
-    {
-        var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<nint>();
-        fixed (nint* __hs_vectorHandleData1 = __hs_vectorItems1)
-        {
-            var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
-            NativeMethods.TablePtr->hs_method_b77114b7((void*)_handle, (void*)arg0.Handle, (void*)arg2.Handle, arg3?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), arg4, (void*)(arg5?.Handle ?? 0), (void*)arg6.Handle, arg7, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
-        }
-    }
-
-    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
-    {
-        NativeMethods.TablePtr->hs_method_a941da99((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_e1d9a341((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);
     }
 
     public nint getName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7286d2c9((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_d81da007((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readfromJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public int mPotionEffect
     {
-        NativeMethods.TablePtr->hs_method_8103e953((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_8cd009d5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_8cd009d5((void*)__hosihikari_shim_handle, value);
     }
 
-    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
+    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
     {
-        NativeMethods.TablePtr->hs_method_8624ad1c((void*)_handle, (void*)arg0.Handle);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_db387194((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        NativeMethods.TablePtr->C3.hs_method_6cc7f503((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 }

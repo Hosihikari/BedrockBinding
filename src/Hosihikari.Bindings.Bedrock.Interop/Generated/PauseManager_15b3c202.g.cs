@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PauseManager
+public sealed unsafe partial class PauseManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PauseManager(nint handle) : this(handle, true) { }
 
     internal PauseManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PauseManager Borrow(nint handle) => new PauseManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,96 @@ public sealed unsafe partial class PauseManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static byte DEFAULT_SIMULATION_TYPE
+    public void _dtor()
     {
-        get => NativeMethods.TablePtr->hs_get_93b46871();
+        NativeMethods.TablePtr->C2.hs_method_0a9750ab((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PauseManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static PauseManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_844bad79();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PauseManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new PauseManager((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'StackRefResult<PauseManager const>' is not a known bindable declaration.", false)]
-    public static nint getSimulationType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'StackRefResult<PauseManager const>' is not a known bindable declaration.");
+    public static PauseManager Create(global::Hosihikari.Bindings.Bedrock.Interop.PauseManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_bafacf2b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new PauseManager((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2c9d89_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7a67be5a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5b37dc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_45430746((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk903eb4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1228b99e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk994f71_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0f37b0da((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk99ce49_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3880fb24((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd10131_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f6784004((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf88b2a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0b2f28a5((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PauseManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PauseManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PauseManager((nint)NativeMethods.TablePtr->C2.hs_method_547a9102((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_15b3c202((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

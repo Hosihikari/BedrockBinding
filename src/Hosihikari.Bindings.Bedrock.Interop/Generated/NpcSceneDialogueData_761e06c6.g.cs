@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NpcSceneDialogueData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NpcSceneDialogueData(nint handle) : this(handle, true) { }
 
     internal NpcSceneDialogueData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NpcSceneDialogueData Borrow(nint handle) => new NpcSceneDialogueData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,99 +33,162 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NpcSceneDialogueData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static NpcSceneDialogueData Create(nint arg0, nint arg1) =>
+    public nint _ctor(nint npc, nint sceneName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NpcSceneDialogueData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? getActionsContainer_fb7df062()
+    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? _getActionsContainer_5a85d4de()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_fb7df062((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_5a85d4de((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? getActionsContainer_e7b6d489()
+    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? _getActionsContainer_8ad08c5c()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_e7b6d489((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_8ad08c5c((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getActor_d6c42055()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? _getActor_c210fa12()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d6c42055((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_c210fa12((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getActor_0301ed28()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? _getActor_fe9fdaa1()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_0301ed28((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_fe9fdaa1((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID _getActorUniqueID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C2.hs_method_7d1b90bc((void*)__hosihikari_shim_handle));
+    }
+
+    public string _getDialogueText()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b9f800e5((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getNameRawText()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_d1db3549((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getNameText()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_e1410f44((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getSceneName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b6e345dc((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static NpcSceneDialogueData Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5b0c20f1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NpcSceneDialogueData((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static NpcSceneDialogueData Create(nint npc, nint sceneName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? getActionsContainer_c33f58f3()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_c33f58f3((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? getActionsContainer_029be905()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_029be905((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getActor_06bc1799()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_06bc1799((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getActor_a6cd6f3a()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_a6cd6f3a((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getActorUniqueID()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_8caa148f((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C2.hs_method_8caa148f((void*)__hosihikari_shim_handle));
     }
 
     public string getDialogueText()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b36a5c71((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_07c73dbb((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getNameRawText()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_231c769f((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_5de5640d((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getNameText()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c27a62bd((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_c12372d7((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRawDialogueText() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public string getSceneName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_bf729884((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b2f82baf((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isRemoteFire() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwner_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f7d264c8((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSceneName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7a1bcb1f((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_761e06c6((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_761e06c6((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

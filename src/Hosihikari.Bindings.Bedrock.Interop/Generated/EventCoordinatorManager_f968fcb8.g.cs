@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class EventCoordinatorManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EventCoordinatorManager(nint handle) : this(handle, true) { }
 
     internal EventCoordinatorManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EventCoordinatorManager Borrow(nint handle) => new EventCoordinatorManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,58 @@ public sealed unsafe partial class EventCoordinatorManager : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    public nint _ctor()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_0d93f55a((void*)__hosihikari_shim_handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_b8b94013((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getClientPlayerEventCoordinator()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_0b63fa41((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getRemotePlayerEventCoordinator()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_9c2c415a((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getServerLevelEventCoordinator()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_1092bdd8((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getServerNetworkEventCoordinator()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_05b4e576((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getServerPlayerEventCoordinator()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_89183d69((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
     public static EventCoordinatorManager Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_6cac6e80();
+        var handle = NativeMethods.TablePtr->C1.hs_create_6cac6e80();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,95 +93,87 @@ public sealed unsafe partial class EventCoordinatorManager : global::System.IDis
         return new EventCoordinatorManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EventCoordinatorManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? createEventCoordinatorManager(bool arg0)
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_34db0212(arg0);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorEventCoordinator()
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_4040e17c((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getBlockEventCoordinator()
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_5282e213((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
     public global::Hosihikari.Bindings.Abi.SharedHandle? getClientPlayerEventCoordinator()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_2f6e1a8a((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_678ac3c9((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getItemEventCoordinator()
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_6432a4ab((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getLevelEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getRemotePlayerEventCoordinator()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_fdeb7fe9((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getScriptDeferredEventCoordinator()
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_57730bcb((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getScriptingEventCoordinator()
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_446bea3c((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_275103f0((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getServerLevelEventCoordinator()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_2ea19509((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a543e8af((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getServerNetworkEventCoordinator()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_3da5ee11((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_502f6836((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getServerPlayerEventCoordinator()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_ce97d0de((void*)_handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_2615ccb2((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2fd51a58((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e2994780((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3fad15db((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNpcEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a05ba942((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptDeferredEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5b8bbb63((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptingEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_78d8078e((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f968fcb8((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_f968fcb8((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptPrintLogger
+public sealed unsafe partial class ScriptPrintLogger : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptPrintLogger(nint handle) : this(handle, true) { }
 
     internal ScriptPrintLogger(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptPrintLogger Borrow(nint handle) => new ScriptPrintLogger(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,64 +33,166 @@ public sealed partial class ScriptPrintLogger
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPrintLogger Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _onError(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_4d0d5c91((void*)__hosihikari_shim_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPrintLogger Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _onException(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint arg2)
+    {
+        NativeMethods.TablePtr->C3.hs_method_58a50e74((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)error.Handle, (void*)arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public void onError_1abaf336(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
+    public void _onInfo(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_5e7eaf04((void*)__hosihikari_shim_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onError_ab594f5c(nint arg0, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _onPromiseRejection(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint arg2, bool isHandled)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8bb7b426((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)error.Handle, (void*)arg2, isHandled);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public void onException(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
+    public void _onWarn(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_36eb7963((void*)__hosihikari_shim_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public void onInfo_f20af3b2(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
+    public bool _shouldPrintException(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError arg1, nint errorAny)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_7147ec3a((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)errorAny) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onInfo_e5075e95(nint arg0, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onError(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_ab594f5c((void*)__hosihikari_shim_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public void onPromiseRejection_d514b5c3(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
+    public void onException(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint arg2)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1fad329d((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)error.Handle, (void*)arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onPromiseRejection_33393cbd(nint arg0, nint message, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onInfo(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_e5075e95((void*)__hosihikari_shim_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public void onWarn_04c709a1(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
+    public void onPromiseRejection(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError error, nint arg2, bool isHandled)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1c5a8c5d((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)error.Handle, (void*)arg2, isHandled);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onWarn_051a9d82(nint arg0, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onWarn(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_051a9d82((void*)__hosihikari_shim_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool shouldPrintException(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.BaseError arg1, nint errorAny)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_aaf9be2c((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)errorAny) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
-    public bool shouldPrintException(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_07a748b5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

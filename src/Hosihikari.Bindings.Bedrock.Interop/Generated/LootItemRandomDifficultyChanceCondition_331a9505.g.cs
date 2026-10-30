@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LootItemRandomDifficultyChanceCondition
+public sealed unsafe partial class LootItemRandomDifficultyChanceCondition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LootItemRandomDifficultyChanceCondition(nint handle) : this(handle, true) { }
 
     internal LootItemRandomDifficultyChanceCondition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LootItemRandomDifficultyChanceCondition Borrow(nint handle) => new LootItemRandomDifficultyChanceCondition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,84 @@ public sealed unsafe partial class LootItemRandomDifficultyChanceCondition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootItemRandomDifficultyChanceCondition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LootItemRandomDifficultyChanceCondition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool applies(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7dec2c_Address
     {
-        return NativeMethods.TablePtr->hs_method_e3637f29((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5cad3c83((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool __applies(global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_2c2b3e50((void*)__hosihikari_shim_handle, (void*)random.Handle, (void*)context.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int _getConditionType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_d6346477((void*)__hosihikari_shim_handle);
+    }
+
+    public static LootItemRandomDifficultyChanceCondition Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_cc9de68c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootItemRandomDifficultyChanceCondition((nint)handle);
+    }
+
+    public static LootItemRandomDifficultyChanceCondition Create(global::Hosihikari.Bindings.Bedrock.Interop.LootItemRandomDifficultyChanceCondition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c554be65((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootItemRandomDifficultyChanceCondition((nint)handle);
+    }
+
+    public bool _applies(global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_1aab8615((void*)__hosihikari_shim_handle, (void*)random.Handle, (void*)context.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LootItemCondition' has no accessible destructor.", false)]
+    public static nint deserialize(nint @object) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LootItemCondition' has no accessible destructor.");
+
+    public int getConditionType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_5c3de209((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf0e81e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ac147e31((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LootItemRandomDifficultyChanceCondition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LootItemRandomDifficultyChanceCondition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LootItemRandomDifficultyChanceCondition((nint)NativeMethods.TablePtr->C2.hs_method_90a33675((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_331a9505((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

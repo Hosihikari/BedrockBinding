@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Safety;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum TextFilteringEvent : int
 {
+    Muted = 0,
+    FloodingDetectedSuppressRequired = 1,
+    FloodingDetectedKickRequired = 2,
+    TextProcessorOffline = 3,
+    TextProcessorServiceUnreachable = 4,
+    DisabledByPlayer = 5,
 }

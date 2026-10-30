@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SculkSpreader
+public sealed unsafe partial class SculkSpreader : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SculkSpreader(nint handle) : this(handle, true) { }
 
     internal SculkSpreader(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SculkSpreader Borrow(nint handle) => new SculkSpreader(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,73 +33,110 @@ public sealed unsafe partial class SculkSpreader
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SculkSpreader Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SculkSpreader Create(bool arg0, int arg1, int arg2, int arg3, int arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SculkSpreader Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addCursors(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
+    public nint _ctor()
     {
-        NativeMethods.TablePtr->hs_method_fdd48096((void*)_handle, (void*)arg0.Handle, arg1);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_f73d1515((void*)__hosihikari_shim_handle);
     }
 
-    public void clearCursors()
+    public nint _ctor(bool isWorldGen, int growthSpawnCost, int noGrowthRadius, int chargeDecayRate, int additionalDecayRate)
     {
-        NativeMethods.TablePtr->hs_method_6b8d7d77((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_e97ef30f((void*)__hosihikari_shim_handle, isWorldGen, growthSpawnCost, noGrowthRadius, chargeDecayRate, additionalDecayRate);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getCursorPosition(int arg0)
+    public static SculkSpreader Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_178c5ed5((void*)_handle, arg0));
+        var handle = NativeMethods.TablePtr->C3.hs_create_dbd372a6();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkSpreader((nint)handle);
     }
 
-    public int getMaxCharge()
+    public static SculkSpreader Create(bool isWorldGen, int growthSpawnCost, int noGrowthRadius, int chargeDecayRate, int additionalDecayRate)
     {
-        return NativeMethods.TablePtr->hs_method_33f5a51d((void*)_handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_0f3f1662(isWorldGen, growthSpawnCost, noGrowthRadius, chargeDecayRate, additionalDecayRate);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkSpreader((nint)handle);
     }
 
-    public int getNumberOfCursors()
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        return NativeMethods.TablePtr->hs_method_507bf508((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_a6796d98((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public int getTotalCharge()
+    public int mAdditionalDecayRate
     {
-        return NativeMethods.TablePtr->hs_method_5daffb18((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_1cda0157((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_1cda0157((void*)__hosihikari_shim_handle, value);
     }
 
-    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public int mChargeDecayRate
     {
-        NativeMethods.TablePtr->hs_method_42e07517((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_ae02772c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ae02772c((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCursors_Address
     {
-        NativeMethods.TablePtr->hs_method_5785a46d((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_605d4649((void*)__hosihikari_shim_handle);
     }
 
-    public void updateCursors(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, bool arg4)
+    public int mGrowthSpawnCost
     {
-        NativeMethods.TablePtr->hs_method_7a26b06f((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, arg4);
+        get => NativeMethods.TablePtr->C3.hs_get_68489b0d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_68489b0d((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c9acaec6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public bool mIsWorldGen
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_233feb53((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_233feb53((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mNoGrowthRadius
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_da51ff4c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_da51ff4c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSculkReplaceableBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7fd49ce8((void*)__hosihikari_shim_handle);
+    }
+
+    public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a03bbe73((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+    public void updateCursors(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos originPos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, bool spreadVeins)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bc3bb742((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)(region?.Handle ?? 0), (void*)originPos.Handle, (void*)random.Handle, spreadVeins);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_e883aa59((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

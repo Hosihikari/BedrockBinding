@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Crypto.Asymmetric;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum PubKeyFormat : int
 {
+    X509Pubkey = 0,
+    MsPublickeyblob = 1,
 }

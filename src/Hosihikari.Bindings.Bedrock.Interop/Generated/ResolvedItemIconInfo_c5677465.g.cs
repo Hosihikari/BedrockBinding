@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ResolvedItemIconInfo
+public sealed unsafe partial class ResolvedItemIconInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ResolvedItemIconInfo(nint handle) : this(handle, true) { }
 
     internal ResolvedItemIconInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ResolvedItemIconInfo Borrow(nint handle) => new ResolvedItemIconInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,36 +33,142 @@ public sealed partial class ResolvedItemIconInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResolvedItemIconInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public nint _ctor(string name, float u0, float u1, float v0, float v1, ushort texSizeW, ushort texSizeH)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return (nint)NativeMethods.TablePtr->C2.hs_method_b59ffef2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, u0, u1, v0, v1, texSizeW, texSizeH);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResolvedItemIconInfo Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_6ad5614e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResolvedItemIconInfo Create(nint arg0, float arg1, float arg2, float arg3, float arg4, ushort arg5, ushort arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ResolvedItemIconInfo Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0c161c7d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResolvedItemIconInfo Create(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ResolvedItemIconInfo((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResolvedItemIconInfo Create(uint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ResolvedItemIconInfo Create(string name, float u0, float u1, float v0, float v1, ushort texSizeW, ushort texSizeH)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C2.hs_create_b50be0ed(__hs_stringData0, (nuint)__hs_stringByteCount0, u0, u1, v0, v1, texSizeW, texSizeH);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+            return new ResolvedItemIconInfo((nint)handle);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_cb0e621c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int mIconFrame
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_0c3d73fc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0c3d73fc((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIconName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_902a890b((void*)__hosihikari_shim_handle);
+    }
+
+    public int mIconType
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_609d3b33((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_609d3b33((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mRuntimeBlockID
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_01a4f4f8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_01a4f4f8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mTexSizeH
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_7d565e98((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7d565e98((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mTexSizeW
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_2263ccc6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2263ccc6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mU0
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_a303af56((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a303af56((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mU1
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_3c243714((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3c243714((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mV0
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ef645d82((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ef645d82((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mV1
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_81236eb0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_81236eb0((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c5677465((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

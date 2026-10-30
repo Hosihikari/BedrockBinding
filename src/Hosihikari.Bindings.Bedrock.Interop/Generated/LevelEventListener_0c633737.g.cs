@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelEventListener
+public sealed unsafe partial class LevelEventListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelEventListener(nint handle) : this(handle, true) { }
 
     internal LevelEventListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelEventListener Borrow(nint handle) => new LevelEventListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,57 +33,54 @@ public sealed unsafe partial class LevelEventListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelEventListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelEventListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent arg0)
+    public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent @event)
     {
-        return NativeMethods.TablePtr->hs_method_59808fc0((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_a0d0f2d1((void*)__hosihikari_shim_handle, (void*)@event.Handle);
     }
 
-    public int onLevelAddedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
+    public int _onLevelAddedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->hs_method_b4e83dbb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_9bc3c2ed((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    public int onLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    public int _onLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->hs_method_b0c3eef5((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_70eab77f((void*)__hosihikari_shim_handle, (void*)level.Handle);
     }
 
-    public int onLevelRemovedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public int _onLevelRemovedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return NativeMethods.TablePtr->hs_method_151c1599((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_b0a76514((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public int onLevelRemovedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
+    public int _onLevelRemovedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->hs_method_7d04c9a9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_d61682ce((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    public int onLevelTick(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    public int _onLevelTick(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->hs_method_4d966796((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_9ff752a4((void*)__hosihikari_shim_handle, (void*)level.Handle);
     }
 
-    public int onLevelTickStart(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    public int _onLevelTickEnd(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
     {
-        return NativeMethods.TablePtr->hs_method_b656fcc2((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_68373305((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    public int onLevelWeatherChange(string arg0, bool arg1, bool arg2, bool arg3, bool arg4)
+    public int _onLevelTickStart(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        return NativeMethods.TablePtr->C1.hs_method_20c74577((void*)__hosihikari_shim_handle, (void*)level.Handle);
+    }
+
+    public int _onLevelWeatherChange(string dimension, bool wasRaining, bool wasLightning, bool isRaining, bool isLightning)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dimension);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -93,14 +90,153 @@ public sealed unsafe partial class LevelEventListener
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(dimension, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_9445318e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3, arg4);
+            return NativeMethods.TablePtr->C1.hs_method_3803ea6c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, wasRaining, wasLightning, isRaining, isLightning);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int _onRealmsStory(string storyData)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(storyData);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(storyData, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_41a8737a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.", false)]
+    public nint _onWorldClockPaused(nint clock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.", false)]
+    public nint _onWorldClockResumed(nint clock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.", false)]
+    public nint _onWorldClockTimeMarker(nint clock, nint timeMarkerName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.", false)]
+    public nint _onWorldClockTimeModified(nint clock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
+
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent @event)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c9f94791((void*)__hosihikari_shim_handle, (void*)@event.Handle);
+    }
+
+    public int onLevelAddedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_fc2ba800((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public int onLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_925d1d72((void*)__hosihikari_shim_handle, (void*)level.Handle);
+    }
+
+    public int onLevelRemovedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1a1bc7ff((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public int onLevelRemovedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a072a092((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public int onLevelTick(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a7636f7d((void*)__hosihikari_shim_handle, (void*)level.Handle);
+    }
+
+    public int onLevelTickEnd(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_3e08cb13((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public int onLevelTickStart(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_3f7c6bfd((void*)__hosihikari_shim_handle, (void*)level.Handle);
+    }
+
+    public int onLevelWeatherChange(string dimension, bool wasRaining, bool wasLightning, bool isRaining, bool isLightning)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dimension);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(dimension, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_3f7fd36a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, wasRaining, wasLightning, isRaining, isLightning);
+        }
+    }
+
+    public int onRealmsStory(string storyData)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(storyData);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(storyData, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_8b27194e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.", false)]
+    public nint onWorldClockPaused(nint clock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.", false)]
+    public nint onWorldClockResumed(nint clock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.", false)]
+    public nint onWorldClockTimeMarker(nint clock, nint timeMarkerName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.", false)]
+    public nint onWorldClockTimeModified(nint clock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0c633737((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

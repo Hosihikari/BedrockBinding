@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionHandler_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum RemoveType : int
 {
+    Drop = 0,
+    DropRandomly = 1,
+    Destroy = 2,
+    Consume = 3,
 }

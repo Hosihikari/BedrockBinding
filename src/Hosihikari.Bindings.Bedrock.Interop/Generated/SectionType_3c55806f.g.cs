@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.EndCityPieces_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum SectionType : int
+public enum SectionType : ushort
 {
+    SectionTower = 0,
+    SectionFatTower = 1,
+    SectionBridge = 2,
+    SectionHouse = 3,
 }

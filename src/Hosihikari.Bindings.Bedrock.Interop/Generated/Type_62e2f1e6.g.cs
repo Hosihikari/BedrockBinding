@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Direction_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum Type : int
+public enum Type : byte
 {
+    South = 0,
+    West = 1,
+    North = 2,
+    East = 3,
+    Count = 4,
+    Undefined = 255,
 }

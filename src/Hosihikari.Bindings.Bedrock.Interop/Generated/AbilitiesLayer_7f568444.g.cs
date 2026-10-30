@@ -11,5 +11,6 @@ public enum AbilitiesLayer : ushort
     Spectator = 2,
     Commands = 3,
     Editor = 4,
-    Count = 5,
+    LoadingScreen = 5,
+    Count = 6,
 }

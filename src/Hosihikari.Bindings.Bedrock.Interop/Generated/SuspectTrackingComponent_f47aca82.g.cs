@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SuspectTrackingComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SuspectTrackingComponent(nint handle) : this(handle, true) { }
 
     internal SuspectTrackingComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SuspectTrackingComponent Borrow(nint handle) => new SuspectTrackingComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,20 @@ public sealed unsafe partial class SuspectTrackingComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SuspectTrackingComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SuspectTrackingComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void clearSuspiciousPos()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastSuspicionTick_Address
     {
-        NativeMethods.TablePtr->hs_method_4b41fa82((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_09b4ee1f((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? getSuspiciousPos()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSuspiciousPos_Address
     {
-        var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_7a8dac2a((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
-    }
-
-    public ulong? getTicksSinceLastSuspect(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_f3dc68eb((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
-        return __hs_hasValue ? __hs_value : (ulong?)null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setSuspiciousPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg1)
-    {
-        NativeMethods.TablePtr->hs_method_facfa125((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg0 is not null);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5232d8d6((void*)__hosihikari_shim_handle);
     }
 }

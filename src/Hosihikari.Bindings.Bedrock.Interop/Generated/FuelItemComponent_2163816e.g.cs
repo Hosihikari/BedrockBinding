@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class FuelItemComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FuelItemComponent(nint handle) : this(handle, true) { }
 
     internal FuelItemComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FuelItemComponent Borrow(nint handle) => new FuelItemComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,28 @@ public sealed unsafe partial class FuelItemComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void bindType(nint arg0, nint arg1, nint arg2) =>
+    public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
+    public float mFuelDuration
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_0aef9390(), false);
+        get => NativeMethods.TablePtr->C1.hs_get_349dfd3b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_349dfd3b((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setFuelDuration(float arg0)
+    public nint mOwner
     {
-        NativeMethods.TablePtr->hs_method_402a6787((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_46c2490c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_46c2490c((void*)__hosihikari_shim_handle, (void*)value);
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RideableComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RideableComponent(nint handle) : this(handle, true) { }
 
     internal RideableComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RideableComponent Borrow(nint handle) => new RideableComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,73 +33,38 @@ public sealed unsafe partial class RideableComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RideableComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RideableComponent Create_2f3afcab(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RideableComponent Create_878bc4ab(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public bool allowInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
+    public bool allowInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->hs_method_7f2633fd((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_c6ec3b9c((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle) != 0;
     }
 
-    public bool areSeatsFull(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public bool canAddPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor vehicle, global::Hosihikari.Bindings.Bedrock.Interop.Actor passenger)
     {
-        return NativeMethods.TablePtr->hs_method_03054209((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_2d8d7796((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, (void*)passenger.Handle) != 0;
     }
 
-    public bool canAddPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public bool getFirstAvailableSeatPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor potentialPassenger, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 result)
     {
-        return NativeMethods.TablePtr->hs_method_ab7cbcca((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_14e7d300((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)potentialPassenger.Handle, (void*)result.Handle) != 0;
     }
 
-    public bool fitsInVehicle(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getInteraction(nint owner, nint player) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mData_Address
     {
-        return NativeMethods.TablePtr->hs_method_57c802d0((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_12f81c2b((void*)__hosihikari_shim_handle);
     }
 
-    public bool getFirstAvailableSeatPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    public bool pullInEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor vehicle, global::Hosihikari.Bindings.Bedrock.Interop.Actor passenger)
     {
-        return NativeMethods.TablePtr->hs_method_518bbe9d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
-    }
-
-    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorInteraction arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_c64dd290((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
-    }
-
-    public int getSeatCount()
-    {
-        return NativeMethods.TablePtr->hs_method_244688e2((void*)_handle);
-    }
-
-    public nint getSeats()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_d8dab805((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_14ecc45f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_8ce56d0d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool pullInEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_56ef3d6d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_25df2a63((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, (void*)passenger.Handle) != 0;
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.cereal.@internal;
 
 public sealed unsafe partial class UndefinedSchema
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UndefinedSchema(nint handle) : this(handle, true) { }
 
     internal UndefinedSchema(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UndefinedSchema Borrow(nint handle) => new UndefinedSchema(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,40 @@ public sealed unsafe partial class UndefinedSchema
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UndefinedSchema Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UndefinedSchema Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.UndefinedSchema instance()
+    public void _doLoad(global::Hosihikari.Bindings.Bedrock.Interop.cereal.SchemaReader arg0, nint arg1, nint arg2, nint state)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.UndefinedSchema((nint)NativeMethods.TablePtr->hs_method_0c218367(), false);
+        NativeMethods.TablePtr->C4.hs_method_a67a2dff((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)state);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _doSave(global::Hosihikari.Bindings.Bedrock.Interop.cereal.SchemaWriter arg0, nint any, nint state)
+    {
+        NativeMethods.TablePtr->C4.hs_method_ec1511eb((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)any, (void*)state);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'cereal::DescriptionConfig' is not a known bindable declaration.", false)]
+    public nint _makeDescription(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'cereal::DescriptionConfig' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void doLoad(global::Hosihikari.Bindings.Bedrock.Interop.cereal.SchemaReader arg0, nint arg1, nint arg2, nint state)
+    {
+        NativeMethods.TablePtr->C4.hs_method_356fc0fe((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)state);
+    }
+
+    public void doSave(global::Hosihikari.Bindings.Bedrock.Interop.cereal.SchemaWriter arg0, nint any, nint state)
+    {
+        NativeMethods.TablePtr->C4.hs_method_07e9c8d5((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)any, (void*)state);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'cereal::DescriptionConfig' is not a known bindable declaration.", false)]
+    public nint makeDescription(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'cereal::DescriptionConfig' is not a known bindable declaration.");
 }

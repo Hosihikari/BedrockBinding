@@ -2,9 +2,11 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum FlushableLevelDbEnvType : int
 {
+    None = 0,
+    InMemory = 1,
+    StorageArea = 2,
 }

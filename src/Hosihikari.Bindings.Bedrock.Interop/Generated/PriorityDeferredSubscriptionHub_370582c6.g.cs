@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub;
 
-public sealed unsafe partial class PriorityDeferredSubscriptionHub : global::System.IDisposable
+public sealed unsafe partial class PriorityDeferredSubscriptionHub
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PriorityDeferredSubscriptionHub(nint handle) : this(handle, true) { }
 
     internal PriorityDeferredSubscriptionHub(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PriorityDeferredSubscriptionHub Borrow(nint handle) => new PriorityDeferredSubscriptionHub(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,76 @@ public sealed unsafe partial class PriorityDeferredSubscriptionHub : global::Sys
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static PriorityDeferredSubscriptionHub Create()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubscriptions_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_aa01fe3c();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PriorityDeferredSubscriptionHub((nint)handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_104ccd62((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PriorityDeferredSubscriptionHub Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void __enqueue(nint fn, nint at, nint group) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _enqueue_0b27774f(nint fn, nint at, nint group) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void __runDequeuedEntry(nint entry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public bool __runOneEvent()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e22afe2c((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _flushPendingEvents()
+    {
+        NativeMethods.TablePtr->C0.hs_method_8d4b0172((void*)__hosihikari_shim_handle);
+    }
+
+    public int _getHubType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_39551fb4((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _enqueue(nint fn, nint at, nint group) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void _runDequeuedEntry(nint entry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public bool _runOneEvent()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_fb23b32b((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public void flushPendingEvents()
     {
-        NativeMethods.TablePtr->hs_method_40a30c19((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_40a30c19((void*)__hosihikari_shim_handle);
     }
 
     public int getHubType()
     {
-        return NativeMethods.TablePtr->hs_method_769cf75a((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_605c61b7((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDequeuedItems_Address
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_370582c6((void*)_handle);
-            }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d9fd6a65((void*)__hosihikari_shim_handle);
+    }
 
-            _handle = 0;
-        }
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6d38b7f0((void*)__hosihikari_shim_handle);
     }
 }

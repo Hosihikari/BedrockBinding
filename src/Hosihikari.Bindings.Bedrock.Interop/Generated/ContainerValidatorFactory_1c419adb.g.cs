@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ContainerValidatorFactory
+public sealed unsafe partial class ContainerValidatorFactory : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ContainerValidatorFactory(nint handle) : this(handle, true) { }
 
     internal ContainerValidatorFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ContainerValidatorFactory Borrow(nint handle) => new ContainerValidatorFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,27 @@ public sealed unsafe partial class ContainerValidatorFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContainerValidatorFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContainerValidatorFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenValidatorBase? createContainerScreenValidator(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? createContainerValidator(global::Hosihikari.Bindings.Bedrock.Interop.FullContainerName containerId, global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, int caller)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_72be5efd((void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenValidatorBase((nint)__hs_handle) : null;
-    }
-
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? createContainerValidator(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg1, int arg2)
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_219298bc(arg0, (void*)arg1.Handle, arg2);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_e2506e28((void*)containerId.Handle, (void*)screenContext.Handle, caller);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Container? getBackingContainer(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg1)
+    public void Dispose()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_e6b87a15(arg0, (void*)arg1.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Container((nint)__hs_handle, false) : null;
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_1c419adb((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

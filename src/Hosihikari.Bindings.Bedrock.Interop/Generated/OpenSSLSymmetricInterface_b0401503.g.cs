@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Crypto.Symmetric;
 
-public sealed unsafe partial class OpenSSLSymmetricInterface
+public sealed unsafe partial class OpenSSLSymmetricInterface : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OpenSSLSymmetricInterface(nint handle) : this(handle, true) { }
 
     internal OpenSSLSymmetricInterface(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OpenSSLSymmetricInterface Borrow(nint handle) => new OpenSSLSymmetricInterface(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,60 +33,64 @@ public sealed unsafe partial class OpenSSLSymmetricInterface
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OpenSSLSymmetricInterface Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OpenSSLSymmetricInterface Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void decrypt(nint arg0, nint arg1) =>
+    public void _decrypt(nint ciphertext, nint @out) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void encrypt(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    public bool encryptToBuffer(sbyte[] arg0, sbyte[] arg1, nint arg2)
+    public bool _decryptToBuffer(sbyte[] input, sbyte[] output, nint bytesWritten)
     {
-        fixed (sbyte* __hs_vectorData0 = arg0)
+        fixed (sbyte* __hs_vectorData0 = input)
         {
-            fixed (sbyte* __hs_vectorData1 = arg1)
+            fixed (sbyte* __hs_vectorData1 = output)
             {
-                return NativeMethods.TablePtr->hs_method_cbf5869a((void*)_handle, (void*)arg2, __hs_vectorData0, (nuint)(arg0?.Length ?? 0), __hs_vectorData1, (nuint)(arg1?.Length ?? 0)) != 0;
+                return NativeMethods.TablePtr->C1.hs_method_0a679d3b((void*)__hosihikari_shim_handle, (void*)bytesWritten, __hs_vectorData0, (nuint)(input?.Length ?? 0), __hs_vectorData1, (nuint)(output?.Length ?? 0)) != 0;
             }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool encryptToBuffer_a2c2bfc0(nint input, nint output, nint bytesWritten) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void _encrypt(nint plaintext, nint @out) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    public ulong getBlockSize()
+    public bool _encryptToBuffer(sbyte[] input, sbyte[] output, nint bytesWritten)
     {
-        return NativeMethods.TablePtr->hs_method_ae455931((void*)_handle);
+        fixed (sbyte* __hs_vectorData0 = input)
+        {
+            fixed (sbyte* __hs_vectorData1 = output)
+            {
+                return NativeMethods.TablePtr->C1.hs_method_e5f1a18b((void*)__hosihikari_shim_handle, (void*)bytesWritten, __hs_vectorData0, (nuint)(input?.Length ?? 0), __hs_vectorData1, (nuint)(output?.Length ?? 0)) != 0;
+            }
+        }
     }
 
-    public ulong getEncryptionBufferSize(ulong arg0)
+    public ulong _getBlockSize()
     {
-        return NativeMethods.TablePtr->hs_method_b992be4e((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C1.hs_method_b2ddb405((void*)__hosihikari_shim_handle);
     }
 
-    public ulong getKeySize()
+    public ulong _getDecryptionBufferSize(ulong inputSize)
     {
-        return NativeMethods.TablePtr->hs_method_88bc4c32((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_169de4d6((void*)__hosihikari_shim_handle, inputSize);
     }
 
-    public void init(string arg0, string arg1)
+    public ulong _getEncryptionBufferSize(ulong inputSize)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        return NativeMethods.TablePtr->C1.hs_method_eb1a5c4a((void*)__hosihikari_shim_handle, inputSize);
+    }
+
+    public ulong _getKeySize()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_fa5c42fe((void*)__hosihikari_shim_handle);
+    }
+
+    public void _init(string key, string IV)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -96,8 +100,8 @@ public sealed unsafe partial class OpenSSLSymmetricInterface
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(IV);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -107,21 +111,164 @@ public sealed unsafe partial class OpenSSLSymmetricInterface
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(IV, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->hs_method_01492331((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                NativeMethods.TablePtr->C1.hs_method_91228812((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
             }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static OpenSSLSymmetricInterface Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_db84d97d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpenSSLSymmetricInterface((nint)handle);
+    }
+
+    public static OpenSSLSymmetricInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Symmetric.OpenSSLSymmetricInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f2001a18((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpenSSLSymmetricInterface((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void decrypt(nint ciphertext, nint @out) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public bool decryptToBuffer(sbyte[] input, sbyte[] output, nint bytesWritten)
+    {
+        fixed (sbyte* __hs_vectorData0 = input)
+        {
+            fixed (sbyte* __hs_vectorData1 = output)
+            {
+                return NativeMethods.TablePtr->C1.hs_method_58e172e0((void*)__hosihikari_shim_handle, (void*)bytesWritten, __hs_vectorData0, (nuint)(input?.Length ?? 0), __hs_vectorData1, (nuint)(output?.Length ?? 0)) != 0;
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void encrypt(nint plaintext, nint @out) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public bool encryptToBuffer(sbyte[] input, sbyte[] output, nint bytesWritten)
+    {
+        fixed (sbyte* __hs_vectorData0 = input)
+        {
+            fixed (sbyte* __hs_vectorData1 = output)
+            {
+                return NativeMethods.TablePtr->C1.hs_method_a2c2bfc0((void*)__hosihikari_shim_handle, (void*)bytesWritten, __hs_vectorData0, (nuint)(input?.Length ?? 0), __hs_vectorData1, (nuint)(output?.Length ?? 0)) != 0;
+            }
+        }
+    }
+
+    public ulong getBlockSize()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_19d390a4((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong getDecryptionBufferSize(ulong inputSize)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c03c5c3d((void*)__hosihikari_shim_handle, inputSize);
+    }
+
+    public ulong getEncryptionBufferSize(ulong inputSize)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_09c58a1b((void*)__hosihikari_shim_handle, inputSize);
+    }
+
+    public ulong getKeySize()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_02087518((void*)__hosihikari_shim_handle);
+    }
+
+    public void init(string key, string IV)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(IV);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(IV, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C1.hs_method_e4b009c4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1ec67e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bee77ac7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4fbbf1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7ad567bc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk52299c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cf3cb82e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke117b9_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e25ce0e2((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Symmetric.OpenSSLSymmetricInterface operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Symmetric.OpenSSLSymmetricInterface arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Symmetric.OpenSSLSymmetricInterface((nint)NativeMethods.TablePtr->C1.hs_method_e4bb78ef((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b0401503((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

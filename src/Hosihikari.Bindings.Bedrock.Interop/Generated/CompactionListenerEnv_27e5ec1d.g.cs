@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CompactionListenerEnv : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CompactionListenerEnv(nint handle) : this(handle, true) { }
 
     internal CompactionListenerEnv(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CompactionListenerEnv Borrow(nint handle) => new CompactionListenerEnv(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,18 @@ public sealed unsafe partial class CompactionListenerEnv : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CompactionListenerEnv Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.", false)]
+    public void _Schedule(nint function, nint arg) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CompactionListenerEnv Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static CompactionListenerEnv Create(global::Hosihikari.Bindings.Bedrock.Interop.leveldb_Nested.Env? arg0)
+    public static CompactionListenerEnv Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_d6782b4e((void*)(arg0?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->C0.hs_create_f09ed1e0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,29 +53,60 @@ public sealed unsafe partial class CompactionListenerEnv : global::System.IDispo
         return new CompactionListenerEnv((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void*)' is not supported.", false)]
-    public void Schedule(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void*)' is not supported.");
+    public static CompactionListenerEnv Create(global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_83b2818c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new CompactionListenerEnv((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setCompactionCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.", false)]
+    public void Schedule(nint function, nint arg) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.");
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk17bf1b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_da8a498e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk203ab8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f56b994a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk21aba1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_069367b0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk91de58_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d0a3eae9((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv((nint)NativeMethods.TablePtr->C0.hs_method_f219f597((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_27e5ec1d((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_27e5ec1d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

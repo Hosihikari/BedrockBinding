@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VillageManager_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DwellerTestVillageInfo
+public sealed unsafe partial class DwellerTestVillageInfo
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DwellerTestVillageInfo(nint handle) : this(handle, true) { }
 
     internal DwellerTestVillageInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DwellerTestVillageInfo Borrow(nint handle) => new DwellerTestVillageInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,32 @@ public sealed partial class DwellerTestVillageInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public int bedAvailability
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_e18e7de0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e18e7de0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float distanceToClosestEdgeOfVillage
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_7eef7ad6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7eef7ad6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool positionIsWithinVillageBounds
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_2265ad5b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_2265ad5b((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint village_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2f8a9b88((void*)__hosihikari_shim_handle);
     }
 }

@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-public sealed unsafe partial class StorageAreasTree
+public sealed unsafe partial class StorageAreasTree : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StorageAreasTree(nint handle) : this(handle, true) { }
 
     internal StorageAreasTree(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StorageAreasTree Borrow(nint handle) => new StorageAreasTree(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,88 @@ public sealed unsafe partial class StorageAreasTree
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StorageAreasTree Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StorageAreasTree Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea? getStorageArea(nint arg0)
+    public static StorageAreasTree Create()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_6b479c1b((void*)_handle, (void*)arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea((nint)__hs_handle, false) : null;
+        var handle = NativeMethods.TablePtr->C0.hs_create_490c7fb1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StorageAreasTree((nint)handle);
     }
 
-    public void insertStorageArea(global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea arg0)
+    public static StorageAreasTree Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree arg0)
     {
-        NativeMethods.TablePtr->hs_method_051e80cc((void*)_handle, (void*)arg0.Handle);
-    }
+        var handle = NativeMethods.TablePtr->C0.hs_create_20547c6d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeStorageArea(global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea arg0)
-    {
-        NativeMethods.TablePtr->hs_method_5a7b678a((void*)_handle, (void*)arg0.Handle);
+        return new StorageAreasTree((nint)handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void teardown(nint arg0) =>
+    public void forEachStorageArea(nint visitorFunction) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::shared_ptr<Core::FileStorageArea>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getStorageArea(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::shared_ptr<Core::FileStorageArea>>' requires --link-carrier or --virtual-dispatch.");
+
+    public void insertStorageArea(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea storageArea)
+    {
+        NativeMethods.TablePtr->C0.hs_method_aebb44df((void*)__hosihikari_shim_handle, (void*)storageArea.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4e6c3d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_59607e3b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk616396_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2f418161((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd4c9be_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d6e9754d((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree((nint)NativeMethods.TablePtr->C0.hs_method_cc9e196c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void removeStorageArea(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea storageArea)
+    {
+        NativeMethods.TablePtr->C0.hs_method_15b882e6((void*)__hosihikari_shim_handle, (void*)storageArea.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void teardown(nint teardownCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_adb33d06((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

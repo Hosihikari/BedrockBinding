@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum DeviceSunsetTier : int
 {
+    Tier1 = 1,
+    Tier2 = 2,
+    Tier3 = 3,
+    Tier4 = 4,
+    Tier5 = 5,
+    Tier6 = 6,
+    TierMax = 6,
+    SunsetNotPending = 7,
 }

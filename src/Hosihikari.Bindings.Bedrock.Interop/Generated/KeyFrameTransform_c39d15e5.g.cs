@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class KeyFrameTransform
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public KeyFrameTransform(nint handle) : this(handle, true) { }
 
     internal KeyFrameTransform(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static KeyFrameTransform Borrow(nint handle) => new KeyFrameTransform(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,72 +33,36 @@ public sealed unsafe partial class KeyFrameTransform
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static KeyFrameTransform Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static KeyFrameTransform Create_954b5bb6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static KeyFrameTransform Create(float arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public static void computeCubicPolynomial(global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform? arg0, global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform arg1, global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform arg2, global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform? arg3)
+    public void animate(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams, global::Hosihikari.Bindings.Bedrock.Interop.BoneOrientation destBoneOrientation, float scale, int boneTransformType)
     {
-        NativeMethods.TablePtr->hs_method_966c63f2((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
+        NativeMethods.TablePtr->C1.hs_method_59adc241((void*)__hosihikari_shim_handle, (void*)renderParams.Handle, (void*)destBoneOrientation.Handle, scale, boneTransformType);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameLerpMode getLerpMode_c30bc13f()
+    public static void computeCubicPolynomial(global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform? p0, global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform p1, global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform p2, global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransform? p3)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameLerpMode((nint)NativeMethods.TablePtr->hs_method_c30bc13f((void*)_handle), false);
+        NativeMethods.TablePtr->C1.hs_method_f3a84b44((void*)(p0?.Handle ?? 0), (void*)p1.Handle, (void*)p2.Handle, (void*)(p3?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_702aaafe(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_a5621fc6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool optimizeAndGetDataValues(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    public float mKeyFrameTimeStamp
     {
-        return NativeMethods.TablePtr->hs_method_a972430e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_9c97d1c5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_9c97d1c5((void*)__hosihikari_shim_handle, value);
     }
 
-    public void set(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLerpMode_Address
     {
-        NativeMethods.TablePtr->hs_method_f357f8d0((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_abc042f1((void*)__hosihikari_shim_handle);
     }
 
-    public void set(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPrePost_Address
     {
-        NativeMethods.TablePtr->hs_method_7c357e1a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9f771abb((void*)__hosihikari_shim_handle);
     }
-
-    public void set(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_055355b2((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    public void setPost(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_adcfcbea((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    public void setPre(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_1ca030c5((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_b252bca7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

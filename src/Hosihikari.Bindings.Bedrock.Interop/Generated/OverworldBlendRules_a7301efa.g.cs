@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class OverworldBlendRules
+public sealed unsafe partial class OverworldBlendRules
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OverworldBlendRules(nint handle) : this(handle, true) { }
 
     internal OverworldBlendRules(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OverworldBlendRules Borrow(nint handle) => new OverworldBlendRules(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,56 @@ public sealed partial class OverworldBlendRules
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OverworldBlendRules Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBendableBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f125902a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OverworldBlendRules Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFloatingOnWaterBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f06557b5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLavaBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_33b81629((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_779a3961() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNoShiftDownBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4668fd96((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNoShiftUpBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1b0b4dae((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNotUnderwaterBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e7236fcd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRemoveFloatingBlocksList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3d6736a7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWaterBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4d77b2bd((void*)__hosihikari_shim_handle);
+    }
 }

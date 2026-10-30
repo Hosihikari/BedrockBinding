@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ConsoleChunkBlender_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum BlenderMode : int
 {
+    None = 0,
+    Overworld4J = 1,
+    OverworldCliffsAndCaves = 2,
+    Nether4J = 3,
+    NetherUpdate = 4,
+    End4J = 5,
 }

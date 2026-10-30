@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ActorAnimationType : int
 {
+    Empty = -1,
+    SkeletalAnimation = 0,
+    AnimationController = 1,
+    AnimationControllerState = 2,
 }

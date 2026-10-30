@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MobEffectDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MobEffectDefinition(nint handle) : this(handle, true) { }
 
     internal MobEffectDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MobEffectDefinition Borrow(nint handle) => new MobEffectDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,65 @@ public sealed unsafe partial class MobEffectDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MobEffectDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobEffectDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->hs_method_10792197(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_21fe7242(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectComponent arg1)
+    public int mCooldownTicks
     {
-        NativeMethods.TablePtr->hs_method_878d9035((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_425fd777((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_425fd777((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setCooldownTimeInTicks(nint arg0)
+    public int mEffectId
     {
-        NativeMethods.TablePtr->hs_method_e8ce86b7((void*)_handle, (void*)arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_d2677e9f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d2677e9f((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setEffectTimeInTicks(nint arg0)
+    public float mEffectRange
     {
-        NativeMethods.TablePtr->hs_method_da08352e((void*)_handle, (void*)arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_19f8c4b1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_19f8c4b1((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setMobEffectByName(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEffectTime_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1fea3027((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_10f25878((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsAmbient
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_3b7fad89((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_3b7fad89((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void setCooldownTimeInTicks(nint seconds)
+    {
+        NativeMethods.TablePtr->C2.hs_method_bf7bca5e((void*)__hosihikari_shim_handle, (void*)seconds);
+    }
+
+    public void setEffectTimeInTicks(nint seconds)
+    {
+        NativeMethods.TablePtr->C2.hs_method_bf42777c((void*)__hosihikari_shim_handle, (void*)seconds);
+    }
+
+    public void setEffectTimeWithInfiniteString(string duration)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(duration);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -82,10 +101,29 @@ public sealed unsafe partial class MobEffectDefinition
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(duration, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_85bb22de((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_da007f14((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void setMobEffectByName(string mobEffect)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(mobEffect);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(mobEffect, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_8e590a7a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class TargetPoint
+public sealed unsafe partial class TargetPoint : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TargetPoint(nint handle) : this(handle, true) { }
 
     internal TargetPoint(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TargetPoint Borrow(nint handle) => new TargetPoint(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,84 @@ public sealed partial class TargetPoint
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TargetPoint Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(float temperature, float humidity, float continentalness, float erosion, float depth, float weirdness)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_1c13227d((void*)__hosihikari_shim_handle, temperature, humidity, continentalness, erosion, depth, weirdness);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TargetPoint Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static TargetPoint Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_aa69ed16();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TargetPoint Create(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new TargetPoint((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static TargetPoint Create(float temperature, float humidity, float continentalness, float erosion, float depth, float weirdness)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_068674dd(temperature, humidity, continentalness, erosion, depth, weirdness);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TargetPoint((nint)handle);
+    }
+
+    public long mContinentalness
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_1c30fd93((void*)__hosihikari_shim_handle);
+    }
+
+    public long mDepth
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_88159e4c((void*)__hosihikari_shim_handle);
+    }
+
+    public long mErosion
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_4df27376((void*)__hosihikari_shim_handle);
+    }
+
+    public long mHumidity
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_4e9aaba9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetSpace_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_89d6ec60((void*)__hosihikari_shim_handle);
+    }
+
+    public long mTemperature
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f5d78168((void*)__hosihikari_shim_handle);
+    }
+
+    public long mWeirdness
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9281f675((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_37c78acc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

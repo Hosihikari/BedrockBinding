@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.PlayerMoveSystemsImpl;
 
 public sealed unsafe partial class LocalPlayerFilterAutoJumpInternal
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LocalPlayerFilterAutoJumpInternal(nint handle) : this(handle, true) { }
 
     internal LocalPlayerFilterAutoJumpInternal(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LocalPlayerFilterAutoJumpInternal Borrow(nint handle) => new LocalPlayerFilterAutoJumpInternal(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,41 @@ public sealed unsafe partial class LocalPlayerFilterAutoJumpInternal
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LocalPlayerFilterAutoJumpInternal Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LocalPlayerFilterAutoJumpInternal Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Optional<OnGroundFlagComponent const>' is not a known bindable declaration.", false)]
-    public static void _setJumpingIfPlayerCanAutoJump(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Optional<OnGroundFlagComponent const>' is not a known bindable declaration.");
-
-    public void commonTick(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext? arg1)
+    public void _singleTick(nint context, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entity)
     {
-        NativeMethods.TablePtr->hs_method_dc469073((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_286504b9((void*)__hosihikari_shim_handle, (void*)context, (void*)entity.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerEvents(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void singleTick(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg1)
+    public void _tick(nint context)
     {
-        NativeMethods.TablePtr->hs_method_56ee3c56((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_1e2a0aeb((void*)__hosihikari_shim_handle, (void*)context);
     }
 
-    public void tick(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Optional<const OnGroundFlagComponent>' is not a known bindable declaration.", false)]
+    public static void _setJumpingIfPlayerCanAutoJump(nint entity, nint aabbShape, nint actorRotation, nint attributes, nint stateVector, nint synchedActorData, nint inputLock, nint moveInput, nint isOnGround, nint isRiding, nint executionContext, nint region) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Optional<const OnGroundFlagComponent>' is not a known bindable declaration.");
+
+    public static void commonTick(nint context, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext? entity)
     {
-        NativeMethods.TablePtr->hs_method_e28103db((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_8c25c515((void*)context, (void*)(entity?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void singleTick(nint context, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entity)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f95bc174((void*)__hosihikari_shim_handle, (void*)context, (void*)entity.Handle);
+    }
+
+    public void tick(nint context)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e95d14ca((void*)__hosihikari_shim_handle, (void*)context);
+    }
 }

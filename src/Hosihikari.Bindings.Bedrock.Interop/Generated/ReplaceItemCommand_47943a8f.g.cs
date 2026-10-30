@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ReplaceItemCommand
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ReplaceItemCommand(nint handle) : this(handle, true) { }
 
     internal ReplaceItemCommand(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ReplaceItemCommand Borrow(nint handle) => new ReplaceItemCommand(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,128 @@ public sealed unsafe partial class ReplaceItemCommand
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public int mCommandSymbol
     {
-        get => NativeMethods.TablePtr->hs_get_4ad330e4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4ad330e4((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4ad330e4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4ad330e4((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFlags_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6fc5f6ff((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6fc5f6ff((void*)__hosihikari_shim_handle);
     }
 
     public byte mPermissionLevel
     {
-        get => NativeMethods.TablePtr->hs_get_4c6e66c0((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4c6e66c0((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4c6e66c0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4c6e66c0((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mRegistry
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_90333dc9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_90333dc9((void*)__hosihikari_shim_handle);
     }
 
     public int mVersion
     {
-        get => NativeMethods.TablePtr->hs_get_0a1a3f6c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_0a1a3f6c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0a1a3f6c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0a1a3f6c((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReplaceItemCommand Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReplaceItemCommand Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
+    public void _execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        NativeMethods.TablePtr->hs_method_f7b47377((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_ee0db16f((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Util::ReplacementResults' is not a known bindable declaration.", false)]
+    public void _outputError(nint output, nint errorDetails, nint itemName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Util::ReplacementResults' is not a known bindable declaration.");
 
-    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0)
+    public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        NativeMethods.TablePtr->hs_method_25cfcd9f((void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4ae1b8f9((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int mAmount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_23a5fe33((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_23a5fe33((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mBlockSlot
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ef3a9f75((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ef3a9f75((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mComponents_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1f7461e3((void*)__hosihikari_shim_handle);
+    }
+
+    public int mData
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_0cafaf79((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0cafaf79((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mEquipmentSlot
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ac92e607((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ac92e607((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mHaveComponents
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e4b6c78e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e4b6c78e((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bfe1d7f8((void*)__hosihikari_shim_handle);
+    }
+
+    public int mReplaceMode
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_8b45521c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8b45521c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mSlotId
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_f9a28c73((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f9a28c73((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8db16e52((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_305ef617((void*)__hosihikari_shim_handle);
+    }
+
+    public int mTargetType
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_770acc39((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_770acc39((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry)
+    {
+        NativeMethods.TablePtr->C2.hs_method_42800be2((void*)registry.Handle);
+    }
 }

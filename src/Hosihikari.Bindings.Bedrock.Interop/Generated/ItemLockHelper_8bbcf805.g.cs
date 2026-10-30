@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemLockHelper
+public sealed unsafe partial class ItemLockHelper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemLockHelper(nint handle) : this(handle, true) { }
 
     internal ItemLockHelper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemLockHelper Borrow(nint handle) => new ItemLockHelper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,65 +33,51 @@ public sealed unsafe partial class ItemLockHelper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemLockHelper Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemLockHelper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static bool addKeepOnDeath(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
+    public static bool addKeepOnDeath(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value data)
     {
-        return NativeMethods.TablePtr->hs_method_1d3e1685((void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_2524fae8((void*)item.Handle, (void*)data.Handle) != 0;
     }
 
-    public static bool canMoveItemSlots(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
+    public static bool canMoveItemSlots(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
-        return NativeMethods.TablePtr->hs_method_d86768ef((void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_8b2119f6((void*)actor.Handle, (void*)item.Handle) != 0;
     }
 
-    public static byte getItemLockMode(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
+    public static bool isItemLocked(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
-        return NativeMethods.TablePtr->hs_method_d7ccde09((void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_5418c9bf((void*)item.Handle) != 0;
     }
 
-    public static bool isItemLocked(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
+    public static void setItemLockMode(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, byte lockMode)
     {
-        return NativeMethods.TablePtr->hs_method_4337bcda((void*)arg0.Handle) != 0;
+        NativeMethods.TablePtr->C1.hs_method_3f3104fe((void*)item.Handle, lockMode);
     }
 
-    public static bool isItemLockedInSlot(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
+    public static bool shouldKeepOnDeath(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
-        return NativeMethods.TablePtr->hs_method_1282fa13((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_c67af6c4((void*)actor.Handle, (void*)item.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void setItemLockMode(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, byte arg1)
+    public static bool shouldKeepOnDeath(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
-        NativeMethods.TablePtr->hs_method_bd5d4296((void*)arg0.Handle, arg1);
+        return NativeMethods.TablePtr->C1.hs_method_98457167((void*)item.Handle) != 0;
     }
 
-    public static void setKeepOnDeath(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, bool arg1)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_1356ddf6((void*)arg0.Handle, arg1);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_8bbcf805((void*)__hosihikari_shim_handle);
+            }
 
-    public static bool shouldKeepOnDeath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_632acbe0((void*)arg0.Handle, (void*)arg1.Handle) != 0;
-    }
-
-    public static bool shouldKeepOnDeath(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_0350a6b5((void*)arg0.Handle) != 0;
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

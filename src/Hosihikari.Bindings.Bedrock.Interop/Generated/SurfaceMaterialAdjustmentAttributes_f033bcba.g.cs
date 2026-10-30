@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global::System.IDisposable
+public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SurfaceMaterialAdjustmentAttributes(nint handle) : this(handle, true) { }
 
     internal SurfaceMaterialAdjustmentAttributes(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SurfaceMaterialAdjustmentAttributes Borrow(nint handle) => new SurfaceMaterialAdjustmentAttributes(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,25 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global:
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SurfaceMaterialAdjustmentAttributes Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SurfaceMaterialAdjustmentAttributes Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SurfaceMaterialAdjustmentEvaluated' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint evaluateAdjustments(nint arg0, nint arg1, nint arg2, int arg3, int arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SurfaceMaterialAdjustmentEvaluated' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void parseExpressionNodeFloat(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, string arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg3, float arg4)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated evaluateAdjustments(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams molangParams, global::Hosihikari.Bindings.Bedrock.Interop.PerlinSimplexNoise noise, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int heightMin, int heightMax)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated((nint)NativeMethods.TablePtr->C3.hs_method_8b69e8a3((void*)__hosihikari_shim_handle, (void*)molangParams.Handle, (void*)noise.Handle, (void*)pos.Handle, heightMin, heightMax));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAdjustments_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_25a4d79d((void*)__hosihikari_shim_handle);
+    }
+
+    public static void parseExpressionNodeFloat(short op, string data, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode node, float defaultValue)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -66,38 +61,10 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global:
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-            {
-                NativeMethods.TablePtr->hs_method_7da3a8d4((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle, arg4);
-            }
-        }
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_f033bcba((void*)_handle);
-            }
-
-            _handle = 0;
+            NativeMethods.TablePtr->C3.hs_method_1638b0d4(op, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)node.Handle, defaultValue);
         }
     }
 }

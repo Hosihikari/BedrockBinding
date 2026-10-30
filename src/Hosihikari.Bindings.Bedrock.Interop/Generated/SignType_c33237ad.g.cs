@@ -4,7 +4,19 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SignBlock_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SignType : int
 {
+    Oak = 0,
+    Spruce = 1,
+    Birch = 2,
+    Jungle = 3,
+    Acacia = 4,
+    DarkOak = 5,
+    RedBigNetherShroom = 6,
+    BlueBigNetherShroom = 7,
+    Mangrove = 8,
+    Bamboo = 9,
+    Cherry = 10,
+    PaleOak = 11,
+    Poplar = 12,
 }

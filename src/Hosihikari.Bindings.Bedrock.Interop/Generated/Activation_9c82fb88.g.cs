@@ -9,6 +9,6 @@ public enum Activation : int
     Equipped = 0,
     Held = 1,
     Self = 2,
-    Count = 3,
+    NumActivations = 3,
     Invalid = 4,
 }

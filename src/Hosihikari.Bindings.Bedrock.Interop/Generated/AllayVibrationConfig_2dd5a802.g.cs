@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class AllayVibrationConfig : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AllayVibrationConfig(nint handle) : this(handle, true) { }
 
     internal AllayVibrationConfig(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AllayVibrationConfig Borrow(nint handle) => new AllayVibrationConfig(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,38 @@ public sealed unsafe partial class AllayVibrationConfig : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AllayVibrationConfig Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static AllayVibrationConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, ushort arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, ushort arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_d7587a4b((void*)arg0.Handle, arg1);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_7bba0b34((void*)__hosihikari_shim_handle, (void*)actor.Handle, arg1);
+    }
+
+    public bool _isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d52ee9ce((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;
+    }
+
+    public void _onSignalReceive(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos vibrationSourcePos, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg3, float arg4, uint arg5, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg6)
+    {
+        NativeMethods.TablePtr->C0.hs_method_856f83d7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)vibrationSourcePos.Handle, (void*)gameEvent.Handle, (void*)(arg3?.Handle ?? 0), arg4, arg5, (void*)(arg6?.Handle ?? 0));
+    }
+
+    public bool _shouldListen(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg1, nint arg2)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_cc2e906d((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static AllayVibrationConfig Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9fdaa929();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,48 +73,48 @@ public sealed unsafe partial class AllayVibrationConfig : global::System.IDispos
         return new AllayVibrationConfig((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AllayVibrationConfig Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool canReceiveOnlyIfAdjacentChunksAreTicking() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg0)
+    public static AllayVibrationConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, ushort arg1)
     {
-        return NativeMethods.TablePtr->hs_method_7070ed37((void*)_handle, (void*)arg0.Handle) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_490a0a96((void*)actor.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AllayVibrationConfig((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onSerializableDataChanged(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void onSignalReceive(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg2, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg3, float arg4, uint arg5, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg6)
+    public bool isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent)
     {
-        NativeMethods.TablePtr->hs_method_a7139306((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), arg4, arg5, (void*)(arg6?.Handle ?? 0));
+        return NativeMethods.TablePtr->C0.hs_method_80e3675e((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6dc3d4d1((void*)__hosihikari_shim_handle);
+    }
+
+    public void onSignalReceive(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos vibrationSourcePos, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg3, float arg4, uint arg5, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg6)
+    {
+        NativeMethods.TablePtr->C0.hs_method_93fc2f05((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)vibrationSourcePos.Handle, (void*)gameEvent.Handle, (void*)(arg3?.Handle ?? 0), arg4, arg5, (void*)(arg6?.Handle ?? 0));
+    }
 
     public bool shouldListen(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg1, nint arg2)
     {
-        return NativeMethods.TablePtr->hs_method_f6863021((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c9e70d63((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2dd5a802((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_2dd5a802((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

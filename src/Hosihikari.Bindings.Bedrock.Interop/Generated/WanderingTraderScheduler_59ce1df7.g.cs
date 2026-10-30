@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WanderingTraderScheduler
+public sealed unsafe partial class WanderingTraderScheduler : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WanderingTraderScheduler(nint handle) : this(handle, true) { }
 
     internal WanderingTraderScheduler(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WanderingTraderScheduler Borrow(nint handle) => new WanderingTraderScheduler(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,79 +33,100 @@ public sealed unsafe partial class WanderingTraderScheduler
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static float CHANCE_TO_SPAWN_IN_WILDERNESS
+    public static nint CHANCE_TO_SPAWN_PER_DAY()
     {
-        get => NativeMethods.TablePtr->hs_get_5a17459a();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_896ce39e();
+    }
+
+    public static WanderingTraderScheduler Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_18b149e8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WanderingTraderScheduler((nint)handle);
+    }
+
+    public static WanderingTraderScheduler Create(global::Hosihikari.Bindings.Bedrock.Interop.WanderingTraderScheduler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_353bc259((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WanderingTraderScheduler((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _findValidSpawnPosUnder(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_ec24bc5e((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)region.Handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
+    }
+
+    public int mDaysSinceLastSpawn
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_29cb6f3c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_29cb6f3c((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint CHANCE_TO_SPAWN_PER_DAY_Address
+    public nint mLevel_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_bdf6b9e1();
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_0ae21964((void*)__hosihikari_shim_handle);
     }
 
-    public static int DISTANCE_IN_BLOCKS_FROM_MEETING_AREA
+    public bool mSpawnWanderingTrader
     {
-        get => NativeMethods.TablePtr->hs_get_6f90ee24();
+        get => NativeMethods.TablePtr->C4.hs_get_eb8a27f4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_eb8a27f4((void*)__hosihikari_shim_handle, value);
     }
 
-    public static int DISTANCE_IN_BLOCKS_FROM_PLAYER
+    public ulong mTickToCheckIfSpawning
     {
-        get => NativeMethods.TablePtr->hs_get_a6360a20();
+        get => NativeMethods.TablePtr->C4.hs_get_3ff0193a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_3ff0193a((void*)__hosihikari_shim_handle, value);
     }
 
-    public static int DISTANCE_IN_BLOCKS_FROM_PLAYER_SQUARE
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWanderingTraderUUID_Address
     {
-        get => NativeMethods.TablePtr->hs_get_6f9d5602();
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f2ae7512((void*)__hosihikari_shim_handle);
     }
 
-    public static int LENGTH_OF_DAY_IN_TICKS
+    public global::Hosihikari.Bindings.Bedrock.Interop.WanderingTraderScheduler operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WanderingTraderScheduler arg0)
     {
-        get => NativeMethods.TablePtr->hs_get_1a44a2c7();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WanderingTraderScheduler Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WanderingTraderScheduler Create_c5467a9d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WanderingTraderScheduler Create_353bc259(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool isWanderingTraderCurrentlyManaged(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_90c9c9fb((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readSaveData()
-    {
-        NativeMethods.TablePtr->hs_method_db6c592f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WanderingTraderScheduler((nint)NativeMethods.TablePtr->C4.hs_method_352eed6a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_9afdafc3((void*)_handle);
+        NativeMethods.TablePtr->C4.hs_method_9afdafc3((void*)__hosihikari_shim_handle);
     }
 
     public void writeSaveData()
     {
-        NativeMethods.TablePtr->hs_method_5cd735a3((void*)_handle);
+        NativeMethods.TablePtr->C4.hs_method_de26b2bb((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_59ce1df7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum TaskGroupState : int
 {
+    Running = 0,
+    Paused = 1,
+    Flush = 2,
+    Sync = 3,
 }

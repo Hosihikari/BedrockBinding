@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.EndDragonFight_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum GatewayTask : int
+public enum GatewayTask : byte
 {
+    GeneratePair = 0,
+    VerifyPair = 1,
+    NoTask = 2,
 }

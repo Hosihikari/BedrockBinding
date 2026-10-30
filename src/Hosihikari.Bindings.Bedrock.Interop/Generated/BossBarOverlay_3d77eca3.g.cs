@@ -4,11 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum BossBarOverlay : int
+public enum BossBarOverlay : byte
 {
     Progress = 0,
-    Notched_6 = 1,
-    Notche_10 = 2,
-    Notche_12 = 3,
-    Notche_20 = 4,
+    Notched6 = 1,
+    Notched10 = 2,
+    Notched12 = 3,
+    Notched20 = 4,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MapItemTrackedActor
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MapItemTrackedActor(nint handle) : this(handle, true) { }
 
     internal MapItemTrackedActor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MapItemTrackedActor Borrow(nint handle) => new MapItemTrackedActor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,51 +33,78 @@ public sealed unsafe partial class MapItemTrackedActor
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MapItemTrackedActor Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MapItemTrackedActor Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MapItemTrackedActor Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float getDecorationRotation(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkViewSource_Address
     {
-        return NativeMethods.TablePtr->hs_method_93d148a4((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7bdae25b((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    public sbyte mDecorationType
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_ff381edd((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+        get => NativeMethods.TablePtr->C2.hs_get_0d8fd56a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0d8fd56a((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Packet? nextUpdatePacket(global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionId_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d5a234d7((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Packet((nint)__hs_handle) : null;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_04ebe87e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setNeedsResend()
+    public float mLastRotation
     {
-        NativeMethods.TablePtr->hs_method_cccbed2b((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_446d5dba((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_446d5dba((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setPixelDirty(uint arg0, uint arg1)
+    public uint mMaxDirtyX
     {
-        NativeMethods.TablePtr->hs_method_85997c02((void*)_handle, arg0, arg1);
+        get => NativeMethods.TablePtr->C2.hs_get_1fdd0c76((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1fdd0c76((void*)__hosihikari_shim_handle, value);
     }
+
+    public uint mMaxDirtyY
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_678505f8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_678505f8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mMinDirtyX
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_fd560645((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_fd560645((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mMinDirtyY
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_8e2bb689((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8e2bb689((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mNeedsResend
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_9d59104f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_9d59104f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mTick
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_557df18c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_557df18c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUniqueId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_aa3f6f5d((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Packet' has no accessible destructor.", false)]
+    public nint nextUpdatePacket(nint savedData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Packet' has no accessible destructor.");
 }

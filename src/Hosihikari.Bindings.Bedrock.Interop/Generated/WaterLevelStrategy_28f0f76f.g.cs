@@ -6,6 +6,6 @@ namespace Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested;
 
 public enum WaterLevelStrategy : int
 {
-    LOCAL = 0,
-    GLOBAL = 1,
+    Local = 0,
+    Global = 1,
 }

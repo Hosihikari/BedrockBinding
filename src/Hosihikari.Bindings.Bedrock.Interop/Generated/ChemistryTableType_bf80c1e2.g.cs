@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ChemistryTableType : int
 {
+    CompoundCreator = 0,
+    MaterialReducer = 1,
+    ElementConstructor = 2,
+    LabTable = 3,
+    Count = 4,
 }

@@ -2,9 +2,21 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.NewExecuteCommand_Nested.ExecuteChainedSubcommand;
+namespace Hosihikari.Bindings.Bedrock.Interop.NewExecuteCommand_Nested.ExecuteChainedSubcommand_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Subcommand : int
 {
+    None = 0,
+    As = 1,
+    At = 2,
+    In = 3,
+    Positioned = 4,
+    Rotated = 5,
+    Facing = 6,
+    Entity = 7,
+    Align = 8,
+    Anchored = 9,
+    If = 10,
+    Unless = 11,
+    Run = 12,
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ImpactDamageSubcomponent : global::System.IDisposable
+public sealed unsafe partial class ImpactDamageSubcomponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ImpactDamageSubcomponent(nint handle) : this(handle, true) { }
 
     internal ImpactDamageSubcomponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ImpactDamageSubcomponent Borrow(nint handle) => new ImpactDamageSubcomponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,61 +33,132 @@ public sealed unsafe partial class ImpactDamageSubcomponent : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ImpactDamageSubcomponent Create()
+    public void _doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
-        var handle = NativeMethods.TablePtr->hs_create_c6e61fa4();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ImpactDamageSubcomponent((nint)handle);
+        NativeMethods.TablePtr->C1.hs_method_6601a202((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ImpactDamageSubcomponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
+    public nint _getName()
     {
-        NativeMethods.TablePtr->hs_method_d50b359c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_2c4c563e((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
+    {
+        NativeMethods.TablePtr->C1.hs_method_587c7d34((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+    public void _writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
+    {
+        NativeMethods.TablePtr->C1.hs_method_dd6ace67((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8437ad0f((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);
     }
 
     public nint getName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6d257ad9((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_69c91ab8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readfromJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
     {
-        NativeMethods.TablePtr->hs_method_69d900b9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_6e877474((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
-    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
+    public bool mApplyKnockbackToBlockingTargets
     {
-        NativeMethods.TablePtr->hs_method_1cd98f0b((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_a5afc3df((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_a5afc3df((void*)__hosihikari_shim_handle, value);
     }
 
-
-    public void Dispose()
+    public bool mCatchFire
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c9ed8b6d((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C1.hs_get_2f834d3e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_2f834d3e((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public bool mCeilPreCriticalDamage
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_b53a191b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_b53a191b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mChanneling
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_b77ed1d2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_b77ed1d2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mDestroyOnHit
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ac2a8192((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_ac2a8192((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mDestroyOnHitRequiresDamage
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_aa8e1428((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_aa8e1428((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mDifficultyRandomization
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_1442bb21((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_1442bb21((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mFilter
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ce7b9afd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ce7b9afd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mKnockback
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_42387ee1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_42387ee1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMaxCriticalDamage
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_fbe9aca0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_fbe9aca0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinCriticalDamage
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_7ffbe04b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_7ffbe04b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mPowerMultiplier
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_2427a102((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_2427a102((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProjectileDamage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5e47dd3e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mRegisterLastHurtRequiresDamage
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_717f232e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_717f232e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
+    {
+        NativeMethods.TablePtr->C1.hs_method_35fa38fe((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 }

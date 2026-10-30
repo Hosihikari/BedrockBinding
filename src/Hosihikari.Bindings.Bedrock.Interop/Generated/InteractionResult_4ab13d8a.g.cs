@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class InteractionResult : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public InteractionResult(nint handle) : this(handle, true) { }
 
     internal InteractionResult(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static InteractionResult Borrow(nint handle) => new InteractionResult(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,35 @@ public sealed unsafe partial class InteractionResult : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public int mResult
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mSuccess
     {
-        get => NativeMethods.TablePtr->hs_get_91cf457b((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_91cf457b((void*)_handle, value);
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
+    public bool mSwing
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.");
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_4ab13d8a((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_4ab13d8a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

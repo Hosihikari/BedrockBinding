@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ScoreboardId : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScoreboardId(nint handle) : this(handle, true) { }
 
     internal ScoreboardId(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScoreboardId Borrow(nint handle) => new ScoreboardId(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,106 +33,43 @@ public sealed unsafe partial class ScoreboardId : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId INVALID
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId INVALID()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_get_4966af0d(), false);
-    }
-
-    public static ScoreboardId Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_1edfe64e();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ScoreboardId((nint)handle);
-    }
-
-    public static ScoreboardId Create(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_67248150((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ScoreboardId((nint)handle);
-    }
-
-    public static ScoreboardId Create(long arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_8083becd(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ScoreboardId((nint)handle);
-    }
-
-    public ulong getHash()
-    {
-        return NativeMethods.TablePtr->hs_method_6570dabb((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.IdentityDefinition getIdentityDef()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.IdentityDefinition((nint)NativeMethods.TablePtr->hs_method_d2431c05((void*)_handle), false);
-    }
-
-    public bool isValid()
-    {
-        return NativeMethods.TablePtr->hs_method_55a8fa4a((void*)_handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C3.hs_method_bec087ec(), false);
     }
 
     public nint mIdentityDef
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6071d74c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6071d74c((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6071d74c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_6071d74c((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    public long mRawId
+    public long mRawID
     {
-        get => NativeMethods.TablePtr->hs_get_97b034a4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_97b034a4((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_99861d41((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_99861d41((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_bool() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_not_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_operator__() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint scoreboardId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId other)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_4c826783((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ca63ec5d((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_ca63ec5d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CircuitSceneGraph : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CircuitSceneGraph(nint handle) : this(handle, true) { }
 
     internal CircuitSceneGraph(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CircuitSceneGraph Borrow(nint handle) => new CircuitSceneGraph(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,24 @@ public sealed unsafe partial class CircuitSceneGraph : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _ctor()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_0a11dc89((void*)__hosihikari_shim_handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_1882f8e7((void*)__hosihikari_shim_handle);
     }
 
     public static CircuitSceneGraph Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_0e88afe0();
+        var handle = NativeMethods.TablePtr->C0.hs_create_0e88afe0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -50,96 +60,82 @@ public sealed unsafe partial class CircuitSceneGraph : global::System.IDisposabl
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void add(nint arg0, nint arg1) =>
+    public void add(nint pos, nint component) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent? getBaseComponent(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public void invalidatePos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_25a5475b((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent? getComponent(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, long arg1)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d738f64a((void*)_handle, (void*)arg0.Handle, arg1);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent? getFromPendingAdd(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, long arg1)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_1383485a((void*)_handle, (void*)arg0.Handle, arg1);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent((nint)__hs_handle, false) : null;
-    }
-
-    public void invalidatePos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f94b2059((void*)_handle, (void*)arg0.Handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mActiveComponents_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_28f928f4((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_6a41da43((void*)__hosihikari_shim_handle, (void*)pos.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveComponentsPerChunk_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_780969b1((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_780969b1((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAllComponents_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_7a34b991((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7a34b991((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponentsToReEvaluate_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9efab1a9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9efab1a9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPendingAdds_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fe89b191((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fe89b191((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPendingRemoves_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e38c20ca((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e38c20ca((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPendingUpdates_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_00391844((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_00391844((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPowerAssociationMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_bc8d7f21((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bc8d7f21((void*)__hosihikari_shim_handle);
     }
 
-    public void preSetupPoweredBlocks(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0)
+    public void preSetupPoweredBlocks(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
     {
-        NativeMethods.TablePtr->hs_method_2947542f((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_000e50fa((void*)__hosihikari_shim_handle, (void*)chunkPos.Handle);
+    }
+
+    public void remove(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent? component)
+    {
+        NativeMethods.TablePtr->C0.hs_method_7da9caf8((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)(component?.Handle ?? 0));
+    }
+
+    public void update(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? region)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c7421b5a((void*)__hosihikari_shim_handle, (void*)(region?.Handle ?? 0));
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_5432e9a4((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_5432e9a4((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

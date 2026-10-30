@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Recipes
+public sealed unsafe partial class Recipes : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Recipes(nint handle) : this(handle, true) { }
 
     internal Recipes(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Recipes Borrow(nint handle) => new Recipes(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,126 +33,224 @@ public sealed unsafe partial class Recipes
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Recipes Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ILevel? level)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_7f132e68((void*)__hosihikari_shim_handle, (void*)(level?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Recipes Create_1ea1680c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_74144e5f((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Recipes Create_7bc6b3c9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static Recipes Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0b258725();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _normalizeRectangularRecipe_77e1a932(nint rows) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new Recipes((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void addFurnaceRecipeAuxData(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+    public static Recipes Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel? level)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1584e61c((void*)(level?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.", false)]
-    public void addShapedRecipe(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, int arg7, nint arg8, nint arg9, nint arg10, bool arg11) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.");
+        return new Recipes((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.", false)]
-    public void addShapedRecipe(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8, nint arg9, bool arg10) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.");
+    public void _loadHardcodedRecipes(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a1983f68((void*)__hosihikari_shim_handle, (void*)baseGameVersion.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.", false)]
-    public void addShapedRecipe_25ca6ed2(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6, nint arg7, nint arg8, bool arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const RecipeIngredient' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _loadIngredientFromJson(nint obj, nint molangVersion, bool allowItemCount, bool allowItemGroup) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const RecipeIngredient' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.", false)]
-    public void addShapedRecipe_44838eb3(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6, nint arg7, nint arg8, bool arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const RecipeIngredient' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _loadInputIngredientFromJson(nint obj, nint minEngineVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const RecipeIngredient' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.", false)]
-    public void addShapedRecipe_d9245876(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6, nint arg7, nint arg8, bool arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.");
+    public bool _loadRecipe(string recipeId, byte type, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value objData, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion formatVersion, bool isBaseGamePack, global::Hosihikari.Bindings.Bedrock.Interop.Recipes_Nested.Buffers buffers)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(recipeId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(recipeId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_0540fecb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, type, (void*)objData.Handle, (void*)minEngineVersion.Handle, (void*)formatVersion.Handle, isBaseGamePack, (void*)buffers.Handle) != 0;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapelessRecipe,std::default_delete<ShapelessRecipe>>' is not supported.", false)]
-    public void addShapelessRecipe(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, nint arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapelessRecipe,std::default_delete<ShapelessRecipe>>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'RecipeUnlockingRequirement' is not supported.", false)]
+    public nint _loadUnlockingRequirementFromJson(nint obj, nint molangVersion, nint recipeId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'RecipeUnlockingRequirement' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void addDyedItemRecipe(nint recipeId, nint result, nint itemToDye, nint dye, nint unlockingReq, nint priority, nint formatVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.", false)]
+    public void addShapedRecipe(nint recipeId, nint result, nint r0, nint r1, nint r2, nint types, nint tags, int priority, nint constructor, nint unlockingReq, nint formatVersion, bool assumeSymmetry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.", false)]
+    public void addShapedRecipe(nint recipeId, nint result, nint r0, nint r1, nint types, nint tags, int priority, nint constructor, nint unlockingReq, nint formatVersion, bool assumeSymmetry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.", false)]
+    public void addShapedRecipe_4838feb7(nint recipeId, nint result, nint r0, nint types, nint tags, nint priority, nint constructor, nint unlockingReq, nint formatVersion, nint assumeSymmetry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.", false)]
+    public void addShapedRecipe_22265122(nint recipeId, nint result, nint rows, nint types, nint tags, nint priority, nint constructor, nint unlockingReq, nint formatVersion, nint assumeSymmetry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.", false)]
+    public void addShapedRecipe_e5dd9f83(nint recipeId, nint result, nint rows, nint types, nint tags, nint priority, nint constructor, nint unlockingReq, nint formatVersion, nint assumeSymmetry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapelessRecipe>' is not supported.", false)]
+    public void addShapelessRecipe(nint recipeId, nint result, nint types, nint tags, int priority, nint constructor, nint unlockingReq, nint formatVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapelessRecipe>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void addShulkerBoxRecipe(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+    public void addShulkerBoxRecipe(nint recipeId, nint result, nint types, nint tags, nint unlockingReq, nint formatVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     public void clearRecipes()
     {
-        NativeMethods.TablePtr->hs_method_920be209((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_920be209((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Json::Value>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint extractRecipeObjInfo(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Json::Value>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachRecipeFor_bc90c0a0(nint arg0, nint arg1) =>
+    public void forEachRecipeFor(nint tag, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachUnlockableRecipe(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getFurnaceRecipeResult(nint item, nint tag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getFurnaceRecipeResult(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeByNetId(nint netId)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_1faed6e8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
-    }
-
-    public uint getNumberOfUnlockableRecipes()
-    {
-        return NativeMethods.TablePtr->hs_method_a856d4dc((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeByNetId(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_ arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_42d0b34a((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_f2fede14((void*)__hosihikari_shim_handle, (void*)netId);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Recipe((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRecipeByNetId_f2fede14(nint netId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance result, global::Hosihikari.Bindings.Bedrock.Interop.HashedString tag)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d973b29c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_e008a1cc((void*)__hosihikari_shim_handle, (void*)result.Handle, (void*)tag.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Recipe((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRecipesAllTags_1df5b05d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getRecipesAllTags_12b79a92()
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager, global::Hosihikari.Bindings.Bedrock.Interop.ExternalRecipeStore recipeStorage, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_12b79a92((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_d9d035c2((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle, (void*)recipeStorage.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
     }
 
-    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.ExternalRecipeStore arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExternalRecipeStore_Address
     {
-        NativeMethods.TablePtr->hs_method_d8d3bc3a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c266daa2((void*)__hosihikari_shim_handle);
     }
 
-    public bool loadRecipe(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg2, bool arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFurnaceResults_Address
     {
-        return NativeMethods.TablePtr->hs_method_bbeccc41((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4d426ccf((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mInitializing
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e69e4a2f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e69e4a2f((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_da8fe263() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public nint mLevel
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_69156518((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_69156518((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_da55a72a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a7837941((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipesByInput_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d5ae7b32((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipesByNetId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_16161612((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipesByOutput_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_209e6bea((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mResourcePackManager
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f44886a3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f44886a3((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUniqueUnlockableRecipeIds_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8b9e405e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnlockableRecipes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_20579c3b((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e4f44d85((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

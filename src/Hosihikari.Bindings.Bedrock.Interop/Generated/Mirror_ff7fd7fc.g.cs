@@ -9,5 +9,5 @@ public enum Mirror : byte
     None = 0,
     X = 1,
     Z = 2,
-    XZ = 3,
+    Xz = 3,
 }

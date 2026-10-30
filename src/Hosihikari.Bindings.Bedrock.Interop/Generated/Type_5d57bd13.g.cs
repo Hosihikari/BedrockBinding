@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen.HeightmapProjection;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum Type : int
+public enum Type : byte
 {
+    None = 0,
+    WorldSurfaceWg = 1,
+    OceanFloorWg = 2,
 }

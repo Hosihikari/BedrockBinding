@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScaleByAgeComponent
+public sealed unsafe partial class ScaleByAgeComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScaleByAgeComponent(nint handle) : this(handle, true) { }
 
     internal ScaleByAgeComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScaleByAgeComponent Borrow(nint handle) => new ScaleByAgeComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,38 @@ public sealed unsafe partial class ScaleByAgeComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScaleByAgeComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScaleByAgeComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void _initializeScale(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    public void _initializeScale(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        NativeMethods.TablePtr->hs_method_51a96ab5((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_01a7f86c((void*)__hosihikari_shim_handle, (void*)entity.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mEndScale
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_27f913a3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_27f913a3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mStartScale
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5e64f499((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5e64f499((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_2895c998((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

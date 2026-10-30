@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.sim;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ExecutionResult : int
+public enum ExecutionResult : byte
 {
+    Executing = 0,
+    Complete = 1,
 }

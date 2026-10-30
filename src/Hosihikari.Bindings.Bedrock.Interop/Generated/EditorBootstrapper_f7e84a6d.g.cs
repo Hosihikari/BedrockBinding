@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EditorBootstrapper
+public sealed unsafe partial class EditorBootstrapper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EditorBootstrapper(nint handle) : this(handle, true) { }
 
     internal EditorBootstrapper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EditorBootstrapper Borrow(nint handle) => new EditorBootstrapper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,52 +33,78 @@ public sealed unsafe partial class EditorBootstrapper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f1e6c2d8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f1e6c2d8((void*)__hosihikari_shim_handle);
     }
 
-    public static string EDITOR_MODE_ARGUMENT_KEY
+    public static EditorBootstrapper Create()
     {
-        get
+        var handle = NativeMethods.TablePtr->C1.hs_create_25a49bf5();
+        if (handle == null)
         {
-            var view = NativeMethods.TablePtr->hs_get_a57778e6();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EditorBootstrapper((nint)handle);
+    }
+
+    public static EditorBootstrapper Create(global::Hosihikari.Bindings.Bedrock.Interop.EditorBootstrapper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_cc5a09ec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EditorBootstrapper((nint)handle);
+    }
+
+    public static string JOIN_INTENT_ARGUMENT_KEY()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_a6b5cede();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk42942f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_44cceee4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9a3eaa_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_86d079db((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EditorBootstrapper operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.EditorBootstrapper arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EditorBootstrapper((nint)NativeMethods.TablePtr->C1.hs_method_e7ea9948((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void processActivationArguments(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.ActivationArguments args)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f9fc22a6((void*)__hosihikari_shim_handle, (void*)args.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_f7e84a6d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    public static string EDITOR_MODE_ARGUMENT_VALUE
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_e2885984();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EditorBootstrapper Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EditorBootstrapper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackCapability' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getPackCapability(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackCapability' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

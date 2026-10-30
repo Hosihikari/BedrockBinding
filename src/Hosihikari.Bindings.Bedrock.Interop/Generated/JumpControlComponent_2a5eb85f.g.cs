@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class JumpControlComponent
+public sealed unsafe partial class JumpControlComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public JumpControlComponent(nint handle) : this(handle, true) { }
 
     internal JumpControlComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static JumpControlComponent Borrow(nint handle) => new JumpControlComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,93 +33,94 @@ public sealed unsafe partial class JumpControlComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static JumpControlComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static JumpControlComponent Create_a884fde4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public int getAnimationDuration()
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent other)
     {
-        return NativeMethods.TablePtr->hs_method_5efc2b5a((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_3737497c((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
-    public float getDistanceScale()
+    public static JumpControlComponent Create()
     {
-        return NativeMethods.TablePtr->hs_method_a475fba8((void*)_handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_c36eccc1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JumpControlComponent((nint)handle);
     }
 
-    public int getJumpDelay()
+    public static JumpControlComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent other)
     {
-        return NativeMethods.TablePtr->hs_method_ab56951a((void*)_handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_752427f9((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JumpControlComponent((nint)handle);
     }
 
-    public float getJumpPower()
+    public void initMultiTypeJumpComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob entity, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor initDescription)
     {
-        return NativeMethods.TablePtr->hs_method_75a9fc81((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_d57ae2bb((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)initDescription.Handle);
     }
 
-    public bool getJumping()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mJumpControl_Address
     {
-        return NativeMethods.TablePtr->hs_method_46cc56ff((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_eda06346((void*)__hosihikari_shim_handle);
     }
 
-    public bool getSwimming()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mJumpData_Address
     {
-        return NativeMethods.TablePtr->hs_method_922067fd((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_51693402((void*)__hosihikari_shim_handle);
     }
 
-    public void initMultiTypeJumpComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor arg1)
+    public float mJumpPower
     {
-        NativeMethods.TablePtr->hs_method_a3c08ab2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_81ffcbc3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_81ffcbc3((void*)__hosihikari_shim_handle, value);
     }
 
-    public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.JumpControlDescription? arg1)
+    public int mJumpType
     {
-        NativeMethods.TablePtr->hs_method_f1d0d258((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        get => NativeMethods.TablePtr->C1.hs_get_8c56ab21((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_8c56ab21((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void resetSpeedModifier(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    public bool mJumping
     {
-        NativeMethods.TablePtr->hs_method_a3cd79ca((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_ea9e9558((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_ea9e9558((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setInternalType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void setJumpType(int arg0)
+    public bool mSwimming
     {
-        NativeMethods.TablePtr->hs_method_eed145d1((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_32429dd4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_32429dd4((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setJumping(bool arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent arg0)
     {
-        NativeMethods.TablePtr->hs_method_705946a1((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JumpControlComponent((nint)NativeMethods.TablePtr->C1.hs_method_7c3f2765((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    public void setSwimming(bool arg0)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_5b6aaef4((void*)_handle, arg0);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_2a5eb85f((void*)__hosihikari_shim_handle);
+            }
 
-    public void update(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
-    {
-        NativeMethods.TablePtr->hs_method_460c4817((void*)_handle, (void*)arg0.Handle);
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_b1d86bfe() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

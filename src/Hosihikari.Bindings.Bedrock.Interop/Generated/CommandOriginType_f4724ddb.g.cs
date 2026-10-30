@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum CommandOriginType : sbyte
+public enum CommandOriginType : byte
 {
     Player = 0,
     CommandBlock = 1,

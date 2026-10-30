@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EconomyTradeableDescription : global::System.IDisposable
+public sealed unsafe partial class EconomyTradeableDescription
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EconomyTradeableDescription(nint handle) : this(handle, true) { }
 
     internal EconomyTradeableDescription(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EconomyTradeableDescription Borrow(nint handle) => new EconomyTradeableDescription(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,43 +33,102 @@ public sealed unsafe partial class EconomyTradeableDescription : global::System.
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EconomyTradeableDescription Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _deserializeData(nint deserializeDataParams) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EconomyTradeableDescription Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _getJsonName()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_544a7361((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void deserializeData(nint arg0) =>
+    public void deserializeData(nint deserializeDataParams) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public nint getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a1691251((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_1a7551b9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public bool mConvertTradesEconomy
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_976968da((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C1.hs_get_d55695d2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_d55695d2((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCuredDiscount_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f8d34db3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDisplayName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_26eddf7c((void*)__hosihikari_shim_handle);
+    }
+
+    public int mHeroDemandDiscount
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_781fab95((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_781fab95((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMaxCuredDiscount_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_038882bb((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMaxNearbyCuredDiscount
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_16a8c4f2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_16a8c4f2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mNearbyCuredDiscount
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_0e9c0910((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_0e9c0910((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mPersistTrades
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_4e82866d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_4e82866d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mShowTradeScreen
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_6c7633da((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_6c7633da((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTradeTablePath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4e7d2742((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mUseLegacyPrices
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_6b5724c0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_6b5724c0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mUseNewTradeScreen
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_59eb5104((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_59eb5104((void*)__hosihikari_shim_handle, value);
     }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class RakNetNetworkPeer
+public sealed unsafe partial class RakNetNetworkPeer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakNetNetworkPeer(nint handle) : this(handle, true) { }
 
     internal RakNetNetworkPeer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakNetNetworkPeer Borrow(nint handle) => new RakNetNetworkPeer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,180 @@ public sealed partial class RakNetNetworkPeer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPeer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a3cf9e9e((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public nint __receivePacket(nint outData, nint timepointPtr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getNetworkStatus() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+
+    public bool _isEncrypted()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_d9fd3732((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _isLocal()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_18ec76da((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _sendPacket(string data, int reliability, int arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_88344214((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, arg2);
+        }
+    }
+
+    public void _update()
+    {
+        NativeMethods.TablePtr->C2.hs_method_ca6b8d9a((void*)__hosihikari_shim_handle);
+    }
+
+    public static RakNetNetworkPeer Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1771026b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetNetworkPeer((nint)handle);
+    }
+
+    public static RakNetNetworkPeer Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.RakNetNetworkPeer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6800f07b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetNetworkPeer((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public nint _receivePacket(nint outData, nint timepointPtr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getNetworkStatus() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+
+    public bool isEncrypted()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0cdcfa8f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool isLocal()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_9a25039e((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public int mApproximateMaxBps
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c355609a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c355609a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mAveragePing
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_b86be4c2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b86be4c2((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d87c1f52((void*)__hosihikari_shim_handle);
+    }
+
+    public int mLastPing
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_1b2b667e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1b2b667e((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRakPeer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7f2ef857((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mReadBufferDatas_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_21b4545d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSendBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ec3e04d4((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.RakNetNetworkPeer operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.RakNetNetworkPeer arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.RakNetNetworkPeer((nint)NativeMethods.TablePtr->C2.hs_method_99f78cf1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void sendPacket(string data, int reliability, int arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_81773581((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, arg2);
+        }
+    }
+
+    public void update()
+    {
+        NativeMethods.TablePtr->C2.hs_method_4bc5cd8c((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_9f2b6b64((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

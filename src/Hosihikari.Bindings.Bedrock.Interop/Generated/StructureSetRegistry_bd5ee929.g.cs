@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class StructureSetRegistry : global::System.IDisposable
+public sealed unsafe partial class StructureSetRegistry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructureSetRegistry(nint handle) : this(handle, true) { }
 
     internal StructureSetRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructureSetRegistry Borrow(nint handle) => new StructureSetRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,20 @@ public sealed unsafe partial class StructureSetRegistry : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureSetRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureSetRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::internal::dense_map_iterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<entt::internal::dense_map_node<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::shared_ptr<br::worldgen::StructureSet>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint begin_b9d1c3d4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::internal::dense_map_iterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<entt::internal::dense_map_node<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::shared_ptr<br::worldgen::StructureSet>>>>>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::internal::dense_map_iterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<entt::internal::dense_map_node<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::shared_ptr<br::worldgen::StructureSet>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint end_4e504a43() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::internal::dense_map_iterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<entt::internal::dense_map_node<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::shared_ptr<br::worldgen::StructureSet>>>>>>' requires --link-carrier or --virtual-dispatch.");
-
     // The native field type is not projected; this is the address of the field storage.
-    public nint mStructureSetMap_Address
+    public nint mStructureSets_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_49b7bebf((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_25f3801f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void record(string arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    public void record(string key, global::Hosihikari.Bindings.Abi.SharedHandle? set)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -76,32 +56,10 @@ public sealed unsafe partial class StructureSetRegistry : global::System.IDispos
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_510ac264((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void record(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public ulong size()
-    {
-        return NativeMethods.TablePtr->hs_method_4b736919((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_bd5ee929((void*)_handle);
-            }
-
-            _handle = 0;
+            NativeMethods.TablePtr->C4.hs_method_f8010eff((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, set?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
         }
     }
 }

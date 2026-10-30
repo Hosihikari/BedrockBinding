@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CommandFilePath : global::System.IDisposable
+public sealed unsafe partial class CommandFilePath
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandFilePath(nint handle) : this(handle, true) { }
 
     internal CommandFilePath(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandFilePath Borrow(nint handle) => new CommandFilePath(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,14 @@ public sealed unsafe partial class CommandFilePath : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    public static CommandFilePath Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_9273aee7();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandFilePath((nint)handle);
-    }
-
-    public int findInvalidCharacter()
-    {
-        return NativeMethods.TablePtr->hs_method_da491bfb((void*)_handle);
-    }
-
-    public string getText()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_2c3fd9bb((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mText_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ed2915d3((void*)_handle);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_aa628cb5((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ed2915d3((void*)__hosihikari_shim_handle);
     }
 }

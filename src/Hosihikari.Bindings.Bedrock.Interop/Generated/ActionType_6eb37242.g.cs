@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemReleaseInventoryTransaction_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ActionType : int
 {
+    Release = 0,
+    Use = 1,
 }

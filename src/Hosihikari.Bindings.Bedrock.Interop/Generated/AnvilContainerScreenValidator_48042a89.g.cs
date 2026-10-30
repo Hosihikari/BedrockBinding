@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class AnvilContainerScreenValidator
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AnvilContainerScreenValidator(nint handle) : this(handle, true) { }
 
     internal AnvilContainerScreenValidator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AnvilContainerScreenValidator Borrow(nint handle) => new AnvilContainerScreenValidator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,44 @@ public sealed unsafe partial class AnvilContainerScreenValidator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AnvilContainerScreenValidator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint _getCraftResult(nint screenContext, nint screenValidation, nint craftInputs, nint numCrafts) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AnvilContainerScreenValidator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _isCraftingImplemented()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0f5b7e29((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationCraftResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCraftResult(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationCraftResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _postCommitItemRemoved(byte containerEnumName, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_d18c5068((void*)__hosihikari_shim_handle, containerEnumName, slot, (void*)arg2.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint getCraftResult(nint screenContext, nint screenValidation, nint craftInputs, nint numCrafts) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool isCraftingImplemented()
     {
-        return NativeMethods.TablePtr->hs_method_8e05c017((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_8e05c017((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? postCommitItemRemoved(byte containerEnumName, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_2b34cc2e((void*)__hosihikari_shim_handle, containerEnumName, slot, (void*)arg2.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValidContainerEnumNames_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_03f3fec9((void*)__hosihikari_shim_handle);
+    }
 }

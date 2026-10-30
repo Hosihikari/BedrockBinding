@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ClimateParameters : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ClimateParameters(nint handle) : this(handle, true) { }
 
     internal ClimateParameters(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ClimateParameters Borrow(nint handle) => new ClimateParameters(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,19 @@ public sealed unsafe partial class ClimateParameters : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ClimateParameters Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ClimateParameters Create(global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg0, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg1, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg2, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg3, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg4, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg5, float arg6)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter temperature, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter humidity, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter continentalness, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter erosion, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter depth, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter weirdness, float offset)
     {
-        var handle = NativeMethods.TablePtr->hs_create_5cefcad3((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5.Handle, arg6);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_bc77fc87((void*)__hosihikari_shim_handle, (void*)temperature.Handle, (void*)humidity.Handle, (void*)continentalness.Handle, (void*)erosion.Handle, (void*)depth.Handle, (void*)weirdness.Handle, offset);
+    }
+
+    public static ClimateParameters Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0e4ea8e0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,108 +54,75 @@ public sealed unsafe partial class ClimateParameters : global::System.IDisposabl
         return new ClimateParameters((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ClimateParameters Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ClimateParameters Create(global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter temperature, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter humidity, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter continentalness, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter erosion, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter depth, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter weirdness, float offset)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5cefcad3((void*)temperature.Handle, (void*)humidity.Handle, (void*)continentalness.Handle, (void*)erosion.Handle, (void*)depth.Handle, (void*)weirdness.Handle, offset);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClimateParameters((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mContinentalness_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_16fdae86((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContinentalness2_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ce5c73f8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_16fdae86((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDepth_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ad3a60f3((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDepth2_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fc7f259f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ad3a60f3((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mErosion_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dfa6e5df((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mErosion2_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_dde386df((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_dfa6e5df((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mHumidity_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6d8f21cb((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6d8f21cb((void*)__hosihikari_shim_handle);
+    }
+
+    public long mOffset
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_4e40f1ff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_4e40f1ff((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mHumidity2_Address
+    public nint mParameterSpace_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3e5de71d((void*)_handle);
-    }
-
-    public float mOffset
-    {
-        get => NativeMethods.TablePtr->hs_get_4e40f1ff((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4e40f1ff((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOffset2_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_257dfd99((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bf292ede((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTemperature_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_60dde62e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTemperature2_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_22fe72f9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_60dde62e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mWeirdness_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0d560987((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0d560987((void*)__hosihikari_shim_handle);
     }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mWeirdness2_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6ff89b5b((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_83ad485c((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_83ad485c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

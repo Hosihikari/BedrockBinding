@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class PlayerShootArrowEvent
+public sealed unsafe partial class PlayerShootArrowEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerShootArrowEvent(nint handle) : this(handle, true) { }
 
     internal PlayerShootArrowEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerShootArrowEvent Borrow(nint handle) => new PlayerShootArrowEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,78 @@ public sealed partial class PlayerShootArrowEvent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerShootArrowEvent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_fefbff69((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerShootArrowEvent Create_a3088186(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PlayerShootArrowEvent Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_da84f1ae();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new PlayerShootArrowEvent((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_37afadd0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static PlayerShootArrowEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ player, global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ arrow, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack weaponItem, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arrowItem)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fe43131b((void*)player.Handle, (void*)arrow.Handle, (void*)weaponItem.Handle, (void*)arrowItem.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerShootArrowEvent((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mArrow_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0633a56c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mArrowItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5a686724((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_735066d1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWeaponItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c68e1f7e((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerShootArrowEvent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PlayerShootArrowEvent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerShootArrowEvent((nint)NativeMethods.TablePtr->C2.hs_method_1b89d0c4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_5c3398e9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

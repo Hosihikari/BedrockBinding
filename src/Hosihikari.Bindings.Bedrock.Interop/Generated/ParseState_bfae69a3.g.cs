@@ -4,7 +4,15 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.HttpHeaders_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ParseState : int
 {
+    ProcessStatusLine = 0,
+    StatusLineDone = 1,
+    NewField = 2,
+    Name = 3,
+    Value = 4,
+    AddField = 5,
+    ProcessFields = 6,
+    Done = 7,
+    Abort = 8,
 }

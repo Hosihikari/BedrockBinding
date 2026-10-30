@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PotionMixDataEntry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PotionMixDataEntry(nint handle) : this(handle, true) { }
 
     internal PotionMixDataEntry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PotionMixDataEntry Borrow(nint handle) => new PotionMixDataEntry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,57 +33,57 @@ public sealed unsafe partial class PotionMixDataEntry : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public int fromItemAux
     {
-        get => NativeMethods.TablePtr->hs_get_c31f9f0a((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c31f9f0a((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c31f9f0a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c31f9f0a((void*)__hosihikari_shim_handle, value);
     }
 
     public int fromItemId
     {
-        get => NativeMethods.TablePtr->hs_get_493b1247((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_493b1247((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_493b1247((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_493b1247((void*)__hosihikari_shim_handle, value);
     }
 
     public int reagentItemAux
     {
-        get => NativeMethods.TablePtr->hs_get_6ee58e36((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6ee58e36((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_6ee58e36((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6ee58e36((void*)__hosihikari_shim_handle, value);
     }
 
     public int reagentItemId
     {
-        get => NativeMethods.TablePtr->hs_get_4fd1c710((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4fd1c710((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4fd1c710((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4fd1c710((void*)__hosihikari_shim_handle, value);
     }
 
     public int toItemAux
     {
-        get => NativeMethods.TablePtr->hs_get_9fd3ec05((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9fd3ec05((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_9fd3ec05((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_9fd3ec05((void*)__hosihikari_shim_handle, value);
     }
 
     public int toItemId
     {
-        get => NativeMethods.TablePtr->hs_get_2039a425((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_2039a425((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_2039a425((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2039a425((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_9fa7abd8((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_9fa7abd8((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

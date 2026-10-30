@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LodestoneCompassComponentCalculator
+public sealed unsafe partial class LodestoneCompassComponentCalculator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LodestoneCompassComponentCalculator(nint handle) : this(handle, true) { }
 
     internal LodestoneCompassComponentCalculator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LodestoneCompassComponentCalculator Borrow(nint handle) => new LodestoneCompassComponentCalculator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,83 @@ public sealed unsafe partial class LodestoneCompassComponentCalculator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static float COOLDOWN_TIME_SECONDS
+    public static nint COOLDOWN_TIME_SECONDS()
     {
-        get => NativeMethods.TablePtr->hs_get_d71a5141();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_8669eda4();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LodestoneCompassComponentCalculator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LodestoneCompassComponentCalculator Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c2c2a2e2();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LodestoneCompassComponentCalculator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new LodestoneCompassComponentCalculator((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static LodestoneCompassComponentCalculator Create(global::Hosihikari.Bindings.Bedrock.Interop.LodestoneCompassComponentCalculator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_694a73b2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LodestoneCompassComponentCalculator((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1caf70_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_767544ab((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk2c37c3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d570d507((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6d0b1e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_27ceae9d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8303a4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c1295ea6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb51bea_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_602984eb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LodestoneCompassComponentCalculator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LodestoneCompassComponentCalculator arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LodestoneCompassComponentCalculator((nint)NativeMethods.TablePtr->C2.hs_method_31c2ec11((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_601c4c2d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

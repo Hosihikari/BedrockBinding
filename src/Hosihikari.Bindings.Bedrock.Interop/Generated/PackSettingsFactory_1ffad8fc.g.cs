@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PackSettingsFactory
+public sealed unsafe partial class PackSettingsFactory : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PackSettingsFactory(nint handle) : this(handle, true) { }
 
     internal PackSettingsFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PackSettingsFactory Borrow(nint handle) => new PackSettingsFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,189 @@ public sealed unsafe partial class PackSettingsFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackSettingsFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Core::PathView' is abstract or not copy-constructible.", false)]
+    public nint _ctor(ulong maxGlobalPackSettingEntriesPerFile, nint globalPathRoot) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Core::PathView' is abstract or not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackSettingsFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.PackSettings? getPackSettings(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0)
+    public ulong _getAccessTimestamp()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_392dcee9((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_20fa321a((void*)__hosihikari_shim_handle);
+    }
+
+    public static nint GLOBAL_RESOURCE_PACK_SETTINGS_FILENAME()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_bf2d678b();
+    }
+
+    public static PackSettingsFactory Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_cd7883ab();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackSettingsFactory((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Core::PathView' is abstract or not copy-constructible.", false)]
+    public static PackSettingsFactory Create(ulong maxGlobalPackSettingEntriesPerFile, nint globalPathRoot) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Core::PathView' is abstract or not copy-constructible.");
+
+    public static nint WORLD_BEHAVIOR_PACK_SETTINGS_FILENAME()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_2bcbef01();
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSettings? _getGlobalPackSettings(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_203826da((void*)__hosihikari_shim_handle, (void*)manifest.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackSettings((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSettings? _getWorldPackSettings(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string? worldId)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldId ?? string.Empty, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_6c61b741((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, worldId is not null);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackSettings((nint)__hs_handle, false) : null;
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'SharedTypes::v1_26_40::PackSettingsDefinition::Document' has no accessible destructor.", false)]
+    public nint _loadUserOverridesFromFile(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'SharedTypes::v1_26_40::PackSettingsDefinition::Document' has no accessible destructor.");
+
+    public ulong getAccessTimestamp()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_f2cb0fa1((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSettings? getPackSettings(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string? worldId)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldId ?? string.Empty, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_ffd2feff((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, worldId is not null);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackSettings((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public bool loadPerWorldUserOverrides(string worldId, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path worldPath)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(worldId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_07935066((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)worldPath.Handle) != 0;
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGlobalPackSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d97b3de2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGlobalPackSettingsPath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3496232e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGlobalUserOverrides_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2ca8f329((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLoader_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e0a8a000((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong mMaxGlobalPackSettingEntriesPerFile
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_13fb90c9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnChangePublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_be9b29c8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPerWorldUserOverrides_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_55b15c21((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mReflectionCtx_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_541b05e4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStats_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_63ab6839((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWorldPackSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_13bed4fc((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_1ffad8fc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

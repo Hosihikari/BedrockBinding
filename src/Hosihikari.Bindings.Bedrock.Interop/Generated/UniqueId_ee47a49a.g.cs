@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MapItemTrackedActor_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class UniqueId
+public sealed unsafe partial class UniqueId
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UniqueId(nint handle) : this(handle, true) { }
 
     internal UniqueId(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UniqueId Borrow(nint handle) => new UniqueId(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,26 @@ public sealed partial class UniqueId
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint keyBlockPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_de7784e7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint keyEntityId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6e708093((void*)__hosihikari_shim_handle);
+    }
+
+    public int type
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_89d88f6f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_89d88f6f((void*)__hosihikari_shim_handle, value);
     }
 }

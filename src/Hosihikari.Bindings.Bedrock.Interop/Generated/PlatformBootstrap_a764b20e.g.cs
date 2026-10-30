@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-public sealed unsafe partial class PlatformBootstrap
+public sealed unsafe partial class PlatformBootstrap : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlatformBootstrap(nint handle) : this(handle, true) { }
 
     internal PlatformBootstrap(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlatformBootstrap Borrow(nint handle) => new PlatformBootstrap(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,76 @@ public sealed unsafe partial class PlatformBootstrap
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlatformBootstrap Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: variadic methods are not supported.", false)]
+    public static nint _makeCreateDirectoryError(nint code, nint errorBuffer, ulong errorBufferSize, nint errorFormat) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variadic methods are not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlatformBootstrap Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: variadic methods are not supported.", false)]
+    public static nint _makeLoadError(nint code, nint errorBuffer, ulong errorBufferSize, nint errorFormat) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variadic methods are not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _makeCreateDirectoryError(nint arg0, nint arg1, ulong arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: variadic methods are not supported.", false)]
+    public static nint _makeSaveError(nint code, nint errorBuffer, ulong errorBufferSize, nint errorFormat) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variadic methods are not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _makeLoadError(nint arg0, nint arg1, ulong arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _makeSaveError(nint arg0, nint arg1, ulong arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _rawCreateDirectory_std_aa2eb93f(nint path, nint arg1, ulong arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _rawLoadFile_cstdio_81c005ff(nint buffer, ulong bufferSize, nint root, nint path, nint arg4, ulong arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _rawSaveFile_cstdio_1e34263f(nint buffer, ulong bufferSize, nint root, nint path, nint arg4, ulong arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap getSharedInstance()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap_Nested.CreateDirectoryResult _rawCreateDirectory_std(nint path, nint errorBuffer, ulong errorBufferSize)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap((nint)NativeMethods.TablePtr->hs_method_68c4e314(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap_Nested.CreateDirectoryResult((nint)NativeMethods.TablePtr->C0.hs_method_aa2eb93f((void*)__hosihikari_shim_handle, (void*)path, (void*)errorBuffer, errorBufferSize));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap_Nested.LoadResult _rawLoadFile_cstdio(nint buffer, ulong bufferSize, string root, nint path, nint errorBuffer, ulong errorBufferSize)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(root);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(root, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap_Nested.LoadResult((nint)NativeMethods.TablePtr->C0.hs_method_81c005ff((void*)__hosihikari_shim_handle, (void*)buffer, bufferSize, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)path, (void*)errorBuffer, errorBufferSize));
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap_Nested.SaveResult _rawSaveFile_cstdio(nint buffer, ulong bufferSize, string root, nint path, nint errorBuffer, ulong errorBufferSize)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(root);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(root, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap_Nested.SaveResult((nint)NativeMethods.TablePtr->C0.hs_method_1e34263f((void*)__hosihikari_shim_handle, (void*)buffer, bufferSize, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)path, (void*)errorBuffer, errorBufferSize));
+        }
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a764b20e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

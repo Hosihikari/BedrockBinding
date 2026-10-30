@@ -2,9 +2,14 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ConnectionAttemptResult : int
 {
+    ConnectionAttemptStarted = 0,
+    InvalidParameter = 1,
+    CannotResolveDomainName = 2,
+    AlreadyConnectedToEndpoint = 3,
+    ConnectionAttemptAlreadyInProgress = 4,
+    SecurityInitializationFailed = 5,
 }

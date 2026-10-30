@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorSkeletalAnimationPlayer
+public sealed unsafe partial class ActorSkeletalAnimationPlayer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorSkeletalAnimationPlayer(nint handle) : this(handle, true) { }
 
     internal ActorSkeletalAnimationPlayer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorSkeletalAnimationPlayer Borrow(nint handle) => new ActorSkeletalAnimationPlayer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,86 +33,204 @@ public sealed unsafe partial class ActorSkeletalAnimationPlayer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorSkeletalAnimationPlayer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static ActorSkeletalAnimationPlayer Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorSkeletalAnimationPlayer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void applyToPose(nint renderParams, nint destBoneOrientationMap, float blendWeight) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void applyToPose(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0, nint arg1, float arg2)
+    public bool mAnimationFinished
     {
-        NativeMethods.TablePtr->hs_method_6ce12922((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2);
+        get => NativeMethods.TablePtr->C0.hs_get_9529f68a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_9529f68a((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void bindParticleEffects_bdeb9ef6(nint actorParticleEffectMap) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void bindParticleEffects_c3ef2eed(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlendExpression_Address
     {
-        NativeMethods.TablePtr->hs_method_c3ef2eed((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1c5acef6((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void bindSoundEffects_6bd8ae5f(nint actorSoundEffectMap) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void bindSoundEffects_3651cfeb(nint arg0)
+    public bool mExpanded
     {
-        NativeMethods.TablePtr->hs_method_3651cfeb((void*)_handle, (void*)arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_b7a9c946((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_b7a9c946((void*)__hosihikari_shim_handle, value);
     }
 
-    public void buildBoneToPartMapping(global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFriendlyName_Address
     {
-        NativeMethods.TablePtr->hs_method_b84bfc68((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a66952bb((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.", false)]
+    public void _applyToPose(nint applyContext, nint renderParams, nint destBoneOrientationMap, float blendWeight) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void _bindParticleEffects(nint actorParticleEffectMap) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void _bindSoundEffects(nint actorSoundEffectMap) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    public void _buildBoneToPartMapping(global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent animationComponent)
+    {
+        NativeMethods.TablePtr->C0.hs_method_4d1ca8d8((void*)__hosihikari_shim_handle, (void*)animationComponent.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _findAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_5c578f53((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public int _getAnimationType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_26b90a49((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString _getRawName()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C0.hs_method_c6114b71((void*)__hosihikari_shim_handle), false);
+    }
+
+    public bool _hasAnimationFinished()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_bc32dc60((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _resetAnimation()
+    {
+        NativeMethods.TablePtr->C0.hs_method_0abba564((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void _visit(nint dispatcher) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static ActorSkeletalAnimationPlayer Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_91f4467c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorSkeletalAnimationPlayer((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.", false)]
+    public void _setDefaultPose(nint renderParams, nint destBoneOrientationMap) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.", false)]
+    public void applyToPose(nint applyContext, nint renderParams, nint destBoneOrientationMap, float blendWeight) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void bindParticleEffects(nint actorParticleEffectMap) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
+    public void bindSoundEffects(nint actorSoundEffectMap) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+    public void buildBoneToPartMapping(global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent animationComponent)
+    {
+        NativeMethods.TablePtr->C0.hs_method_905f7019((void*)__hosihikari_shim_handle, (void*)animationComponent.Handle);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? findAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_55c1fa45((void*)_handle, (void*)arg0.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_fbbd5a88((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public int getAnimationType()
     {
-        return NativeMethods.TablePtr->hs_method_31cfc41c((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_497d0617((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getRawName()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_b1ba1672((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C0.hs_method_b2a88e8b((void*)__hosihikari_shim_handle), false);
     }
 
     public bool hasAnimationFinished()
     {
-        return NativeMethods.TablePtr->hs_method_dddbdb3c((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_e3f075f7((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint mActorParticleEffectMap
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e50fd328((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mActorSoundEffectMap
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a594bdbf((void*)__hosihikari_shim_handle);
+    }
+
+    public float mAnimTime
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_b1afa629((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b1afa629((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAnimationData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d4acd519((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoneAnimationPlayers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_96683c23((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoneToPartMapping_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_368cbb0a((void*)__hosihikari_shim_handle);
+    }
+
+    public float mLastAnimTime
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_bb596855((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_bb596855((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mStartDelay
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_244f1894((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_244f1894((void*)__hosihikari_shim_handle, value);
+    }
 
     public void resetAnimation()
     {
-        NativeMethods.TablePtr->hs_method_e52c9e51((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_e52c9e51((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void visit(nint dispatcher) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_01d0da76((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.QuickJS;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS;
 
-public sealed unsafe partial class ScriptObjRef
+public sealed unsafe partial class ScriptObjRef : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptObjRef(nint handle) : this(handle, true) { }
 
     internal ScriptObjRef(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptObjRef Borrow(nint handle) => new ScriptObjRef(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,119 @@ public sealed unsafe partial class ScriptObjRef
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptObjRef Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptObjRef Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void incRefToReturnToJS()
+    public void _onFinalize()
     {
-        NativeMethods.TablePtr->hs_method_a6d328b8((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_bc3b4af9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_2f2bd313(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _onPromoteToMultipleOwners()
+    {
+        NativeMethods.TablePtr->C3.hs_method_e7832247((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_8a2b85de(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _onReduceToSingleOwner()
+    {
+        NativeMethods.TablePtr->C3.hs_method_05551cf2((void*)__hosihikari_shim_handle);
+    }
+
+    public static ScriptObjRef Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a677fb7e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptObjRef((nint)handle);
+    }
+
+    public static ScriptObjRef Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ScriptObjRef arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_640da9ff((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptObjRef((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk50ff94_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5f53d121((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk60fd4e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_45b9bdbb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7fb67c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4fb1449f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke0e095_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5134dbbf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke9ae49_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bf1144d5((void*)__hosihikari_shim_handle);
+    }
+
+    public void onFinalize()
+    {
+        NativeMethods.TablePtr->C3.hs_method_1023fe9b((void*)__hosihikari_shim_handle);
+    }
+
+    public void onPromoteToMultipleOwners()
+    {
+        NativeMethods.TablePtr->C3.hs_method_bec8d622((void*)__hosihikari_shim_handle);
+    }
+
+    public void onReduceToSingleOwner()
+    {
+        NativeMethods.TablePtr->C3.hs_method_8661380c((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ScriptObjRef operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ScriptObjRef arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ScriptObjRef((nint)NativeMethods.TablePtr->C3.hs_method_8a2b85de((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void pin()
     {
-        NativeMethods.TablePtr->hs_method_ae853ab1((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_ae853ab1((void*)__hosihikari_shim_handle);
     }
 
     public void unpin()
     {
-        NativeMethods.TablePtr->hs_method_5650d91a((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_5650d91a((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_ca5419cd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

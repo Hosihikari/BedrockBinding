@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VillageManager_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum BedAvailabilityState : int
 {
+    Unknown = 0,
+    SomeAvailable = 1,
+    NoneAvailable = 2,
 }

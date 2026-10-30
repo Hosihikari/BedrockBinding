@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum Flip : int
+public enum Flip : byte
 {
+    None = 0,
+    Rotate90 = 1,
+    Rotate270 = 2,
+    Rotate180 = 3,
+    MirrorX = 4,
+    DontRotate = 5,
 }

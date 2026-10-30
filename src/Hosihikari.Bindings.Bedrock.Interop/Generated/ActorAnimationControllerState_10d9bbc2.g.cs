@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorAnimationControllerState
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorAnimationControllerState(nint handle) : this(handle, true) { }
 
     internal ActorAnimationControllerState(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorAnimationControllerState Borrow(nint handle) => new ActorAnimationControllerState(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,140 +33,62 @@ public sealed unsafe partial class ActorAnimationControllerState
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationControllerState Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationControllerState Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAnimations_Address
     {
-        NativeMethods.TablePtr->hs_method_d19b91a5((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_78fbd9fb((void*)__hosihikari_shim_handle);
     }
 
-    public void addAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlendTransitionKeyFrames_Address
     {
-        NativeMethods.TablePtr->hs_method_73d69940((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fc9c1b58((void*)__hosihikari_shim_handle);
     }
 
-    public void addBlendTransitionKeyFrame(float arg0, float arg1)
+    public bool mBlendViaShortestPath
     {
-        NativeMethods.TablePtr->hs_method_a9059bf4((void*)_handle, arg0, arg1);
+        get => NativeMethods.TablePtr->C0.hs_get_bb88be1b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_bb88be1b((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent addEntryActorEvent(float arg0, string arg1, int arg2, int arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEvents_Address
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent((nint)NativeMethods.TablePtr->hs_method_8e184fb6((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3), false);
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4095cd8c((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent addExitActorEvent(float arg0, string arg1, int arg2, int arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent((nint)NativeMethods.TablePtr->hs_method_ae5fbefb((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3), false);
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8e85ef02((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorParticleEffect addParticleEffect()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParticleEffects_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorParticleEffect((nint)NativeMethods.TablePtr->hs_method_12490ba9((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3d529285((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorSoundEffect addSoundEffect()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSoundEffects_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorSoundEffect((nint)NativeMethods.TablePtr->hs_method_501f92c0((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d2983146((void*)__hosihikari_shim_handle);
     }
 
-    public void addTransition(string arg0, string arg1, int arg2, bool arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransitions_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_4564d6af((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3);
-            }
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ff99114a((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.StateAnimationVariable addVariable(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVariables_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.StateAnimationVariable((nint)NativeMethods.TablePtr->hs_method_c40f3085((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setBlendTransitionTime(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_6da1c460((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5b6f9bf2((void*)__hosihikari_shim_handle);
     }
 }

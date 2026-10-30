@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum DayOneExperienceState : int
 {
+    Started = 0,
+    CompletedWithoutWorlds = 1,
+    CompletedWithImportSkipped = 2,
+    CompletedWithImport = 3,
 }

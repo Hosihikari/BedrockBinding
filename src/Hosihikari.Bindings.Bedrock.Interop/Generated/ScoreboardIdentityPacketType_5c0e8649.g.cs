@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ScoreboardIdentityPacketType : int
+public enum ScoreboardIdentityPacketType : byte
 {
+    Update = 0,
+    Remove = 1,
 }

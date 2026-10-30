@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MinecraftEventing : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MinecraftEventing(nint handle) : this(handle, true) { }
 
     internal MinecraftEventing(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MinecraftEventing Borrow(nint handle) => new MinecraftEventing(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,38 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_eece5337((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_eece5337((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftEventing Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MinecraftEventing Create_2b756dd9(nint arg0)
+    public void _addCrashTelemetryToBatch(global::Hosihikari.Bindings.Abi.SharedHandle? session)
     {
-        var handle = NativeMethods.TablePtr->hs_create_2b756dd9((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new MinecraftEventing((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftEventing Create_40eee23b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addCrashTelemetryToBatch(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
-    {
-        NativeMethods.TablePtr->hs_method_cef0efdf((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_bc8adf43((void*)__hosihikari_shim_handle, session?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addListener(nint arg0) =>
+    public void _addListener(nint listener) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fileEventCloudWorldPullFailed(string arg0, string arg1, bool arg2)
+    public void _clearListeners()
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_74314820((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint logFileDir, nint deps) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void _fileEventCloudWorldPullFailed(string reason, string worldID, bool localLevelDatUsed)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -84,8 +74,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldID);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -95,19 +85,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(worldID, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->hs_method_eb941128((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+                NativeMethods.TablePtr->C2.hs_method_467c433f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, localLevelDatUsed);
             }
         }
     }
 
-    public void fireBannedSkinVerificationEvent(nint arg0, string arg1, string arg2, bool arg3, int arg4, string arg5)
+    public void _fireBannedSkinVerificationEvent(nint userId, string skinData, bool wasApproved, int eventCode, string message)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(skinData);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -117,795 +107,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(arg5);
-        scoped global::System.Span<byte> __hs_stringBytes5;
-        if (__hs_stringByteCount5 <= 256)
-        {
-            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
-        }
-        else
-        {
-            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg5, __hs_stringBytes5);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-            {
-                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
-                {
-                    NativeMethods.TablePtr->hs_method_6a299130((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, __hs_stringData5, (nuint)__hs_stringByteCount5);
-                }
-            }
-        }
-    }
-
-    public void fireCDNDownloadEvent(string arg0, string arg1, string arg2, nint arg3, nint arg4, nint arg5)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_dee0398e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3, (void*)arg4, (void*)arg5);
-                }
-            }
-        }
-    }
-
-    public void fireChatUsedEvent(uint arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_5d878d4e((void*)_handle, arg0, arg1);
-    }
-
-    public void fireChunkRecyclerTelemetryData(global::Hosihikari.Bindings.Bedrock.Interop.ChunkRecyclerTelemetryOutput arg0)
-    {
-        NativeMethods.TablePtr->hs_method_830b0b1f((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireClassroomSettingUpdated(int arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_9da359e4((void*)_handle, arg0, arg1);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void fireClubsEngagementEvent(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void fireClubsOpenFeedScreenEvent(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public void fireCodeCommandButtonPressed()
-    {
-        NativeMethods.TablePtr->hs_method_ea0b3a63((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void fireCommandParseTableTelemetry(bool arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    public void fireCourseButtonPressed(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_2d758f81((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireCurrentInputUpdated(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_93798dd4((void*)_handle, (void*)arg0);
-    }
-
-    public void fireDBStorageError(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_3860df6c((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
-
-    public void fireDayOneExperienceStateChanged(int arg0, uint? arg1, ulong? arg2)
-    {
-        NativeMethods.TablePtr->hs_method_63207e71((void*)_handle, arg0, arg1 ?? default(uint), arg2 ?? default(ulong), arg1.HasValue, arg2.HasValue);
-    }
-
-    public void fireDelayedEventReportOfflineAction(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_bdfc7962((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEduServiceRequestFailed_b57ef12e(nint serviceName, nint requestName, nint error, nint details) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.", false)]
-    public void fireEduServiceRequestFailed_9e3f4c1b(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.");
-
-    public void fireEventAchievementReceived(string arg0, string arg1, string arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_8951a15f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-                }
-            }
-        }
-    }
-
-    public void fireEventActorMovementCorrectionDivergence(int arg0, float[] arg1)
-    {
-        fixed (float* __hs_vectorData1 = arg1)
-        {
-            NativeMethods.TablePtr->hs_method_74528d2a((void*)_handle, arg0, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
-        }
-    }
-
-    public void fireEventActorValueValidationFailed(string arg0, nint arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_1d447ae6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
-        }
-    }
-
-    public void fireEventAddedFriend(string arg0, int arg1, bool arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_d3e2cde9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
-        }
-    }
-
-    public void fireEventAndroidHelpRequest()
-    {
-        NativeMethods.TablePtr->hs_method_10908999((void*)_handle);
-    }
-
-    public void fireEventAndroidScopedStorageDebug(ulong arg0)
-    {
-        NativeMethods.TablePtr->hs_method_73fdb2a5((void*)_handle, arg0);
-    }
-
-    public void fireEventAppInitFileOpenStats(nint arg0, nint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_e60b5184((void*)_handle, (void*)arg0, (void*)arg1);
-    }
-
-    public void fireEventAppPaused()
-    {
-        NativeMethods.TablePtr->hs_method_1a35dccd((void*)_handle);
-    }
-
-    public void fireEventAppSurfaceCreated()
-    {
-        NativeMethods.TablePtr->hs_method_6098b28a((void*)_handle);
-    }
-
-    public void fireEventAppSurfaceDestroyed()
-    {
-        NativeMethods.TablePtr->hs_method_b9aabef8((void*)_handle);
-    }
-
-    public void fireEventAppUnpaused()
-    {
-        NativeMethods.TablePtr->hs_method_e6657e99((void*)_handle);
-    }
-
-    public void fireEventArmorStandItemEquipped(global::Hosihikari.Bindings.Bedrock.Interop.ArmorStand arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
-    {
-        NativeMethods.TablePtr->hs_method_1cc459ae((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void fireEventAssertFailed(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_f03b6d6f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public static void fireEventAwardAchievement(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_4bb4d606((void*)(arg0?.Handle ?? 0), arg1);
-    }
-
-    public static void fireEventBehaviorErrored(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_308bb89e((void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
-
-    public static void fireEventBehaviorFailed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_1294d10d((void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
-
-    public static void fireEventBellBlockUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_1ee0aaff((void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
-
-    public static void fireEventBlockBroken(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3)
-    {
-        NativeMethods.TablePtr->hs_method_16900350((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3);
-    }
-
-    public static void fireEventBlockFound(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
-    {
-        NativeMethods.TablePtr->hs_method_938a53b9((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle);
-    }
-
-    public void fireEventBlockPlacedByCommand(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_e3fecab8((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    public void fireEventBlockTypeRegistryChecksumMismatch(string arg0, nint arg1, nint arg2, string arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-            {
-                NativeMethods.TablePtr->hs_method_6f6a363a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)arg2, __hs_stringData3, (nuint)__hs_stringByteCount3);
-            }
-        }
-    }
-
-    public void fireEventBlockUser(string arg0, bool arg1, bool arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_9eb520e3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
-        }
-    }
-
-    public void fireEventBoardTextUpdated(global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor arg0)
-    {
-        NativeMethods.TablePtr->hs_method_bcdd561e((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireEventBundleSubOfferClicked(int arg0, int arg1, string arg2, string arg3, bool arg4, string arg5)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(arg5);
-        scoped global::System.Span<byte> __hs_stringBytes5;
-        if (__hs_stringByteCount5 <= 256)
-        {
-            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
-        }
-        else
-        {
-            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg5, __hs_stringBytes5);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-            {
-                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
-                {
-                    NativeMethods.TablePtr->hs_method_a19357a9((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, __hs_stringData5, (nuint)__hs_stringByteCount5);
-                }
-            }
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventButtonPressed(nint buttonName, nint details) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void fireEventButtonPressed(string arg0, nint arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_27783f57((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
-        }
-    }
-
-    public void fireEventCameraUsed(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_3a60116d((void*)_handle, arg0);
-    }
-
-    public static void fireEventCampfireBlockUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1, int arg2)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_0032df8f((void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
-        }
-    }
-
-    public static void fireEventCaravanChanged(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_df7e15cc((void*)arg0.Handle, arg1);
-    }
-
-    public void fireEventChatFloodingActionTaken(string arg0, int arg1, string arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-            {
-                NativeMethods.TablePtr->hs_method_5b460645((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-            }
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void fireEventChatSettingsUpdated(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    public void fireEventChunkChanged(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
-    {
-        NativeMethods.TablePtr->hs_method_7a4dd432((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireEventChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
-    {
-        NativeMethods.TablePtr->hs_method_ce9155ed((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireEventChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
-    {
-        NativeMethods.TablePtr->hs_method_69ce26ec((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireEventClientLeftGameDueToUnrecoverableError(string arg0, bool arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_1d5ade63((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-        }
-    }
-
-    public void fireEventCloudMyWorldsSummary(int arg0, int arg1, int arg2, int arg3, int arg4)
-    {
-        NativeMethods.TablePtr->hs_method_32425b65((void*)_handle, arg0, arg1, arg2, arg3, arg4);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void fireEventCloudOperationEndedEdu_23999276(nint arg0, nint arg1, nint arg2, uint arg3, ulong arg4, nint arg5, nint arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void fireEventCloudOperationStartedEdu(int arg0, string arg1, ulong arg2, string? arg3)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3 ?? string.Empty);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3 ?? string.Empty, __hs_stringBytes3);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-            {
-                NativeMethods.TablePtr->hs_method_485f2df6((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg3 is not null);
-            }
-        }
-    }
-
-    public void fireEventCodeBuilderClosed()
-    {
-        NativeMethods.TablePtr->hs_method_99997da7((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void fireEventCodeBuilderLog(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    public void fireEventCodeBuilderRuntimeAction(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_fc390a58((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void fireEventCodeBuilderScoreChanged(string arg0, int arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_176e330c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-        }
-    }
-
-    public void fireEventCompoundCreatorCreated(int arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_2891b726((void*)_handle, arg0, arg1);
-    }
-
-    public void fireEventConnectedStorageError(nint arg0, string arg1, long arg2)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_698c3084((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
-        }
-    }
-
-    public void fireEventConnectedStorageResult(int arg0, bool arg1, uint arg2, uint? arg3, string arg4, string arg5, long arg6, uint? arg7, uint? arg8, uint? arg9)
-    {
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        global::System.Text.Encoding.UTF8.GetBytes(skinData, __hs_stringBytes1);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(message);
         scoped global::System.Span<byte> __hs_stringBytes4;
         if (__hs_stringByteCount4 <= 256)
         {
@@ -915,35 +118,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes4 = new byte[__hs_stringByteCount4];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(arg5);
-        scoped global::System.Span<byte> __hs_stringBytes5;
-        if (__hs_stringByteCount5 <= 256)
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes4);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
-        }
-        else
-        {
-            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg5, __hs_stringBytes5);
-        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-        {
-            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
             {
-                NativeMethods.TablePtr->hs_method_8a5849d4((void*)_handle, arg0, arg1, arg2, arg3 ?? default(uint), __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, arg6, arg7 ?? default(uint), arg8 ?? default(uint), arg9 ?? default(uint), arg3.HasValue, arg7.HasValue, arg8.HasValue, arg9.HasValue);
+                NativeMethods.TablePtr->C2.hs_method_4ce85581((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1, wasApproved, eventCode, __hs_stringData4, (nuint)__hs_stringByteCount4);
             }
         }
     }
 
-    public void fireEventConnectionFailed(int arg0)
+    public void _fireCDNDownloadEvent(string packId, string versionNumber, string hostUrl, nint downloadResult, nint origin, nint elapsedTime)
     {
-        NativeMethods.TablePtr->hs_method_6c2c7fbb((void*)_handle, arg0);
-    }
-
-    public void fireEventContentLogsInWorldSession(string arg0, uint arg1, uint arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -953,27 +140,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_d5898a09((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
-        }
-    }
-
-    public void fireEventContentShared(string arg0, string arg1, nint arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(versionNumber);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -983,58 +151,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_3e1b3d10((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
-            }
-        }
-    }
-
-    public void fireEventControlRemappedByPlayer(string arg0, int arg1, int arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_db7e4958((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
-        }
-    }
-
-    public void fireEventControlTipsPanelUpdated(int arg0, double arg1)
-    {
-        NativeMethods.TablePtr->hs_method_3692b4dd((void*)_handle, arg0, arg1);
-    }
-
-    public void fireEventCopyWorldEducationEnabled()
-    {
-        NativeMethods.TablePtr->hs_method_d15bca73((void*)_handle);
-    }
-
-    public void fireEventCrashSystemFailedToInit()
-    {
-        NativeMethods.TablePtr->hs_method_f1fde222((void*)_handle);
-    }
-
-    public void fireEventDedicatedServerDiscoveryResponse(int arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_1d839d4e((void*)_handle, arg0, arg1);
-    }
-
-    public void fireEventDefaultCastSelected(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, string arg2)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(versionNumber, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(hostUrl);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -1044,21 +162,107 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        global::System.Text.Encoding.UTF8.GetBytes(hostUrl, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_32bad62d((void*)_handle, arg0, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_035c2bc9((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)downloadResult, (void*)origin, (void*)elapsedTime);
+                }
+            }
         }
     }
 
-    public void fireEventDefaultGameTypeChanged(int arg0, int arg1)
+    public void _fireChatUsedEvent(uint chatLength, bool isSlashCommand)
     {
-        NativeMethods.TablePtr->hs_method_08a544a6((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_74d6f317((void*)__hosihikari_shim_handle, chatLength, isSlashCommand);
     }
 
-    public void fireEventDevSlashCommandExecuted(string arg0, string arg1)
+    public void _fireChunkRecyclerTelemetryData(global::Hosihikari.Bindings.Bedrock.Interop.ChunkRecyclerTelemetryOutput output)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_94ee4a0e((void*)__hosihikari_shim_handle, (void*)output.Handle);
+    }
+
+    public void _fireClassroomSettingUpdated(int classroomSetting, int settingMode)
+    {
+        NativeMethods.TablePtr->C2.hs_method_dc372c5f((void*)__hosihikari_shim_handle, classroomSetting, settingMode);
+    }
+
+    public void _fireClubsEngagementEvent(int action, int engagementTargetType, nint target, long realmId, string clubId)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(clubId);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(clubId, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            NativeMethods.TablePtr->C2.hs_method_3535c53c((void*)__hosihikari_shim_handle, action, engagementTargetType, (void*)target, realmId, __hs_stringData4, (nuint)__hs_stringByteCount4);
+        }
+    }
+
+    public void _fireClubsOpenFeedScreenEvent(int source, long realmId, string clubId, int unreadPosts)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(clubId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(clubId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_a6140736((void*)__hosihikari_shim_handle, source, realmId, __hs_stringData2, (nuint)__hs_stringByteCount2, unreadPosts);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireCodeBuilderCachePerformance(nint stage, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireCodeBuilderLoadPerformance(nint stage, ulong tutorialSize, ulong downloadSize, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireCodeBuilderRunPerformance(nint stage, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireCodeCommandButtonPressed()
+    {
+        NativeMethods.TablePtr->C2.hs_method_09b764f2((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireCommandParseTableTelemetry(bool isServer, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested.CommandParseTableEntry[] parseTableDetails)
+    {
+        var __hs_vectorItems1 = parseTableDetails;
+        var __hs_vectorHandles1 = new nint[__hs_vectorItems1?.Length ?? 0];
+        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++)
+        {
+            __hs_vectorHandles1[__hs_i1] = __hs_vectorItems1![__hs_i1]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData1 = __hs_vectorHandles1)
+        {
+            var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
+            NativeMethods.TablePtr->C2.hs_method_343e78eb((void*)__hosihikari_shim_handle, isServer, __hs_vectorData1, (nuint)(parseTableDetails?.Length ?? 0));
+        }
+    }
+
+    public void _fireContentDecryptionFailure(string failedContentIds, string contentKey, string failurePoint)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(failedContentIds);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1068,8 +272,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(failedContentIds, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(contentKey);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -1079,19 +283,232 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(contentKey, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(failurePoint);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failurePoint, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->hs_method_21190b9b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_40f40c37((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
             }
         }
     }
 
-    public void fireEventDeviceAccountFailure(int arg0, int arg1, uint arg2, string arg3)
+    public void _fireCourseButtonPressed(string courseTitle, string courseId)
     {
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(courseTitle);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(courseTitle, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(courseId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(courseId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_f6de4adb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireCurrentInputUpdated(uint userId, uint inputMode)
+    {
+        NativeMethods.TablePtr->C2.hs_method_28907d32((void*)__hosihikari_shim_handle, userId, inputMode);
+    }
+
+    public void _fireDBStorageError(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, string errorType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorType, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_fea0e4ec((void*)__hosihikari_shim_handle, (void*)context.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void _fireDayOneExperienceStateChanged(int newState, uint? importedWorldIndex, ulong? importedWorldTimestamp)
+    {
+        NativeMethods.TablePtr->C2.hs_method_2474a483((void*)__hosihikari_shim_handle, newState, importedWorldIndex ?? default(uint), importedWorldTimestamp ?? default(ulong), importedWorldIndex.HasValue, importedWorldTimestamp.HasValue);
+    }
+
+    public void _fireDelayedEventReportOfflineAction(string offlineAction)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(offlineAction);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(offlineAction, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_7d8f18c0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEditorEventToolActivated(string toolName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(toolName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(toolName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_34638a70((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEditorRedo(string transactionName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(transactionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(transactionName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_daae3a93((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEditorScriptAction(string scriptSource, string actionName, string actionMetadata)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(scriptSource);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(scriptSource, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(actionName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(actionName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(actionMetadata);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(actionMetadata, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_ff334c20((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireEditorTutorialEvent(string type, string? state, string currentStage, string? previousStage)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(state ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(state ?? string.Empty, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(currentStage);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(currentStage, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(previousStage ?? string.Empty);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -1101,16 +518,63 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        global::System.Text.Encoding.UTF8.GetBytes(previousStage ?? string.Empty, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_a0d3747f((void*)_handle, arg0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_89143ad8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, state is not null, previousStage is not null);
+                    }
+                }
+            }
         }
     }
 
-    public void fireEventDeviceAccountSuccess(bool arg0, string arg1)
+    public void _fireEditorUndo(string transactionName)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(transactionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(transactionName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ae82445b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.", false)]
+    public void _fireEduServiceRequestFailed(nint serviceName, nint requestName, nint error, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _fireEvent(nint eventName, nint properties, nint measurements, bool shouldAggregate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _fireEventAchievementReceived(string title, string description, string achievementId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(title);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(title, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(description);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -1120,36 +584,7438 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(achievementId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(achievementId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_62bdc6f6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireEventActorMovementCorrectionDivergence(int actorType, float[] divergences)
+    {
+        fixed (float* __hs_vectorData1 = divergences)
+        {
+            NativeMethods.TablePtr->C2.hs_method_20044c01((void*)__hosihikari_shim_handle, actorType, __hs_vectorData1, (nuint)(divergences?.Length ?? 0));
+        }
+    }
+
+    public void _fireEventActorValueValidationFailed(string invalidValue, nint caller)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(invalidValue);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(invalidValue, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_991d6532((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)caller);
+        }
+    }
+
+    public void _fireEventAddedFriend(string addedXuid, int location, bool success)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(addedXuid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(addedXuid, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_5120045e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, location, success);
+        }
+    }
+
+    public void _fireEventAndroidHelpRequest()
+    {
+        NativeMethods.TablePtr->C2.hs_method_2188ea23((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventAppInitFileOpenStats(nint openForRead, nint openForWrite)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0ea2d980((void*)__hosihikari_shim_handle, (void*)openForRead, (void*)openForWrite);
+    }
+
+    public void _fireEventAppPaused()
+    {
+        NativeMethods.TablePtr->C2.hs_method_0eacfabc((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventAppSurfaceCreated()
+    {
+        NativeMethods.TablePtr->C2.hs_method_072330b4((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventAppSurfaceDestroyed()
+    {
+        NativeMethods.TablePtr->C2.hs_method_336074c2((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventAppUnpaused()
+    {
+        NativeMethods.TablePtr->C2.hs_method_b729b10a((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventAssertFailed(string assertBucket, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(assertBucket);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(assertBucket, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_bb4fcc50((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventBlockPlacedByCommand(global::Hosihikari.Bindings.Bedrock.Interop.Block placedBlock, int numberOfBlocksPlaced)
+    {
+        NativeMethods.TablePtr->C2.hs_method_cefb1079((void*)__hosihikari_shim_handle, (void*)placedBlock.Handle, numberOfBlocksPlaced);
+    }
+
+    public void _fireEventBlockTypeRegistryChecksumMismatch(string reason, nint serverBlockChecksum, nint clientBlockChecksum, string serverVersion)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(serverVersion);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(serverVersion, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_0548d0cd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)serverBlockChecksum, (void*)clientBlockChecksum, __hs_stringData3, (nuint)__hs_stringByteCount3);
+            }
+        }
+    }
+
+    public void _fireEventBlockUser(string xuid, bool isSuccess, bool isBlocked)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(xuid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(xuid, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_cfdccc94((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isSuccess, isBlocked);
+        }
+    }
+
+    public void _fireEventBoardTextUpdated(global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor board)
+    {
+        NativeMethods.TablePtr->C2.hs_method_dd2b6132((void*)__hosihikari_shim_handle, (void*)board.Handle);
+    }
+
+    public void _fireEventBundleSubOfferClicked(int offerIndex, int bundleSubOfferCount, string telemetryId, string productId, bool isOnSale, string timeRemainingOnSale)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(telemetryId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(telemetryId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(timeRemainingOnSale);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(timeRemainingOnSale, __hs_stringBytes5);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_6aaf15b8((void*)__hosihikari_shim_handle, offerIndex, bundleSubOfferCount, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, isOnSale, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventButtonPressed(nint buttonName, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventCameraUsed(bool isSelfie)
+    {
+        NativeMethods.TablePtr->C2.hs_method_eb39b09b((void*)__hosihikari_shim_handle, isSelfie);
+    }
+
+    public void _fireEventChatFloodingActionTaken(string authorXuid, int action, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(authorXuid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(authorXuid, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_fe576bcd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, action, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _fireEventChatSettingsUpdated(nint player, nint properties) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _fireEventChunkChanged(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C2.hs_method_2fb08b59((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void _fireEventChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8d7b0cee((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void _fireEventChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d65912e8((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void _fireEventClientLastPackets(nint userId, byte subId, int correlationId, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value lastSentPackets, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value lastReceivedPackets)
+    {
+        NativeMethods.TablePtr->C2.hs_method_37f34c56((void*)__hosihikari_shim_handle, (void*)userId, subId, correlationId, (void*)lastSentPackets.Handle, (void*)lastReceivedPackets.Handle);
+    }
+
+    public void _fireEventClientLeftGameDueToUnrecoverableError(string reason, bool isServer)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_8ef24534((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isServer);
+        }
+    }
+
+    public void _fireEventClientSentOrReceivedPacket(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier netId, int packetId, byte clientSubId, string correlationId, bool isOutgoing)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            NativeMethods.TablePtr->C2.hs_method_d9601204((void*)__hosihikari_shim_handle, (void*)netId.Handle, packetId, clientSubId, __hs_stringData3, (nuint)__hs_stringByteCount3, isOutgoing);
+        }
+    }
+
+    public void _fireEventCloudConflictCheckEdu(string cloudCorrelationId, int conflictStatus)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(cloudCorrelationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cloudCorrelationId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_22f1459a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, conflictStatus);
+        }
+    }
+
+    public void _fireEventCloudMyWorldsSummary(int totalWorldsCount, int placeholderCount, int needsUploadCount, int ctagMismatchCount, int conflictCount)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b0a27973((void*)__hosihikari_shim_handle, totalWorldsCount, placeholderCount, needsUploadCount, ctagMismatchCount, conflictCount);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventCloudOperationEndedEdu(nint operation, nint cloudItemType, nint cloudCorrelationId, nint elapsedTime, nint status, nint size, nint driveItemId, nint errorCode, nint errorMessage, nint error) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventCloudOperationStartedEdu(int operation, int cloudItemType, string cloudCorrelationId, ulong size, string? driveItemId)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(cloudCorrelationId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cloudCorrelationId, __hs_stringBytes2);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(driveItemId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(driveItemId ?? string.Empty, __hs_stringBytes4);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                NativeMethods.TablePtr->C2.hs_method_d16d8b8c((void*)__hosihikari_shim_handle, operation, cloudItemType, __hs_stringData2, (nuint)__hs_stringByteCount2, size, __hs_stringData4, (nuint)__hs_stringByteCount4, driveItemId is not null);
+            }
+        }
+    }
+
+    public void _fireEventCodeBuilderClosed()
+    {
+        NativeMethods.TablePtr->C2.hs_method_75d84e3c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void _fireEventCodeBuilderLog(nint properties, nint message, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public void _fireEventCodeBuilderRuntimeAction(string action)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(action);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_982234dd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventCodeBuilderScoreChanged(string objective, int score)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_a790a90b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, score);
+        }
+    }
+
+    public void _fireEventCompoundCreatorCreated(int compoundId, int count)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d9698621((void*)__hosihikari_shim_handle, compoundId, count);
+    }
+
+    public void _fireEventConnectedStorageError(nint message, string levelId, long quotaRemaining)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_f4aa30c4((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C2.hs_method_59b4e706((void*)__hosihikari_shim_handle, (void*)message, __hs_stringData1, (nuint)__hs_stringByteCount1, quotaRemaining);
+        }
+    }
+
+    public void _fireEventConnectedStorageResult(int eventType, bool succeeded, uint durationMs, uint? chunksSent, string errorMessage, string levelId, long quotaRemaining, uint? filesToAddCount, uint? filesToDeleteCount, uint? HACK_oldFilesToDeleteCount)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes5);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+            {
+                NativeMethods.TablePtr->C2.hs_method_e54cdd1e((void*)__hosihikari_shim_handle, eventType, succeeded, durationMs, chunksSent ?? default(uint), __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, quotaRemaining, filesToAddCount ?? default(uint), filesToDeleteCount ?? default(uint), HACK_oldFilesToDeleteCount ?? default(uint), chunksSent.HasValue, filesToAddCount.HasValue, filesToDeleteCount.HasValue, HACK_oldFilesToDeleteCount.HasValue);
+            }
+        }
+    }
+
+    public void _fireEventContentLogsInWorldSession(string logArea, uint errorCount, uint warningCount)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(logArea);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(logArea, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_497b0962((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, errorCount, warningCount);
+        }
+    }
+
+    public void _fireEventContentShared(string productId, string url, nint mode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_03cf62a6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)mode);
+            }
+        }
+    }
+
+    public void _fireEventControlRemappedByPlayer(string actionName, sbyte inputType, int keyCode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(actionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(actionName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_603145e8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, inputType, keyCode);
+        }
+    }
+
+    public void _fireEventControlTipsPanelUpdated(short updateType, double elapsedTimeSec)
+    {
+        NativeMethods.TablePtr->C2.hs_method_1d875c3a((void*)__hosihikari_shim_handle, updateType, elapsedTimeSec);
+    }
+
+    public void _fireEventCopyWorldEducationEnabled()
+    {
+        NativeMethods.TablePtr->C2.hs_method_3a2a383b((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventCrashSystemFailedToInit()
+    {
+        NativeMethods.TablePtr->C2.hs_method_aac36b25((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventCreatorFollowedUnfollowed(string creatorId, string operation, bool success)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(creatorId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(creatorId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(operation);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(operation, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_2f4cb281((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, success);
+            }
+        }
+    }
+
+    public void _fireEventDBReadFail(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, string reason)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_6000ade1((void*)__hosihikari_shim_handle, (void*)context.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void _fireEventDBStorageSizeSnapshot(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, nint folderWatcher, byte kind)
+    {
+        NativeMethods.TablePtr->C2.hs_method_397b816a((void*)__hosihikari_shim_handle, (void*)context.Handle, (void*)folderWatcher, kind);
+    }
+
+    public void _fireEventDedicatedServerDiscoveryResponse(int retryAttempt, int? errorStatus, string? errorMessage, string? errorCode)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage ?? string.Empty, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode ?? string.Empty, __hs_stringBytes3);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_46600958((void*)__hosihikari_shim_handle, retryAttempt, errorStatus ?? default(int), __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, errorStatus.HasValue, errorMessage is not null, errorCode is not null);
+            }
+        }
+    }
+
+    public void _fireEventDefaultCastSelected(int previewIndex, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID appearanceId, string appearanceName)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(appearanceName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(appearanceName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_32b64035((void*)__hosihikari_shim_handle, previewIndex, (void*)appearanceId.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void _fireEventDefaultGameTypeChanged(int oldGameType, int newGameType)
+    {
+        NativeMethods.TablePtr->C2.hs_method_683c751d((void*)__hosihikari_shim_handle, oldGameType, newGameType);
+    }
+
+    public void _fireEventDevSlashCommandExecuted(string commandName, string command)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(commandName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(commandName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(command);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(command, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_b92083f5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventDeviceAccountFailure(int stage, int phase, uint resultStatus, string accountID)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(accountID);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(accountID, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            NativeMethods.TablePtr->C2.hs_method_907976cc((void*)__hosihikari_shim_handle, stage, phase, resultStatus, __hs_stringData3, (nuint)__hs_stringByteCount3);
+        }
+    }
+
+    public void _fireEventDeviceAccountSuccess(bool isNewAccount, string accountID)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(accountID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(accountID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_24d9d049((void*)__hosihikari_shim_handle, isNewAccount, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void _fireEventDeviceIdManagerFailOnIdentityGained()
+    {
+        NativeMethods.TablePtr->C2.hs_method_cc0cdb4b((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventDeviceLost()
+    {
+        NativeMethods.TablePtr->C2.hs_method_fa6bc0ed((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventDifficultySet(int oldDifficulty, int newDifficulty)
+    {
+        NativeMethods.TablePtr->C2.hs_method_73700a77((void*)__hosihikari_shim_handle, oldDifficulty, newDifficulty);
+    }
+
+    public void _fireEventDimensionTransfer(nint data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_55aa48fc((void*)__hosihikari_shim_handle, (void*)data);
+    }
+
+    public void _fireEventDiskStatus(byte status, int errorCode, ulong freeSpace)
+    {
+        NativeMethods.TablePtr->C2.hs_method_02da568c((void*)__hosihikari_shim_handle, status, errorCode, freeSpace);
+    }
+
+    public void _fireEventDisplayLoggedError(string errorMessageTemplate, string errorMessage, string errorParameters)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessageTemplate);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessageTemplate, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(errorParameters);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorParameters, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_1fcbf140((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireEventDlcStorageFull(string productId, ulong dlcSize, ulong onDiskScratchSpace, ulong scratchSpace, ulong premiumSpace)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_5a2b95da((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, dlcSize, onDiskScratchSpace, scratchSpace, premiumSpace);
+        }
+    }
+
+    public void _fireEventEduContentVerificationFailed()
+    {
+        NativeMethods.TablePtr->C2.hs_method_8a256132((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventEduDemoConversion(byte role, byte lastClickedSource)
+    {
+        NativeMethods.TablePtr->C2.hs_method_851249c0((void*)__hosihikari_shim_handle, role, lastClickedSource);
+    }
+
+    public void _fireEventEduResources()
+    {
+        NativeMethods.TablePtr->C2.hs_method_f8f27db5((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.", false)]
+    public void _fireEventEduServiceStatus(nint serviceName, nint requestName, int durationMS, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.");
+
+    public void _fireEventEduiOSPurchaseTransaction(nint status)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a0e8f589((void*)__hosihikari_shim_handle, (void*)status);
+    }
+
+    public void _fireEventElementConstructorUsed(int atomicNumber, int count, int useType)
+    {
+        NativeMethods.TablePtr->C2.hs_method_90a79db0((void*)__hosihikari_shim_handle, atomicNumber, count, useType);
+    }
+
+    public void _fireEventEmptyLibraryCategoryError(string categoryTitle)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(categoryTitle);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(categoryTitle, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_6a35e590((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventEncyclopediaTopicChanged(string topicName, uint inputMode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(topicName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(topicName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_9ee34859((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, inputMode);
+        }
+    }
+
+    public void _fireEventEntitlementCacheLoadTimeout()
+    {
+        NativeMethods.TablePtr->C2.hs_method_d15d0fb5((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _fireEventEntitlementListInfo(nint entitlementContentIds, bool isLegacyList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _fireEventEntitySpawned(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int mobType, uint spawnMethod)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b2c4b634((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), mobType, spawnMethod);
+    }
+
+    public void _fireEventFatalClientPackError(int errorType, string[] packIds)
+    {
+        var __hs_vectorItems1 = packIds ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount1 = __hs_vectorItems1.Length;
+        var __hs_vectorByteTotal1 = 0;
+        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++) { __hs_vectorByteTotal1 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems1[__hs_i1] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena1;
+        if (__hs_vectorByteTotal1 <= 1024) { __hs_vectorArena1 = stackalloc byte[__hs_vectorByteTotal1 == 0 ? 1 : __hs_vectorByteTotal1]; } else { __hs_vectorArena1 = new byte[__hs_vectorByteTotal1]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews1;
+        if (__hs_vectorCount1 <= 64) { __hs_vectorViews1 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1 == 0 ? 1 : __hs_vectorCount1]; } else { __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1]; }
+        fixed (byte* __hs_vectorArenaPtr1 = __hs_vectorArena1)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
+        {
+            var __hs_vectorOffset1 = 0;
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++)
+            {
+                var __hs_item1 = __hs_vectorItems1[__hs_i1] ?? string.Empty;
+                var __hs_length1 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item1);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item1, __hs_vectorArena1.Slice(__hs_vectorOffset1, __hs_length1));
+                __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
+                __hs_vectorOffset1 += __hs_length1;
+            }
+            NativeMethods.TablePtr->C2.hs_method_f539dd51((void*)__hosihikari_shim_handle, errorType, __hs_vectorData1, (nuint)(packIds?.Length ?? 0));
+        }
+    }
+
+    public void _fireEventFeedbackSubmitted(string feedbackType, string identifier, bool safetyCheckSuccessful, bool isValidText)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(feedbackType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(feedbackType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(identifier, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_850978c5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, safetyCheckSuccessful, isValidText);
+            }
+        }
+    }
+
+    public void _fireEventGameRulesUpdated(bool oldValue, bool newValue, string gameRuleName)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(gameRuleName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(gameRuleName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_c5b639fd((void*)__hosihikari_shim_handle, oldValue, newValue, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void _fireEventGameRulesUpdated(float oldValue, float newValue, string gameRuleName)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(gameRuleName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(gameRuleName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_fedecf71((void*)__hosihikari_shim_handle, oldValue, newValue, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void _fireEventGameRulesUpdated(int oldValue, int newValue, string gameRuleName)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(gameRuleName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(gameRuleName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_70602417((void*)__hosihikari_shim_handle, oldValue, newValue, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void _fireEventGameTip(int gameTipId, int gameTipEventType, int gameTipTestGroup, uint inputMode)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8f0469a8((void*)__hosihikari_shim_handle, gameTipId, gameTipEventType, gameTipTestGroup, inputMode);
+    }
+
+    public void _fireEventGoogleAccountHoldWarning(bool navigatedToSubscription)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c61725a5((void*)__hosihikari_shim_handle, navigatedToSubscription);
+    }
+
+    public void _fireEventHardwareInfo()
+    {
+        NativeMethods.TablePtr->C2.hs_method_d354661a((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventHowToPlayTopicChanged(string topicName, uint inputMode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(topicName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(topicName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_bbaf0719((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, inputMode);
+        }
+    }
+
+    public void _fireEventHttpClientError(string error)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(error);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(error, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_168627dc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventImGuiScreenChanged(nint screenName, nint additionalProperties) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.", false)]
+    public void _fireEventImmersiveReaderStatus(nint status) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.");
+
+    public void _fireEventInGamePause(bool pauseStatus)
+    {
+        NativeMethods.TablePtr->C2.hs_method_184abc02((void*)__hosihikari_shim_handle, pauseStatus);
+    }
+
+    public void _fireEventInboxSummary(nint data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4ed6df49((void*)__hosihikari_shim_handle, (void*)data);
+    }
+
+    public void _fireEventInventoryVersionRefreshRequestResponse(int status, int retryAttempt, bool asyncServicesManager)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f287f743((void*)__hosihikari_shim_handle, status, retryAttempt, asyncServicesManager);
+    }
+
+    public void _fireEventJoinByCode(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_7ff21e7c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventJoinCanceled(int currentState)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b82b00ca((void*)__hosihikari_shim_handle, currentState);
+    }
+
+    public void _fireEventLabTableCreated(int reactionId, int productId, int productAux)
+    {
+        NativeMethods.TablePtr->C2.hs_method_1d3ddf24((void*)__hosihikari_shim_handle, reactionId, productId, productAux);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventLargeFileWriteStall(ulong totalWriteSizeBytes, nint largestFileNames, nint estimatedTotalWriteTime, nint estimatedTotalWaitTime, nint originatingSystem, ulong budgetBytesAtStartOfOperation, bool operationWasCancelled, nint totalWriteTime, nint totalWaitTime, int numberOfFilesWritten, ulong budgetBytesAtEndOfOperation, nint associatedContentIDs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventLevelChunkPerformanceData(bool isClientSide)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d040ab7f((void*)__hosihikari_shim_handle, isClientSide);
+    }
+
+    public void _fireEventLevelDBPerformanceData(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, nint perfData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_026cd64e((void*)__hosihikari_shim_handle, (void*)context.Handle, (void*)perfData);
+    }
+
+    public void _fireEventLevelDatLoadFailed(string reason, string worldID, bool isFatal)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_a4767899((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, isFatal);
+            }
+        }
+    }
+
+    public void _fireEventLevelDataOverride(string valueName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(valueName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(valueName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_45ad62b6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventLevelDestruct()
+    {
+        NativeMethods.TablePtr->C2.hs_method_ac19cb98((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventLibrarySearch(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventLibrarySearchItemSelected(int sessionId, int correlationId, string productId, int row, int column)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_35e3b967((void*)__hosihikari_shim_handle, sessionId, correlationId, __hs_stringData2, (nuint)__hs_stringByteCount2, row, column);
+        }
+    }
+
+    public void _fireEventLicenseCheck(bool isLicensed, nint data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c1d9c627((void*)__hosihikari_shim_handle, isLicensed, (void*)data);
+    }
+
+    public void _fireEventLockedItemGiven()
+    {
+        NativeMethods.TablePtr->C2.hs_method_6c75621c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventLowMemoryDetected(nint writer, nint report) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventMarkLevelForSync(string levelId, long local, long remote, int reason)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_e50b61c8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, local, remote, reason);
+        }
+    }
+
+    public void _fireEventMarketplaceImpressions(string destinationQuery, string destinationPage, nint data)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(destinationQuery);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(destinationQuery, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(destinationPage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(destinationPage, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_b6170615((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)data);
+            }
+        }
+    }
+
+    public void _fireEventMessageReceived(string messageId, string messageSessionId, string Surface, string Template, bool isControl, string instanceId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(messageId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(messageId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(messageSessionId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(messageSessionId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(Surface);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(Surface, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(Template);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(Template, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(instanceId);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(instanceId, __hs_stringBytes5);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                        {
+                            NativeMethods.TablePtr->C2.hs_method_c9708d75((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, isControl, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventMessageServiceImpression(string messageId, string messageSessionId, string Surface, string Template, bool isControl, string instanceId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(messageId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(messageId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(messageSessionId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(messageSessionId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(Surface);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(Surface, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(Template);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(Template, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(instanceId);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(instanceId, __hs_stringBytes5);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                        {
+                            NativeMethods.TablePtr->C2.hs_method_bdd6d957((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, isControl, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventModalShown(nint modalName, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventMultiplayerClientConnectionStateChanged(string connectionType, uint fromState, uint toState, uint port, string status)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(connectionType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(connectionType, __hs_stringBytes0);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(status);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(status, __hs_stringBytes4);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                NativeMethods.TablePtr->C2.hs_method_7c0460d5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, fromState, toState, port, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _fireEventMultiplayerSessionUpdate(nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    public void _fireEventMuteUser(string xuid, bool isSuccess, bool isMuted)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(xuid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(xuid, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_50552d0c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isSuccess, isMuted);
+        }
+    }
+
+    public void _fireEventNPLNLifecycle(int eventType, int multiplayerState, int serviceState)
+    {
+        NativeMethods.TablePtr->C2.hs_method_23c4bb4f((void*)__hosihikari_shim_handle, eventType, multiplayerState, serviceState);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventNPLNRpcFailure(int rpcType, int statusCode, nint clientState, nint serviceState, nint requiredDelay) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventNewContentCheckCompleted(string newContentPrefix, bool hasNewStoreContent)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(newContentPrefix);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(newContentPrefix, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_de68ef06((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, hasNewStoreContent);
+        }
+    }
+
+    public void _fireEventNpcPropertiesUpdated(global::Hosihikari.Bindings.Bedrock.Interop.Actor npcOwner, bool isEditorWorldbuilder)
+    {
+        NativeMethods.TablePtr->C2.hs_method_01f0ae03((void*)__hosihikari_shim_handle, (void*)npcOwner.Handle, isEditorWorldbuilder);
+    }
+
+    public void _fireEventNsaUpgradeResult(int status)
+    {
+        NativeMethods.TablePtr->C2.hs_method_92dadd3e((void*)__hosihikari_shim_handle, status);
+    }
+
+    public void _fireEventOSKErrorEncountered(string failureReason)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(failureReason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failureReason, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_81e94706((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventOnAppResume(nint writer, nint sessionAuthValidUntil) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventOnAppStart(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventOnAppSuspend(nint writer, nint triggersDisconnect, bool reconnectOnResumeEnabled, bool forceDisableEvents) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventOnClientDisconnect(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, byte subId, bool isNetworked, int reason, string titleMessage, string errorMessage, string codeword)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(titleMessage);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(titleMessage, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes5);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(codeword);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(codeword, __hs_stringBytes6);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+            {
+                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_57f1278e((void*)__hosihikari_shim_handle, (void*)id.Handle, subId, isNetworked, reason, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, __hs_stringData6, (nuint)__hs_stringByteCount6);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventOnDeviceLost(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventOnServerAsyncJoinTaskVerdict(nint joinVerdict, byte subId, uint verdictQueueLength)
+    {
+        NativeMethods.TablePtr->C2.hs_method_89685f78((void*)__hosihikari_shim_handle, (void*)joinVerdict, subId, verdictQueueLength);
+    }
+
+    public void _fireEventOnServerDisconnect(int reason, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, byte subId, string reasonContext, ulong clientCount, string firstTimeStamp)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(reasonContext);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reasonContext, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(firstTimeStamp);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(firstTimeStamp, __hs_stringBytes5);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+            {
+                NativeMethods.TablePtr->C2.hs_method_39d662e7((void*)__hosihikari_shim_handle, reason, (void*)id.Handle, subId, __hs_stringData3, (nuint)__hs_stringByteCount3, clientCount, __hs_stringData5, (nuint)__hs_stringByteCount5);
+            }
+        }
+    }
+
+    public void _fireEventOnSuccessfulClientLogin(global::Hosihikari.Bindings.Bedrock.Interop.Level? level)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0b990096((void*)__hosihikari_shim_handle, (void*)(level?.Handle ?? 0));
+    }
+
+    public void _fireEventOnboardingWorldCreationUsage(bool onboardingWorldCreationUsed, bool hasWorlds, bool hasOnlyBaseGamePacks)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3a0a4831((void*)__hosihikari_shim_handle, onboardingWorldCreationUsed, hasWorlds, hasOnlyBaseGamePacks);
+    }
+
+    public void _fireEventOneDSPlayerReportPayload(string reportPayloadJson, string reportID)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reportPayloadJson);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reportPayloadJson, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(reportID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reportID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_93be75d7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventOnlineAudioStreamEnded(nint telemetry)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3f4d21d8((void*)__hosihikari_shim_handle, (void*)telemetry);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventOptionsChanged(nint optionGroup, nint events) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'Social::Events::OptionChange' is not supported.", false)]
+    public void _fireEventOptionsChangedAlt(nint optionGroup, nint changes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'Social::Events::OptionChange' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventOptionsUpdated(bool onStartup, nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventOreUIError(nint userId, string errorType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorType, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_25901759((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventOreUIScreenPerformance(nint userId, nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void _fireEventPUVLoad(nint resourceCategory, nint loadData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void _fireEventPackActivationError(string errorType, string errorDetail, string packAction, string packId, string contentType, bool isFatal)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(errorType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorDetail);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorDetail, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(packAction);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packAction, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(contentType);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(contentType, __hs_stringBytes4);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                        {
+                            NativeMethods.TablePtr->C2.hs_method_31278e7a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, isFatal);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventPackDeleted(string reason, string packId, sbyte packType, byte packLocation, string packOptimizationVersion, long freedBytes, bool succeeded, long remainingBytes)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes1);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(packOptimizationVersion);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packOptimizationVersion, __hs_stringBytes4);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_649a692b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, packType, packLocation, __hs_stringData4, (nuint)__hs_stringByteCount4, freedBytes, succeeded, remainingBytes);
+                }
+            }
+        }
+    }
+
+    public void _fireEventPackImportTimeout(string productId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_b756e153((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventPackPlayed(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance packInstance, uint priority)
+    {
+        NativeMethods.TablePtr->C2.hs_method_986a073c((void*)__hosihikari_shim_handle, (void*)packInstance.Handle, priority);
+    }
+
+    public void _fireEventPacketSerializationMismatch(int packetId, string legacyStream, string cerealStream)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(legacyStream);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(legacyStream, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(cerealStream);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cerealStream, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_a50e263e((void*)__hosihikari_shim_handle, packetId, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    public void _fireEventPacketViolationDetected(ulong readResult, string readResultContext, int violationResponse, int violatingPacketId, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier netId, uint numViolations, byte clientSubId, byte senderSubId, uint packetStreamLength)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(readResultContext);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(readResultContext, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_f2e5d5ef((void*)__hosihikari_shim_handle, readResult, __hs_stringData1, (nuint)__hs_stringByteCount1, violationResponse, violatingPacketId, (void*)netId.Handle, numViolations, clientSubId, senderSubId, packetStreamLength);
+        }
+    }
+
+    public void _fireEventPartyButtonPressed(string buttonName, string partyId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(buttonName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(buttonName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(partyId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(partyId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_ca0e0df1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventPartyPlayFabError(string functionName, string errorMessage, string partyId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(functionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(functionName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(partyId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(partyId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_46579f97((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireEventPartyTravelToastExpired(string travelMode, string partyId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(travelMode);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(travelMode, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(partyId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(partyId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_40130798((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventPerformanceContext(nint writer, nint perfContextReport, bool IsEcoFrameThrottled, int fpsThrottle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventPerformanceMetrics(nint writer, nint profileTelemetry, bool IsEcoFrameThrottled, int fpsThrottle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _fireEventPersonaAvatarUpdated(nint personaProfile, nint newAppearancePieceIds, nint newPieces, nint tintedPieces, bool isNewPersona, bool isBeingDeleted, nint bodySize, nint armSize, nint classicSkinId, bool usesClassicSkin, nint emotesPieceIds, nint emoteSlotNumbers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _fireEventPersonaAvatarsListed(byte[] profileTypesUsed)
+    {
+        fixed (byte* __hs_vectorData0 = profileTypesUsed)
+        {
+            NativeMethods.TablePtr->C2.hs_method_f6dc06f1((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(profileTypesUsed?.Length ?? 0));
+        }
+    }
+
+    public void _fireEventPersonaCategoryInformation(string categoryInformation)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(categoryInformation);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(categoryInformation, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_5b5b2008((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventPersonaCreationFailed(string errorName, string pieceId, bool missingTop, bool missingBottom, string repositoryPieceType, string appearancePieceType)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(errorName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(pieceId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(pieceId, __hs_stringBytes1);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(repositoryPieceType);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(repositoryPieceType, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(appearancePieceType);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(appearancePieceType, __hs_stringBytes5);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                {
+                    fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_1b4bb806((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, missingTop, missingBottom, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventPersonaEmotePlayed(string emoteProductId, bool isEmoteEndedEarly, int emoteSlotId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(emoteProductId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(emoteProductId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_e0239c5a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isEmoteEndedEarly, emoteSlotId);
+        }
+    }
+
+    public void _fireEventPersonaGeneralError(string personaErrorName, uint duplicateErrorsFired)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(personaErrorName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(personaErrorName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_7d513b02((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, duplicateErrorsFired);
+        }
+    }
+
+    public void _fireEventPersonaInitalizationEvent(uint secondsToCompletion, string status, string user)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(status);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(status, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(user);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(user, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_d8cb3190((void*)__hosihikari_shim_handle, secondsToCompletion, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    public void _fireEventPersonaItemPreviewed(byte personaProfile, string itemOfferId, string productId, uint row, uint column, int promotionType, bool isOwned, string creatorId, string creatorName, double secondsToLoadContent, int storeType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(itemOfferId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(itemOfferId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(creatorId);
+        scoped global::System.Span<byte> __hs_stringBytes7;
+        if (__hs_stringByteCount7 <= 256)
+        {
+            __hs_stringBytes7 = stackalloc byte[__hs_stringByteCount7 == 0 ? 1 : __hs_stringByteCount7];
+        }
+        else
+        {
+            __hs_stringBytes7 = new byte[__hs_stringByteCount7];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(creatorId, __hs_stringBytes7);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(creatorName);
+        scoped global::System.Span<byte> __hs_stringBytes8;
+        if (__hs_stringByteCount8 <= 256)
+        {
+            __hs_stringBytes8 = stackalloc byte[__hs_stringByteCount8 == 0 ? 1 : __hs_stringByteCount8];
+        }
+        else
+        {
+            __hs_stringBytes8 = new byte[__hs_stringByteCount8];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(creatorName, __hs_stringBytes8);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData7 = __hs_stringBytes7)
+                {
+                    fixed (byte* __hs_stringData8 = __hs_stringBytes8)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_a890dc5b((void*)__hosihikari_shim_handle, personaProfile, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, row, column, promotionType, isOwned, __hs_stringData7, (nuint)__hs_stringByteCount7, __hs_stringData8, (nuint)__hs_stringByteCount8, secondsToLoadContent, storeType);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventPersonaLoadingPieces(uint piecesLoaded, double timeToLoadInSeconds)
+    {
+        NativeMethods.TablePtr->C2.hs_method_83b9e699((void*)__hosihikari_shim_handle, piecesLoaded, timeToLoadInSeconds);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventPersonaOfferClicked(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventPersonaPiecePackEviction(uint cacheSizeBeforeEviction, uint evictedCount, uint failedCount, uint protectedCount, bool evictionLimitedByBatch, double passDurationInSeconds)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d899afc8((void*)__hosihikari_shim_handle, cacheSizeBeforeEviction, evictedCount, failedCount, protectedCount, evictionLimitedByBatch, passDurationInSeconds);
+    }
+
+    public void _fireEventPersonaSkinChanged(byte personaProfile, string classicSkinId, bool isClassicSkinUsed)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(classicSkinId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(classicSkinId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_93e4b6a4((void*)__hosihikari_shim_handle, personaProfile, __hs_stringData1, (nuint)__hs_stringByteCount1, isClassicSkinUsed);
+        }
+    }
+
+    public void _fireEventPersonaUserLoadedActive(byte personaProfile, string classicSkinId, bool personaUsesClassicSkin)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(classicSkinId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(classicSkinId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_95dfedfb((void*)__hosihikari_shim_handle, personaProfile, __hs_stringData1, (nuint)__hs_stringByteCount1, personaUsesClassicSkin);
+        }
+    }
+
+    public void _fireEventPlatformStorePurchaseFailure(string productId, string errorMessage)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_d364182d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventPlayIntegrityCheck(string result, string appRecognitionVerdict, string deviceIntegrity, string appLicensingVerdict)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(result);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(result, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(appRecognitionVerdict);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(appRecognitionVerdict, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(deviceIntegrity);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deviceIntegrity, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(appLicensingVerdict);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(appLicensingVerdict, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_f9694e9e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventPlayerAttemptingExploit(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int exploitType)
+    {
+        NativeMethods.TablePtr->C2.hs_method_60bc8461((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), exploitType);
+    }
+
+    public void _fireEventPlayerBanned(string bannedPlayer)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(bannedPlayer);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(bannedPlayer, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_08c50aed((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventPlayerBounced(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int bounceHeight)
+    {
+        NativeMethods.TablePtr->C2.hs_method_63b5ba0b((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)block.Handle, bounceHeight);
+    }
+
+    public void _fireEventPlayerDamaged(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int damageCause)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a09c514a((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), damageCause);
+    }
+
+    public void _fireEventPlayerJoinWorld(nint userId, byte subId, bool isLocalServer, bool? isUsingTURN, int JoinState, int attemptId, int failReason, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value failDebugInfo, int transportLayer, int networkTypeOverride, bool isConnectedToApplicationLayer, bool isFilteringProfanity, int multiplayerServiceIdentifier, string titleMessage, string errorMessage, string codeword, string partyId, bool isPartyLeader, bool isPartyDestination, bool isServerTransfer, byte reconnectionType, bool isDueToSuspend, ulong connectionDurationMs, global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo connectionInfo, int editorConnectionJoinIntent)
+    {
+        var __hs_stringByteCount13 = global::System.Text.Encoding.UTF8.GetByteCount(titleMessage);
+        scoped global::System.Span<byte> __hs_stringBytes13;
+        if (__hs_stringByteCount13 <= 256)
+        {
+            __hs_stringBytes13 = stackalloc byte[__hs_stringByteCount13 == 0 ? 1 : __hs_stringByteCount13];
+        }
+        else
+        {
+            __hs_stringBytes13 = new byte[__hs_stringByteCount13];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(titleMessage, __hs_stringBytes13);
+        var __hs_stringByteCount14 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes14;
+        if (__hs_stringByteCount14 <= 256)
+        {
+            __hs_stringBytes14 = stackalloc byte[__hs_stringByteCount14 == 0 ? 1 : __hs_stringByteCount14];
+        }
+        else
+        {
+            __hs_stringBytes14 = new byte[__hs_stringByteCount14];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes14);
+        var __hs_stringByteCount15 = global::System.Text.Encoding.UTF8.GetByteCount(codeword);
+        scoped global::System.Span<byte> __hs_stringBytes15;
+        if (__hs_stringByteCount15 <= 256)
+        {
+            __hs_stringBytes15 = stackalloc byte[__hs_stringByteCount15 == 0 ? 1 : __hs_stringByteCount15];
+        }
+        else
+        {
+            __hs_stringBytes15 = new byte[__hs_stringByteCount15];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(codeword, __hs_stringBytes15);
+        var __hs_stringByteCount16 = global::System.Text.Encoding.UTF8.GetByteCount(partyId);
+        scoped global::System.Span<byte> __hs_stringBytes16;
+        if (__hs_stringByteCount16 <= 256)
+        {
+            __hs_stringBytes16 = stackalloc byte[__hs_stringByteCount16 == 0 ? 1 : __hs_stringByteCount16];
+        }
+        else
+        {
+            __hs_stringBytes16 = new byte[__hs_stringByteCount16];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(partyId, __hs_stringBytes16);
+        fixed (byte* __hs_stringData13 = __hs_stringBytes13)
+        {
+            fixed (byte* __hs_stringData14 = __hs_stringBytes14)
+            {
+                fixed (byte* __hs_stringData15 = __hs_stringBytes15)
+                {
+                    fixed (byte* __hs_stringData16 = __hs_stringBytes16)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_a37cb190((void*)__hosihikari_shim_handle, (void*)userId, subId, isLocalServer, isUsingTURN ?? default(bool), JoinState, attemptId, failReason, (void*)failDebugInfo.Handle, transportLayer, networkTypeOverride, isConnectedToApplicationLayer, isFilteringProfanity, multiplayerServiceIdentifier, __hs_stringData13, (nuint)__hs_stringByteCount13, __hs_stringData14, (nuint)__hs_stringByteCount14, __hs_stringData15, (nuint)__hs_stringByteCount15, __hs_stringData16, (nuint)__hs_stringByteCount16, isPartyLeader, isPartyDestination, isServerTransfer, reconnectionType, isDueToSuspend, connectionDurationMs, (void*)connectionInfo.Handle, editorConnectionJoinIntent, isUsingTURN.HasValue);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventPlayerKicked(string sessionType, string kickedPlayer)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(sessionType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(sessionType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(kickedPlayer);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(kickedPlayer, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_cf588936((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventPlayerMessageChat(string fromName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_1963e2ea((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventPlayerMessageMe(string fromName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_a656cc21((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventPlayerMessageSay(string fromName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_c6d0417b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventPlayerMessageTell(string fromName, string toName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(toName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(toName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_ce0ea7cd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireEventPlayerMessageTitle(string fromName, string toName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(toName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(toName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_dea0f8d6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireEventPlayerReportSent(bool successfulReportSent, string failureSource, string failureReason, string reportID)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(failureSource);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failureSource, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(failureReason);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failureReason, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(reportID);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reportID, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_9ed2d7ff((void*)__hosihikari_shim_handle, successfulReportSent, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                }
+            }
+        }
+    }
+
+    public void _fireEventPlayerTravelled(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, float metersTravelledSinceLastEvent, int newBiome)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0b17c00e((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), metersTravelledSinceLastEvent, newBiome);
+    }
+
+    public void _fireEventPopupClosed(string popupName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(popupName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(popupName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_0c212d05((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventPopupFiredEdu(string dialogType, string experienceId, string title, byte postAction)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dialogType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(dialogType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(experienceId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(experienceId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(title);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(title, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_6a07e82c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, postAction);
+                }
+            }
+        }
+    }
+
+    public void _fireEventPortfolioExported(int imageCount, int captionedCount)
+    {
+        NativeMethods.TablePtr->C2.hs_method_fa3e547b((void*)__hosihikari_shim_handle, imageCount, captionedCount);
+    }
+
+    public void _fireEventProfanityFilter(bool localFilter, bool remoteFilter, bool playerFilter)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b13ca8b4((void*)__hosihikari_shim_handle, localFilter, remoteFilter, playerFilter);
+    }
+
+    public void _fireEventProfileButtonPressed(string entryPoint)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(entryPoint);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(entryPoint, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_1ef239ca((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventProfileImageFetched(string imageType, string fetchOutcome, bool servedFromCache, int httpStatus, uint fetchDurationMs)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(imageType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(imageType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(fetchOutcome);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fetchOutcome, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_d46b39c6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, servedFromCache, httpStatus, fetchDurationMs);
+            }
+        }
+    }
+
+    public void _fireEventProfilerCapture(nint @params)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a63bbdcc((void*)__hosihikari_shim_handle, (void*)@params);
+    }
+
+    public void _fireEventProfilerMetadata(nint @params)
+    {
+        NativeMethods.TablePtr->C2.hs_method_cfeac9a7((void*)__hosihikari_shim_handle, (void*)@params);
+    }
+
+    public void _fireEventProgressionsSet(string[] progressions)
+    {
+        var __hs_vectorItems0 = progressions ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            NativeMethods.TablePtr->C2.hs_method_ce823300((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(progressions?.Length ?? 0));
+        }
+    }
+
+    public void _fireEventPurchaseFailureDetails(int httpCode, string errorMessage, string productId, string transactionId)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(transactionId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(transactionId, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_f08e3ebf((void*)__hosihikari_shim_handle, httpCode, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                }
+            }
+        }
+    }
+
+    public void _fireEventPurchaseGameAttempt(string storeId, string activeTab, string productId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(storeId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(storeId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(activeTab);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(activeTab, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_ccbd8b9a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireEventPurchaseGameResult(int purchaseResult)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0e0bd3e3((void*)__hosihikari_shim_handle, purchaseResult);
+    }
+
+    public void _fireEventPushNotificationOpened(string threadId, string deepLink)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(threadId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(threadId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(deepLink);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deepLink, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_7473bc3e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventPushNotificationReceived(nint msg)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e3651760((void*)__hosihikari_shim_handle, (void*)msg);
+    }
+
+    public void _fireEventQueryPurchasesResult(string storeID, string priorPurchaseIds, int NumberOfPurchases, bool QuerySucceeded)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(storeID);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(storeID, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(priorPurchaseIds);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(priorPurchaseIds, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_29c201b4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, NumberOfPurchases, QuerySucceeded);
+            }
+        }
+    }
+
+    public void _fireEventRealmBackupDownloadFailed(int realmId, string reason, long worldSizeBytes, long availableStorageBytes, string[] packIds)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes1);
+        var __hs_vectorItems4 = packIds ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount4 = __hs_vectorItems4.Length;
+        var __hs_vectorByteTotal4 = 0;
+        for (var __hs_i4 = 0; __hs_i4 < __hs_vectorCount4; __hs_i4++) { __hs_vectorByteTotal4 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems4[__hs_i4] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena4;
+        if (__hs_vectorByteTotal4 <= 1024) { __hs_vectorArena4 = stackalloc byte[__hs_vectorByteTotal4 == 0 ? 1 : __hs_vectorByteTotal4]; } else { __hs_vectorArena4 = new byte[__hs_vectorByteTotal4]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews4;
+        if (__hs_vectorCount4 <= 64) { __hs_vectorViews4 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount4 == 0 ? 1 : __hs_vectorCount4]; } else { __hs_vectorViews4 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount4]; }
+        fixed (byte* __hs_vectorArenaPtr4 = __hs_vectorArena4)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData4 = __hs_vectorViews4)
+        {
+            var __hs_vectorOffset4 = 0;
+            for (var __hs_i4 = 0; __hs_i4 < __hs_vectorCount4; __hs_i4++)
+            {
+                var __hs_item4 = __hs_vectorItems4[__hs_i4] ?? string.Empty;
+                var __hs_length4 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item4);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item4, __hs_vectorArena4.Slice(__hs_vectorOffset4, __hs_length4));
+                __hs_vectorData4[__hs_i4] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr4 + __hs_vectorOffset4, Size = (nuint)__hs_length4 };
+                __hs_vectorOffset4 += __hs_length4;
+            }
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_87016529((void*)__hosihikari_shim_handle, realmId, __hs_stringData1, (nuint)__hs_stringByteCount1, worldSizeBytes, availableStorageBytes, __hs_vectorData4, (nuint)(packIds?.Length ?? 0));
+            }
+        }
+    }
+
+    public void _fireEventRealmDownload(string correlationId, string downloadStage, int errorCode, int realmId, int fileSizeKB)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(downloadStage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(downloadStage, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_c6f3b50b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, errorCode, realmId, fileSizeKB);
+            }
+        }
+    }
+
+    public void _fireEventRealmMemberlistCleared(nint worldId, nint numberOfUsersRemoved)
+    {
+        NativeMethods.TablePtr->C2.hs_method_12546eaa((void*)__hosihikari_shim_handle, (void*)worldId, (void*)numberOfUsersRemoved);
+    }
+
+    public void _fireEventRealmShared(string url, nint mode, nint worldId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_b0b0f8ab((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)mode, (void*)worldId);
+        }
+    }
+
+    public void _fireEventRealmUpload(string correlationId, string uploadStage, int errorCode, int realmId, int fileSizeKB, bool isPack)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(uploadStage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uploadStage, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_a502e252((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, errorCode, realmId, fileSizeKB, isPack);
+            }
+        }
+    }
+
+    public void _fireEventRealmUrlGenerated(string url, nint worldId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_dffb0ad1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)worldId);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.", false)]
+    public void _fireEventRealmsGeneralCall(nint callName, nint returnCode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.");
+
+    public void _fireEventRealmsPackUpload(int realmId, int slotIndex, string packId, string packVersion, sbyte packType, string packClassification, string packOptimizationVersion, bool hasContentIdentity, bool isPremium, byte packOrigin, int stackPosition, ulong packSizeBytes)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(packVersion);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packVersion, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(packClassification);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packClassification, __hs_stringBytes5);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(packOptimizationVersion);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packOptimizationVersion, __hs_stringBytes6);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                {
+                    fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_750058ec((void*)__hosihikari_shim_handle, realmId, slotIndex, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, packType, __hs_stringData5, (nuint)__hs_stringByteCount5, __hs_stringData6, (nuint)__hs_stringByteCount6, hasContentIdentity, isPremium, packOrigin, stackPosition, packSizeBytes);
+                    }
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.", false)]
+    public void _fireEventRealmsRealmSpecificCall(nint callName, long realmId, nint returnCode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.");
+
+    public void _fireEventRealmsStoriesOptIn(string correlationId, string action, string realmId, bool isOwner)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(action);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(realmId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(realmId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_bbe2b5c2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, isOwner);
+                }
+            }
+        }
+    }
+
+    public void _fireEventReceivedApplicationExitInfo(string description, int reasonCode, int exitCode, int importanceCode, long residentSetSize, long proportionalSetSize, string sessionId, bool deviceSupportsReasonLowMem)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes0);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(sessionId);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(sessionId, __hs_stringBytes6);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+            {
+                NativeMethods.TablePtr->C2.hs_method_8ea5291e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reasonCode, exitCode, importanceCode, residentSetSize, proportionalSetSize, __hs_stringData6, (nuint)__hs_stringByteCount6, deviceSupportsReasonLowMem);
+            }
+        }
+    }
+
+    public void _fireEventReceivedUniqueLauncherSessionId(string launcherSessionId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(launcherSessionId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(launcherSessionId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_7a823f52((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventReceivedUniqueWebSessionId(string webSessionId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(webSessionId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(webSessionId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_54fff48b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventReducerBlockEntered(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
+    {
+        NativeMethods.TablePtr->C2.hs_method_831ac1aa((void*)__hosihikari_shim_handle, (void*)item.Handle);
+    }
+
+    public void _fireEventRemoteDesktop(bool isRemoteDesktop)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c19388cc((void*)__hosihikari_shim_handle, isRemoteDesktop);
+    }
+
+    public void _fireEventRenderingSizeChanged()
+    {
+        NativeMethods.TablePtr->C2.hs_method_94f61bab((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventResourceProcessingPerf(nint data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9129436a((void*)__hosihikari_shim_handle, (void*)data);
+    }
+
+    public void _fireEventRespawn(global::Hosihikari.Bindings.Bedrock.Interop.Player player, int dimID)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8c7b2621((void*)__hosihikari_shim_handle, (void*)player.Handle, dimID);
+    }
+
+    public void _fireEventRespondedToAcceptContent(global::Hosihikari.Bindings.Bedrock.Interop.PacksInfoData data, bool accepted, bool downloadOptionalResourcePacks)
+    {
+        NativeMethods.TablePtr->C2.hs_method_369735dd((void*)__hosihikari_shim_handle, (void*)data.Handle, accepted, downloadOptionalResourcePacks);
+    }
+
+    public void _fireEventSafetyHTTPRequest(string method, string url, int responseCode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(method);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(method, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_7036a81f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, responseCode);
+            }
+        }
+    }
+
+    public void _fireEventSaveDataExpansion(ulong preExpansionSize, ulong postExpansionSize, ulong levelUsedSize)
+    {
+        NativeMethods.TablePtr->C2.hs_method_1c37edca((void*)__hosihikari_shim_handle, preExpansionSize, postExpansionSize, levelUsedSize);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventScreenChanged(nint userId, nint screenName, nint additionalProperties) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventScriptDebuggerConnect(bool client, bool autoAttach, int retries)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4f34a501((void*)__hosihikari_shim_handle, client, autoAttach, retries);
+    }
+
+    public void _fireEventScriptDebuggerListen(bool client, bool autoAttach)
+    {
+        NativeMethods.TablePtr->C2.hs_method_176f8ef6((void*)__hosihikari_shim_handle, client, autoAttach);
+    }
+
+    public void _fireEventScriptPluginDiscovery(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginResult pluginResult, bool client)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9e689608((void*)__hosihikari_shim_handle, (void*)pluginResult.Handle, client);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventScriptPluginRun(nint pluginResult, nint runDuration, bool client) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventSearchCatalogRequest(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventSearchItemSelected(int correlationId, int sessionId, string productId, int row, int column, int currentPage, string searchType)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(searchType);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(searchType, __hs_stringBytes6);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+            {
+                NativeMethods.TablePtr->C2.hs_method_4c5bce5c((void*)__hosihikari_shim_handle, correlationId, sessionId, __hs_stringData2, (nuint)__hs_stringByteCount2, row, column, currentPage, __hs_stringData6, (nuint)__hs_stringByteCount6);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventServerDrivenLayoutImagesLoaded(nint writer, nint pageID, nint imageTelemetryInfo) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventServerDrivenLayoutPageLoaded(nint writer, nint pageID, int requestSize, int responseSize, int rowCount, int itemCount, int imageCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventServerInitializationFailed(string failReason, bool serverLevelExists, bool serverNetworkHandlerValid)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(failReason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failReason, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_749524df((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, serverLevelExists, serverNetworkHandlerValid);
+        }
+    }
+
+    public void _fireEventServerPlayerJoinedGame(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, byte subId, string firstConnectionTime)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(firstConnectionTime);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(firstConnectionTime, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ee0539c2((void*)__hosihikari_shim_handle, (void*)id.Handle, subId, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void _fireEventServerReceivedValidPacket(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier netId, int packetId, byte clientSubId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ef93273c((void*)__hosihikari_shim_handle, (void*)netId.Handle, packetId, clientSubId);
+    }
+
+    public void _fireEventServerRespawnSearchTime(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.PlayerRespawnTelemetryData data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_862ffbc9((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)data.Handle);
+    }
+
+    public void _fireEventServerShutdownDueToError(string reason)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_1ca028ee((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventSetValidForAchievements(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, bool currentlyValidForAchievements)
+    {
+        NativeMethods.TablePtr->C2.hs_method_858ab10e((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), currentlyValidForAchievements);
+    }
+
+    public void _fireEventSidebarNavigation(nint userId, string layoutType, string telemetryId, int depthLevel, bool isSelected, bool areChildrenVisible, bool hasChildren)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(layoutType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(layoutType, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(telemetryId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(telemetryId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_5641d6c6((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, depthLevel, isSelected, areChildrenVisible, hasChildren);
+            }
+        }
+    }
+
+    public void _fireEventSidebarVerboseToggled(nint userId, string layoutType, string verboseNavigationType, bool verboseState)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(layoutType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(layoutType, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(verboseNavigationType);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(verboseNavigationType, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_0a194f62((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, verboseState);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _fireEventSignInEdu(nint role, nint stage, nint tenantType, nint error, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _fireEventSignInToIdentity(int accountType, int trigger, string signInSource, bool signInUIShown, int stage, int result, int retryCount, global::Hosihikari.Bindings.Bedrock.Interop.Social.PlayerIDs ids, string errorCode)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(signInSource);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(signInSource, __hs_stringBytes2);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode);
+        scoped global::System.Span<byte> __hs_stringBytes8;
+        if (__hs_stringByteCount8 <= 256)
+        {
+            __hs_stringBytes8 = stackalloc byte[__hs_stringByteCount8 == 0 ? 1 : __hs_stringByteCount8];
+        }
+        else
+        {
+            __hs_stringBytes8 = new byte[__hs_stringByteCount8];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode, __hs_stringBytes8);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData8 = __hs_stringBytes8)
+            {
+                NativeMethods.TablePtr->C2.hs_method_f1ef4ba2((void*)__hosihikari_shim_handle, accountType, trigger, __hs_stringData2, (nuint)__hs_stringByteCount2, signInUIShown, stage, result, retryCount, (void*)ids.Handle, __hs_stringData8, (nuint)__hs_stringByteCount8);
+            }
+        }
+    }
+
+    public void _fireEventSignOutEdu(byte role, string tenantType, string action, string error)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(tenantType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tenantType, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(action);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(error);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(error, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_c02516b3((void*)__hosihikari_shim_handle, role, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                }
+            }
+        }
+    }
+
+    public void _fireEventSignOutOfIdentity(int accountType, int trigger, string accountId, string errorCode)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(accountId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(accountId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode, __hs_stringBytes3);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_1537e7d6((void*)__hosihikari_shim_handle, accountType, trigger, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+            }
+        }
+    }
+
+    public void _fireEventSignalMessagePerformance(string signinId, nint messagePerformanceEvent)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(signinId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(signinId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_bdfa826c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)messagePerformanceEvent);
+        }
+    }
+
+    public void _fireEventSignalServiceConnect(int stage, bool bIsSigningInAsHost, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value stageProperties, string signinId, string correlationId)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(signinId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(signinId, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes4);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                NativeMethods.TablePtr->C2.hs_method_bf34e2ac((void*)__hosihikari_shim_handle, stage, bIsSigningInAsHost, (void*)stageProperties.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            }
+        }
+    }
+
+    public void _fireEventSplitScreenUpdated(nint data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5879f3b8((void*)__hosihikari_shim_handle, (void*)data);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const PackInstance' is not supported.", false)]
+    public void _fireEventStackLoaded(nint stats, nint packInstances) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const PackInstance' is not supported.");
+
+    public void _fireEventStartClient(string ipAddress, bool isTextToSpeechEnabled)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(ipAddress);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(ipAddress, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_27d36907((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isTextToSpeechEnabled);
+        }
+    }
+
+    public void _fireEventStartWorld(int networkType, string ipAddress, int friendWorldType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(ipAddress);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(ipAddress, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_97312e47((void*)__hosihikari_shim_handle, networkType, __hs_stringData1, (nuint)__hs_stringByteCount1, friendWorldType);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventStartupPerformance(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventStorage(int state, string extra)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(extra);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(extra, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_18fb8ae3((void*)__hosihikari_shim_handle, state, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Bedrock::DirectoryEntry' is not supported.", false)]
+    public void _fireEventStorageAreaFull(nint areaPath, nint diskSizeData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Bedrock::DirectoryEntry' is not supported.");
+
+    public void _fireEventStorageReport(string report)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(report);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(report, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_33fb5ab7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventStoreDiscoveryRequestResponse(int retryAttempt, int? errorStatus, string? errorMessage, string? errorCode)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage ?? string.Empty, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode ?? string.Empty, __hs_stringBytes3);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_2eda6997((void*)__hosihikari_shim_handle, retryAttempt, errorStatus ?? default(int), __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, errorStatus.HasValue, errorMessage is not null, errorCode is not null);
+            }
+        }
+    }
+
+    public void _fireEventStoreErrorPage(string errorCode, string pageId, string discoveryServiceTitleId, string playFabTitleId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(pageId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(pageId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(discoveryServiceTitleId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(discoveryServiceTitleId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(playFabTitleId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(playFabTitleId, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_f0f6b8e7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventStoreInventoryRefreshRequestResponse(int status, int retryAttempt, bool asyncServicesManager)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d6bba09e((void*)__hosihikari_shim_handle, status, retryAttempt, asyncServicesManager);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventStoreOfferClicked(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventStoreOfferClicked(string telemetryId, string productId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(telemetryId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(telemetryId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_79c3ffb6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventStoreSearch(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventStoreSessionResponse(string responseType, int status, int retryCount, bool asyncServicesManager)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(responseType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(responseType, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_50d22f37((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, status, retryCount, asyncServicesManager);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventStructureExport(nint writer, nint outcome, nint stage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireEventSwitchAccountEdu(byte role, string tenantType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(tenantType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tenantType, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_4e85168a((void*)__hosihikari_shim_handle, role, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void _fireEventTagButtonPressed(string tag, bool showMore)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(tag);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_4e9dc55c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, showMore);
+        }
+    }
+
+    public void _fireEventTextProcessorStartupFailed(string stage, int retryCount, int maxRetryCount)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(stage);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(stage, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ba2ea736((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, retryCount, maxRetryCount);
+        }
+    }
+
+    public void _fireEventTotalDlcSizes(ulong resourceSize, ulong worldTemplateSize)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9e5e3d57((void*)__hosihikari_shim_handle, resourceSize, worldTemplateSize);
+    }
+
+    public void _fireEventTrackDeeplinks(string deeplinkDestination, string deeplinkSource, string educationReferrerId, string educationReferrerType)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(deeplinkDestination);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deeplinkDestination, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(deeplinkSource);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deeplinkSource, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(educationReferrerId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationReferrerId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(educationReferrerType);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationReferrerType, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_9efce2a4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventTreatmentPackApplied(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7fb051fb((void*)__hosihikari_shim_handle, (void*)manifest.Handle);
+    }
+
+    public void _fireEventTreatmentPackDownloadFailed(string productId, string packId, string versionNumber, string requiredTreatmentTag)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(versionNumber);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(versionNumber, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(requiredTreatmentTag);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(requiredTreatmentTag, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_f1f8d801((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventTreatmentPackDownloaded(string productId, string packId, string versionNumber, string requiredTreatmentTag)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(versionNumber);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(versionNumber, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(requiredTreatmentTag);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(requiredTreatmentTag, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_3455bcc6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireEventTreatmentPackRemoved(string packId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_79286646((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireEventTreatmentsCleared()
+    {
+        NativeMethods.TablePtr->C2.hs_method_43f9bafe((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireEventTreatmentsSet(string[] treatments, string treatmentContext)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(treatmentContext);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(treatmentContext, __hs_stringBytes1);
+        var __hs_vectorItems0 = treatments ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_bb06c61f((void*)__hosihikari_shim_handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_vectorData0, (nuint)(treatments?.Length ?? 0));
+            }
+        }
+    }
+
+    public void _fireEventTrialDeviceIdCorrelation(long myTime, string theirId, long theirTime, string theirLastSessionId)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(theirId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(theirId, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(theirLastSessionId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(theirLastSessionId, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_daa3083a((void*)__hosihikari_shim_handle, myTime, __hs_stringData1, (nuint)__hs_stringByteCount1, theirTime, __hs_stringData3, (nuint)__hs_stringByteCount3);
+            }
+        }
+    }
+
+    public void _fireEventTrialStatusFailed(int errorCode)
+    {
+        NativeMethods.TablePtr->C2.hs_method_835de664((void*)__hosihikari_shim_handle, errorCode);
+    }
+
+    public void _fireEventUgcAcquisitionStateChanged(string ugcProductId, ulong downloadSize, double elapsedTime, bool isUpdate, int retries, bool silent, int numContentTrackers, string result, string resultDetails, int httpStatus, int errorCode, bool optimizedPack)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(ugcProductId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(ugcProductId, __hs_stringBytes0);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(result);
+        scoped global::System.Span<byte> __hs_stringBytes7;
+        if (__hs_stringByteCount7 <= 256)
+        {
+            __hs_stringBytes7 = stackalloc byte[__hs_stringByteCount7 == 0 ? 1 : __hs_stringByteCount7];
+        }
+        else
+        {
+            __hs_stringBytes7 = new byte[__hs_stringByteCount7];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(result, __hs_stringBytes7);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(resultDetails);
+        scoped global::System.Span<byte> __hs_stringBytes8;
+        if (__hs_stringByteCount8 <= 256)
+        {
+            __hs_stringBytes8 = stackalloc byte[__hs_stringByteCount8 == 0 ? 1 : __hs_stringByteCount8];
+        }
+        else
+        {
+            __hs_stringBytes8 = new byte[__hs_stringByteCount8];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(resultDetails, __hs_stringBytes8);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData7 = __hs_stringBytes7)
+            {
+                fixed (byte* __hs_stringData8 = __hs_stringBytes8)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_a56b797f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, downloadSize, elapsedTime, isUpdate, retries, silent, numContentTrackers, __hs_stringData7, (nuint)__hs_stringByteCount7, __hs_stringData8, (nuint)__hs_stringByteCount8, httpStatus, errorCode, optimizedPack);
+                }
+            }
+        }
+    }
+
+    public void _fireEventUnknownBlockReceived(global::Hosihikari.Bindings.Bedrock.Interop.NewBlockID blockId, ushort data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_694298b6((void*)__hosihikari_shim_handle, (void*)blockId.Handle, data);
+    }
+
+    public void _fireEventUriActivation(string activationIdentifier, string activationParameters)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(activationIdentifier);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(activationIdentifier, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(activationParameters);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(activationParameters, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_9f13fa81((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventUserListUpdated(string productId, string listId, string operation, bool success)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(listId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(listId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(operation);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(operation, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_8fba2b93((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, success);
+                }
+            }
+        }
+    }
+
+    public void _fireEventUwpToGdkMigrationComplete(nint deviceIdContext, string gdkDeviceId, string migrationErrors)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(gdkDeviceId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(gdkDeviceId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(migrationErrors);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(migrationErrors, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_77ba913c((void*)__hosihikari_shim_handle, (void*)deviceIdContext, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    public void _fireEventVideoPlayed(string productId, string videoUrl)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(videoUrl);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(videoUrl, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_a55942bb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _fireEventWebviewDownload(string downloadState, nint downloadInfo)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(downloadState);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(downloadState, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_21f554d0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)downloadInfo);
+        }
+    }
+
+    public void _fireEventWorldCopy(ulong worldSize, ulong filesSum, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 worldSeed)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e9ea74e3((void*)__hosihikari_shim_handle, worldSize, filesSum, (void*)worldSeed.Handle);
+    }
+
+    public void _fireEventWorldCorruptionCausedWorldShutdown(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, string reason, bool? isOutOfDiskSpace)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_c1dc3e52((void*)__hosihikari_shim_handle, (void*)context.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, isOutOfDiskSpace ?? default(bool), isOutOfDiskSpace.HasValue);
+        }
+    }
+
+    public void _fireEventWorldExported(long worldSeed, ulong worldSize)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0cbcf9b0((void*)__hosihikari_shim_handle, worldSeed, worldSize);
+    }
+
+    public void _fireEventWorldFilesListed(ulong numLevels, ulong totalSizeMB, ulong largestLevelMB, ulong smallestLevelMB)
+    {
+        NativeMethods.TablePtr->C2.hs_method_43fe2926((void*)__hosihikari_shim_handle, numLevels, totalSizeMB, largestLevelMB, smallestLevelMB);
+    }
+
+    public void _fireEventWorldGenerated(string levelId, global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings levelSettings, bool fromTemplate)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_9d0f4766((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)levelSettings.Handle, fromTemplate);
+        }
+    }
+
+    public void _fireEventWorldHistoryPackSourceMissingDuringUpgrade(string worldPath, string levelId, string deletionCandidate)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(worldPath);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldPath, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(deletionCandidate);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deletionCandidate, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_4784cdf8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireEventWorldImported(long worldSeed, ulong worldSize)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ba17423c((void*)__hosihikari_shim_handle, worldSeed, worldSize);
+    }
+
+    public void _fireEventWorldImportedResult(int importResult)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d2d15bce((void*)__hosihikari_shim_handle, importResult);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public void _fireEventWorldLoadTimes(nint calledFromScreen, nint progressHandlerLoadTimes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventWorldLoaded(nint player, nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.", false)]
+    public void _fireEventWorldLoadedClassroomCustomization(nint customization, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventWriteBudgetLow(ulong remainingWriteBudget, float writeRateMBPerMin, float writeCountPerMin, nint timeSinceLastLargeFileTransactionCompleted, bool anyLargeFileTransactionInProgress, nint correlationId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireEventWriteBudgetReplenished(nint throttledTime, ulong lowestWriteBudget, nint lowestSystemThrottlingPerSec, nint timeSinceLastLargeFileTransactionCompleted, bool anyLargeFileTransactionInProgress, nint correlationId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireExternalUriLaunched(string uri)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uri);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uri, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_b78b781f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireGlobalResourcePackCrashRecovery(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance packInstance, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID recoveryID, int order)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4d00c338((void*)__hosihikari_shim_handle, (void*)packInstance.Handle, (void*)recoveryID.Handle, order);
+    }
+
+    public void _fireIDESelected(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_48bc07a4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource>' is not a known bindable declaration.", false)]
+    public void _fireIgnoredNotificationsEvent(nint notificationType, int notificationCount, nint notificationSources) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource>' is not a known bindable declaration.");
+
+    public void _fireInAppCodeBuilderActivated(int method, string ideName, string educationCreatorID, string educationCreatorWorldID)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(ideName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(ideName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(educationCreatorID);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationCreatorID, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(educationCreatorWorldID);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationCreatorWorldID, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_1513d8f8((void*)__hosihikari_shim_handle, method, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                }
+            }
+        }
+    }
+
+    public void _fireInAppCodeBuilderDismissed(string ideName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(ideName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(ideName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_1c1f6e54((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireInviteStatusReceived(string id)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(id);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ff3a59f6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public void _fireInviteStatusSentImpl(uint userId, nint invitationIds) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    public void _fireLessonActionTaken(string lessonTitle, string lessonId, string courseId, int buttonAction, int score)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(lessonTitle);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lessonTitle, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(lessonId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lessonId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(courseId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(courseId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_105c190c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, buttonAction, score);
+                }
+            }
+        }
+    }
+
+    public void _fireLessonCompleteDialogOpened(int entryPoint)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6e2206a5((void*)__hosihikari_shim_handle, entryPoint);
+    }
+
+    public void _fireLessonProgressEvent(string lessonTitle, string lessonId, string courseId, string activityId, string action, string educationCreatorID, string educationCreatorWorldID, int score)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(lessonTitle);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lessonTitle, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(lessonId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lessonId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(courseId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(courseId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(activityId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(activityId, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(action);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(educationCreatorID);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationCreatorID, __hs_stringBytes5);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(educationCreatorWorldID);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationCreatorWorldID, __hs_stringBytes6);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                        {
+                            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                            {
+                                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                                {
+                                    NativeMethods.TablePtr->C2.hs_method_0069ad52((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, __hs_stringData6, (nuint)__hs_stringByteCount6, score);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void _fireLibraryButtonPressed(string productId, string worldName, string buttonAction)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(buttonAction);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(buttonAction, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_3e04600d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void _fireMinecraftVersionInviteAccepted(bool launchedLegacy, ulong inviteGameOwner)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d239a795((void*)__hosihikari_shim_handle, launchedLegacy, inviteGameOwner);
+    }
+
+    public void _fireMinecraftVersionLaunched(bool launchedLegacy)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9ac14518((void*)__hosihikari_shim_handle, launchedLegacy);
+    }
+
+    public void _fireNetworkChangedEvent(string networkConnectionType)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(networkConnectionType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(networkConnectionType, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ca6ca156((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _firePackSettingsEvent(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string serializedPackSettings, int subpackIndex, string subpackName, int subpackCount)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(serializedPackSettings);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(serializedPackSettings, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(subpackName);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(subpackName, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_da236e53((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, subpackIndex, __hs_stringData3, (nuint)__hs_stringByteCount3, subpackCount);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _firePerfTestEvent(nint testArtifact, nint modelName, nint renderSize, uint renderDistance, uint simDistance, nint memorySize, nint testArtifactData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _firePermissionsSetEvent(sbyte prevPlayerPermissionLevel, byte prevCommandPermissionLevel, sbyte playerPermissionLevel, byte commandPermissionLevel)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d03ee944((void*)__hosihikari_shim_handle, prevPlayerPermissionLevel, prevCommandPermissionLevel, playerPermissionLevel, commandPermissionLevel);
+    }
+
+    public void _firePlayerAccountMetadata(global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult multiPlayerAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult chatAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult addFriendAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult ugcAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult clubsAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult viewProfilesAllowed, bool isChildAccount, bool isGuest)
+    {
+        NativeMethods.TablePtr->C2.hs_method_94a4dcd4((void*)__hosihikari_shim_handle, (void*)multiPlayerAllowed.Handle, (void*)chatAllowed.Handle, (void*)addFriendAllowed.Handle, (void*)ugcAllowed.Handle, (void*)clubsAllowed.Handle, (void*)viewProfilesAllowed.Handle, isChildAccount, isGuest);
+    }
+
+    public void _firePlayerUnexpectedFallDamage(float fallDistance, bool isVehicle, float divergenceAmount)
+    {
+        NativeMethods.TablePtr->C2.hs_method_77d9ed45((void*)__hosihikari_shim_handle, fallDistance, isVehicle, divergenceAmount);
+    }
+
+    public void _fireQueryOfferResult(string storeID, int NumberOfOffers, bool QuerySucceeded)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(storeID);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(storeID, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_1b68e99a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, NumberOfOffers, QuerySucceeded);
+        }
+    }
+
+    public void _fireQuickPlayEvent()
+    {
+        NativeMethods.TablePtr->C2.hs_method_203cf2b1((void*)__hosihikari_shim_handle);
+    }
+
+    public void _fireRealmConnectionEventGenericLambdaCalled(int realmConnectionFlow, int realmConnectionLambda, int realmConnectionResult)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f93c2868((void*)__hosihikari_shim_handle, realmConnectionFlow, realmConnectionLambda, realmConnectionResult);
+    }
+
+    public void _fireRealmConnectionEventRealmAPIRequest(int realmConnectionFlow)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0e305f2c((void*)__hosihikari_shim_handle, realmConnectionFlow);
+    }
+
+    public void _fireRealmConnectionEventRealmAPIResponse(int realmConnectionFlow, int responseCode)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a509085c((void*)__hosihikari_shim_handle, realmConnectionFlow, responseCode);
+    }
+
+    public void _fireRealmConnectionEventStart(int realmConnectionFlow)
+    {
+        NativeMethods.TablePtr->C2.hs_method_569687f4((void*)__hosihikari_shim_handle, realmConnectionFlow);
+    }
+
+    public void _fireSafetyServiceTextProcessEvent(string authorId, int eventOrigin, ushort responseCode, string message, bool wasFlagged, double responseTime, sbyte risk, sbyte trustLevel, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value events, bool isProcessorOffline, bool isCachedResponse)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(authorId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(authorId, __hs_stringBytes0);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_b74440dc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, eventOrigin, responseCode, __hs_stringData3, (nuint)__hs_stringByteCount3, wasFlagged, responseTime, risk, trustLevel, (void*)events.Handle, isProcessorOffline, isCachedResponse);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireScreenLoadTimeUpdateEvent(nint userId, nint screenName, nint duration, nint loadInstanceId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireServerConnectionAttemptEvent(string creatorName, bool isTransfer, string serverAddress)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(creatorName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(creatorName, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(serverAddress);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(serverAddress, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_99bb8fd9((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isTransfer, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireServerConnectionEvent(nint outcome, nint pingLatency, double timeElapsed, nint creatorName, nint worldId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireServerShutdown()
+    {
+        NativeMethods.TablePtr->C2.hs_method_81bb720e((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireServerStarted(nint serverTelemetryData, nint propertiesChanged) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireShareButtonPressed(string location, int shareType, int methodType, bool includesResource)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(location);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(location, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_f0be9efd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, shareType, methodType, includesResource);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireStorageMigrationEvent(bool isSuccessful, nint migrationType, int numFilesMigrated, int numFilesTotal, double migratedMB, double totalMB, nint duration, nint failureReason, nint failureFolder) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireStructureBlockAction(int structureBlockActionType, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData structureEditorData, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? telemetryClientData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c6e63307((void*)__hosihikari_shim_handle, structureBlockActionType, (void*)structureEditorData.Handle, (void*)(telemetryClientData?.Handle ?? 0));
+    }
+
+    public void _fireStructureBlockRedstoneActivated(int structureBlockActionType, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData structureEditorData, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? telemetryClientData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6d92a9c9((void*)__hosihikari_shim_handle, structureBlockActionType, (void*)structureEditorData.Handle, (void*)(telemetryClientData?.Handle ?? 0));
+    }
+
+    public void _fireTextToSpeechToggled(bool uiTTS, bool chatTTS)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6c907858((void*)__hosihikari_shim_handle, uiTTS, chatTTS);
+    }
+
+    public void _fireTextureStreamingPerf(nint perfData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_88fbd4f9((void*)__hosihikari_shim_handle, (void*)perfData);
+    }
+
+    public void _fireUserGeneratedUriLaunchFailed(int source, int reasonCode, string additionalData)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(additionalData);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(additionalData, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_1c3e9339((void*)__hosihikari_shim_handle, source, reasonCode, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void _fireUserGeneratedUriLaunched(int source)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4b84bea6((void*)__hosihikari_shim_handle, source);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _fireWorldConversionAttemptEvent(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _fireWorldConversionInitiatedEvent(string converterVersion)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(converterVersion);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(converterVersion, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_be1810b4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _fireWorldRecoveryTelemetryEvent(nint data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f665b873((void*)__hosihikari_shim_handle, (void*)data);
+    }
+
+    public void _fireWorldUpgradedToCnCPart2(bool willUpgrade, string baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments, string lastOpenedVersion, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 worldSeed, float worldSizeMB)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(baseGameVersion);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(baseGameVersion, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(lastOpenedVersion);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lastOpenedVersion, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_6b5e414e((void*)__hosihikari_shim_handle, willUpgrade, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)experiments.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)worldSeed.Handle, worldSizeMB);
+            }
+        }
+    }
+
+    public void _flagEventDeepLink()
+    {
+        NativeMethods.TablePtr->C2.hs_method_1e841ec0((void*)__hosihikari_shim_handle);
+    }
+
+    public void _flagEventPlayerGameTypeDefault(bool isDefault)
+    {
+        NativeMethods.TablePtr->C2.hs_method_70908f62((void*)__hosihikari_shim_handle, isDefault);
+    }
+
+    public void _forceSendEvents()
+    {
+        NativeMethods.TablePtr->C2.hs_method_a7a1160b((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _getAchievementsAlwaysEnabled()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_5f5eb23b((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::CrashTelemetryProcessor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getCrashTelemetryProcessor() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::CrashTelemetryProcessor *>' requires --link-carrier or --virtual-dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.EventManager _getEventManager()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.EventManager((nint)NativeMethods.TablePtr->C2.hs_method_b713d430((void*)__hosihikari_shim_handle), false);
+    }
+
+    public string _getExperienceId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_39e53d60((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getExperienceSessionId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_9eb14c43((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getPlayerSessionId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_a788910d((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public uint _getPrimaryLocalUserId()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_57e61968((void*)__hosihikari_shim_handle);
+    }
+
+    public nint _getPurchaseEventing()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_337e1197((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getSessionId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_178e826d((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public bool _getShouldHaveAchievementsEnabled()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_94af10ee((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public string _getUserUID(ulong type, string primaryId)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(primaryId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(primaryId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var __hs_view = NativeMethods.TablePtr->C2.hs_method_61f2f4b0((void*)__hosihikari_shim_handle, type, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    public nint _getWorldLoadPerformanceEventing()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_f879307c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint _getWorldSessionIdGenerationTimestamp() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public void _init(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_AppPlatform_ appPlatform)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f25e0852((void*)__hosihikari_shim_handle, (void*)appPlatform.Handle);
+    }
+
+    public void _initDeviceAndSessionIds()
+    {
+        NativeMethods.TablePtr->C2.hs_method_d388908a((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initEditorEventListener()
+    {
+        NativeMethods.TablePtr->C2.hs_method_ce7b80f0((void*)__hosihikari_shim_handle);
+    }
+
+    public void _initOfflineEventListener()
+    {
+        NativeMethods.TablePtr->C2.hs_method_ee812891((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value _propertiesAsJsonValue()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C2.hs_method_72b232bb((void*)__hosihikari_shim_handle));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'Bedrock::PubSub::Subscription' is not supported.", false)]
+    public void _registerOptionsObserver(nint registerObserver) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'Bedrock::PubSub::Subscription' is not supported.");
+
+    public void _registerSecondaryUserCommonProperties(nint userId, string uid)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(uid);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uid, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_31276ba2((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void _removeConnectionCommonProperties(uint userId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6c0ce1c2((void*)__hosihikari_shim_handle, userId);
+    }
+
+    public void _removeExperienceIdentifiers()
+    {
+        NativeMethods.TablePtr->C2.hs_method_2c94faa9((void*)__hosihikari_shim_handle);
+    }
+
+    public void _removeServerIdsForClient()
+    {
+        NativeMethods.TablePtr->C2.hs_method_94da22c9((void*)__hosihikari_shim_handle);
+    }
+
+    public void _removeTestBuildIdTag()
+    {
+        NativeMethods.TablePtr->C2.hs_method_358a7ce1((void*)__hosihikari_shim_handle);
+    }
+
+    public void _removeTestTelemetryTag()
+    {
+        NativeMethods.TablePtr->C2.hs_method_0f28cde6((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _requestEventDeferment()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_0bc4edba((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public void _sendBatchedCrashTelemetry()
+    {
+        NativeMethods.TablePtr->C2.hs_method_01e830bc((void*)__hosihikari_shim_handle);
+    }
+
+    public void _sendCrashStatusTelemetry(nint status)
+    {
+        NativeMethods.TablePtr->C2.hs_method_769a0677((void*)__hosihikari_shim_handle, (void*)status);
+    }
+
+    public void _sendCrashTelemetryNow(global::Hosihikari.Bindings.Abi.SharedHandle? session)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a7a70cc0((void*)__hosihikari_shim_handle, session?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _setConnectionCommonProperties(uint userId, string connectionGUID, int networkType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(connectionGUID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(connectionGUID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_32b4de15((void*)__hosihikari_shim_handle, userId, __hs_stringData1, (nuint)__hs_stringByteCount1, networkType);
+        }
+    }
+
+    public void _setServerIdsforClient(string multiplayerCorrelationId, string serverVersion, global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ServerTelemetryData serverTelemetryData)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(multiplayerCorrelationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(multiplayerCorrelationId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(serverVersion);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(serverVersion, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_f6ee4ce9((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)serverTelemetryData.Handle);
+            }
+        }
+    }
+
+    public void _setShouldHaveAchievementsEnabled(bool value)
+    {
+        NativeMethods.TablePtr->C2.hs_method_2d3013ce((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void _setTestBuildIdTag(nint id)
+    {
+        NativeMethods.TablePtr->C2.hs_method_cd57893f((void*)__hosihikari_shim_handle, (void*)id);
+    }
+
+    public void _setTestTelemetryTag(nint name)
+    {
+        NativeMethods.TablePtr->C2.hs_method_54a02a68((void*)__hosihikari_shim_handle, (void*)name);
+    }
+
+    public void _shutdown()
+    {
+        NativeMethods.TablePtr->C2.hs_method_c3544962((void*)__hosihikari_shim_handle);
+    }
+
+    public void _stopDebugEventLoggingForAllListeners()
+    {
+        NativeMethods.TablePtr->C2.hs_method_75f8d648((void*)__hosihikari_shim_handle);
+    }
+
+    public void _tick()
+    {
+        NativeMethods.TablePtr->C2.hs_method_595ac37b((void*)__hosihikari_shim_handle);
+    }
+
+    public void _trySetExperienceIdentifiers(string experienceId, string? existingSessionId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(experienceId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(experienceId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(existingSessionId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(existingSessionId ?? string.Empty, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_83debc87((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, existingSessionId is not null);
+            }
+        }
+    }
+
+    public void _unregisterSecondaryUserCommonProperties(nint userId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4063d5b4((void*)__hosihikari_shim_handle, (void*)userId);
+    }
+
+    public void _updateAppliedTreatmentPacks(string[] treatmentTags)
+    {
+        var __hs_vectorItems0 = treatmentTags ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            NativeMethods.TablePtr->C2.hs_method_1da2598b((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(treatmentTags?.Length ?? 0));
+        }
+    }
+
+    public void _updateClientId()
+    {
+        NativeMethods.TablePtr->C2.hs_method_3940862f((void*)__hosihikari_shim_handle);
+    }
+
+    public void _updateEditionType()
+    {
+        NativeMethods.TablePtr->C2.hs_method_43d0b21b((void*)__hosihikari_shim_handle);
+    }
+
+    public void _updateIsLegacyPlayer(bool isLegacyPlayer)
+    {
+        NativeMethods.TablePtr->C2.hs_method_fef318a0((void*)__hosihikari_shim_handle, isLegacyPlayer);
+    }
+
+    public void _updateIsTrial(bool isTrial)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7689260f((void*)__hosihikari_shim_handle, isTrial);
+    }
+
+    public void _updatePlayerUndergroundStatus(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, bool isUnderground)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7dfd07c8((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), isUnderground);
+    }
+
+    public void _updatePrimaryLocalUserId(nint userId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_329149e4((void*)__hosihikari_shim_handle, (void*)userId);
+    }
+
+    public static MinecraftEventing Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6002558f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MinecraftEventing((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static MinecraftEventing Create(nint logFileDir, nint deps) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void _fireStructureBlockAction(int structureBlockActionType, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData structureEditorData, bool redstoneActivated, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? telemetryClientData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7c056553((void*)__hosihikari_shim_handle, structureBlockActionType, (void*)structureEditorData.Handle, redstoneActivated, (void*)(telemetryClientData?.Handle ?? 0));
+    }
+
+    public void _generateWorldSessionId()
+    {
+        NativeMethods.TablePtr->C2.hs_method_b1d156fd((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _getOrCreateRealmsTelemetry(nint visitor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _sendTelemetryHeartbeat(nint trigger)
+    {
+        NativeMethods.TablePtr->C2.hs_method_71756f49((void*)__hosihikari_shim_handle, (void*)trigger);
+    }
+
+    public void addCrashTelemetryToBatch(global::Hosihikari.Bindings.Abi.SharedHandle? session)
+    {
+        NativeMethods.TablePtr->C2.hs_method_cef0efdf((void*)__hosihikari_shim_handle, session?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void addListener(nint listener) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void clearListeners()
+    {
+        NativeMethods.TablePtr->C2.hs_method_f8fc5109((void*)__hosihikari_shim_handle);
+    }
+
+    public void fileEventCloudWorldPullFailed(string reason, string worldID, bool localLevelDatUsed)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_8122e9a4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, localLevelDatUsed);
+            }
+        }
+    }
+
+    public void fireBannedSkinVerificationEvent(nint userId, string skinData, bool wasApproved, int eventCode, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(skinData);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(skinData, __hs_stringBytes1);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes4);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                NativeMethods.TablePtr->C2.hs_method_f7620268((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1, wasApproved, eventCode, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            }
+        }
+    }
+
+    public void fireCDNDownloadEvent(string packId, string versionNumber, string hostUrl, nint downloadResult, nint origin, nint elapsedTime)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(versionNumber);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(versionNumber, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(hostUrl);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(hostUrl, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_6f000989((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)downloadResult, (void*)origin, (void*)elapsedTime);
+                }
+            }
+        }
+    }
+
+    public void fireChatUsedEvent(uint chatLength, bool isSlashCommand)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5d878d4e((void*)__hosihikari_shim_handle, chatLength, isSlashCommand);
+    }
+
+    public void fireChunkRecyclerTelemetryData(global::Hosihikari.Bindings.Bedrock.Interop.ChunkRecyclerTelemetryOutput output)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d5605b42((void*)__hosihikari_shim_handle, (void*)output.Handle);
+    }
+
+    public void fireClassroomSettingUpdated(int classroomSetting, int settingMode)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9da359e4((void*)__hosihikari_shim_handle, classroomSetting, settingMode);
+    }
+
+    public void fireClubsEngagementEvent(int action, int engagementTargetType, nint target, long realmId, string clubId)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(clubId);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(clubId, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            NativeMethods.TablePtr->C2.hs_method_887bef07((void*)__hosihikari_shim_handle, action, engagementTargetType, (void*)target, realmId, __hs_stringData4, (nuint)__hs_stringByteCount4);
+        }
+    }
+
+    public void fireClubsOpenFeedScreenEvent(int source, long realmId, string clubId, int unreadPosts)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(clubId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(clubId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_a9254426((void*)__hosihikari_shim_handle, source, realmId, __hs_stringData2, (nuint)__hs_stringByteCount2, unreadPosts);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireCodeBuilderCachePerformance(nint stage, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireCodeBuilderLoadPerformance(nint stage, ulong tutorialSize, ulong downloadSize, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireCodeBuilderRunPerformance(nint stage, nint elapsedTimeMS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireCodeCommandButtonPressed()
+    {
+        NativeMethods.TablePtr->C2.hs_method_ea0b3a63((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireCommandParseTableTelemetry(bool isServer, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested.CommandParseTableEntry[] parseTableDetails)
+    {
+        var __hs_vectorItems1 = parseTableDetails;
+        var __hs_vectorHandles1 = new nint[__hs_vectorItems1?.Length ?? 0];
+        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++)
+        {
+            __hs_vectorHandles1[__hs_i1] = __hs_vectorItems1![__hs_i1]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData1 = __hs_vectorHandles1)
+        {
+            var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
+            NativeMethods.TablePtr->C2.hs_method_4f0ec2ef((void*)__hosihikari_shim_handle, isServer, __hs_vectorData1, (nuint)(parseTableDetails?.Length ?? 0));
+        }
+    }
+
+    public void fireContentDecryptionFailure(string failedContentIds, string contentKey, string failurePoint)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(failedContentIds);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failedContentIds, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(contentKey);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(contentKey, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(failurePoint);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failurePoint, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_8255792f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void fireCourseButtonPressed(string courseTitle, string courseId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(courseTitle);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(courseTitle, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(courseId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(courseId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_bd4801e5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireCurrentInputUpdated(uint userId, uint inputMode)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7c3b2490((void*)__hosihikari_shim_handle, userId, inputMode);
+    }
+
+    public void fireDBStorageError(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, string errorType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorType, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_72a9e4a4((void*)__hosihikari_shim_handle, (void*)context.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void fireDayOneExperienceStateChanged(int newState, uint? importedWorldIndex, ulong? importedWorldTimestamp)
+    {
+        NativeMethods.TablePtr->C2.hs_method_63207e71((void*)__hosihikari_shim_handle, newState, importedWorldIndex ?? default(uint), importedWorldTimestamp ?? default(ulong), importedWorldIndex.HasValue, importedWorldTimestamp.HasValue);
+    }
+
+    public void fireDelayedEventReportOfflineAction(string offlineAction)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(offlineAction);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(offlineAction, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_b4175e98((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEditorEventToolActivated(string toolName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(toolName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(toolName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ebf19197((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEditorRedo(string transactionName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(transactionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(transactionName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_c214cecb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEditorScriptAction(string scriptSource, string actionName, string actionMetadata)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(scriptSource);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(scriptSource, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(actionName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(actionName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(actionMetadata);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(actionMetadata, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_e641abe5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void fireEditorTutorialEvent(string type, string? state, string currentStage, string? previousStage)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(state ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(state ?? string.Empty, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(currentStage);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(currentStage, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(previousStage ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(previousStage ?? string.Empty, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_71181f0c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, state is not null, previousStage is not null);
+                    }
+                }
+            }
+        }
+    }
+
+    public void fireEditorUndo(string transactionName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(transactionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(transactionName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_36c21e34((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.", false)]
+    public void fireEduServiceRequestFailed(nint serviceName, nint requestName, nint error, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void fireEvent(nint eventName, nint properties, nint measurements, bool shouldAggregate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void fireEventAchievementReceived(string title, string description, string achievementId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(title);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(title, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(achievementId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(achievementId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_d5532a28((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void fireEventActorMovementCorrectionDivergence(int actorType, float[] divergences)
+    {
+        fixed (float* __hs_vectorData1 = divergences)
+        {
+            NativeMethods.TablePtr->C2.hs_method_dc6cb8bd((void*)__hosihikari_shim_handle, actorType, __hs_vectorData1, (nuint)(divergences?.Length ?? 0));
+        }
+    }
+
+    public void fireEventActorValueValidationFailed(string invalidValue, nint caller)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(invalidValue);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(invalidValue, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_a4b611eb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)caller);
+        }
+    }
+
+    public void fireEventAddedFriend(string addedXuid, int location, bool success)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(addedXuid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(addedXuid, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_4cca65f1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, location, success);
+        }
+    }
+
+    public void fireEventAndroidHelpRequest()
+    {
+        NativeMethods.TablePtr->C2.hs_method_10908999((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireEventAppInitFileOpenStats(nint openForRead, nint openForWrite)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b3c73869((void*)__hosihikari_shim_handle, (void*)openForRead, (void*)openForWrite);
+    }
+
+    public void fireEventAppPaused()
+    {
+        NativeMethods.TablePtr->C2.hs_method_1a35dccd((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireEventAppSurfaceCreated()
+    {
+        NativeMethods.TablePtr->C2.hs_method_6098b28a((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireEventAppSurfaceDestroyed()
+    {
+        NativeMethods.TablePtr->C2.hs_method_b9aabef8((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireEventAppUnpaused()
+    {
+        NativeMethods.TablePtr->C2.hs_method_e6657e99((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireEventAssertFailed(string assertBucket, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(assertBucket);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(assertBucket, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_e77efc97((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public static void fireEventAwardAchievement(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, byte achievementId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_db451d8b((void*)(player?.Handle ?? 0), achievementId);
+    }
+
+    public static void fireEventBehaviorErrored(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, string errorMessage)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_6d6a2757((void*)(player?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public static void fireEventBehaviorFailed(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, string failureMessage)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(failureMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failureMessage, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_044a101d((void*)(player?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public static void fireEventBellBlockUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, string itemUsed)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(itemUsed);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(itemUsed, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_2bbcf790((void*)(player?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public static void fireEventBlockBroken(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block destroyedBlock, int method, int variantData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4b60095a((void*)(player?.Handle ?? 0), (void*)destroyedBlock.Handle, method, variantData);
+    }
+
+    public static void fireEventBlockFound(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d04a7326((void*)(player?.Handle ?? 0), (void*)blockPos.Handle);
+    }
+
+    public void fireEventBlockPlacedByCommand(global::Hosihikari.Bindings.Bedrock.Interop.Block placedBlock, int numberOfBlocksPlaced)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a4204210((void*)__hosihikari_shim_handle, (void*)placedBlock.Handle, numberOfBlocksPlaced);
+    }
+
+    public void fireEventBlockTypeRegistryChecksumMismatch(string reason, nint serverBlockChecksum, nint clientBlockChecksum, string serverVersion)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(serverVersion);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(serverVersion, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_aa31af29((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)serverBlockChecksum, (void*)clientBlockChecksum, __hs_stringData3, (nuint)__hs_stringByteCount3);
+            }
+        }
+    }
+
+    public void fireEventBlockUser(string xuid, bool isSuccess, bool isBlocked)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(xuid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(xuid, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_065e4781((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isSuccess, isBlocked);
+        }
+    }
+
+    public void fireEventBoardTextUpdated(global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor board)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f8e1e8b1((void*)__hosihikari_shim_handle, (void*)board.Handle);
+    }
+
+    public void fireEventBundleSubOfferClicked(int offerIndex, int bundleSubOfferCount, string telemetryId, string productId, bool isOnSale, string timeRemainingOnSale)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(telemetryId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(telemetryId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(timeRemainingOnSale);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(timeRemainingOnSale, __hs_stringBytes5);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_f50ed154((void*)__hosihikari_shim_handle, offerIndex, bundleSubOfferCount, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, isOnSale, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventButtonPressed(nint buttonName, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventCameraUsed(bool isSelfie)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3a60116d((void*)__hosihikari_shim_handle, isSelfie);
+    }
+
+    public static void fireEventCampfireBlockUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, string itemUsed, byte interactionType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(itemUsed);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(itemUsed, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ac6b1d5d((void*)(player?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, interactionType);
+        }
+    }
+
+    public void fireEventChatFloodingActionTaken(string authorXuid, int action, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(authorXuid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(authorXuid, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_71305773((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, action, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void fireEventChatSettingsUpdated(nint player, nint properties) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void fireEventChunkChanged(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C2.hs_method_dc67d9e6((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void fireEventChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C2.hs_method_81f0af82((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void fireEventChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C2.hs_method_076413e9((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+    public void fireEventClientLastPackets(nint userId, byte subId, int correlationId, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value lastSentPackets, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value lastReceivedPackets)
+    {
+        NativeMethods.TablePtr->C2.hs_method_54759459((void*)__hosihikari_shim_handle, (void*)userId, subId, correlationId, (void*)lastSentPackets.Handle, (void*)lastReceivedPackets.Handle);
+    }
+
+    public void fireEventClientLeftGameDueToUnrecoverableError(string reason, bool isServer)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_6e5533c6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isServer);
+        }
+    }
+
+    public void fireEventClientSentOrReceivedPacket(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier netId, int packetId, byte clientSubId, string correlationId, bool isOutgoing)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            NativeMethods.TablePtr->C2.hs_method_351816ce((void*)__hosihikari_shim_handle, (void*)netId.Handle, packetId, clientSubId, __hs_stringData3, (nuint)__hs_stringByteCount3, isOutgoing);
+        }
+    }
+
+    public void fireEventCloudConflictCheckEdu(string cloudCorrelationId, int conflictStatus)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(cloudCorrelationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cloudCorrelationId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_270b91a0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, conflictStatus);
+        }
+    }
+
+    public void fireEventCloudMyWorldsSummary(int totalWorldsCount, int placeholderCount, int needsUploadCount, int ctagMismatchCount, int conflictCount)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7b4b41bc((void*)__hosihikari_shim_handle, totalWorldsCount, placeholderCount, needsUploadCount, ctagMismatchCount, conflictCount);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventCloudOperationEndedEdu(nint operation, nint cloudItemType, nint cloudCorrelationId, nint elapsedTime, nint status, nint size, nint driveItemId, nint errorCode, nint errorMessage, nint error) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventCloudOperationStartedEdu(int operation, int cloudItemType, string cloudCorrelationId, ulong size, string? driveItemId)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(cloudCorrelationId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cloudCorrelationId, __hs_stringBytes2);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(driveItemId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(driveItemId ?? string.Empty, __hs_stringBytes4);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                NativeMethods.TablePtr->C2.hs_method_74f9b26f((void*)__hosihikari_shim_handle, operation, cloudItemType, __hs_stringData2, (nuint)__hs_stringByteCount2, size, __hs_stringData4, (nuint)__hs_stringByteCount4, driveItemId is not null);
+            }
+        }
+    }
+
+    public void fireEventCodeBuilderClosed()
+    {
+        NativeMethods.TablePtr->C2.hs_method_b41c95f3((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void fireEventCodeBuilderLog(nint properties, nint message, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public void fireEventCodeBuilderRuntimeAction(string action)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(action);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_6193ea0d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEventCodeBuilderScoreChanged(string objective, int score)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(objective);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(objective, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_8b3ef12b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, score);
+        }
+    }
+
+    public void fireEventCompoundCreatorCreated(int compoundId, int count)
+    {
+        NativeMethods.TablePtr->C2.hs_method_2891b726((void*)__hosihikari_shim_handle, compoundId, count);
+    }
+
+    public void fireEventConnectedStorageError(nint message, string levelId, long quotaRemaining)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_e6e0cc9f((void*)__hosihikari_shim_handle, (void*)message, __hs_stringData1, (nuint)__hs_stringByteCount1, quotaRemaining);
+        }
+    }
+
+    public void fireEventConnectedStorageResult(int eventType, bool succeeded, uint durationMs, uint? chunksSent, string errorMessage, string levelId, long quotaRemaining, uint? filesToAddCount, uint? filesToDeleteCount, uint? HACK_oldFilesToDeleteCount)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes5);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+            {
+                NativeMethods.TablePtr->C2.hs_method_3ec4d8f1((void*)__hosihikari_shim_handle, eventType, succeeded, durationMs, chunksSent ?? default(uint), __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, quotaRemaining, filesToAddCount ?? default(uint), filesToDeleteCount ?? default(uint), HACK_oldFilesToDeleteCount ?? default(uint), chunksSent.HasValue, filesToAddCount.HasValue, filesToDeleteCount.HasValue, HACK_oldFilesToDeleteCount.HasValue);
+            }
+        }
+    }
+
+    public void fireEventContentLogsInWorldSession(string logArea, uint errorCount, uint warningCount)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(logArea);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(logArea, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_b261428d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, errorCount, warningCount);
+        }
+    }
+
+    public void fireEventContentShared(string productId, string url, nint mode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_20c8dce7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)mode);
+            }
+        }
+    }
+
+    public void fireEventControlRemappedByPlayer(string actionName, sbyte inputType, int keyCode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(actionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(actionName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_c1d70b77((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, inputType, keyCode);
+        }
+    }
+
+    public void fireEventControlTipsPanelUpdated(short updateType, double elapsedTimeSec)
+    {
+        NativeMethods.TablePtr->C2.hs_method_52f065af((void*)__hosihikari_shim_handle, updateType, elapsedTimeSec);
+    }
+
+    public void fireEventCopyWorldEducationEnabled()
+    {
+        NativeMethods.TablePtr->C2.hs_method_d15bca73((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireEventCrashSystemFailedToInit()
+    {
+        NativeMethods.TablePtr->C2.hs_method_f1fde222((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireEventCreatorFollowedUnfollowed(string creatorId, string operation, bool success)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(creatorId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(creatorId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(operation);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(operation, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_cc44eb39((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, success);
+            }
+        }
+    }
+
+    public void fireEventDBReadFail(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, string reason)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_041bcb4c((void*)__hosihikari_shim_handle, (void*)context.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void fireEventDBStorageSizeSnapshot(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, nint folderWatcher, byte kind)
+    {
+        NativeMethods.TablePtr->C2.hs_method_cc566fc4((void*)__hosihikari_shim_handle, (void*)context.Handle, (void*)folderWatcher, kind);
+    }
+
+    public void fireEventDedicatedServerDiscoveryResponse(int retryAttempt, int? errorStatus, string? errorMessage, string? errorCode)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage ?? string.Empty, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode ?? string.Empty, __hs_stringBytes3);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_6b411dfa((void*)__hosihikari_shim_handle, retryAttempt, errorStatus ?? default(int), __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, errorStatus.HasValue, errorMessage is not null, errorCode is not null);
+            }
+        }
+    }
+
+    public void fireEventDefaultCastSelected(int previewIndex, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID appearanceId, string appearanceName)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(appearanceName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(appearanceName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_a4d79199((void*)__hosihikari_shim_handle, previewIndex, (void*)appearanceId.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void fireEventDefaultGameTypeChanged(int oldGameType, int newGameType)
+    {
+        NativeMethods.TablePtr->C2.hs_method_08a544a6((void*)__hosihikari_shim_handle, oldGameType, newGameType);
+    }
+
+    public void fireEventDevSlashCommandExecuted(string commandName, string command)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(commandName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(commandName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(command);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(command, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_57e82ada((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventDeviceAccountFailure(int stage, int phase, uint resultStatus, string accountID)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(accountID);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(accountID, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            NativeMethods.TablePtr->C2.hs_method_993d14bb((void*)__hosihikari_shim_handle, stage, phase, resultStatus, __hs_stringData3, (nuint)__hs_stringByteCount3);
+        }
+    }
+
+    public void fireEventDeviceAccountSuccess(bool isNewAccount, string accountID)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(accountID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(accountID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_14da44a0((void*)__hosihikari_shim_handle, isNewAccount, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
     public void fireEventDeviceIdManagerFailOnIdentityGained()
     {
-        NativeMethods.TablePtr->hs_method_5f10f229((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_5f10f229((void*)__hosihikari_shim_handle);
     }
 
     public void fireEventDeviceLost()
     {
-        NativeMethods.TablePtr->hs_method_40f16da0((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_40f16da0((void*)__hosihikari_shim_handle);
     }
 
-    public void fireEventDifficultySet(int arg0, int arg1)
+    public void fireEventDifficultySet(int oldDifficulty, int newDifficulty)
     {
-        NativeMethods.TablePtr->hs_method_ba1503c3((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_525628c4((void*)__hosihikari_shim_handle, oldDifficulty, newDifficulty);
     }
 
-    public void fireEventDiskStatus(int arg0, int arg1, ulong arg2)
+    public void fireEventDimensionTransfer(nint data)
     {
-        NativeMethods.TablePtr->hs_method_a068888f((void*)_handle, arg0, arg1, arg2);
+        NativeMethods.TablePtr->C2.hs_method_7a346858((void*)__hosihikari_shim_handle, (void*)data);
     }
 
-    public void fireEventDlcStorageFull(string arg0, ulong arg1, ulong arg2, ulong arg3, ulong arg4)
+    public void fireEventDiskStatus(byte status, int errorCode, ulong freeSpace)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_a068888f((void*)__hosihikari_shim_handle, status, errorCode, freeSpace);
+    }
+
+    public void fireEventDisplayLoggedError(string errorMessageTemplate, string errorMessage, string errorParameters)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessageTemplate);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1159,49 +8025,92 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessageTemplate, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(errorParameters);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorParameters, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_755c0365((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3, arg4);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_21036020((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void fireEventDlcStorageFull(string productId, ulong dlcSize, ulong onDiskScratchSpace, ulong scratchSpace, ulong premiumSpace)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_76f6e2a4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, dlcSize, onDiskScratchSpace, scratchSpace, premiumSpace);
         }
     }
 
     public void fireEventEduContentVerificationFailed()
     {
-        NativeMethods.TablePtr->hs_method_a9e3ef07((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_d87faa1a((void*)__hosihikari_shim_handle);
     }
 
-    public void fireEventEduDemoConversion(int arg0, int arg1)
+    public void fireEventEduDemoConversion(byte role, byte lastClickedSource)
     {
-        NativeMethods.TablePtr->hs_method_bf7ab51e((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_bf7ab51e((void*)__hosihikari_shim_handle, role, lastClickedSource);
     }
 
     public void fireEventEduResources()
     {
-        NativeMethods.TablePtr->hs_method_425d2353((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_31d3aaaf((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventEduServiceStatus_24ef6580(nint serviceName, nint requestName, int durationMS, nint details) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.", false)]
+    public void fireEventEduServiceStatus(nint serviceName, nint requestName, int durationMS, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.", false)]
-    public void fireEventEduServiceStatus_7c3bf79b(nint arg0, nint arg1, int arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.");
-
-    public void fireEventEduiOSPurchaseTransaction(nint arg0)
+    public void fireEventEduiOSPurchaseTransaction(nint status)
     {
-        NativeMethods.TablePtr->hs_method_a18b44c9((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_37ae68ff((void*)__hosihikari_shim_handle, (void*)status);
     }
 
-    public void fireEventElementConstructorUsed(int arg0, int arg1, int arg2)
+    public void fireEventElementConstructorUsed(int atomicNumber, int count, int useType)
     {
-        NativeMethods.TablePtr->hs_method_a44bcea4((void*)_handle, arg0, arg1, arg2);
+        NativeMethods.TablePtr->C2.hs_method_a44bcea4((void*)__hosihikari_shim_handle, atomicNumber, count, useType);
     }
 
-    public void fireEventEmptyLibraryCategoryError(string arg0)
+    public void fireEventEmptyLibraryCategoryError(string categoryTitle)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(categoryTitle);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1211,16 +8120,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(categoryTitle, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_e8fbe0e8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_e77f441f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void fireEventEncyclopediaTopicChanged(string arg0, int arg1)
+    public void fireEventEncyclopediaTopicChanged(string topicName, uint inputMode)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(topicName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1230,41 +8139,56 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(topicName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_b404e470((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            NativeMethods.TablePtr->C2.hs_method_f29f8416((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, inputMode);
         }
     }
 
     public void fireEventEntitlementCacheLoadTimeout()
     {
-        NativeMethods.TablePtr->hs_method_4bcc2e08((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_4bcc2e08((void*)__hosihikari_shim_handle);
     }
 
-    public void fireEventEntitlementListInfo(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity[] arg0, bool arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void fireEventEntitlementListInfo(nint entitlementContentIds, bool isLegacyList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void fireEventEntitySpawned(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int mobType, uint spawnMethod)
     {
-        var __hs_vectorItems0 = arg0;
-        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
-        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        NativeMethods.TablePtr->C2.hs_method_2ce54a5b((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), mobType, spawnMethod);
+    }
+
+    public void fireEventFatalClientPackError(int errorType, string[] packIds)
+    {
+        var __hs_vectorItems1 = packIds ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount1 = __hs_vectorItems1.Length;
+        var __hs_vectorByteTotal1 = 0;
+        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++) { __hs_vectorByteTotal1 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems1[__hs_i1] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena1;
+        if (__hs_vectorByteTotal1 <= 1024) { __hs_vectorArena1 = stackalloc byte[__hs_vectorByteTotal1 == 0 ? 1 : __hs_vectorByteTotal1]; } else { __hs_vectorArena1 = new byte[__hs_vectorByteTotal1]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews1;
+        if (__hs_vectorCount1 <= 64) { __hs_vectorViews1 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1 == 0 ? 1 : __hs_vectorCount1]; } else { __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1]; }
+        fixed (byte* __hs_vectorArenaPtr1 = __hs_vectorArena1)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
         {
-            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
-        }
-        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
-        {
-            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            NativeMethods.TablePtr->hs_method_3d043367((void*)_handle, arg1, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            var __hs_vectorOffset1 = 0;
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++)
+            {
+                var __hs_item1 = __hs_vectorItems1[__hs_i1] ?? string.Empty;
+                var __hs_length1 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item1);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item1, __hs_vectorArena1.Slice(__hs_vectorOffset1, __hs_length1));
+                __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
+                __hs_vectorOffset1 += __hs_length1;
+            }
+            NativeMethods.TablePtr->C2.hs_method_e54713fe((void*)__hosihikari_shim_handle, errorType, __hs_vectorData1, (nuint)(packIds?.Length ?? 0));
         }
     }
 
-    public void fireEventEntitySpawned(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1, uint arg2)
+    public void fireEventFeedbackSubmitted(string feedbackType, string identifier, bool safetyCheckSuccessful, bool isValidText)
     {
-        NativeMethods.TablePtr->hs_method_760f713c((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2);
-    }
-
-    public void fireEventFeedbackSubmitted(string arg0, bool arg1, bool arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(feedbackType);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1274,16 +8198,30 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(feedbackType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(identifier, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_122e319f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_e3a1571e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, safetyCheckSuccessful, isValidText);
+            }
         }
     }
 
-    public void fireEventGameRulesUpdated(bool arg0, bool arg1, string arg2)
+    public void fireEventGameRulesUpdated(bool oldValue, bool newValue, string gameRuleName)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(gameRuleName);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -1293,16 +8231,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(gameRuleName, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            NativeMethods.TablePtr->hs_method_193e2c58((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            NativeMethods.TablePtr->C2.hs_method_7a3d92e5((void*)__hosihikari_shim_handle, oldValue, newValue, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 
-    public void fireEventGameRulesUpdated(float arg0, float arg1, string arg2)
+    public void fireEventGameRulesUpdated(float oldValue, float newValue, string gameRuleName)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(gameRuleName);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -1312,16 +8250,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(gameRuleName, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            NativeMethods.TablePtr->hs_method_352b56c5((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            NativeMethods.TablePtr->C2.hs_method_7f440064((void*)__hosihikari_shim_handle, oldValue, newValue, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 
-    public void fireEventGameRulesUpdated(int arg0, int arg1, string arg2)
+    public void fireEventGameRulesUpdated(int oldValue, int newValue, string gameRuleName)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(gameRuleName);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -1331,31 +8269,31 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(gameRuleName, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            NativeMethods.TablePtr->hs_method_af1638e7((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            NativeMethods.TablePtr->C2.hs_method_c3ab0bbc((void*)__hosihikari_shim_handle, oldValue, newValue, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 
-    public void fireEventGameTip(int arg0, int arg1, int arg2, int arg3)
+    public void fireEventGameTip(int gameTipId, int gameTipEventType, int gameTipTestGroup, uint inputMode)
     {
-        NativeMethods.TablePtr->hs_method_2860c3c3((void*)_handle, arg0, arg1, arg2, arg3);
+        NativeMethods.TablePtr->C2.hs_method_2860c3c3((void*)__hosihikari_shim_handle, gameTipId, gameTipEventType, gameTipTestGroup, inputMode);
     }
 
-    public void fireEventGoogleAccountHoldWarning(bool arg0)
+    public void fireEventGoogleAccountHoldWarning(bool navigatedToSubscription)
     {
-        NativeMethods.TablePtr->hs_method_5b39b26c((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_5b39b26c((void*)__hosihikari_shim_handle, navigatedToSubscription);
     }
 
     public void fireEventHardwareInfo()
     {
-        NativeMethods.TablePtr->hs_method_37537ffa((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_37537ffa((void*)__hosihikari_shim_handle);
     }
 
-    public void fireEventHowToPlayTopicChanged(string arg0, int arg1)
+    public void fireEventHowToPlayTopicChanged(string topicName, uint inputMode)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(topicName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1365,16 +8303,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(topicName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_508a2ee3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            NativeMethods.TablePtr->C2.hs_method_d7b15ce0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, inputMode);
         }
     }
 
-    public void fireEventHttpClientError(string arg0)
+    public void fireEventHttpClientError(string error)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(error);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1384,204 +8322,39 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(error, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_edb4d8c7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_3b20bc69((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void fireEventIAPPurchaseAttempt(string arg0, string arg1, nint arg2, int arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_7199540e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2, arg3);
-            }
-        }
-    }
-
-    public void fireEventIAPPurchaseResolved(string arg0, string arg1, nint arg2, int arg3, int arg4)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_1497da5a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2, arg3, arg4);
-            }
-        }
-    }
-
-    public void fireEventIAPRedeemAttempt(string arg0, string arg1, string arg2, int arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_62dce8e1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
-                }
-            }
-        }
-    }
-
-    public void fireEventIAPRedeemResolved(string arg0, string arg1, string arg2, int arg3, int arg4)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_681d216f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4);
-                }
-            }
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void fireEventImGuiScreenChanged(nint screenName, nint additionalProperties) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fireEventImGuiScreenChanged(string arg0, nint arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.", false)]
+    public void fireEventImmersiveReaderStatus(nint status) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.");
+
+    public void fireEventInGamePause(bool pauseStatus)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_0a80f127((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
-        }
+        NativeMethods.TablePtr->C2.hs_method_f5482cf5((void*)__hosihikari_shim_handle, pauseStatus);
     }
 
-    public void fireEventInboxSummary(nint arg0)
+    public void fireEventInboxSummary(nint data)
     {
-        NativeMethods.TablePtr->hs_method_7f80592b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_d7185d79((void*)__hosihikari_shim_handle, (void*)data);
     }
 
-    public static void fireEventItemUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, int arg2)
+    public void fireEventInventoryVersionRefreshRequestResponse(int status, int retryAttempt, bool asyncServicesManager)
     {
-        NativeMethods.TablePtr->hs_method_788ae2ee((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C2.hs_method_abfd1482((void*)__hosihikari_shim_handle, status, retryAttempt, asyncServicesManager);
+    }
+
+    public static void fireEventItemUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item, int useMethod)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f8dd0ad9((void*)(player?.Handle ?? 0), (void*)item.Handle, useMethod);
     }
 
     public void fireEventJoinByCode(string arg0)
@@ -1599,47 +8372,42 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_31a6003d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_6611f009((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void fireEventJoinCanceled(int arg0)
+    public void fireEventJoinCanceled(int currentState)
     {
-        NativeMethods.TablePtr->hs_method_4209d61b((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_4209d61b((void*)__hosihikari_shim_handle, currentState);
     }
 
-    public static void fireEventJukeboxUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, string arg2)
+    public static void fireEventJukeboxUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor disc, global::Hosihikari.Bindings.Bedrock.Interop.BiomeIdType biome)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_981e0e3c((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
-        }
+        NativeMethods.TablePtr->C2.hs_method_396ac041((void*)(player?.Handle ?? 0), (void*)disc.Handle, (void*)biome.Handle);
     }
 
-    public void fireEventLabTableCreated(int arg0, int arg1, int arg2)
+    public void fireEventLabTableCreated(int reactionId, int productId, int productAux)
     {
-        NativeMethods.TablePtr->hs_method_fd5646f7((void*)_handle, arg0, arg1, arg2);
+        NativeMethods.TablePtr->C2.hs_method_fd5646f7((void*)__hosihikari_shim_handle, reactionId, productId, productAux);
     }
 
-    public void fireEventLevelChunkPerformanceData(bool arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventLargeFileWriteStall(ulong totalWriteSizeBytes, nint largestFileNames, nint estimatedTotalWriteTime, nint estimatedTotalWaitTime, nint originatingSystem, ulong budgetBytesAtStartOfOperation, bool operationWasCancelled, nint totalWriteTime, nint totalWaitTime, int numberOfFilesWritten, ulong budgetBytesAtEndOfOperation, nint associatedContentIDs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventLevelChunkPerformanceData(bool isClientSide)
     {
-        NativeMethods.TablePtr->hs_method_7f0bc2a6((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_7f0bc2a6((void*)__hosihikari_shim_handle, isClientSide);
     }
 
-    public void fireEventLevelDatLoadFailed(string arg0, string arg1, bool arg2)
+    public void fireEventLevelDBPerformanceData(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, nint perfData)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_0ba0f52f((void*)__hosihikari_shim_handle, (void*)context.Handle, (void*)perfData);
+    }
+
+    public void fireEventLevelDatLoadFailed(string reason, string worldID, bool isFatal)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1649,8 +8417,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldID);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -1660,19 +8428,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(worldID, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->hs_method_2233e48e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+                NativeMethods.TablePtr->C2.hs_method_06d61991((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, isFatal);
             }
         }
     }
 
-    public void fireEventLevelDataOverride(string arg0)
+    public void fireEventLevelDataOverride(string valueName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(valueName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1682,30 +8450,25 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(valueName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_88b89711((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_1483e94d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventLevelDataOverride(nint valueName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void fireEventLevelDestruct()
     {
-        NativeMethods.TablePtr->hs_method_7aa297d3((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_7aa297d3((void*)__hosihikari_shim_handle);
     }
 
-    public void fireEventLibrarySearch(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_020f68d0((void*)_handle, (void*)arg0);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventLibrarySearch(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fireEventLibrarySearchItemSelected(int arg0, int arg1, string arg2, int arg3, int arg4)
+    public void fireEventLibrarySearchItemSelected(int sessionId, int correlationId, string productId, int row, int column)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -1715,26 +8478,30 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            NativeMethods.TablePtr->hs_method_1bdc7282((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4);
+            NativeMethods.TablePtr->C2.hs_method_d96c0614((void*)__hosihikari_shim_handle, sessionId, correlationId, __hs_stringData2, (nuint)__hs_stringByteCount2, row, column);
         }
     }
 
-    public void fireEventLicenseCheck(bool arg0, nint arg1)
+    public void fireEventLicenseCheck(bool isLicensed, nint data)
     {
-        NativeMethods.TablePtr->hs_method_aa9b32b6((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->C2.hs_method_15a0e691((void*)__hosihikari_shim_handle, isLicensed, (void*)data);
     }
 
     public void fireEventLockedItemGiven()
     {
-        NativeMethods.TablePtr->hs_method_533a22b4((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_533a22b4((void*)__hosihikari_shim_handle);
     }
 
-    public void fireEventMessageReceived(string arg0, string arg1, string arg2, string arg3, bool arg4)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventLowMemoryDetected(nint writer, nint report) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventMarkLevelForSync(string levelId, long local, long remote, int reason)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1744,8 +8511,27 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_77807df0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, local, remote, reason);
+        }
+    }
+
+    public void fireEventMarketplaceImpressions(string destinationQuery, string destinationPage, nint data)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(destinationQuery);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(destinationQuery, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(destinationPage);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -1755,47 +8541,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(destinationPage, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-                    {
-                        NativeMethods.TablePtr->hs_method_0be3db4b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4);
-                    }
-                }
+                NativeMethods.TablePtr->C2.hs_method_93cd3f60((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)data);
             }
         }
     }
 
-    public void fireEventMessageServiceImpression(string arg0, string arg1, string arg2, string arg3, bool arg4)
+    public void fireEventMessageReceived(string messageId, string messageSessionId, string Surface, string Template, bool isControl, string instanceId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(messageId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1805,8 +8563,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(messageId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(messageSessionId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -1816,8 +8574,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(messageSessionId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(Surface);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -1827,8 +8585,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(Surface, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(Template);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -1838,7 +8596,18 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(Template, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(instanceId);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(instanceId, __hs_stringBytes5);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
@@ -1847,35 +8616,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
                 {
                     fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                     {
-                        NativeMethods.TablePtr->hs_method_8ef4ff7a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4);
+                        fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                        {
+                            NativeMethods.TablePtr->C2.hs_method_9b09add7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, isControl, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                        }
                     }
                 }
             }
         }
     }
 
-    public static void fireEventMobDied(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, int arg1)
+    public void fireEventMessageServiceImpression(string messageId, string messageSessionId, string Surface, string Template, bool isControl, string instanceId)
     {
-        NativeMethods.TablePtr->hs_method_03fc3902((void*)arg0.Handle, arg1);
-    }
-
-    public static void fireEventMobEffectChanged(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_c251d784((void*)arg0.Handle, (void*)arg1.Handle, arg2);
-    }
-
-    public static void fireEventMobTeleportedToOwner(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
-    {
-        NativeMethods.TablePtr->hs_method_2fb653cc((void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventModalShown(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void fireEventModalShown(string arg0, nint arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(messageId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1885,16 +8638,91 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(messageId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(messageSessionId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(messageSessionId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(Surface);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(Surface, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(Template);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(Template, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(instanceId);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(instanceId, __hs_stringBytes5);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_f77ea631((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                        {
+                            NativeMethods.TablePtr->C2.hs_method_067043a8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, isControl, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                        }
+                    }
+                }
+            }
         }
     }
 
-    public void fireEventMultiplayerClientConnectionStateChanged(string arg0, uint arg1, uint arg2, uint arg3, string arg4)
+    public static void fireEventMobDied(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, int causeOfDeath)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_20209830((void*)mob.Handle, causeOfDeath);
+    }
+
+    public static void fireEventMobEffectChanged(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effectInstance, int change)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e7fbdf1e((void*)mob.Handle, (void*)effectInstance.Handle, change);
+    }
+
+    public static void fireEventMobTeleportedToOwner(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f31f7bc2((void*)mob.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventModalShown(nint modalName, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventMultiplayerClientConnectionStateChanged(string connectionType, uint fromState, uint toState, uint port, string status)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(connectionType);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1904,8 +8732,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        global::System.Text.Encoding.UTF8.GetBytes(connectionType, __hs_stringBytes0);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(status);
         scoped global::System.Span<byte> __hs_stringBytes4;
         if (__hs_stringByteCount4 <= 256)
         {
@@ -1915,23 +8743,23 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes4 = new byte[__hs_stringByteCount4];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        global::System.Text.Encoding.UTF8.GetBytes(status, __hs_stringBytes4);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData4 = __hs_stringBytes4)
             {
-                NativeMethods.TablePtr->hs_method_a73b3ba4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+                NativeMethods.TablePtr->C2.hs_method_b77e6c25((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, fromState, toState, port, __hs_stringData4, (nuint)__hs_stringByteCount4);
             }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<MultiPlayerLevel>' is not a known bindable declaration.", false)]
-    public void fireEventMultiplayerSessionUpdate(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<MultiPlayerLevel>' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void fireEventMultiplayerSessionUpdate(nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void fireEventMuteUser(string arg0, bool arg1, bool arg2)
+    public void fireEventMuteUser(string xuid, bool isSuccess, bool isMuted)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(xuid);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1941,16 +8769,25 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(xuid, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_50bf9836((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+            NativeMethods.TablePtr->C2.hs_method_feeffe74((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isSuccess, isMuted);
         }
     }
 
-    public void fireEventNewContentCheckCompleted(string arg0, bool arg1)
+    public void fireEventNPLNLifecycle(int eventType, int multiplayerState, int serviceState)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_9daf3812((void*)__hosihikari_shim_handle, eventType, multiplayerState, serviceState);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventNPLNRpcFailure(int rpcType, int statusCode, nint clientState, nint serviceState, nint requiredDelay) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventNewContentCheckCompleted(string newContentPrefix, bool hasNewStoreContent)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(newContentPrefix);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1960,21 +8797,26 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(newContentPrefix, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_42031fc1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            NativeMethods.TablePtr->C2.hs_method_ee057b8a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, hasNewStoreContent);
         }
     }
 
-    public void fireEventNpcPropertiesUpdated(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1)
+    public void fireEventNpcPropertiesUpdated(global::Hosihikari.Bindings.Bedrock.Interop.Actor npcOwner, bool isEditorWorldbuilder)
     {
-        NativeMethods.TablePtr->hs_method_21d72969((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C2.hs_method_1be0343e((void*)__hosihikari_shim_handle, (void*)npcOwner.Handle, isEditorWorldbuilder);
     }
 
-    public void fireEventOfferRated(string arg0, int arg1, int arg2, int arg3, double arg4)
+    public void fireEventNsaUpgradeResult(int status)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_6fa2aa4b((void*)__hosihikari_shim_handle, status);
+    }
+
+    public void fireEventOSKErrorEncountered(string failureReason)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(failureReason);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -1984,308 +8826,28 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(failureReason, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_1289b166((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3, arg4);
+            NativeMethods.TablePtr->C2.hs_method_ce2010fe((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
-    public void fireEventOnAppResume(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventOnAppResume(nint writer, nint sessionAuthValidUntil) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
-    public void fireEventOnAppStart(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventOnAppStart(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
-    public void fireEventOnAppSuspend(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventOnAppSuspend(nint writer, nint triggersDisconnect, bool reconnectOnResumeEnabled, bool forceDisableEvents) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fireEventOnClientDisconnect(byte arg0, bool arg1, int arg2)
+    public void fireEventOnClientDisconnect(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, byte subId, bool isNetworked, int reason, string titleMessage, string errorMessage, string codeword)
     {
-        NativeMethods.TablePtr->hs_method_1997ac51((void*)_handle, arg0, arg1, arg2);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
-    public void fireEventOnDeviceLost(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
-
-    public void fireEventOnServerDisconnect(int arg0, string arg1, byte arg2, string arg3, ulong arg4, string arg5)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(arg5);
-        scoped global::System.Span<byte> __hs_stringBytes5;
-        if (__hs_stringByteCount5 <= 256)
-        {
-            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
-        }
-        else
-        {
-            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg5, __hs_stringBytes5);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-            {
-                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
-                {
-                    NativeMethods.TablePtr->hs_method_e1cefc4e((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, __hs_stringData5, (nuint)__hs_stringByteCount5);
-                }
-            }
-        }
-    }
-
-    public void fireEventOnSuccessfulClientLogin(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_2c4a71bb((void*)_handle, (void*)arg0);
-    }
-
-    public void fireEventOnboardingWorldCreationUsage(bool arg0, bool arg1, bool arg2)
-    {
-        NativeMethods.TablePtr->hs_method_7d44284e((void*)_handle, arg0, arg1, arg2);
-    }
-
-    public void fireEventOneDSPlayerReportPayload(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_e7c6928f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventOptionsChanged(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void fireEventOptionsChanged(string arg0, nint arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_65e4e006((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
-        }
-    }
-
-    public void fireEventOptionsUpdated(nint arg0, int arg1, bool arg2)
-    {
-        NativeMethods.TablePtr->hs_method_6c179c0e((void*)_handle, (void*)arg0, arg1, arg2);
-    }
-
-    public void fireEventOreUIError(nint arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_ef7b0d44((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
-
-    public void fireEventPackHashChanged(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0)
-    {
-        NativeMethods.TablePtr->hs_method_b0cd7afb((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireEventPackImportTimeout(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_be842165((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void fireEventPackPlayed(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0, uint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_ab3a70b5((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    public void fireEventPackUpgradeAttempt(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, global::Hosihikari.Bindings.Bedrock.Interop.PackReport arg1)
-    {
-        NativeMethods.TablePtr->hs_method_73a273cf((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void fireEventPacketViolationDetected(ulong arg0, string arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg4, uint arg5, byte arg6, byte arg7, uint arg8)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_b8309c4e((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, (void*)arg4.Handle, arg5, arg6, arg7, arg8);
-        }
-    }
-
-    public void fireEventPerformanceContext(global::Hosihikari.Bindings.Bedrock.Interop.PerfContextTrackerReport arg0)
-    {
-        NativeMethods.TablePtr->hs_method_ba99befe((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireEventPerformanceMetrics(nint arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_bde936e2((void*)_handle, (void*)arg0, arg1);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void fireEventPersonaAvatarUpdated(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4, bool arg5, nint arg6, nint arg7, nint arg8, bool arg9, nint arg10, nint arg11) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    public void fireEventPersonaAvatarsListed(string[] arg0)
-    {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
-        var __hs_vectorCount0 = __hs_vectorItems0.Length;
-        var __hs_vectorByteTotal0 = 0;
-        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
-        scoped global::System.Span<byte> __hs_vectorArena0;
-        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
-        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
-        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
-        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
-        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
-        {
-            var __hs_vectorOffset0 = 0;
-            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
-            {
-                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
-                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
-                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
-                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
-                __hs_vectorOffset0 += __hs_length0;
-            }
-            NativeMethods.TablePtr->hs_method_2d8127e4((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
-        }
-    }
-
-    public void fireEventPersonaCategoryInformation(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_bf54727e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void fireEventPersonaCreationFailed(string arg0, string arg1, bool arg2, bool arg3, string arg4, string arg5)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(titleMessage);
         scoped global::System.Span<byte> __hs_stringBytes4;
         if (__hs_stringByteCount4 <= 256)
         {
@@ -2295,8 +8857,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes4 = new byte[__hs_stringByteCount4];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(arg5);
+        global::System.Text.Encoding.UTF8.GetBytes(titleMessage, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
         scoped global::System.Span<byte> __hs_stringBytes5;
         if (__hs_stringByteCount5 <= 256)
         {
@@ -2306,7 +8868,555 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes5 = new byte[__hs_stringByteCount5];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg5, __hs_stringBytes5);
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes5);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(codeword);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(codeword, __hs_stringBytes6);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+            {
+                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_818454b0((void*)__hosihikari_shim_handle, (void*)id.Handle, subId, isNetworked, reason, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, __hs_stringData6, (nuint)__hs_stringByteCount6);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventOnDeviceLost(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventOnServerAsyncJoinTaskVerdict(nint joinVerdict, byte subId, uint verdictQueueLength)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f06bba44((void*)__hosihikari_shim_handle, (void*)joinVerdict, subId, verdictQueueLength);
+    }
+
+    public void fireEventOnServerDisconnect(int reason, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, byte subId, string reasonContext, ulong clientCount, string firstTimeStamp)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(reasonContext);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reasonContext, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(firstTimeStamp);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(firstTimeStamp, __hs_stringBytes5);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+            {
+                NativeMethods.TablePtr->C2.hs_method_4eccf901((void*)__hosihikari_shim_handle, reason, (void*)id.Handle, subId, __hs_stringData3, (nuint)__hs_stringByteCount3, clientCount, __hs_stringData5, (nuint)__hs_stringByteCount5);
+            }
+        }
+    }
+
+    public void fireEventOnSuccessfulClientLogin(global::Hosihikari.Bindings.Bedrock.Interop.Level? level)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6465e777((void*)__hosihikari_shim_handle, (void*)(level?.Handle ?? 0));
+    }
+
+    public void fireEventOnboardingWorldCreationUsage(bool onboardingWorldCreationUsed, bool hasWorlds, bool hasOnlyBaseGamePacks)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7d44284e((void*)__hosihikari_shim_handle, onboardingWorldCreationUsed, hasWorlds, hasOnlyBaseGamePacks);
+    }
+
+    public void fireEventOneDSPlayerReportPayload(string reportPayloadJson, string reportID)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reportPayloadJson);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reportPayloadJson, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(reportID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reportID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_b7790311((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventOnlineAudioStreamEnded(nint telemetry)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0075226c((void*)__hosihikari_shim_handle, (void*)telemetry);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventOptionsChanged(nint optionGroup, nint events) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'Social::Events::OptionChange' is not supported.", false)]
+    public void fireEventOptionsChangedAlt(nint optionGroup, nint changes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'Social::Events::OptionChange' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventOptionsUpdated(bool onStartup, nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventOreUIError(nint userId, string errorType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorType, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_04fb9e09((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventOreUIScreenPerformance(nint userId, nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void fireEventPUVLoad(nint resourceCategory, nint loadData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void fireEventPackActivationError(string errorType, string errorDetail, string packAction, string packId, string contentType, bool isFatal)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(errorType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorDetail);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorDetail, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(packAction);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packAction, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(contentType);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(contentType, __hs_stringBytes4);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                        {
+                            NativeMethods.TablePtr->C2.hs_method_03a3bd74((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, isFatal);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void fireEventPackDeleted(string reason, string packId, sbyte packType, byte packLocation, string packOptimizationVersion, long freedBytes, bool succeeded, long remainingBytes)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes1);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(packOptimizationVersion);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packOptimizationVersion, __hs_stringBytes4);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_41a4dc0b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, packType, packLocation, __hs_stringData4, (nuint)__hs_stringByteCount4, freedBytes, succeeded, remainingBytes);
+                }
+            }
+        }
+    }
+
+    public void fireEventPackImportTimeout(string productId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_a0993b5e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEventPackPlayed(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance packInstance, uint priority)
+    {
+        NativeMethods.TablePtr->C2.hs_method_2fc494ac((void*)__hosihikari_shim_handle, (void*)packInstance.Handle, priority);
+    }
+
+    public void fireEventPacketSerializationMismatch(int packetId, string legacyStream, string cerealStream)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(legacyStream);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(legacyStream, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(cerealStream);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cerealStream, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_2e2044fd((void*)__hosihikari_shim_handle, packetId, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    public void fireEventPacketViolationDetected(ulong readResult, string readResultContext, int violationResponse, int violatingPacketId, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier netId, uint numViolations, byte clientSubId, byte senderSubId, uint packetStreamLength)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(readResultContext);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(readResultContext, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_662d9b8c((void*)__hosihikari_shim_handle, readResult, __hs_stringData1, (nuint)__hs_stringByteCount1, violationResponse, violatingPacketId, (void*)netId.Handle, numViolations, clientSubId, senderSubId, packetStreamLength);
+        }
+    }
+
+    public void fireEventPartyButtonPressed(string buttonName, string partyId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(buttonName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(buttonName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(partyId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(partyId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_a9f2a33b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventPartyPlayFabError(string functionName, string errorMessage, string partyId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(functionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(functionName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(partyId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(partyId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_6c5285df((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void fireEventPartyTravelToastExpired(string travelMode, string partyId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(travelMode);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(travelMode, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(partyId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(partyId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_161a7013((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventPerformanceContext(nint writer, nint perfContextReport, bool IsEcoFrameThrottled, int fpsThrottle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventPerformanceMetrics(nint writer, nint profileTelemetry, bool IsEcoFrameThrottled, int fpsThrottle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void fireEventPersonaAvatarUpdated(nint personaProfile, nint newAppearancePieceIds, nint newPieces, nint tintedPieces, bool isNewPersona, bool isBeingDeleted, nint bodySize, nint armSize, nint classicSkinId, bool usesClassicSkin, nint emotesPieceIds, nint emoteSlotNumbers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void fireEventPersonaAvatarsListed(byte[] profileTypesUsed)
+    {
+        fixed (byte* __hs_vectorData0 = profileTypesUsed)
+        {
+            NativeMethods.TablePtr->C2.hs_method_4bd8b4d7((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(profileTypesUsed?.Length ?? 0));
+        }
+    }
+
+    public void fireEventPersonaCategoryInformation(string categoryInformation)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(categoryInformation);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(categoryInformation, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_16632314((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEventPersonaCreationFailed(string errorName, string pieceId, bool missingTop, bool missingBottom, string repositoryPieceType, string appearancePieceType)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(errorName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(pieceId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(pieceId, __hs_stringBytes1);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(repositoryPieceType);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(repositoryPieceType, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(appearancePieceType);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(appearancePieceType, __hs_stringBytes5);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
@@ -2315,16 +9425,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
                 {
                     fixed (byte* __hs_stringData5 = __hs_stringBytes5)
                     {
-                        NativeMethods.TablePtr->hs_method_f7dd6df1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                        NativeMethods.TablePtr->C2.hs_method_61d92eb1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, missingTop, missingBottom, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5);
                     }
                 }
             }
         }
     }
 
-    public void fireEventPersonaEmotePlayed(string arg0, bool arg1, int arg2)
+    public void fireEventPersonaEmotePlayed(string emoteProductId, bool isEmoteEndedEarly, int emoteSlotId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(emoteProductId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -2334,16 +9444,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(emoteProductId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_5fdf3d97((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+            NativeMethods.TablePtr->C2.hs_method_d6c692db((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isEmoteEndedEarly, emoteSlotId);
         }
     }
 
-    public void fireEventPersonaGeneralError(string arg0, uint arg1)
+    public void fireEventPersonaGeneralError(string personaErrorName, uint duplicateErrorsFired)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(personaErrorName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -2353,16 +9463,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(personaErrorName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_0a1562d4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            NativeMethods.TablePtr->C2.hs_method_f3946b5c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, duplicateErrorsFired);
         }
     }
 
-    public void fireEventPersonaInitalizationEvent(uint arg0, string arg1, string arg2)
+    public void fireEventPersonaInitalizationEvent(uint secondsToCompletion, string status, string user)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(status);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -2372,8 +9482,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(status, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(user);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -2383,30 +9493,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(user, __hs_stringBytes2);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_1830743c((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                NativeMethods.TablePtr->C2.hs_method_bfc0361d((void*)__hosihikari_shim_handle, secondsToCompletion, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
             }
         }
     }
 
-    public void fireEventPersonaItemPreviewed(string arg0, string arg1, string arg2, uint arg3, uint arg4, int arg5, bool arg6, string arg7, string arg8, double arg9, int arg10)
+    public void fireEventPersonaItemPreviewed(byte personaProfile, string itemOfferId, string productId, uint row, uint column, int promotionType, bool isOwned, string creatorId, string creatorName, double secondsToLoadContent, int storeType)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(itemOfferId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -2416,8 +9515,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(itemOfferId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -2427,8 +9526,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(arg7);
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(creatorId);
         scoped global::System.Span<byte> __hs_stringBytes7;
         if (__hs_stringByteCount7 <= 256)
         {
@@ -2438,8 +9537,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes7 = new byte[__hs_stringByteCount7];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg7, __hs_stringBytes7);
-        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
+        global::System.Text.Encoding.UTF8.GetBytes(creatorId, __hs_stringBytes7);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(creatorName);
         scoped global::System.Span<byte> __hs_stringBytes8;
         if (__hs_stringByteCount8 <= 256)
         {
@@ -2449,49 +9548,39 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes8 = new byte[__hs_stringByteCount8];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg8, __hs_stringBytes8);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        global::System.Text.Encoding.UTF8.GetBytes(creatorName, __hs_stringBytes8);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                fixed (byte* __hs_stringData7 = __hs_stringBytes7)
                 {
-                    fixed (byte* __hs_stringData7 = __hs_stringBytes7)
+                    fixed (byte* __hs_stringData8 = __hs_stringBytes8)
                     {
-                        fixed (byte* __hs_stringData8 = __hs_stringBytes8)
-                        {
-                            NativeMethods.TablePtr->hs_method_392a8163((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5, arg6, __hs_stringData7, (nuint)__hs_stringByteCount7, __hs_stringData8, (nuint)__hs_stringByteCount8, arg9, arg10);
-                        }
+                        NativeMethods.TablePtr->C2.hs_method_20439d85((void*)__hosihikari_shim_handle, personaProfile, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, row, column, promotionType, isOwned, __hs_stringData7, (nuint)__hs_stringByteCount7, __hs_stringData8, (nuint)__hs_stringByteCount8, secondsToLoadContent, storeType);
                     }
                 }
             }
         }
     }
 
-    public void fireEventPersonaLoadingPieces(uint arg0, double arg1)
+    public void fireEventPersonaLoadingPieces(uint piecesLoaded, double timeToLoadInSeconds)
     {
-        NativeMethods.TablePtr->hs_method_cac55228((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_cac55228((void*)__hosihikari_shim_handle, piecesLoaded, timeToLoadInSeconds);
     }
 
-    public void fireEventPersonaOfferClicked(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventPersonaOfferClicked(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventPersonaPiecePackEviction(uint cacheSizeBeforeEviction, uint evictedCount, uint failedCount, uint protectedCount, bool evictionLimitedByBatch, double passDurationInSeconds)
     {
-        NativeMethods.TablePtr->hs_method_4e9b2064((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_738c3137((void*)__hosihikari_shim_handle, cacheSizeBeforeEviction, evictedCount, failedCount, protectedCount, evictionLimitedByBatch, passDurationInSeconds);
     }
 
-    public void fireEventPersonaSkinChanged(string arg0, string arg1, bool arg2)
+    public void fireEventPersonaSkinChanged(byte personaProfile, string classicSkinId, bool isClassicSkinUsed)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(classicSkinId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -2501,45 +9590,68 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(classicSkinId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_dc516975((void*)__hosihikari_shim_handle, personaProfile, __hs_stringData1, (nuint)__hs_stringByteCount1, isClassicSkinUsed);
+        }
+    }
+
+    public void fireEventPersonaUserLoadedActive(byte personaProfile, string classicSkinId, bool personaUsesClassicSkin)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(classicSkinId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(classicSkinId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_28fbf7be((void*)__hosihikari_shim_handle, personaProfile, __hs_stringData1, (nuint)__hs_stringByteCount1, personaUsesClassicSkin);
+        }
+    }
+
+    public void fireEventPlatformStorePurchaseFailure(string productId, string errorMessage)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->hs_method_3918d340((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+                NativeMethods.TablePtr->C2.hs_method_2bd141b4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
             }
         }
     }
 
-    public void fireEventPersonaStillLoading(bool arg0, bool arg1, bool arg2, bool arg3, bool arg4, bool arg5, bool arg6, bool arg7, string[] arg8, int arg9, double arg10)
+    public void fireEventPlayIntegrityCheck(string result, string appRecognitionVerdict, string deviceIntegrity, string appLicensingVerdict)
     {
-        var __hs_vectorItems8 = arg8 ?? global::System.Array.Empty<string>();
-        var __hs_vectorCount8 = __hs_vectorItems8.Length;
-        var __hs_vectorByteTotal8 = 0;
-        for (var __hs_i8 = 0; __hs_i8 < __hs_vectorCount8; __hs_i8++) { __hs_vectorByteTotal8 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems8[__hs_i8] ?? string.Empty); }
-        scoped global::System.Span<byte> __hs_vectorArena8;
-        if (__hs_vectorByteTotal8 <= 1024) { __hs_vectorArena8 = stackalloc byte[__hs_vectorByteTotal8 == 0 ? 1 : __hs_vectorByteTotal8]; } else { __hs_vectorArena8 = new byte[__hs_vectorByteTotal8]; }
-        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews8;
-        if (__hs_vectorCount8 <= 64) { __hs_vectorViews8 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount8 == 0 ? 1 : __hs_vectorCount8]; } else { __hs_vectorViews8 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount8]; }
-        fixed (byte* __hs_vectorArenaPtr8 = __hs_vectorArena8)
-        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData8 = __hs_vectorViews8)
-        {
-            var __hs_vectorOffset8 = 0;
-            for (var __hs_i8 = 0; __hs_i8 < __hs_vectorCount8; __hs_i8++)
-            {
-                var __hs_item8 = __hs_vectorItems8[__hs_i8] ?? string.Empty;
-                var __hs_length8 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item8);
-                global::System.Text.Encoding.UTF8.GetBytes(__hs_item8, __hs_vectorArena8.Slice(__hs_vectorOffset8, __hs_length8));
-                __hs_vectorData8[__hs_i8] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr8 + __hs_vectorOffset8, Size = (nuint)__hs_length8 };
-                __hs_vectorOffset8 += __hs_length8;
-            }
-            NativeMethods.TablePtr->hs_method_4ca1988a((void*)_handle, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg9, arg10, __hs_vectorData8, (nuint)(arg8?.Length ?? 0));
-        }
-    }
-
-    public void fireEventPersonaUserLoadedActive(string arg0, string arg1, bool arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(result);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -2549,8 +9661,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(result, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(appRecognitionVerdict);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -2560,41 +9672,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_cdaf21e7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
-            }
-        }
-    }
-
-    public void fireEventPlayIntegrityCheck(string arg0, string arg1, string arg2, string arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(appRecognitionVerdict, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(deviceIntegrity);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -2604,8 +9683,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(deviceIntegrity, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(appLicensingVerdict);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -2615,7 +9694,7 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(appLicensingVerdict, __hs_stringBytes3);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
@@ -2624,16 +9703,21 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
                 {
                     fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                     {
-                        NativeMethods.TablePtr->hs_method_4eb04310((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                        NativeMethods.TablePtr->C2.hs_method_9159b91f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
                     }
                 }
             }
         }
     }
 
-    public void fireEventPlayerActionComparisonFailed(string arg0)
+    public void fireEventPlayerAttemptingExploit(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int exploitType)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_b4da8bb1((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), exploitType);
+    }
+
+    public void fireEventPlayerBanned(string bannedPlayer)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(bannedPlayer);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -2643,234 +9727,87 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(bannedPlayer, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_9d5d447b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_6d76b2ff((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void fireEventPlayerAttemptingExploit(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1)
+    public void fireEventPlayerBounced(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int bounceHeight)
     {
-        NativeMethods.TablePtr->hs_method_519207b4((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+        NativeMethods.TablePtr->C2.hs_method_3d69a020((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)block.Handle, bounceHeight);
     }
 
-    public void fireEventPlayerBanned(string arg0)
+    public void fireEventPlayerDamaged(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, int damageCause)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        NativeMethods.TablePtr->C2.hs_method_6b61ab91((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), damageCause);
+    }
+
+    public void fireEventPlayerJoinWorld(nint userId, byte subId, bool isLocalServer, bool? isUsingTURN, int JoinState, int attemptId, int failReason, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value failDebugInfo, int transportLayer, int networkTypeOverride, bool isConnectedToApplicationLayer, bool isFilteringProfanity, int multiplayerServiceIdentifier, string titleMessage, string errorMessage, string codeword, string partyId, bool isPartyLeader, bool isPartyDestination, bool isServerTransfer, byte reconnectionType, bool isDueToSuspend, ulong connectionDurationMs, global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo connectionInfo, int editorConnectionJoinIntent)
+    {
+        var __hs_stringByteCount13 = global::System.Text.Encoding.UTF8.GetByteCount(titleMessage);
+        scoped global::System.Span<byte> __hs_stringBytes13;
+        if (__hs_stringByteCount13 <= 256)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            __hs_stringBytes13 = stackalloc byte[__hs_stringByteCount13 == 0 ? 1 : __hs_stringByteCount13];
         }
         else
         {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+            __hs_stringBytes13 = new byte[__hs_stringByteCount13];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        global::System.Text.Encoding.UTF8.GetBytes(titleMessage, __hs_stringBytes13);
+        var __hs_stringByteCount14 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
+        scoped global::System.Span<byte> __hs_stringBytes14;
+        if (__hs_stringByteCount14 <= 256)
         {
-            NativeMethods.TablePtr->hs_method_16affb00((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void fireEventPlayerBounced(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_bba564de((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
-    }
-
-    public void fireEventPlayerDamaged(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_9eb0c550((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
-    }
-
-    public void fireEventPlayerJoinWorld(nint arg0, byte arg1, bool arg2, bool? arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, bool arg10, int arg11)
-    {
-        NativeMethods.TablePtr->hs_method_31b745d1((void*)_handle, (void*)arg0, arg1, arg2, arg3 ?? default(bool), arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg3.HasValue);
-    }
-
-    public void fireEventPlayerKicked(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            __hs_stringBytes14 = stackalloc byte[__hs_stringByteCount14 == 0 ? 1 : __hs_stringByteCount14];
         }
         else
         {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+            __hs_stringBytes14 = new byte[__hs_stringByteCount14];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes14);
+        var __hs_stringByteCount15 = global::System.Text.Encoding.UTF8.GetByteCount(codeword);
+        scoped global::System.Span<byte> __hs_stringBytes15;
+        if (__hs_stringByteCount15 <= 256)
         {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+            __hs_stringBytes15 = stackalloc byte[__hs_stringByteCount15 == 0 ? 1 : __hs_stringByteCount15];
         }
         else
         {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+            __hs_stringBytes15 = new byte[__hs_stringByteCount15];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        global::System.Text.Encoding.UTF8.GetBytes(codeword, __hs_stringBytes15);
+        var __hs_stringByteCount16 = global::System.Text.Encoding.UTF8.GetByteCount(partyId);
+        scoped global::System.Span<byte> __hs_stringBytes16;
+        if (__hs_stringByteCount16 <= 256)
         {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            __hs_stringBytes16 = stackalloc byte[__hs_stringByteCount16 == 0 ? 1 : __hs_stringByteCount16];
+        }
+        else
+        {
+            __hs_stringBytes16 = new byte[__hs_stringByteCount16];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(partyId, __hs_stringBytes16);
+        fixed (byte* __hs_stringData13 = __hs_stringBytes13)
+        {
+            fixed (byte* __hs_stringData14 = __hs_stringBytes14)
             {
-                NativeMethods.TablePtr->hs_method_afb03a91((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventPlayerMessageChat(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_4dc679ed((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventPlayerMessageMe(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_45572592((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventPlayerMessageSay(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_a17dc814((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventPlayerMessageTell(string arg0, string arg1, string arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                fixed (byte* __hs_stringData15 = __hs_stringBytes15)
                 {
-                    NativeMethods.TablePtr->hs_method_328aa481((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                    fixed (byte* __hs_stringData16 = __hs_stringBytes16)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_d87474c5((void*)__hosihikari_shim_handle, (void*)userId, subId, isLocalServer, isUsingTURN ?? default(bool), JoinState, attemptId, failReason, (void*)failDebugInfo.Handle, transportLayer, networkTypeOverride, isConnectedToApplicationLayer, isFilteringProfanity, multiplayerServiceIdentifier, __hs_stringData13, (nuint)__hs_stringByteCount13, __hs_stringData14, (nuint)__hs_stringByteCount14, __hs_stringData15, (nuint)__hs_stringByteCount15, __hs_stringData16, (nuint)__hs_stringByteCount16, isPartyLeader, isPartyDestination, isServerTransfer, reconnectionType, isDueToSuspend, connectionDurationMs, (void*)connectionInfo.Handle, editorConnectionJoinIntent, isUsingTURN.HasValue);
+                    }
                 }
             }
         }
     }
 
-    public void fireEventPlayerMessageTitle(string arg0, string arg1, string arg2)
+    public void fireEventPlayerKicked(string sessionType, string kickedPlayer)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(sessionType);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -2880,8 +9817,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(sessionType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(kickedPlayer);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -2891,33 +9828,30 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(kickedPlayer, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_66b829fe((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-                }
+                NativeMethods.TablePtr->C2.hs_method_d9b5e947((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
             }
         }
     }
 
-    public void fireEventPlayerReportSent(bool arg0, string arg1, string arg2, string arg3)
+    public void fireEventPlayerMessage(string fromName, string toName, string message, string messageType)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(toName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -2927,8 +9861,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(toName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -2938,8 +9872,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(messageType);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -2949,37 +9883,280 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(messageType, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_f5cf729a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void fireEventPlayerMessageChat(string fromName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_b239fe61((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventPlayerMessageMe(string fromName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_3af8402f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventPlayerMessageSay(string fromName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_feca6c6a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventPlayerMessageTell(string fromName, string toName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(toName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(toName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_86af9074((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void fireEventPlayerMessageTitle(string fromName, string toName, string message)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fromName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fromName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(toName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(toName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_3a4274ae((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                }
+            }
+        }
+    }
+
+    public void fireEventPlayerReportSent(bool successfulReportSent, string failureSource, string failureReason, string reportID)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(failureSource);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failureSource, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(failureReason);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failureReason, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(reportID);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reportID, __hs_stringBytes3);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    NativeMethods.TablePtr->hs_method_d6bcf3f7((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    NativeMethods.TablePtr->C2.hs_method_4b99eb34((void*)__hosihikari_shim_handle, successfulReportSent, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
                 }
             }
         }
     }
 
-    public static void fireEventPlayerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, float arg1, int arg2, int arg3)
+    public static void fireEventPlayerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, float metersTravelled, int cause, int sourceType)
     {
-        NativeMethods.TablePtr->hs_method_b2f65ccb((void*)(arg0?.Handle ?? 0), arg1, arg2, arg3);
+        NativeMethods.TablePtr->C2.hs_method_63a848a6((void*)(player?.Handle ?? 0), metersTravelled, cause, sourceType);
     }
 
-    public static void fireEventPlayerTransform(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public static void fireEventPlayerTransform(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_a7cf7afb((void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_00a22234((void*)player.Handle);
     }
 
-    public void fireEventPlayerTravelled(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, float arg1)
+    public void fireEventPlayerTravelled(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, float metersTravelledSinceLastEvent, int newBiome)
     {
-        NativeMethods.TablePtr->hs_method_387e2aa4((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+        NativeMethods.TablePtr->C2.hs_method_74c28078((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), metersTravelledSinceLastEvent, newBiome);
     }
 
-    public void fireEventPopupClosed(string arg0)
+    public void fireEventPopupClosed(string popupName)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(popupName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -2989,16 +10166,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(popupName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_164e5bb3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_1c020c58((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void fireEventPopupFiredEdu(string arg0, string arg1, string arg2, string arg3, int arg4)
+    public void fireEventPopupFiredEdu(string dialogType, string experienceId, string title, byte postAction)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dialogType);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -3008,8 +10185,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(dialogType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(experienceId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -3019,8 +10196,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(experienceId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(title);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -3030,46 +10207,94 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(title, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-                    {
-                        NativeMethods.TablePtr->hs_method_031bbeef((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4);
-                    }
+                    NativeMethods.TablePtr->C2.hs_method_2df3736c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, postAction);
                 }
             }
         }
     }
 
-    public void fireEventPortfolioExported(int arg0, int arg1)
+    public void fireEventPortfolioExported(int imageCount, int captionedCount)
     {
-        NativeMethods.TablePtr->hs_method_8756ad49((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_8756ad49((void*)__hosihikari_shim_handle, imageCount, captionedCount);
     }
 
-    public void fireEventProfanityFilter(bool arg0, bool arg1, bool arg2)
+    public void fireEventProfanityFilter(bool localFilter, bool remoteFilter, bool playerFilter)
     {
-        NativeMethods.TablePtr->hs_method_845d6884((void*)_handle, arg0, arg1, arg2);
+        NativeMethods.TablePtr->C2.hs_method_845d6884((void*)__hosihikari_shim_handle, localFilter, remoteFilter, playerFilter);
     }
 
-    public void fireEventProgressionsSet(string[] arg0)
+    public void fireEventProfileButtonPressed(string entryPoint)
     {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(entryPoint);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(entryPoint, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_fc32d664((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEventProfileImageFetched(string imageType, string fetchOutcome, bool servedFromCache, int httpStatus, uint fetchDurationMs)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(imageType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(imageType, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(fetchOutcome);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fetchOutcome, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_538d910a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, servedFromCache, httpStatus, fetchDurationMs);
+            }
+        }
+    }
+
+    public void fireEventProfilerCapture(nint @params)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5e3df120((void*)__hosihikari_shim_handle, (void*)@params);
+    }
+
+    public void fireEventProfilerMetadata(nint @params)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6d4a41e6((void*)__hosihikari_shim_handle, (void*)@params);
+    }
+
+    public void fireEventProgressionsSet(string[] progressions)
+    {
+        var __hs_vectorItems0 = progressions ?? global::System.Array.Empty<string>();
         var __hs_vectorCount0 = __hs_vectorItems0.Length;
         var __hs_vectorByteTotal0 = 0;
         for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
@@ -3089,43 +10314,13 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            NativeMethods.TablePtr->hs_method_a9ed7f55((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            NativeMethods.TablePtr->C2.hs_method_baef8e41((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(progressions?.Length ?? 0));
         }
     }
 
-    public void fireEventPromotionNotificationClicked(string arg0)
+    public void fireEventPurchaseFailureDetails(int httpCode, string errorMessage, string productId, string transactionId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_b51cc12f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void fireEventPurchaseAttempt(string arg0, string arg1, string arg2, int arg3, int arg4)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -3135,8 +10330,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -3146,44 +10341,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_6785deeb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4);
-                }
-            }
-        }
-    }
-
-    public void fireEventPurchaseFailureDetails(int arg0, string arg1, string arg2, string arg3)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(transactionId);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -3193,22 +10352,22 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(transactionId, __hs_stringBytes3);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    NativeMethods.TablePtr->hs_method_78f07fd8((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    NativeMethods.TablePtr->C2.hs_method_b7aca9fc((void*)__hosihikari_shim_handle, httpCode, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
                 }
             }
         }
     }
 
-    public void fireEventPurchaseGameAttempt(string arg0, string arg1, string arg2)
+    public void fireEventPurchaseGameAttempt(string storeId, string activeTab, string productId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(storeId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -3218,8 +10377,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(storeId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(activeTab);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -3229,8 +10388,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(activeTab, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -3240,22 +10399,27 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    NativeMethods.TablePtr->hs_method_d0fdb75e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                    NativeMethods.TablePtr->C2.hs_method_6d79f256((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
                 }
             }
         }
     }
 
-    public void fireEventPurchaseResolved(string arg0, string arg1, string arg2, int arg3, int arg4, int arg5)
+    public void fireEventPurchaseGameResult(int purchaseResult)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_266ad941((void*)__hosihikari_shim_handle, purchaseResult);
+    }
+
+    public void fireEventPushNotificationOpened(string threadId, string deepLink)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(threadId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -3265,8 +10429,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(threadId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(deepLink);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -3276,8 +10440,210 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(deepLink, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_587f1d82((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventPushNotificationReceived(nint msg)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ee9c35a9((void*)__hosihikari_shim_handle, (void*)msg);
+    }
+
+    public void fireEventQueryPurchasesResult(string storeID, string priorPurchaseIds, int NumberOfPurchases, bool QuerySucceeded)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(storeID);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(storeID, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(priorPurchaseIds);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(priorPurchaseIds, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_2017a988((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, NumberOfPurchases, QuerySucceeded);
+            }
+        }
+    }
+
+    public void fireEventRealmBackupDownloadFailed(int realmId, string reason, long worldSizeBytes, long availableStorageBytes, string[] packIds)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes1);
+        var __hs_vectorItems4 = packIds ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount4 = __hs_vectorItems4.Length;
+        var __hs_vectorByteTotal4 = 0;
+        for (var __hs_i4 = 0; __hs_i4 < __hs_vectorCount4; __hs_i4++) { __hs_vectorByteTotal4 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems4[__hs_i4] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena4;
+        if (__hs_vectorByteTotal4 <= 1024) { __hs_vectorArena4 = stackalloc byte[__hs_vectorByteTotal4 == 0 ? 1 : __hs_vectorByteTotal4]; } else { __hs_vectorArena4 = new byte[__hs_vectorByteTotal4]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews4;
+        if (__hs_vectorCount4 <= 64) { __hs_vectorViews4 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount4 == 0 ? 1 : __hs_vectorCount4]; } else { __hs_vectorViews4 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount4]; }
+        fixed (byte* __hs_vectorArenaPtr4 = __hs_vectorArena4)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData4 = __hs_vectorViews4)
+        {
+            var __hs_vectorOffset4 = 0;
+            for (var __hs_i4 = 0; __hs_i4 < __hs_vectorCount4; __hs_i4++)
+            {
+                var __hs_item4 = __hs_vectorItems4[__hs_i4] ?? string.Empty;
+                var __hs_length4 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item4);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item4, __hs_vectorArena4.Slice(__hs_vectorOffset4, __hs_length4));
+                __hs_vectorData4[__hs_i4] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr4 + __hs_vectorOffset4, Size = (nuint)__hs_length4 };
+                __hs_vectorOffset4 += __hs_length4;
+            }
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_574eb4ff((void*)__hosihikari_shim_handle, realmId, __hs_stringData1, (nuint)__hs_stringByteCount1, worldSizeBytes, availableStorageBytes, __hs_vectorData4, (nuint)(packIds?.Length ?? 0));
+            }
+        }
+    }
+
+    public void fireEventRealmDownload(string correlationId, string downloadStage, int errorCode, int realmId, int fileSizeKB)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(downloadStage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(downloadStage, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_3c5cce4b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, errorCode, realmId, fileSizeKB);
+            }
+        }
+    }
+
+    public void fireEventRealmMemberlistCleared(nint worldId, nint numberOfUsersRemoved)
+    {
+        NativeMethods.TablePtr->C2.hs_method_13050a20((void*)__hosihikari_shim_handle, (void*)worldId, (void*)numberOfUsersRemoved);
+    }
+
+    public void fireEventRealmShared(string url, nint mode, nint worldId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_2938a2c2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)mode, (void*)worldId);
+        }
+    }
+
+    public void fireEventRealmUpload(string correlationId, string uploadStage, int errorCode, int realmId, int fileSizeKB, bool isPack)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(uploadStage);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(uploadStage, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_6a3c8985((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, errorCode, realmId, fileSizeKB, isPack);
+            }
+        }
+    }
+
+    public void fireEventRealmUrlGenerated(string url, nint worldId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_0aaf6540((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)worldId);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.", false)]
+    public void fireEventRealmsGeneralCall(nint callName, nint returnCode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.");
+
+    public void fireEventRealmsPackUpload(int realmId, int slotIndex, string packId, string packVersion, sbyte packType, string packClassification, string packOptimizationVersion, bool hasContentIdentity, bool isPremium, byte packOrigin, int stackPosition, ulong packSizeBytes)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -3287,601 +10653,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_1891641a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5);
-                }
-            }
-        }
-    }
-
-    public void fireEventPushNotificationOpened(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_ef7f04e1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventPushNotificationPermission(bool arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_6de076c8((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
-
-    public void fireEventPushNotificationReceived(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_664714d7((void*)_handle, (void*)arg0);
-    }
-
-    public void fireEventQueryPurchasesResult(string arg0, int arg1, bool arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_0a58b637((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
-        }
-    }
-
-    public void fireEventRealmDownload(string arg0, string arg1, int arg2, int arg3, int arg4)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_4c75d8b2((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, arg4);
-            }
-        }
-    }
-
-    public void fireEventRealmMemberlistCleared(global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg0, nint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_394ea866((void*)_handle, (void*)arg0.Handle, (void*)arg1);
-    }
-
-    public void fireEventRealmShared(string arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_7a73711d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)arg2.Handle);
-        }
-    }
-
-    public void fireEventRealmUpload(string arg0, string arg1, int arg2, int arg3, int arg4, bool arg5)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_6a9b3304((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, arg4, arg5);
-            }
-        }
-    }
-
-    public void fireEventRealmUrlGenerated(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_977e8cd0((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
-        }
-    }
-
-    public void fireEventRealmsStoriesOptIn(string arg0, string arg1, string arg2, bool arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_9d903827((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
-                }
-            }
-        }
-    }
-
-    public void fireEventRealmsSubscriptionPurchaseFailed(nint arg0, int arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_65deeb73((void*)_handle, (void*)arg0, arg1, arg2);
-    }
-
-    public void fireEventRealmsSubscriptionPurchaseStarted(nint arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_a7accb91((void*)_handle, (void*)arg0, arg1);
-    }
-
-    public void fireEventRealmsSubscriptionPurchaseSucceeded(nint arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_9e44e291((void*)_handle, (void*)arg0, arg1);
-    }
-
-    public void fireEventReducerBlockEntered(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
-    {
-        NativeMethods.TablePtr->hs_method_c8fe5777((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireEventRenderingSizeChanged()
-    {
-        NativeMethods.TablePtr->hs_method_a8cb4e50((void*)_handle);
-    }
-
-    public void fireEventRespawn(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_0908e4d7((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    public void fireEventRespondedToAcceptContent(global::Hosihikari.Bindings.Bedrock.Interop.PacksInfoData arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_2392f6d0((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    public void fireEventSafetyHTTPRequest(string arg0, string arg1, int arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_f73937f7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
-            }
-        }
-    }
-
-    public void fireEventSaveDataExpansion(ulong arg0, ulong arg1, ulong arg2)
-    {
-        NativeMethods.TablePtr->hs_method_8169edbc((void*)_handle, arg0, arg1, arg2);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventScreenChanged(nint userId, nint screenName, nint additionalProperties) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void fireEventScreenChanged(nint arg0, string arg1, nint arg2)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_1eb24f5e((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
-        }
-    }
-
-    public void fireEventScreenLoaded(nint arg0, string arg1, double arg2, double arg3, double arg4, double arg5)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_a09649b1((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, arg4, arg5);
-        }
-    }
-
-    public void fireEventScriptDebuggerConnect(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_93c71529((void*)_handle, arg0);
-    }
-
-    public void fireEventScriptDebuggerListen(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_b6f352b7((void*)_handle, arg0);
-    }
-
-    public void fireEventScriptPluginDiscovery(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginResult arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_f1d64da4((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void fireEventScriptPluginRun_5b44278e(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void fireEventSearchCatalogRequest(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_6ac2afa1((void*)_handle, (void*)arg0);
-    }
-
-    public void fireEventSearchItemSelected(int arg0, int arg1, string arg2, int arg3, int arg4, int arg5)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_36d10864((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5);
-        }
-    }
-
-    public void fireEventServerDrivenLayoutImagesLoaded(nint arg0, string arg1, int arg2, ulong arg3, int arg4, int arg5, int arg6, ushort[] arg7)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (ushort* __hs_vectorData7 = arg7)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_5003af4c((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, arg4, arg5, arg6, __hs_vectorData7, (nuint)(arg7?.Length ?? 0));
-            }
-        }
-    }
-
-    public void fireEventServerDrivenLayoutPageLoaded(nint arg0, string arg1, int arg2, int arg3, int arg4, int arg5, int arg6)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_ec2b7e2c((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, arg4, arg5, arg6);
-        }
-    }
-
-    public void fireEventServerPlayerJoinedGame(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, byte arg1, string arg2)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_f0d862e2((void*)_handle, (void*)arg0.Handle, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-        }
-    }
-
-    public void fireEventServerRespawnSearchTime(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerRespawnTelemetryData arg1)
-    {
-        NativeMethods.TablePtr->hs_method_0e1e20e2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void fireEventServerShutdownDueToError(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_f74e8200((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void fireEventSetValidForAchievements(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_1a51c908((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
-    }
-
-    public void fireEventSidebarNavigation(nint arg0, string arg1, string arg2, int arg3, bool arg4, bool arg5, bool arg6)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-            {
-                NativeMethods.TablePtr->hs_method_163cacc4((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5, arg6);
-            }
-        }
-    }
-
-    public void fireEventSidebarVerboseToggled(nint arg0, string arg1, string arg2, bool arg3)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-            {
-                NativeMethods.TablePtr->hs_method_cbf8393f((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
-            }
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventSignInEdu_13907d14(nint mutsUserId, nint role, nint stage, nint tenantType, nint error, nint details) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void fireEventSignInEdu_76d9d7e4(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void fireEventSignInToIdentity(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public void fireEventSignOutEdu(string arg0, int arg1, string arg2, string arg3, string arg4)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(packVersion);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -3891,88 +10664,62 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
-        scoped global::System.Span<byte> __hs_stringBytes4;
-        if (__hs_stringByteCount4 <= 256)
+        global::System.Text.Encoding.UTF8.GetBytes(packVersion, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(packClassification);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
         {
-            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
         }
         else
         {
-            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        global::System.Text.Encoding.UTF8.GetBytes(packClassification, __hs_stringBytes5);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(packOptimizationVersion);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
         {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-            {
-                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-                {
-                    fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-                    {
-                        NativeMethods.TablePtr->hs_method_b1c7ccb3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4);
-                    }
-                }
-            }
-        }
-    }
-
-    public void fireEventSignOutOfIdentity(int arg0, int arg1, string arg2, string arg3)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
         }
         else
         {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(packOptimizationVersion, __hs_stringBytes6);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
             fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                NativeMethods.TablePtr->hs_method_d7d2878c((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                {
+                    fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_143dd2da((void*)__hosihikari_shim_handle, realmId, slotIndex, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, packType, __hs_stringData5, (nuint)__hs_stringByteCount5, __hs_stringData6, (nuint)__hs_stringByteCount6, hasContentIdentity, isPremium, packOrigin, stackPosition, packSizeBytes);
+                    }
+                }
             }
         }
     }
 
-    public void fireEventSignalServiceConnect(int arg0, bool arg1, int arg2, ulong arg3, string arg4)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.", false)]
+    public void fireEventRealmsRealmSpecificCall(nint callName, long realmId, nint returnCode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::Http::Status' is not a known bindable declaration.");
+
+    public void fireEventRealmsStoriesOptIn(string correlationId, string action, string realmId, bool isOwner)
     {
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
-        scoped global::System.Span<byte> __hs_stringBytes4;
-        if (__hs_stringByteCount4 <= 256)
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
         {
-            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
         }
         else
         {
-            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-        {
-            NativeMethods.TablePtr->hs_method_2fd2caae((void*)_handle, arg0, arg1, arg2, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
-        }
-    }
-
-    public static void fireEventSlashCommandExecuted(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1, int arg2, int arg3, string arg4)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(action);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -3982,8 +10729,525 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(realmId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(realmId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_1157465b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, isOwner);
+                }
+            }
+        }
+    }
+
+    public void fireEventReceivedApplicationExitInfo(string description, int reasonCode, int exitCode, int importanceCode, long residentSetSize, long proportionalSetSize, string sessionId, bool deviceSupportsReasonLowMem)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes0);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(sessionId);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(sessionId, __hs_stringBytes6);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+            {
+                NativeMethods.TablePtr->C2.hs_method_43cdd673((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reasonCode, exitCode, importanceCode, residentSetSize, proportionalSetSize, __hs_stringData6, (nuint)__hs_stringByteCount6, deviceSupportsReasonLowMem);
+            }
+        }
+    }
+
+    public void fireEventReceivedUniqueLauncherSessionId(string launcherSessionId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(launcherSessionId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(launcherSessionId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_f8b13e03((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEventReceivedUniqueWebSessionId(string webSessionId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(webSessionId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(webSessionId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_d96cc1b7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEventReducerBlockEntered(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
+    {
+        NativeMethods.TablePtr->C2.hs_method_13e0febc((void*)__hosihikari_shim_handle, (void*)item.Handle);
+    }
+
+    public void fireEventRemoteDesktop(bool isRemoteDesktop)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8085d12c((void*)__hosihikari_shim_handle, isRemoteDesktop);
+    }
+
+    public void fireEventRenderingSizeChanged()
+    {
+        NativeMethods.TablePtr->C2.hs_method_a8cb4e50((void*)__hosihikari_shim_handle);
+    }
+
+    public void fireEventResourceProcessingPerf(nint data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0a97b03d((void*)__hosihikari_shim_handle, (void*)data);
+    }
+
+    public void fireEventRespawn(global::Hosihikari.Bindings.Bedrock.Interop.Player player, int dimID)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c8400234((void*)__hosihikari_shim_handle, (void*)player.Handle, dimID);
+    }
+
+    public void fireEventRespondedToAcceptContent(global::Hosihikari.Bindings.Bedrock.Interop.PacksInfoData data, bool accepted, bool downloadOptionalResourcePacks)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e6c3880c((void*)__hosihikari_shim_handle, (void*)data.Handle, accepted, downloadOptionalResourcePacks);
+    }
+
+    public void fireEventSafetyHTTPRequest(string method, string url, int responseCode)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(method);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(method, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_8c7667e4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, responseCode);
+            }
+        }
+    }
+
+    public void fireEventSaveDataExpansion(ulong preExpansionSize, ulong postExpansionSize, ulong levelUsedSize)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8169edbc((void*)__hosihikari_shim_handle, preExpansionSize, postExpansionSize, levelUsedSize);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventScreenChanged(nint userId, nint screenName, nint additionalProperties) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventScriptDebuggerConnect(bool client, bool autoAttach, int retries)
+    {
+        NativeMethods.TablePtr->C2.hs_method_73cfc548((void*)__hosihikari_shim_handle, client, autoAttach, retries);
+    }
+
+    public void fireEventScriptDebuggerListen(bool client, bool autoAttach)
+    {
+        NativeMethods.TablePtr->C2.hs_method_79da3709((void*)__hosihikari_shim_handle, client, autoAttach);
+    }
+
+    public void fireEventScriptPluginDiscovery(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginResult pluginResult, bool client)
+    {
+        NativeMethods.TablePtr->C2.hs_method_170dfe54((void*)__hosihikari_shim_handle, (void*)pluginResult.Handle, client);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventScriptPluginRun(nint pluginResult, nint runDuration, bool client) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventSearchCatalogRequest(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventSearchItemSelected(int correlationId, int sessionId, string productId, int row, int column, int currentPage, string searchType)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes2);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(searchType);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(searchType, __hs_stringBytes6);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+            {
+                NativeMethods.TablePtr->C2.hs_method_5c964e42((void*)__hosihikari_shim_handle, correlationId, sessionId, __hs_stringData2, (nuint)__hs_stringByteCount2, row, column, currentPage, __hs_stringData6, (nuint)__hs_stringByteCount6);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventServerDrivenLayoutImagesLoaded(nint writer, nint pageID, nint imageTelemetryInfo) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventServerDrivenLayoutPageLoaded(nint writer, nint pageID, int requestSize, int responseSize, int rowCount, int itemCount, int imageCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventServerInitializationFailed(string failReason, bool serverLevelExists, bool serverNetworkHandlerValid)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(failReason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(failReason, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_e09fc615((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, serverLevelExists, serverNetworkHandlerValid);
+        }
+    }
+
+    public void fireEventServerPlayerJoinedGame(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, byte subId, string firstConnectionTime)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(firstConnectionTime);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(firstConnectionTime, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C2.hs_method_4989b601((void*)__hosihikari_shim_handle, (void*)id.Handle, subId, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void fireEventServerReceivedValidPacket(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier netId, int packetId, byte clientSubId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b701b6fe((void*)__hosihikari_shim_handle, (void*)netId.Handle, packetId, clientSubId);
+    }
+
+    public void fireEventServerRespawnSearchTime(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.PlayerRespawnTelemetryData data)
+    {
+        NativeMethods.TablePtr->C2.hs_method_07bd7a43((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)data.Handle);
+    }
+
+    public void fireEventServerShutdownDueToError(string reason)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_d51bad40((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireEventSetValidForAchievements(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, bool currentlyValidForAchievements)
+    {
+        NativeMethods.TablePtr->C2.hs_method_bbf75f11((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), currentlyValidForAchievements);
+    }
+
+    public void fireEventSidebarNavigation(nint userId, string layoutType, string telemetryId, int depthLevel, bool isSelected, bool areChildrenVisible, bool hasChildren)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(layoutType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(layoutType, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(telemetryId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(telemetryId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_6e0a902e((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, depthLevel, isSelected, areChildrenVisible, hasChildren);
+            }
+        }
+    }
+
+    public void fireEventSidebarVerboseToggled(nint userId, string layoutType, string verboseNavigationType, bool verboseState)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(layoutType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(layoutType, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(verboseNavigationType);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(verboseNavigationType, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->C2.hs_method_6e7d4577((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, verboseState);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void fireEventSignInEdu(nint role, nint stage, nint tenantType, nint error, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void fireEventSignInToIdentity(int accountType, int trigger, string signInSource, bool signInUIShown, int stage, int result, int retryCount, global::Hosihikari.Bindings.Bedrock.Interop.Social.PlayerIDs ids, string errorCode)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(signInSource);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(signInSource, __hs_stringBytes2);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode);
+        scoped global::System.Span<byte> __hs_stringBytes8;
+        if (__hs_stringByteCount8 <= 256)
+        {
+            __hs_stringBytes8 = stackalloc byte[__hs_stringByteCount8 == 0 ? 1 : __hs_stringByteCount8];
+        }
+        else
+        {
+            __hs_stringBytes8 = new byte[__hs_stringByteCount8];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode, __hs_stringBytes8);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData8 = __hs_stringBytes8)
+            {
+                NativeMethods.TablePtr->C2.hs_method_9fb33d05((void*)__hosihikari_shim_handle, accountType, trigger, __hs_stringData2, (nuint)__hs_stringByteCount2, signInUIShown, stage, result, retryCount, (void*)ids.Handle, __hs_stringData8, (nuint)__hs_stringByteCount8);
+            }
+        }
+    }
+
+    public void fireEventSignOutEdu(byte role, string tenantType, string action, string error)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(tenantType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tenantType, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(action);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(error);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(error, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_d04feb21((void*)__hosihikari_shim_handle, role, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                }
+            }
+        }
+    }
+
+    public void fireEventSignOutOfIdentity(int accountType, int trigger, string accountId, string errorCode)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(accountId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(accountId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode, __hs_stringBytes3);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->C2.hs_method_b085180d((void*)__hosihikari_shim_handle, accountType, trigger, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+            }
+        }
+    }
+
+    public void fireEventSignalMessagePerformance(string signinId, nint messagePerformanceEvent)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(signinId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(signinId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_d0a30cd5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)messagePerformanceEvent);
+        }
+    }
+
+    public void fireEventSignalServiceConnect(int stage, bool bIsSigningInAsHost, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value stageProperties, string signinId, string correlationId)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(signinId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(signinId, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(correlationId);
         scoped global::System.Span<byte> __hs_stringBytes4;
         if (__hs_stringByteCount4 <= 256)
         {
@@ -3993,29 +11257,61 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes4 = new byte[__hs_stringByteCount4];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        global::System.Text.Encoding.UTF8.GetBytes(correlationId, __hs_stringBytes4);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                NativeMethods.TablePtr->C2.hs_method_41bdac34((void*)__hosihikari_shim_handle, stage, bIsSigningInAsHost, (void*)stageProperties.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            }
+        }
+    }
+
+    public static void fireEventSlashCommandExecuted(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, string commandName, int successCount, int errorCount, string errorList)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(commandName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(commandName, __hs_stringBytes1);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(errorList);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(errorList, __hs_stringBytes4);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData4 = __hs_stringBytes4)
             {
-                NativeMethods.TablePtr->hs_method_7191ed8a((void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+                NativeMethods.TablePtr->C2.hs_method_7bb0001c((void*)(player?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, successCount, errorCount, __hs_stringData4, (nuint)__hs_stringByteCount4);
             }
         }
     }
 
-    public void fireEventSplitScreenUpdated(nint arg0)
+    public void fireEventSplitScreenUpdated(nint data)
     {
-        NativeMethods.TablePtr->hs_method_d18f54e5((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_eaba4574((void*)__hosihikari_shim_handle, (void*)data);
     }
 
-    public void fireEventStackLoaded(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_1c931956((void*)_handle, (void*)arg0);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const PackInstance' is not supported.", false)]
+    public void fireEventStackLoaded(nint stats, nint packInstances) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const PackInstance' is not supported.");
 
-    public void fireEventStartClient(string arg0)
+    public void fireEventStartClient(string ipAddress, bool isTextToSpeechEnabled)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(ipAddress);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -4025,16 +11321,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(ipAddress, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_6f4dd04d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_af1f8677((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isTextToSpeechEnabled);
         }
     }
 
-    public void fireEventStartWorld(int arg0, string arg1, int arg2)
+    public void fireEventStartWorld(int networkType, string ipAddress, int friendWorldType)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(ipAddress);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -4044,20 +11340,20 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(ipAddress, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_d41b1703((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+            NativeMethods.TablePtr->C2.hs_method_a3d02a6f((void*)__hosihikari_shim_handle, networkType, __hs_stringData1, (nuint)__hs_stringByteCount1, friendWorldType);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
-    public void fireEventStartupPerformance(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventStartupPerformance(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fireEventStorage(int arg0, string arg1)
+    public void fireEventStorage(int state, string extra)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(extra);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -4067,20 +11363,20 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(extra, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_a4fb27ed((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C2.hs_method_91a3ec1c((void*)__hosihikari_shim_handle, state, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Bedrock::DirectoryEntry' is not supported.", false)]
-    public void fireEventStorageAreaFull(nint arg0, nint arg1) =>
+    public void fireEventStorageAreaFull(nint areaPath, nint diskSizeData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Bedrock::DirectoryEntry' is not supported.");
 
-    public void fireEventStorageReport(string arg0)
+    public void fireEventStorageReport(string report)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(report);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -4090,161 +11386,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(report, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_4eea3436((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_a328414f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void fireEventStoreDiscoveryRequestResponse(int arg0, int arg1)
+    public void fireEventStoreDiscoveryRequestResponse(int retryAttempt, int? errorStatus, string? errorMessage, string? errorCode)
     {
-        NativeMethods.TablePtr->hs_method_236922cf((void*)_handle, arg0, arg1);
-    }
-
-    public void fireEventStoreErrorPage(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_f1e74e55((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventStoreLocalizationBinaryFetchResponse(int arg0, uint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_0a38671d((void*)_handle, arg0, arg1);
-    }
-
-    public void fireEventStoreOfferClicked(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_2c7a7e5a((void*)_handle, (void*)arg0);
-    }
-
-    public void fireEventStoreOfferClicked(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_bd96a2c0((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventStorePlayFabRequestResponse(ushort arg0)
-    {
-        NativeMethods.TablePtr->hs_method_921837de((void*)_handle, arg0);
-    }
-
-    public void fireEventStorePromotionNotification(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_c0c3b952((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void fireEventStoreSearch(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_6b48d22a((void*)_handle, (void*)arg0);
-    }
-
-    public void fireEventStoreSessionResponse(string arg0, int arg1, int arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_6e295e20((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
-        }
-    }
-
-    public void fireEventStructureExport(nint arg0, int arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_9b17ac3d((void*)_handle, (void*)arg0, arg1, arg2);
-    }
-
-    public void fireEventSwitchAccountEdu(string arg0, int arg1, string arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(errorMessage ?? string.Empty);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -4254,161 +11405,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-            {
-                NativeMethods.TablePtr->hs_method_7d5981cc((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-            }
-        }
-    }
-
-    public void fireEventTagButtonPressed(string arg0, bool arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_d2a3fe01((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-        }
-    }
-
-    public void fireEventTextProcessorShadowban(string arg0, string arg1, uint arg2, uint arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_37092ee6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3);
-            }
-        }
-    }
-
-    public void fireEventTextProcessorStartupFailed(string arg0, int arg1, int arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_b89c2bdf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
-        }
-    }
-
-    public void fireEventTrackDeeplinks(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_4b832ad7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventTreatmentPackApplied(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0)
-    {
-        NativeMethods.TablePtr->hs_method_7a005eb5((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void fireEventTreatmentPackDownloadFailed(string arg0, string arg1, string arg2, string arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(errorMessage ?? string.Empty, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode ?? string.Empty);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -4418,25 +11416,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode ?? string.Empty, __hs_stringBytes3);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-                    {
-                        NativeMethods.TablePtr->hs_method_91a1696d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
-                    }
-                }
+                NativeMethods.TablePtr->C2.hs_method_452b913a((void*)__hosihikari_shim_handle, retryAttempt, errorStatus ?? default(int), __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, errorStatus.HasValue, errorMessage is not null, errorCode is not null);
             }
         }
     }
 
-    public void fireEventTreatmentPackDownloaded(string arg0, string arg1, string arg2, string arg3)
+    public void fireEventStoreErrorPage(string errorCode, string pageId, string discoveryServiceTitleId, string playFabTitleId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(errorCode);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -4446,8 +11438,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(errorCode, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(pageId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -4457,8 +11449,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(pageId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(discoveryServiceTitleId);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -4468,8 +11460,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(discoveryServiceTitleId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(playFabTitleId);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -4479,7 +11471,7 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(playFabTitleId, __hs_stringBytes3);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
@@ -4488,16 +11480,25 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
                 {
                     fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                     {
-                        NativeMethods.TablePtr->hs_method_f21c7bd4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                        NativeMethods.TablePtr->C2.hs_method_a217792f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
                     }
                 }
             }
         }
     }
 
-    public void fireEventTreatmentPackRemoved(string arg0)
+    public void fireEventStoreInventoryRefreshRequestResponse(int status, int retryAttempt, bool asyncServicesManager)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_549b3419((void*)__hosihikari_shim_handle, status, retryAttempt, asyncServicesManager);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventStoreOfferClicked(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventStoreOfferClicked(string telemetryId, string productId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(telemetryId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -4507,21 +11508,331 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(telemetryId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_a6626516((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_50e4961d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventStoreSearch(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventStoreSessionResponse(string responseType, int status, int retryCount, bool asyncServicesManager)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(responseType);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(responseType, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ad12fc01((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, status, retryCount, asyncServicesManager);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventStructureExport(nint writer, nint outcome, nint stage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireEventSwitchAccountEdu(byte role, string tenantType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(tenantType);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tenantType, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_98ee9f58((void*)__hosihikari_shim_handle, role, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void fireEventTagButtonPressed(string tag, bool showMore)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(tag);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_2f8b4e6d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, showMore);
+        }
+    }
+
+    public void fireEventTextProcessorStartupFailed(string stage, int retryCount, int maxRetryCount)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(stage);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(stage, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_a6953726((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, retryCount, maxRetryCount);
+        }
+    }
+
+    public void fireEventTotalDlcSizes(ulong resourceSize, ulong worldTemplateSize)
+    {
+        NativeMethods.TablePtr->C2.hs_method_15f88bdd((void*)__hosihikari_shim_handle, resourceSize, worldTemplateSize);
+    }
+
+    public void fireEventTrackDeeplinks(string deeplinkDestination, string deeplinkSource, string educationReferrerId, string educationReferrerType)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(deeplinkDestination);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deeplinkDestination, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(deeplinkSource);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(deeplinkSource, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(educationReferrerId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationReferrerId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(educationReferrerType);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationReferrerType, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_31754b74((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void fireEventTreatmentPackApplied(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ad1e89a5((void*)__hosihikari_shim_handle, (void*)manifest.Handle);
+    }
+
+    public void fireEventTreatmentPackDownloadFailed(string productId, string packId, string versionNumber, string requiredTreatmentTag)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(versionNumber);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(versionNumber, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(requiredTreatmentTag);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(requiredTreatmentTag, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_db36b352((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void fireEventTreatmentPackDownloaded(string productId, string packId, string versionNumber, string requiredTreatmentTag)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(versionNumber);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(versionNumber, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(requiredTreatmentTag);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(requiredTreatmentTag, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->C2.hs_method_2db01da0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void fireEventTreatmentPackRemoved(string packId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(packId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(packId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_d1759d92((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void fireEventTreatmentsCleared()
     {
-        NativeMethods.TablePtr->hs_method_e5758df8((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_e5758df8((void*)__hosihikari_shim_handle);
     }
 
-    public void fireEventTreatmentsSet(string[] arg0, string arg1)
+    public void fireEventTreatmentsSet(string[] treatments, string treatmentContext)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(treatmentContext);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -4531,8 +11842,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
+        global::System.Text.Encoding.UTF8.GetBytes(treatmentContext, __hs_stringBytes1);
+        var __hs_vectorItems0 = treatments ?? global::System.Array.Empty<string>();
         var __hs_vectorCount0 = __hs_vectorItems0.Length;
         var __hs_vectorByteTotal0 = 0;
         for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
@@ -4554,14 +11865,14 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
             }
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->hs_method_4ce1dfd0((void*)_handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+                NativeMethods.TablePtr->C2.hs_method_65f3e6cd((void*)__hosihikari_shim_handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_vectorData0, (nuint)(treatments?.Length ?? 0));
             }
         }
     }
 
-    public void fireEventTrialDeviceIdCorrelation(long arg0, string arg1, long arg2, string arg3)
+    public void fireEventTrialDeviceIdCorrelation(long myTime, string theirId, long theirTime, string theirLastSessionId)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(theirId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -4571,8 +11882,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(theirId, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(theirLastSessionId);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -4582,24 +11893,24 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(theirLastSessionId, __hs_stringBytes3);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                NativeMethods.TablePtr->hs_method_8768b4d7((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                NativeMethods.TablePtr->C2.hs_method_59147f21((void*)__hosihikari_shim_handle, myTime, __hs_stringData1, (nuint)__hs_stringByteCount1, theirTime, __hs_stringData3, (nuint)__hs_stringByteCount3);
             }
         }
     }
 
-    public void fireEventTrialStatusFailed(int arg0)
+    public void fireEventTrialStatusFailed(int errorCode)
     {
-        NativeMethods.TablePtr->hs_method_d936a30c((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_d936a30c((void*)__hosihikari_shim_handle, errorCode);
     }
 
-    public void fireEventUgcAcquisitionStateChanged(string arg0, ulong arg1, double arg2, bool arg3, int arg4, bool arg5, int arg6, string arg7, string arg8, int arg9)
+    public void fireEventUgcAcquisitionStateChanged(string ugcProductId, ulong downloadSize, double elapsedTime, bool isUpdate, int retries, bool silent, int numContentTrackers, string result, string resultDetails, int httpStatus, int errorCode, bool optimizedPack)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(ugcProductId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -4609,8 +11920,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(arg7);
+        global::System.Text.Encoding.UTF8.GetBytes(ugcProductId, __hs_stringBytes0);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(result);
         scoped global::System.Span<byte> __hs_stringBytes7;
         if (__hs_stringByteCount7 <= 256)
         {
@@ -4620,8 +11931,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes7 = new byte[__hs_stringByteCount7];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg7, __hs_stringBytes7);
-        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
+        global::System.Text.Encoding.UTF8.GetBytes(result, __hs_stringBytes7);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(resultDetails);
         scoped global::System.Span<byte> __hs_stringBytes8;
         if (__hs_stringByteCount8 <= 256)
         {
@@ -4631,32 +11942,27 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes8 = new byte[__hs_stringByteCount8];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg8, __hs_stringBytes8);
+        global::System.Text.Encoding.UTF8.GetBytes(resultDetails, __hs_stringBytes8);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData7 = __hs_stringBytes7)
             {
                 fixed (byte* __hs_stringData8 = __hs_stringBytes8)
                 {
-                    NativeMethods.TablePtr->hs_method_7defbaba((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3, arg4, arg5, arg6, __hs_stringData7, (nuint)__hs_stringByteCount7, __hs_stringData8, (nuint)__hs_stringByteCount8, arg9);
+                    NativeMethods.TablePtr->C2.hs_method_d0480d5d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, downloadSize, elapsedTime, isUpdate, retries, silent, numContentTrackers, __hs_stringData7, (nuint)__hs_stringByteCount7, __hs_stringData8, (nuint)__hs_stringByteCount8, httpStatus, errorCode, optimizedPack);
                 }
             }
         }
     }
 
-    public void fireEventUnfulfilledPurchaseFound(nint arg0)
+    public void fireEventUnknownBlockReceived(global::Hosihikari.Bindings.Bedrock.Interop.NewBlockID blockId, ushort data)
     {
-        NativeMethods.TablePtr->hs_method_f351766a((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_d6cc9734((void*)__hosihikari_shim_handle, (void*)blockId.Handle, data);
     }
 
-    public void fireEventUnknownBlockReceived(nint arg0, ushort arg1)
+    public void fireEventUriActivation(string activationIdentifier, string activationParameters)
     {
-        NativeMethods.TablePtr->hs_method_2f065ebb((void*)_handle, (void*)arg0, arg1);
-    }
-
-    public void fireEventUserListUpdated(string arg0, string arg1, string arg2, bool arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(activationIdentifier);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -4666,8 +11972,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(activationIdentifier, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(activationParameters);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -4677,8 +11983,41 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(activationParameters, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_60ca98f3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventUserListUpdated(string productId, string listId, string operation, bool success)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(listId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(listId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(operation);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -4688,22 +12027,22 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(operation, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    NativeMethods.TablePtr->hs_method_6dc13fe6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
+                    NativeMethods.TablePtr->C2.hs_method_7f650f4a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, success);
                 }
             }
         }
     }
 
-    public void fireEventUwpToGdkMigrationComplete(nint arg0, string arg1)
+    public void fireEventUwpToGdkMigrationComplete(nint deviceIdContext, string gdkDeviceId, string migrationErrors)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(gdkDeviceId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -4713,153 +12052,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_15ed2022((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
-
-    public void fireEventVRModeChanged(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_64b6d83c((void*)_handle, arg0);
-    }
-
-    public void fireEventVehiclePositionComparisonFailed(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
-    {
-        NativeMethods.TablePtr->hs_method_fc4f05f8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void fireEventVideoPlayed(string arg0, string arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                NativeMethods.TablePtr->hs_method_77b311f3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            }
-        }
-    }
-
-    public void fireEventWebviewDownload(string arg0, nint arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_dd18590e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
-        }
-    }
-
-    public static void fireEventWolfArmorDamageValueChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, int arg2, int arg3)
-    {
-        NativeMethods.TablePtr->hs_method_6aa19f4b((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
-    }
-
-    public void fireEventWorldCorruptionCausedWorldShutdown(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext arg0, string arg1, bool? arg2)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_747f7194((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2 ?? default(bool), arg2.HasValue);
-        }
-    }
-
-    public void fireEventWorldExported(long arg0, ulong arg1)
-    {
-        NativeMethods.TablePtr->hs_method_a3929f50((void*)_handle, arg0, arg1);
-    }
-
-    public void fireEventWorldFilesListed(ulong arg0, ulong arg1, ulong arg2, ulong arg3)
-    {
-        NativeMethods.TablePtr->hs_method_894de72b((void*)_handle, arg0, arg1, arg2, arg3);
-    }
-
-    public void fireEventWorldGenerated(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg1, bool arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_17ae69aa((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2);
-        }
-    }
-
-    public void fireEventWorldHistoryPackSourceMissingDuringUpgrade(string arg0, string arg1, string arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(gdkDeviceId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(migrationErrors);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -4869,73 +12063,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    NativeMethods.TablePtr->hs_method_51809e3f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
-                }
-            }
-        }
-    }
-
-    public void fireEventWorldImported(long arg0, ulong arg1)
-    {
-        NativeMethods.TablePtr->hs_method_2542cb6e((void*)_handle, arg0, arg1);
-    }
-
-    public void fireEventWorldImportedResult(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_eeb955ae((void*)_handle, arg0);
-    }
-
-    public void fireEventWorldLoaded(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1, string arg2, bool arg3)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(migrationErrors, __hs_stringBytes2);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_bc8d96b3((void*)_handle, (void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
+                NativeMethods.TablePtr->C2.hs_method_4d3f7fc2((void*)__hosihikari_shim_handle, (void*)deviceIdContext, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
             }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.", false)]
-    public void fireEventWorldLoadedClassroomCustomization_cf926a44(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventWorldLoadedClassroomCustomization_1f539f86(nint customization, nint details) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void fireExternalUriLaunched(string arg0)
+    public void fireEventVideoPlayed(string productId, string videoUrl)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -4945,95 +12085,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_d49c260b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    public void fireGlobalResourcePackCrashRecovery(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_8d3e3060((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
-    }
-
-    public void fireHostClientTransportSettingSync(int arg0, int arg1, string arg2, string arg3, string arg4, ulong arg5, bool arg6)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
-        scoped global::System.Span<byte> __hs_stringBytes4;
-        if (__hs_stringByteCount4 <= 256)
-        {
-            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
-        }
-        else
-        {
-            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-            {
-                fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-                {
-                    NativeMethods.TablePtr->hs_method_4642421f((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, arg5, arg6);
-                }
-            }
-        }
-    }
-
-    public void fireIDESelected(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_b8736697((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource,std::less<IMinecraftEventing::IgnoredNotificationSource>,std::allocator<IMinecraftEventing::IgnoredNotificationSource>>' is not a known bindable declaration.", false)]
-    public void fireIgnoredNotificationsEvent_6b126ed0(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource,std::less<IMinecraftEventing::IgnoredNotificationSource>,std::allocator<IMinecraftEventing::IgnoredNotificationSource>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireIgnoredNotificationsEvent_ed9da5bc(nint notificationType, int notificationCount, nint notificationSources) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void fireInAppCodeBuilderActivated(int arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(videoUrl);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -5043,16 +12096,77 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(videoUrl, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_23894cad((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void fireEventWebviewDownload(string downloadState, nint downloadInfo)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(downloadState);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(downloadState, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_ee23a61e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)downloadInfo);
+        }
+    }
+
+    public static void fireEventWolfArmorDamageValueChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item, int oldDamageValue, int newDamageValue)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6c0ada07((void*)owner.Handle, (void*)item.Handle, oldDamageValue, newDamageValue);
+    }
+
+    public void fireEventWorldCopy(ulong worldSize, ulong filesSum, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 worldSeed)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5618cd7f((void*)__hosihikari_shim_handle, worldSize, filesSum, (void*)worldSeed.Handle);
+    }
+
+    public void fireEventWorldCorruptionCausedWorldShutdown(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext context, string reason, bool? isOutOfDiskSpace)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_b7fe1f03((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C2.hs_method_ea4e1197((void*)__hosihikari_shim_handle, (void*)context.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, isOutOfDiskSpace ?? default(bool), isOutOfDiskSpace.HasValue);
         }
     }
 
-    public void fireInAppCodeBuilderDismissed(string arg0)
+    public void fireEventWorldExported(long worldSeed, ulong worldSize)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_a3929f50((void*)__hosihikari_shim_handle, worldSeed, worldSize);
+    }
+
+    public void fireEventWorldFilesListed(ulong numLevels, ulong totalSizeMB, ulong largestLevelMB, ulong smallestLevelMB)
+    {
+        NativeMethods.TablePtr->C2.hs_method_894de72b((void*)__hosihikari_shim_handle, numLevels, totalSizeMB, largestLevelMB, smallestLevelMB);
+    }
+
+    public void fireEventWorldGenerated(string levelId, global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings levelSettings, bool fromTemplate)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5062,16 +12176,16 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_dd1ca570((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_c5f2c54a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)levelSettings.Handle, fromTemplate);
         }
     }
 
-    public void fireInviteStatusReceived(string arg0)
+    public void fireEventWorldHistoryPackSourceMissingDuringUpgrade(string worldPath, string levelId, string deletionCandidate)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(worldPath);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5081,31 +12195,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_6e23e5c9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void fireInviteStatusSentImpl(uint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
-
-    public void fireLessonActionTaken(string arg0, string arg1, string arg2, int arg3, int arg4)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(worldPath, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -5115,8 +12206,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(deletionCandidate);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -5126,27 +12217,52 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(deletionCandidate, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    NativeMethods.TablePtr->hs_method_9151ef76((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4);
+                    NativeMethods.TablePtr->C2.hs_method_2f338b4d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
                 }
             }
         }
     }
 
-    public void fireLessonCompleteDialogOpened(int arg0)
+    public void fireEventWorldImported(long worldSeed, ulong worldSize)
     {
-        NativeMethods.TablePtr->hs_method_b8cae974((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_2542cb6e((void*)__hosihikari_shim_handle, worldSeed, worldSize);
     }
 
-    public void fireLessonProgressEvent(string arg0, string arg1, string arg2, string arg3, string arg4, int arg5)
+    public void fireEventWorldImportedResult(int importResult)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_eeb955ae((void*)__hosihikari_shim_handle, importResult);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public void fireEventWorldLoadTimes(nint calledFromScreen, nint progressHandlerLoadTimes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventWorldLoaded(nint player, nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.", false)]
+    public void fireEventWorldLoadedClassroomCustomization(nint customization, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char>, std::basic_string_view<char>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventWriteBudgetLow(ulong remainingWriteBudget, float writeRateMBPerMin, float writeCountPerMin, nint timeSinceLastLargeFileTransactionCompleted, bool anyLargeFileTransactionInProgress, nint correlationId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventWriteBudgetReplenished(nint throttledTime, ulong lowestWriteBudget, nint lowestSystemThrottlingPerSec, nint timeSinceLastLargeFileTransactionCompleted, bool anyLargeFileTransactionInProgress, nint correlationId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireExternalUriLaunched(string uri)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(uri);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5156,8 +12272,44 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(uri, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_3353cb4f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireGlobalResourcePackCrashRecovery(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance packInstance, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID recoveryID, int order)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e76dd91b((void*)__hosihikari_shim_handle, (void*)packInstance.Handle, (void*)recoveryID.Handle, order);
+    }
+
+    public void fireIDESelected(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_2cf420b5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource>' is not a known bindable declaration.", false)]
+    public void fireIgnoredNotificationsEvent(nint notificationType, int notificationCount, nint notificationSources) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource>' is not a known bindable declaration.");
+
+    public void fireInAppCodeBuilderActivated(int method, string ideName, string educationCreatorID, string educationCreatorWorldID)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(ideName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -5167,8 +12319,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(ideName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(educationCreatorID);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -5178,8 +12330,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(educationCreatorID, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(educationCreatorWorldID);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -5189,8 +12341,160 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        global::System.Text.Encoding.UTF8.GetBytes(educationCreatorWorldID, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_dcde6165((void*)__hosihikari_shim_handle, method, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+                }
+            }
+        }
+    }
+
+    public void fireInAppCodeBuilderDismissed(string ideName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(ideName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(ideName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_f28bb189((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void fireInviteStatusReceived(string id)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(id);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_4efc6287((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public void fireInviteStatusSentImpl(uint userId, nint invitationIds) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    public void fireLessonActionTaken(string lessonTitle, string lessonId, string courseId, int buttonAction, int score)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(lessonTitle);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lessonTitle, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(lessonId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lessonId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(courseId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(courseId, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->C2.hs_method_61ab2534((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, buttonAction, score);
+                }
+            }
+        }
+    }
+
+    public void fireLessonCompleteDialogOpened(int entryPoint)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7735229c((void*)__hosihikari_shim_handle, entryPoint);
+    }
+
+    public void fireLessonProgressEvent(string lessonTitle, string lessonId, string courseId, string activityId, string action, string educationCreatorID, string educationCreatorWorldID, int score)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(lessonTitle);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lessonTitle, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(lessonId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(lessonId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(courseId);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(courseId, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(activityId);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(activityId, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(action);
         scoped global::System.Span<byte> __hs_stringBytes4;
         if (__hs_stringByteCount4 <= 256)
         {
@@ -5200,7 +12504,29 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes4 = new byte[__hs_stringByteCount4];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        global::System.Text.Encoding.UTF8.GetBytes(action, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(educationCreatorID);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationCreatorID, __hs_stringBytes5);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(educationCreatorWorldID);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(educationCreatorWorldID, __hs_stringBytes6);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
@@ -5211,7 +12537,13 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
                     {
                         fixed (byte* __hs_stringData4 = __hs_stringBytes4)
                         {
-                            NativeMethods.TablePtr->hs_method_e248a583((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, arg5);
+                            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                            {
+                                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                                {
+                                    NativeMethods.TablePtr->C2.hs_method_89f97671((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, __hs_stringData6, (nuint)__hs_stringByteCount6, score);
+                                }
+                            }
                         }
                     }
                 }
@@ -5219,9 +12551,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         }
     }
 
-    public void fireLibraryButtonPressed(string arg0, string arg1, string arg2)
+    public void fireLibraryButtonPressed(string productId, string worldName, string buttonAction)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(productId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5231,8 +12563,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(productId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -5242,8 +12574,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(worldName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(buttonAction);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -5253,32 +12585,32 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(buttonAction, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    NativeMethods.TablePtr->hs_method_fcfc138b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                    NativeMethods.TablePtr->C2.hs_method_c00575fc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
                 }
             }
         }
     }
 
-    public void fireMinecraftVersionInviteAccepted(bool arg0, ulong arg1)
+    public void fireMinecraftVersionInviteAccepted(bool launchedLegacy, ulong inviteGameOwner)
     {
-        NativeMethods.TablePtr->hs_method_f9114968((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_f9114968((void*)__hosihikari_shim_handle, launchedLegacy, inviteGameOwner);
     }
 
-    public void fireMinecraftVersionLaunched(bool arg0)
+    public void fireMinecraftVersionLaunched(bool launchedLegacy)
     {
-        NativeMethods.TablePtr->hs_method_b5939cc3((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_b5939cc3((void*)__hosihikari_shim_handle, launchedLegacy);
     }
 
-    public void fireNetworkChangedEvent(string arg0)
+    public void fireNetworkChangedEvent(string networkConnectionType)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(networkConnectionType);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5288,76 +12620,68 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(networkConnectionType, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_2545b3e8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_edc66090((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void firePackSettingsEvent(global::Hosihikari.Bindings.Bedrock.Interop.PackSettings arg0, global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg1)
+    public void firePackSettingsEvent(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest, string serializedPackSettings, int subpackIndex, string subpackName, int subpackCount)
     {
-        NativeMethods.TablePtr->hs_method_7c547ce3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public void firePassthroughTextProcessEvent(string arg0, int arg1, string arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(serializedPackSettings);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
         {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
         }
         else
         {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
+        global::System.Text.Encoding.UTF8.GetBytes(serializedPackSettings, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(subpackName);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
         {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
         }
         else
         {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        global::System.Text.Encoding.UTF8.GetBytes(subpackName, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                NativeMethods.TablePtr->hs_method_29d6f878((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                NativeMethods.TablePtr->C2.hs_method_144cb9cb((void*)__hosihikari_shim_handle, (void*)manifest.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, subpackIndex, __hs_stringData3, (nuint)__hs_stringByteCount3, subpackCount);
             }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void firePerfTestEvent_b3d88b9f(nint testArtifact, nint modelName, nint renderSize, uint renderDistance, uint simDistance, nint memorySize, nint testArtifactData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void firePerfTestEvent_daff2d19(nint arg0, nint arg1, nint arg2, uint arg3, uint arg4, nint arg5, nint arg6) =>
+    public void firePerfTestEvent(nint testArtifact, nint modelName, nint renderSize, uint renderDistance, uint simDistance, nint memorySize, nint testArtifactData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public void firePermissionsSetEvent(sbyte arg0, byte arg1, sbyte arg2, byte arg3)
+    public void firePermissionsSetEvent(sbyte prevPlayerPermissionLevel, byte prevCommandPermissionLevel, sbyte playerPermissionLevel, byte commandPermissionLevel)
     {
-        NativeMethods.TablePtr->hs_method_20861764((void*)_handle, arg0, arg1, arg2, arg3);
+        NativeMethods.TablePtr->C2.hs_method_4c4dd914((void*)__hosihikari_shim_handle, prevPlayerPermissionLevel, prevCommandPermissionLevel, playerPermissionLevel, commandPermissionLevel);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void firePlayerAccountMetadata(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, bool arg6, bool arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public void firePlayerUnexpectedFallDamage(float arg0, bool arg1, float arg2)
+    public void firePlayerAccountMetadata(global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult multiPlayerAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult chatAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult addFriendAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult ugcAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult clubsAllowed, global::Hosihikari.Bindings.Bedrock.Interop.Social.PermissionCheckResult viewProfilesAllowed, bool isChildAccount, bool isGuest)
     {
-        NativeMethods.TablePtr->hs_method_09e87ae9((void*)_handle, arg0, arg1, arg2);
+        NativeMethods.TablePtr->C2.hs_method_93341f97((void*)__hosihikari_shim_handle, (void*)multiPlayerAllowed.Handle, (void*)chatAllowed.Handle, (void*)addFriendAllowed.Handle, (void*)ugcAllowed.Handle, (void*)clubsAllowed.Handle, (void*)viewProfilesAllowed.Handle, isChildAccount, isGuest);
     }
 
-    public void fireQueryOfferResult(string arg0, int arg1, bool arg2)
+    public void firePlayerUnexpectedFallDamage(float fallDistance, bool isVehicle, float divergenceAmount)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        NativeMethods.TablePtr->C2.hs_method_5fa95e15((void*)__hosihikari_shim_handle, fallDistance, isVehicle, divergenceAmount);
+    }
+
+    public void fireQueryOfferResult(string storeID, int NumberOfOffers, bool QuerySucceeded)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(storeID);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5367,41 +12691,41 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(storeID, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_a442c3a7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+            NativeMethods.TablePtr->C2.hs_method_daedf7d5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, NumberOfOffers, QuerySucceeded);
         }
     }
 
     public void fireQuickPlayEvent()
     {
-        NativeMethods.TablePtr->hs_method_881c6728((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_881c6728((void*)__hosihikari_shim_handle);
     }
 
-    public void fireRealmConnectionEventGenericLambdaCalled(int arg0, int arg1, int arg2)
+    public void fireRealmConnectionEventGenericLambdaCalled(int realmConnectionFlow, int realmConnectionLambda, int realmConnectionResult)
     {
-        NativeMethods.TablePtr->hs_method_cc7a6997((void*)_handle, arg0, arg1, arg2);
+        NativeMethods.TablePtr->C2.hs_method_cc7a6997((void*)__hosihikari_shim_handle, realmConnectionFlow, realmConnectionLambda, realmConnectionResult);
     }
 
-    public void fireRealmConnectionEventRealmAPIRequest(int arg0)
+    public void fireRealmConnectionEventRealmAPIRequest(int realmConnectionFlow)
     {
-        NativeMethods.TablePtr->hs_method_efc7322f((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_efc7322f((void*)__hosihikari_shim_handle, realmConnectionFlow);
     }
 
-    public void fireRealmConnectionEventRealmAPIResponse(int arg0, int arg1)
+    public void fireRealmConnectionEventRealmAPIResponse(int realmConnectionFlow, int responseCode)
     {
-        NativeMethods.TablePtr->hs_method_df638efc((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_df638efc((void*)__hosihikari_shim_handle, realmConnectionFlow, responseCode);
     }
 
-    public void fireRealmConnectionEventStart(int arg0)
+    public void fireRealmConnectionEventStart(int realmConnectionFlow)
     {
-        NativeMethods.TablePtr->hs_method_95c99d6c((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_95c99d6c((void*)__hosihikari_shim_handle, realmConnectionFlow);
     }
 
-    public void fireSafetyServiceTextProcessEvent(string arg0, int arg1, ushort arg2, string arg3, bool arg4, double arg5, sbyte arg6, sbyte arg7, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg8, string arg9, bool arg10)
+    public void fireSafetyServiceTextProcessEvent(string authorId, int eventOrigin, ushort responseCode, string message, bool wasFlagged, double responseTime, sbyte risk, sbyte trustLevel, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value events, bool isProcessorOffline, bool isCachedResponse)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(authorId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5411,8 +12735,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(authorId, __hs_stringBytes0);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(message);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -5422,37 +12746,23 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount9 = global::System.Text.Encoding.UTF8.GetByteCount(arg9);
-        scoped global::System.Span<byte> __hs_stringBytes9;
-        if (__hs_stringByteCount9 <= 256)
-        {
-            __hs_stringBytes9 = stackalloc byte[__hs_stringByteCount9 == 0 ? 1 : __hs_stringByteCount9];
-        }
-        else
-        {
-            __hs_stringBytes9 = new byte[__hs_stringByteCount9];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg9, __hs_stringBytes9);
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes3);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                fixed (byte* __hs_stringData9 = __hs_stringBytes9)
-                {
-                    NativeMethods.TablePtr->hs_method_ec33e705((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, arg5, arg6, arg7, (void*)arg8.Handle, __hs_stringData9, (nuint)__hs_stringByteCount9, arg10);
-                }
+                NativeMethods.TablePtr->C2.hs_method_dd66248f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, eventOrigin, responseCode, __hs_stringData3, (nuint)__hs_stringByteCount3, wasFlagged, responseTime, risk, trustLevel, (void*)events.Handle, isProcessorOffline, isCachedResponse);
             }
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void fireScreenLoadTimeUpdateEvent_fcd7eb09(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public void fireScreenLoadTimeUpdateEvent(nint userId, nint screenName, nint duration, nint loadInstanceId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fireServerConnectionAttemptEvent(string arg0, bool arg1, string arg2)
+    public void fireServerConnectionAttemptEvent(string creatorName, bool isTransfer, string serverAddress)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(creatorName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5462,8 +12772,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(creatorName, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(serverAddress);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -5473,132 +12783,75 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(serverAddress, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_818e5815((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                NativeMethods.TablePtr->C2.hs_method_631c0c59((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, isTransfer, __hs_stringData2, (nuint)__hs_stringByteCount2);
             }
-        }
-    }
-
-    public void fireServerConnectionEvent(int arg0, uint arg1, double arg2, string arg3, string arg4)
-    {
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
-        scoped global::System.Span<byte> __hs_stringBytes4;
-        if (__hs_stringByteCount4 <= 256)
-        {
-            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
-        }
-        else
-        {
-            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-        {
-            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-            {
-                NativeMethods.TablePtr->hs_method_00d0a583((void*)_handle, arg0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4);
-            }
-        }
-    }
-
-    public void fireServerShutdown(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_35d4915c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireServerStarted(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void fireServerStarted(int arg0, string arg1, nint arg2)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            NativeMethods.TablePtr->hs_method_221c8051((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
-        }
-    }
-
-    public void fireShareButtonPressed(string arg0, int arg1, int arg2, bool arg3)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_5937dfcd((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void fireStorageMigrationEvent_1077d76e(bool arg0, nint arg1, int arg2, int arg3, nint arg4, nint arg5) =>
+    public void fireServerConnectionEvent(nint outcome, nint pingLatency, double timeElapsed, nint creatorName, nint worldId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fireStructureBlockAction(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? arg2)
+    public void fireServerShutdown()
     {
-        NativeMethods.TablePtr->hs_method_59119af1((void*)_handle, arg0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_f73b3b4c((void*)__hosihikari_shim_handle);
     }
 
-    public void fireStructureBlockRedstoneActivated(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? arg2)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireServerStarted(nint serverTelemetryData, nint propertiesChanged) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireShareButtonPressed(string location, int shareType, int methodType, bool includesResource)
     {
-        NativeMethods.TablePtr->hs_method_1555335b((void*)_handle, arg0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(location);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(location, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_c53431cf((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, shareType, methodType, includesResource);
+        }
     }
 
-    public void fireTextToSpeechToggled(bool arg0, bool arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireStorageMigrationEvent(bool isSuccessful, nint migrationType, int numFilesMigrated, int numFilesTotal, double migratedMB, double totalMB, nint duration, nint failureReason, nint failureFolder) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void fireStructureBlockAction(int structureBlockActionType, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData structureEditorData, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? telemetryClientData)
     {
-        NativeMethods.TablePtr->hs_method_13c61bca((void*)_handle, arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_4a8ac331((void*)__hosihikari_shim_handle, structureBlockActionType, (void*)structureEditorData.Handle, (void*)(telemetryClientData?.Handle ?? 0));
     }
 
-    public void fireUserGeneratedUriLaunchFailed(int arg0, int arg1, string arg2)
+    public void fireStructureBlockRedstoneActivated(int structureBlockActionType, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData structureEditorData, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? telemetryClientData)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        NativeMethods.TablePtr->C2.hs_method_952fdb44((void*)__hosihikari_shim_handle, structureBlockActionType, (void*)structureEditorData.Handle, (void*)(telemetryClientData?.Handle ?? 0));
+    }
+
+    public void fireTextToSpeechToggled(bool uiTTS, bool chatTTS)
+    {
+        NativeMethods.TablePtr->C2.hs_method_13c61bca((void*)__hosihikari_shim_handle, uiTTS, chatTTS);
+    }
+
+    public void fireTextureStreamingPerf(nint perfData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4b61d953((void*)__hosihikari_shim_handle, (void*)perfData);
+    }
+
+    public void fireUserGeneratedUriLaunchFailed(int source, int reasonCode, string additionalData)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(additionalData);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -5608,26 +12861,25 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(additionalData, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            NativeMethods.TablePtr->hs_method_a2ae7d3b((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            NativeMethods.TablePtr->C2.hs_method_6007a66d((void*)__hosihikari_shim_handle, source, reasonCode, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 
-    public void fireUserGeneratedUriLaunched(int arg0)
+    public void fireUserGeneratedUriLaunched(int source)
     {
-        NativeMethods.TablePtr->hs_method_e905db26((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_e96eadda((void*)__hosihikari_shim_handle, source);
     }
 
-    public void fireWorldConversionAttemptEvent(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_61c3e88b((void*)_handle, (void*)arg0);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireWorldConversionAttemptEvent(nint writer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fireWorldConversionInitiatedEvent(string arg0)
+    public void fireWorldConversionInitiatedEvent(string converterVersion)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(converterVersion);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -5637,21 +12889,21 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(converterVersion, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_b7a385c2((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_b6458c6d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public void fireWorldRecoveryTelemetryEvent(nint arg0)
+    public void fireWorldRecoveryTelemetryEvent(nint data)
     {
-        NativeMethods.TablePtr->hs_method_14b3c74b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_de7cc004((void*)__hosihikari_shim_handle, (void*)data);
     }
 
-    public void fireWorldUpgradedToCnCPart2(bool arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg4, float arg5)
+    public void fireWorldUpgradedToCnCPart2(bool willUpgrade, string baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments, string lastOpenedVersion, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 worldSeed, float worldSizeMB)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(baseGameVersion);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -5661,8 +12913,8 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        global::System.Text.Encoding.UTF8.GetBytes(baseGameVersion, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(lastOpenedVersion);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -5672,179 +12924,87 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        global::System.Text.Encoding.UTF8.GetBytes(lastOpenedVersion, __hs_stringBytes3);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                NativeMethods.TablePtr->hs_method_3e3f745b((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)arg4.Handle, arg5);
+                NativeMethods.TablePtr->C2.hs_method_7d2d0c0f((void*)__hosihikari_shim_handle, willUpgrade, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)experiments.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)worldSeed.Handle, worldSizeMB);
             }
         }
     }
 
     public void flagEventDeepLink()
     {
-        NativeMethods.TablePtr->hs_method_cd3d22e6((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_cd3d22e6((void*)__hosihikari_shim_handle);
     }
 
-    public void flagEventPlayerGameTypeDefault(bool arg0)
+    public void flagEventPlayerGameTypeDefault(bool isDefault)
     {
-        NativeMethods.TablePtr->hs_method_38d578a9((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_38d578a9((void*)__hosihikari_shim_handle, isDefault);
     }
 
     public void forceSendEvents()
     {
-        NativeMethods.TablePtr->hs_method_e40a2b00((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_e40a2b00((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::CrashTelemetryProcessor*>' requires --link-carrier or --virtual-dispatch.", false)]
+    public bool getAchievementsAlwaysEnabled()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_7c13b441((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::CrashTelemetryProcessor *>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getCrashTelemetryProcessor() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::CrashTelemetryProcessor*>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::CrashTelemetryProcessor *>' requires --link-carrier or --virtual-dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.EventManager getEventManager()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.EventManager((nint)NativeMethods.TablePtr->C2.hs_method_836200a9((void*)__hosihikari_shim_handle), false);
+    }
+
+    public string getExperienceId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_fb5733e9((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getExperienceSessionId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_24f8d4c6((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public string getPlayerSessionId()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_a91378a5((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_6fb9fab8((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public uint getPrimaryLocalUserId()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_b0122a80((void*)__hosihikari_shim_handle);
+    }
+
+    public nint getPurchaseEventing()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_67e8a673((void*)__hosihikari_shim_handle);
     }
 
     public string getSessionId()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ead3d1aa((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_e8d91dff((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void init(nint arg0)
+    public bool getShouldHaveAchievementsEnabled()
     {
-        NativeMethods.TablePtr->hs_method_8fc7ef04((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->C2.hs_method_6d5e7192((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void init(nint arg0, nint arg1)
+    public string getUserUID(ulong type, string primaryId)
     {
-        NativeMethods.TablePtr->hs_method_29b7e264((void*)_handle, (void*)arg0, (void*)arg1);
-    }
-
-    public void initDeviceAndSessionIds()
-    {
-        NativeMethods.TablePtr->hs_method_9d8ce6e5((void*)_handle);
-    }
-
-    public void initForDedicatedServer(nint arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_0bbbddb1((void*)_handle, (void*)arg0, arg1);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mAchievementEventing_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f2596f4a();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mCachedUUIDs_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d18f367e();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mPlayerTelemetry_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_30a4907c();
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.RealtimeRoute mRealtimeRoute
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.RealtimeRoute((nint)NativeMethods.TablePtr->hs_get_1806b19d(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow mScreenFlow
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow((nint)NativeMethods.TablePtr->hs_get_b8d3aa98(), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void prepEventSearchCatalogRequest(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_1407b150((void*)_handle, (void*)arg0);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value propertiesAsJsonValue()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_469bbdb7((void*)_handle));
-    }
-
-    public void registerOptionsObserver(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
-    {
-        NativeMethods.TablePtr->hs_method_544ec73f((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
-
-    public void registerSecondaryUserCommonProperties(nint arg0, nint arg1)
-    {
-        NativeMethods.TablePtr->hs_method_566f164c((void*)_handle, (void*)arg0, (void*)arg1);
-    }
-
-    public void removeTestBuildIdTag()
-    {
-        NativeMethods.TablePtr->hs_method_20592d09((void*)_handle);
-    }
-
-    public void removeTestTelemetryTag()
-    {
-        NativeMethods.TablePtr->hs_method_f6568da7((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? requestEventDeferment()
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_c96ee718((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sHeartbeatMutex
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_cb4e1255(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sMutex
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_21fe4353(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sPlayerTelemetryMutex
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_00f791f0(), false);
-    }
-
-    public void sendBatchedCrashTelemetry()
-    {
-        NativeMethods.TablePtr->hs_method_eb0ce6b5((void*)_handle);
-    }
-
-    public void sendCrashStatusTelemetry(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_fa1ba8d7((void*)_handle, (void*)arg0);
-    }
-
-    public void sendCrashTelemetryNow(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
-    {
-        NativeMethods.TablePtr->hs_method_3fb5bfa3((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
-
-    public void setServerIdsforClient(string arg0, string arg1, string arg2, string arg3, string arg4)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(primaryId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -5854,132 +13014,548 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
+        global::System.Text.Encoding.UTF8.GetBytes(primaryId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+            var __hs_view = NativeMethods.TablePtr->C2.hs_method_522cb3b9((void*)__hosihikari_shim_handle, type, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    public nint getWorldLoadPerformanceEventing()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_0f405323((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public nint getWorldSessionIdGenerationTimestamp() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_AppPlatform_ appPlatform)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f4b3d3c0((void*)__hosihikari_shim_handle, (void*)appPlatform.Handle);
+    }
+
+    public void initDeviceAndSessionIds()
+    {
+        NativeMethods.TablePtr->C2.hs_method_9d8ce6e5((void*)__hosihikari_shim_handle);
+    }
+
+    public void initEditorEventListener()
+    {
+        NativeMethods.TablePtr->C2.hs_method_4cfa1192((void*)__hosihikari_shim_handle);
+    }
+
+    public void initOfflineEventListener()
+    {
+        NativeMethods.TablePtr->C2.hs_method_085a196f((void*)__hosihikari_shim_handle);
+    }
+
+    public static nint mAchievementEventing()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_45cee53f();
+    }
+
+    public bool mAchievementsAlwaysEnabled
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_fb8be825((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_fb8be825((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAchivementsAlwaysOptionSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_01c47750((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAppPlatform_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2b17f5ba((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAppSessionID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0ba817dd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAssertTelemetrySubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_95b9a4cb((void*)__hosihikari_shim_handle);
+    }
+
+    public static nint mCachedUUIDs()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_344b2863();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkRecyclerTelemetryData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fdfdf54a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkRecyclerTelemetryDataRegistrationToken_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8a67251f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeps_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dc7031dc((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mFlagDeepLink
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_bfb8ccdf((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_bfb8ccdf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mFlagPlayerGameTypeDefault
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_45146858((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_45146858((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHeartbeat_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5e4b09c4((void*)__hosihikari_shim_handle);
+    }
+
+    public double mLastImGuiScreenTimestamp
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_30bb2b31((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_30bb2b31((void*)__hosihikari_shim_handle, value);
+    }
+
+    public double mLastScreenTimestamp
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_270cfbc3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_270cfbc3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static nint mMobTelemetry()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_31306dd3();
+    }
+
+    public int mNumTimesDeviceLost
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_82405e1b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_82405e1b((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPacketObserver_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2015c172((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPacketObserverRegistrationToken_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a5ced893((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerLastDamagedTimestamp_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bb7c3a65((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerSessionID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_79e7e9c2((void*)__hosihikari_shim_handle);
+    }
+
+    public static nint mPlayerTelemetry()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_b51bdc16();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRealmsTelemetry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a0fd06ae((void*)__hosihikari_shim_handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow mScreenFlow()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow((nint)NativeMethods.TablePtr->C2.hs_method_7f264f5f(), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServiceRegistrationToken_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a03cb249((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSettingsDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b2a825ca((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mShouldHaveAchievementsEnabled
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_a53a29f9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_a53a29f9((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTaskGroup_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8f7d05a9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTelemetryInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_260dbc78((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWorldRecoveryRegistrationToken_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7142d829((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWorldSessionIdGenerationTimestamp_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_77f52be0((void*)__hosihikari_shim_handle);
+    }
+
+    public static void onActorSpawned(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, string? customInit, global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawner)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(customInit ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
         }
         else
         {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
+        global::System.Text.Encoding.UTF8.GetBytes(customInit ?? string.Empty, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+            NativeMethods.TablePtr->C2.hs_method_487ea86d((void*)actor.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)(spawner?.Handle ?? 0), customInit is not null);
+        }
+    }
+
+    public static void onMobDied(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, string cause)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(cause);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
         }
         else
         {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
-        scoped global::System.Span<byte> __hs_stringBytes4;
-        if (__hs_stringByteCount4 <= 256)
+        global::System.Text.Encoding.UTF8.GetBytes(cause, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+            NativeMethods.TablePtr->C2.hs_method_67a265df((void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public static void onVehicleEntered(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Actor vehicle)
+    {
+        NativeMethods.TablePtr->C2.hs_method_150e8bac((void*)player.Handle, (void*)vehicle.Handle);
+    }
+
+    public static void onVehicleExited(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_984b82b7((void*)player.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value propertiesAsJsonValue()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C2.hs_method_5e6411d6((void*)__hosihikari_shim_handle));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'Bedrock::PubSub::Subscription' is not supported.", false)]
+    public void registerOptionsObserver(nint registerObserver) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'Bedrock::PubSub::Subscription' is not supported.");
+
+    public void registerSecondaryUserCommonProperties(nint userId, string uid)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(uid);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
         }
         else
         {
-            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        global::System.Text.Encoding.UTF8.GetBytes(uid, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_9226ee72((void*)__hosihikari_shim_handle, (void*)userId, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void removeConnectionCommonProperties(uint userId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9e5bdeeb((void*)__hosihikari_shim_handle, userId);
+    }
+
+    public void removeExperienceIdentifiers()
+    {
+        NativeMethods.TablePtr->C2.hs_method_3ee66877((void*)__hosihikari_shim_handle);
+    }
+
+    public void removeServerIdsForClient()
+    {
+        NativeMethods.TablePtr->C2.hs_method_5b270821((void*)__hosihikari_shim_handle);
+    }
+
+    public void removeTestBuildIdTag()
+    {
+        NativeMethods.TablePtr->C2.hs_method_20592d09((void*)__hosihikari_shim_handle);
+    }
+
+    public void removeTestTelemetryTag()
+    {
+        NativeMethods.TablePtr->C2.hs_method_f6568da7((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? requestEventDeferment()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_ee8fb188((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public static nint sHeartbeatMutex()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_63979252();
+    }
+
+    public static nint sMutex()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_9369dcb9();
+    }
+
+    public static nint sPlayerTelemetryMutex()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_f962b96b();
+    }
+
+    public void sendBatchedCrashTelemetry()
+    {
+        NativeMethods.TablePtr->C2.hs_method_eb0ce6b5((void*)__hosihikari_shim_handle);
+    }
+
+    public void sendCrashStatusTelemetry(nint status)
+    {
+        NativeMethods.TablePtr->C2.hs_method_697cb58e((void*)__hosihikari_shim_handle, (void*)status);
+    }
+
+    public void sendCrashTelemetryNow(global::Hosihikari.Bindings.Abi.SharedHandle? session)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3fb5bfa3((void*)__hosihikari_shim_handle, session?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void setConnectionCommonProperties(uint userId, string connectionGUID, int networkType)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(connectionGUID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(connectionGUID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_23d3aa73((void*)__hosihikari_shim_handle, userId, __hs_stringData1, (nuint)__hs_stringByteCount1, networkType);
+        }
+    }
+
+    public void setServerIdsforClient(string multiplayerCorrelationId, string serverVersion, global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ServerTelemetryData serverTelemetryData)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(multiplayerCorrelationId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(multiplayerCorrelationId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(serverVersion);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(serverVersion, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-                {
-                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-                    {
-                        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-                        {
-                            NativeMethods.TablePtr->hs_method_4f72ced2((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4);
-                        }
-                    }
-                }
+                NativeMethods.TablePtr->C2.hs_method_a808dc65((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)serverTelemetryData.Handle);
             }
         }
     }
 
-    public void setTestBuildIdTag(nint arg0)
+    public void setShouldHaveAchievementsEnabled(bool value)
     {
-        NativeMethods.TablePtr->hs_method_2cb9207e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_31e15da1((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setTestTelemetryTag(nint arg0)
+    public void setTestBuildIdTag(nint id)
     {
-        NativeMethods.TablePtr->hs_method_bdffbe98((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_f8e18060((void*)__hosihikari_shim_handle, (void*)id);
+    }
+
+    public void setTestTelemetryTag(nint name)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6b733910((void*)__hosihikari_shim_handle, (void*)name);
     }
 
     public void shutdown()
     {
-        NativeMethods.TablePtr->hs_method_947543cb((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_947543cb((void*)__hosihikari_shim_handle);
     }
 
     public void stopDebugEventLoggingForAllListeners()
     {
-        NativeMethods.TablePtr->hs_method_8713bd6c((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_8713bd6c((void*)__hosihikari_shim_handle);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_51ef6da9((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_51ef6da9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void tryFireEventProgressLoadTimes_6e965aeb(nint calledFromScreen, nint progressHandlerLoadTimes) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void tryFireEventProgressLoadTimes_f6bb7039(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
-
-    public void unregisterSecondaryUserCommonProperties(nint arg0)
+    public void trySetExperienceIdentifiers(string experienceId, string? existingSessionId)
     {
-        NativeMethods.TablePtr->hs_method_4a4d2c75((void*)_handle, (void*)arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(experienceId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(experienceId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(existingSessionId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(existingSessionId ?? string.Empty, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_2ec22749((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, existingSessionId is not null);
+            }
+        }
+    }
+
+    public void unregisterSecondaryUserCommonProperties(nint userId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b7bd7c72((void*)__hosihikari_shim_handle, (void*)userId);
+    }
+
+    public void updateAppliedTreatmentPacks(string[] treatmentTags)
+    {
+        var __hs_vectorItems0 = treatmentTags ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            NativeMethods.TablePtr->C2.hs_method_41a2d760((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(treatmentTags?.Length ?? 0));
+        }
+    }
+
+    public void updateClientId()
+    {
+        NativeMethods.TablePtr->C2.hs_method_e1dfbe77((void*)__hosihikari_shim_handle);
     }
 
     public void updateEditionType()
     {
-        NativeMethods.TablePtr->hs_method_b49fafa5((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_b49fafa5((void*)__hosihikari_shim_handle);
     }
 
-    public void updateIsLegacyPlayer(bool arg0)
+    public void updateIsLegacyPlayer(bool isLegacyPlayer)
     {
-        NativeMethods.TablePtr->hs_method_187fe3c0((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_187fe3c0((void*)__hosihikari_shim_handle, isLegacyPlayer);
     }
 
-    public void updateIsTrial(bool arg0)
+    public void updateIsTrial(bool isTrial)
     {
-        NativeMethods.TablePtr->hs_method_fa6dcb6c((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_2f540dcd((void*)__hosihikari_shim_handle, isTrial);
     }
 
-    public void updatePlayerUndergroundStatus(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, bool arg1)
+    public void updatePlayerUndergroundStatus(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, bool isUnderground)
     {
-        NativeMethods.TablePtr->hs_method_25828d76((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+        NativeMethods.TablePtr->C2.hs_method_50033fd4((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), isUnderground);
     }
 
-    public void updatePrimaryLocalUserId(nint arg0)
+    public void updatePrimaryLocalUserId(nint userId)
     {
-        NativeMethods.TablePtr->hs_method_17474b4e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_a3c62f71((void*)__hosihikari_shim_handle, (void*)userId);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_b1eb2b37((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_b1eb2b37((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

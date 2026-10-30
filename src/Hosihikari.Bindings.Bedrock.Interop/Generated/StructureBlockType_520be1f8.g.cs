@@ -12,4 +12,5 @@ public enum StructureBlockType : int
     Corner = 3,
     Invalid = 4,
     Export = 5,
+    Count = 6,
 }

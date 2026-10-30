@@ -6,9 +6,9 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public enum AttributeOperands : int
 {
-    Min = 0,
-    Max = 1,
+    OperandMin = 0,
+    OperandMax = 1,
     OperandCurrent = 2,
-    Count = 3,
-    Invalid = 3,
+    OperandInvalid = 3,
+    TotalOperands = 3,
 }

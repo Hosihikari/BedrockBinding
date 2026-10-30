@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class VanillaGameModuleServer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VanillaGameModuleServer(nint handle) : this(handle, true) { }
 
     internal VanillaGameModuleServer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VanillaGameModuleServer Borrow(nint handle) => new VanillaGameModuleServer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,75 @@ public sealed unsafe partial class VanillaGameModuleServer : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkda9c78_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ff1836b9((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _configureDocumentation(nint moduleDocumentation, nint docItemRegistry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.", false)]
+    public void _configureLevel(nint level, nint experiments, nint resourcePackManager, nint baseGameVersion, nint scriptManager, nint biomeIdToResolvedData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.");
+
+    public void _configureNewPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f49d920c((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ServerNetworkHandler>>' is not a known bindable declaration.", false)]
+    public void _configureServerNetworkHandler(nint server, nint handler) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ServerNetworkHandler>>' is not a known bindable declaration.");
+
+    public void _init(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance server, nint level)
+    {
+        NativeMethods.TablePtr->C3.hs_method_464ba570((void*)__hosihikari_shim_handle, (void*)server.Handle, (void*)level);
+    }
+
+    public void _initializeBehaviorStack(global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments, nint repo, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack stack, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, bool includeEditorPacks, string? worldId)
+    {
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(worldId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldId ?? string.Empty, __hs_stringBytes5);
+        fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+        {
+            NativeMethods.TablePtr->C3.hs_method_5a3c2b7a((void*)__hosihikari_shim_handle, (void*)experiments.Handle, (void*)repo, (void*)stack.Handle, (void*)baseGameVersion.Handle, includeEditorPacks, __hs_stringData5, (nuint)__hs_stringByteCount5, worldId is not null);
+        }
+    }
+
+    public void _setupCommands(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry commandRegistry)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8c270da8((void*)__hosihikari_shim_handle, (void*)commandRegistry.Handle);
+    }
+
+    public void _tick()
+    {
+        NativeMethods.TablePtr->C3.hs_method_8fc39eae((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
     public static VanillaGameModuleServer Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_4c840e90();
+        var handle = NativeMethods.TablePtr->C3.hs_create_4c840e90();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,62 +110,108 @@ public sealed unsafe partial class VanillaGameModuleServer : global::System.IDis
         return new VanillaGameModuleServer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaGameModuleServer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static VanillaGameModuleServer Create(global::Hosihikari.Bindings.Bedrock.Interop.VanillaGameModuleServer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6e041c6b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VanillaGameModuleServer((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void configureDocumentation(nint arg0, nint arg1) =>
+    public void configureDocumentation(nint moduleDocumentation, nint docItemRegistry) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'gsl::not_null<ServerScriptManager const*>' is abstract or not copy-constructible.", false)]
-    public void configureLevel(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'gsl::not_null<ServerScriptManager const*>' is abstract or not copy-constructible.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.", false)]
+    public void configureLevel(nint level, nint experiments, nint resourcePackManager, nint baseGameVersion, nint scriptManager, nint biomeIdToResolvedData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.");
 
-    public void configureNewPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public void configureNewPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_504a5f76((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_c147720b((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ServerNetworkHandler>>' is not a known bindable declaration.", false)]
-    public void configureServerNetworkHandler(nint arg0, nint arg1) =>
+    public void configureServerNetworkHandler(nint server, nint handler) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ServerNetworkHandler>>' is not a known bindable declaration.");
 
-    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0, nint arg1)
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance server, nint level)
     {
-        NativeMethods.TablePtr->hs_method_517dd230((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->C3.hs_method_650043b9((void*)__hosihikari_shim_handle, (void*)server.Handle, (void*)level);
     }
 
-    public void initializeBehaviorStack(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg2, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg3, bool arg4)
+    public void initializeBehaviorStack(global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments, nint repo, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack stack, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, bool includeEditorPacks, string? worldId)
     {
-        NativeMethods.TablePtr->hs_method_e84b808d((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3.Handle, arg4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(worldId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldId ?? string.Empty, __hs_stringBytes5);
+        fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+        {
+            NativeMethods.TablePtr->C3.hs_method_3c440623((void*)__hosihikari_shim_handle, (void*)experiments.Handle, (void*)repo, (void*)stack.Handle, (void*)baseGameVersion.Handle, includeEditorPacks, __hs_stringData5, (nuint)__hs_stringByteCount5, worldId is not null);
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setupCommands(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3398c6_Address
     {
-        NativeMethods.TablePtr->hs_method_64cfb38b((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1b9da27f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7ee23b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b599b7bf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf08fc4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_230f3bbe((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf51e1c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c9a2cc19((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.VanillaGameModuleServer operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.VanillaGameModuleServer arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VanillaGameModuleServer((nint)NativeMethods.TablePtr->C3.hs_method_d1b70b34((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void setupCommands(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry commandRegistry)
+    {
+        NativeMethods.TablePtr->C3.hs_method_97a8d73a((void*)__hosihikari_shim_handle, (void*)commandRegistry.Handle);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_7aace2c2((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_7aace2c2((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7ebbca3a((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_7ebbca3a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

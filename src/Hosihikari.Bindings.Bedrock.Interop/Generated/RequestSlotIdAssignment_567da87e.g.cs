@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionHandler_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class RequestSlotIdAssignment
+public sealed unsafe partial class RequestSlotIdAssignment
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RequestSlotIdAssignment(nint handle) : this(handle, true) { }
 
     internal RequestSlotIdAssignment(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RequestSlotIdAssignment Borrow(nint handle) => new RequestSlotIdAssignment(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,20 @@ public sealed partial class RequestSlotIdAssignment
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerNetId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_07d1079c((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mSlot
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_1422907a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_1422907a((void*)__hosihikari_shim_handle, value);
     }
 }

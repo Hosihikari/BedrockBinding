@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class BlockComponentStorageFinalizer
+public sealed unsafe partial class BlockComponentStorageFinalizer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockComponentStorageFinalizer(nint handle) : this(handle, true) { }
 
     internal BlockComponentStorageFinalizer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockComponentStorageFinalizer Borrow(nint handle) => new BlockComponentStorageFinalizer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,20 +33,61 @@ public sealed partial class BlockComponentStorageFinalizer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockComponentStorageFinalizer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _checkForCollisionComponentBoxDuplication(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_1af7242c((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockComponentStorageFinalizer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _checkForMissingCullingComponentForMaterialOverride(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_21c4bc99((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _checkForMissingGeometryComponent(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e64dc6f4((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
+
+    public void _checkForSelectionBoxComponentDuplication(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b5b619e6((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
+
+    public void _finalizeCollisionBoxComponent(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d0789a18((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
+
+    public void _finalizeSelectionBoxComponent(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_11773978((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
+
+    public void addRemainingComponents(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_dfd2dd3c((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
+
+    public void finalizeComponentData(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5d94f9b6((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f078945e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

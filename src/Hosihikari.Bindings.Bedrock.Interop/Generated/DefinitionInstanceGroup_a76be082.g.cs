@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DefinitionInstanceGroup
+public sealed unsafe partial class DefinitionInstanceGroup : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DefinitionInstanceGroup(nint handle) : this(handle, true) { }
 
     internal DefinitionInstanceGroup(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DefinitionInstanceGroup Borrow(nint handle) => new DefinitionInstanceGroup(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,64 @@ public sealed unsafe partial class DefinitionInstanceGroup
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DefinitionInstanceGroup Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DefinitionInstanceGroup Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void add(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static DefinitionInstanceGroup Create()
     {
-        NativeMethods.TablePtr->hs_method_684dfcca((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        var handle = NativeMethods.TablePtr->C1.hs_create_08fc2fed();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DefinitionInstanceGroup((nint)handle);
     }
 
-    public void clear()
+    public static DefinitionInstanceGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup arg0)
     {
-        NativeMethods.TablePtr->hs_method_55064729((void*)_handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_249490dd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DefinitionInstanceGroup((nint)handle);
     }
 
-    public void combine(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup arg0)
+    public void combine(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup other)
     {
-        NativeMethods.TablePtr->hs_method_83493f1e((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_13e5a259((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
-    public bool contains(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4e28b4_Address
     {
-        return NativeMethods.TablePtr->hs_method_3625ba5e((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_560b84fb((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool overlaps(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup arg0)
     {
-        return NativeMethods.TablePtr->hs_method_c15561b7((void*)_handle, (void*)arg0.Handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->C1.hs_method_fe54d581((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    public void remove(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public void subtract(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup other)
     {
-        NativeMethods.TablePtr->hs_method_d24e0d9f((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C1.hs_method_63caf777((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
-    public void subtract(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup arg0)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_3b6bb585((void*)_handle, (void*)arg0.Handle);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_a76be082((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_83df69e2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

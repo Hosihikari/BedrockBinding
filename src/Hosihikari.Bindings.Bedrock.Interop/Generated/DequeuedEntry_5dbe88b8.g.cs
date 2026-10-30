@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.PriorityDeferredSubscriptionHub_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DequeuedEntry
+public sealed unsafe partial class DequeuedEntry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DequeuedEntry(nint handle) : this(handle, true) { }
 
     internal DequeuedEntry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DequeuedEntry Borrow(nint handle) => new DequeuedEntry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,20 @@ public sealed partial class DequeuedEntry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFunction_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_acd19fa8((void*)__hosihikari_shim_handle);
+    }
+
+    public int mOrder
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_c331db17((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_c331db17((void*)__hosihikari_shim_handle, value);
     }
 }

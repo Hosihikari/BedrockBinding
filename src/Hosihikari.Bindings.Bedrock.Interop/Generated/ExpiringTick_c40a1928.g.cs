@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ExpiringTick
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExpiringTick(nint handle) : this(handle, true) { }
 
     internal ExpiringTick(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExpiringTick Borrow(nint handle) => new ExpiringTick(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,20 @@ public sealed unsafe partial class ExpiringTick
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExpiringTick Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ExpiringTick Create(nint arg0, ushort arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExpiringTick Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Tick getExpireAtTick()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExpireAtTick_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_method_752d2206((void*)_handle));
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_766a046b((void*)__hosihikari_shim_handle);
     }
 
-    public float getNormalizedElapsedTime(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
+    public ushort mTicksUntilExpire
     {
-        return NativeMethods.TablePtr->hs_method_49d3ccb9((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_4683af86((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_4683af86((void*)__hosihikari_shim_handle, value);
     }
-
-    public bool isActive(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_5092c9dc((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    public bool isExpired(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_f5ce5730((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum FeatureOptionTabID : int
 {
+    Debug = 0,
+    UIDebug = 1,
+    MarketplaceDebug = 2,
+    RealmsDebug = 3,
+    NoUI = 4,
 }

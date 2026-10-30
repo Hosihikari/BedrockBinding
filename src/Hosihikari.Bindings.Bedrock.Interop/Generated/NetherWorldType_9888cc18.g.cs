@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum NetherWorldType : sbyte
+public enum NetherWorldType : byte
 {
     Normal = 0,
     Flat = 1,

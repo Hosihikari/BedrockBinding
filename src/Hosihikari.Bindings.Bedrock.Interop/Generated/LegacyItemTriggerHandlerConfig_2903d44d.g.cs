@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LegacyItemTriggerHandlerConfig
+public sealed unsafe partial class LegacyItemTriggerHandlerConfig : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LegacyItemTriggerHandlerConfig(nint handle) : this(handle, true) { }
 
     internal LegacyItemTriggerHandlerConfig(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LegacyItemTriggerHandlerConfig Borrow(nint handle) => new LegacyItemTriggerHandlerConfig(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,89 @@ public sealed partial class LegacyItemTriggerHandlerConfig
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LegacyItemTriggerHandlerConfig Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_f6c85937((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LegacyItemTriggerHandlerConfig Create_9cfd0908(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_78cd07e1((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static LegacyItemTriggerHandlerConfig Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ecd779e5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_b2dfb652() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new LegacyItemTriggerHandlerConfig((nint)handle);
+    }
+
+    public static LegacyItemTriggerHandlerConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3fb0d82c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyItemTriggerHandlerConfig((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorTriggerHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6b0fc532((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockEventHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e710d8af((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockTriggerHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_08e324a2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventResponseHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5d24cce7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemStackEventHandler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3ae642d0((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig((nint)NativeMethods.TablePtr->C1.hs_method_6a05ba98((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_2903d44d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

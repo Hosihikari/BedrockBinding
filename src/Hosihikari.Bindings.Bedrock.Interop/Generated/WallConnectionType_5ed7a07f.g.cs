@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum WallConnectionType : int
 {
+    None = 0,
+    Short = 1,
+    Tall = 2,
+    Count = 3,
 }

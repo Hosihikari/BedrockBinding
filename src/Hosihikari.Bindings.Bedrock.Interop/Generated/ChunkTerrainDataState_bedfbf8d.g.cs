@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ChunkTerrainDataState : int
+public enum ChunkTerrainDataState : byte
 {
+    NoData = 0,
+    NeedsFixup = 1,
+    ReadyForGeneration = 2,
+    Generated = 3,
+    StructurePostProcessed = 4,
+    DecorationPostProcessed = 5,
+    Ready = 6,
 }

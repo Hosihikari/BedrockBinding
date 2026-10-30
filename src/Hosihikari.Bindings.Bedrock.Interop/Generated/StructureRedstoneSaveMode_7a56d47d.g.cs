@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum StructureRedstoneSaveMode : sbyte
+public enum StructureRedstoneSaveMode : byte
 {
     SavesToMemory = 0,
     SavesToDisk = 1,

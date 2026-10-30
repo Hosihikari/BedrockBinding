@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum HCTraceLevel : int
+public enum HCTraceLevel : uint
 {
+    Off = 0,
+    Error = 1,
+    Warning = 2,
+    Important = 3,
+    Information = 4,
+    Verbose = 5,
 }

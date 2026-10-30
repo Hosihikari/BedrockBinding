@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class NoodleCavifier
+public sealed unsafe partial class NoodleCavifier : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NoodleCavifier(nint handle) : this(handle, true) { }
 
     internal NoodleCavifier(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NoodleCavifier Borrow(nint handle) => new NoodleCavifier(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,107 @@ public sealed partial class NoodleCavifier
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NoodleCavifier Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static NoodleCavifier Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8014e39e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NoodleCavifier Create(nint arg0, short arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new NoodleCavifier((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NoodleCavifier Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static NoodleCavifier Create(global::Hosihikari.Bindings.Bedrock.Interop.NoodleCavifier arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0d28e2e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new NoodleCavifier((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNoises_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9852f9aa((void*)__hosihikari_shim_handle);
+    }
+
+    public short mNoodlesMinHeight
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_3d7cc02a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRidgeAInterpolator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5d436e2d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRidgeANoiseBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_21f09b04((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRidgeBInterpolator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_82cfc522((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRidgeBNoiseBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2a041021((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mThicknessInterpolator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1ce70b87((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mThicknessNoiseBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7b45c7c8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mToggleInterpolator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c62a24df((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mToggleNoiseBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9e670bc1((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.NoodleCavifier operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.NoodleCavifier arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NoodleCavifier((nint)NativeMethods.TablePtr->C2.hs_method_c9a13415((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_dfd67d6e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

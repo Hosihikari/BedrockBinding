@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorAnimationControllerPtr
+public sealed unsafe partial class ActorAnimationControllerPtr : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorAnimationControllerPtr(nint handle) : this(handle, true) { }
 
     internal ActorAnimationControllerPtr(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorAnimationControllerPtr Borrow(nint handle) => new ActorAnimationControllerPtr(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,43 +33,65 @@ public sealed unsafe partial class ActorAnimationControllerPtr
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationControllerPtr Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationControllerPtr Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr NONE
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerGroup group, global::Hosihikari.Bindings.Bedrock.Interop.HashedString name)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr((nint)NativeMethods.TablePtr->hs_get_9b1d823a(), false);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_4bd2d950((void*)__hosihikari_shim_handle, (void*)group.Handle, (void*)name.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getName()
+    public void _dtor()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_dde85238((void*)_handle), false);
+        NativeMethods.TablePtr->C0.hs_method_a3db1f8e((void*)__hosihikari_shim_handle);
     }
 
-    public bool isNull()
+    public static ActorAnimationControllerPtr Create()
     {
-        return NativeMethods.TablePtr->hs_method_67891207((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_32b56eae();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationControllerPtr((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_operator__() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ActorAnimationControllerPtr Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerGroup group, global::Hosihikari.Bindings.Bedrock.Interop.HashedString name)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2cac0eb9((void*)group.Handle, (void*)name.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ActorAnimationControllerPtr((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_5cb004fb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr NONE()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr((nint)NativeMethods.TablePtr->C0.hs_method_915c814c(), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorAnimationControllerInfoPtr_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d1890152((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f931166e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

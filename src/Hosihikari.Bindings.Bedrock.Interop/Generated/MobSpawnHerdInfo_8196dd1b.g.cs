@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MobSpawnHerdInfo
+public sealed unsafe partial class MobSpawnHerdInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MobSpawnHerdInfo(nint handle) : this(handle, true) { }
 
     internal MobSpawnHerdInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MobSpawnHerdInfo Borrow(nint handle) => new MobSpawnHerdInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,167 @@ public sealed partial class MobSpawnHerdInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobSpawnHerdInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_12e9e0aa((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobSpawnHerdInfo Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(uint min, uint max, string initialEvent, uint initialEventCount, string herdEvent, uint herdEventSkipCount)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(initialEvent);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(initialEvent, __hs_stringBytes2);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(herdEvent);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(herdEvent, __hs_stringBytes4);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                return (nint)NativeMethods.TablePtr->C2.hs_method_af0d01e8((void*)__hosihikari_shim_handle, min, max, __hs_stringData2, (nuint)__hs_stringByteCount2, initialEventCount, __hs_stringData4, (nuint)__hs_stringByteCount4, herdEventSkipCount);
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MobSpawnHerdInfo Create(uint arg0, uint arg1, nint arg2, uint arg3, nint arg4, uint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_363edea2((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static MobSpawnHerdInfo Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_42c6542e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_9352a7a4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new MobSpawnHerdInfo((nint)handle);
+    }
+
+    public static MobSpawnHerdInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_059d0b6e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobSpawnHerdInfo((nint)handle);
+    }
+
+    public static MobSpawnHerdInfo Create(uint min, uint max, string initialEvent, uint initialEventCount, string herdEvent, uint herdEventSkipCount)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(initialEvent);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(initialEvent, __hs_stringBytes2);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(herdEvent);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(herdEvent, __hs_stringBytes4);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                var handle = NativeMethods.TablePtr->C2.hs_create_f4dc3389(min, max, __hs_stringData2, (nuint)__hs_stringByteCount2, initialEventCount, __hs_stringData4, (nuint)__hs_stringByteCount4, herdEventSkipCount);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new MobSpawnHerdInfo((nint)handle);
+            }
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHerdEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7101380b((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mHerdEventSkipCount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_0504e024((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0504e024((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInitialEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b0fb650b((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mInitialEventCount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_6ae4f4ad((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6ae4f4ad((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mMaxCount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c7677756((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c7677756((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mMinCount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_492f94c7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_492f94c7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo((nint)NativeMethods.TablePtr->C2.hs_method_b62b3e1f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8196dd1b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

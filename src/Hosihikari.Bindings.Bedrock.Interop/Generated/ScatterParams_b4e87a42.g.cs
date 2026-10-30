@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScatterParams
+public sealed unsafe partial class ScatterParams : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScatterParams(nint handle) : this(handle, true) { }
 
     internal ScatterParams(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScatterParams Borrow(nint handle) => new ScatterParams(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,158 @@ public sealed unsafe partial class ScatterParams
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScatterParams Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScatterParams Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_b33d13b6((void*)_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_9f0260bb((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    public static void initMolangParams(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_7aa9515d((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_273c7f15((void*)__hosihikari_shim_handle);
+    }
+
+    public static ScatterParams Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_273cce31();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScatterParams((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static ScatterParams Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static ScatterParams Create(global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f3988472((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScatterParams((nint)handle);
+    }
+
+    public static void _fillCoordinateRangeFromData(string coordinateName, global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams_Nested.CoordinateRange coordinateRange, nint coordinateRangeData, nint molangVersion, uint logArea)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(coordinateName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(coordinateName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C2.hs_method_d6661fb2(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)coordinateRange.Handle, (void*)coordinateRangeData, (void*)molangVersion, logArea);
+        }
+    }
+
+    public static void _parseExpressionNodeFloat(short op, string expression, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode node, float defaultValue)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(expression);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(expression, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_61338cec(op, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)node.Handle, defaultValue);
+        }
+    }
+
+    public void fillFromData(nint data, short molangVersion, uint logArea)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d0028130((void*)__hosihikari_shim_handle, (void*)data, molangVersion, logArea);
+    }
+
+    public static void initMolangParams(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams molangParams, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d385c907((void*)molangParams.Handle, (void*)pos.Handle, (void*)random.Handle);
     }
 
     public static void initScatterParamIndices()
     {
-        NativeMethods.TablePtr->hs_method_554ee84f();
+        NativeMethods.TablePtr->C2.hs_method_554ee84f();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCoordinateRanges_Address
     {
-        NativeMethods.TablePtr->hs_method_d2d80968((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3c0ceb49((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint scatter_747f0605(nint molangParams, nint pos, nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int mEvalOrder
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_41c1e6a0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_41c1e6a0((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIterations_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e9644d55((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScatterChance_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_603335b3((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams((nint)NativeMethods.TablePtr->C2.hs_method_f46d8685((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void readSerializedScatterParamData(nint data, global::Hosihikari.Bindings.Bedrock.Interop.BiomeStringList stringList)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b1930627((void*)__hosihikari_shim_handle, (void*)data, (void*)stringList.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScatterParams::ScatteredPositions' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint scatter(nint molangParams, nint pos, nint random) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScatterParams::ScatteredPositions' requires --link-carrier or --virtual-dispatch.");
+
+    public void serializeScatterParamData(nint data, global::Hosihikari.Bindings.Bedrock.Interop.BiomeStringList stringList)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7a0ded08((void*)__hosihikari_shim_handle, (void*)data, (void*)stringList.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b4e87a42((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

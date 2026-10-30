@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BehaviorData_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum DataType : int
+public enum DataType : byte
 {
+    BlockPosition = 0,
+    Boolean = 1,
+    Float = 2,
+    Int = 3,
+    String = 4,
+    Vector3 = 5,
+    VoidPointer = 6,
 }

@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ContainerCategory : int
 {
+    Default = 0,
+    PlayerInventory = 1,
+    Intermediary = 2,
+    Output = 3,
+    Unknown = 4,
 }

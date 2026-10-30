@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MinecraftGameTestHelper
+public sealed unsafe partial class MinecraftGameTestHelper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MinecraftGameTestHelper(nint handle) : this(handle, true) { }
 
     internal MinecraftGameTestHelper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MinecraftGameTestHelper Borrow(nint handle) => new MinecraftGameTestHelper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,242 +33,242 @@ public sealed unsafe partial class MinecraftGameTestHelper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dc87d498((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dc87d498((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertBlockPresent(nint arg0, nint arg1, bool arg2) =>
+    public nint _assertBlockPresent(nint blockType, nint pos, bool isPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertBlockPresent(nint arg0, int arg1, int arg2, int arg3, bool arg4) =>
+    public nint _assertBlockPresent(nint blockType, int x, int y, int z, bool isPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertBlockState(nint arg0, nint arg1) =>
+    public nint _assertBlockState(nint blockPos, nint predicate) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertCanReachLocation(nint arg0, nint arg1, bool arg2) =>
+    public nint _assertCanReachLocation(nint mob, nint pos, bool expectedReach) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertContainerContains(nint arg0, nint arg1) =>
+    public nint _assertContainerContains(nint item, nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertContainerEmpty(nint arg0) =>
+    public nint _assertContainerEmpty(nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityHasArmor(nint arg0, nint arg1, nint arg2, int arg3, nint arg4, bool arg5) =>
+    public nint _assertEntityHasArmor(nint actorIdentifier, nint armorSlot, nint armorName, int dataValue, nint pos, bool hasArmor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityHasComponent(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public nint _assertEntityHasComponent(nint actorIdentifier, nint componentName, nint pos, bool hasComponent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityInstancePresent(nint arg0, nint arg1, bool arg2) =>
+    public nint _assertEntityInstancePresent(nint actor, bool expectedPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityInstancePresent(nint arg0, bool arg1) =>
+    public nint _assertEntityInstancePresent(nint actor, nint pos, bool expectedPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityPresent(nint arg0, nint arg1, bool arg2) =>
+    public nint _assertEntityPresent(nint actorIdentifier, bool isPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityPresent(nint arg0, nint arg1, float arg2, bool arg3) =>
+    public nint _assertEntityPresent(nint actorIdentifier, nint pos, bool isPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityPresent(nint arg0, bool arg1) =>
+    public nint _assertEntityPresent_4ca2c86b(nint actorIdentifier, nint pos, nint distance, bool isPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityPresent(nint arg0, int arg1, int arg2, int arg3, bool arg4) =>
+    public nint _assertEntityPresent(nint actorIdentifier, int x, int y, int z, bool isPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityState(nint arg0, nint arg1, nint arg2) =>
+    public nint _assertEntityState(nint pos, nint actorIdentifier, nint dataPredicate) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertEntityTouching(nint arg0, nint arg1, bool arg2) =>
+    public nint _assertEntityTouching(nint actorIdentifier, nint pos, bool isTouching) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertIsWaterlogged(nint arg0, bool arg1) =>
+    public nint _assertIsWaterlogged(nint pos, bool expectedWaterlogged) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertItemEntityCountIs(nint arg0, nint arg1, float arg2, int arg3) =>
+    public nint _assertItemEntityCountIs(nint itemType, nint pos, float searchDistance, int expectedCount) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertItemEntityPresent(nint arg0, nint arg1, float arg2, bool arg3) =>
+    public nint _assertItemEntityPresent(nint item, nint pos, float searchDistance, bool isPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertItemEntityPresent(nint arg0, int arg1, int arg2, int arg3, float arg4, bool arg5) =>
+    public nint _assertItemEntityPresent(nint item, int x, int y, int z, float searchDistance, bool isPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint assertRedstonePower(nint arg0, int arg1) =>
+    public nint _assertRedstonePower(nint pos, int expectedPower) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint destroyBlock(nint arg0, bool arg1) =>
+    public nint _destroyBlock(nint pos, bool dropResources) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint getBlockSource(nint arg0) =>
+    public nint _getBlockSource(nint blockSourceResult) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Dimension*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDimension() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Dimension*>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Dimension *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getDimension() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Dimension *>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,ScriptModuleGameTest::ScriptGameTestConnectivity>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getFenceConnectivity(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,ScriptModuleGameTest::ScriptGameTestConnectivity>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint killAllEntities() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, ScriptModuleGameTest::ScriptGameTestConnectivity>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getFenceConnectivity(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, ScriptModuleGameTest::ScriptGameTestConnectivity>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint onPlayerJump(nint arg0, int arg1) =>
+    public nint _killAllEntities() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint pressButton(nint arg0) =>
+    public nint _onPlayerJump(nint mob, int jumpAmount) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint pressButton(int arg0, int arg1, int arg2) =>
+    public nint _pressButton(nint buttonPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint print(nint arg0) =>
+    public nint _pressButton(int x, int y, int z) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint pullLever(nint arg0) =>
+    public nint _print(nint text) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint pullLever(int arg0, int arg1, int arg2) =>
+    public nint _pullLever(nint leverPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint pulseRedstone(nint arg0, int arg1) =>
+    public nint _pullLever(int x, int y, int z) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,BlockPos>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint relativePosition_7b0c8272(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,BlockPos>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint _pulseRedstone(nint pos, int duration) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint relativePosition_87e01885(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Vec3>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, BlockPos>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _relativePosition_88ba215b(nint worldPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, BlockPos>' requires --link-carrier or --virtual-dispatch.");
 
-    public void removeSimulatedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _relativePosition_b7048b08(nint worldPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Vec3>' requires --link-carrier or --virtual-dispatch.");
+
+    public void _removeSimulatedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer simulatedPlayer)
     {
-        NativeMethods.TablePtr->hs_method_aedaded8((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7656dea3((void*)__hosihikari_shim_handle, (void*)simulatedPlayer.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint setBlock(nint arg0, nint arg1, int arg2) =>
+    public nint _setBlock(nint pos, nint block, int updateFlags) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint setBlock(int arg0, int arg1, int arg2, nint arg3, int arg4) =>
+    public nint _setBlock(int x, int y, int z, nint block, int updateFlags) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    public void setDayTime(int arg0)
+    public void _setDayTime(int time)
     {
-        NativeMethods.TablePtr->hs_method_51bbcf11((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_41b51226((void*)__hosihikari_shim_handle, time);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint setFluidContainer(nint arg0, int arg1) =>
+    public nint _setFluidContainer(nint pos, int _fluidType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    public void setNight()
+    public void _setNight()
     {
-        NativeMethods.TablePtr->hs_method_9b100e3d((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_cf924dd6((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint setTntFuse(nint arg0, int arg1) =>
+    public nint _setTntFuse(nint actor, int fuseLength) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawn_9d820f8c(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _spawn_92922309(nint actorIdentifier, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawn_09a2db2b(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _spawn_87145c14(nint actorIdentifier, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawn(nint arg0, int arg1, int arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _spawn(nint actorIdentifier, int x, int y, int z) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnItem(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _spawnItem(nint itemType, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,SimulatedPlayer*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnSimulatedPlayer(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,SimulatedPlayer*>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, SimulatedPlayer *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _spawnSimulatedPlayer(nint name, nint pos, nint gameMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, SimulatedPlayer *>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnWithoutBehaviors_e8bd9232(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _spawnWithoutBehaviors_6e23057e(nint actorIdentifier, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnWithoutBehaviors_bb120fc0(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Actor*>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _spawnWithoutBehaviors_6cbdbea6(nint actorIdentifier, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint spreadFromFaceTowardDirection(nint arg0, nint arg1, nint arg2) =>
+    public nint _spreadFromFaceTowardDirection(nint pos, nint fromFace, nint direction) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    public void succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2)
+    public void _succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool isPresent)
     {
-        NativeMethods.TablePtr->hs_method_937af03b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C2.hs_method_41a5a0c8((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)pos.Handle, isPresent);
     }
 
-    public void succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, int arg1, int arg2, int arg3, bool arg4)
+    public void _succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.Block block, int x, int y, int z, bool isPresent)
     {
-        NativeMethods.TablePtr->hs_method_442da02f((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4);
+        NativeMethods.TablePtr->C2.hs_method_43996dbb((void*)__hosihikari_shim_handle, (void*)block.Handle, x, y, z, isPresent);
     }
 
-    public void succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2)
+    public void _succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.BlockType block, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, bool isPresent)
     {
-        NativeMethods.TablePtr->hs_method_a449f172((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C2.hs_method_f64d43cf((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)position.Handle, isPresent);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void succeedWhenEntityData(nint arg0, nint arg1, nint arg2) =>
+    public void _succeedWhenEntityData(nint pos, nint actorIdentifier, nint dataPredicate) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void succeedWhenEntityHasComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, bool arg3)
+    public void _succeedWhenEntityHasComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorIdentifier, string componentName, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool hasComponent)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(componentName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -278,40 +278,415 @@ public sealed unsafe partial class MinecraftGameTestHelper
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(componentName, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_b7f92119((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, arg3);
+            NativeMethods.TablePtr->C2.hs_method_09406965((void*)__hosihikari_shim_handle, (void*)actorIdentifier.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)pos.Handle, hasComponent);
         }
     }
 
-    public void succeedWhenEntityPresent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2)
+    public void _succeedWhenEntityPresent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorIdentifier, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool isPresent)
     {
-        NativeMethods.TablePtr->hs_method_1b179d9d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C2.hs_method_e40f25c3((void*)__hosihikari_shim_handle, (void*)actorIdentifier.Handle, (void*)pos.Handle, isPresent);
     }
 
-    public void succeedWhenEntityPresent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, int arg1, int arg2, int arg3, bool arg4)
+    public void _succeedWhenEntityPresent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorIdentifier, int x, int y, int z, bool isPresent)
     {
-        NativeMethods.TablePtr->hs_method_c8227625((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4);
+        NativeMethods.TablePtr->C2.hs_method_4b785491((void*)__hosihikari_shim_handle, (void*)actorIdentifier.Handle, x, y, z, isPresent);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint triggerInternalBlockEvent(nint arg0, nint arg1, nint arg2) =>
+    public nint _triggerInternalBlockEvent(nint pos, nint @event, nint parameters) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint _walkTo_df52e2b4(nint mob, nint pos, float speedModifier) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint walkTo_dab1d665(nint arg0, nint arg1, float arg2) =>
+    public nint _walkTo_e8b2befd(nint mob, nint pos, float speedModifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, BlockPos>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _worldPosition_806613d5(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, BlockPos>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _worldPosition_9708f0b9(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Vec3>' requires --link-carrier or --virtual-dispatch.");
+
+    public static MinecraftGameTestHelper Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e132ea2f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MinecraftGameTestHelper((nint)handle);
+    }
+
+    public static MinecraftGameTestHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTestHelper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_274b5beb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MinecraftGameTestHelper((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint _assertEntityInstancePresent(nint actor, nint searchBounds, nint relativeTestPosition, bool expectedPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
-    public nint walkTo_a4117a9f(nint arg0, nint arg1, float arg2) =>
+    public nint _assertEntityPresent_989aee8c(nint actorIdentifier, nint searchBounds, nint pos, bool expectedPresent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,BlockPos>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint worldPosition_82fa902f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,BlockPos>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Container? _getContainer(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_adf9fa54((void*)__hosihikari_shim_handle, (void*)pos.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Container((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint worldPosition_2586c14b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError,Vec3>' requires --link-carrier or --virtual-dispatch.");
+    public int _getItemEntityCount(global::Hosihikari.Bindings.Bedrock.Interop.Item item, global::Hosihikari.Bindings.Bedrock.Interop.AABB searchBounds)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_097ffd10((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)searchBounds.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint _getStructureBlockMissingError() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertBlockPresent(nint blockType, nint pos, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertBlockPresent(nint blockType, int x, int y, int z, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertBlockState(nint blockPos, nint predicate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertCanReachLocation(nint mob, nint pos, bool expectedReach) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertContainerContains(nint item, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertContainerEmpty(nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityHasArmor(nint actorIdentifier, nint armorSlot, nint armorName, int dataValue, nint pos, bool hasArmor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityHasComponent(nint actorIdentifier, nint componentName, nint pos, bool hasComponent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityInstancePresent(nint actor, bool expectedPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityInstancePresent(nint actor, nint pos, bool expectedPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityPresent(nint actorIdentifier, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityPresent(nint actorIdentifier, nint pos, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityPresent(nint actorIdentifier, nint pos, nint distance, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityPresent(nint actorIdentifier, int x, int y, int z, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityState(nint pos, nint actorIdentifier, nint dataPredicate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertEntityTouching(nint actorIdentifier, nint pos, bool isTouching) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertIsWaterlogged(nint pos, bool expectedWaterlogged) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertItemEntityCountIs(nint itemType, nint pos, float searchDistance, int expectedCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertItemEntityPresent(nint item, nint pos, float searchDistance, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertItemEntityPresent(nint item, int x, int y, int z, float searchDistance, bool isPresent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint assertRedstonePower(nint pos, int expectedPower) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint destroyBlock(nint pos, bool dropResources) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint getBlockSource(nint blockSourceResult) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Dimension *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getDimension() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Dimension *>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, ScriptModuleGameTest::ScriptGameTestConnectivity>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getFenceConnectivity(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, ScriptModuleGameTest::ScriptGameTestConnectivity>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint killAllEntities() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5b6854_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c140e780((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint onPlayerJump(nint mob, int jumpAmount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTestHelper operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTestHelper arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTestHelper((nint)NativeMethods.TablePtr->C2.hs_method_40909120((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint pressButton(nint buttonPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint pressButton(int x, int y, int z) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint print(nint text) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint pullLever(nint leverPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint pullLever(int x, int y, int z) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint pulseRedstone(nint pos, int duration) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, BlockPos>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint relativePosition_0cffd458(nint worldPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, BlockPos>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint relativePosition_183a2637(nint worldPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Vec3>' requires --link-carrier or --virtual-dispatch.");
+
+    public void removeSimulatedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer simulatedPlayer)
+    {
+        NativeMethods.TablePtr->C2.hs_method_cd679b74((void*)__hosihikari_shim_handle, (void*)simulatedPlayer.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint setBlock(nint pos, nint block, int updateFlags) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint setBlock(int x, int y, int z, nint block, int updateFlags) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    public void setDayTime(int time)
+    {
+        NativeMethods.TablePtr->C2.hs_method_51bbcf11((void*)__hosihikari_shim_handle, time);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint setFluidContainer(nint pos, int _fluidType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    public void setNight()
+    {
+        NativeMethods.TablePtr->C2.hs_method_9b100e3d((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint setTntFuse(nint actor, int fuseLength) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawn_df08aade(nint actorIdentifier, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawn_6a557ddf(nint actorIdentifier, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawn(nint actorIdentifier, int x, int y, int z) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnItem(nint itemType, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, SimulatedPlayer *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnSimulatedPlayer(nint name, nint pos, nint gameMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, SimulatedPlayer *>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnWithoutBehaviors_fbedffd4(nint actorIdentifier, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint spawnWithoutBehaviors_575d7a34(nint actorIdentifier, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Actor *>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint spreadFromFaceTowardDirection(nint pos, nint fromFace, nint direction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    public void succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool isPresent)
+    {
+        NativeMethods.TablePtr->C2.hs_method_727e14aa((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)pos.Handle, isPresent);
+    }
+
+    public void succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.Block block, int x, int y, int z, bool isPresent)
+    {
+        NativeMethods.TablePtr->C2.hs_method_db2656a9((void*)__hosihikari_shim_handle, (void*)block.Handle, x, y, z, isPresent);
+    }
+
+    public void succeedWhenBlockPresent(global::Hosihikari.Bindings.Bedrock.Interop.BlockType block, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, bool isPresent)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d95e2e53((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)position.Handle, isPresent);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void succeedWhenEntityData(nint pos, nint actorIdentifier, nint dataPredicate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void succeedWhenEntityHasComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorIdentifier, string componentName, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool hasComponent)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(componentName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(componentName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C2.hs_method_986507f7((void*)__hosihikari_shim_handle, (void*)actorIdentifier.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)pos.Handle, hasComponent);
+        }
+    }
+
+    public void succeedWhenEntityPresent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorIdentifier, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool isPresent)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0a3c3107((void*)__hosihikari_shim_handle, (void*)actorIdentifier.Handle, (void*)pos.Handle, isPresent);
+    }
+
+    public void succeedWhenEntityPresent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorIdentifier, int x, int y, int z, bool isPresent)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d87284ff((void*)__hosihikari_shim_handle, (void*)actorIdentifier.Handle, x, y, z, isPresent);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint triggerInternalBlockEvent(nint pos, nint @event, nint parameters) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint walkTo_b2f51221(nint mob, nint pos, float speedModifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint walkTo_151391c9(nint mob, nint pos, float speedModifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, BlockPos>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint worldPosition_f09b4999(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, BlockPos>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint worldPosition_f8c58c15(nint relativePos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<gametest::GameTestError, Vec3>' requires --link-carrier or --virtual-dispatch.");
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka5d88f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_533fe276((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb12e2a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1be26733((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc5acb7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e796f9d1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkdc6962_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_011e21e1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke35c4d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0535a4d3((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_0a5a899f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

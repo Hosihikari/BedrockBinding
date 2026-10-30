@@ -11,5 +11,5 @@ public enum TeleportationCause : int
     ChorusFruit = 2,
     Command = 3,
     Behavior = 4,
-    Count = 5,
+    TeleportationCauseCount = 5,
 }

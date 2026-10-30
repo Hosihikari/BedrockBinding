@@ -40,5 +40,4 @@ public enum TokenType : int
     IdentifierFilenameSubset = 31,
     Unknown = 32,
     End = 33,
-    Count = 34,
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SpatialQueryUtility
+public sealed unsafe partial class SpatialQueryUtility : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SpatialQueryUtility(nint handle) : this(handle, true) { }
 
     internal SpatialQueryUtility(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SpatialQueryUtility Borrow(nint handle) => new SpatialQueryUtility(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,34 @@ public sealed partial class SpatialQueryUtility
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SpatialQueryUtility Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SpatialQueryUtility Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static bool forEachBlockInAABB(nint arg0, nint arg1, float arg2, nint arg3) =>
+    public static bool forEachBlockInAABB(nint region, nint aabb, float grow, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext, Include<CollidableMobFlagComponent>, const AABBShapeComponent>' is not a known bindable declaration.", false)]
+    public static void testForCollidableMobs(nint except, nint fetcher, nint actorAABB, nint intersectTestBox, nint view, nint fallingBlockView, nint collisionShapes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext, Include<CollidableMobFlagComponent>, const AABBShapeComponent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<FlagComponent<CollidableMobFlag>>,AABBShapeComponent const>' is not a known bindable declaration.", false)]
-    public static void testForCollidableMobs(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<FlagComponent<CollidableMobFlag>>,AABBShapeComponent const>' is not a known bindable declaration.");
+    public static void testForEntityStacking(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext except, global::Hosihikari.Bindings.Bedrock.Interop.LocalSpatialEntityFetcher component, global::Hosihikari.Bindings.Bedrock.Interop.AABB intersectTestBox, nint view, global::Hosihikari.Bindings.Bedrock.Interop.CollisionShapes collisionShapes)
+    {
+        NativeMethods.TablePtr->C3.hs_method_749fc5fb((void*)except.Handle, (void*)component.Handle, (void*)intersectTestBox.Handle, (void*)view, (void*)collisionShapes.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_31b58128((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

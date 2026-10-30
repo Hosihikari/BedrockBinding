@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BreathableComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum BreathableState : int
 {
+    InAir = 0,
+    InWater = 1,
+    InLava = 2,
+    InSolids = 3,
+    InBreathableOverrideBlock = 4,
+    InNonBreathableOverrideBlock = 5,
 }

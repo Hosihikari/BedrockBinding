@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum LimboEntitiesVersion : int
+public enum LimboEntitiesVersion : sbyte
 {
+    V0 = 0,
+    V1_8_0 = 1,
+    V1_10_0 = 2,
+    V1_12_0 = 3,
+    V1_16_210 = 4,
 }

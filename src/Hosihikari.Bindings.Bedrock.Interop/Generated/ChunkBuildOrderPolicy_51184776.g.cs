@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkBuildOrderPolicy
+public sealed unsafe partial class ChunkBuildOrderPolicy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkBuildOrderPolicy(nint handle) : this(handle, true) { }
 
     internal ChunkBuildOrderPolicy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkBuildOrderPolicy Borrow(nint handle) => new ChunkBuildOrderPolicy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,106 @@ public sealed unsafe partial class ChunkBuildOrderPolicy
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkBuildOrderPolicy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkBuildOrderPolicy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getChunkRebuildPriority(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0)
+    public int _getChunkRebuildPriority(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos cp)
     {
-        return NativeMethods.TablePtr->hs_method_6a3cb53f((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_fdbf6078((void*)__hosihikari_shim_handle, (void*)cp.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public uint _registerForUpdates()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5df6a1b6((void*)__hosihikari_shim_handle);
+    }
+
+    public void _setPlayerInfluence(uint handle, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos playerPosition, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 playerMovementDirection)
+    {
+        NativeMethods.TablePtr->C0.hs_method_f4387465((void*)__hosihikari_shim_handle, handle, (void*)playerPosition.Handle, (void*)playerMovementDirection.Handle);
+    }
+
+    public void _setTickingAreaInfluence(uint handle, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos tickingAreaPosition, int sizeX, int sizeZ, bool isCircle, bool preload)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9a0689f9((void*)__hosihikari_shim_handle, handle, (void*)tickingAreaPosition.Handle, sizeX, sizeZ, isCircle, preload);
+    }
+
+    public void _unregisterForUpdates(uint handle)
+    {
+        NativeMethods.TablePtr->C0.hs_method_6793da84((void*)__hosihikari_shim_handle, handle);
+    }
+
+    public void _updateInfluences()
+    {
+        NativeMethods.TablePtr->C0.hs_method_c2aba90a((void*)__hosihikari_shim_handle);
+    }
+
+    public int getChunkRebuildPriority(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos cp)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_6f830d54((void*)__hosihikari_shim_handle, (void*)cp.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPosAndDirectionAsync_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_23ef8e98((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPosAsyncSpinLock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4111c2b4((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mLastHandle
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_079b4ddf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_079b4ddf((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPositionMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_867baec8((void*)__hosihikari_shim_handle);
+    }
 
     public uint registerForUpdates()
     {
-        return NativeMethods.TablePtr->hs_method_5b1b1622((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_5b1b1622((void*)__hosihikari_shim_handle);
     }
 
-    public void setPlayerInfluence(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    public void setPlayerInfluence(uint handle, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos playerPosition, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 playerMovementDirection)
     {
-        NativeMethods.TablePtr->hs_method_bfc33e7b((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C0.hs_method_8bd9f79d((void*)__hosihikari_shim_handle, handle, (void*)playerPosition.Handle, (void*)playerMovementDirection.Handle);
     }
 
-    public void setTickingAreaInfluence(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, int arg2, int arg3, bool arg4, bool arg5)
+    public void setTickingAreaInfluence(uint handle, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos tickingAreaPosition, int sizeX, int sizeZ, bool isCircle, bool preload)
     {
-        NativeMethods.TablePtr->hs_method_45c4d063((void*)_handle, arg0, (void*)arg1.Handle, arg2, arg3, arg4, arg5);
+        NativeMethods.TablePtr->C0.hs_method_223a90ae((void*)__hosihikari_shim_handle, handle, (void*)tickingAreaPosition.Handle, sizeX, sizeZ, isCircle, preload);
     }
 
-    public void unregisterForUpdates(uint arg0)
+    public void unregisterForUpdates(uint handle)
     {
-        NativeMethods.TablePtr->hs_method_440fc427((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_440fc427((void*)__hosihikari_shim_handle, handle);
     }
 
     public void updateInfluences()
     {
-        NativeMethods.TablePtr->hs_method_539be29c((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_539be29c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_51184776((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

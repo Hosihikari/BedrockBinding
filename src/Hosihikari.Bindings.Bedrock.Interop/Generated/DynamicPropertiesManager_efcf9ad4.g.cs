@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DynamicPropertiesManager
+public sealed unsafe partial class DynamicPropertiesManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DynamicPropertiesManager(nint handle) : this(handle, true) { }
 
     internal DynamicPropertiesManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DynamicPropertiesManager Borrow(nint handle) => new DynamicPropertiesManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,124 @@ public sealed unsafe partial class DynamicPropertiesManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DynamicPropertiesManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DynamicPropertiesManager Create_38a1f5d0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DynamicPropertiesManager Create_60d405cd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addBytesSaved(global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
-        NativeMethods.TablePtr->hs_method_6d9d9dac((void*)_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_bd802637((void*)__hosihikari_shim_handle, (void*)ctx.Handle);
     }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_105c91a1((void*)__hosihikari_shim_handle);
+    }
+
+    public static DynamicPropertiesManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a498728d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DynamicPropertiesManager((nint)handle);
+    }
+
+    public static DynamicPropertiesManager Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ccff12e1((void*)ctx.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DynamicPropertiesManager((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.", false)]
+    public nint _collectMemoryStats(ulong arg0, ulong arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.", false)]
+    public nint _collectPropertiesStats(ulong arg0, ulong arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'DebuggerStat' is not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties getOrAddLevelDynamicProperties()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties((nint)NativeMethods.TablePtr->hs_method_e4ff1130((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties((nint)NativeMethods.TablePtr->C1.hs_method_c3b94ea9((void*)__hosihikari_shim_handle), false);
     }
 
-    public ulong getTotalBytesSaved()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCerealContext_Address
     {
-        return NativeMethods.TablePtr->hs_method_e47031e2((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0240dfc3((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readFromLevelStorage(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelDynamicProperties_Address
     {
-        NativeMethods.TablePtr->hs_method_2f2a5784((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_91414506((void*)__hosihikari_shim_handle);
     }
 
-    public void registerLevelStorageManagerListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMemoryStatCollector_Address
     {
-        NativeMethods.TablePtr->hs_method_8f8d0e91((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_54e98a93((void*)__hosihikari_shim_handle);
     }
 
-    public void tick()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnSaveLevelDataSubscription_Address
     {
-        NativeMethods.TablePtr->hs_method_6b7e582f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0a2a9535((void*)__hosihikari_shim_handle);
     }
 
-    public void writeToLevelStorage(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPropertiesStatCollector_Address
     {
-        NativeMethods.TablePtr->hs_method_e9a6805d((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ebb3d4f4((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong mTotalBytesSaved
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ac397113((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ac397113((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mWatchdogTick
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_4b08a446((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_4b08a446((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void readFromLevelStorage(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7aa43aa2((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle);
+    }
+
+    public void registerLevelStorageManagerListener(global::Hosihikari.Bindings.Bedrock.Interop.ILevelStorageManagerConnector levelStorageManagerConnector)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d3374608((void*)__hosihikari_shim_handle, (void*)levelStorageManagerConnector.Handle);
+    }
+
+    public void writeToLevelStorage(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C1.hs_method_95581442((void*)__hosihikari_shim_handle, (void*)levelStorage.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_efcf9ad4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

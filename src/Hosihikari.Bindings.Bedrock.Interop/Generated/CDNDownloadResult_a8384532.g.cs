@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum CDNDownloadResult : int
 {
+    Success = 0,
+    Failure = 1,
+    Timeout = 2,
+    AddedToPackRepo = 3,
+    NotFoundInPackRepo = 4,
+    NotOnStack = 5,
 }

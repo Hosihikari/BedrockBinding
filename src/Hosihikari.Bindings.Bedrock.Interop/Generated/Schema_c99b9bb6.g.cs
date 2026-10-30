@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.cereal.@internal;
 
 public sealed unsafe partial class Schema
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Schema(nint handle) : this(handle, true) { }
 
     internal Schema(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Schema Borrow(nint handle) => new Schema(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,66 +33,27 @@ public sealed unsafe partial class Schema
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Schema Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.", false)]
+    public bool load(nint reader, nint data, nint loadContext, nint config) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Schema Create(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Schema Create_dcc34ac0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Schema Create_84a05671(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public string[] getErrors()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContext_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_87b63e61((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ce79a818((void*)__hosihikari_shim_handle);
     }
 
-    public nint getLog()
+    public nint mSchema
     {
-        return (nint)NativeMethods.TablePtr->hs_method_618d5b80((void*)_handle);
-    }
-
-    public bool isDefined()
-    {
-        return NativeMethods.TablePtr->hs_method_980b9bed((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ccb5ce8f((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.", false)]
-    public bool load(nint arg0, nint arg1, nint arg2) =>
+    public bool save(nint writer, nint data, nint config) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_a2c1e7d2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_13aa59f0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.", false)]
-    public bool save(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

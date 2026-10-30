@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MolangVariableMap : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MolangVariableMap(nint handle) : this(handle, true) { }
 
     internal MolangVariableMap(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MolangVariableMap Borrow(nint handle) => new MolangVariableMap(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,19 @@ public sealed unsafe partial class MolangVariableMap : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_bc9b2f0e((void*)__hosihikari_shim_handle);
     }
 
     public static MolangVariableMap Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_6c09e373();
+        var handle = NativeMethods.TablePtr->C2.hs_create_6c09e373();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,9 +54,9 @@ public sealed unsafe partial class MolangVariableMap : global::System.IDisposabl
         return new MolangVariableMap((nint)handle);
     }
 
-    public static MolangVariableMap Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap arg0)
+    public static MolangVariableMap Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap rhs)
     {
-        var handle = NativeMethods.TablePtr->hs_create_38ab3a0e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_6fdfb2b4((void*)rhs.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,115 +65,81 @@ public sealed unsafe partial class MolangVariableMap : global::System.IDisposabl
         return new MolangVariableMap((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static MolangVariableMap Create_dbecdbf2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangVariable? _getMolangVariable(ushort molangVariableIndex, int errorHandling)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_6ae91076((void*)__hosihikari_shim_handle, molangVariableIndex, errorHandling);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangVariable((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangVariable? _getOrAddMolangVariable(ushort molangVariableIndex)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_22fa8dfc((void*)__hosihikari_shim_handle, molangVariableIndex);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangVariable((nint)__hs_handle, false) : null;
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap clear()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap((nint)NativeMethods.TablePtr->hs_method_3df1942a((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg? getConstScriptArgReference(nint arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_a7f6676a((void*)_handle, (void*)arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg getMolangVariable_e1cac3a5(nint arg0, nint arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_e1cac3a5((void*)_handle, (void*)arg0, (void*)arg1), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg getMolangVariable_bc761ca7(nint arg0, nint arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_bc761ca7((void*)_handle, (void*)arg0, (void*)arg1), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg getMolangVariable(ulong arg0, nint arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_7e1bf66d((void*)_handle, arg0, (void*)arg1), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg? getNonConstScriptArgReference(nint arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_19c2b343((void*)_handle, (void*)arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg? getOrAddNonConstScriptArgReference(nint arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c2c46caf((void*)_handle, (void*)arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg getPublicMolangVariable_dc233002(nint arg0, nint arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_dc233002((void*)_handle, (void*)arg0, (void*)arg1), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap((nint)NativeMethods.TablePtr->C2.hs_method_a782edfd((void*)__hosihikari_shim_handle), false);
     }
 
     public bool mHasPublicVariables
     {
-        get => NativeMethods.TablePtr->hs_get_d193f6dd((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d193f6dd((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_d193f6dd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_d193f6dd((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMapFromVariableIndexToVariableArrayOffset_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fa399c89((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fa399c89((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVariables_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d3d0ad15((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d3d0ad15((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_a430095b(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_f803b116(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setMolangStructMember(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap rhs)
     {
-        NativeMethods.TablePtr->hs_method_0897441f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap((nint)NativeMethods.TablePtr->C2.hs_method_f803b116((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
     }
 
-    public void setMolangVariable(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg1)
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap rhs)
     {
-        NativeMethods.TablePtr->hs_method_a9c4d5e1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_70856ecb((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
-    public void setMolangVariable(ushort arg0, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg1)
+    public void setMolangStructMember(ushort molangVariableIndex, global::Hosihikari.Bindings.Bedrock.Interop.HashedString memberNameDepth0, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg value)
     {
-        NativeMethods.TablePtr->hs_method_e19f3252((void*)_handle, arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_45707ddd((void*)__hosihikari_shim_handle, molangVariableIndex, (void*)memberNameDepth0.Handle, (void*)value.Handle);
     }
 
-    public void setMolangVariable(ulong arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg2)
+    public void setMolangVariable(ushort molangVariableIndex, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg value)
     {
-        NativeMethods.TablePtr->hs_method_3e5edf70((void*)_handle, arg0, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c2e66c09((void*)__hosihikari_shim_handle, molangVariableIndex, (void*)value.Handle);
     }
 
-    public void setMolangVariableSettings(global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableSettings arg0)
+    public void setMolangVariable(ulong variableNameHash, nint variableName, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg value, bool allowSpecialCharacters)
     {
-        NativeMethods.TablePtr->hs_method_4ab30586((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_f89ecde8((void*)__hosihikari_shim_handle, variableNameHash, (void*)variableName, (void*)value.Handle, allowSpecialCharacters);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_4b7a2dd9((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_4b7a2dd9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

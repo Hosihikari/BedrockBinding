@@ -2,9 +2,9 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Facing_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Facing;
 
-public enum Name : sbyte
+public enum Name : byte
 {
     Down = 0,
     Up = 1,

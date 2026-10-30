@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum PistonState : int
+public enum PistonState : sbyte
 {
+    Retracted = 0,
+    Expanding = 1,
+    Expanded = 2,
+    Retracting = 3,
 }

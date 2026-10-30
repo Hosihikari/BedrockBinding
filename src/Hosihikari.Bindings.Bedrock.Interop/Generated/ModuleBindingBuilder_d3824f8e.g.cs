@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ModuleBindingBuilder
+public sealed unsafe partial class ModuleBindingBuilder : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ModuleBindingBuilder(nint handle) : this(handle, true) { }
 
     internal ModuleBindingBuilder(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ModuleBindingBuilder Borrow(nint handle) => new ModuleBindingBuilder(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,77 +33,186 @@ public sealed partial class ModuleBindingBuilder
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ModuleBindingBuilder Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid, string name, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version version, bool importRestricted)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C3.hs_method_5d897c31((void*)__hosihikari_shim_handle, (void*)uuid.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)version.Handle, importRestricted);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ModuleBindingBuilder Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ModuleBindingBuilder Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b1f88d70();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ModuleBindingBuilder Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new ModuleBindingBuilder((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ModuleBinding' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint build(bool arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ModuleBinding' requires --link-carrier or --virtual-dispatch.");
+    public static ModuleBindingBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4ff6d97b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public nint classBinding(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+        return new ModuleBindingBuilder((nint)handle);
+    }
+
+    public static ModuleBindingBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid, string name, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version version, bool importRestricted)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var handle = NativeMethods.TablePtr->C3.hs_create_f83ae924((void*)uuid.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)version.Handle, importRestricted);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ModuleBindingBuilder((nint)handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public nint dependency_1c551f05(nint arg0) =>
+    public bool _allowed(nint releases, bool allowUntagged, nint additionalTags) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public nint enumBinding(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public nint errorBinding(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ModuleDescriptor' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getModuleDescriptor() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ModuleDescriptor' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public nint interfaceBinding(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mEmptyConstantFactory
+    public static bool _assertClassMemberSymbolDoNotExist(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding classBinding, string name, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.TaggedBinding binding)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return NativeMethods.TablePtr->C3.hs_method_8c702318((void*)classBinding.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)binding.Handle) != 0;
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mEmptyFunctionBinding
+    public static bool _assertModuleMemberSymbolDoNotExist(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBinding moduleBinding, string name, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.TaggedBinding binding)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return NativeMethods.TablePtr->C3.hs_method_e8fefee3((void*)moduleBinding.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)binding.Handle) != 0;
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mEmptyObjectFactory
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBinding build(bool allowUntagged, string[] additionalTags, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.RuntimeConditions currentRuntimeConditions)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        var __hs_vectorItems1 = additionalTags ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount1 = __hs_vectorItems1.Length;
+        var __hs_vectorByteTotal1 = 0;
+        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++) { __hs_vectorByteTotal1 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems1[__hs_i1] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena1;
+        if (__hs_vectorByteTotal1 <= 1024) { __hs_vectorArena1 = stackalloc byte[__hs_vectorByteTotal1 == 0 ? 1 : __hs_vectorByteTotal1]; } else { __hs_vectorArena1 = new byte[__hs_vectorByteTotal1]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews1;
+        if (__hs_vectorCount1 <= 64) { __hs_vectorViews1 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1 == 0 ? 1 : __hs_vectorCount1]; } else { __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1]; }
+        fixed (byte* __hs_vectorArenaPtr1 = __hs_vectorArena1)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
+        {
+            var __hs_vectorOffset1 = 0;
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++)
+            {
+                var __hs_item1 = __hs_vectorItems1[__hs_i1] ?? string.Empty;
+                var __hs_length1 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item1);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item1, __hs_vectorArena1.Slice(__hs_vectorOffset1, __hs_length1));
+                __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
+                __hs_vectorOffset1 += __hs_length1;
+            }
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBinding((nint)NativeMethods.TablePtr->C3.hs_method_2c8a32e3((void*)__hosihikari_shim_handle, allowUntagged, (void*)currentRuntimeConditions.Handle, __hs_vectorData1, (nuint)(additionalTags?.Length ?? 0)));
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder createTypeMap(nint typeMapBuilder)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder((nint)NativeMethods.TablePtr->C3.hs_method_4438467c((void*)__hosihikari_shim_handle, (void*)typeMapBuilder), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_9e0c0d77() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ConstantFactory mEmptyConstantFactory()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ConstantFactory((nint)NativeMethods.TablePtr->C3.hs_method_32f18430(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.FunctionBinding mEmptyFunctionBinding()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.FunctionBinding((nint)NativeMethods.TablePtr->C3.hs_method_b732509b(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectFactory mEmptyObjectFactory()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectFactory((nint)NativeMethods.TablePtr->C3.hs_method_b48a998a(), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd4febe_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_74e15537((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder((nint)NativeMethods.TablePtr->C3.hs_method_3d351cf7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_d3824f8e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TeleportResponse
+public sealed unsafe partial class TeleportResponse : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TeleportResponse(nint handle) : this(handle, true) { }
 
     internal TeleportResponse(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TeleportResponse Borrow(nint handle) => new TeleportResponse(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,120 @@ public sealed unsafe partial class TeleportResponse
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string NameID
+    public void _buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root, global::Hosihikari.Bindings.Bedrock.Interop.Factory_EventResponse_ factory)
     {
-        get
+        NativeMethods.TablePtr->C3.hs_method_20ad20a5((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);
+    }
+
+    public void _executeAction(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams @params)
+    {
+        NativeMethods.TablePtr->C3.hs_method_42be1393((void*)__hosihikari_shim_handle, (void*)@params.Handle);
+    }
+
+    public string _getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_65c01271((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static string NameID()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_230e6805();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static TeleportResponse Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_17317295();
+        if (handle == null)
         {
-            var view = NativeMethods.TablePtr->hs_get_9927177b();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
+
+        return new TeleportResponse((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TeleportResponse Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TeleportResponse Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0, nint arg1)
+    public static TeleportResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.TeleportResponse arg0)
     {
-        NativeMethods.TablePtr->hs_method_ca934e41((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1);
+        var handle = NativeMethods.TablePtr->C3.hs_create_5095c853((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TeleportResponse((nint)handle);
     }
 
-    public void executeAction(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
+    public void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root, global::Hosihikari.Bindings.Bedrock.Interop.Factory_EventResponse_ factory)
     {
-        NativeMethods.TablePtr->hs_method_56d2ae42((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_47be1b36((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);
+    }
+
+    public void executeAction(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams @params)
+    {
+        NativeMethods.TablePtr->C3.hs_method_daf3f469((void*)__hosihikari_shim_handle, (void*)@params.Handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c4db969c((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_429145f5((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7ba552_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3c17ce1a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7e21b1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cd04f93b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk86927e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8fb79012((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka87854_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1c9c8989((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd50951_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8cc5a5e1((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TeleportResponse operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.TeleportResponse arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TeleportResponse((nint)NativeMethods.TablePtr->C3.hs_method_492fe115((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_890497f3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

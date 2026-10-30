@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BackgroundWorker_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum RunOneResult : int
 {
+    NoTasks = 0,
+    TaskExecuted = 1,
+    Retry = 2,
 }

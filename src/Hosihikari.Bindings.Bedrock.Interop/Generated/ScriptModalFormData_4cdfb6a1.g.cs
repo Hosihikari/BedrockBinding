@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptModalFormData
+public sealed unsafe partial class ScriptModalFormData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptModalFormData(nint handle) : this(handle, true) { }
 
     internal ScriptModalFormData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptModalFormData Borrow(nint handle) => new ScriptModalFormData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,92 +33,137 @@ public sealed partial class ScriptModalFormData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptModalFormData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptModalFormData Create_d2eac0c3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ScriptModalFormData Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b7ee5b1a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptModalFormData Create_0569c820(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new ScriptModalFormData((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static ScriptModalFormData Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint dropdown_1cca7707(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
+    public static ScriptModalFormData Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ScriptModalFormData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0569c820((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint dropdown_14c8fbad(nint label, nint options, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ScriptModalFormData((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint dropdownV010(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _buildJson(nint forPlayer, nint commandVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Json::Value, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint iconV0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_210ea083(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_a44fc3d0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormResponse>,ScriptModuleMinecraftServerUI::ScriptFormRejectError,void>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint show(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormResponse>,ScriptModuleMinecraftServerUI::ScriptFormRejectError,void>>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_ff9d902e());
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint slider(nint arg0, float arg1, float arg2, float arg3, nint arg4) =>
+    public nint dropdownV1(nint label, nint options, nint defaultValueIndex) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint sliderV010(nint arg0, float arg1, float arg2, float arg3, nint arg4) =>
+    public nint header(nint text) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint submitButton(nint arg0) =>
+    public nint label(nint text) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb58338_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f1220751((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb93266_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_73875d18((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke408cd_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9db041d5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke8f652_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_05cb2c12((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ScriptModalFormData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ScriptModalFormData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ScriptModalFormData((nint)NativeMethods.TablePtr->C3.hs_method_a44fc3d0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormResponseV2>, ScriptModuleMinecraftServerUI::ScriptFormRejectError>, Scripting::EngineError, ScriptModuleMinecraft::ScriptInvalidActorError, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint show(nint config, nint factory, nint locator, nint scriptPlayer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormResponseV2>, ScriptModuleMinecraftServerUI::ScriptFormRejectError>, Scripting::EngineError, ScriptModuleMinecraft::ScriptInvalidActorError, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormResponse>, ScriptModuleMinecraftServerUI::ScriptFormRejectError>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint showV010(nint config, nint factory, nint locator, nint scriptPlayer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormResponse>, ScriptModuleMinecraftServerUI::ScriptFormRejectError>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormResponse>, ScriptModuleMinecraftServerUI::ScriptFormRejectError>, Scripting::EngineError, ScriptModuleMinecraft::ScriptInvalidActorError, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint showV1(nint config, nint factory, nint locator, nint scriptPlayer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormResponse>, ScriptModuleMinecraftServerUI::ScriptFormRejectError>, Scripting::EngineError, ScriptModuleMinecraft::ScriptInvalidActorError, ScriptModuleMinecraft::ScriptRawMessageError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint sliderV1(nint label, float minValue, float maxValue, float step, nint defaultValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint textField(nint arg0, nint arg1, nint arg2) =>
+    public nint submitButton(nint label) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint textFieldV010(nint arg0, nint arg1, nint arg2) =>
+    public nint textFieldV1(nint label, nint placeholderText, nint defaultValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint title(nint arg0) =>
+    public nint title(nint title) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint titleV010(nint arg0) =>
+    public nint toggleV1(nint label, nint defaultValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint toggle(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_4cdfb6a1((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint toggleV010(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftServerUI::ScriptModalFormData>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_8a920a9d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

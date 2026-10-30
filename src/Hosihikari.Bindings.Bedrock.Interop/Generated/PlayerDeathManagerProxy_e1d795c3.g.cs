@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayerDeathManagerProxy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerDeathManagerProxy(nint handle) : this(handle, true) { }
 
     internal PlayerDeathManagerProxy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerDeathManagerProxy Borrow(nint handle) => new PlayerDeathManagerProxy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,56 +33,64 @@ public sealed unsafe partial class PlayerDeathManagerProxy : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerDeathManagerProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static PlayerDeathManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? _fetchActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorUniqueID)
     {
-        var handle = NativeMethods.TablePtr->hs_create_57d7a80d((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PlayerDeathManagerProxy((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerDeathManagerProxy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_88b7377f((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_89e0e42d((void*)__hosihikari_shim_handle, (void*)actorUniqueID.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _onWorldOwnerHasDied()
+    {
+        NativeMethods.TablePtr->C2.hs_method_f67696b9((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _shouldShowDeathMessages()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_93f756c9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorUniqueID)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_b598b32e((void*)__hosihikari_shim_handle, (void*)actorUniqueID.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerLevel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6ac4dbb3((void*)__hosihikari_shim_handle);
+    }
+
+    public void onWorldOwnerHasDied()
+    {
+        NativeMethods.TablePtr->C2.hs_method_ce8a49e5((void*)__hosihikari_shim_handle);
+    }
 
     public bool shouldShowDeathMessages()
     {
-        return NativeMethods.TablePtr->hs_method_e3776099((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_83f8ec9f((void*)__hosihikari_shim_handle) != 0;
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_e1d795c3((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_e1d795c3((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

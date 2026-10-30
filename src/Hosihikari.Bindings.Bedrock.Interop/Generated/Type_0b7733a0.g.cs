@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested;
 
-public enum Type : sbyte
+public enum Type : byte
 {
     Invalid = 0,
     Bool = 1,

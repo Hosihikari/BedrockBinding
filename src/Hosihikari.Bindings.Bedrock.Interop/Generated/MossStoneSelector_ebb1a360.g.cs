@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MossStoneSelector : global::System.IDisposable
+public sealed unsafe partial class MossStoneSelector
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MossStoneSelector(nint handle) : this(handle, true) { }
 
     internal MossStoneSelector(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MossStoneSelector Borrow(nint handle) => new MossStoneSelector(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,24 @@ public sealed unsafe partial class MossStoneSelector : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MossStoneSelector Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MossStoneSelector Create(global::Hosihikari.Bindings.Bedrock.Interop.Block? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block _next(global::Hosihikari.Bindings.Bedrock.Interop.Random random, int arg1, int arg2, int arg3, bool arg4)
     {
-        var handle = NativeMethods.TablePtr->hs_create_72663907((void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0));
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new MossStoneSelector((nint)handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C2.hs_method_d8c7102a((void*)__hosihikari_shim_handle, (void*)random.Handle, arg1, arg2, arg3, arg4), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MossStoneSelector Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block next(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, int arg1, int arg2, int arg3, bool arg4)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalRegistry_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_1a901d5c((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4), false);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ecc5aecc((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block next(global::Hosihikari.Bindings.Bedrock.Interop.Random random, int arg1, int arg2, int arg3, bool arg4)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_ebb1a360((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C2.hs_method_4221e17d((void*)__hosihikari_shim_handle, (void*)random.Handle, arg1, arg2, arg3, arg4), false);
     }
 }

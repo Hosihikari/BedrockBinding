@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum PhotoType : int
+public enum PhotoType : byte
 {
+    Portfolio = 0,
+    PhotoItem = 1,
+    Book = 2,
 }

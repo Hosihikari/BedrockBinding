@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RiseToLiquidLevelGoal : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RiseToLiquidLevelGoal(nint handle) : this(handle, true) { }
 
     internal RiseToLiquidLevelGoal(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RiseToLiquidLevelGoal Borrow(nint handle) => new RiseToLiquidLevelGoal(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,50 @@ public sealed unsafe partial class RiseToLiquidLevelGoal : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RiseToLiquidLevelGoal Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static RiseToLiquidLevelGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, float arg1, float arg2, float arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_a5bba1dd((void*)arg0.Handle, arg1, arg2, arg3);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b7100cb3((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRequiredControlFlags
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_df0cea4b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_df0cea4b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mTypeId
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_86e56c51((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_86e56c51((void*)__hosihikari_shim_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void _appendDebugInfo(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    public bool _canUse()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_976719e9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _tick()
+    {
+        NativeMethods.TablePtr->C2.hs_method_2653da83((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static RiseToLiquidLevelGoal Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_08b2b81f();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,39 +85,70 @@ public sealed unsafe partial class RiseToLiquidLevelGoal : global::System.IDispo
         return new RiseToLiquidLevelGoal((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RiseToLiquidLevelGoal Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static RiseToLiquidLevelGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.RiseToLiquidLevelGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_17739473((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RiseToLiquidLevelGoal((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendDebugInfo(nint arg0) =>
+    public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     public bool canUse()
     {
-        return NativeMethods.TablePtr->hs_method_b01c98a3((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_b01c98a3((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mLiquidYOffset
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_011924e9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_011924e9((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMob_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_04e84115((void*)__hosihikari_shim_handle);
+    }
+
+    public float mRiseDelta
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ab68500e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ab68500e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mSinkDelta
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_6c739689((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6c739689((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RiseToLiquidLevelGoal operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RiseToLiquidLevelGoal arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RiseToLiquidLevelGoal((nint)NativeMethods.TablePtr->C2.hs_method_31697287((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void tick()
     {
-        NativeMethods.TablePtr->hs_method_451e7217((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_451e7217((void*)__hosihikari_shim_handle);
     }
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_3a7d1559((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_3a7d1559((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

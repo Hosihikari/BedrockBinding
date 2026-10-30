@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ScriptMinecraftServerUIModuleFactory : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptMinecraftServerUIModuleFactory(nint handle) : this(handle, true) { }
 
     internal ScriptMinecraftServerUIModuleFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptMinecraftServerUIModuleFactory Borrow(nint handle) => new ScriptMinecraftServerUIModuleFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,32 @@ public sealed unsafe partial class ScriptMinecraftServerUIModuleFactory : global
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static sbyte LegacyModuleName
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel? level)
     {
-        get => NativeMethods.TablePtr->hs_get_2644d0f0();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_5e7f1aa8((void*)__hosihikari_shim_handle, (void*)(level?.Handle ?? 0));
     }
 
-    public static sbyte ModuleName
-    {
-        get => NativeMethods.TablePtr->hs_get_054b696e();
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ModuleUUID
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint ModuleName() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ModuleUUID()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_c5d58f84(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C3.hs_method_c02f92c8(), false);
     }
 
     public static ScriptMinecraftServerUIModuleFactory Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_eb37fd0c();
+        var handle = NativeMethods.TablePtr->C3.hs_create_eb37fd0c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,31 +67,91 @@ public sealed unsafe partial class ScriptMinecraftServerUIModuleFactory : global
         return new ScriptMinecraftServerUIModuleFactory((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptMinecraftServerUIModuleFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static string getModuleUUIDAsString()
+    public static ScriptMinecraftServerUIModuleFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel? level)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_3df54c22();
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        var handle = NativeMethods.TablePtr->C3.hs_create_2b65bd3c((void*)(level?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptMinecraftServerUIModuleFactory((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ScriptMinecraftServerUIModuleFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptMinecraftServerUIModuleFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b444db41((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
+        return new ScriptMinecraftServerUIModuleFactory((nint)handle);
+    }
+
+    public void _addVersions()
+    {
+        NativeMethods.TablePtr->C3.hs_method_82e425ef((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBinding _generateBindings(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder moduleBuilder, string versionPath)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(versionPath);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(versionPath, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBinding((nint)NativeMethods.TablePtr->C3.hs_method_61645d26((void*)__hosihikari_shim_handle, (void*)moduleBuilder.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1));
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkbccd08_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_287e8f65((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptMinecraftServerUIModuleFactory operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptMinecraftServerUIModuleFactory arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptMinecraftServerUIModuleFactory((nint)NativeMethods.TablePtr->C3.hs_method_7a851086((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk13b033_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_28b93d1b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk89d8eb_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_84a38eb4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb046b8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7b4ac65d((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2ff7027c((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_2ff7027c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PersonaAnimationDefinition
+public sealed unsafe partial class PersonaAnimationDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PersonaAnimationDefinition(nint handle) : this(handle, true) { }
 
     internal PersonaAnimationDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PersonaAnimationDefinition Borrow(nint handle) => new PersonaAnimationDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,60 @@ public sealed unsafe partial class PersonaAnimationDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.PersonaAnimationDefinition INVALID_ANIMATION_DEFINITION
+    public static PersonaAnimationDefinition Create()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.PersonaAnimationDefinition((nint)NativeMethods.TablePtr->hs_get_45fa910d(), false);
+        var handle = NativeMethods.TablePtr->C2.hs_create_aa6e5e64();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PersonaAnimationDefinition((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PersonaAnimationDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static PersonaAnimationDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.PersonaAnimationDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8a75aa20((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PersonaAnimationDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new PersonaAnimationDefinition((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk580557_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_db4a57bb((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb767c6_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_03c6ff58((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PersonaAnimationDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PersonaAnimationDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PersonaAnimationDefinition((nint)NativeMethods.TablePtr->C2.hs_method_437e8fd3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_4d9a851e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

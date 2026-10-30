@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class JigsawStructureBlockRulesRegistry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public JigsawStructureBlockRulesRegistry(nint handle) : this(handle, true) { }
 
     internal JigsawStructureBlockRulesRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static JigsawStructureBlockRulesRegistry Borrow(nint handle) => new JigsawStructureBlockRulesRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,18 @@ public sealed unsafe partial class JigsawStructureBlockRulesRegistry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static JigsawStructureBlockRulesRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gsl::not_null<std::shared_ptr<const std::vector<gsl::not_null<std::shared_ptr<const br::worldgen::StructureProcessor>>>>>' is not supported.", false)]
+    public nint get(nint key) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gsl::not_null<std::shared_ptr<const std::vector<gsl::not_null<std::shared_ptr<const br::worldgen::StructureProcessor>>>>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static JigsawStructureBlockRulesRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint lookupByName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint lookupByName(string arg0)
+    public nint lookupByName(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -62,26 +54,36 @@ public sealed unsafe partial class JigsawStructureBlockRulesRegistry
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_fe5f59f2((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C1.hs_method_539801eb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockRuleLookupMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1ed15a47((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockRule,std::default_delete<StructurePoolBlockRule>>,std::allocator<std::unique_ptr<StructurePoolBlockRule,std::default_delete<StructurePoolBlockRule>>>>' has no generated wrapper.", false)]
-    public void registerBlockRules_712a607b(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockRule,std::default_delete<StructurePoolBlockRule>>,std::allocator<std::unique_ptr<StructurePoolBlockRule,std::default_delete<StructurePoolBlockRule>>>>' has no generated wrapper.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockRulesRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f41d6535((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerBlockRules_074919f3(nint name, nint ruleList) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProcessors_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8d8dfd48((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_fc691b72() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'gsl::not_null<std::shared_ptr<const br::worldgen::StructureProcessor>>' is not supported.", false)]
+    public void record(nint key, nint processors) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'gsl::not_null<std::shared_ptr<const br::worldgen::StructureProcessor>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockRule>>' has no generated wrapper.", false)]
+    public void registerBlockRules(nint name, nint ruleList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockRule>>' has no generated wrapper.");
 }

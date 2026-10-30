@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PackAccessStrategyFactory
+public sealed unsafe partial class PackAccessStrategyFactory : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PackAccessStrategyFactory(nint handle) : this(handle, true) { }
 
     internal PackAccessStrategyFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PackAccessStrategyFactory Borrow(nint handle) => new PackAccessStrategyFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,37 @@ public sealed unsafe partial class PackAccessStrategyFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackAccessStrategyFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackAccessStrategies' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint create(nint create) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackAccessStrategies' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackAccessStrategyFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackAccessStrategies' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint createForDirectory(nint create) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackAccessStrategies' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.PackReport arg2, bool arg3)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackAccessStrategies' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint createForEncryptedZip(nint create) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackAccessStrategies' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackAccessStrategies' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint createForZip(nint create) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackAccessStrategies' requires --link-carrier or --virtual-dispatch.");
+
+    public void Dispose()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_fd4d0f61((void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)__hs_handle) : null;
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_616004e1((void*)__hosihikari_shim_handle);
+            }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? createForDirectory(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, bool arg1)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_3db7c7c6((void*)arg0.Handle, arg1);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)__hs_handle) : null;
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? createForEncrypted(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg1, nint arg2, bool arg3)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_65871099((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)__hs_handle) : null;
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? createForEncryptedZip(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, nint arg1)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_cd79e48a((void*)arg0.Handle, (void*)arg1);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)__hs_handle) : null;
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? createForZip(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, bool arg1)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_b3bc3783((void*)arg0.Handle, arg1);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)__hs_handle) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

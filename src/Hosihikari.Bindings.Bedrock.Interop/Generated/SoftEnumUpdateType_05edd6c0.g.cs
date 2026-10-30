@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum SoftEnumUpdateType : sbyte
+public enum SoftEnumUpdateType : byte
 {
     Add = 0,
     Remove = 1,

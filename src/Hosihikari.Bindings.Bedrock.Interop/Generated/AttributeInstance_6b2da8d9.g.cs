@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class AttributeInstance : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AttributeInstance(nint handle) : this(handle, true) { }
 
     internal AttributeInstance(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AttributeInstance Borrow(nint handle) => new AttributeInstance(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,32 @@ public sealed unsafe partial class AttributeInstance : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AttributeInstance Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static AttributeInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_05269e23((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_693f12e0((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_6c7c516d((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public void _tick(nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static AttributeInstance Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7c6af516();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,219 +67,154 @@ public sealed unsafe partial class AttributeInstance : global::System.IDisposabl
         return new AttributeInstance((nint)handle);
     }
 
-    public void addBuff(global::Hosihikari.Bindings.Bedrock.Interop.AttributeBuff arg0)
+    public static AttributeInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance arg0)
     {
-        NativeMethods.TablePtr->hs_method_03f9836b((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_7dd0aee3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AttributeInstance((nint)handle);
     }
 
-    public void addModifier(global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: anonymous fields are not projected.", false)]
+    public nint __d33129ce
     {
-        NativeMethods.TablePtr->hs_method_3b149524((void*)_handle, (void*)arg0.Handle);
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
     }
 
-    public void addModifier(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: anonymous fields are not projected.", false)]
+    public nint __085c7692
     {
-        NativeMethods.TablePtr->hs_method_c74d9858((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Attribute? getAttribute()
+    public float _calculateValue()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c7eeba13((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)__hs_handle, false) : null;
+        return NativeMethods.TablePtr->C0.hs_method_833ed566((void*)__hosihikari_shim_handle);
     }
 
-    public float getCurrentValue()
+    public float _sanitizeValue(float value)
     {
-        return NativeMethods.TablePtr->hs_method_c7fa78ac((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_72e95c04((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getDefaultValue(int arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_2a63d93d((void*)_handle, arg0);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public nint addBuff(nint buff, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AttributeInstanceHandle' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getHandle() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AttributeInstanceHandle' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public void addModifier_b6bbd7f6(nint modifier, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
 
-    public float getMaxValue()
-    {
-        return NativeMethods.TablePtr->hs_method_7de4b860((void*)_handle);
-    }
-
-    public float getMinValue()
-    {
-        return NativeMethods.TablePtr->hs_method_c22e2dc6((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier getModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier((nint)NativeMethods.TablePtr->hs_method_0ec4bc76((void*)_handle, (void*)arg0.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public void addModifier_5ddb29b4(nint modifier, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'AttributeModifier' is not supported.", false)]
     public nint getModifiers() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'AttributeModifier' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'AttributeModifier' is not supported.", false)]
-    public nint getModifiers(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'AttributeModifier' is not supported.");
-
-    public bool hasModifier(global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg0)
+    public bool hasModifier(global::Hosihikari.Bindings.Abi.SharedHandle? modifier)
     {
-        return NativeMethods.TablePtr->hs_method_2ef65aa7((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_a8aaf52c((void*)__hosihikari_shim_handle, modifier?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
     }
 
-    public bool hasModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
+    public nint mAttribute
     {
-        return NativeMethods.TablePtr->hs_method_885f12ca((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5612e70e((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasModifier(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDelegate_Address
     {
-        return NativeMethods.TablePtr->hs_method_a7e5eb33((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c403ab72((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasModifiers()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListeners_Address
     {
-        return NativeMethods.TablePtr->hs_method_0325c1d5((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5353fb17((void*)__hosihikari_shim_handle);
     }
 
-    public bool hasTemporalBuffs()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mModifierList_Address
     {
-        return NativeMethods.TablePtr->hs_method_da0e9c65((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_316a8bc5((void*)__hosihikari_shim_handle);
     }
 
-    public void inheritFrom(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap? arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTemporalBuffs_Address
     {
-        NativeMethods.TablePtr->hs_method_7c2c5037((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_68e335be((void*)__hosihikari_shim_handle);
     }
 
-    public bool isValid()
+    public bool mValueChangedDuringTick
     {
-        return NativeMethods.TablePtr->hs_method_08b7c6c8((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_af6e771e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_af6e771e((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void recalculateModifiers()
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance arg0)
     {
-        NativeMethods.TablePtr->hs_method_a50ba63d((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->C0.hs_method_0f6b5141((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    public void registerListener(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance arg0)
+    public void removeBuff(global::Hosihikari.Bindings.Bedrock.Interop.AttributeBuff buff)
     {
-        NativeMethods.TablePtr->hs_method_244cfa37((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_69a8fa1b((void*)__hosihikari_shim_handle, (void*)buff.Handle);
     }
 
-    public void removeBuff(global::Hosihikari.Bindings.Bedrock.Interop.AttributeBuff arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public bool removeModifier_7030af7e(nint id, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public void removeModifier_73aadb54(nint modifier, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public void removeModifier_dc49f833(nint modifier, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public void removeModifiers(nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public void tick(nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.", false)]
+    public void updateModifier(nint takeOver, nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeModificationContext' is not a known bindable declaration.");
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrentValues_Address
     {
-        NativeMethods.TablePtr->hs_method_35f76e16((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e19462b8((void*)__hosihikari_shim_handle);
     }
 
-    public void removeBuff(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultValues_Address
     {
-        NativeMethods.TablePtr->hs_method_cbdec4bd((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ee354dad((void*)__hosihikari_shim_handle);
     }
-
-    public void removeBuffs()
-    {
-        NativeMethods.TablePtr->hs_method_7bc3c0e0((void*)_handle);
-    }
-
-    public bool removeModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_696d82fe((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    public void removeModifier(global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg0)
-    {
-        NativeMethods.TablePtr->hs_method_fe2e60e1((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void removeModifier(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
-    {
-        NativeMethods.TablePtr->hs_method_9932814f((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
-
-    public void resetToDefaultValue()
-    {
-        NativeMethods.TablePtr->hs_method_0295296b((void*)_handle);
-    }
-
-    public void resetToMaxValue()
-    {
-        NativeMethods.TablePtr->hs_method_633b6942((void*)_handle);
-    }
-
-    public void resetToMinValue()
-    {
-        NativeMethods.TablePtr->hs_method_bbd6cb1b((void*)_handle);
-    }
-
-    public void serializationSetRange(float arg0, float arg1, float arg2)
-    {
-        NativeMethods.TablePtr->hs_method_f5b6a143((void*)_handle, arg0, arg1, arg2);
-    }
-
-    public void serializationSetValue(float arg0, int arg1, float arg2)
-    {
-        NativeMethods.TablePtr->hs_method_3b77c6e6((void*)_handle, arg0, arg1, arg2);
-    }
-
-    public void setCurrentValue(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_f8467701((void*)_handle, arg0);
-    }
-
-    public void setDefaultValue(float arg0, int arg1)
-    {
-        NativeMethods.TablePtr->hs_method_9bb9d35d((void*)_handle, arg0, arg1);
-    }
-
-    public void setDefaultValueOnly(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_9502b351((void*)_handle, arg0);
-    }
-
-    public void setDelegate(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
-    {
-        NativeMethods.TablePtr->hs_method_736c1911((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
-
-    public void setMaxValue(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_2030fc5e((void*)_handle, arg0);
-    }
-
-    public void setRange(float arg0, float arg1, float arg2)
-    {
-        NativeMethods.TablePtr->hs_method_988e7fd0((void*)_handle, arg0, arg1, arg2);
-    }
-
-    public void tick()
-    {
-        NativeMethods.TablePtr->hs_method_296d7557((void*)_handle);
-    }
-
-    public void updateModifier(global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg0)
-    {
-        NativeMethods.TablePtr->hs_method_bf39ff3c((void*)_handle, (void*)arg0.Handle);
-    }
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_6b2da8d9((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_6b2da8d9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

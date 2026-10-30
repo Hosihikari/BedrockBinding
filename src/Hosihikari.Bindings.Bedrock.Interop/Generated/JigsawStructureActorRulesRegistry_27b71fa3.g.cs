@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class JigsawStructureActorRulesRegistry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public JigsawStructureActorRulesRegistry(nint handle) : this(handle, true) { }
 
     internal JigsawStructureActorRulesRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static JigsawStructureActorRulesRegistry Borrow(nint handle) => new JigsawStructureActorRulesRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,14 @@ public sealed unsafe partial class JigsawStructureActorRulesRegistry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static JigsawStructureActorRulesRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static JigsawStructureActorRulesRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint lookupByName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint lookupByName(string arg0)
+    public nint lookupByName(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -62,26 +50,26 @@ public sealed unsafe partial class JigsawStructureActorRulesRegistry
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_b9b42b5f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C1.hs_method_1458db8c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorRuleLookupMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9aaa5b12((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolActorRule,std::default_delete<StructurePoolActorRule>>,std::allocator<std::unique_ptr<StructurePoolActorRule,std::default_delete<StructurePoolActorRule>>>>' has no generated wrapper.", false)]
-    public void registerActorRules_ddc72d69(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolActorRule,std::default_delete<StructurePoolActorRule>>,std::allocator<std::unique_ptr<StructurePoolActorRule,std::default_delete<StructurePoolActorRule>>>>' has no generated wrapper.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorRulesRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_10a2ae30((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerActorRules_f1b3ac4f(nint name, nint ruleList) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_75b06300() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolActorRule>>' has no generated wrapper.", false)]
+    public void registerActorRules(nint name, nint ruleList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolActorRule>>' has no generated wrapper.");
 }

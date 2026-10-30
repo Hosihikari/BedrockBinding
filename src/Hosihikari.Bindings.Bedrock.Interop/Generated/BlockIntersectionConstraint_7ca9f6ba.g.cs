@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BlockIntersectionConstraint : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockIntersectionConstraint(nint handle) : this(handle, true) { }
 
     internal BlockIntersectionConstraint(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockIntersectionConstraint Borrow(nint handle) => new BlockIntersectionConstraint(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,29 @@ public sealed unsafe partial class BlockIntersectionConstraint : global::System.
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockIntersectionConstraint Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static BlockIntersectionConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structure)
     {
-        var handle = NativeMethods.TablePtr->hs_create_c7d5cce4((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_4c173c81((void*)__hosihikari_shim_handle, (void*)structure.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_772b2dcf((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_496d5c89((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
+    }
+
+    public static BlockIntersectionConstraint Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2a4d85d4();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,30 +64,57 @@ public sealed unsafe partial class BlockIntersectionConstraint : global::System.
         return new BlockIntersectionConstraint((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockIntersectionConstraint Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2)
+    public static BlockIntersectionConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structure)
     {
-        return NativeMethods.TablePtr->hs_method_fd20001c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_c1bc5e44((void*)structure.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockIntersectionConstraint((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_883a143c((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockDescriptorAllowList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_de132ec6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMotionBlockingVolumeOffsets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_740d84ae((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNonMotionBlockingVolumeOffsets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d724f18e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mOnlyCheckIntersectionForMotionBlockingBlocks
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_99451914((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_99451914((void*)__hosihikari_shim_handle, value);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7ca9f6ba((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_7ca9f6ba((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class StructureFeatureRegistry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructureFeatureRegistry(nint handle) : this(handle, true) { }
 
     internal StructureFeatureRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructureFeatureRegistry Borrow(nint handle) => new StructureFeatureRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,88 +33,66 @@ public sealed unsafe partial class StructureFeatureRegistry : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static StructureFeatureRegistry Create()
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_0e1dc308();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StructureFeatureRegistry((nint)handle);
+        NativeMethods.TablePtr->C3.hs_method_6747c467((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureFeatureRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public bool findNearestStructureFeature(nint dimension, nint surfaceProvider, nint feature, nint origin, nint pos, nint biomeSource, bool mustBeInNewChunks, nint biomeTag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool findNearestStructureFeature(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, bool arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint findStructureFeatureTypeAt(nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.");
 
-    public sbyte findStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_168e5754((void*)_handle, (void*)arg0.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint getStructureFeatureOfType(nint type) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public bool isStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, sbyte arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_25f8ba4d((void*)_handle, (void*)arg0.Handle, arg1) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public bool isStructureFeatureTypeAt(nint pos, nint type) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkGeneratorStructureState_Address
+    public nint mGeneratorState_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_23bcdd47((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ba8fd01a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructureCache_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_20643dd9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_20643dd9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructureFeatures_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8a6ac91c((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureCache structureCache_57813428()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureCache((nint)NativeMethods.TablePtr->hs_method_57813428((void*)_handle), false);
-    }
-
-    public void tick()
-    {
-        NativeMethods.TablePtr->hs_method_8d3a65d5((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8a6ac91c((void*)__hosihikari_shim_handle);
     }
 
     public void waitForBlueprints()
     {
-        NativeMethods.TablePtr->hs_method_5e8754e2((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_46eca7e0((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_544bf949((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_544bf949((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

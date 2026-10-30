@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VolumeEntityManagerServer_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum CreateVolumeResult : int
 {
+    Success = 0,
+    EntityCreationFailed = 1,
+    ExceededVolumeLimit = 2,
+    DefinitionDoesntExist = 3,
 }

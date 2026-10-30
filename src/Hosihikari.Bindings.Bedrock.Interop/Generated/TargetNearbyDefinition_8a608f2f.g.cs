@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TargetNearbyDefinition
+public sealed unsafe partial class TargetNearbyDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TargetNearbyDefinition(nint handle) : this(handle, true) { }
 
     internal TargetNearbyDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TargetNearbyDefinition Borrow(nint handle) => new TargetNearbyDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,89 @@ public sealed unsafe partial class TargetNearbyDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TargetNearbyDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TargetNearbyDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static TargetNearbyDefinition Create()
     {
-        NativeMethods.TablePtr->hs_method_55b685bb(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        var handle = NativeMethods.TablePtr->C3.hs_create_60c64f45();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TargetNearbyDefinition((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static TargetNearbyDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.TargetNearbyDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c21a473f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TargetNearbyDefinition((nint)handle);
+    }
+
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0027babd(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1f1461_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_152bc933((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk56719e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_03179576((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk59ffaa_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9f785b8f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk809433_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e1531984((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc50ab8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ae195e88((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf55c7e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4d25d239((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TargetNearbyDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.TargetNearbyDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TargetNearbyDefinition((nint)NativeMethods.TablePtr->C3.hs_method_4375088f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_8a608f2f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

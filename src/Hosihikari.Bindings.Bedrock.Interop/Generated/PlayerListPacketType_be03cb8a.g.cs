@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum PlayerListPacketType : sbyte
+public enum PlayerListPacketType : byte
 {
     Add = 0,
     Remove = 1,

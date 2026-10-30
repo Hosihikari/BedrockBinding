@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum StructureTemplateResponseType : int
+public enum StructureTemplateResponseType : byte
 {
+    None = 0,
+    Export = 1,
+    Query = 2,
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TickWorldComponent
+public sealed unsafe partial class TickWorldComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TickWorldComponent(nint handle) : this(handle, true) { }
 
     internal TickWorldComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TickWorldComponent Borrow(nint handle) => new TickWorldComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,78 +33,72 @@ public sealed unsafe partial class TickWorldComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TickWorldComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TickWorldComponent Create_402748a8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TickWorldComponent Create_56834d5f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public uint getChunkRadius()
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_c992a088((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_96dda43b((void*)__hosihikari_shim_handle);
     }
 
-    public float getMaxDistToPlayers()
+    public bool mAlwaysActive
     {
-        return NativeMethods.TablePtr->hs_method_1e1f5f3e((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_c5348fd0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_c5348fd0((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getTickingArea()
+    public bool mChanged
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_16f2a1ec((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        get => NativeMethods.TablePtr->C3.hs_get_23fa1838((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_23fa1838((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool hasTickingArea()
+    public uint mChunkRadius
     {
-        return NativeMethods.TablePtr->hs_method_696d4ee8((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C3.hs_get_d65ec38d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d65ec38d((void*)__hosihikari_shim_handle, value);
     }
 
-    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public float mMaxDistToPlayers
     {
-        NativeMethods.TablePtr->hs_method_9ab97fcf((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C3.hs_get_ada797d6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ada797d6((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isAlwaysActive()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTickingArea_Address
     {
-        return NativeMethods.TablePtr->hs_method_fc29f771((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_21e36a8c((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_5497f28a(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_49aa05a9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeArea()
     {
-        NativeMethods.TablePtr->hs_method_ddc24872((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_ddc24872((void*)__hosihikari_shim_handle);
     }
 
-    public void setTickingArea(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    public void setTickingArea(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Abi.SharedHandle? tickingArea)
     {
-        NativeMethods.TablePtr->hs_method_23a8eccd((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C3.hs_method_e4f6dc8e((void*)__hosihikari_shim_handle, (void*)owner.Handle, tickingArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void updateArea(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void updateArea(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        NativeMethods.TablePtr->hs_method_63149a47((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_68abac6d((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_0d6212a4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a4a793c0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

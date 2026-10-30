@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackBase_Nested;
 
-public sealed unsafe partial class ComparisonOptions : global::System.IDisposable
+public sealed unsafe partial class ComparisonOptions
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ComparisonOptions(nint handle) : this(handle, true) { }
 
     internal ComparisonOptions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ComparisonOptions Borrow(nint handle) => new ComparisonOptions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,26 @@ public sealed unsafe partial class ComparisonOptions : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Dispose()
+    public bool mCompareAux
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_2089e93b((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C1.hs_get_c355a546((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_c355a546((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public bool mCompareDamage
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_bf2dd4b1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_bf2dd4b1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mCompareRelevantUserData
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_0be29446((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_0be29446((void*)__hosihikari_shim_handle, value);
     }
 }

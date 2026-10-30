@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerFileChunkUploader
+public sealed unsafe partial class ServerFileChunkUploader : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerFileChunkUploader(nint handle) : this(handle, true) { }
 
     internal ServerFileChunkUploader(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerFileChunkUploader Borrow(nint handle) => new ServerFileChunkUploader(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,74 +33,173 @@ public sealed unsafe partial class ServerFileChunkUploader
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerFileChunkUploader Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerFileChunkUploader Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool canCancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0)
+    public bool _canCancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
     {
-        return NativeMethods.TablePtr->hs_method_e39e686f((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_a83b62d0((void*)__hosihikari_shim_handle, (void*)file.Handle) != 0;
     }
 
-    public void cancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0)
+    public void _cancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
     {
-        NativeMethods.TablePtr->hs_method_ae0b9171((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_456ad5b4((void*)__hosihikari_shim_handle, (void*)file.Handle);
     }
 
-    public void confirmChunkReceived(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo arg1)
+    public void _confirmChunkReceived(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo chunk)
     {
-        NativeMethods.TablePtr->hs_method_7feed1e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_a277255b((void*)__hosihikari_shim_handle, (void*)file.Handle, (void*)chunk.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'FileChunkInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getChunkInfo(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'FileChunkInfo' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo _getChunkInfo(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, int chunkID)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo((nint)NativeMethods.TablePtr->C3.hs_method_8fd4238b((void*)__hosihikari_shim_handle, (void*)file.Handle, chunkID));
+    }
+
+    public int _getInitErrorCode()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_abe73745((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _getServerMissingChunks(nint file, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public float _getUploadProgress(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_9c12a3c6((void*)__hosihikari_shim_handle, (void*)file.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _initFileUploader(nint uploadId, nint file, int chunkSize, nint uploadOptions, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public void _uploadChunk(nint file, nint chunk, nint data, nint onCompleteCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ServerFileChunkUploader Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ffec9ac8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerFileChunkUploader((nint)handle);
+    }
+
+    public static ServerFileChunkUploader Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerFileChunkUploader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_caceec97((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerFileChunkUploader((nint)handle);
+    }
+
+    public bool canCancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_a510fd25((void*)__hosihikari_shim_handle, (void*)file.Handle) != 0;
+    }
+
+    public void cancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
+    {
+        NativeMethods.TablePtr->C3.hs_method_60954ea1((void*)__hosihikari_shim_handle, (void*)file.Handle);
+    }
+
+    public void confirmChunkReceived(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo chunk)
+    {
+        NativeMethods.TablePtr->C3.hs_method_60230f66((void*)__hosihikari_shim_handle, (void*)file.Handle, (void*)chunk.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo getChunkInfo(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, int chunkID)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo((nint)NativeMethods.TablePtr->C3.hs_method_fb4baac3((void*)__hosihikari_shim_handle, (void*)file.Handle, chunkID));
+    }
 
     public int getInitErrorCode()
     {
-        return NativeMethods.TablePtr->hs_method_96ca341f((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_810b3425((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void getServerMissingChunks(nint arg0, nint arg1) =>
+    public void getServerMissingChunks(nint file, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public float getUploadProgress(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0)
+    public float getUploadProgress(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
     {
-        return NativeMethods.TablePtr->hs_method_3a1a3a94((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_0109c1f1((void*)__hosihikari_shim_handle, (void*)file.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void initFileUploader(nint arg0, nint arg1, int arg2, nint arg3, nint arg4) =>
+    public void initFileUploader(nint uploadId, nint file, int chunkSize, nint uploadOptions, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void update()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkManager_Address
     {
-        NativeMethods.TablePtr->hs_method_a6c52482((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_61c0035c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void uploadChunk(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFileHash_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d81cc24f((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void uploadStream(nint file, ulong streamSize, nint boundary, nint onCompleteCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mInitialized
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_12352b98((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_12352b98((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6ef166ab((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPacketSender_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f7cbc5ca((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2fee26d6((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerFileChunkUploader operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ServerFileChunkUploader arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerFileChunkUploader((nint)NativeMethods.TablePtr->C3.hs_method_aa5b1208((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public void uploadChunk(nint file, nint chunk, nint data, nint onCompleteCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_8998a609((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

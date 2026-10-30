@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerCommunicationInterface
+public sealed unsafe partial class ServerCommunicationInterface : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerCommunicationInterface(nint handle) : this(handle, true) { }
 
     internal ServerCommunicationInterface(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerCommunicationInterface Borrow(nint handle) => new ServerCommunicationInterface(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,60 @@ public sealed unsafe partial class ServerCommunicationInterface
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerCommunicationInterface Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerCommunicationInterface Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface? create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkAddress arg0)
+    public static ServerCommunicationInterface Create()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c6da2e60((void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface((nint)__hs_handle) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void sendBandwidthMetric(ulong arg0, ulong arg1, ulong arg2, ulong arg3, string arg4)
-    {
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
-        scoped global::System.Span<byte> __hs_stringBytes4;
-        if (__hs_stringByteCount4 <= 256)
+        var handle = NativeMethods.TablePtr->C3.hs_create_2af73a57();
+        if (handle == null)
         {
-            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        else
-        {
-            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-        {
-            NativeMethods.TablePtr->hs_method_e0b13f8d((void*)_handle, arg0, arg1, arg2, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
-        }
+
+        return new ServerCommunicationInterface((nint)handle);
     }
 
-    public void sendChunkLoadTelemtryData(global::Hosihikari.Bindings.Bedrock.Interop.ChunkLoadTelemetryData arg0)
+    public static ServerCommunicationInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface arg0)
     {
-        NativeMethods.TablePtr->hs_method_efa5ab32((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_6476d747((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerCommunicationInterface((nint)handle);
     }
 
-    public void sendServerStarted()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk48044d_Address
     {
-        NativeMethods.TablePtr->hs_method_af21cc45((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ccca28b8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void sendServerTickTime_c5c3fcd5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd080df_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0d17a153((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_9bf6d9a6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface((nint)NativeMethods.TablePtr->C3.hs_method_69ab278f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_4574e3bd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

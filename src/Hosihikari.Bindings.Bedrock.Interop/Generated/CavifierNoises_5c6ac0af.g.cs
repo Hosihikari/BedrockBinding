@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CavifierNoises
+public sealed unsafe partial class CavifierNoises
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CavifierNoises(nint handle) : this(handle, true) { }
 
     internal CavifierNoises(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CavifierNoises Borrow(nint handle) => new CavifierNoises(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,108 @@ public sealed partial class CavifierNoises
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CavifierNoises Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBigEntranceNoiseSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_014a7307((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CavifierNoises Create_37398703(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCheeseNoise_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_602b1f9e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLayerNoiseSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b6856de1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPillarNoiseSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0077c374((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPillarRarenessModulator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7eedf5db((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPillarThicknessModulator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_70048cf9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghetti2DElevationModulator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_252e3fb8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghetti2DNoiseSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_50d1bf83((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghetti2DRarityModulator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_21579318((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghetti2DThicknessModulator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ad5b97d8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghetti3DNoiseSource1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b4caa830((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghetti3DNoiseSource2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_511951ca((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghetti3DRarityModulator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_867db62c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghetti3DThicknessModulator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f0fcbf08((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghettiRoughnessModulator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5b3a6376((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpaghettiRoughnessNoise_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c84c6ad9((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CavifierNoises' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint make(nint arg0) =>
+    public static nint make(nint randomFactory) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CavifierNoises' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_104a4695() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

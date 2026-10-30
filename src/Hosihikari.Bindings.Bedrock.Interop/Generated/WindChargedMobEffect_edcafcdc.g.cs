@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WindChargedMobEffect
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WindChargedMobEffect(nint handle) : this(handle, true) { }
 
     internal WindChargedMobEffect(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WindChargedMobEffect Borrow(nint handle) => new WindChargedMobEffect(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,131 @@ public sealed unsafe partial class WindChargedMobEffect
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WindChargedMobEffect Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WindChargedMobEffect Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void onActorRemovedAfterDeath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttributeBuffs_Address
     {
-        NativeMethods.TablePtr->hs_method_26e15864((void*)_handle, (void*)arg0.Handle, arg1);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_741e58f0((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttributeModifiers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7a207dbf((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mColor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_800b7f22((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mComponentName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_cf5a728c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescriptionId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_fd1cec3c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDurationAmplifier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_df456f66((void*)__hosihikari_shim_handle);
+    }
+
+    public float mDurationModifier
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_9d398af2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_9d398af2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mEffectVisible
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_b0b43b19((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_b0b43b19((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFactorCalculationData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_dfaeab94((void*)__hosihikari_shim_handle);
+    }
+
+    public int mIcon
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_bab340ce((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_bab340ce((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIconName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_02b5b3ae((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mId
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_a87b764e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsDisabled
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_4773d9a5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_4773d9a5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsHarmful
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_f9974df7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_f9974df7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnApplySound_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a2381081((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParticleEffectAmbientId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3ee363d6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParticleEffectId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e35783ff((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResourceName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_938f0d64((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValueAmplifier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8270e185((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onActorDied(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier)
+    {
+        NativeMethods.TablePtr->C4.hs_method_95cbe215((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier);
+    }
+
+    public void onActorDied(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier)
+    {
+        NativeMethods.TablePtr->C4.hs_method_114461c3((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier);
+    }
 }

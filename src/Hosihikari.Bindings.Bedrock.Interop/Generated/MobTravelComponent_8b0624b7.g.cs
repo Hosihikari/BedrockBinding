@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MobTravelComponent
+public sealed unsafe partial class MobTravelComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MobTravelComponent(nint handle) : this(handle, true) { }
 
     internal MobTravelComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MobTravelComponent Borrow(nint handle) => new MobTravelComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,20 +33,50 @@ public sealed partial class MobTravelComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobTravelComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mDoesGroundFriction
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_cd15f270((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_cd15f270((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobTravelComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mDoesVerticalFriction
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d4fd1f23((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_d4fd1f23((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mFriction
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_f92b4cfa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f92b4cfa((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalMovementVelocity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2835bf76((void*)__hosihikari_shim_handle);
+    }
+
+    public float mMovementSpeed
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5bc5fe81((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5bc5fe81((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPosBeforeMove_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7fdd4614((void*)__hosihikari_shim_handle);
+    }
+
+    public float mSlowdown
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_bd823209((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_bd823209((void*)__hosihikari_shim_handle, value);
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakPeerHelper
+public sealed unsafe partial class RakPeerHelper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakPeerHelper(nint handle) : this(handle, true) { }
 
     internal RakPeerHelper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakPeerHelper Borrow(nint handle) => new RakPeerHelper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,69 +33,82 @@ public sealed unsafe partial class RakPeerHelper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakPeerHelper Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RakPeerHelper Create_0e6e0a3b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RakPeerHelper Create_8575f841(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getConnectionIndex(global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg0)
+    public static RakPeerHelper Create()
     {
-        return NativeMethods.TablePtr->hs_method_60712752((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_5463bf6c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakPeerHelper((nint)handle);
     }
 
-    public ushort getIPv4BoundPort()
+    public static RakPeerHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper arg0)
     {
-        return NativeMethods.TablePtr->hs_method_2c538294((void*)_handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_8575f841((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakPeerHelper((nint)handle);
     }
 
-    public int getIPv4ConnectionIndex()
+    public int _startupInternal(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface? peer, global::Hosihikari.Bindings.Bedrock.Interop.ConnectionDefinition definition, global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SocketDescriptor? sockets, nint socketCount, int ipv6Index)
     {
-        return NativeMethods.TablePtr->hs_method_d654dd43((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_de0db35f((void*)__hosihikari_shim_handle, (void*)(peer?.Handle ?? 0), (void*)definition.Handle, (void*)(sockets?.Handle ?? 0), (void*)socketCount, ipv6Index);
     }
 
-    public ushort getIPv6BoundPort()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoundPorts_Address
     {
-        return NativeMethods.TablePtr->hs_method_94044be7((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8936596c((void*)__hosihikari_shim_handle);
     }
 
-    public int getIPv6ConnectionIndex()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConnectionIndices_Address
     {
-        return NativeMethods.TablePtr->hs_method_9ca56d01((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_540bb06a((void*)__hosihikari_shim_handle);
     }
 
-    public bool isIPv4Supported()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIPSupportInterface_Address
     {
-        return NativeMethods.TablePtr->hs_method_210186a9((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6d253c85((void*)__hosihikari_shim_handle);
     }
 
-    public bool isIPv6Supported()
+    public int mResult
     {
-        return NativeMethods.TablePtr->hs_method_d05f4da9((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_8132d522((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8132d522((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int peerStartup(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? arg0, nint arg1, int arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper arg0)
     {
-        return NativeMethods.TablePtr->hs_method_de8c9a6b((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1, arg2);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper((nint)NativeMethods.TablePtr->C2.hs_method_0e7bd98c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    public void reset()
+    public int peerStartup(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface? peerIn, global::Hosihikari.Bindings.Bedrock.Interop.ConnectionDefinition definition, int purpose)
     {
-        NativeMethods.TablePtr->hs_method_bf46068d((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_826f2415((void*)__hosihikari_shim_handle, (void*)(peerIn?.Handle ?? 0), (void*)definition.Handle, purpose);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_400a0dc7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

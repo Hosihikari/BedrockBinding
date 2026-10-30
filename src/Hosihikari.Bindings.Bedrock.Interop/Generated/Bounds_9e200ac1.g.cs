@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Bounds : global::System.IDisposable
+public sealed unsafe partial class Bounds
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Bounds(nint handle) : this(handle, true) { }
 
     internal Bounds(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Bounds Borrow(nint handle) => new Bounds(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,133 +33,44 @@ public sealed unsafe partial class Bounds : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint b_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_448fa0c9((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint g_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_cc507b9a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint max_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a9bd2266((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint min_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_72f6c20a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint p_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0e54b13f((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint r_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_da36adff((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint s_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0cd3f072((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint t_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7438852d((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint x_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bda0121e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint y_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_737ed620((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint z_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d7b4bf62((void*)_handle);
-    }
-
-    public static Bounds Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, int arg3)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_e5914bf8((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Bounds((nint)handle);
-    }
-
-    public static Bounds Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_90443774((void*)arg0.Handle, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Bounds((nint)handle);
     }
 
     public int mArea
     {
-        get => NativeMethods.TablePtr->hs_get_588211e2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_588211e2((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_588211e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_588211e2((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDim_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ed9cf275((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ed9cf275((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMax_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_60a334f9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMin_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e91bb401((void*)__hosihikari_shim_handle);
     }
 
     public int mSide
     {
-        get => NativeMethods.TablePtr->hs_get_f0437187((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f0437187((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_f0437187((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f0437187((void*)__hosihikari_shim_handle, value);
     }
 
     public int mVolume
     {
-        get => NativeMethods.TablePtr->hs_get_cb75cdad((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_cb75cdad((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_9e200ac1((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C0.hs_get_cb75cdad((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_cb75cdad((void*)__hosihikari_shim_handle, value);
     }
 }

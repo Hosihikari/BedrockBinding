@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum BurnOdds : int
+public enum BurnOdds : ushort
 {
+    Never = 0,
+    Hard = 5,
+    Medium = 20,
+    Easy = 60,
+    Instant = 100,
 }

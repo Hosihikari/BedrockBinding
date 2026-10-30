@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureHelpers
+public sealed unsafe partial class StructureHelpers : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructureHelpers(nint handle) : this(handle, true) { }
 
     internal StructureHelpers(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructureHelpers Borrow(nint handle) => new StructureHelpers(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,14 @@ public sealed unsafe partial class StructureHelpers
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureHelpers Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureHelpers Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static bool createChest(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, int arg4, int arg5, int arg6, byte arg7, string arg8)
+    public static bool createChest(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece piece, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int x, int y, int z, byte direction, string lootTable)
     {
-        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(lootTable);
         scoped global::System.Span<byte> __hs_stringBytes8;
         if (__hs_stringByteCount8 <= 256)
         {
@@ -58,16 +50,16 @@ public sealed unsafe partial class StructureHelpers
         {
             __hs_stringBytes8 = new byte[__hs_stringByteCount8];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg8, __hs_stringBytes8);
+        global::System.Text.Encoding.UTF8.GetBytes(lootTable, __hs_stringBytes8);
         fixed (byte* __hs_stringData8 = __hs_stringBytes8)
         {
-            return NativeMethods.TablePtr->hs_method_8f12ef0e((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5, arg6, arg7, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
+            return NativeMethods.TablePtr->C3.hs_method_126aede2((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, direction, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
         }
     }
 
-    public static bool createDispenser(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, int arg4, int arg5, int arg6, int arg7, string arg8)
+    public static bool createDispenser(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece piece, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int x, int y, int z, int facing, string lootTable)
     {
-        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(lootTable);
         scoped global::System.Span<byte> __hs_stringBytes8;
         if (__hs_stringByteCount8 <= 256)
         {
@@ -77,16 +69,16 @@ public sealed unsafe partial class StructureHelpers
         {
             __hs_stringBytes8 = new byte[__hs_stringByteCount8];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg8, __hs_stringBytes8);
+        global::System.Text.Encoding.UTF8.GetBytes(lootTable, __hs_stringBytes8);
         fixed (byte* __hs_stringData8 = __hs_stringBytes8)
         {
-            return NativeMethods.TablePtr->hs_method_0c5e8eb1((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5, arg6, arg7, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
+            return NativeMethods.TablePtr->C3.hs_method_3da9ec3a((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, facing, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
         }
     }
 
-    public static bool createMinecartChest(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, int arg4, int arg5, int arg6, int arg7, string arg8)
+    public static bool createMinecartChest(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece piece, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int x, int y, int z, int direction, string lootTable)
     {
-        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(lootTable);
         scoped global::System.Span<byte> __hs_stringBytes8;
         if (__hs_stringByteCount8 <= 256)
         {
@@ -96,24 +88,53 @@ public sealed unsafe partial class StructureHelpers
         {
             __hs_stringBytes8 = new byte[__hs_stringByteCount8];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg8, __hs_stringBytes8);
+        global::System.Text.Encoding.UTF8.GetBytes(lootTable, __hs_stringBytes8);
         fixed (byte* __hs_stringData8 = __hs_stringBytes8)
         {
-            return NativeMethods.TablePtr->hs_method_8eda96d9((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5, arg6, arg7, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
+            return NativeMethods.TablePtr->C3.hs_method_2b5b86fb((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, direction, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
         }
     }
 
-    public static void fillColumnDown(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, int arg3, int arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg6)
+    public static void fillColumnDown(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece piece, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int x, int startY, int z, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
     {
-        NativeMethods.TablePtr->hs_method_45ff299b((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5, (void*)arg6.Handle);
+        NativeMethods.TablePtr->C3.hs_method_1221c83d((void*)piece.Handle, (void*)region.Handle, (void*)block.Handle, x, startY, z, (void*)chunkBB.Handle);
     }
 
-    public static int getTorchRotation(int arg0, ushort arg1)
+    public static int getDirectionRotation(int structureOrientation, ushort inOrientation)
     {
-        return NativeMethods.TablePtr->hs_method_5dcb0a60(arg0, arg1);
+        return NativeMethods.TablePtr->C3.hs_method_3effd453(structureOrientation, inOrientation);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static int getDoorRotation(int structureOrientation, ushort inOrientation)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_688bb407(structureOrientation, inOrientation);
+    }
+
+    public static int getFacingDirectionRotation(int structureOrientation, ushort inOrientation)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_4c80156e(structureOrientation, inOrientation);
+    }
+
+    public static int getTorchRotation(int structureOrientation, ushort torchOrientation)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_5dcb0a60(structureOrientation, torchOrientation);
+    }
+
+    public static int getWeirdoDirectionRotation(int structureOrientation, ushort inOrientation)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_60c5358c(structureOrientation, inOrientation);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_27155c20((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

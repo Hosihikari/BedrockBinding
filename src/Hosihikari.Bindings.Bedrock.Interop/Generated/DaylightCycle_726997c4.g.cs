@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum DaylightCycle : sbyte
+public enum DaylightCycle : byte
 {
     Normal = 0,
     AlwaysDay = 1,

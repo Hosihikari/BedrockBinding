@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SignBlockActor_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CachedMessageData
+public sealed unsafe partial class CachedMessageData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CachedMessageData(nint handle) : this(handle, true) { }
 
     internal CachedMessageData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CachedMessageData Borrow(nint handle) => new CachedMessageData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,78 @@ public sealed partial class CachedMessageData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static CachedMessageData Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c1e3778d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CachedMessageData((nint)handle);
+    }
+
+    public nint cachedFontCompare
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c7481e33((void*)__hosihikari_shim_handle);
+    }
+
+    public bool dirty
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_75efd9ca((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_75efd9ca((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filteredMessage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3d666048((void*)__hosihikari_shim_handle);
+    }
+
+    public uint inputMode
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_61b47c12((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_61b47c12((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int interactionModel
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_20f89340((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_20f89340((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint lineData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b19c099d((void*)__hosihikari_shim_handle);
+    }
+
+    public uint numLines
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_47317652((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_47317652((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SignBlockActor_Nested.CachedMessageData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SignBlockActor_Nested.CachedMessageData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SignBlockActor_Nested.CachedMessageData((nint)NativeMethods.TablePtr->C3.hs_method_33a5ba8f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_0b581990((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

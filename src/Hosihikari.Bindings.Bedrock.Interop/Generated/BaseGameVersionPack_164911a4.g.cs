@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BaseGamePackSlices_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class BaseGameVersionPack
+public sealed unsafe partial class BaseGameVersionPack : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BaseGameVersionPack(nint handle) : this(handle, true) { }
 
     internal BaseGameVersionPack(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BaseGameVersionPack Borrow(nint handle) => new BaseGameVersionPack(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,60 @@ public sealed partial class BaseGameVersionPack
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static BaseGameVersionPack Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_127d61f1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseGameVersionPack((nint)handle);
+    }
+
+    public static BaseGameVersionPack Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseGamePackSlices_Nested.BaseGameVersionPack arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8c13e17f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseGameVersionPack((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk745cd0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a49aee97((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb82ad5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_05d1cc92((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGamePackSlices_Nested.BaseGameVersionPack operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BaseGamePackSlices_Nested.BaseGameVersionPack arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGamePackSlices_Nested.BaseGameVersionPack((nint)NativeMethods.TablePtr->C0.hs_method_64d83795((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_164911a4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

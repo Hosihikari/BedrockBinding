@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested;
 
 public sealed unsafe partial class BaseDescriptor : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BaseDescriptor(nint handle) : this(handle, true) { }
 
     internal BaseDescriptor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BaseDescriptor Borrow(nint handle) => new BaseDescriptor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,146 @@ public sealed unsafe partial class BaseDescriptor : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public bool _forEachItemUntil(nint func) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry _getItem()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->C1.hs_method_d77a4f53((void*)__hosihikari_shim_handle));
+    }
+
+    public string _getNameAndAux()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_062fae8c((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public bool _isValid()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ec9d38f9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.", false)]
+    public nint _resolve() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.");
+
+    public bool _sameItems(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor otherDescriptor, bool compareAux)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0d1c1021((void*)__hosihikari_shim_handle, (void*)otherDescriptor.Handle, compareAux) != 0;
+    }
+
+    public void _serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a50d9f45((void*)__hosihikari_shim_handle, (void*)val.Handle);
+    }
+
+    public bool _shouldResolve()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_bab862a7((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public string _toString()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_c0e22f9b((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public bool forEachItemUntil(nint func) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public string getFullName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_82d2f47d((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public ulong getHash() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry getItem()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->C1.hs_method_d2f81ce6((void*)__hosihikari_shim_handle));
+    }
+
+    public string getNameAndAux()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_0397b74c((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getType() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public bool isValid()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1ce3a99d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.", false)]
+    public nint resolve() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool sameItem(nint otherItem, bool compareAux) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public bool sameItems(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor otherDescriptor, bool compareAux)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_7a4ff202((void*)__hosihikari_shim_handle, (void*)otherDescriptor.Handle, compareAux) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint save() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void serialize(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2e29c5a8((void*)__hosihikari_shim_handle, (void*)val.Handle);
+    }
+
+    public bool shouldResolve()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2d18033f((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint toMap() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public string toString()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_c13f72b6((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_c3b57ec2((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_c3b57ec2((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

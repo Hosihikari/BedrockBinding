@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ChunkLoadTelemetryData
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkLoadTelemetryData(nint handle) : this(handle, true) { }
 
     internal ChunkLoadTelemetryData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkLoadTelemetryData Borrow(nint handle) => new ChunkLoadTelemetryData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,55 @@ public sealed unsafe partial class ChunkLoadTelemetryData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkLoadTelemetryData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkLoadTelemetryData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void recordLoadedChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mClientSubChunkCache_Address
     {
-        NativeMethods.TablePtr->hs_method_d7bd5c4e((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0d6a7d9e((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value toJson()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerChunkLoading_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_cf03974b((void*)_handle));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_67f387c1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerChunkLoadingInsideTickRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a46acf80((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerChunkLoadingOutsideTickRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b00d80a4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerChunkLoadingRequestedInsideTickRangeLoadedOutsideTickRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2f2cc00e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerChunkLoadingRequestedOutsideTickRangeLoadedInsideTickRange_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e78f1f09((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mServerSimDistance
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_cf1b5778((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_cf1b5778((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void recordLoadedChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
+    {
+        NativeMethods.TablePtr->C0.hs_method_88a5191e((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
     }
 }

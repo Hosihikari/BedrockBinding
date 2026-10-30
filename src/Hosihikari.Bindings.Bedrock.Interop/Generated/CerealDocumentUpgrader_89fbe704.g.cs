@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CerealDocumentUpgrader
+public sealed unsafe partial class CerealDocumentUpgrader : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CerealDocumentUpgrader(nint handle) : this(handle, true) { }
 
     internal CerealDocumentUpgrader(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CerealDocumentUpgrader Borrow(nint handle) => new CerealDocumentUpgrader(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,60 +33,92 @@ public sealed unsafe partial class CerealDocumentUpgrader
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CerealDocumentUpgrader Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CerealDocumentUpgrader Create_69fab1bc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CerealDocumentUpgrader Create_4b3089c5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void clear()
+    public static CerealDocumentUpgrader Create()
     {
-        NativeMethods.TablePtr->hs_method_0c298aef((void*)_handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_c312357a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CerealDocumentUpgrader((nint)handle);
     }
 
-    public static string getVersion_8d9b13c1(nint arg0)
+    public static CerealDocumentUpgrader Create(global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgrader arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_8d9b13c1((void*)arg0);
+        var handle = NativeMethods.TablePtr->C0.hs_create_4b3089c5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CerealDocumentUpgrader((nint)handle);
+    }
+
+    public static string getVersion(nint document)
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_26c9f595((void*)document);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getVersion_26c9f595(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint parseJsonAndUpgrade_75ef5b44(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerUpgrade(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk26485c_Address
     {
-        NativeMethods.TablePtr->hs_method_b48320c3((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4ca9197d((void*)__hosihikari_shim_handle);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd5595a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4cef549c((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgrader operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgrader arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgrader((nint)NativeMethods.TablePtr->C0.hs_method_140279eb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<SemVersion, rapidjson::GenericDocument<rapidjson::UTF8<>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint parseDocument(nint json, bool allowMissingVersionAsZero, bool logRapidjsonErrors) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<SemVersion, rapidjson::GenericDocument<rapidjson::UTF8<>>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint parseJsonAndUpgrade(nint outDocumentVersion, nint document, nint json, nint resourceName, bool allowMissingVersionAsZero, bool betaApis, nint minVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool upgradeJson_f81e7146(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+    public bool parseUpgradeAndStringifyJsonString(nint json, nint outDocumentVersion, nint document, nint resourceName, bool betaApis, nint minVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool upgradeJson_addbbae6(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void registerUpgrade(global::Hosihikari.Bindings.Abi.SharedHandle? upgrade)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b48320c3((void*)__hosihikari_shim_handle, upgrade?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_02d1c1bf() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int upgradeJsonDocument(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion documentVersion)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_01fd65e3((void*)__hosihikari_shim_handle, (void*)document, (void*)documentVersion.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static bool validateParsedVersion(nint documentVersion, nint minVersion, bool betaApis) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_89fbe704((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

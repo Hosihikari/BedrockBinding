@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ActorWalkAnimationComponent
+public sealed unsafe partial class ActorWalkAnimationComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorWalkAnimationComponent(nint handle) : this(handle, true) { }
 
     internal ActorWalkAnimationComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorWalkAnimationComponent Borrow(nint handle) => new ActorWalkAnimationComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,20 +33,51 @@ public sealed partial class ActorWalkAnimationComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorWalkAnimationComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public float mMovementThisTick
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_9c3238be((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_9c3238be((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorWalkAnimationComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public float mWalkAnimPos
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_32308fed((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_32308fed((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mWalkAnimSpeed
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_9275bcf1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_9275bcf1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mWalkAnimSpeedMultiplier
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_6b1ccfde((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_6b1ccfde((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mWalkAnimSpeedO
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_86b60d78((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_86b60d78((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_fccd99ef((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

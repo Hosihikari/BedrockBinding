@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ActorFetcher
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorFetcher(nint handle) : this(handle, true) { }
 
     internal ActorFetcher(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorFetcher Borrow(nint handle) => new ActorFetcher(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,30 @@ public sealed unsafe partial class ActorFetcher
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorFetcher Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorFetcher Create_803d39ef(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorFetcher Create_bd2030b6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchActorAllDimensions(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, bool arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchActorAllDimensions(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorId, bool getRemoved)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_99771fdb((void*)_handle, (void*)arg0.Handle, arg1);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_df615183((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Mob? fetchMobAllDimensions(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Mob? fetchMobAllDimensions(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID mobId)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_7a7add04((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_88c0c2de((void*)__hosihikari_shim_handle, (void*)mobId.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Mob((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext fetchStrictActorAllDimensions(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, bool arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext((nint)NativeMethods.TablePtr->hs_method_1bd556fb((void*)_handle, (void*)arg0.Handle, arg1));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint fetchStrictActorAllDimensions(nint actorId, bool getRemoved) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_245a92e5((void*)__hosihikari_shim_handle);
+    }
 }

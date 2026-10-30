@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class JigsawStructureBlockTagRulesRegistry
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public JigsawStructureBlockTagRulesRegistry(nint handle) : this(handle, true) { }
 
     internal JigsawStructureBlockTagRulesRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static JigsawStructureBlockTagRulesRegistry Borrow(nint handle) => new JigsawStructureBlockTagRulesRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,14 @@ public sealed unsafe partial class JigsawStructureBlockTagRulesRegistry
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static JigsawStructureBlockTagRulesRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static JigsawStructureBlockTagRulesRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint lookupByName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint lookupByName(string arg0)
+    public nint lookupByName(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -62,26 +50,26 @@ public sealed unsafe partial class JigsawStructureBlockTagRulesRegistry
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_b4035460((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C1.hs_method_d377e806((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockTagRuleLookupMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e11b4890((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockTagRule,std::default_delete<StructurePoolBlockTagRule>>,std::allocator<std::unique_ptr<StructurePoolBlockTagRule,std::default_delete<StructurePoolBlockTagRule>>>>' has no generated wrapper.", false)]
-    public void registerBlockTagRules_2e6cbdc9(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockTagRule,std::default_delete<StructurePoolBlockTagRule>>,std::allocator<std::unique_ptr<StructurePoolBlockTagRule,std::default_delete<StructurePoolBlockTagRule>>>>' has no generated wrapper.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockTagRulesRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_20d65f25((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerBlockTagRules_ddd692ed(nint name, nint ruleList) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c484f489() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockTagRule>>' has no generated wrapper.", false)]
+    public void registerBlockTagRules(nint name, nint ruleList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockTagRule>>' has no generated wrapper.");
 }

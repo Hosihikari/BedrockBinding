@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ContentTierManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ContentTierManager(nint handle) : this(handle, true) { }
 
     internal ContentTierManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ContentTierManager Borrow(nint handle) => new ContentTierManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,57 +33,88 @@ public sealed unsafe partial class ContentTierManager : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4c3d2011((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4c3d2011((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContentTierManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentTierInfo' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getContentTierInfo() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentTierInfo' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContentTierManager Create_00f43860(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContentTierManager Create_e281937d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ContentTierManager Create_dbc6386e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void __autoclassinit2(ulong arg0)
+    public bool _shouldDeviceAllowAnimation()
     {
-        NativeMethods.TablePtr->hs_method_70bc68f7((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C0.hs_method_9b0dd86b((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ContentTierManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1a1bcab8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContentTierManager((nint)handle);
+    }
+
+    public static ContentTierManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_00f43860((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContentTierManager((nint)handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentTierInfo' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getContentTierInfo() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentTierInfo' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk44461e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_99201217((void*)__hosihikari_shim_handle);
+    }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb69c86_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_43739d30((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager((nint)NativeMethods.TablePtr->C0.hs_method_d9a960c1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public bool shouldDeviceAllowAnimation()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_3e36fee0((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_bbf0f39e((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_bbf0f39e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ListBlockVolumeIterator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ListBlockVolumeIterator(nint handle) : this(handle, true) { }
 
     internal ListBlockVolumeIterator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ListBlockVolumeIterator Borrow(nint handle) => new ListBlockVolumeIterator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,57 @@ public sealed unsafe partial class ListBlockVolumeIterator : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ListBlockVolumeIterator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ListBlockVolumeIterator Create(global::Hosihikari.Bindings.Bedrock.Interop.ListBlockVolume arg0, nint arg1, nint arg2, bool arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrent_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_00a15f0e((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_006a87e3((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mDone
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e3645264((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e3645264((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMax_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_860cc0ee((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMin_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a5b8b8f2((void*)__hosihikari_shim_handle);
+    }
+
+    public void __begin()
+    {
+        NativeMethods.TablePtr->C2.hs_method_fd6fe363((void*)__hosihikari_shim_handle);
+    }
+
+    public void __end()
+    {
+        NativeMethods.TablePtr->C2.hs_method_59ede102((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _isValid()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_c9dba8b3((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ListBlockVolumeIterator Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_288b224f();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,34 +92,77 @@ public sealed unsafe partial class ListBlockVolumeIterator : global::System.IDis
         return new ListBlockVolumeIterator((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ListBlockVolumeIterator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ListBlockVolumeIterator Create(global::Hosihikari.Bindings.Bedrock.Interop.ListBlockVolumeIterator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c9f8ca29((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ListBlockVolumeIterator((nint)handle);
+    }
+
+    public void _begin()
+    {
+        NativeMethods.TablePtr->C2.hs_method_92289d77((void*)__hosihikari_shim_handle);
+    }
+
+    public void _end()
+    {
+        NativeMethods.TablePtr->C2.hs_method_03970f52((void*)__hosihikari_shim_handle);
+    }
 
     public bool isValid()
     {
-        return NativeMethods.TablePtr->hs_method_f8ac58ee((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_05076729((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_operator__() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong mChangeCount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_f0655837((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f0655837((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCurrentIterator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b2abe73f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEndIterator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_30d4b47d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListBlockVolume_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ccfabcf9((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseBlockLocationIterator operator_operator__()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseBlockLocationIterator((nint)NativeMethods.TablePtr->C2.hs_method_86222099((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ListBlockVolumeIterator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ListBlockVolumeIterator arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ListBlockVolumeIterator((nint)NativeMethods.TablePtr->C2.hs_method_6c2f2d01((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_103d451b((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_103d451b((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BarterComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BarterComponent(nint handle) : this(handle, true) { }
 
     internal BarterComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BarterComponent Borrow(nint handle) => new BarterComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,43 @@ public sealed unsafe partial class BarterComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BarterComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BarterComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void onBarterItemPickedUp(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, short arg2)
+    public short mBarterItemId
     {
-        NativeMethods.TablePtr->hs_method_c15dc5b8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        get => NativeMethods.TablePtr->C0.hs_get_2308832e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_2308832e((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void stopBarter()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBarterItemsTable_Address
     {
-        NativeMethods.TablePtr->hs_method_64f1a780((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ee1abb9e((void*)__hosihikari_shim_handle);
+    }
+
+    public int mCooldown
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_21d367a2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_21d367a2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mExecuteTrade
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_2d2604e7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_2d2604e7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItemOriginationActorUniqueID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_127642a2((void*)__hosihikari_shim_handle);
+    }
+
+    public void onBarterItemPickedUp(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorUniqueID, short barterItemId)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c00ecbaf((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)actorUniqueID.Handle, barterItemId);
     }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class PlayerTickConfig
+public sealed unsafe partial class PlayerTickConfig : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerTickConfig(nint handle) : this(handle, true) { }
 
     internal PlayerTickConfig(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerTickConfig Borrow(nint handle) => new PlayerTickConfig(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,20 +33,57 @@ public sealed partial class PlayerTickConfig
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerTickConfig Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mIsStrictDismount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ca89d64c((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ca89d64c((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerTickConfig Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mIsStrictEntityInteractions
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5dca0f42((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_5dca0f42((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mIsStrictMovement
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e645c33e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e645c33e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mMaxBatchedTicks
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c30c43b4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c30c43b4((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mMaxCreditTicks
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_050d77b2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_050d77b2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mPolicy
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_fe1896aa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_fe1896aa((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_deeb862d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MoveInputComponent
+public sealed unsafe partial class MoveInputComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MoveInputComponent(nint handle) : this(handle, true) { }
 
     internal MoveInputComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MoveInputComponent Borrow(nint handle) => new MoveInputComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,74 @@ public sealed partial class MoveInputComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MoveInputComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCameraOrientation_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_374447a5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MoveInputComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDisplacement_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f70a8335((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_f4978dba(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDisplacementDelta_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a4b8c953((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_6509781e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlagValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7b3dc1b6((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mHoldAutoJumpInWaterTicks
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_61d8ba73((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_61d8ba73((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInputState_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_521d6153((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInteractDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f1b7caa5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIsPaddling_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_10532619((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLookDelta_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bb6a8970((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMove_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a1ce7624((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRawInputState_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_344ee59d((void*)__hosihikari_shim_handle);
+    }
 }

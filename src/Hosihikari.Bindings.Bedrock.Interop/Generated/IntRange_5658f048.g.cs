@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IntRange
+public sealed unsafe partial class IntRange : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IntRange(nint handle) : this(handle, true) { }
 
     internal IntRange(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IntRange Borrow(nint handle) => new IntRange(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,37 @@ public sealed unsafe partial class IntRange
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static IntRange Create(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static IntRange Create(int arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public int getValue(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_ee7e9aba((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public int getValueInclusive(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_19660758((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public int getValueInclusive(global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_85488cd0((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public bool isInRangeInclusive(int arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_7c4f3256((void*)_handle, arg0) != 0;
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool parseJson(nint arg0, int arg1, int arg2) =>
+    public bool parseJson(nint node, int minDefault, int maxDefault) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    public int rangeMax
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_e274d28f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e274d28f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int rangeMin
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_662f58a2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_662f58a2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_5658f048((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

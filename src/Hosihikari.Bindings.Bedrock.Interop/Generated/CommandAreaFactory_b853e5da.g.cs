@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CommandAreaFactory
+public sealed unsafe partial class CommandAreaFactory : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandAreaFactory(nint handle) : this(handle, true) { }
 
     internal CommandAreaFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandAreaFactory Borrow(nint handle) => new CommandAreaFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,66 @@ public sealed unsafe partial class CommandAreaFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandAreaFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CommandAreaFactory Create_7d633b66(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandAreaFactory Create_e53218c8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CommandArea? findArea(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2, bool arg3, bool arg4)
+    public static CommandAreaFactory Create()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_64b733e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandArea((nint)__hs_handle) : null;
+        var handle = NativeMethods.TablePtr->C0.hs_create_d87245ba();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandAreaFactory((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CommandArea? findAreaWithBuffer(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, bool arg3, bool arg4)
+    public static CommandAreaFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandAreaFactory arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_f8f182c1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandArea((nint)__hs_handle) : null;
+        var handle = NativeMethods.TablePtr->C0.hs_create_e53218c8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandAreaFactory((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' has no accessible destructor.", false)]
+    public nint _getArea(nint requiredArea, bool allowNonTickingPlayerAndTickingAreaChunks, bool allowUnloadedChunks, bool allowPlayerChunks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' has no accessible destructor.");
 
-    public static bool shouldAllowNonTickingPlayerAndTickingAreaChunks(int arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' has no accessible destructor.", false)]
+    public nint _getNewCommandArea(nint requiredArea) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' has no accessible destructor.", false)]
+    public nint findAreaWithBuffer(nint min, nint max, int commandVersion, bool allowUnloadedChunks, bool allowPlayerChunks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' has no accessible destructor.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimension_Address
     {
-        return NativeMethods.TablePtr->hs_method_b2810836(arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_03907492((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandAreaFactory operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CommandAreaFactory arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandAreaFactory((nint)NativeMethods.TablePtr->C0.hs_method_7ab02f29((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b853e5da((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

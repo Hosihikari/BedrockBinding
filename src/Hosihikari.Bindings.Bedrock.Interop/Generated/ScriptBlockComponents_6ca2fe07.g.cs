@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptBlockComponents
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptBlockComponents(nint handle) : this(handle, true) { }
 
     internal ScriptBlockComponents(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptBlockComponents Borrow(nint handle) => new ScriptBlockComponents(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,46 @@ public sealed unsafe partial class ScriptBlockComponents
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptBlockComponents Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptBlockComponents Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleBindingBuilder arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptComponentTypeEnumBuilder arg1)
+    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder moduleBuilder, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version scriptingVersion, global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptComponentTypeEnumBuilder componentTypeEnumBuilder, global::Hosihikari.Bindings.Abi.SharedHandle? blockComponents)
     {
-        NativeMethods.TablePtr->hs_method_13923ba0((void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_9d2c922f((void*)moduleBuilder.Handle, (void*)scriptingVersion.Handle, (void*)componentTypeEnumBuilder.Handle, blockComponents?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint getOrCreateBlockComponentFactories()
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_8347b8f6((void*)__hosihikari_shim_handle);
+    }
+
+    public string[] getSupportedComponentIds(nint permutation, bool includeCustom)
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_df3cd7c4((void*)__hosihikari_shim_handle, (void*)permutation, includeCustom);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCustomComponentReader_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8d9ce1d9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNativeFactories_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_02b2fde1((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::BaseScriptBlockComponent>' is not supported.", false)]
+    public nint tryCreateComponent(nint componentName, nint region, nint position, nint scope, bool allowCustomComponent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::BaseScriptBlockComponent>' is not supported.");
 }

@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
 public sealed unsafe partial class SystemAddress : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SystemAddress(nint handle) : this(handle, true) { }
 
     internal SystemAddress(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SystemAddress Borrow(nint handle) => new SystemAddress(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,172 +33,71 @@ public sealed unsafe partial class SystemAddress : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void CopyPort(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    public void FixForIPVersion(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress boundAddressToSocket)
     {
-        NativeMethods.TablePtr->hs_method_a466753f((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_050eeee6((void*)__hosihikari_shim_handle, (void*)boundAddressToSocket.Handle);
     }
 
-    public bool EqualsExcludingPort(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    public bool FromString(nint str, sbyte portDelineator, int ipVersion)
     {
-        return NativeMethods.TablePtr->hs_method_2ed4903d((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    public void FixForIPVersion(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
-    {
-        NativeMethods.TablePtr->hs_method_bc288cb0((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public bool FromString(nint arg0, sbyte arg1, int arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_069f6f2a((void*)_handle, (void*)arg0, arg1, arg2) != 0;
-    }
-
-    public bool FromStringExplicitPort(nint arg0, ushort arg1, int arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_b6bb3190((void*)_handle, (void*)arg0, arg1, arg2) != 0;
-    }
-
-    public uint GetIPPROTO()
-    {
-        return NativeMethods.TablePtr->hs_method_bc901f15((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_12ba40a4((void*)__hosihikari_shim_handle, (void*)str, portDelineator, ipVersion) != 0;
     }
 
     public string GetIPString()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_629d200c((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_a5d0f11e((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public byte GetIPVersion()
+    public string ToString(sbyte portDelineator)
     {
-        return NativeMethods.TablePtr->hs_method_ac25620f((void*)_handle);
-    }
-
-    public ushort GetPort()
-    {
-        return NativeMethods.TablePtr->hs_method_44906709((void*)_handle);
-    }
-
-    public ushort GetPortNetworkOrder()
-    {
-        return NativeMethods.TablePtr->hs_method_545db5e4((void*)_handle);
-    }
-
-    public bool IsLinkLocalAddress()
-    {
-        return NativeMethods.TablePtr->hs_method_599bf261((void*)_handle) != 0;
-    }
-
-    public bool IsLoopback()
-    {
-        return NativeMethods.TablePtr->hs_method_03021c81((void*)_handle) != 0;
-    }
-
-    public bool IsMulticastAddress()
-    {
-        return NativeMethods.TablePtr->hs_method_b94e68fa((void*)_handle) != 0;
-    }
-
-    public void SetPortHostOrder(ushort arg0)
-    {
-        NativeMethods.TablePtr->hs_method_37e03c17((void*)_handle, arg0);
-    }
-
-    public void SetToLoopback(byte arg0)
-    {
-        NativeMethods.TablePtr->hs_method_e59b6074((void*)_handle, arg0);
-    }
-
-    public static SystemAddress Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_695d6c4d();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SystemAddress((nint)handle);
-    }
-
-    public static SystemAddress Create(nint arg0, ushort arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_3190959c((void*)arg0, arg1);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SystemAddress((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unsigned long' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nuint ToInteger(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unsigned long' requires --link-carrier or --virtual-dispatch.");
-
-    public string ToString(sbyte arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_2993fd17((void*)_handle, arg0);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_ad948e85((void*)__hosihikari_shim_handle, portDelineator);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void ToString(bool arg0, nint arg1, sbyte arg2)
+    public void ToString(bool writePort, nint dest, sbyte portDelineator)
     {
-        NativeMethods.TablePtr->hs_method_4f615c96((void*)_handle, arg0, (void*)arg1, arg2);
+        NativeMethods.TablePtr->C2.hs_method_40860029((void*)__hosihikari_shim_handle, writePort, (void*)dest, portDelineator);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint address_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6841e3bb((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6841e3bb((void*)__hosihikari_shim_handle);
     }
 
     public ushort debugPort
     {
-        get => NativeMethods.TablePtr->hs_get_7bf8a45e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7bf8a45e((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_7bf8a45e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7bf8a45e((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_basic_string() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_not_equal(nint right) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_less(nint right) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint input) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint right) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.SystemAddress other)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_6df00079((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
 
     public ushort systemIndex
     {
-        get => NativeMethods.TablePtr->hs_get_62f8f675((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_62f8f675((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_62f8f675((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_62f8f675((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ecc03a9e((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_ecc03a9e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

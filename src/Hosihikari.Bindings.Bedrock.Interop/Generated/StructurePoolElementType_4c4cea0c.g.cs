@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum StructurePoolElementType : int
+public enum StructurePoolElementType : byte
 {
+    Single = 0,
+    Feature = 1,
+    Empty = 2,
 }

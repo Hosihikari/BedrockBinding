@@ -12,4 +12,5 @@ public enum PackCategory : int
     Premium = 3,
     Custom = 4,
     Subpack = 5,
+    Chemistry = 6,
 }

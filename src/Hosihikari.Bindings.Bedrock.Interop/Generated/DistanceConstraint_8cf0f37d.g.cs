@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DistanceConstraint
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DistanceConstraint(nint handle) : this(handle, true) { }
 
     internal DistanceConstraint(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DistanceConstraint Borrow(nint handle) => new DistanceConstraint(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,50 @@ public sealed unsafe partial class DistanceConstraint
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DistanceConstraint Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DistanceConstraint Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DistanceConstraint Create(float arg0, float arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public float setup(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, float arg3)
+    public float mBias
     {
-        return NativeMethods.TablePtr->hs_method_b1657a42((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        get => NativeMethods.TablePtr->C1.hs_get_019c33dc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_019c33dc((void*)__hosihikari_shim_handle, value);
     }
 
-    public void solve(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConstraintAxis_Address
     {
-        NativeMethods.TablePtr->hs_method_ecaf5894((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a0b55a99((void*)__hosihikari_shim_handle);
+    }
+
+    public float mConstraintMass
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_e56ea5a6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e56ea5a6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mDesiredDistance
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_0e6fb8c7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_0e6fb8c7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMassA
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_8674efc6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_8674efc6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMassB
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_85b1ab1f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_85b1ab1f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mShouldEnforce
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_71da9665((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_71da9665((void*)__hosihikari_shim_handle, value);
     }
 }

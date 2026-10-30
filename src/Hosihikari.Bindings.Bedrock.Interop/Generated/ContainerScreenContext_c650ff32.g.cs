@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ContainerScreenContext
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ContainerScreenContext(nint handle) : this(handle, true) { }
 
     internal ContainerScreenContext(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ContainerScreenContext Borrow(nint handle) => new ContainerScreenContext(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,56 +33,32 @@ public sealed unsafe partial class ContainerScreenContext
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ContainerScreenContext Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ContainerScreenContext Create_bc5d4a10(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ContainerScreenContext Create_4fe1f8d3(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContainerScreenContext Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Player getPlayer()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwner_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)NativeMethods.TablePtr->hs_method_3117001f((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c558182f((void*)__hosihikari_shim_handle);
     }
 
-    public sbyte getScreenContainerType()
+    public nint mPlayer
     {
-        return NativeMethods.TablePtr->hs_method_388ac318((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e7c136d5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_e7c136d5((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetActor()
+    public sbyte mScreenContainerType
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_9d5ad1e9((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+        get => NativeMethods.TablePtr->C0.hs_get_349cf827((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_349cf827((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockActor? tryGetBlockActor()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_941bdce8((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_f398b899((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockActor((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? tryGetBlockActorPos()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d2c6a15e((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle, false) : null;
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TickNextTickData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TickNextTickData(nint handle) : this(handle, true) { }
 
     internal TickNextTickData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TickNextTickData Borrow(nint handle) => new TickNextTickData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,49 @@ public sealed unsafe partial class TickNextTickData : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    public static TickNextTickData Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg2, int arg3)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_00219abb((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new TickNextTickData((nint)handle);
     }
 
     public nint mBlock
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1b813bb4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1b813bb4((void*)__hosihikari_shim_handle);
+    }
+
+    public bool operator_greater(global::Hosihikari.Bindings.Bedrock.Interop.TickNextTickData tnd)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b23f991f((void*)__hosihikari_shim_handle, (void*)tnd.Handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
+    public nint pos_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_06c7065b((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e0bbeae4((void*)__hosihikari_shim_handle);
     }
 
-    public int mPriorityOffset
+    public int priorityOffset
     {
-        get => NativeMethods.TablePtr->hs_get_8549edf2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_8549edf2((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_5f7425cf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5f7425cf((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mTick_Address
+    public nint tick_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5e0d0c57((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6fcb37bc((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint t) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_greater(nint tnd) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f15d0633((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_f15d0633((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

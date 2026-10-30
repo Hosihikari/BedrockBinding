@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MobEffect : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MobEffect(nint handle) : this(handle, true) { }
 
     internal MobEffect(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MobEffect Borrow(nint handle) => new MobEffect(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,147 +33,24 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect ABSORPTION
+    public void _applyEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration durationTicks, int amplification)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_b2464404(), false);
+        NativeMethods.TablePtr->C2.hs_method_dc6857fa((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)durationTicks.Handle, amplification);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect BAD_OMEN
+    public void _applyInstantaneousEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor? source, global::Hosihikari.Bindings.Bedrock.Interop.Actor? owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor? target, int amplification, float scale)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_13f9dc95(), false);
+        NativeMethods.TablePtr->C2.hs_method_b4d955a9((void*)__hosihikari_shim_handle, (void*)(source?.Handle ?? 0), (void*)(owner?.Handle ?? 0), (void*)(target?.Handle ?? 0), amplification, scale);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect BLINDNESS
+    public nint _ctor(uint id, string resourceName, string locName, bool isHarmful, int color, int icon, string iconName, bool drawParticles)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_0abfcf40(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect CONDUIT_POWER
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_ac19dae7(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect CONFUSION
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_50300da2(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect DAMAGE_BOOST
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_49602d07(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect DAMAGE_RESISTANCE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_211e7765(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect DARKNESS
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_2f2d7b0c(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_COLOR
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_313e03b4(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect DIG_SLOWDOWN
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_81732020(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect DIG_SPEED
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_ac319a7e(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect EMPTY_EFFECT
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_547a358e(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect FATAL_POISON
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_1b470313(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect FIRE_RESISTANCE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_83b5278f(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect HARM
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_a04a5b0f(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect HEAL
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_41134dc7(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect HEALTH_BOOST
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_c528e701(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect HERO_OF_THE_VILLAGE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_5aaa0fc0(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect HUNGER
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_82176a27(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect INFESTED
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_095e678a(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect INVISIBILITY
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_8257a74a(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect JUMP
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_61044ffe(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect LEVITATION
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_1a62a548(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect MOVEMENT_SLOWDOWN
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_c45501ab(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect MOVEMENT_SPEED
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_0d206875(), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobEffect Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobEffect Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MobEffect Create(uint arg0, string arg1, string arg2, bool arg3, int arg4, int arg5, string arg6, bool arg7)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(resourceName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -183,8 +60,8 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(resourceName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(locName);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -194,8 +71,8 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(arg6);
+        global::System.Text.Encoding.UTF8.GetBytes(locName, __hs_stringBytes2);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(iconName);
         scoped global::System.Span<byte> __hs_stringBytes6;
         if (__hs_stringByteCount6 <= 256)
         {
@@ -205,14 +82,111 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         {
             __hs_stringBytes6 = new byte[__hs_stringByteCount6];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg6, __hs_stringBytes6);
+        global::System.Text.Encoding.UTF8.GetBytes(iconName, __hs_stringBytes6);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
                 fixed (byte* __hs_stringData6 = __hs_stringBytes6)
                 {
-                    var handle = NativeMethods.TablePtr->hs_create_82e404fa(arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5, __hs_stringData6, (nuint)__hs_stringByteCount6, arg7);
+                    return (nint)NativeMethods.TablePtr->C2.hs_method_022749b9((void*)__hosihikari_shim_handle, id, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, isHarmful, color, icon, __hs_stringData6, (nuint)__hs_stringByteCount6, drawParticles);
+                }
+            }
+        }
+    }
+
+    public float _getAttributeModifierValue(int amplifier, global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier modifier)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_46416e22((void*)__hosihikari_shim_handle, amplifier, (void*)modifier.Handle);
+    }
+
+    public bool _isInstantaneous()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_69e9ddb1((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public void _onActorDied(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier)
+    {
+        NativeMethods.TablePtr->C2.hs_method_adbf9d67((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier);
+    }
+
+    public void _onActorHurt(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5225da84((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier, (void*)source.Handle, damage);
+    }
+
+    public void _onEffectExpired(global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6c66c869((void*)__hosihikari_shim_handle, (void*)target.Handle);
+    }
+
+    public void _removeEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap attributeMapToRemoveFrom)
+    {
+        NativeMethods.TablePtr->C2.hs_method_2fd656ea((void*)__hosihikari_shim_handle, (void*)attributeMapToRemoveFrom.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_COLOR()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C2.hs_method_c62821ab(), false);
+    }
+
+    public static MobEffect Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6f3575fc();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffect((nint)handle);
+    }
+
+    public static MobEffect Create(uint id, string resourceName, string locName, bool isHarmful, int color, int icon, string iconName, bool drawParticles)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(resourceName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(resourceName, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(locName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(locName, __hs_stringBytes2);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(iconName);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(iconName, __hs_stringBytes6);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                {
+                    var handle = NativeMethods.TablePtr->C2.hs_create_1ad3a4ec(id, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, isHarmful, color, icon, __hs_stringData6, (nuint)__hs_stringByteCount6, drawParticles);
                     if (handle == null)
                     {
                         throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -224,110 +198,49 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         }
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect NIGHT_VISION
+    public global::Hosihikari.Bindings.Bedrock.Interop.TemporalAttributeBuff _createTemporalBuff(global::Hosihikari.Bindings.Bedrock.Interop.AttributeBuff baseBuff, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration duration, int amplification)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_8c1f894a(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TemporalAttributeBuff((nint)NativeMethods.TablePtr->C2.hs_method_c5b457fb((void*)__hosihikari_shim_handle, (void*)baseBuff.Handle, (void*)duration.Handle, amplification));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect OOZING
+    public void _setParticleEffectIds(nint particleEffectId, nint particleEffectAmbientId)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_dcbc4351(), false);
+        NativeMethods.TablePtr->C2.hs_method_3b762ab0((void*)__hosihikari_shim_handle, (void*)particleEffectId, (void*)particleEffectAmbientId);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect POISON
+    public void addAttributeBuff(global::Hosihikari.Bindings.Bedrock.Interop.Attribute attribute, global::Hosihikari.Bindings.Abi.SharedHandle? buff)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_02efa87b(), false);
+        NativeMethods.TablePtr->C2.hs_method_a7ef046b((void*)__hosihikari_shim_handle, (void*)attribute.Handle, buff?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect RAID_OMEN
+    public void addAttributeModifier(global::Hosihikari.Bindings.Bedrock.Interop.Attribute attribute, global::Hosihikari.Bindings.Abi.SharedHandle? modifier)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_cea53af5(), false);
+        NativeMethods.TablePtr->C2.hs_method_33c4221b((void*)__hosihikari_shim_handle, (void*)attribute.Handle, modifier?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect REGENERATION
+    public void applyEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration durationTicks, int amplification)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_10ae40b3(), false);
+        NativeMethods.TablePtr->C2.hs_method_5b4ce5e6((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)durationTicks.Handle, amplification);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect SATURATION
+    public void applyInstantaneousEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor? source, global::Hosihikari.Bindings.Bedrock.Interop.Actor? owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor? target, int amplification, float scale)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_5d0eee22(), false);
+        NativeMethods.TablePtr->C2.hs_method_fc996206((void*)__hosihikari_shim_handle, (void*)(source?.Handle ?? 0), (void*)(owner?.Handle ?? 0), (void*)(target?.Handle ?? 0), amplification, scale);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect SLOW_FALLING
+    public void applyModsAndBuffs(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap attributeMapToRemoveFrom, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration durationTicks, int amplification)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_bfc1d82a(), false);
+        NativeMethods.TablePtr->C2.hs_method_378f3d13((void*)__hosihikari_shim_handle, (void*)attributeMapToRemoveFrom.Handle, (void*)durationTicks.Handle, amplification);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect TRIAL_OMEN
+    public float getAttributeModifierValue(int amplifier, global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier modifier)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_1a28a3b1(), false);
+        return NativeMethods.TablePtr->C2.hs_method_abf035e7((void*)__hosihikari_shim_handle, amplifier, (void*)modifier.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect WATER_BREATHING
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect? getByName(string name)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_093f9b21(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect WEAKNESS
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_0c7745a8(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect WEAVING
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_6be718eb(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect WIND_CHARGED
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_d6e5ce1b(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect WITHER
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_0dae61dd(), false);
-    }
-
-    public void addAttributeBuff(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
-    {
-        NativeMethods.TablePtr->hs_method_4b2f2105((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
-
-    public void addAttributeModifier(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
-    {
-        NativeMethods.TablePtr->hs_method_ff12d5ef((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
-
-    public void applyEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_5c855ec8((void*)_handle, (void*)arg0.Handle, arg1, arg2);
-    }
-
-    public void applyInstantaneousEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, int arg3, float arg4)
-    {
-        NativeMethods.TablePtr->hs_method_cce565f4((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), arg3, arg4);
-    }
-
-    public void applyModsAndBuffs(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap arg0, int arg1, int arg2)
-    {
-        NativeMethods.TablePtr->hs_method_c599b997((void*)_handle, (void*)arg0.Handle, arg1, arg2);
-    }
-
-    public float getAttributeModifierValue(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_8e6b5831((void*)_handle, arg0, (void*)arg1.Handle);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect? getById(uint arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_2fb53280(arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)__hs_handle, false) : null;
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect? getByName(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -337,142 +250,184 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_5a26de0e(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_6a1e3b44(__hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)__hs_handle, false) : null;
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getColor()
+    public static string getNameById(uint effectId)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_cf3f0326((void*)_handle), false);
-    }
-
-    public string getDescriptionId()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_19aad129((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_20dc673d(effectId);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public float getDurationModifier()
+    public static void initEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
-        return NativeMethods.TablePtr->hs_method_520360bb((void*)_handle);
-    }
-
-    public uint getId()
-    {
-        return NativeMethods.TablePtr->hs_method_f2290e83((void*)_handle);
-    }
-
-    public static string getNameById(uint arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_2f92a7bd(arg0);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getParticleEffect(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_20802b4d((void*)_handle, arg0), false);
-    }
-
-    public string getResourceName()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c0176cad((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public static void initEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
-    {
-        NativeMethods.TablePtr->hs_method_fcc97eb8((void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public bool isHarmful()
-    {
-        return NativeMethods.TablePtr->hs_method_e045f825((void*)_handle) != 0;
+        NativeMethods.TablePtr->C2.hs_method_b7e67fd6((void*)baseGameVersion.Handle, (void*)experiments.Handle);
     }
 
     public bool isInstantaneous()
     {
-        return NativeMethods.TablePtr->hs_method_2ecb9215((void*)_handle) != 0;
-    }
-
-    public bool isVisible()
-    {
-        return NativeMethods.TablePtr->hs_method_f1ce936b((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_e44aa6fd((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint mMobEffects_Address
+    public nint mAttributeBuffs_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f05ec84e();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6e21c17d((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorHurt(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg2, float arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAttributeModifiers_Address
     {
-        NativeMethods.TablePtr->hs_method_4134c079((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5f0b6fa1((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorRemovedAfterDeath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mColor_Address
     {
-        NativeMethods.TablePtr->hs_method_34835395((void*)_handle, (void*)arg0.Handle, arg1);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d0159b88((void*)__hosihikari_shim_handle);
     }
 
-    public void onEffectExpired(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mComponentName_Address
     {
-        NativeMethods.TablePtr->hs_method_47bcd0da((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f1794870((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescriptionId_Address
     {
-        NativeMethods.TablePtr->hs_method_2d5d229b((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8171f053((void*)__hosihikari_shim_handle);
     }
 
-    public void setDurationAmplifier(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDurationAmplifier_Address
     {
-        NativeMethods.TablePtr->hs_method_dcc5f49a((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4690778a((void*)__hosihikari_shim_handle);
     }
 
-    public void setValueAmplifier(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public float mDurationModifier
     {
-        NativeMethods.TablePtr->hs_method_adda8f20((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => NativeMethods.TablePtr->C2.hs_get_17d1cc97((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_17d1cc97((void*)__hosihikari_shim_handle, value);
     }
 
-    public static void shutdownEffects()
+    public bool mEffectVisible
     {
-        NativeMethods.TablePtr->hs_method_d66bd7e0();
+        get => NativeMethods.TablePtr->C2.hs_get_1f94ccc5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1f94ccc5((void*)__hosihikari_shim_handle, value);
     }
 
-    public void updateEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, int arg1, int arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFactorCalculationData_Address
     {
-        NativeMethods.TablePtr->hs_method_05aaecbb((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2c882de3((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint viewAttributeModifiers_01a21467() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint viewAttributeModifiers_ad367292()
+    public int mIcon
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ad367292((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_42a123d6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_42a123d6((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIconName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5ff3c98f((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mId
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_50597eaf((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsDisabled
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_888eae05((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_888eae05((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsHarmful
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ed8fe937((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ed8fe937((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static nint mMobEffects()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_3352d1c1();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnApplySound_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bbd9135a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParticleEffectAmbientId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c608498a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParticleEffectId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4972a717((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResourceName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_99de135c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValueAmplifier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b5985613((void*)__hosihikari_shim_handle);
+    }
+
+    public void onActorDied(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4a28bb71((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier);
+    }
+
+    public void onActorHurt(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3983b30b((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier, (void*)source.Handle, damage);
+    }
+
+    public void onEffectExpired(global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
+    {
+        NativeMethods.TablePtr->C2.hs_method_165186b4((void*)__hosihikari_shim_handle, (void*)target.Handle);
+    }
+
+    public void removeEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap attributeMapToRemoveFrom)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4e237902((void*)__hosihikari_shim_handle, (void*)attributeMapToRemoveFrom.Handle);
+    }
+
+    public void updateModsAndBuffs(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap attributeMapToRemoveFrom, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration durationTicks, int amplification)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f0c085b4((void*)__hosihikari_shim_handle, (void*)attributeMapToRemoveFrom.Handle, (void*)durationTicks.Handle, amplification);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_47fe124a((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_47fe124a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

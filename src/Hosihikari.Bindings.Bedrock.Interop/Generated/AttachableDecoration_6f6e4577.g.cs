@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.TreeHelper;
 
-public sealed unsafe partial class AttachableDecoration
+public sealed unsafe partial class AttachableDecoration : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AttachableDecoration(nint handle) : this(handle, true) { }
 
     internal AttachableDecoration(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AttachableDecoration Borrow(nint handle) => new AttachableDecoration(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,67 @@ public sealed unsafe partial class AttachableDecoration
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AttachableDecoration Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AttachableDecoration Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void placeDecoration(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.AttachableDecoration_Nested.DirectionMask arg3)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_9f872bcd((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        NativeMethods.TablePtr->C3.hs_method_726eb241((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void _placeMultiDecoration(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int dir, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5fea74cf((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)random.Handle, (void*)pos.Handle, dir, (void*)origin.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDecorationBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_936de6db((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDecorationChance_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_666ad6d5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDecorationSequence_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_57cdd3fb((void*)__hosihikari_shim_handle);
+    }
+
+    public int mDirection
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_eb4e3b88((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_eb4e3b88((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mNumSteps
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_16bfabe2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_16bfabe2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void placeDecoration(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.AttachableDecoration_Nested.DirectionMask mask)
+    {
+        NativeMethods.TablePtr->C3.hs_method_60f75b0d((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)random.Handle, (void*)mask.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_6f6e4577((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

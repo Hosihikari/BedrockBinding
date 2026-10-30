@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BeardAndShaverDescription
+public sealed unsafe partial class BeardAndShaverDescription : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BeardAndShaverDescription(nint handle) : this(handle, true) { }
 
     internal BeardAndShaverDescription(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BeardAndShaverDescription Borrow(nint handle) => new BeardAndShaverDescription(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,70 @@ public sealed unsafe partial class BeardAndShaverDescription
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BeardAndShaverDescription Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BeardAndShaverDescription Create(nint arg0, nint arg1, float arg2, float arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BeardAndShaverDescription Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public float calculateContribution(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public static BeardAndShaverDescription Create()
     {
-        return NativeMethods.TablePtr->hs_method_d6ff60c5((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_b0b8344f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BeardAndShaverDescription((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BeardingDescriptionCache getCache()
+    public static BeardAndShaverDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BeardAndShaverDescription arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BeardingDescriptionCache((nint)NativeMethods.TablePtr->hs_method_79d68cc6((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C0.hs_create_42de40cf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BeardAndShaverDescription((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBeardKernel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0c0708a2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCache_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a066fa9b((void*)__hosihikari_shim_handle);
+    }
+
+    public float mMaxBeardWidth
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_bcdd80bc((void*)__hosihikari_shim_handle);
+    }
+
+    public float mMinBeardWidth
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_43e5ebcb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BeardAndShaverDescription operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BeardAndShaverDescription arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BeardAndShaverDescription((nint)NativeMethods.TablePtr->C0.hs_method_c3a51522((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_806d5141((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

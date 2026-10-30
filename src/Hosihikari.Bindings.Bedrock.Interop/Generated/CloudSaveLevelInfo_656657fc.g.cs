@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CloudSaveLevelInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CloudSaveLevelInfo(nint handle) : this(handle, true) { }
 
     internal CloudSaveLevelInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CloudSaveLevelInfo Borrow(nint handle) => new CloudSaveLevelInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,40 @@ public sealed unsafe partial class CloudSaveLevelInfo : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CloudSaveLevelInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_c5599d71((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_507df849((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_6eedae75((void*)__hosihikari_shim_handle);
+    }
+
+    public static CloudSaveLevelInfo Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_6c6d2374();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CloudSaveLevelInfo((nint)handle);
+    }
 
     public static CloudSaveLevelInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_fb5f6885((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_d2fdecab((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,9 +75,9 @@ public sealed unsafe partial class CloudSaveLevelInfo : global::System.IDisposab
         return new CloudSaveLevelInfo((nint)handle);
     }
 
-    public static CloudSaveLevelInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public static CloudSaveLevelInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        var handle = NativeMethods.TablePtr->hs_create_2c788b48((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_9439ccda((void*)tag.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,31 +86,67 @@ public sealed unsafe partial class CloudSaveLevelInfo : global::System.IDisposab
         return new CloudSaveLevelInfo((nint)handle);
     }
 
-    public bool hasInfo()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCTag_Address
     {
-        return NativeMethods.TablePtr->hs_method_6634bc6f((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_f852c8c0((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDriveItemId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0c35f3e7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFileName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d2eeab47((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastUpdated_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9146463a((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mNeedsUpload
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_9417b8be((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_9417b8be((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUserId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_80a5e047((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo arg0)
     {
-        NativeMethods.TablePtr->hs_method_5f29097c((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo((nint)NativeMethods.TablePtr->C0.hs_method_f38a78d1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a15894d5((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_656657fc((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_656657fc((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

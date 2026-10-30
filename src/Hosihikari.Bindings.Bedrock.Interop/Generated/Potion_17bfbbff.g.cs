@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Potion
+public sealed unsafe partial class Potion : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Potion(nint handle) : this(handle, true) { }
 
     internal Potion(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Potion Borrow(nint handle) => new Potion(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,401 +33,14 @@ public sealed unsafe partial class Potion
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Awkward_Address
+    public nint _ctor(string nameId, string prefix)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_355a955e();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint FireResistance_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_410d7f63();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Harming_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0190778c();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Healing_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2e311275();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Infested_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_dadcee67();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Invisibility_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d779466d();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Leaping_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4d15c3b9();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongFireResistance_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_57f1d5ae();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongInvisibility_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7f795fb3();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongLeaping_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_43b2160a();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongMundane_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_806b6fe8();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongNightvision_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2beba366();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongPoison_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1e5b80bd();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongRegeneration_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_58c00484();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongSlowFalling_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2d4dbbe8();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongSlowness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3a3bd559();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongStrength_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d0d1efc3();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongSwiftness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_faf4b7b6();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongTurtleMaster_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_faae16d3();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongWaterBreathing_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_369fee60();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LongWeakness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c2bba476();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Mundane_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_70951407();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Nightvision_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a2783550();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Oozing_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1fa73192();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Poison_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e1bfda5b();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Potion Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Potion Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Potion Create_28fc7387(nint nameId, nint descriptionID, nint mobEffect, nint var) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Potion Create_8d9bb328(nint nameId, nint descriptionIDs, nint mobEffects, nint var) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Regeneration_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_25fb6f74();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SlowFalling_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_08b732ff();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Slowness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_40cdc54f();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Strength_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_112043d0();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongHarming_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e8808277();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongHealing_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c1e9920b();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongLeaping_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_35d73dbf();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongPoison_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d82c6e1b();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongRegeneration_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a309f931();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongSlowness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1b429a72();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongStrength_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_14d3ef57();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongSwiftness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9a8e63f0();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint StrongTurtleMaster_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4f55bf01();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Swiftness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fc7122d1();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Thick_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_695c6cdc();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint TurtleMaster_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2a53dfe5();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Water_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_60afb81c();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint WaterBreathing_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_67e13583();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Weakness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9a3a46a7();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Weaving_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_aec9e399();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint WindCharged_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9538c2fb();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint Wither_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_435b0aa1();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedPotionText(nint arg0, nint arg1, nint arg2, nint arg3, float arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static void appendMobEffectText(nint arg0, nint arg1, uint arg2, int arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    public static string effectDurationToString(int arg0, float arg1, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg2)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ccaee3e2(arg0, arg1, (void*)arg2.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public static string effectPotencyToString(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7f09c9f1((void*)arg0.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public static string getBasePotion(int arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_217dec1d(arg0);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public string getDescriptionId()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_8adf0d9d((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public string getDescriptionId(int arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c89aa666((void*)_handle, arg0);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance getMobEffect()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance((nint)NativeMethods.TablePtr->hs_method_accdb1db((void*)_handle), false);
-    }
-
-    public int getMobEffectId()
-    {
-        return NativeMethods.TablePtr->hs_method_47a8937c((void*)_handle);
-    }
-
-    public nint getMobEffects()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_a0b28726((void*)_handle);
-    }
-
-    public string getPotencyDescription(int arg0, float arg1)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_2c304811((void*)_handle, arg0, arg1);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public static string getPotencyDescription(int arg0, float arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg3)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            var __hs_view = NativeMethods.TablePtr->hs_method_8aa24db2(arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getPotencyDescription(nint arg0, float arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? getPotion(int arg0)
-    {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_9c6c98d6(arg0);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-    }
-
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? getPotion(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -437,70 +50,370 @@ public sealed unsafe partial class Potion
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(nameId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(prefix);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(prefix, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_65fdd055(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                return (nint)NativeMethods.TablePtr->C2.hs_method_0c0bf0f8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public nint _ctor(string nameId, string descriptionID, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance mobEffect, int var)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(nameId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(descriptionID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(descriptionID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                return (nint)NativeMethods.TablePtr->C2.hs_method_7b35bbdf((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)mobEffect.Handle, var);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint nameId, nint descriptionIDs, nint mobEffects, nint var) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    public static nint Awkward()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_c69caf42();
+    }
+
+    public static nint FireResistance()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_573e215b();
+    }
+
+    public static nint Healing()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_1bf6101e();
+    }
+
+    public static nint Poison()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_f6fe3bf3();
+    }
+
+    public static Potion Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a6714c77();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Potion((nint)handle);
+    }
+
+    public static Potion Create(string nameId, string prefix)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(nameId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(prefix);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(prefix, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var handle = NativeMethods.TablePtr->C2.hs_create_27aa86d7(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new Potion((nint)handle);
+            }
+        }
+    }
+
+    public static Potion Create(string nameId, string descriptionID, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance mobEffect, int var)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(nameId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(descriptionID);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(descriptionID, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var handle = NativeMethods.TablePtr->C2.hs_create_ce073ca8(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)mobEffect.Handle, var);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new Potion((nint)handle);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public static Potion Create(nint nameId, nint descriptionIDs, nint mobEffects, nint var) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    public static nint Slowness()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_f60a1554();
+    }
+
+    public static nint Swiftness()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_7a2789b5();
+    }
+
+    public static nint Water()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_35ec8e38();
+    }
+
+    public static nint WaterBreathing()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_4e752f66();
+    }
+
+    public static nint Weakness()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_d441a418();
+    }
+
+    public static void addPotion(global::Hosihikari.Bindings.Abi.SharedHandle? potion)
+    {
+        NativeMethods.TablePtr->C2.hs_method_268d287b(potion?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void appendFormattedPotionText(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString inOutHovertext, int potionType, int potionVariant, global::Hosihikari.Bindings.Bedrock.Interop.Player player, float timeMod)
+    {
+        NativeMethods.TablePtr->C2.hs_method_cdf5f7ec((void*)__hosihikari_shim_handle, (void*)inOutHovertext.Handle, potionType, potionVariant, (void*)player.Handle, timeMod);
+    }
+
+    public static void appendMobEffectText(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString inOutHovertext, int potionVariant, uint mobEffectId, int amplifier, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_32669610((void*)inOutHovertext.Handle, potionVariant, mobEffectId, amplifier, (void*)player.Handle);
+    }
+
+    public static string effectDurationToString(int potionType, float timeMod, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effect)
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b9da7440(potionType, timeMod, (void*)effect.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string effectPotencyToString(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effect)
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_28e0deef((void*)effect.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string getBasePotion(int type)
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b61269bd(type);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getDescriptionId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_664353d7((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getDescriptionId(int potionType)
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_a278b43d((void*)__hosihikari_shim_handle, potionType);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getNameId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_15fa23e7((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getPotencyDescription(int potionType, float timeMod)
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_474b56c0((void*)__hosihikari_shim_handle, potionType, timeMod);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string getPotencyDescription(int potionType, float timeMod, string descID, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effect)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(descID);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(descID, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            var __hs_view = NativeMethods.TablePtr->C2.hs_method_04c67f83(potionType, timeMod, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)effect.Handle);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? getPotion(string potionNameId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(potionNameId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(potionNameId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_shared = NativeMethods.TablePtr->C2.hs_method_f219971a(__hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getPotion(nint potionNameId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static int getPotionCount()
-    {
-        return NativeMethods.TablePtr->hs_method_780ff973();
-    }
-
-    public int getPotionId()
-    {
-        return NativeMethods.TablePtr->hs_method_652929f1((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPotionVariant_15d51a98() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public string getPrefix()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_1dd8d3c0((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_edd4311f((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static void initPotions(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
+    public static void initPotions(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
-        NativeMethods.TablePtr->hs_method_49f373f3((void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public static int mLastId
-    {
-        get => NativeMethods.TablePtr->hs_get_935ec5d3();
+        NativeMethods.TablePtr->C2.hs_method_39898587((void*)baseGameVersion.Handle, (void*)experiments.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint mPotionsById_Address
+    public nint mDescriptionIds_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e5792801();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_759ab3d4((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint mPotionsByName_Address
+    public nint mEffects_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f36dce22();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_68deaacb((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void shutdownPotions()
+    public int mId
     {
-        NativeMethods.TablePtr->hs_method_44dc9cd6();
+        get => NativeMethods.TablePtr->C2.hs_get_ed65d090((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ed65d090((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a7637345() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static nint mLastId()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_28ec050a();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNameId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ecb4cf33((void*)__hosihikari_shim_handle);
+    }
+
+    public static nint mPotionsById()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_cfe935c9();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public static nint mPotionsByName() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPrefix_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ddbfdf62((void*)__hosihikari_shim_handle);
+    }
+
+    public int mVar
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c5f95e0f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c5f95e0f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_17bfbbff((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

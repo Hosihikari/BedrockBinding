@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MoveControlComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MoveControlComponent(nint handle) : this(handle, true) { }
 
     internal MoveControlComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MoveControlComponent Borrow(nint handle) => new MoveControlComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,93 +33,53 @@ public sealed unsafe partial class MoveControlComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MoveControlComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MoveControlComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool getHasWantedPosition()
+    public void initMultiTypeMovementComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob entity, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor initDescription)
     {
-        return NativeMethods.TablePtr->hs_method_64faec4d((void*)_handle) != 0;
+        NativeMethods.TablePtr->C2.hs_method_31dc49d8((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)initDescription.Handle);
     }
 
-    public float getMaxTurn()
+    public bool mHasWanted
     {
-        return NativeMethods.TablePtr->hs_method_91bf5b6a((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_8d7e5e18((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_8d7e5e18((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getShouldBreach()
+    public float mMaxTurn
     {
-        return NativeMethods.TablePtr->hs_method_f60c9b93((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_e388c5e3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e388c5e3((void*)__hosihikari_shim_handle, value);
     }
 
-    public float getSpeedModifier()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMoveControl_Address
     {
-        return NativeMethods.TablePtr->hs_method_846d1175((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_50948a61((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getWantedPosition()
+    public bool mShouldBreach
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_909239f1((void*)_handle), false);
+        get => NativeMethods.TablePtr->C2.hs_get_ede8beb8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ede8beb8((void*)__hosihikari_shim_handle, value);
     }
 
-    public void initMultiTypeMovementComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor arg1)
+    public float mSpeedModifier
     {
-        NativeMethods.TablePtr->hs_method_ec1d8bae((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_0297adc1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0297adc1((void*)__hosihikari_shim_handle, value);
     }
 
-    public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWantedPosition_Address
     {
-        NativeMethods.TablePtr->hs_method_ccddb1ff((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_78b36368(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_b75812eb(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setHasWantedPosition(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_947b171b((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2277599c((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setInternalType(nint arg0) =>
+    public void setInternalType(nint type) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void setMaxTurn(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_437d2655((void*)_handle, arg0);
-    }
-
-    public void setShouldBreach(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_6356f543((void*)_handle, arg0);
-    }
-
-    public void setSpeedModifier(float arg0)
-    {
-        NativeMethods.TablePtr->hs_method_92941d02((void*)_handle, arg0);
-    }
-
-    public void setWantedPosition(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2)
-    {
-        NativeMethods.TablePtr->hs_method_81ea5bc9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
-    }
-
-    public void update(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
-    {
-        NativeMethods.TablePtr->hs_method_e319d857((void*)_handle, (void*)arg0.Handle);
-    }
 }

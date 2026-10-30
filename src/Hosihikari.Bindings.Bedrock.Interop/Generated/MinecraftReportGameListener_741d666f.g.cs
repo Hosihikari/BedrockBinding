@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MinecraftReportGameListener
+public sealed unsafe partial class MinecraftReportGameListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MinecraftReportGameListener(nint handle) : this(handle, true) { }
 
     internal MinecraftReportGameListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MinecraftReportGameListener Borrow(nint handle) => new MinecraftReportGameListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,134 @@ public sealed unsafe partial class MinecraftReportGameListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftReportGameListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MinecraftReportGameListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    public void _onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
     {
-        NativeMethods.TablePtr->hs_method_f8e050e5((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_1836d932((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
     }
 
-    public void onTestPassed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    public void _onTestPassed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
     {
-        NativeMethods.TablePtr->hs_method_b93ad17a((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7d65a0ee((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
     }
 
-    public void onTestStructureLoaded(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
+    public void _onTestStructureLoaded(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
     {
-        NativeMethods.TablePtr->hs_method_df08701c((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_cd1d6c38((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static MinecraftReportGameListener Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6b0df8c9();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new MinecraftReportGameListener((nint)handle);
+    }
+
+    public static MinecraftReportGameListener Create(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftReportGameListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_bf58e15a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MinecraftReportGameListener((nint)handle);
+    }
+
+    public void _reportFailure(global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestError error, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4970f9db((void*)__hosihikari_shim_handle, (void*)error.Handle, (void*)region.Handle);
+    }
+
+    public void _say(string chatColor, string text)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(chatColor);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(chatColor, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(text);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(text, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_e1d8f025((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            }
+        }
+    }
+
+    public void _spawnBeacon(global::Hosihikari.Bindings.Bedrock.Interop.Block glassType)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5786cf15((void*)__hosihikari_shim_handle, (void*)glassType.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk479f87_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c9413270((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk80c891_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_70ba3252((void*)__hosihikari_shim_handle);
+    }
+
+    public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5ba2ac9e((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
+    }
+
+    public void onTestPassed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0f562157((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
+    }
+
+    public void onTestStructureLoaded(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
+    {
+        NativeMethods.TablePtr->C2.hs_method_61a77112((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftReportGameListener operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftReportGameListener arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftReportGameListener((nint)NativeMethods.TablePtr->C2.hs_method_39cd6489((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_741d666f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

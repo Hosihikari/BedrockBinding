@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum CopperType : int
+public enum CopperType : byte
 {
+    Default = 0,
+    Exposed = 1,
+    Weathered = 2,
+    Oxidized = 3,
+    Count = 4,
 }

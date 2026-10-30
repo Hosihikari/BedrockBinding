@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NoiseCellInterpolator
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NoiseCellInterpolator(nint handle) : this(handle, true) { }
 
     internal NoiseCellInterpolator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NoiseCellInterpolator Borrow(nint handle) => new NoiseCellInterpolator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,56 +33,116 @@ public sealed unsafe partial class NoiseCellInterpolator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NoiseCellInterpolator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NoiseCellInterpolator Create_783c90d3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NoiseCellInterpolator Create_5bb3934f(nint noiseBuffer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NoiseCellInterpolator Create_50f2f0d0(nint noiseBuffer, int arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NoiseCellInterpolator Create_d1fb272f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NoiseCellInterpolator Create_db6034a1(nint arg0, int arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public float getLerpedValue()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInputValues_Address
     {
-        return NativeMethods.TablePtr->hs_method_f98337fa((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3e0c8c6c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void selectCellXZ(int arg0, int arg1, int arg2, int arg3)
+    public float mLerpedValue
     {
-        NativeMethods.TablePtr->hs_method_5a957daa((void*)_handle, arg0, arg1, arg2, arg3);
+        get => NativeMethods.TablePtr->C2.hs_get_b9fe5fee((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b9fe5fee((void*)__hosihikari_shim_handle, value);
     }
 
-    public void updateForX(byte arg0)
+    public float mNoise000
     {
-        NativeMethods.TablePtr->hs_method_f0cc5363((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_a6340072((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a6340072((void*)__hosihikari_shim_handle, value);
     }
 
-    public void updateForZ(byte arg0)
+    public float mNoise001
     {
-        NativeMethods.TablePtr->hs_method_342b2974((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_0f9073e5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0f9073e5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNoise010
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5f747b23((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5f747b23((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNoise011
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_296d5a03((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_296d5a03((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNoise100
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_8dadbf5f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8dadbf5f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNoise101
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_79a68ebf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_79a68ebf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNoise110
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_ce0d6ba7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ce0d6ba7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNoise111
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_6b49efab((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6b49efab((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mValueXY00
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_fc44dd71((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_fc44dd71((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mValueXY01
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c48bdf15((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c48bdf15((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mValueXY10
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_1cfab78d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1cfab78d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mValueXY11
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_871c5a6c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_871c5a6c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mValueY0
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_88b98e73((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_88b98e73((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mValueY1
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_6e1b4929((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6e1b4929((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mXZDeltaSize
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_1bb853de((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1bb853de((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mYDeltaSize
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_79af8fe5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_79af8fe5((void*)__hosihikari_shim_handle, value);
     }
 }

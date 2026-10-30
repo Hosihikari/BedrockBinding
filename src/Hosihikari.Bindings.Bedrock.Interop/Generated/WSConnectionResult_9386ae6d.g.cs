@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum WSConnectionResult : int
+public enum WSConnectionResult : byte
 {
+    Failed = 0,
+    InvalidUri = 1,
+    ConnectionInProgress = 2,
+    Success = 3,
 }

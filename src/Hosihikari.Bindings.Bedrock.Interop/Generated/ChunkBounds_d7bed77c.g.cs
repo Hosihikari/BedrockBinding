@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ChunkBounds
+public sealed unsafe partial class ChunkBounds : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkBounds(nint handle) : this(handle, true) { }
 
     internal ChunkBounds(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkBounds Borrow(nint handle) => new ChunkBounds(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,45 @@ public sealed partial class ChunkBounds
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public uint x0
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_28f2ffc7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_28f2ffc7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint x1
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_10424a92((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_10424a92((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint z0
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_1d3f3437((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1d3f3437((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint z1
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_31b9221e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_31b9221e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_d7bed77c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

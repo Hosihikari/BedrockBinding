@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum BossBarColor : int
+public enum BossBarColor : byte
 {
     Pink = 0,
     Blue = 1,

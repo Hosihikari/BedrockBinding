@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ListTagFloatAdder : global::System.IDisposable
+public sealed unsafe partial class ListTagFloatAdder
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ListTagFloatAdder(nint handle) : this(handle, true) { }
 
     internal ListTagFloatAdder(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ListTagFloatAdder Borrow(nint handle) => new ListTagFloatAdder(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,32 +33,19 @@ public sealed unsafe partial class ListTagFloatAdder : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTag_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_11c0f815((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_11c0f815((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_call(float f) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ListTagFloatAdder operator_call(float f)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_1580e9fe((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ListTagFloatAdder((nint)NativeMethods.TablePtr->C2.hs_method_21d65b42((void*)__hosihikari_shim_handle, f), false);
     }
 }

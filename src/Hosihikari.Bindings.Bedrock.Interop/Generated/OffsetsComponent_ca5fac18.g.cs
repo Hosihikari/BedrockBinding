@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class OffsetsComponent
+public sealed unsafe partial class OffsetsComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OffsetsComponent(nint handle) : this(handle, true) { }
 
     internal OffsetsComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OffsetsComponent Borrow(nint handle) => new OffsetsComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,20 +33,50 @@ public sealed partial class OffsetsComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OffsetsComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBreathingOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_92781f7c((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OffsetsComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDropOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_36dde317((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mExplosionOffset
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_7e94962a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7e94962a((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEyeOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d204bd16((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHeadOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d3612bcf((void*)__hosihikari_shim_handle);
+    }
+
+    public float mHeightOffset
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_8f3fe818((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8f3fe818((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMouthOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4797685d((void*)__hosihikari_shim_handle);
+    }
 }

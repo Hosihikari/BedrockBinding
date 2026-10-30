@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DynamicPropertiesDefinition
+public sealed unsafe partial class DynamicPropertiesDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DynamicPropertiesDefinition(nint handle) : this(handle, true) { }
 
     internal DynamicPropertiesDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DynamicPropertiesDefinition Borrow(nint handle) => new DynamicPropertiesDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,39 @@ public sealed unsafe partial class DynamicPropertiesDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ulong ACTOR_TOTAL_DYNAMIC_PROPERTY_SIZE_LIMIT
+    public void _dtor()
     {
-        get => NativeMethods.TablePtr->hs_get_dc0e3510();
+        NativeMethods.TablePtr->C1.hs_method_cf33313c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DynamicPropertiesDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public bool _canMergeDefinitions(nint other, nint identifier, ulong sizeLimit, nint error) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DynamicPropertiesDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public nint defineProperty(nint identifier, nint definition) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    public static ulong IDENTIFIER_SIZE_LIMIT
+    public ulong mCost
     {
-        get => NativeMethods.TablePtr->hs_get_714733f3();
+        get => NativeMethods.TablePtr->C1.hs_get_e8845aea((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e8845aea((void*)__hosihikari_shim_handle, value);
     }
 
-    public static ulong WORLD_TOTAL_DYNAMIC_PROPERTY_SIZE_LIMIT
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDynamicProperties_Address
     {
-        get => NativeMethods.TablePtr->hs_get_d3ab20da();
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_57d341a1((void*)__hosihikari_shim_handle);
     }
 
-    public void clear()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertyDefinition? tryGetPropertyDefinition(string identifier)
     {
-        NativeMethods.TablePtr->hs_method_cc17fe39((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void clearAll_98539586(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void clearAll_ff0e52ee(nint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_ff0e52ee((void*)arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public nint defineProperty(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertyDefinition? tryGetPropertyDefinition(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -95,18 +75,18 @@ public sealed unsafe partial class DynamicPropertiesDefinition
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(identifier, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_fec1d62c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_8120c192((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertyDefinition((nint)__hs_handle, false) : null;
         }
     }
 
-    public string? tryMergeDefinitions(global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesDefinition arg0, string arg1, ulong arg2)
+    public string? tryMergeDefinitions(global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesDefinition other, string identifier, ulong sizeLimit)
     {
         var __hs_hasValue = false;
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -116,15 +96,25 @@ public sealed unsafe partial class DynamicPropertiesDefinition
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(identifier, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_35478f30((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, &__hs_hasValue);
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_6b3c2bd7((void*)__hosihikari_shim_handle, (void*)other.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, sizeLimit, &__hs_hasValue);
             return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a04c33d7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_6426e2c8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

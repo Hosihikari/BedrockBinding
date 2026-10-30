@@ -7,5 +7,5 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 public enum CommandEditorFlag : ushort
 {
     Editor = 0,
-    NoEditor = 512,
+    NotEditor = 512,
 }

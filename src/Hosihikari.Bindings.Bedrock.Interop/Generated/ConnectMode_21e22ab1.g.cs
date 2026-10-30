@@ -2,9 +2,16 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeer_Nested.RemoteSystemStruct_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeer_Nested.RemoteSystemStruct_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ConnectMode : int
 {
+    NoAction = 0,
+    DisconnectAsap = 1,
+    DisconnectAsapSilently = 2,
+    DisconnectOnNoAck = 3,
+    RequestedConnection = 4,
+    HandlingConnectionRequest = 5,
+    UnverifiedSender = 6,
+    Connected = 7,
 }

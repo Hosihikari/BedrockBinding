@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Parser
+public sealed unsafe partial class Parser : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Parser(nint handle) : this(handle, true) { }
 
     internal Parser(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Parser Borrow(nint handle) => new Parser(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,231 +33,146 @@ public sealed unsafe partial class Parser
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Parser Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Parser Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg1, bool arg2)
+    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger definitionTrigger, bool acceptString)
     {
-        return NativeMethods.TablePtr->hs_method_78fa4261((void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_2baf9dd7((void*)val.Handle, (void*)definitionTrigger.Handle, acceptString) != 0;
     }
 
-    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg1, nint arg2)
+    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger definitionTrigger, bool acceptString)
     {
-        return NativeMethods.TablePtr->hs_method_45ba41f6((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_4733427f((void*)val.Handle, (void*)definitionTrigger.Handle, acceptString) != 0;
     }
 
-    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg1, bool arg2)
+    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration variable, nint jsonName, bool convertToTicks)
     {
-        return NativeMethods.TablePtr->hs_method_221e0e95((void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
-    }
-
-    public static bool parse_43a4a568(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, nint arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_43a4a568((void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
-    }
-
-    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_5d0f475b((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_a88f8d5c((void*)val.Handle, (void*)variable.Handle, (void*)jsonName, convertToTicks) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static bool parse_ce653ab9(nint arg0, nint arg1, nint arg2) =>
+    public static bool parse_e480c694(nint val, nint molangVersion, nint itemDescriptors) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static bool parse(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, nint arg2, nint arg3)
+    public static bool parse_a834636e(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint target, nint jsonName, nint defaultValue)
     {
-        NativeMethods.TablePtr->hs_method_8c823e06((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
-    }
-
-    public static void parse_8c08e685(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, nint arg3)
-    {
-        NativeMethods.TablePtr->hs_method_8c08e685((void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3);
-    }
-
-    public static void parse_b1e480be(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, nint arg3)
-    {
-        NativeMethods.TablePtr->hs_method_b1e480be((void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3);
-    }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.FilterGroup arg1, nint arg2, nint arg3)
-    {
-        NativeMethods.TablePtr->hs_method_37274f37((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
-    }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.FloatRange arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_9b5c9dfd((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, nint arg2, nint arg3)
-    {
-        NativeMethods.TablePtr->hs_method_4965dc59((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
-    }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.IntRange arg1, nint arg2, int arg3, int arg4)
-    {
-        NativeMethods.TablePtr->hs_method_8257cd5b((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3, arg4);
-    }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_4d42e1a4((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_29362864((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    public static void parse_ed868910(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, nint arg3)
-    {
-        NativeMethods.TablePtr->hs_method_ed868910((void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3);
-    }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor arg2)
-    {
-        NativeMethods.TablePtr->hs_method_46a72895((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_a834636e((void*)val.Handle, (void*)target, (void*)jsonName, (void*)defaultValue) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static void parse_2f93c547(nint arg0, nint arg1, nint arg2) =>
+    public static bool parse(nint val, nint triggers) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static void parse_45f185a4(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static bool parse_a83860d2(nint val, nint triggers, nint jsonName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier variable, nint jsonName, nint defaultValue)
     {
-        NativeMethods.TablePtr->hs_method_3a47cff0((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
+        NativeMethods.TablePtr->C2.hs_method_ecded49b((void*)val.Handle, (void*)variable.Handle, (void*)jsonName, (void*)defaultValue);
     }
 
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2)
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, global::Hosihikari.Bindings.Bedrock.Interop.HashedString variable, nint jsonName, nint defaultValue)
     {
-        NativeMethods.TablePtr->hs_method_4de37196((void*)arg0.Handle, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->C2.hs_method_e9c8ce9d((void*)val.Handle, (void*)variable.Handle, (void*)jsonName, (void*)defaultValue);
     }
 
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, bool arg3)
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance variable, nint jsonName)
     {
-        NativeMethods.TablePtr->hs_method_c170ba63((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3);
+        NativeMethods.TablePtr->C2.hs_method_f184efaa((void*)val.Handle, (void*)variable.Handle, (void*)jsonName);
     }
 
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, float arg3)
+    public static void parse_3f944d77(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint variable, nint jsonName, nint defaultValue)
     {
-        NativeMethods.TablePtr->hs_method_fcc9d559((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3);
+        NativeMethods.TablePtr->C2.hs_method_3f944d77((void*)val.Handle, (void*)variable, (void*)jsonName, (void*)defaultValue);
     }
 
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, int arg3)
+    public static void parse_99be0a8d(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint variable, nint jsonName, nint defaultValue)
     {
-        NativeMethods.TablePtr->hs_method_19668499((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3);
+        NativeMethods.TablePtr->C2.hs_method_99be0a8d((void*)val.Handle, (void*)variable, (void*)jsonName, (void*)defaultValue);
+    }
+
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 variable, nint jsonName, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 defaultValue)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d6a9886f((void*)val.Handle, (void*)variable.Handle, (void*)jsonName, (void*)defaultValue.Handle);
+    }
+
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, global::Hosihikari.Bindings.Bedrock.Interop.WeightedChoices_ActorDefinitionTrigger_ variable, nint jsonName)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f2b3301c((void*)val.Handle, (void*)variable.Handle, (void*)jsonName);
+    }
+
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint variable, nint jsonName, bool defaultValue)
+    {
+        NativeMethods.TablePtr->C2.hs_method_7e674786((void*)val.Handle, (void*)variable, (void*)jsonName, defaultValue);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static void parse_1d498428(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static void parse_545d0567(nint val, nint variable, nint jsonName, nint defaultValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static void parse_2cb11019(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static void parse_76e106d2(nint val, nint variable, nint jsonName, nint defaultValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, int[] arg1, nint arg2, nint arg3)
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, uint[] variable, nint jsonName, nint defaultValue)
     {
-        fixed (int* __hs_vectorData1 = arg1)
+        fixed (uint* __hs_vectorData1 = variable)
         {
-            NativeMethods.TablePtr->hs_method_3e62c439((void*)arg0.Handle, (void*)arg2, (void*)arg3, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+            NativeMethods.TablePtr->C2.hs_method_1d37a7ac((void*)val.Handle, (void*)jsonName, (void*)defaultValue, __hs_vectorData1, (nuint)(variable?.Length ?? 0));
         }
     }
 
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, string[] arg1, nint arg2)
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint face, byte defaultValue)
     {
-        var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<string>();
-        var __hs_vectorCount1 = __hs_vectorItems1.Length;
-        var __hs_vectorByteTotal1 = 0;
-        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++) { __hs_vectorByteTotal1 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems1[__hs_i1] ?? string.Empty); }
-        scoped global::System.Span<byte> __hs_vectorArena1;
-        if (__hs_vectorByteTotal1 <= 1024) { __hs_vectorArena1 = stackalloc byte[__hs_vectorByteTotal1 == 0 ? 1 : __hs_vectorByteTotal1]; } else { __hs_vectorArena1 = new byte[__hs_vectorByteTotal1]; }
-        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews1;
-        if (__hs_vectorCount1 <= 64) { __hs_vectorViews1 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1 == 0 ? 1 : __hs_vectorCount1]; } else { __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount1]; }
-        fixed (byte* __hs_vectorArenaPtr1 = __hs_vectorArena1)
-        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
+        NativeMethods.TablePtr->C2.hs_method_fee5f1a5((void*)val.Handle, (void*)face, defaultValue);
+    }
+
+    public static void serialize_b8f28fa4(nint variable, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint jsonName)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b8f28fa4((void*)variable, (void*)val.Handle, (void*)jsonName);
+    }
+
+    public static void serialize(global::Hosihikari.Bindings.Bedrock.Interop.FloatRange variable, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint jsonName)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5119c913((void*)variable.Handle, (void*)val.Handle, (void*)jsonName);
+    }
+
+    public static void serialize_0bfbbb43(nint variable, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint jsonName)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0bfbbb43((void*)variable, (void*)val.Handle, (void*)jsonName);
+    }
+
+    public static void serialize_74f93423(nint variable, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, nint jsonName)
+    {
+        NativeMethods.TablePtr->C2.hs_method_74f93423((void*)variable, (void*)val.Handle, (void*)jsonName);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static void serialize_5daa3fc9(nint variable, nint val, nint jsonName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static void serialize_6b784887(nint variable, nint val, nint jsonName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static void serialize_19c15d7c(nint variable, nint val, nint jsonName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
         {
-            var __hs_vectorOffset1 = 0;
-            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorCount1; __hs_i1++)
+            if (_ownsHandle)
             {
-                var __hs_item1 = __hs_vectorItems1[__hs_i1] ?? string.Empty;
-                var __hs_length1 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item1);
-                global::System.Text.Encoding.UTF8.GetBytes(__hs_item1, __hs_vectorArena1.Slice(__hs_vectorOffset1, __hs_length1));
-                __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
-                __hs_vectorOffset1 += __hs_length1;
+                NativeMethods.TablePtr->C2.hs_destroy_c944e2ed((void*)__hosihikari_shim_handle);
             }
-            NativeMethods.TablePtr->hs_method_f524660d((void*)arg0.Handle, (void*)arg2, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, byte arg2)
-    {
-        NativeMethods.TablePtr->hs_method_dfe8188d((void*)arg0.Handle, (void*)arg1, arg2);
-    }
-
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, uint arg3)
-    {
-        NativeMethods.TablePtr->hs_method_259f525b((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3);
-    }
-
-    public static void serialize(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_d7d781c1((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    public static void serialize(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_b8046231((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    public static void serialize_78206ada(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_78206ada((void*)arg0, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    public static void serialize(global::Hosihikari.Bindings.Bedrock.Interop.FloatRange arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_43fb52d8((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    public static void serialize_b4dee1ff(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_b4dee1ff((void*)arg0, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    public static void serialize_bf1d1b01(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
-    {
-        NativeMethods.TablePtr->hs_method_bf1d1b01((void*)arg0, (void*)arg1.Handle, (void*)arg2);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static void serialize_82273cbc(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static void serialize_5fa95d96(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 }

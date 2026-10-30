@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockBreakSensorComponent
+public sealed unsafe partial class BlockBreakSensorComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockBreakSensorComponent(nint handle) : this(handle, true) { }
 
     internal BlockBreakSensorComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockBreakSensorComponent Borrow(nint handle) => new BlockBreakSensorComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,98 @@ public sealed unsafe partial class BlockBreakSensorComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockBreakSensorComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockBreakSensorComponent Create_506b6af8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockBreakSensorComponent Create_4f7b5ac7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_4725896c((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_a7b7b727((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_ac298380(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_afc69d43(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void updateSensorPos(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    public static BlockBreakSensorComponent Create()
     {
-        NativeMethods.TablePtr->hs_method_155cd606((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_aa68bfb1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockBreakSensorComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_abbd6f5f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static BlockBreakSensorComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockBreakSensorComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4f7b5ac7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockBreakSensorComponent((nint)handle);
+    }
+
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C0.hs_method_589e1feb((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockSets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_67dc0527((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListener_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7c668db2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSensorPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_39b8b1ba((void*)__hosihikari_shim_handle);
+    }
+
+    public float mSensorRadius
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_dff15ff1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_dff15ff1((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSourceFilters_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_67fc62f2((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockBreakSensorComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BlockBreakSensorComponent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockBreakSensorComponent((nint)NativeMethods.TablePtr->C0.hs_method_afc69d43((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void updateSensorPos(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 newPos)
+    {
+        NativeMethods.TablePtr->C0.hs_method_182a3d0c((void*)__hosihikari_shim_handle, (void*)newPos.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2f618df6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

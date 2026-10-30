@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackResponseSlotInfo : global::System.IDisposable
+public sealed unsafe partial class ItemStackResponseSlotInfo
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemStackResponseSlotInfo(nint handle) : this(handle, true) { }
 
     internal ItemStackResponseSlotInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemStackResponseSlotInfo Borrow(nint handle) => new ItemStackResponseSlotInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,74 +33,44 @@ public sealed unsafe partial class ItemStackResponseSlotInfo : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemStackResponseSlotInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ItemStackResponseSlotInfo Create_ee011e8b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemStackResponseSlotInfo Create_8e119d50(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public byte mAmount
     {
-        get => NativeMethods.TablePtr->hs_get_1a30648c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1a30648c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_1a30648c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_1a30648c((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCustomName_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_363722d1((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_363722d1((void*)__hosihikari_shim_handle);
     }
 
     public short mDurabilityCorrection
     {
-        get => NativeMethods.TablePtr->hs_get_6ee28de5((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6ee28de5((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_6ee28de5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_6ee28de5((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemStackNetId_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3eed9a27((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3eed9a27((void*)__hosihikari_shim_handle);
     }
 
     public byte mRequestedSlot
     {
-        get => NativeMethods.TablePtr->hs_get_cdd0da0c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_cdd0da0c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_cdd0da0c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_cdd0da0c((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mSlot
     {
-        get => NativeMethods.TablePtr->hs_get_4fa98a83((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4fa98a83((void*)_handle, value);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_69497914((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C1.hs_get_4fa98a83((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_4fa98a83((void*)__hosihikari_shim_handle, value);
     }
 }

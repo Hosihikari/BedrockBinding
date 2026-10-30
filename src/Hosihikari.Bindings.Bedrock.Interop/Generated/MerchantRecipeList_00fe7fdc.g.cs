@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MerchantRecipeList : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MerchantRecipeList(nint handle) : this(handle, true) { }
 
     internal MerchantRecipeList(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MerchantRecipeList Borrow(nint handle) => new MerchantRecipeList(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,110 +33,102 @@ public sealed unsafe partial class MerchantRecipeList : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static MerchantRecipeList Create()
+    public void _addIfNewOrBetter(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? toMatch)
     {
-        var handle = NativeMethods.TablePtr->hs_create_53c00fa8();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new MerchantRecipeList((nint)handle);
+        NativeMethods.TablePtr->C2.hs_method_6c2c31b4((void*)__hosihikari_shim_handle, (void*)(toMatch?.Handle ?? 0));
     }
 
-    public void addIfNewOrBetter(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? arg0)
-    {
-        NativeMethods.TablePtr->hs_method_46e7dbbd((void*)_handle, (void*)(arg0?.Handle ?? 0));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint _createTag(bool includeNetInfo, nint saveContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
 
-    public void assignNetIds()
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? _getMatchingRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyA, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyB, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance sell)
     {
-        NativeMethods.TablePtr->hs_method_913ee36f((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? createTag(bool arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d7c88afa((void*)_handle, arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? getMatchingRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_9c417cf1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_ea52ec2b((void*)__hosihikari_shim_handle, (void*)buyA.Handle, (void*)buyB.Handle, (void*)sell.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? getMatchingRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? _getMatchingRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe recipe)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_86de58e1((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_3cf0d878((void*)__hosihikari_shim_handle, (void*)recipe.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? getRecipeByNetId(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_ arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? _getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyA, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyB, int selectionHint)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_41b004fc((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_ce4fbbe4((void*)__hosihikari_shim_handle, (void*)buyA.Handle, (void*)buyB.Handle, selectionHint);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRecipeByNetId_cd54b679(nint netId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, int arg2)
+    public void _load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_0a0a5a27((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C2.hs_method_4cfc91bb((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void addIfNewOrBetter(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? toMatch)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9b9ecf7d((void*)__hosihikari_shim_handle, (void*)(toMatch?.Handle ?? 0));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint createTag(bool includeNetInfo, nint saveContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? getMatchingRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyA, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyB, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance sell)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_f3032b13((void*)__hosihikari_shim_handle, (void*)buyA.Handle, (void*)buyB.Handle, (void*)sell.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe((nint)__hs_handle, false) : null;
     }
 
-    public ulong? getRecipeIndexByNetId(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_ arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? getMatchingRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe recipe)
     {
-        var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_91b01283((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
-        return __hs_hasValue ? __hs_value : (ulong?)null;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_4f798d16((void*)__hosihikari_shim_handle, (void*)recipe.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRecipeIndexByNetId_3ea67a64(nint netId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool isRequiredItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyA, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance buyB, int selectionHint)
     {
-        return NativeMethods.TablePtr->hs_method_02bc8b28((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_80013941((void*)__hosihikari_shim_handle, (void*)buyA.Handle, (void*)buyB.Handle, selectionHint);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe((nint)__hs_handle, false) : null;
     }
 
-    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->hs_method_46489690((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_60a81e1f((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRecipeList_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_84e14f11((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_84e14f11((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTierExpRequirements_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_7aae87ed((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7aae87ed((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_00fe7fdc((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_00fe7fdc((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

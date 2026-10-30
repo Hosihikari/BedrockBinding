@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class InsideBlockEventMap
+public sealed unsafe partial class InsideBlockEventMap : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public InsideBlockEventMap(nint handle) : this(handle, true) { }
 
     internal InsideBlockEventMap(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static InsideBlockEventMap Borrow(nint handle) => new InsideBlockEventMap(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,77 +33,75 @@ public sealed unsafe partial class InsideBlockEventMap
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static InsideBlockEventMap Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static InsideBlockEventMap Create(nint arg0, bool arg1, bool arg2, bool arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static InsideBlockEventMap Create_3a8e5d42(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Block const*>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Block const*>' requires --link-carrier or --virtual-dispatch.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger getEnteredEvent()
+    public void _dtor()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger((nint)NativeMethods.TablePtr->hs_method_9282a163((void*)_handle), false);
+        NativeMethods.TablePtr->C1.hs_method_3f24d70f((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger getExitedEvent()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlock_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger((nint)NativeMethods.TablePtr->hs_method_d3d8696f((void*)_handle), false);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7dddd8b5((void*)__hosihikari_shim_handle);
     }
 
-    public bool isActorCurrentlyInside()
+    public bool mCurrentlyInside
     {
-        return NativeMethods.TablePtr->hs_method_29f62ade((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_d8ef1b67((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_d8ef1b67((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isIgnoringStates()
+    public bool mIgnoreStates
     {
-        return NativeMethods.TablePtr->hs_method_0322f6f5((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_340f6d76((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_340f6d76((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isWatchingIfActorEnters()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnEnteredBlock_Address
     {
-        return NativeMethods.TablePtr->hs_method_a4e1533f((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d1062345((void*)__hosihikari_shim_handle);
     }
 
-    public bool isWatchingIfActorExits()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnExitedBlock_Address
     {
-        return NativeMethods.TablePtr->hs_method_a4654c6e((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3d770704((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setCurrentlyInside(bool arg0)
+    public bool mWasInside
     {
-        NativeMethods.TablePtr->hs_method_b8601724((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_c348ec93((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_c348ec93((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setWasInside(bool arg0)
+    public bool mWatchEnter
     {
-        NativeMethods.TablePtr->hs_method_7c53d692((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_b6d849f3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_b6d849f3((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool wasActorInsideLastTick()
+    public bool mWatchExit
     {
-        return NativeMethods.TablePtr->hs_method_a35a35e5((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C1.hs_get_2d6ab080((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_2d6ab080((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_576603e3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_31b8d522((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

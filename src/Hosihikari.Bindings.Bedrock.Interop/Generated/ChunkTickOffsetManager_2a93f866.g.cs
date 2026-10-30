@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ChunkTickOffsetManager
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChunkTickOffsetManager(nint handle) : this(handle, true) { }
 
     internal ChunkTickOffsetManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChunkTickOffsetManager Borrow(nint handle) => new ChunkTickOffsetManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,14 @@ public sealed unsafe partial class ChunkTickOffsetManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChunkTickOffsetManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkTickOffsetManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public nint getClientTickingOffsets()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] getSortedPositionsFromClientOffsets(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] centers, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] offsets)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5a1bcde7((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] getSortedPositionsFromClientOffsets(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] arg0)
-    {
-        var __hs_vectorItems0 = arg0;
+        var __hs_vectorItems0 = centers;
         var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
         for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
         {
@@ -62,29 +49,7 @@ public sealed unsafe partial class ChunkTickOffsetManager
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            var __hs_view = NativeMethods.TablePtr->hs_method_8e010846((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
-            var __hs_items = (void**)__hs_view.Data;
-            var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos>() : new global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[checked((int)__hs_view.Size)];
-            for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-            {
-                __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos((nint)__hs_items[__hs_i]);
-            }
-            return __hs_result;
-        }
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] getSortedPositionsFromClientOffsets(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] arg1)
-    {
-        var __hs_vectorItems0 = arg0;
-        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
-        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
-        {
-            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
-        }
-        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
-        {
-            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            var __hs_vectorItems1 = arg1;
+            var __hs_vectorItems1 = offsets;
             var __hs_vectorHandles1 = new nint[__hs_vectorItems1?.Length ?? 0];
             for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++)
             {
@@ -93,7 +58,7 @@ public sealed unsafe partial class ChunkTickOffsetManager
             fixed (nint* __hs_vectorHandleData1 = __hs_vectorHandles1)
             {
                 var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
-                var __hs_view = NativeMethods.TablePtr->hs_method_a4bbdd91(__hs_vectorData0, (nuint)(arg0?.Length ?? 0), __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+                var __hs_view = NativeMethods.TablePtr->C0.hs_method_62a99e5a(__hs_vectorData0, (nuint)(centers?.Length ?? 0), __hs_vectorData1, (nuint)(offsets?.Length ?? 0));
                 var __hs_items = (void**)__hs_view.Data;
                 var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos>() : new global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[checked((int)__hs_view.Size)];
                 for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -105,26 +70,25 @@ public sealed unsafe partial class ChunkTickOffsetManager
         }
     }
 
-    public nint getTickingOffsets()
+    public void initialize(uint serverTickRange)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6edf09de((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_d106d9c0((void*)__hosihikari_shim_handle, serverTickRange);
     }
 
-    public void initialize(uint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mClientTickingChunksOffset_Address
     {
-        NativeMethods.TablePtr->hs_method_d106d9c0((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_40d1fd48((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void shuffleTickingOffsets(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTickingChunksOffset_Address
     {
-        NativeMethods.TablePtr->hs_method_57f6d2ac((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8bd816bb((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void shuffleTickingOffsets(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        NativeMethods.TablePtr->C0.hs_method_767624e3((void*)__hosihikari_shim_handle, (void*)random.Handle);
+    }
 }

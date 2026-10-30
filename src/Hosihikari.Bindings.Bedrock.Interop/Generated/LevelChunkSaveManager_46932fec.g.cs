@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelChunkSaveManager
+public sealed unsafe partial class LevelChunkSaveManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelChunkSaveManager(nint handle) : this(handle, true) { }
 
     internal LevelChunkSaveManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelChunkSaveManager Borrow(nint handle) => new LevelChunkSaveManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,107 @@ public sealed unsafe partial class LevelChunkSaveManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkSaveManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint levelChunkSaverProxy, nint gameplayUserManager, nint dimensionManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkSaveManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelChunkSaveManager Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public bool isChunkSaveInProgress()
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_6d0bdf88((void*)_handle) != 0;
+        NativeMethods.TablePtr->C1.hs_method_24b67983((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerForLevelChunkManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector arg0)
+    public static LevelChunkSaveManager Create()
     {
-        NativeMethods.TablePtr->hs_method_70f45888((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_34c287a0();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkSaveManager((nint)handle);
     }
 
-    public void startLeaveGame()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.", false)]
+    public static LevelChunkSaveManager Create(nint levelChunkSaverProxy, nint gameplayUserManager, nint dimensionManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.");
+
+    public void _findRandomChunkToSave()
     {
-        NativeMethods.TablePtr->hs_method_edf0c6c9((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_00e24b27((void*)__hosihikari_shim_handle);
+    }
+
+    public void _onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource chunkSource, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int closestPlayerDistanceSquared)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f213b4e7((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle, closestPlayerDistanceSquared);
+    }
+
+    public bool _shouldDoSave()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_8a4fa5e6((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool mChunkSaveInProgress
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_469d7e0d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_469d7e0d((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_493575c2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameplayUserManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d6d4b296((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelChunkSaveManagerProxy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9c18659e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelChunkSaveQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_25b54553((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnChunkLoadedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b46720cb((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerForLevelChunkManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector levelChunkEventManagerConnector)
+    {
+        NativeMethods.TablePtr->C1.hs_method_786c9fc6((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
     }
 
     public void trySaveChunks()
     {
-        NativeMethods.TablePtr->hs_method_96789c9c((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_96789c9c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_46932fec((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

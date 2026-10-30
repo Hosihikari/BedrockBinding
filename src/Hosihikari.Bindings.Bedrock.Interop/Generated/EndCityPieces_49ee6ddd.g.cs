@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EndCityPieces
+public sealed unsafe partial class EndCityPieces : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EndCityPieces(nint handle) : this(handle, true) { }
 
     internal EndCityPieces(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EndCityPieces Borrow(nint handle) => new EndCityPieces(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,29 @@ public sealed unsafe partial class EndCityPieces
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EndCityPieces Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EndCityPieces Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _addHelper_d157394f(nint pieces, nint piece) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool _recursiveChildren_d42696e3(nint structureManager, nint generators, nint type, int newGenDepth, nint parent, nint offset, nint pieces, nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings mInsertSettings
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings((nint)NativeMethods.TablePtr->hs_get_ed6b1557(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings mOverwriteSettings
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings((nint)NativeMethods.TablePtr->hs_get_cad36334(), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'EndCityPieces::EndCityPiece' has no accessible destructor.", false)]
+    public static nint _createPiece(nint structureManager, nint parent, nint offset, nint templateName, nint rotation, bool overwrite) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'EndCityPieces::EndCityPiece' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
-    public static void startHouseTower_6c4d9b80(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+    public static bool _recursiveChildren(nint structureManager, nint generators, nint type, int newGenDepth, nint parent, nint offset, nint pieces, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void startHouseTower_97ffc0a3(nint structureManager, nint origin, nint rotation, nint pieces, nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_49ee6ddd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BlockMaterialInstancesDescription : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockMaterialInstancesDescription(nint handle) : this(handle, true) { }
 
     internal BlockMaterialInstancesDescription(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockMaterialInstancesDescription Borrow(nint handle) => new BlockMaterialInstancesDescription(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,24 @@ public sealed unsafe partial class BlockMaterialInstancesDescription : global::S
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockMaterialInstancesDescription Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static BlockMaterialInstancesDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription arg0)
+    public bool mInitializedFromCode
     {
-        var handle = NativeMethods.TablePtr->hs_create_751f52ca((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BlockMaterialInstancesDescription((nint)handle);
+        get => NativeMethods.TablePtr->C0.hs_get_30b0d83d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_30b0d83d((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static BlockMaterialInstancesDescription Create_b410f09e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint _buildNetworkTag(nint ctx) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
 
-    public static BlockMaterialInstancesDescription Create(string arg0, int arg1, bool arg2, bool arg3)
+    public nint _ctor(string textureName, byte renderLayer, float ambientOcclusion, bool faceDimming, byte tintMethod, bool randomizeUVRotation, bool supportsTextureVariations, bool alphaMaskedTint, bool dithering)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(textureName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -69,10 +60,95 @@ public sealed unsafe partial class BlockMaterialInstancesDescription : global::S
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(textureName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_6784cafc(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
+            return (nint)NativeMethods.TablePtr->C0.hs_method_1fd55717((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, renderLayer, ambientOcclusion, faceDimming, tintMethod, randomizeUVRotation, supportsTextureVariations, alphaMaskedTint, dithering);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public nint _ctor(nint materialDatas) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_86ef87e5((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_ff763c79((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void _handleVersionBasedInitialization(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion originalJsonVersion)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e4dfa5aa((void*)__hosihikari_shim_handle, (void*)originalJsonVersion.Handle);
+    }
+
+    public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentStorage blockComponentStorage)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a31ee318((void*)__hosihikari_shim_handle, (void*)blockComponentStorage.Handle);
+    }
+
+    public void _initializeComponentFromCode(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentStorage blockComponentStorage)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5c531ca2((void*)__hosihikari_shim_handle, (void*)blockComponentStorage.Handle);
+    }
+
+    public void _initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        NativeMethods.TablePtr->C0.hs_method_65d1e4ec((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)ctx.Handle);
+    }
+
+    public bool _isNetworkComponent()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_14fad15e((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static BlockMaterialInstancesDescription Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_14af31e0();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockMaterialInstancesDescription((nint)handle);
+    }
+
+    public static BlockMaterialInstancesDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0100dba7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockMaterialInstancesDescription((nint)handle);
+    }
+
+    public static BlockMaterialInstancesDescription Create(string textureName, byte renderLayer, float ambientOcclusion, bool faceDimming, byte tintMethod, bool randomizeUVRotation, bool supportsTextureVariations, bool alphaMaskedTint, bool dithering)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(textureName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(textureName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C0.hs_create_d7e71b0c(__hs_stringData0, (nuint)__hs_stringByteCount0, renderLayer, ambientOcclusion, faceDimming, tintMethod, randomizeUVRotation, supportsTextureVariations, alphaMaskedTint, dithering);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -82,71 +158,94 @@ public sealed unsafe partial class BlockMaterialInstancesDescription : global::S
         }
     }
 
-    public static string NameID
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_222367b9();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static BlockMaterialInstancesDescription Create(nint materialDatas) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    public static string NameID()
     {
-        NativeMethods.TablePtr->hs_method_8a2ba626((void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_af506ac6((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
-    }
-
-    public string getName()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_88385cfd((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_27fae1f5();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentStorage arg0)
+    public static nint VARIATIONS_TEXTURE_SUPPORT_MIN_VERSION()
     {
-        NativeMethods.TablePtr->hs_method_c6b9c3b7((void*)_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_90897b28();
     }
 
-    public void initializeComponentFromCode(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentStorage arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
-        NativeMethods.TablePtr->hs_method_63e7d37d((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C0.hs_method_f965155a((void*)ctx.Handle);
     }
 
-    public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint buildNetworkTag(nint ctx) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
+
+    public string getName()
     {
-        NativeMethods.TablePtr->hs_method_3f09ef7f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_158e3cf6((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void handleVersionBasedInitialization(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion originalJsonVersion)
+    {
+        NativeMethods.TablePtr->C0.hs_method_18e4962b((void*)__hosihikari_shim_handle, (void*)originalJsonVersion.Handle);
+    }
+
+    public void initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentStorage blockComponentStorage)
+    {
+        NativeMethods.TablePtr->C0.hs_method_db8d22e0((void*)__hosihikari_shim_handle, (void*)blockComponentStorage.Handle);
+    }
+
+    public void initializeComponentFromCode(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentStorage blockComponentStorage)
+    {
+        NativeMethods.TablePtr->C0.hs_method_757a6eb9((void*)__hosihikari_shim_handle, (void*)blockComponentStorage.Handle);
+    }
+
+    public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        NativeMethods.TablePtr->C0.hs_method_82e1ae5e((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)ctx.Handle);
     }
 
     public bool isNetworkComponent()
     {
-        return NativeMethods.TablePtr->hs_method_4c3d8ab5((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_7fc11dc1((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_60f69978(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMaterialMappings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d0493bb1((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_0a821e61(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMaterials_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e396f904((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription((nint)NativeMethods.TablePtr->C0.hs_method_0a821e61((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public static bool postParseConstraint(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value componentJson, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion jsonVersion)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_872103be((void*)arg0.Handle, (void*)componentJson.Handle, (void*)jsonVersion.Handle) != 0;
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_a0c019d2((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_a0c019d2((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

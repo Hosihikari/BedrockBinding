@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DimensionConversionData : global::System.IDisposable
+public sealed unsafe partial class DimensionConversionData
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DimensionConversionData(nint handle) : this(handle, true) { }
 
     internal DimensionConversionData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DimensionConversionData Borrow(nint handle) => new DimensionConversionData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,43 +33,20 @@ public sealed unsafe partial class DimensionConversionData : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    public int getNetherScale()
-    {
-        return NativeMethods.TablePtr->hs_method_5b0de98b((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getOverworldSpawnPoint()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_965bfa78((void*)_handle), false);
     }
 
     public int mNetherScale
     {
-        get => NativeMethods.TablePtr->hs_get_3e1511eb((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_3e1511eb((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_3e1511eb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_3e1511eb((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOverworldSpawnPoint_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_65787bdc((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_ebc1381e((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_65787bdc((void*)__hosihikari_shim_handle);
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BoneOrientation
+public sealed unsafe partial class BoneOrientation : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BoneOrientation(nint handle) : this(handle, true) { }
 
     internal BoneOrientation(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BoneOrientation Borrow(nint handle) => new BoneOrientation(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,128 @@ public sealed unsafe partial class BoneOrientation
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BoneOrientation Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BoneOrientation Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getName()
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BoneOrientation rhs)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_fbe0b43b((void*)_handle), false);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_b2ee885b((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getPivot_bab3c083()
+    public void _dtor()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_bab3c083((void*)_handle), false);
+        NativeMethods.TablePtr->C0.hs_method_73a056f3((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getPivot_f99ac933()
+    public static BoneOrientation Create(global::Hosihikari.Bindings.Bedrock.Interop.BoneOrientation rhs)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_f99ac933((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C0.hs_create_8ad66b05((void*)rhs.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BoneOrientation((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoneBindingExpression_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6aab990c((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mBoneBindingMethod
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_10b70dd1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_10b70dd1((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultTransform_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5722d74b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalPreTransformMatrix_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_16fd7a54((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMatrix_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0c435337((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8efcf63e((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mOverrideStackMatrix
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_17b01499((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_17b01499((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mParentBoneIndex
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3e12b667((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_3e12b667((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mParentSkeletalHierarchyIndex
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_2c10f685((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_2c10f685((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPivot_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_33c30f6b((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mRotationRelativeMode
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_8b169995((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_8b169995((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransform_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c13a20ac((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BoneOrientation operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BoneOrientation rhs)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoneOrientation((nint)NativeMethods.TablePtr->C0.hs_method_b9c031c1((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DirectX::XMMATRIX' is not a known bindable declaration.", false)]
+    public void rotateAndUpdateLocalPreTransformMatrix(nint matrix, float rotationInDegrees, nint axis) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DirectX::XMMATRIX' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'DirectX::XMMATRIX' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint updateLocalPreTransformMatrix() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'DirectX::XMMATRIX' requires --link-carrier or --virtual-dispatch.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_3a1cda46((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChannelTransform
+public sealed unsafe partial class ChannelTransform : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ChannelTransform(nint handle) : this(handle, true) { }
 
     internal ChannelTransform(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ChannelTransform Borrow(nint handle) => new ChannelTransform(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,71 @@ public sealed unsafe partial class ChannelTransform
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChannelTransform Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChannelTransform Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool getDataValues(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode expression, int axisIndex)
     {
-        return NativeMethods.TablePtr->hs_method_e710a585((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return (nint)NativeMethods.TablePtr->C0.hs_method_fbe91474((void*)__hosihikari_shim_handle, (void*)expression.Handle, axisIndex);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ChannelTransform Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2681c36a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChannelTransform((nint)handle);
+    }
+
+    public static ChannelTransform Create(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode expression, int axisIndex)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1b99c5b9((void*)expression.Handle, axisIndex);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChannelTransform((nint)handle);
+    }
+
+    public void animate(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams, global::Hosihikari.Bindings.Bedrock.Interop.BoneOrientation destBoneOrientation, float scale, int boneTransformType)
+    {
+        NativeMethods.TablePtr->C0.hs_method_f9895dab((void*)__hosihikari_shim_handle, (void*)renderParams.Handle, (void*)destBoneOrientation.Handle, scale, boneTransformType);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAxis_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_eefa65d6((void*)__hosihikari_shim_handle);
+    }
+
+    public int mTransformDataType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_3493cfa0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_3493cfa0((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mXYZ_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_602a23cd((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_9fbd7245((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

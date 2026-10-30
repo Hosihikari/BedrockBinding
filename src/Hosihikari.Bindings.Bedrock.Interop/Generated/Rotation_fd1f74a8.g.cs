@@ -7,8 +7,11 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 public enum Rotation : byte
 {
     None = 0,
+    Clockwise90 = 1,
     Rotate90 = 1,
+    Clockwise180 = 2,
     Rotate180 = 2,
+    CounterClockwise90 = 3,
     Rotate270 = 3,
     Total = 4,
 }

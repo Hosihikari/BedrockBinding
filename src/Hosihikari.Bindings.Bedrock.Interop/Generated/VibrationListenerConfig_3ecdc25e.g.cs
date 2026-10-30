@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VibrationListenerConfig
+public sealed unsafe partial class VibrationListenerConfig : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VibrationListenerConfig(nint handle) : this(handle, true) { }
 
     internal VibrationListenerConfig(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VibrationListenerConfig Borrow(nint handle) => new VibrationListenerConfig(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,60 @@ public sealed unsafe partial class VibrationListenerConfig
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VibrationListenerConfig Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _canReceiveOnlyIfAdjacentChunksAreTicking()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_caf5dad7((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VibrationListenerConfig Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_6a1189ad((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;
+    }
+
+    public void _onSerializableDataChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
+    {
+        NativeMethods.TablePtr->C3.hs_method_7502d7d5((void*)__hosihikari_shim_handle, (void*)region.Handle);
+    }
 
     public bool canReceiveOnlyIfAdjacentChunksAreTicking()
     {
-        return NativeMethods.TablePtr->hs_method_0bd11736((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_dfbb04ad((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public bool isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg0)
+    public bool isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent)
     {
-        return NativeMethods.TablePtr->hs_method_a1d66644((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_ef4b9810((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;
     }
 
-    public void onSerializableDataChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    public void onSerializableDataChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        NativeMethods.TablePtr->hs_method_675b0231((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_57538065((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void onSignalReceive(nint arg0, nint arg1, nint arg2, nint arg3, float arg4, uint arg5, nint arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public bool shouldListen(nint region, nint gameEvent, nint gameEventContext) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_3ecdc25e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

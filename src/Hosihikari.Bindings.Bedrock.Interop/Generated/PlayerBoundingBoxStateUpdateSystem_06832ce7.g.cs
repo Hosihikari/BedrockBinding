@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayerBoundingBoxStateUpdateSystem
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerBoundingBoxStateUpdateSystem(nint handle) : this(handle, true) { }
 
     internal PlayerBoundingBoxStateUpdateSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerBoundingBoxStateUpdateSystem Borrow(nint handle) => new PlayerBoundingBoxStateUpdateSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,27 @@ public sealed unsafe partial class PlayerBoundingBoxStateUpdateSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerBoundingBoxStateUpdateSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerBoundingBoxStateUpdateSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createSystem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void tickPlayerBoundingBoxStateUpdateSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputRequestComponent arg2, nint arg3, float arg4, global::Hosihikari.Bindings.Bedrock.Interop.GetAttachPositionViews arg5, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg6)
+    public void _tick(nint strictContext)
     {
-        NativeMethods.TablePtr->hs_method_909617bb((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, arg4, (void*)arg5.Handle, (void*)arg6.Handle);
+        NativeMethods.TablePtr->C2.hs_method_55b50b4e((void*)__hosihikari_shim_handle, (void*)strictContext);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void tick(nint strictContext)
+    {
+        NativeMethods.TablePtr->C2.hs_method_9abc4895((void*)__hosihikari_shim_handle, (void*)strictContext);
+    }
+
+    public static void tickPlayerBoundingBoxStateUpdateSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext context, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent aabb, global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputRequestComponent request, nint executionContext, float sneakHeight, global::Hosihikari.Bindings.Bedrock.Interop.GetAttachPositionViews views, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a47a45e0((void*)context.Handle, (void*)aabb.Handle, (void*)request.Handle, (void*)executionContext, sneakHeight, (void*)views.Handle, (void*)region.Handle);
+    }
 }

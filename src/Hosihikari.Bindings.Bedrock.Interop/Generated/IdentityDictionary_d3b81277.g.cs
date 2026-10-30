@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IdentityDictionary : global::System.IDisposable
+public sealed unsafe partial class IdentityDictionary
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IdentityDictionary(nint handle) : this(handle, true) { }
 
     internal IdentityDictionary(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IdentityDictionary Borrow(nint handle) => new IdentityDictionary(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,57 +33,24 @@ public sealed unsafe partial class IdentityDictionary : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static IdentityDictionary Create()
+    public bool clearIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId scoreboardId)
     {
-        var handle = NativeMethods.TablePtr->hs_create_a220df69();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new IdentityDictionary((nint)handle);
+        return NativeMethods.TablePtr->C1.hs_method_c00b1b7b((void*)__hosihikari_shim_handle, (void*)scoreboardId.Handle) != 0;
     }
 
-    public bool clearIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId convertFakeToReal(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId scoreboardId, global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId playerId)
     {
-        return NativeMethods.TablePtr->hs_method_7bdcf6d0((void*)_handle, (void*)arg0.Handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C1.hs_method_4c8c05dc((void*)__hosihikari_shim_handle, (void*)scoreboardId.Handle, (void*)playerId.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId convertFakeToReal(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(string fakePlayerName)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_c618f504((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[] getAllScoreboardIds()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_8bf35e15((void*)_handle);
-        var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId>() : new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)__hs_items[__hs_i]);
-        }
-        return __hs_result;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_486c9883((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_cd825759((void*)_handle, (void*)arg0.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fakePlayerName);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -93,50 +60,40 @@ public sealed unsafe partial class IdentityDictionary : global::System.IDisposab
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(fakePlayerName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_c5f82fc8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->C1.hs_method_21a6188c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntities_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_405f7c58((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_405f7c58((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFakes_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8acef37a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8acef37a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mIdentityDefs_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5580ed2d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5580ed2d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlayers_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_703c5d1e((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_703c5d1e((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId registerIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
+    public bool shouldConvertFakePlayer(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId playerId, string displayName)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_c651da1f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId registerIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_655e370c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId registerIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(displayName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -146,43 +103,10 @@ public sealed unsafe partial class IdentityDictionary : global::System.IDisposab
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(displayName, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_101eecfd((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1), false);
-        }
-    }
-
-    public bool shouldConvertFakePlayer(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg0, string arg1)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            return NativeMethods.TablePtr->hs_method_a0c0ec33((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
-        }
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_d3b81277((void*)_handle);
-            }
-
-            _handle = 0;
+            return NativeMethods.TablePtr->C1.hs_method_de2933c6((void*)__hosihikari_shim_handle, (void*)playerId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 }

@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ChunksLoadedStatus : int
+public enum ChunksLoadedStatus : byte
 {
+    NotReady = 0,
+    NeedsTicking = 1,
+    LoadedAndTicking = 2,
 }

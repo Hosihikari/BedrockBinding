@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VanillaBiomes
+public sealed unsafe partial class VanillaBiomes : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VanillaBiomes(nint handle) : this(handle, true) { }
 
     internal VanillaBiomes(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VanillaBiomes Borrow(nint handle) => new VanillaBiomes(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,81 +33,61 @@ public sealed unsafe partial class VanillaBiomes
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color SWAMP_WATER_COLOR
+    public static void initBiomeComponentGlue(global::Hosihikari.Bindings.Bedrock.Interop.BiomeJsonDocumentGlue biomeJsonDocumentGlue)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_86e6c3c7(), false);
+        NativeMethods.TablePtr->C3.hs_method_45625c3f((void*)biomeJsonDocumentGlue.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaBiomes Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VanillaBiomes Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color WATER_FOG_COLOR_SWAMP
+    public static void initBiomeDimensionComponent(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_4abc816a(), false);
+        NativeMethods.TablePtr->C3.hs_method_eb5c7c56((void*)registry.Handle);
     }
 
-    public static void initAdditionalCommonComponents(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg0)
+    public static void initBiomes(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings spawnSettings, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
-        NativeMethods.TablePtr->hs_method_d0a97087((void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_3ab5685d((void*)registry.Handle, (void*)spawnSettings.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
     }
 
-    public static void initBiomeComponentGlue(global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory arg0)
+    public static void initDefaultWorldGenComponents(global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider registries)
     {
-        NativeMethods.TablePtr->hs_method_8a96aefe((void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_72d983b0((void*)registries.Handle);
     }
 
-    public static void initBiomeComponents(global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory arg0)
+    public static void initSurfaceBuilders(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
     {
-        NativeMethods.TablePtr->hs_method_6cf2562c((void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_bb1a7a1e((void*)registry.Handle, (void*)baseGameVersion.Handle);
     }
 
-    public static void initBiomeDimensionComponent(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg0)
+    public static void initVanillaBiomeTypeComponent(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry)
     {
-        NativeMethods.TablePtr->hs_method_4f2c93ac((void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_c455a24f((void*)registry.Handle);
     }
 
-    public static void initBiomes(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3)
+    public static nint mPlayerValidSpawns()
     {
-        NativeMethods.TablePtr->hs_method_6174a959((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_f1cef866();
     }
 
-    public static void initDefaultWorldGenComponents(global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg0)
+    public static nint mSpawnBiomeType()
     {
-        NativeMethods.TablePtr->hs_method_733f7179((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_fcc36cb6();
     }
 
-    public static void initSurfaceBuilders(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
+    public void Dispose()
     {
-        NativeMethods.TablePtr->hs_method_a0c2a832((void*)arg0.Handle, (void*)arg1.Handle);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_cb1c309b((void*)__hosihikari_shim_handle);
+            }
 
-    public static void initVanillaBiomeTypeComponent(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg0)
-    {
-        NativeMethods.TablePtr->hs_method_7e344da3((void*)arg0.Handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mPlayerValidSpawns_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5a219b64();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void shutdownBiomes()
-    {
-        NativeMethods.TablePtr->hs_method_8ed1d627();
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

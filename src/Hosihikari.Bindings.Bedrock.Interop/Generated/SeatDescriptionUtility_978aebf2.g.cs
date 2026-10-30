@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SeatDescriptionUtility
+public sealed unsafe partial class SeatDescriptionUtility : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SeatDescriptionUtility(nint handle) : this(handle, true) { }
 
     internal SeatDescriptionUtility(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SeatDescriptionUtility Borrow(nint handle) => new SeatDescriptionUtility(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,37 +33,30 @@ public sealed unsafe partial class SeatDescriptionUtility
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SeatDescriptionUtility Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SeatDescriptionUtility Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static nint getSeatDescriptionOfPassenger(nint arg0, nint arg1, nint arg2) =>
+    public static nint getSeatDescriptionOfPassenger(nint seats, int passengerCount, int passengerIndex) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static nint getSeatDescriptionOfPassenger(nint arg0, int arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    public static float getSeatRidingHeightOffset(float arg0, float arg1, float arg2)
+    public static void setValuesToSynchedActorData(global::Hosihikari.Bindings.Bedrock.Interop.ActorDataSeatOffsetComponent seatOffsetComponent, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataDirtyFlagsComponent dirtyFlagsComponent, global::Hosihikari.Bindings.Bedrock.Interop.SynchedActorDataWriter synchedActorData, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 offset, global::Hosihikari.Bindings.Bedrock.Interop.SeatDescription seat, float seatRotation)
     {
-        return NativeMethods.TablePtr->hs_method_767bb7ef(arg0, arg1, arg2);
+        NativeMethods.TablePtr->C3.hs_method_e7969da2((void*)seatOffsetComponent.Handle, (void*)dirtyFlagsComponent.Handle, (void*)synchedActorData.Handle, (void*)offset.Handle, (void*)seat.Handle, seatRotation);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_978aebf2((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static void setValuesToSynchedActorData(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, float arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

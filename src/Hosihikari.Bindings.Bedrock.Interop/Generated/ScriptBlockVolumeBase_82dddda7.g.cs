@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptBlockVolumeBase : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptBlockVolumeBase(nint handle) : this(handle, true) { }
 
     internal ScriptBlockVolumeBase(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptBlockVolumeBase Borrow(nint handle) => new ScriptBlockVolumeBase(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,85 +33,99 @@ public sealed unsafe partial class ScriptBlockVolumeBase : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptBlockVolumeBase Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _containsBlock(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptChunkValidator chunkValidator, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter filter)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_6c8bc4f3((void*)__hosihikari_shim_handle, (void*)chunkValidator.Handle, (void*)region.Handle, (void*)filter.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptBlockVolumeBase Create_006e36ec(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3[] _getFoundBlocks(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptChunkValidator chunkValidator, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter filter)
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_8e7ae996((void*)__hosihikari_shim_handle, (void*)chunkValidator.Handle, (void*)region.Handle, (void*)filter.Handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.Vec3>() : new global::Hosihikari.Bindings.Bedrock.Interop.Vec3[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ScriptBlockVolumeBase Create_4d8c4887(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptBlockVolumeBase>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptBlockVolumeBase>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_2400e71c());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEach(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    public bool containsBlock(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptChunkValidator chunkValidator, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter filter)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_f4bb8cce((void*)__hosihikari_shim_handle, (void*)chunkValidator.Handle, (void*)region.Handle, (void*)filter.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getBlockLocationIterator(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint createBlockLocationIterator() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<BoundingBox>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint getBlockLocationIterator(nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<BoundingBox>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getBoundingBox() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<BoundingBox>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<BoundingBox>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::set<ChunkPos,std::less<ChunkPos>,std::allocator<ChunkPos>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getChunks_9d169b86() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::set<ChunkPos,std::less<ChunkPos>,std::allocator<ChunkPos>>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Vec3>, Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getClosest(uint count, nint location) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Vec3>, Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getChunks_15eee64a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Vec3>, Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getFarthest(uint count, nint location) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::vector<Vec3>, Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3[] getFoundBlocks(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptChunkValidator chunkValidator, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockFilter filter)
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_fccc86f9((void*)__hosihikari_shim_handle, (void*)chunkValidator.Handle, (void*)region.Handle, (void*)filter.Handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.Vec3>() : new global::Hosihikari.Bindings.Bedrock.Interop.Vec3[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getMax() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Vec3>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Vec3>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getMin() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Vec3>' requires --link-carrier or --virtual-dispatch.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getSpan()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockVolumeBase_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_a6aa9b79((void*)_handle));
-    }
-
-    public bool isInside(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_e3a30ec2((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void translate(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
-    {
-        NativeMethods.TablePtr->hs_method_139c0f25((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_315be6f2((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_82dddda7((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_82dddda7((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

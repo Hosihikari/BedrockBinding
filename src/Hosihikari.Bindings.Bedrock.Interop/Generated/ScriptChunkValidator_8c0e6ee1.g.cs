@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptChunkValidator
+public sealed unsafe partial class ScriptChunkValidator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptChunkValidator(nint handle) : this(handle, true) { }
 
     internal ScriptChunkValidator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptChunkValidator Borrow(nint handle) => new ScriptChunkValidator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,70 @@ public sealed unsafe partial class ScriptChunkValidator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptChunkValidator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptChunkValidator Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptChunkValidator Create_b75c11fd(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptChunkValidator Create_5d05f218(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_call(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public ulong size()
+    public nint _ctor(nint chunkPositions, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        return NativeMethods.TablePtr->hs_method_d30a1342((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_cae0085f((void*)__hosihikari_shim_handle, (void*)chunkPositions, (void*)region.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_4872095d((void*)__hosihikari_shim_handle);
+    }
+
+    public static ScriptChunkValidator Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c7995e1f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptChunkValidator((nint)handle);
+    }
+
+    public static ScriptChunkValidator Create(nint chunkPositions, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_35f3df8d((void*)chunkPositions, (void*)region.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptChunkValidator((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPositions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4ace37f2((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMaxHeight
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_3c0283e4((void*)__hosihikari_shim_handle);
+    }
+
+    public int mMinHeight
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_c5af6f2f((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_8c0e6ee1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

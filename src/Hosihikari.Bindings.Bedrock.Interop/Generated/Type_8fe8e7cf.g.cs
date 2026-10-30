@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MapDecoration_Nested;
 
-public enum Type : int
+public enum Type : sbyte
 {
     MarkerWhite = 0,
     Player = 0,
@@ -36,5 +36,10 @@ public enum Type : int
     JungleTemple = 22,
     WitchHut = 23,
     TrialChambers = 24,
-    Count = 25,
+    AbandonedCamp = 25,
+    BuriedAncientCity = 26,
+    BuriedMineshaft = 27,
+    DesertPyramid = 28,
+    WarmOceanRuins = 29,
+    Count = 30,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.ClimateUtils;
 
 public sealed unsafe partial class Parameter : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Parameter(nint handle) : this(handle, true) { }
 
     internal Parameter(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Parameter Borrow(nint handle) => new Parameter(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,24 @@ public sealed unsafe partial class Parameter : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Parameter Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static Parameter Create(float arg0, float arg1)
+    public nint _ctor(nint min, nint max)
     {
-        var handle = NativeMethods.TablePtr->hs_create_7ceb8076(arg0, arg1);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_5db49eff((void*)__hosihikari_shim_handle, (void*)min, (void*)max);
+    }
+
+    public nint _ctor(float min, float max)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_882194ff((void*)__hosihikari_shim_handle, min, max);
+    }
+
+    public static Parameter Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_300abcf3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,9 +59,9 @@ public sealed unsafe partial class Parameter : global::System.IDisposable
         return new Parameter((nint)handle);
     }
 
-    public static Parameter Create(nint arg0, nint arg1)
+    public static Parameter Create(nint min, nint max)
     {
-        var handle = NativeMethods.TablePtr->hs_create_9de4d556((void*)arg0, (void*)arg1);
+        var handle = NativeMethods.TablePtr->C0.hs_create_151a6b5a((void*)min, (void*)max);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,33 +70,39 @@ public sealed unsafe partial class Parameter : global::System.IDisposable
         return new Parameter((nint)handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter fromParameters(global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg0, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg1)
+    public static Parameter Create(float min, float max)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_method_d2b0727d((void*)arg0.Handle, (void*)arg1.Handle));
+        var handle = NativeMethods.TablePtr->C0.hs_create_7ceb8076(min, max);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Parameter((nint)handle);
     }
 
     public long mMax
     {
-        get => NativeMethods.TablePtr->hs_get_07fba4be((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_07fba4be((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_07fba4be((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_07fba4be((void*)__hosihikari_shim_handle, value);
     }
 
     public long mMin
     {
-        get => NativeMethods.TablePtr->hs_get_e923be66((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_e923be66((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_e923be66((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_e923be66((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_3c139ac1((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_3c139ac1((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

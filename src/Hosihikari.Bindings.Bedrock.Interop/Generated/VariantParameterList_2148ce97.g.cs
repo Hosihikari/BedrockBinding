@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VariantParameterList
+public sealed unsafe partial class VariantParameterList : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VariantParameterList(nint handle) : this(handle, true) { }
 
     internal VariantParameterList(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VariantParameterList Borrow(nint handle) => new VariantParameterList(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,79 @@ public sealed unsafe partial class VariantParameterList
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VariantParameterList Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VariantParameterList Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool hasParameter(int arg0)
+    public nint mBaby
     {
-        return NativeMethods.TablePtr->hs_method_6b8ca177((void*)_handle, arg0) != 0;
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e4781208((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e4781208((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint mBlock
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_553ba925((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mDamager
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7e9eb47d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7e9eb47d((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mHolder
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3b189973((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_3b189973((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mOther
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_585f3b18((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_585f3b18((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mParent
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_766723cf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_766723cf((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mPlayer
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5113918d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5113918d((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mSelf
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d333e64a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d333e64a((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mTarget
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f6d5ca86((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f6d5ca86((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterListConst operator_VariantParameterListConst()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterListConst((nint)NativeMethods.TablePtr->C3.hs_method_b5717783((void*)__hosihikari_shim_handle));
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_2148ce97((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

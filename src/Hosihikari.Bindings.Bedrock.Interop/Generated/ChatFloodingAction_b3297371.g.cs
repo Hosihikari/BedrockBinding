@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Safety;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ChatFloodingAction : int
 {
+    None = -1,
+    Suppress = 0,
+    Kick = 1,
 }

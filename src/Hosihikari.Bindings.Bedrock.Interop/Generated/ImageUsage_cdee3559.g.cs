@@ -7,6 +7,6 @@ namespace Hosihikari.Bindings.Bedrock.Interop.mce;
 public enum ImageUsage : byte
 {
     Unknown = 0,
-    sRGB = 1,
+    SRGB = 1,
     Data = 2,
 }

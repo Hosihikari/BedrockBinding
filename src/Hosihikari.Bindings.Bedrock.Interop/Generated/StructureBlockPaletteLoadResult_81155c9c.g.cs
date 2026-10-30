@@ -4,7 +4,15 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum StructureBlockPaletteLoadResult : int
 {
+    Success = 0,
+    MissingBlockPaletteField = 1,
+    ExpectedCompoundTagInBlockList = 2,
+    MissingBlockPositionDataField = 3,
+    ExpectedNumberAsStringWhenParsingBlockPositionData = 4,
+    ExpectedCompoundForBlockPositionData = 5,
+    ExpectedCompoundTagForBlockEntityData = 6,
+    ExpectedListTagForTickQueueData = 7,
+    ExpectedCompoundTagInTickQueueData = 8,
 }

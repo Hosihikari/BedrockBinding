@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Explosion
+public sealed unsafe partial class Explosion : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Explosion(nint handle) : this(handle, true) { }
 
     internal Explosion(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Explosion Borrow(nint handle) => new Explosion(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,109 +33,165 @@ public sealed unsafe partial class Explosion
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Explosion Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Explosion Create(nint arg0, nint arg1, nint arg2, float arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Explosion Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void _addOrMergeItemStack_efebadf1(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getActorsInRange_ec89e7f1(nint optSource, float range) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void _spawnExtraResourcesAndMergeItemDropsForBlock_c4a1d9b2(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool explode()
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_46fc9329((void*)_handle) != 0;
+        NativeMethods.TablePtr->C1.hs_method_b4ca0296((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getPosition()
+    public static Explosion Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_91f31ef6((void*)_handle));
+        var handle = NativeMethods.TablePtr->C1.hs_create_4221cafa();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Explosion((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void overrideInWater(bool arg0)
+    public static Explosion Create(global::Hosihikari.Bindings.Bedrock.Interop.Explosion arg0)
     {
-        NativeMethods.TablePtr->hs_method_07c71c79((void*)_handle, arg0);
+        var handle = NativeMethods.TablePtr->C1.hs_create_6bd835ef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Explosion((nint)handle);
     }
 
-    public void setAllowUnderwater(bool arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::pair<ItemStack, BlockPos>' is not supported.", false)]
+    public static void _spawnExtraResourcesAndMergeItemDropsForBlock(nint region, nint blockPos, nint block, nint random, nint resourceDropsContext, nint itemStacks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::pair<ItemStack, BlockPos>' is not supported.");
+
+    public bool explode(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        NativeMethods.TablePtr->hs_method_5153e733((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C1.hs_method_b31e3e58((void*)__hosihikari_shim_handle, (void*)random.Handle) != 0;
     }
 
-    public void setBreaking(bool arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAffectedBlocks_Address
     {
-        NativeMethods.TablePtr->hs_method_6c831000((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8098e01f((void*)__hosihikari_shim_handle);
     }
 
-    public void setCanToggleBlocks(bool arg0)
+    public bool mAllowUnderwater
     {
-        NativeMethods.TablePtr->hs_method_27aff603((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_daca53fe((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_daca53fe((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Vec3 (*)(Explosion const&,Actor const&,float)' is not supported.", false)]
-    public void setCustomKnockbackCalculation(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Vec3 (*)(Explosion const&,Actor const&,float)' is not supported.");
-
-    public void setExplosionParticleType(short arg0)
+    public bool mBreaking
     {
-        NativeMethods.TablePtr->hs_method_d43d4958((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_32634d4f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_32634d4f((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setExplosionSound(int arg0)
+    public bool mCanToggleBlocks
     {
-        NativeMethods.TablePtr->hs_method_36dc994c((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_9fdd2d98((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_9fdd2d98((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setFire(bool arg0)
+    public float mDamageScaling
     {
-        NativeMethods.TablePtr->hs_method_84784552((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_984d217a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_984d217a((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setIgnoreBlockResistance(bool arg0)
+    public bool mFire
     {
-        NativeMethods.TablePtr->hs_method_c91b1c61((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_d359a7d2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_d359a7d2((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setKnockbackScaling(float arg0)
+    public bool mIgnoreBlockExplosionResistance
     {
-        NativeMethods.TablePtr->hs_method_e281b267((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_a5092f9d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_a5092f9d((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setMaxResistance(float arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInWaterOverride_Address
     {
-        NativeMethods.TablePtr->hs_method_1be82c7f((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_50c21efd((void*)__hosihikari_shim_handle);
     }
 
-    public void setShouldTakeDamage(bool arg0)
+    public float mKnockbackScaling
     {
-        NativeMethods.TablePtr->hs_method_e5cc2480((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_e760c4e4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e760c4e4((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_296e8d2f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public float mMaxResistance
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_52d68710((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_52d68710((void*)__hosihikari_shim_handle, value);
+    }
+
+    public short mParticleType
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_edce24fa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_edce24fa((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_57148fca((void*)__hosihikari_shim_handle);
+    }
+
+    public float mRadius
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_e89f4624((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e89f4624((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8aa1b2ff((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mSoundExplosionType
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_03d516e9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_03d516e9((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSourceID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_56919e6d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTotalDamageOverride_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7f87fd25((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Explosion operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Explosion arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Explosion((nint)NativeMethods.TablePtr->C1.hs_method_948367cb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_6ebbc289((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

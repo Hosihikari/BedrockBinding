@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CerealItemComponentFactory
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CerealItemComponentFactory(nint handle) : this(handle, true) { }
 
     internal CerealItemComponentFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CerealItemComponentFactory Borrow(nint handle) => new CerealItemComponentFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,18 @@ public sealed unsafe partial class CerealItemComponentFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CerealItemComponentFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static void addComponentMetadata(nint ctx, nint componentName, nint metadata, nint releasedMinFormatVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CerealItemComponentFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? constructItemComponent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? constructItemComponent(string name, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -58,51 +54,40 @@ public sealed unsafe partial class CerealItemComponentFactory
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_e912cc33(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            var __hs_shared = NativeMethods.TablePtr->C0.hs_method_0e5961dd(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)ctx.Handle);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void deprecateComponentStartingFromVersion(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getPropRegisteredComponents_8651a1c1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static void deprecateComponentStartingFromVersion(nint name, nint deprecatedVersion, nint ctx) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'SemVersion' is not supported.", false)]
-    public static nint getReleasedMinFormatVersionForAnyComponent(nint arg0) =>
+    public static nint getReleasedMinFormatVersionForAnyComponent(nint ctx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'SemVersion' is not supported.");
 
-    public static bool isComponentBasedItemSchema(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegisteredComponents_Address
     {
-        return NativeMethods.TablePtr->hs_method_6e740b1f((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_65806238((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static bool validateCerealComponent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg4)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mReleasedMinFormatVersionForAnyComponent_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_eb459a25(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle) != 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_dcc7712b((void*)__hosihikari_shim_handle);
     }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory setupContextInstanceIfRequired(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory((nint)NativeMethods.TablePtr->C0.hs_method_2ef56e69((void*)ctx.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static void updateReleasedMinFormatVersionForAnyComponentIfLower(nint instance, nint version) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 }

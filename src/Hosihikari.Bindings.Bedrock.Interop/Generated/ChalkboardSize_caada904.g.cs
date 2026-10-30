@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ChalkboardSize : int
+public enum ChalkboardSize : byte
 {
+    OnebyOne = 0,
+    TwobyOne = 1,
+    ThreebyTwo = 2,
+    Invalid = 3,
 }

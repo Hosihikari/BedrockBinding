@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SimplePositionalRandomFactory : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SimplePositionalRandomFactory(nint handle) : this(handle, true) { }
 
     internal SimplePositionalRandomFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SimplePositionalRandomFactory Borrow(nint handle) => new SimplePositionalRandomFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,26 @@ public sealed unsafe partial class SimplePositionalRandomFactory : global::Syste
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimplePositionalRandomFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.", false)]
+    public nint _forBlockPos(nint blockPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimplePositionalRandomFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.", false)]
+    public nint _forString(nint @string) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.");
 
-    public static SimplePositionalRandomFactory Create(long arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static SimplePositionalRandomFactory Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_ee4e67c1(arg0);
+        var handle = NativeMethods.TablePtr->C3.hs_create_84efc4e7();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,52 +61,46 @@ public sealed unsafe partial class SimplePositionalRandomFactory : global::Syste
         return new SimplePositionalRandomFactory((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.IRandom? forBlockPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public static SimplePositionalRandomFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.SimplePositionalRandomFactory arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_0a1a4d27((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)__hs_handle) : null;
+        var handle = NativeMethods.TablePtr->C3.hs_create_4e6d9b3c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SimplePositionalRandomFactory((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.SimpleRandom forBlockPosImpl(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.", false)]
+    public nint forBlockPos(nint blockPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.", false)]
+    public nint forString(nint @string) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk264730_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SimpleRandom((nint)NativeMethods.TablePtr->hs_method_d13b64f8((void*)_handle, (void*)arg0.Handle));
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6574285f((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.IRandom? forString(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SimplePositionalRandomFactory operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SimplePositionalRandomFactory arg0)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_af4a2dbb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)__hs_handle) : null;
-        }
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SimplePositionalRandomFactory((nint)NativeMethods.TablePtr->C3.hs_method_84ee2052((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_4d56935d((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_4d56935d((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

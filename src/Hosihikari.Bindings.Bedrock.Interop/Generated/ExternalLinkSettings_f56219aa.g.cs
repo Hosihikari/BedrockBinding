@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ExternalLinkSettings : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExternalLinkSettings(nint handle) : this(handle, true) { }
 
     internal ExternalLinkSettings(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExternalLinkSettings Borrow(nint handle) => new ExternalLinkSettings(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,46 +33,69 @@ public sealed unsafe partial class ExternalLinkSettings : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExternalLinkSettings Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExternalLinkSettings Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDisplayName_Address
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ExternalLinkSettings arg0)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3fd09f5b((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_318b7510((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public static ExternalLinkSettings Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b5b154be();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExternalLinkSettings((nint)handle);
+    }
+
+    public static ExternalLinkSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.ExternalLinkSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fba23c63((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExternalLinkSettings((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mUrl_Address
+    public nint displayName_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_132f10a9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cbf3451d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public global::Hosihikari.Bindings.Bedrock.Interop.ExternalLinkSettings operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ExternalLinkSettings arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ExternalLinkSettings((nint)NativeMethods.TablePtr->C1.hs_method_05a3e263((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint url_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_51776f40((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f56219aa((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_f56219aa((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

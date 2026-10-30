@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ExternalFileLevelStorageSource : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExternalFileLevelStorageSource(nint handle) : this(handle, true) { }
 
     internal ExternalFileLevelStorageSource(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExternalFileLevelStorageSource Borrow(nint handle) => new ExternalFileLevelStorageSource(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,44 +33,20 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f744c52b((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f744c52b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExternalFileLevelStorageSource Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExternalFileLevelStorageSource Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ExternalFileLevelStorageSource Create(nint arg0, nint arg1)
+    public bool _createBackupCopyOfWorld(string levelId, string newLeveId, string newName)
     {
-        var handle = NativeMethods.TablePtr->hs_create_5dd6e207((void*)arg0, (void*)arg1);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ExternalFileLevelStorageSource((nint)handle);
-    }
-
-    public void __autoclassinit2(ulong arg0)
-    {
-        NativeMethods.TablePtr->hs_method_36e2955d((void*)_handle, arg0);
-    }
-
-    public bool createBackupCopyOfWorld(string arg0, string arg1, string arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -80,8 +56,8 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(newLeveId);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -91,8 +67,8 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        global::System.Text.Encoding.UTF8.GetBytes(newLeveId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(newName);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -102,28 +78,113 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(newName, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    return NativeMethods.TablePtr->hs_method_2d3cc781((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2) != 0;
+                    return NativeMethods.TablePtr->C1.hs_method_74f80831((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2) != 0;
                 }
             }
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' has no accessible destructor.", false)]
-    public nint createLevelLooseStorage(nint arg0, nint arg1, nint arg2) =>
+    public nint _createLevelLooseStorage(nint levelId, nint contentIdentity, nint keyProvider) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelDbEnv>>' is not a known bindable declaration.", false)]
-    public nint createLevelStorage_df713fdf(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelDbEnv>>' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::UniqueOwnerPointer<LevelStorage>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _createLevelStorage(nint scheduler, nint levelId, nint contentIdentity, nint keyProvider, nint writeFlushInterval, nint levelDbEnv, nint levelStorageEventing, bool jigsawPersistenceToggle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::UniqueOwnerPointer<LevelStorage>' requires --link-carrier or --virtual-dispatch.");
 
-    public void deleteLevel(string arg0)
+    public nint _ctor(nint pathManager, nint saveTransactionManager)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_55469da9((void*)__hosihikari_shim_handle, (void*)pathManager, (void*)saveTransactionManager);
+    }
+
+    public void _deleteLevel(string levelId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_aab2ff1b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_f3b0ad73((void*)__hosihikari_shim_handle);
+    }
+
+    public string _getBasePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_e6c05945((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getLevelDatFoundPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_261fbd99((void*)__hosihikari_shim_handle, (void*)levelPath.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<LevelDataLoadResult>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getLevelData(nint levelId, nint levelDataOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<LevelDataLoadResult>' requires --link-carrier or --virtual-dispatch.");
+
+    public string _getLevelIdFromPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fullPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path worldsPath)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_4c57daa9((void*)__hosihikari_shim_handle, (void*)fullPath.Handle, (void*)worldsPath.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void _getLevelList(nint paths) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public string _getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_ee0d2fef((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string _getPathToLevel(string levelId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_b4d9e28c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'LevelInfoPath' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getPathToLevelInfo(nint levelId, bool arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'LevelInfoPath' requires --link-carrier or --virtual-dispatch.");
+
+    public bool _isBetaRetailLevel(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -138,43 +199,226 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_fd4a2032((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C1.hs_method_b772fee1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
+
+    public bool _isLevelMarkedForSync(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_53013ebb((void*)__hosihikari_shim_handle, (void*)levelPath.Handle) != 0;
+    }
+
+    public bool _isLevelPartiallyCopied(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a67fa7e3((void*)__hosihikari_shim_handle, (void*)levelPath.Handle) != 0;
+    }
+
+    public bool _renameLevel(string levelId, string newLevelName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(newLevelName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(newLevelName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                return NativeMethods.TablePtr->C1.hs_method_4790d1c0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            }
+        }
+    }
+
+    public void _renameLevel(global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelData, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fullPath, string newLevelName)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(newLevelName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(newLevelName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C1.hs_method_a1747cee((void*)__hosihikari_shim_handle, (void*)levelData.Handle, (void*)fullPath.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void _saveLevelData(string levelId, global::Hosihikari.Bindings.Bedrock.Interop.LevelData data)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_9eebfcd5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)data.Handle);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ExternalFileLevelStorageSource Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7c363118();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExternalFileLevelStorageSource((nint)handle);
+    }
+
+    public static ExternalFileLevelStorageSource Create(nint pathManager, nint saveTransactionManager)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9f365673((void*)pathManager, (void*)saveTransactionManager);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExternalFileLevelStorageSource((nint)handle);
+    }
+
+    public bool createBackupCopyOfWorld(string levelId, string newLeveId, string newName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(newLeveId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(newLeveId, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(newName);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(newName, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    return NativeMethods.TablePtr->C1.hs_method_5fff9ee2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2) != 0;
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' has no accessible destructor.", false)]
+    public nint createLevelLooseStorage(nint levelId, nint contentIdentity, nint keyProvider) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::UniqueOwnerPointer<LevelStorage>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint createLevelStorage(nint scheduler, nint levelId, nint contentIdentity, nint keyProvider, nint writeFlushInterval, nint levelDbEnv, nint levelStorageEventing, bool jigsawPersistenceToggle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::UniqueOwnerPointer<LevelStorage>' requires --link-carrier or --virtual-dispatch.");
+
+    public void deleteLevel(string levelId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_d1bad997((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public string getBasePath()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_fc5921b1((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_4c1b828c((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getLevelDatFoundPath(nint arg0)
+    public string getLevelDatFoundPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_4c8f96bf((void*)_handle, (void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_aeb9e53f((void*)__hosihikari_shim_handle, (void*)levelPath.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLevelData(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<LevelDataLoadResult>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getLevelData(nint levelId, nint levelDataOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<LevelDataLoadResult>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.", false)]
-    public void getLevelList_ea9e529c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.");
+    public string getLevelIdFromPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fullPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path worldsPath)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_650b3dcf((void*)__hosihikari_shim_handle, (void*)fullPath.Handle, (void*)worldsPath.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void getLevelList_f919cb17(nint paths) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void getLevelList(nint paths) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_95982f9b((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_e188b28d((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getPathToLevel(string arg0)
+    public string getPathToLevel(string levelId)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -184,33 +428,17 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_779282ce((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_ebedf768((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
-    public string getPathToLevelInfo(string arg0, bool arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_view = NativeMethods.TablePtr->hs_method_f0b269bb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'LevelInfoPath' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getPathToLevelInfo(nint levelId, bool arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'LevelInfoPath' requires --link-carrier or --virtual-dispatch.");
 
     public bool isBetaRetailLevel(string arg0)
     {
@@ -227,27 +455,35 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_e183b951((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_c031dfda((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public bool isLevelMarkedForSync(nint arg0)
+    public bool isLevelMarkedForSync(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
     {
-        return NativeMethods.TablePtr->hs_method_9219d733((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_467b61a2((void*)__hosihikari_shim_handle, (void*)levelPath.Handle) != 0;
     }
 
-    public bool isLevelPartiallyCopied(nint arg0)
+    public bool isLevelPartiallyCopied(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
     {
-        return NativeMethods.TablePtr->hs_method_d455873f((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_a6e8c757((void*)__hosihikari_shim_handle, (void*)levelPath.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool renameLevel(string arg0, string arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilePathManager_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5615a62e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSaveTransactionManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_992fa78a((void*)__hosihikari_shim_handle);
+    }
+
+    public bool renameLevel(string levelId, string newLevelName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -257,8 +493,8 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(newLevelName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -268,19 +504,19 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(newLevelName, __hs_stringBytes1);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return NativeMethods.TablePtr->hs_method_7054dfa6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+                return NativeMethods.TablePtr->C1.hs_method_1b217082((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
             }
         }
     }
 
-    public void renameLevel(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0, nint arg1, string arg2)
+    public void renameLevel(global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelData, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fullPath, string newLevelName)
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(newLevelName);
         scoped global::System.Span<byte> __hs_stringBytes2;
         if (__hs_stringByteCount2 <= 256)
         {
@@ -290,16 +526,16 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         {
             __hs_stringBytes2 = new byte[__hs_stringByteCount2];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        global::System.Text.Encoding.UTF8.GetBytes(newLevelName, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            NativeMethods.TablePtr->hs_method_e16c691d((void*)_handle, (void*)arg0.Handle, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            NativeMethods.TablePtr->C1.hs_method_4cfb5931((void*)__hosihikari_shim_handle, (void*)levelData.Handle, (void*)fullPath.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 
-    public void saveLevelData(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg1)
+    public void saveLevelData(string levelId, global::Hosihikari.Bindings.Bedrock.Interop.LevelData data)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -309,24 +545,24 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_8deb56e5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            NativeMethods.TablePtr->C1.hs_method_2eb28220((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)data.Handle);
         }
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_418faf69((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_418faf69((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

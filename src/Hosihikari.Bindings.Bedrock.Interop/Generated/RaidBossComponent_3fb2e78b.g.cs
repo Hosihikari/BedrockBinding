@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RaidBossComponent
+public sealed unsafe partial class RaidBossComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RaidBossComponent(nint handle) : this(handle, true) { }
 
     internal RaidBossComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RaidBossComponent Borrow(nint handle) => new RaidBossComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,134 +33,174 @@ public sealed unsafe partial class RaidBossComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RaidBossComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RaidBossComponent Create_294dedae(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RaidBossComponent Create_4e1f61d3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getColor()
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.RaidBossComponent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_404ab2d5((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_10294f29((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    public float getHealthPercent()
+    public static RaidBossComponent Create()
     {
-        return NativeMethods.TablePtr->hs_method_0841a5b5((void*)_handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_1d121499();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RaidBossComponent((nint)handle);
     }
 
-    public string getName()
+    public static RaidBossComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.RaidBossComponent arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ebfdf74b((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        var handle = NativeMethods.TablePtr->C2.hs_create_4e1f61d3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RaidBossComponent((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getOwnerUniqueID()
+    public void _broadcastBossEvent(byte type, global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_ba811360((void*)_handle));
+        NativeMethods.TablePtr->C2.hs_method_a3ec7dd5((void*)__hosihikari_shim_handle, type, (void*)owner.Handle);
     }
 
-    public bool getRaidInProgress()
+    public void _handleRegisterPlayers(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_2b52cbe7((void*)_handle) != 0;
+        NativeMethods.TablePtr->C2.hs_method_664ea990((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getVillage()
+    public void _sendBossEvent(byte type, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_9e2ac58b((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        NativeMethods.TablePtr->C2.hs_method_3a9e0106((void*)__hosihikari_shim_handle, type, (void*)player.Handle);
     }
 
-    public bool getWaveStarted()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString getName()
     {
-        return NativeMethods.TablePtr->hs_method_6573c89a((void*)_handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString((nint)NativeMethods.TablePtr->C2.hs_method_a734c376((void*)__hosihikari_shim_handle));
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    public bool isWithinRange(global::Hosihikari.Bindings.Bedrock.Interop.Mob player)
     {
-        NativeMethods.TablePtr->hs_method_5eeed5a4((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_e7c5cbe1((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
     }
 
-    public bool isWithinRange(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBossBarVisibleBounds_Address
     {
-        return NativeMethods.TablePtr->hs_method_a35d1842((void*)_handle, (void*)arg0.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9eed8bf9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_2aa22d15(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_142db2f6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0)
+    public bool mHealthBarVisible
     {
-        NativeMethods.TablePtr->hs_method_23ad4cdb((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        get => NativeMethods.TablePtr->C2.hs_get_c4d02ecc((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_c4d02ecc((void*)__hosihikari_shim_handle, value);
     }
 
-    public void removeBossBar(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public float mHealthPercent
     {
-        NativeMethods.TablePtr->hs_method_74870c88((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_f90a3d13((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f90a3d13((void*)__hosihikari_shim_handle, value);
     }
 
-    public void resendRaidBossEventData(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastPlayerUpdate_Address
     {
-        NativeMethods.TablePtr->hs_method_21e08e3e((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1a8ccafe((void*)__hosihikari_shim_handle);
     }
 
-    public void sendRegistryMessages(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
     {
-        NativeMethods.TablePtr->hs_method_044c284b((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4ef1ebd4((void*)__hosihikari_shim_handle);
     }
 
-    public void setVillage(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnerID_Address
     {
-        NativeMethods.TablePtr->hs_method_f5e34454((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f5819eec((void*)__hosihikari_shim_handle);
     }
 
-    public void setWaveStarted(bool arg0)
+    public int mPlayersRegistered
     {
-        NativeMethods.TablePtr->hs_method_c008b6d2((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_c304b036((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c304b036((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setupBossBarInfo(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Village? arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProgress_Address
     {
-        NativeMethods.TablePtr->hs_method_a7206091((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_528ca824((void*)__hosihikari_shim_handle);
     }
 
-    public bool tryRemoveBoss(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
+    public bool mRaidInProgress
     {
-        return NativeMethods.TablePtr->hs_method_5bf7949f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_202ee24d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_202ee24d((void*)__hosihikari_shim_handle, value);
     }
 
-    public void unRegisterPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVillage_Address
     {
-        NativeMethods.TablePtr->hs_method_31badfa2((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0bd5ceb8((void*)__hosihikari_shim_handle);
     }
 
-    public void updateBossBarStats(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Raid arg1)
+    public bool mWaveStarted
     {
-        NativeMethods.TablePtr->hs_method_eb241f0d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_9ca10407((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_9ca10407((void*)__hosihikari_shim_handle, value);
     }
 
-    public void updateHealthBarVisible(bool arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.RaidBossComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RaidBossComponent arg0)
     {
-        NativeMethods.TablePtr->hs_method_22b830c0((void*)_handle, arg0, (void*)arg1.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RaidBossComponent((nint)NativeMethods.TablePtr->C2.hs_method_142db2f6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f7aa27f1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void registerPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_13e2f3be((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
+    }
+
+    public void resendRaidBossEventData(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_06982e34((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public void sendRegistryMessages(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
+    {
+        NativeMethods.TablePtr->C2.hs_method_001e9e55((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
+
+    public bool tryRemoveBoss(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_7f939d6e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle) != 0;
+    }
+
+    public void unRegisterPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_07fb21ae((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0));
+    }
+
+    public void updateHealthBarVisible(bool visible, global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d84090b5((void*)__hosihikari_shim_handle, visible, (void*)owner.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_3fb2e78b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

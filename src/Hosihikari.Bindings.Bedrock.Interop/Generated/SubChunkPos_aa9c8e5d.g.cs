@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SubChunkPos
+public sealed unsafe partial class SubChunkPos : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SubChunkPos(nint handle) : this(handle, true) { }
 
     internal SubChunkPos(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SubChunkPos Borrow(nint handle) => new SubChunkPos(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,90 +33,95 @@ public sealed unsafe partial class SubChunkPos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos MAX
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos MAX()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->hs_get_62d67819(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->C3.hs_method_98f2f99c(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos MIN
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos MIN()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->hs_get_4c9742dc(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->C3.hs_method_cf22cbd8(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos ONE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos ONE()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->hs_get_e11b9d47(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->C3.hs_method_1b4ef948(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SubChunkPos Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos ZERO
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos ZERO()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->hs_get_56a4be86(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->C3.hs_method_57491d66(), false);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_BlockPos() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int b
     {
-        get => NativeMethods.TablePtr->hs_get_a2e62291((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_a2e62291((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_a2e62291((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a2e62291((void*)__hosihikari_shim_handle, value);
     }
 
     public int g
     {
-        get => NativeMethods.TablePtr->hs_get_ada6c1c0((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ada6c1c0((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ada6c1c0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ada6c1c0((void*)__hosihikari_shim_handle, value);
     }
 
     public int p
     {
-        get => NativeMethods.TablePtr->hs_get_1091ea59((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1091ea59((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_1091ea59((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_1091ea59((void*)__hosihikari_shim_handle, value);
     }
 
     public int r
     {
-        get => NativeMethods.TablePtr->hs_get_200b321e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_200b321e((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_200b321e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_200b321e((void*)__hosihikari_shim_handle, value);
     }
 
     public int s
     {
-        get => NativeMethods.TablePtr->hs_get_b4943475((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b4943475((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_b4943475((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b4943475((void*)__hosihikari_shim_handle, value);
     }
 
     public int t
     {
-        get => NativeMethods.TablePtr->hs_get_40d79320((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_40d79320((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_40d79320((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_40d79320((void*)__hosihikari_shim_handle, value);
     }
 
     public int x
     {
-        get => NativeMethods.TablePtr->hs_get_b8c85e34((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b8c85e34((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_b8c85e34((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b8c85e34((void*)__hosihikari_shim_handle, value);
     }
 
     public int y
     {
-        get => NativeMethods.TablePtr->hs_get_ceec7638((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ceec7638((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ceec7638((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ceec7638((void*)__hosihikari_shim_handle, value);
     }
 
     public int z
     {
-        get => NativeMethods.TablePtr->hs_get_159e3d3f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_159e3d3f((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_159e3d3f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_159e3d3f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_aa9c8e5d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

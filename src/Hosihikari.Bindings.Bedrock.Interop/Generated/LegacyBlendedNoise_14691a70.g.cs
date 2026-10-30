@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LegacyBlendedNoise
+public sealed unsafe partial class LegacyBlendedNoise : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LegacyBlendedNoise(nint handle) : this(handle, true) { }
 
     internal LegacyBlendedNoise(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LegacyBlendedNoise Borrow(nint handle) => new LegacyBlendedNoise(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,66 @@ public sealed partial class LegacyBlendedNoise
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyBlendedNoise Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_885e9031((void*)__hosihikari_shim_handle, (void*)random.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyBlendedNoise Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LegacyBlendedNoise Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_209fc315();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'LegacyBlendedNoise' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint make(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'LegacyBlendedNoise' requires --link-carrier or --virtual-dispatch.");
+        return new LegacyBlendedNoise((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static LegacyBlendedNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ee496373((void*)random.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_45f5574f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new LegacyBlendedNoise((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mainNoise_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_02d69f5d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint maxLimitNoise_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b7e6eb99((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint minLimitNoise_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d4ba008f((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_14691a70((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

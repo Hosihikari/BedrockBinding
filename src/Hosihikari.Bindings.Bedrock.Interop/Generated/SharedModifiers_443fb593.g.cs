@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SharedModifiers
+public sealed unsafe partial class SharedModifiers : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SharedModifiers(nint handle) : this(handle, true) { }
 
     internal SharedModifiers(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SharedModifiers Borrow(nint handle) => new SharedModifiers(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,56 +33,51 @@ public sealed unsafe partial class SharedModifiers
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DAMAGE_BOOST_Address
+    public static nint DAMAGE_BOOST()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_14d7e40b();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_783b472d();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint HEALTH_BOOST_Address
+    public static nint HEALTH_BOOST()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d398200e();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_d2708fa3();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint MOVEMENT_SLOWDOWN_Address
+    public static nint MOVEMENT_SLOWDOWN()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_84e8660e();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_fd13bac5();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint MOVEMENT_SPEED_Address
+    public static nint MOVEMENT_SPEED()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fc13fb7f();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_0310f9c2();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SPRINTING_BOOST_Address
+    public static nint SPRINTING_BOOST()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_72840456();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_78a9d0fc();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SharedModifiers Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SharedModifiers Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint WEAKNESS_Address
+    public static nint WEAKNESS()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d9e59b4e();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_38fb6799();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_443fb593((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

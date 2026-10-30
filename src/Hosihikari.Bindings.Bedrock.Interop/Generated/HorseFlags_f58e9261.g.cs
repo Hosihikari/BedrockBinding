@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum HorseFlags : int
 {
+    Saddle = 4,
+    Eating = 32,
+    Standing = 64,
+    OpenMouth = 128,
 }

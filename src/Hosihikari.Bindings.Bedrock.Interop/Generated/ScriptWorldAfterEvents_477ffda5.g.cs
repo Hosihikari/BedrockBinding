@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
 public sealed unsafe partial class ScriptWorldAfterEvents : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptWorldAfterEvents(nint handle) : this(handle, true) { }
 
     internal ScriptWorldAfterEvents(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptWorldAfterEvents Borrow(nint handle) => new ScriptWorldAfterEvents(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,373 @@ public sealed unsafe partial class ScriptWorldAfterEvents : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptWorldAfterEvents Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public nint _ctor(nint scope, nint level, nint locator, nint config, nint serverModuleVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    public static ScriptWorldAfterEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.WeakLifetimeScope arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level? arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Level _getLevel()
     {
-        var handle = NativeMethods.TablePtr->hs_create_bd9cb17a((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->C3.hs_method_dc9a79b3((void*)__hosihikari_shim_handle), false);
+    }
+
+    public void _onActivateLever(global::Hosihikari.Bindings.Abi.SharedHandle? leverEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_3748fbe1((void*)__hosihikari_shim_handle, leverEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActivatePiston(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ec357367((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorAddEffect(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4b6abad9((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorContainerClosed(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_60767841((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorContainerOpened(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_24be035c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorDie(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_730c7ac5((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorHeal(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bf01c2a3((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorHealthChanged(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c94174d9((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorHitBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a26cf2b9((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorHitEntity(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1ef49f4a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorHurt(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0525fe4e((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorItemDrop(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_7b390b31((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorItemPickup(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_973e88ef((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorLoad(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8601fe81((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorRemoved(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4644ecd6((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorSpawn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_7c6fa4a7((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorStartSneaking(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_69e27fb5((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorStopSneaking(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ce732260((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorTamed(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_47de1b72((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onActorUpgrade(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8d74f8a9((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onBlockContainerClosed(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_828293a6((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onBlockContainerOpened(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ce882eba((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onChat(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_33ddcbd0((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onDataDrivenActorEventSend(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f0ddcf6c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onExplodeBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5c0b1f62((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onExplosion(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_32399d5f((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onGameRuleChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4cecb5f7((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onHitTargetBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9076d484((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemCompleteUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_17156415((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemReleaseUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5f3bcf61((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemStartUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_fa164e94((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemStartUseOn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c476c887((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemStopUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_47269322((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemStopUseOn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_fc8535ec((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9ab90bb4((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onItemUseOn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1c0c5889((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPackSettingChange(global::Hosihikari.Bindings.Abi.SharedHandle? packSettingChangeEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_16fa5d5c((void*)__hosihikari_shim_handle, packSettingChangeEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerBreakBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_6e6de6c0((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerButtonInput(global::Hosihikari.Bindings.Abi.SharedHandle? inputEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f8f96710((void*)__hosihikari_shim_handle, inputEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerCancelBreakingBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_df8dbf8d((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerDimensionChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b68c1539((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerEmote(global::Hosihikari.Bindings.Abi.SharedHandle? emoteEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ca120ee1((void*)__hosihikari_shim_handle, emoteEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerGameModeChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_fce87bbd((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerHotbarSelectedSlotChange(global::Hosihikari.Bindings.Abi.SharedHandle? hotbarEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_eb2d1b19((void*)__hosihikari_shim_handle, hotbarEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerInputModeChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9c46b2cf((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerInputPermissionCategoryChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c32b2171((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerInteractWithBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c8f5639a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerInteractWithEntity(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_969beb44((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerInventoryItemChange(global::Hosihikari.Bindings.Abi.SharedHandle? inventoryEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c14f5be3((void*)__hosihikari_shim_handle, inventoryEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerJoin(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_3e9ab7ce((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerLeave(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9b8545b1((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerPlaceBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_2b906872((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerSpawn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f5b500c8((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerStartBreakingBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_619f7a50((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerSwingStart(global::Hosihikari.Bindings.Abi.SharedHandle? playerSwingStartEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_41d3a597((void*)__hosihikari_shim_handle, playerSwingStartEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPlayerUseNameTag(global::Hosihikari.Bindings.Abi.SharedHandle? useNameTagEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4d7d032c((void*)__hosihikari_shim_handle, useNameTagEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPopPressurePlate(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_93c1eb0c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onProjectileHitBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bd962080((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onProjectileHitEntity(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_7a826a49((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPushButton(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5cb3f0db((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onPushPressurePlate(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_789aba38((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onServerMessage(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4ee97e67((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onSoundCompleted(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_24de54c6((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onTripTripWire(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_44031d2a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onWeatherChanged(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9aba170f((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onWorldClockPaused(global::Hosihikari.Bindings.Abi.SharedHandle? clockPausedEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_6580ff14((void*)__hosihikari_shim_handle, clockPausedEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onWorldClockResumed(global::Hosihikari.Bindings.Abi.SharedHandle? clockResumedEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_50226e8d((void*)__hosihikari_shim_handle, clockResumedEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onWorldClockTimeMarker(global::Hosihikari.Bindings.Abi.SharedHandle? clockTimeMarkerEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_2438103b((void*)__hosihikari_shim_handle, clockTimeMarkerEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onWorldClockTimeModified(global::Hosihikari.Bindings.Abi.SharedHandle? clockTimeModifiedEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_de437929((void*)__hosihikari_shim_handle, clockTimeModifiedEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void _onWorldInitialize(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ac05aa41((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public static ScriptWorldAfterEvents Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7239fd9c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,279 +408,461 @@ public sealed unsafe partial class ScriptWorldAfterEvents : global::System.IDisp
         return new ScriptWorldAfterEvents((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptWorldAfterEvents Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static ScriptWorldAfterEvents Create(nint scope, nint level, nint locator, nint config, nint serverModuleVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleBindingBuilder arg0)
+    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder moduleBuilder)
     {
-        NativeMethods.TablePtr->hs_method_5767b219((void*)arg0.Handle);
+        NativeMethods.TablePtr->C3.hs_method_3834f40d((void*)moduleBuilder.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint bindingName
+    public static void generateOrderDocumentationForVersion(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleDescriptor moduleToDocumentFor, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value eventOrderArray)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        NativeMethods.TablePtr->C3.hs_method_4cee2e7d((void*)moduleToDocumentFor.Handle, (void*)eventOrderArray.Handle);
     }
 
-    public static void generateOrderDocumentationForVersion(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
-    {
-        NativeMethods.TablePtr->hs_method_551af5f3((void*)arg0.Handle, (void*)arg1.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptWorldAfterEvents::SignalNameSubscriberCount' is not supported.", false)]
+    public nint getFineGrainedSignalSubscriberStats() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptWorldAfterEvents::SignalNameSubscriberCount' is not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Level getLevel()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->hs_method_dbec867b((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->C3.hs_method_b6359e09((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mMetadata
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorItemDropEventDataMap_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b90878d8((void*)__hosihikari_shim_handle);
     }
 
-    public void onActivateLever(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActorItemPickupEventDataMap_Address
     {
-        NativeMethods.TablePtr->hs_method_e2fbc4f9((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a5ec974d((void*)__hosihikari_shim_handle);
     }
 
-    public void onActivatePiston(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEvents_Address
     {
-        NativeMethods.TablePtr->hs_method_9d35bba8((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4e05bc6f((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorAddEffect(nint arg0)
+    public nint mGlobalEventListeners
     {
-        NativeMethods.TablePtr->hs_method_19fef46d((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a421e7a9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a421e7a9((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    public void onActorDie(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevel_Address
     {
-        NativeMethods.TablePtr->hs_method_c2621b71((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_96800037((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorHealthChanged(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnActorEntityAdded_Address
     {
-        NativeMethods.TablePtr->hs_method_a3c64730((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f1db07d3((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorHitBlock(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnPackSettingChange_Address
     {
-        NativeMethods.TablePtr->hs_method_4d63b956((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d0301515((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorHitEntity(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnTrackedSoundCompleted_Address
     {
-        NativeMethods.TablePtr->hs_method_9a03573d((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3fc8f6a3((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorHurt(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
     {
-        NativeMethods.TablePtr->hs_method_c04bc61a((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c2405a1d((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorLoad(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptDeferredEventListener_Address
     {
-        NativeMethods.TablePtr->hs_method_b890ee32((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0354be04((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorRemoved(nint arg0, nint arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mServerModuleVersion_Address
     {
-        NativeMethods.TablePtr->hs_method_266233d9((void*)_handle, (void*)arg0, (void*)arg1);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fae03135((void*)__hosihikari_shim_handle);
     }
 
-    public void onActorSpawn(nint arg0)
+    public void onActivateLever(global::Hosihikari.Bindings.Abi.SharedHandle? leverEvent)
     {
-        NativeMethods.TablePtr->hs_method_50f965fb((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_535d8193((void*)__hosihikari_shim_handle, leverEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onChat(nint arg0)
+    public void onActivatePiston(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_0be473bf((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_f9be6f5a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onDataDrivenActorEventSend(nint arg0)
+    public void onActorAddEffect(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_c6ace932((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_5c11936a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onExplodeBlock(nint arg0)
+    public void onActorContainerClosed(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_d512a233((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_e0dd39cd((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onExplosion(nint arg0)
+    public void onActorContainerOpened(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_c3097357((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_bfac7dcb((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onGameRuleChange(nint arg0)
+    public void onActorDie(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_93ea1b8d((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_9729d85d((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onHitTargetBlock(nint arg0)
+    public void onActorHeal(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_8b3f2e63((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_20ab274f((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemCompleteUse(nint arg0)
+    public void onActorHealthChanged(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_3c9a7195((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_b1885d13((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemReleaseUse(nint arg0)
+    public void onActorHitBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_177ef239((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_01df6584((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemStartUse(nint arg0)
+    public void onActorHitEntity(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_6d354491((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_45d03a1a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemStartUseOn(nint arg0)
+    public void onActorHurt(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_7e730658((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_c074b2d6((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemStopUse(nint arg0)
+    public void onActorItemDrop(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_c6a15a72((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_21b5139c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemStopUseOn(nint arg0)
+    public void onActorItemPickup(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_57f9de13((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_cdb9a837((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemUse(nint arg0)
+    public void onActorLoad(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_15b214fc((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_a05083e4((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onItemUseOn(nint arg0)
+    public void onActorRemoved(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_16a0d551((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_6d93dcc0((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerBreakBlock(nint arg0)
+    public void onActorSpawn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_16f268ae((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_9b64d98a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerDimensionChange(nint arg0)
+    public void onActorStartSneaking(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_e5126249((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_3619be43((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerGameModeChange(nint arg0)
+    public void onActorStopSneaking(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_939c8554((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_cf9de204((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerInputPermissionCategoryChange(nint arg0)
+    public void onActorTamed(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_026cb1f4((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_929572b7((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerInteractWithBlock(nint arg0)
+    public void onActorUpgrade(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_f2fe33de((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_0992d7ef((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerInteractWithEntity(nint arg0)
+    public void onBlockContainerClosed(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_e2be5b9a((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_4a10ac4a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerJoin(nint arg0)
+    public void onBlockContainerOpened(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_4c010cb8((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_b894e062((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerLeave(nint arg0)
+    public void onChat(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_d20d7dc6((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_f3cfb9d8((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerPlaceBlock(nint arg0)
+    public void onDataDrivenActorEventSend(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_f758bb36((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_7cc4450d((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPlayerSpawn(nint arg0)
+    public void onExplodeBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_435773e3((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_beb67585((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPopPressurePlate(nint arg0)
+    public void onExplosion(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_90095131((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_4055a34e((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onProjectileHitBlock(nint arg0)
+    public void onGameRuleChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_0b44a1e5((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_850da1b8((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onProjectileHitEntity(nint arg0)
+    public void onHitTargetBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_30b101e1((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_09381231((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPushButton(nint arg0)
+    public void onItemCompleteUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_3a8fb1ba((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_337453b5((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onPushPressurePlate(nint arg0)
+    public void onItemReleaseUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_f363e2a3((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_948734bb((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onServerMessage(nint arg0)
+    public void onItemStartUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_8f065645((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_dedc40ab((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onTripTripWire(nint arg0)
+    public void onItemStartUseOn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_b50d10fb((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_1ac0c299((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onWeatherChanged(nint arg0)
+    public void onItemStopUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_7f98d5f0((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_de194a0c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void onWorldInitialize(nint arg0)
+    public void onItemStopUseOn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_3c238b3b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C3.hs_method_e5cbc94c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerListeners(bool arg0)
+    public void onItemUse(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
     {
-        NativeMethods.TablePtr->hs_method_8cbb9608((void*)_handle, arg0);
+        NativeMethods.TablePtr->C3.hs_method_b3530013((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onItemUseOn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_60b0b87f((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPackSettingChange(global::Hosihikari.Bindings.Abi.SharedHandle? packSettingChangeEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9b9daf0c((void*)__hosihikari_shim_handle, packSettingChangeEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerBreakBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4b1f36c7((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerButtonInput(global::Hosihikari.Bindings.Abi.SharedHandle? inputEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_24792e9c((void*)__hosihikari_shim_handle, inputEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerCancelBreakingBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8a78de86((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerDimensionChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4150f44b((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerEmote(global::Hosihikari.Bindings.Abi.SharedHandle? emoteEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1859c783((void*)__hosihikari_shim_handle, emoteEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerGameModeChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c10c8feb((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerHotbarSelectedSlotChange(global::Hosihikari.Bindings.Abi.SharedHandle? hotbarEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_3cbcba8c((void*)__hosihikari_shim_handle, hotbarEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerInputModeChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a3fed76b((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerInputPermissionCategoryChange(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_e49e396a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerInteractWithBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c3af5ecd((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerInteractWithEntity(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f3aed950((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerInventoryItemChange(global::Hosihikari.Bindings.Abi.SharedHandle? inventoryEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_22d3b99b((void*)__hosihikari_shim_handle, inventoryEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerJoin(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bdcd6ffc((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerLeave(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8fc76f02((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerPlaceBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_019af2ec((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerSpawn(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c8f8fef1((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerStartBreakingBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a77fd1b8((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerSwingStart(global::Hosihikari.Bindings.Abi.SharedHandle? playerSwingStartEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ddfe4620((void*)__hosihikari_shim_handle, playerSwingStartEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPlayerUseNameTag(global::Hosihikari.Bindings.Abi.SharedHandle? useNameTagEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4e1b454b((void*)__hosihikari_shim_handle, useNameTagEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPopPressurePlate(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8cc2f43a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onProjectileHitBlock(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_79fd8eca((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onProjectileHitEntity(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ba96d9d9((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPushButton(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_62870cd1((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onPushPressurePlate(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_04b81365((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onServerMessage(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_574a6a6b((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onSoundCompleted(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d147697a((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onTripTripWire(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b525a53c((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onWeatherChanged(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_3bc77d33((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onWorldClockPaused(global::Hosihikari.Bindings.Abi.SharedHandle? clockPausedEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5f835443((void*)__hosihikari_shim_handle, clockPausedEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onWorldClockResumed(global::Hosihikari.Bindings.Abi.SharedHandle? clockResumedEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_0406013b((void*)__hosihikari_shim_handle, clockResumedEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onWorldClockTimeMarker(global::Hosihikari.Bindings.Abi.SharedHandle? clockTimeMarkerEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5933c0fe((void*)__hosihikari_shim_handle, clockTimeMarkerEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onWorldClockTimeModified(global::Hosihikari.Bindings.Abi.SharedHandle? clockTimeModifiedEvent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_12969a57((void*)__hosihikari_shim_handle, clockTimeModifiedEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onWorldInitialize(global::Hosihikari.Bindings.Abi.SharedHandle? eventData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_8397f5eb((void*)__hosihikari_shim_handle, eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void registerListeners(nint globalEventListeners)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bfe8d5da((void*)__hosihikari_shim_handle, (void*)globalEventListeners);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_477ffda5((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_477ffda5((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

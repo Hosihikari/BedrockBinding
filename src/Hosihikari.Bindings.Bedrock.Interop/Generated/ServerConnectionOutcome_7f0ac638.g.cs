@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IConnectionEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ServerConnectionOutcome : int
 {
+    Success = 0,
+    Failed = 1,
+    FailedUserOffline = 2,
+    FailedServerFull = 3,
+    FailedServerOffline = 4,
 }

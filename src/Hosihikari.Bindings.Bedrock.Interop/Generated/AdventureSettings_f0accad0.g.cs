@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AdventureSettings : global::System.IDisposable
+public sealed unsafe partial class AdventureSettings
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AdventureSettings(nint handle) : this(handle, true) { }
 
     internal AdventureSettings(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AdventureSettings Borrow(nint handle) => new AdventureSettings(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,62 +33,38 @@ public sealed unsafe partial class AdventureSettings : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static AdventureSettings Create()
+    public bool autoJump
     {
-        var handle = NativeMethods.TablePtr->hs_create_95dde228();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new AdventureSettings((nint)handle);
+        get => NativeMethods.TablePtr->C0.hs_get_ed11744d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_ed11744d((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool mAutoJump
+    public bool immutableWorld
     {
-        get => NativeMethods.TablePtr->hs_get_eadf0bac((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_eadf0bac((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_631d0389((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_631d0389((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool mImmutableWorld
+    public bool noMvP
     {
-        get => NativeMethods.TablePtr->hs_get_433fa228((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_433fa228((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_955d2ab2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_955d2ab2((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool mNoMvP
+    public bool noPvM
     {
-        get => NativeMethods.TablePtr->hs_get_86c269db((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_86c269db((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_3564231b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_3564231b((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool mNoPvM
+    public bool showNameTags
     {
-        get => NativeMethods.TablePtr->hs_get_cf9112d4((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_cf9112d4((void*)_handle, value);
-    }
-
-    public bool mShowNameTags
-    {
-        get => NativeMethods.TablePtr->hs_get_0c0615a3((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_0c0615a3((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_f0accad0((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C0.hs_get_70f179e9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_70f179e9((void*)__hosihikari_shim_handle, value);
     }
 }

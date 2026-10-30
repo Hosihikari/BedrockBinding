@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MovementInterpolatorSystemImpl
+public sealed unsafe partial class MovementInterpolatorSystemImpl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MovementInterpolatorSystemImpl(nint handle) : this(handle, true) { }
 
     internal MovementInterpolatorSystemImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MovementInterpolatorSystemImpl Borrow(nint handle) => new MovementInterpolatorSystemImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,30 @@ public sealed unsafe partial class MovementInterpolatorSystemImpl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MovementInterpolatorSystemImpl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MovementInterpolatorSystemImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void _onGroundPostTick(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.MovementInterpolatorComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg2)
+    public static void _onGroundPostTick(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.MovementInterpolatorComponent movementInterpolatorComponent, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent)
     {
-        NativeMethods.TablePtr->hs_method_7ba1e470((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_d7c87aaf((void*)arg0.Handle, (void*)movementInterpolatorComponent.Handle, (void*)stateVectorComponent.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Vec3,float>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint _tickPosition(nint arg0, nint arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<Vec3,float>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Vec2, Vec2>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint _tickRotation(nint movementInterpolatorComponent, nint actorCurrentRotation, nint actorPreviousRotation) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<Vec2, Vec2>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Vec2,Vec2>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint _tickRotation(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<Vec2,Vec2>' requires --link-carrier or --virtual-dispatch.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_bed64000((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

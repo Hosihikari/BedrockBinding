@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScheduleCommand_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class FunctionInfo
+public sealed unsafe partial class FunctionInfo
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FunctionInfo(nint handle) : this(handle, true) { }
 
     internal FunctionInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FunctionInfo Borrow(nint handle) => new FunctionInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,26 @@ public sealed partial class FunctionInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint mFunctionEntry
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3ed4da4f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3ed4da4f((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public bool mIsValid
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d8f182a9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_d8f182a9((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResolvedPath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d0f42c82((void*)__hosihikari_shim_handle);
     }
 }

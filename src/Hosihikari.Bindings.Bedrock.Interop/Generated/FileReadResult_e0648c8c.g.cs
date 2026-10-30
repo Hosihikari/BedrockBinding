@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum FileReadResult : int
 {
+    Success = 0,
+    FailedToOpenFile = 1,
+    Malformed = 2,
 }

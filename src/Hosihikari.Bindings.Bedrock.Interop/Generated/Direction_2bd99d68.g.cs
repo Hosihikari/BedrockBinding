@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Direction
+public sealed unsafe partial class Direction : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Direction(nint handle) : this(handle, true) { }
 
     internal Direction(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Direction Borrow(nint handle) => new Direction(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,96 +33,58 @@ public sealed unsafe partial class Direction
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DIRECTION_CLOCKWISE_Address
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const Direction::Type (&)[]' is not supported.", false)]
+    public static nint DIRECTION_COUNTER_CLOCKWISE() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const Direction::Type (&)[]' is not supported.");
+
+    public static nint DIRECTION_FACING()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_33cdbcca();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_cac4a8a7();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DIRECTION_COUNTER_CLOCKWISE_Address
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const Direction::Type (&)[]' is not supported.", false)]
+    public static nint DIRECTION_OPPOSITE() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const Direction::Type (&)[]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const Direction::Type (&)[]' is not supported.", false)]
+    public static nint FACING_DIRECTION() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const Direction::Type (&)[]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public static nint FROM_STRING_MAP() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'unsigned char (&)[][6]' is not supported.", false)]
+    public static nint RELATIVE_DIRECTION_FACING() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'unsigned char (&)[][6]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const int (&)[]' is not supported.", false)]
+    public static nint STEP_X() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const int (&)[]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'const int (&)[]' is not supported.", false)]
+    public static nint STEP_Z() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const int (&)[]' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public static nint TO_STRING_MAP() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+
+    public void Dispose()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_64898281();
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_2bd99d68((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DIRECTION_FACING_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d3a370a5();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DIRECTION_OPPOSITE_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_247ce020();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Direction Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Direction Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint FACING_DIRECTION_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1558aa50();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint FROM_STRING_MAP_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_38a20f38();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint STEP_X_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_29182a39();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint STEP_Z_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a7401e43();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint TO_STRING_ARRAY_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_24be384d();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint TO_STRING_MAP_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_99c39ca3();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint convertFacingDirectionToDirection_95ed34c7(byte facingDirection) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getDirection_7244cba3(float xd, float zd) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint mirrorDirection_cfbb7519(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint rotateDirection_6d4ae227(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

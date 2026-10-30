@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PrioritizedGoal
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PrioritizedGoal(nint handle) : this(handle, true) { }
 
     internal PrioritizedGoal(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PrioritizedGoal Borrow(nint handle) => new PrioritizedGoal(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,32 @@ public sealed unsafe partial class PrioritizedGoal
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PrioritizedGoal Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PrioritizedGoal Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public int getPriority()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGoal_Address
     {
-        return NativeMethods.TablePtr->hs_method_832456c1((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0f23c1a6((void*)__hosihikari_shim_handle);
     }
 
-    public bool getToStart()
+    public int mPriority
     {
-        return NativeMethods.TablePtr->hs_method_60ae019e((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_267aa8aa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_267aa8aa((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getUsed()
+    public bool mToStart
     {
-        return NativeMethods.TablePtr->hs_method_7270b7b2((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_6883655e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_6883655e((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setToStart(bool arg0)
+    public bool mUsed
     {
-        NativeMethods.TablePtr->hs_method_d4394b9c((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C2.hs_get_42e8ca76((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_42e8ca76((void*)__hosihikari_shim_handle, value);
     }
-
-    public void setUsed(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_2f6fa1a7((void*)_handle, arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_178b28ee() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class SpawnGroupData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SpawnGroupData(nint handle) : this(handle, true) { }
 
     internal SpawnGroupData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SpawnGroupData Borrow(nint handle) => new SpawnGroupData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class SpawnGroupData : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static SpawnGroupData Create(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules arg1)
+    public nint _ctor(string identifier, global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules spawnRules)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -50,10 +50,45 @@ public sealed unsafe partial class SpawnGroupData : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(identifier, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b84088cc(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+            return (nint)NativeMethods.TablePtr->C3.hs_method_57cb2179((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)spawnRules.Handle);
+        }
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_fd860b9a((void*)__hosihikari_shim_handle);
+    }
+
+    public static SpawnGroupData Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_96771ba4();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnGroupData((nint)handle);
+    }
+
+    public static SpawnGroupData Create(string identifier, global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules spawnRules)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(identifier, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C3.hs_create_91073b07(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)spawnRules.Handle);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,44 +98,29 @@ public sealed unsafe partial class SpawnGroupData : global::System.IDisposable
         }
     }
 
-    public void addSpawnRules(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules arg0)
-    {
-        NativeMethods.TablePtr->hs_method_be269d5e((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public string getIdentifier()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c6e01d6e((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public nint getSpawnRules()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_61adf441((void*)_handle);
-    }
-
     // The native field type is not projected; this is the address of the field storage.
     public nint mIdentifier_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5e6026e8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5e6026e8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSpawnRules_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a89eaf66((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a89eaf66((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2d69c593((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_2d69c593((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

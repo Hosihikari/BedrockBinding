@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ArmorMaterialType : int
 {
+    None = -1,
+    DefaultArmor = 0,
+    EnchantedArmor = 1,
+    LeatherArmor = 2,
+    EnchantedLeatherArmor = 3,
 }

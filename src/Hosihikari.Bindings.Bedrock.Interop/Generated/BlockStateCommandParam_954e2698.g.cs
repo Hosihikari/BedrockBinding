@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockStateCommandParam : global::System.IDisposable
+public sealed unsafe partial class BlockStateCommandParam
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockStateCommandParam(nint handle) : this(handle, true) { }
 
     internal BlockStateCommandParam(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockStateCommandParam Borrow(nint handle) => new BlockStateCommandParam(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,95 +33,45 @@ public sealed unsafe partial class BlockStateCommandParam : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static BlockStateCommandParam Create(string arg0, string arg1, int arg2)
+    public bool _createCompoundTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-            {
-                var handle = NativeMethods.TablePtr->hs_create_2b5dfe80(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
-                if (handle == null)
-                {
-                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-                }
-
-                return new BlockStateCommandParam((nint)handle);
-            }
-        }
+        return NativeMethods.TablePtr->C0.hs_method_712697b9((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)output.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::pair<HashedString,int>' is not supported.", false)]
-    public nint getNameAndValue(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::pair<HashedString,int>' is not supported.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockState? getBlockState(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_aa5d9e9d((void*)__hosihikari_shim_handle, (void*)block.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockState((nint)__hs_handle, false) : null;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockState_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2a0edbfc((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2a0edbfc((void*)__hosihikari_shim_handle);
     }
 
     public int mType
     {
-        get => NativeMethods.TablePtr->hs_get_9a64f7d6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9a64f7d6((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_9a64f7d6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_9a64f7d6((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fb91341c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fb91341c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public bool setBlockState(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: expected value type 'std::vector<std::pair<std::basic_string<char>, std::variant<int, float, bool, std::basic_string<char>>>>': vector return type 'std::pair<std::basic_string<char>, std::variant<int, float, bool, std::basic_string<char>>>' is not supported.", false)]
     public static nint toStateMap(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: expected value type 'std::vector<std::pair<std::basic_string<char>, std::variant<int, float, bool, std::basic_string<char>>>>': vector return type 'std::pair<std::basic_string<char>, std::variant<int, float, bool, std::basic_string<char>>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
     public nint toStateValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_954e2698((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
 }

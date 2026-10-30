@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested;
 
 public sealed unsafe partial class Symbol : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Symbol(nint handle) : this(handle, true) { }
 
     internal Symbol(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Symbol Borrow(nint handle) => new Symbol(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,111 @@ public sealed unsafe partial class Symbol : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public const int EnumBit = 2097152;
+
+    public const int EnumValueBit = 33554432;
+
+    public const int FactorizationBit = 8388608;
+
+    public const int NonTerminalBit = 1048576;
+
+    public const int OptionalBit = 4194304;
+
+    public const int PostfixBit = 16777216;
+
+    public const int SoftEnumBit = 67108864;
+
+    public static Symbol Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_369e7b1f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Symbol((nint)handle);
+    }
+
+    public static Symbol Create_f766d7a4(int data)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f766d7a4(data);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Symbol((nint)handle);
+    }
+
+    public static Symbol Create_0e9f30a4(int data)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0e9f30a4(data);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Symbol((nint)handle);
+    }
+
+    public static Symbol Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.Symbol other)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_51027e26((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Symbol((nint)handle);
+    }
+
+    public static Symbol Create_b985b882(int val)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b985b882(val);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Symbol((nint)handle);
+    }
+
+    public int mValue
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_8476e4ab((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_8476e4ab((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.Symbol operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.Symbol other)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.Symbol((nint)NativeMethods.TablePtr->C0.hs_method_734990f6((void*)__hosihikari_shim_handle, (void*)other.Handle), false);
+    }
+
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.Symbol other)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a24a5a50((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
+
+    public ulong toIndex()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_88deaa6a((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_7614cbf9((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_7614cbf9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

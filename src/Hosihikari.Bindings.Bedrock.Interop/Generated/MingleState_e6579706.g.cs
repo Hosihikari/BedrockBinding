@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MingleComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum MingleState : int
 {
+    Unavailable = 0,
+    Available = 1,
+    PartneredActive = 2,
+    PartneredPassive = 3,
+    Mingling = 4,
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureTelemetryClientData
+public sealed unsafe partial class StructureTelemetryClientData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructureTelemetryClientData(nint handle) : this(handle, true) { }
 
     internal StructureTelemetryClientData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructureTelemetryClientData Borrow(nint handle) => new StructureTelemetryClientData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,45 @@ public sealed unsafe partial class StructureTelemetryClientData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureTelemetryClientData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureTelemetryClientData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public uint getMirrorEditCount()
+    public uint mMirrorEditCount
     {
-        return NativeMethods.TablePtr->hs_method_22c08123((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_b62fdd21((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b62fdd21((void*)__hosihikari_shim_handle, value);
     }
 
-    public uint getOffsetEditCount()
+    public uint mOffsetEditCount
     {
-        return NativeMethods.TablePtr->hs_method_b6c3a8b3((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_b5b02425((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b5b02425((void*)__hosihikari_shim_handle, value);
     }
 
-    public uint getRotationEditCount()
+    public uint mRotationEditCount
     {
-        return NativeMethods.TablePtr->hs_method_38ed144c((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_54ca127d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_54ca127d((void*)__hosihikari_shim_handle, value);
     }
 
-    public uint getSizeEditCount()
+    public uint mSizeEditCount
     {
-        return NativeMethods.TablePtr->hs_method_195e5d93((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_ae89f98b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ae89f98b((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_02f61114((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

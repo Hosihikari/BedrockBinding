@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CreativeItemRegistry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CreativeItemRegistry(nint handle) : this(handle, true) { }
 
     internal CreativeItemRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CreativeItemRegistry Borrow(nint handle) => new CreativeItemRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,157 +33,60 @@ public sealed unsafe partial class CreativeItemRegistry : global::System.IDispos
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c3873558((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c3873558((void*)__hosihikari_shim_handle);
     }
 
-    public static CreativeItemRegistry Create()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'brstd::flat_map<SharedTypes::CreativeItemCategory, gsl::not_null<CreativeItemGroupCategory *>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint createCategories() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'brstd::flat_map<SharedTypes::CreativeItemCategory, gsl::not_null<CreativeItemGroupCategory *>>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCreativeGroupCategories_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_a51d4d41();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CreativeItemRegistry((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CreativeItemRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry? current()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_84e4a0db();
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry((nint)__hs_handle, false) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint findCreativeItemEntry_4e3e2a8d(nint netId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry? findCreativeItemEntry(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_4fc6bfd7((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry((nint)__hs_handle, false) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry? findCreativeItemEntry(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_CreativeItemNetIdTag_unsigned_int_0_ arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_751de681((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry((nint)__hs_handle, false) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void forEachCreativeItemInstance(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemGroupCategory? getCreativeCategory(int arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_7a6b27aa((void*)_handle, arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemGroupCategory((nint)__hs_handle, false) : null;
-    }
-
-    public nint getCreativeItemEntries()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_9f5d2315((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry? getItemEntry(uint arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_4225f836((void*)_handle, arg0);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry((nint)__hs_handle, false) : null;
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex mCreativeListMutex
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_e6f7bca9(), false);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_da432592((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint mCurrentRegistry_Address
+    public nint mCreativeGroups_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0753d75c();
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f17f4864((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemGroupCategory? newCreativeCategory(string arg0, int arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCreativeItems_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_a4797fbf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemGroupCategory((nint)__hs_handle, false) : null;
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c1e9cdcb((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo? newCreativeGroup(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCreativeNetIdIndex_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_ab1db3b1((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo((nint)__hs_handle, false) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint newItemEntry_941c3000(nint creativeNetId, nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry? newItemEntry(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_CreativeItemNetIdTag_unsigned_int_0_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_e533b690((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry((nint)__hs_handle, false) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void resetGroups()
-    {
-        NativeMethods.TablePtr->hs_method_bf458e24((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void setCurrentRegistry(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry? updateItemEntry(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_8d082da5((void*)_handle, arg0, (void*)arg1.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry((nint)__hs_handle, false) : null;
-    }
-
-    public void updateNetIdMap()
-    {
-        NativeMethods.TablePtr->hs_method_8ee6c928((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5058bc09((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ac94ed53((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_ac94ed53((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

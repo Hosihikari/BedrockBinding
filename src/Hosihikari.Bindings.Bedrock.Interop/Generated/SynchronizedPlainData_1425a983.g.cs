@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SynchronizedPlainData
+public sealed unsafe partial class SynchronizedPlainData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SynchronizedPlainData(nint handle) : this(handle, true) { }
 
     internal SynchronizedPlainData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SynchronizedPlainData Borrow(nint handle) => new SynchronizedPlainData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,84 @@ public sealed partial class SynchronizedPlainData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static SynchronizedPlainData Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8815625e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SynchronizedPlainData((nint)handle);
+    }
+
+    public static SynchronizedPlainData Create(global::Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested.SynchronizedPlainData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b216f8a9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SynchronizedPlainData((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk53aaf0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_185eab03((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka2b904_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_48fc44f8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka2d7c8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e634bac8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka6339b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_01772007((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf05fad_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_df2bb4f2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfb0b6a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0ba10781((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested.SynchronizedPlainData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested.SynchronizedPlainData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SoundEventRequest_Nested.SynchronizedPlainData((nint)NativeMethods.TablePtr->C3.hs_method_47bc4d38((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_1425a983((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

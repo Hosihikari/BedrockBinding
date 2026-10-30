@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FeatureRegistry(nint handle) : this(handle, true) { }
 
     internal FeatureRegistry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FeatureRegistry Borrow(nint handle) => new FeatureRegistry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,86 +33,66 @@ public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string AFTER_SKY_PASS
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint validator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
+
+    public static string AFTER_SKY_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_d7517f5a();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_10258d98();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string AFTER_SURFACE_PASS
+    public static string AFTER_SURFACE_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_5eba8f2d();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_53397cec();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string AFTER_UNDERGROUND_PASS
+    public static string AFTER_UNDERGROUND_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_26dd8349();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_9c78a789();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string BEFORE_SKY_PASS
+    public static string BEFORE_SKY_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_0c7bf093();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_5863edc8();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string BEFORE_SURFACE_PASS
+    public static string BEFORE_SURFACE_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_4fb77053();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_9fdeda94();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string BEFORE_UNDERGROUND_PASS
+    public static string BEFORE_UNDERGROUND_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_941aba37();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_f986ace0();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string FINAL_PASS
+    public static string FINAL_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_77ba1bb9();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_77a856c3();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string FIRST_PASS
+    public static string FIRST_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_2c25b294();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_251632ff();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static FeatureRegistry Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_cc48b490();
+        var handle = NativeMethods.TablePtr->C1.hs_create_cc48b490();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -121,77 +101,80 @@ public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
         return new FeatureRegistry((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FeatureRegistry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
+    public static FeatureRegistry Create(nint validator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
 
-    public static string PREGENERATION_PASS
+    public static string PREGENERATION_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_0295c951();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_e652ddeb();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string SKY_PASS
+    public static string SKY_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_d3c7bfa1();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_b1d38afa();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string SURFACE_PASS
+    public static string SURFACE_PASS()
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_50473fd9();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_844f3992();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string UNDERGROUND_PASS
+    public static string UNDERGROUND_PASS()
     {
-        get
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_74eca724();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static string _featureIdentifierFromInput(string filePath, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value jsonDefinition)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(filePath);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
         {
-            var view = NativeMethods.TablePtr->hs_get_9ad62cb2();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(filePath, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_f9ec54f2(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)jsonDefinition.Handle);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void forEachFeature(nint arg0) =>
+    public void _registerFeature(nint name, nint featurePtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public string[] getLargeFeaturePasses()
+    public bool _setupFeature(global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider worldRegistries, bool isBasePack, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager rpm, string featureName, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value jsonDefinition, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion, bool serializeFeatures)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_e056a9d9((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(featureName);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
         {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
         }
-        return __hs_result;
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(featureName, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_c51ab339((void*)__hosihikari_shim_handle, (void*)worldRegistries.Handle, isBasePack, (void*)rpm.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)jsonDefinition.Handle, (void*)minEngineVersion.Handle, serializeFeatures) != 0;
+        }
     }
 
-    public string[] getSmallFeaturePasses()
+    public bool isFeaturePassDefined(string featurePass)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_62ec274b((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    public bool isFeaturePassDefined(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(featurePass);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -201,21 +184,21 @@ public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(featurePass, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_674fe62e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_ad647d65((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    public void loadFromDefinitions(global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg1, bool arg2)
+    public void loadFromDefinitions(global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider worldRegistries, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager rpm, bool clientSideGenEnabled)
     {
-        NativeMethods.TablePtr->hs_method_b250cb8e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C1.hs_method_e66fed8e((void*)__hosihikari_shim_handle, (void*)worldRegistries.Handle, (void*)rpm.Handle, clientSideGenEnabled);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? lookupByName(string arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? lookupByName(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -225,83 +208,65 @@ public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_b1501276((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? lookupOrReserveFeature(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_2f1d370a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_f07d13bc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
     public bool mClientInitialized
     {
-        get => NativeMethods.TablePtr->hs_get_79ff44ac((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_79ff44ac((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_79ff44ac((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_79ff44ac((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureLookupMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_078d173f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_078d173f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a1349697((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a1349697((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureSerializeData_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c9dbc667((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c9dbc667((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureSlots_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_15262398((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_15262398((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLargeFeaturePasses_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5072dee7((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5072dee7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSmallFeaturePasses_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8b57e6cb((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8b57e6cb((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? reserveFeature(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValidator_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_87bc1789((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? reserveFeature(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -311,38 +276,32 @@ public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_4eaf8c2e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ff1def48((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
-    public string reverseLookupString(global::Hosihikari.Bindings.Bedrock.Interop.IFeature arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_3ecedf2f((void*)_handle, (void*)arg0.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void setLargeFeaturePasses(nint arg0) =>
+    public void setLargeFeaturePasses(nint largeFeaturePasses) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void setSmallFeaturePasses(nint arg0) =>
+    public void setSmallFeaturePasses(nint smallFeaturePasses) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f72ed140((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_f72ed140((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

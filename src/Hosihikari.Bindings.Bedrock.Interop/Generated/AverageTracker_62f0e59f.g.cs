@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class AverageTracker
+public sealed unsafe partial class AverageTracker : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AverageTracker(nint handle) : this(handle, true) { }
 
     internal AverageTracker(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AverageTracker Borrow(nint handle) => new AverageTracker(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,67 @@ public sealed partial class AverageTracker
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AverageTracker Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AverageTracker Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C0.hs_method_f4d340a7((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addSample_7b8386d9(nint arg0) =>
+    public void addSample(nint dt) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float mAverageOverLastSecond
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_2aa2384d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_2aa2384d((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastResetTime_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6ce10345((void*)__hosihikari_shim_handle);
+    }
+
+    public float mMaximumOverLastSecond
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_84cfb583((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_84cfb583((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mNumberOfSamplesInLastSecond
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_67295260((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_67295260((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSamples_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_07dfa5f3((void*)__hosihikari_shim_handle);
+    }
+
+    public float mTotalOverLastSecond
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_853f5a2d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_853f5a2d((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_62f0e59f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

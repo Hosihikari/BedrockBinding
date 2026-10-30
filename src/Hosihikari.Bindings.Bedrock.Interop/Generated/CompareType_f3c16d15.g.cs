@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum CompareType : int
 {
+    AnyTag = 0,
+    BlockName = 1,
+    States = 2,
+    Unknown = 3,
 }

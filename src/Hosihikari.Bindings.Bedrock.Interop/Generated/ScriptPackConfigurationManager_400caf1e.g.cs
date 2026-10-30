@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ScriptPackConfigurationManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptPackConfigurationManager(nint handle) : this(handle, true) { }
 
     internal ScriptPackConfigurationManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptPackConfigurationManager Borrow(nint handle) => new ScriptPackConfigurationManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,24 +33,38 @@ public sealed unsafe partial class ScriptPackConfigurationManager : global::Syst
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8be3c735((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8be3c735((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPackConfigurationManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ScriptPackConfigurationManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfigurationManager arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfigurationManager arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_a6b53e6e((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_9f20bb02((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint _ctor(nint configDirectory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_b0e8523c((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static ScriptPackConfigurationManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8b485f36();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,22 +73,24 @@ public sealed unsafe partial class ScriptPackConfigurationManager : global::Syst
         return new ScriptPackConfigurationManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ScriptPackConfigurationManager Create_2f0ba83b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.", false)]
-    public static ScriptPackConfigurationManager Create_e2967760(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.");
-
-    public nint getConfigPath()
+    public static ScriptPackConfigurationManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfigurationManager arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_adf34090((void*)_handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_c4a530d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPackConfigurationManager((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfiguration getPackConfiguration(string arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static ScriptPackConfigurationManager Create(nint configDirectory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfiguration getPackConfiguration(string packIdentifier)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(packIdentifier);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -84,42 +100,65 @@ public sealed unsafe partial class ScriptPackConfigurationManager : global::Syst
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(packIdentifier, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfiguration((nint)NativeMethods.TablePtr->hs_method_578c9e02((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfiguration((nint)NativeMethods.TablePtr->C3.hs_method_9d059f35((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
-    public void loadPackConfigs()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCommandsRegistryConfiguration_Address
     {
-        NativeMethods.TablePtr->hs_method_f2d07af1((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1dfc9838((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static string sDefaultConfigurationName
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConfigDirectory_Address
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_a27b5d85();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_00f74a9c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultPackConfiguration_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_14545219((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackConfigurations_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_53aa5652((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSentryMaxEventsPerWindow_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c2dd1ed9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSentryRateLimitWindow_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9f1e7f09((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfigurationManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfigurationManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfigurationManager((nint)NativeMethods.TablePtr->C3.hs_method_1443ea69((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_400caf1e((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_400caf1e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

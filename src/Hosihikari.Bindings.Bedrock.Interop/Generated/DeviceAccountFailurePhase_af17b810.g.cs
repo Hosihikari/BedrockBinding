@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum DeviceAccountFailurePhase : int
 {
+    Unknown = 0,
+    SignIn = 1,
+    LoadCredentials = 2,
+    TitleKey = 3,
+    StoreVerify = 4,
+    PlayFabCreateConfigured = 5,
+    PlayFabCreate = 6,
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FileAccessTransforms
+public sealed unsafe partial class FileAccessTransforms : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FileAccessTransforms(nint handle) : this(handle, true) { }
 
     internal FileAccessTransforms(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FileAccessTransforms Borrow(nint handle) => new FileAccessTransforms(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,58 @@ public sealed unsafe partial class FileAccessTransforms
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileAccessTransforms Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileAccessTransforms Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool readTransform(byte[] arg0)
+    public bool _readTransform(byte[] stream)
     {
-        fixed (byte* __hs_vectorData0 = arg0)
+        fixed (byte* __hs_vectorData0 = stream)
         {
-            return NativeMethods.TablePtr->hs_method_7c1984e8((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_2a70d607((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(stream?.Length ?? 0)) != 0;
         }
     }
 
-    public bool writeTransform(byte[] arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public bool _writeTransform(byte[] stream)
     {
-        fixed (byte* __hs_vectorData0 = arg0)
+        fixed (byte* __hs_vectorData0 = stream)
         {
-            return NativeMethods.TablePtr->hs_method_78c885cb((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_0c908a1e((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(stream?.Length ?? 0)) != 0;
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public bool readTransform(byte[] stream)
+    {
+        fixed (byte* __hs_vectorData0 = stream)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_bbf5deb2((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(stream?.Length ?? 0)) != 0;
+        }
+    }
+
+    public bool writeTransform(byte[] stream)
+    {
+        fixed (byte* __hs_vectorData0 = stream)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_e4645ade((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(stream?.Length ?? 0)) != 0;
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_2fd73586((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

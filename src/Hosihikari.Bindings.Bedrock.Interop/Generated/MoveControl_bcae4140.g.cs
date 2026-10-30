@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MoveControl
+public sealed unsafe partial class MoveControl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MoveControl(nint handle) : this(handle, true) { }
 
     internal MoveControl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MoveControl Borrow(nint handle) => new MoveControl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,66 @@ public sealed unsafe partial class MoveControl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static float MIN_DELTA_TO_JUMP
+    public void _initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
-        get => NativeMethods.TablePtr->hs_get_a84f21a7();
+        NativeMethods.TablePtr->C2.hs_method_99cc38f7((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
     }
 
-    public static float MIN_DELTA_TO_JUMP_UNDERWATER
+    public void _setWantedPosition(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, float speed)
     {
-        get => NativeMethods.TablePtr->hs_get_8b43afb6();
+        NativeMethods.TablePtr->C2.hs_method_6c401a5b((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)pos.Handle, speed);
     }
 
-    public static float MIN_DELTA_TO_MOVE
+    public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        get => NativeMethods.TablePtr->hs_get_50451044();
+        NativeMethods.TablePtr->C2.hs_method_8f6e2df2((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
     }
 
-    public static float MIN_SPEED
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public float calculateMoveSpeed(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 endPosition, float maxMoveSpeed)
     {
-        get => NativeMethods.TablePtr->hs_get_f99d06e8();
+        return NativeMethods.TablePtr->C2.hs_method_cc306e52((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)endPosition.Handle, maxMoveSpeed);
     }
 
-    public static float MIN_SPEED_SQR
+    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
-        get => NativeMethods.TablePtr->hs_get_e79d298b();
+        NativeMethods.TablePtr->C2.hs_method_c15f955a((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MoveControl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MoveControl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getDiffVector(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg1)
+    public void setWantedPosition(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, float speed)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_d73521e4((void*)arg0.Handle, (void*)arg1.Handle));
+        NativeMethods.TablePtr->C2.hs_method_06b10934((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)pos.Handle, speed);
     }
 
-    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? arg1)
+    public static bool shouldSlowSpeed(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, float endDistanceSqr)
     {
-        NativeMethods.TablePtr->hs_method_f1aad2ca((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        return NativeMethods.TablePtr->C2.hs_method_9c6a8c9c((void*)parent.Handle, (void*)mob.Handle, endDistanceSqr) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f88041ae((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c8d3254c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_bcae4140((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

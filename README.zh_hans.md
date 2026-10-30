@@ -4,65 +4,62 @@
 
 Hosihikari 绑定项目的 **Bedrock / MCAPI** 互操作面：生成的、贴近原生风格的 **Interop** 与按符号分发的原生 **绑定垫片**。
 
+本分支面向 **BDS 1.26.51.1**，数据来自 LeviLamina `ee049f1dc` 的头文件；`main` 分支保留从载体调试符号生成的 1.21.3.01 面。
+
 ## 边界
 
-- `Hosihikari.Bindings.Bedrock.Interop` 由 `HosihikariProjection/BindingGenerator` 从 Bedrock Dedicated Server **1.21.3.01** 的符号级 IR 生成，并合并 LeviLamina **v0.13.5** 头文件补充。它映照 MCAPI 声明：record 保留生成的包装类型，枚举声明投影为携带头文件补充所还原枚举值的 C# 枚举，单层指针与引用返回变为类型化借用包装，`optional_ref<T>` 复用该路径，不受支持的成员保留带原因的 `NotSupportedException` stub；没有可用成员的类型保留类型身份并标记 `[Obsolete]`。ABI 值类型与 shim 加载器来自 `HosihikariProjection/BindingAbi`。
-- `native/BindingShim/` 是 C ABI 投影，自包含：不包含游戏头文件，也不链接 import library。直接成员在 Windows 上解析 `模块基址 + rva`，在 Linux 上解析 `模块基址 + address`；虚成员按每配置 vtable 槽索引。缺少地址时回退到 `GetProcAddress`/`dlsym` 与记录的符号。命名模块不存在时，Windows 与 Linux 会回退到进程主模块，因此 `bedrock_server.exe` 与 `bedrock_server_mod.exe` 都能工作。
+- `Hosihikari.Bindings.Bedrock.Interop` 由 `HosihikariProjection/BindingGenerator` 从 LeviLamina `src/mc` 与 `ll/api` 头文件树的头文件级 IR 生成。它映照 MCAPI 声明：record 保留生成的包装类型，枚举声明投影为携带头文件枚举值的 C# 枚举，单层指针与引用返回变为类型化借用包装，`optional_ref<T>` 复用该路径，不受支持的成员保留带原因的 `NotSupportedException` stub；没有可用成员的类型保留类型身份并标记 `[Obsolete]`。ABI 值类型与 shim 加载器来自 `HosihikariProjection/BindingAbi`。
+- `native/BindingShim/` 是 C ABI 投影，自包含：不包含游戏头文件，也不链接 import library。每个成员在运行期向预加载器（`pl_resolve_symbol`）查询其修饰名；查询入口通过 `GetModuleHandleW`/`dlsym` 动态取得，因此没有预加载器的进程里垫片也能加载，只是调用返回 `symbol was not resolved`。解析结果按函数缓存，每个名称只查找一次。
 - 手写 Idiomatic 层延后；生成的 Interop 是当前公开的互操作面。
 
 ## 当前状态
 
-- Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 7,138 个生成的 C# 文件。
-- 绑定垫片：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 31,605 个函数。
-- 覆盖：两个配置合计绑定 14,274 个声明与 139,889 个成员。
-- `scripts/classes-1.21.3.txt` 选出当前公开类集。LeviLamina 头补充之外的类贡献符号与 vtable 方法。布局尺寸取自载体的删除析构函数：它把编译器自己的 `sizeof(T)` 交给有尺寸的 `operator delete`；v0.13.5 头文件只在能证明同样大小的布局时提供字段偏移，所以生成器没还原成员的类，字段保持 stub，构造函数仍按正确大小分配。
+- Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 9,110 个生成的 C# 文件。
+- 绑定垫片：`native/BindingShim/generated/win-x64-server/bedrock/` 下 128,068 个函数。
+- 覆盖：`win-x64-server` 配置绑定 12,043 个声明与 92,708 个成员。
+- `scripts/headers-26.51.txt` 列出解析的 5,192 个头文件。从这些头文件可达的声明都会发射；布局与字段偏移来自前端的 AST record layout，只要头文件能证明，record 就保留字段。
 
-shim 以 `--symbol-dispatch` 模式发射。支持的 ABI：
+shim 以 `--symbol-dispatch --resolve-by-name` 模式发射。支持的 ABI：
 
 - 标量与枚举底层类型；
 - `std::string` / `std::string_view` 的值与 const 引用；
 - 单层 `T*` / `T&`，以 `void*` 传递；
-- 按值 record：小的 `triviallyCopyable` record 走整数寄存器，较大 record 走栈上临时区与隐藏返回缓冲区；只有平凡析构的 record（`AABB`、`Vec2`、`Brightness`）按字节复制，但因用户提供的拷贝构造而对调用 ABI 非平凡，始终使用隐藏引用；非平凡析构 record 使用其拷贝构造与析构符号；
-- 类型未投影的字段以只读 `nint` 暴露字段存储地址，属性名为 `<field>_Address`；已知实例偏移与静态符号仍然可用，无需假设字段 ABI；
+- 按值 record：小的 `triviallyCopyable` record 走整数寄存器，较大 record 走栈上临时区与隐藏返回缓冲区；只有平凡析构的 record 按字节复制，但因用户提供的拷贝构造而对调用 ABI 非平凡，始终使用隐藏引用；
+- 类型未投影的字段以只读 `nint` 暴露字段存储地址，属性名为 `<field>_Address`；
 - `optional_ref<T>` 参数与返回使用存在标志；
 - `std::vector<T>` 参数与按值返回，元素支持标量/枚举、字符串、单层指针（以 `nint[]` 传入），或 layout 已知且平凡析构的 record；引用与指针 vector 返回仍是借用句柄；
 - `std::optional<T>` 参数与返回，支持标量、字符串与 trivially copyable record；record payload 使用 layout 兼容的 blob，返回的 record 成为拥有包装；
 - `std::shared_ptr<T>` 参数与返回，由 shim holder 持有一个共享引用；`std::weak_ptr<T>` 返回锁定一次形成强快照，过期时为空。
 
-map 需要具名 key/value 类型与匹配的 hash/equality functor，符号流不携带这些信息。回调、variant、自定义拥有型包装，以及缺少可解析拷贝/析构符号的 record 保留 Interop stub。
+map 需要具名 key/value 类型与匹配的 hash/equality functor，合并后的 IR 不携带这些信息。回调、variant、自定义拥有型包装，以及缺少可证明布局的 record 保留 Interop stub。
 
 ## 生成
 
-重新生成需要不属于本仓库的专有输入：1.21.3.01 的 `bedrock_server.pdb`、`bedrock_server.exe`、`bedrock_server_symbols.debug`，以及用于头文件补充的 LeviLamina v0.13.5 检出与 LLVM 23.1.4 构建的生成器。
+重新生成只需要公开输入：一份 LeviLamina `ee049f1dc` 检出，以及用 LLVM 23.1.4 构建的生成器。预编译依赖来自 LeviLamina 构建所用的本地 xmake 包仓库。
 
 ```shell
 powershell -File scripts/regenerate.ps1 `
-  -Pdb C:\path\to\bedrock_server.pdb `
-  -Exe C:\path\to\bedrock_server.exe `
-  -Elf C:\path\to\bedrock_server_symbols.debug `
-  -LeviLaminaRoot C:\path\to\LiteLoaderBDS `
-  -ClassesFile scripts/classes-1.21.3.txt
+  -LeviLaminaRoot C:\path\to\LeviLamina
 ```
 
-脚本写出符号 IR、生成或复用头文件补充、合并、发射两个配置，并更新 `src/`、`native/BindingShim/generated/` 与 `coverage/`。审查 diff 后运行 `python scripts/verify_generated.py`。
+脚本解析 `scripts/headers-26.51.txt`，以 `--symbol-dispatch --resolve-by-name` 发射，并更新 `src/`、`native/BindingShim/generated/` 与 `coverage/`。迭代发射器时可传 `-SkipFrontend -IrDirectory <dir>` 复用已有 IR。审查 diff 后运行 `python scripts/verify_generated.py`。
 
 ## 构建
 
 ```shell
 dotnet build Hosihikari.Bindings.Bedrock.slnx -c Release
 powershell -File native/BindingShim/build.ps1
-./native/BindingShim/build.sh
 ```
 
-生成的 shim 目录包含来自 `BindingAbi` 的 `hosihikari_abi.h`，原生构建因此自包含。Windows shim 用 MSVC 构建，Linux shim 用 g++（`-ldl`）；两者都不需要 BDS 头文件。
+生成的 shim 目录包含来自 `BindingAbi` 的 `hosihikari_abi.h`，原生构建因此自包含。shim 用 MSVC 构建，不需要 BDS 头文件或 import library。
 
 ## 生成源校验
 
-`scripts/verify_generated.py` 校验来源信息、覆盖基线、两个配置的 shim 函数数、表版本、托管表与每个生成文件的哈希。CI 构建解决方案、运行校验器、用生成器验证提交的覆盖契约，并编译 Linux 与 Windows shim。
+`scripts/verify_generated.py` 校验来源信息、覆盖基线、shim 函数数、表版本、托管表与每个生成文件的哈希。CI 构建解决方案、运行校验器、用生成器验证提交的覆盖契约，并编译 Windows shim。
 
 ## 数据来源
 
-shim 内嵌从 1.21.3.01 调试符号恢复的 RVA、Itanium/MSVC 符号名与 vtable 槽。这些是生成的绑定数据，与生成器版本、IR manifest 哈希、载体哈希一起记录在 `coverage/provenance.json`。头文件补充来自公开的 LeviLamina 头文件。
+shim 内嵌 MSVC 修饰名；这些名称与布局事实是生成的绑定数据，与生成器版本、IR manifest 哈希、载体提交与头文件数一起记录在 `coverage/provenance.json`。重新生成不需要也不包含任何专有游戏二进制或调试符号。
 
 ## 相关仓库
 

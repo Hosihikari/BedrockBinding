@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SpawnClimateFinder_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ResultDetails
+public sealed unsafe partial class ResultDetails
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ResultDetails(nint handle) : this(handle, true) { }
 
     internal ResultDetails(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ResultDetails Borrow(nint handle) => new ResultDetails(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,26 @@ public sealed partial class ResultDetails
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public long fitness
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_f6a1d5b9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f6a1d5b9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int iterations
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_0a41a28e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_0a41a28e((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint position_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fcf20a94((void*)__hosihikari_shim_handle);
     }
 }

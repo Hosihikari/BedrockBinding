@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class AmbientSoundServerComponent
+public sealed unsafe partial class AmbientSoundServerComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AmbientSoundServerComponent(nint handle) : this(handle, true) { }
 
     internal AmbientSoundServerComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AmbientSoundServerComponent Borrow(nint handle) => new AmbientSoundServerComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,77 @@ public sealed partial class AmbientSoundServerComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AmbientSoundServerComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_34d69452((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AmbientSoundServerComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static AmbientSoundServerComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b96c0e2a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_56dfc0ec(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new AmbientSoundServerComponent((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_66727685(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static AmbientSoundServerComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7ea75543((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_dccd76f3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new AmbientSoundServerComponent((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultEventName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_10876307((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDynamicSounds_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4240d62c((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mReevaluationTimeTicks
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_aacf3a64((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_aacf3a64((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mTicksSinceReevaluation
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_5ed91b5c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_5ed91b5c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent((nint)NativeMethods.TablePtr->C0.hs_method_66727685((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d6899bbb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

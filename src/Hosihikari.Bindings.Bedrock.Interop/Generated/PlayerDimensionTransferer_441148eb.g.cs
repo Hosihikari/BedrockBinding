@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerDimensionTransferer
+public sealed unsafe partial class PlayerDimensionTransferer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerDimensionTransferer(nint handle) : this(handle, true) { }
 
     internal PlayerDimensionTransferer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerDimensionTransferer Borrow(nint handle) => new PlayerDimensionTransferer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,118 +33,291 @@ public sealed unsafe partial class PlayerDimensionTransferer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerDimensionTransferer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<PortalForcer>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint playerDimensionTransferProxy, bool isClientSide, nint portalForcer, nint sharedSpawnGetter, nint levelStorage, nint loadingScreenIdManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<PortalForcer>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerDimensionTransferer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _doRespawnIfReady(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, nint addLimboActorHelper)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_e1216d61((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)addLimboActorHelper) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnAnyPlayerChangeDimensionCompleteConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnAnyPlayerChangeDimensionPreSuspendRegionConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint _getOnPlayerLeftDimensionConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void _playerDestroyRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
+    {
+        NativeMethods.TablePtr->C2.hs_method_68f515e6((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
+    }
+
+    public void _playerDestroyRemotePlayers(global::Hosihikari.Bindings.Bedrock.Interop.GameplayUserManager gameplayUserManager)
+    {
+        NativeMethods.TablePtr->C2.hs_method_958a1300((void*)__hosihikari_shim_handle, (void*)gameplayUserManager.Handle);
+    }
+
+    public void _playerPrepareRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ab923a71((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle);
+    }
+
+    public void _playerSaveLimboActors(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension, global::Hosihikari.Bindings.Bedrock.Interop.PlayerLimboActorManager? playerLimboActorManager)
+    {
+        NativeMethods.TablePtr->C2.hs_method_a46c17b9((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle, (void*)(playerLimboActorManager?.Handle ?? 0));
+    }
+
+    public void _playerStartChangeDimensionSuspendRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromDimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e9c89190((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimension.Handle);
+    }
+
+    public void _playerSwitchDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, nint addLimboActorHelper)
+    {
+        NativeMethods.TablePtr->C2.hs_method_058c5187((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)addLimboActorHelper);
+    }
+
+    public bool _playerWaitForDimensionTransitionSystem(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry entityRegistry)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_797700f7((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)entityRegistry.Handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static PlayerDimensionTransferer Create(nint arg0, bool arg1, nint arg2, nint arg3, nint arg4) =>
+    public bool _playerWaitForServer(nint player, nint currentTime) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public bool doRespawnIfReady(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest arg1, nint arg2)
+    public void _sendClientRespawnMovePacketFromServer(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
     {
-        return NativeMethods.TablePtr->hs_method_8d8ca076((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        NativeMethods.TablePtr->C2.hs_method_ce454703((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
     }
+
+    public void _setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender packetSender)
+    {
+        NativeMethods.TablePtr->C2.hs_method_04b4c9bf((void*)__hosihikari_shim_handle, (void*)packetSender.Handle);
+    }
+
+    public void _setTransitionLocation(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_5a8e7f6f((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle);
+    }
+
+    public void _startWaitForRespawn(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C2.hs_method_37bf1edd((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public void _syncTransitionComponentTargetPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
+    {
+        NativeMethods.TablePtr->C2.hs_method_482735df((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
+    }
+
+    public bool _waitForSubChunks(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_58e39e98((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)toDimension.Handle) != 0;
+    }
+
+    public static PlayerDimensionTransferer Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2b30dc6a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerDimensionTransferer((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<PortalForcer>>' is not a known bindable declaration.", false)]
+    public static PlayerDimensionTransferer Create(nint playerDimensionTransferProxy, bool isClientSide, nint portalForcer, nint sharedSpawnGetter, nint levelStorage, nint loadingScreenIdManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<PortalForcer>>' is not a known bindable declaration.");
+
+    public void _finalizeDimensionChange(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6f76d5f0((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
+    }
+
+    public bool doRespawnIfReady(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, nint addLimboActorHelper)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_11743898((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)addLimboActorHelper) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnAnyPlayerChangeDimensionCompleteConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public nint getOnAnyPlayerChangeDimensionPreSuspendRegionConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector_bd5e3064() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public nint getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector_f3a12bd4() =>
+    public nint getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public nint getOnPlayerLeftDimensionConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public void playerDestroyRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest arg1)
+    public bool mIsClientSide
     {
-        NativeMethods.TablePtr->hs_method_98770090((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_71d96f99((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public void playerDestroyRemotePlayers(global::Hosihikari.Bindings.Bedrock.Interop.GameplayUserManager arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelStorage_Address
     {
-        NativeMethods.TablePtr->hs_method_c1e83057((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8573e4b3((void*)__hosihikari_shim_handle);
     }
 
-    public void playerPrepareRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLoadingScreenIdManager_Address
     {
-        NativeMethods.TablePtr->hs_method_2b63eeac((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9632d032((void*)__hosihikari_shim_handle);
     }
 
-    public void playerSaveLimboActors(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2, global::Hosihikari.Bindings.Bedrock.Interop.PlayerLimboActorManager? arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAnyPlayerChangeDimensionComplete_Address
     {
-        NativeMethods.TablePtr->hs_method_243b2351((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b62a3e7a((void*)__hosihikari_shim_handle);
     }
 
-    public void playerStartChangeDimensionSuspendRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAnyPlayerChangeDimensionPreSuspendRegion_Address
     {
-        NativeMethods.TablePtr->hs_method_93fd81ad((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7e0dd513((void*)__hosihikari_shim_handle);
     }
 
-    public void playerSwitchDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest arg1, nint arg2)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAnyPlayerChangeDimensionPrepareRegionComplete_Address
     {
-        NativeMethods.TablePtr->hs_method_818b192c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ab876ec9((void*)__hosihikari_shim_handle);
     }
 
-    public bool playerWaitForDimensionTransitionSystem(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnPlayerLeftDimension_Address
     {
-        return NativeMethods.TablePtr->hs_method_d8b751b6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_969d9270((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool playerWaitForServer_e515f048(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPacketSender_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_19e8ebf1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerDimensionTransferProxy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c0e22ab7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPortalForcer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3f97e3ff((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSharedSpawnGetter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_79083f94((void*)__hosihikari_shim_handle);
+    }
+
+    public void playerDestroyRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4783d60f((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
+    }
+
+    public void playerDestroyRemotePlayers(global::Hosihikari.Bindings.Bedrock.Interop.GameplayUserManager gameplayUserManager)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f2efb09a((void*)__hosihikari_shim_handle, (void*)gameplayUserManager.Handle);
+    }
+
+    public void playerPrepareRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_8d17d5bd((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle);
+    }
+
+    public void playerSaveLimboActors(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension, global::Hosihikari.Bindings.Bedrock.Interop.PlayerLimboActorManager? playerLimboActorManager)
+    {
+        NativeMethods.TablePtr->C2.hs_method_1af32f69((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle, (void*)(playerLimboActorManager?.Handle ?? 0));
+    }
+
+    public void playerStartChangeDimensionSuspendRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromDimension)
+    {
+        NativeMethods.TablePtr->C2.hs_method_585d5fa4((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimension.Handle);
+    }
+
+    public void playerSwitchDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, nint addLimboActorHelper)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c451e878((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)addLimboActorHelper);
+    }
+
+    public bool playerWaitForDimensionTransitionSystem(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry entityRegistry)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_4a9be240((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)entityRegistry.Handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool playerWaitForServer_df84962f(nint arg0, nint arg1) =>
+    public bool playerWaitForServer(nint player, nint currentTime) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void sendClientRespawnMovePacketFromServer(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest arg1)
+    public void sendClientRespawnMovePacketFromServer(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
     {
-        NativeMethods.TablePtr->hs_method_57ee0f22((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_16255679((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
     }
 
-    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender arg0)
+    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender packetSender)
     {
-        NativeMethods.TablePtr->hs_method_3e262baf((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_cbb0228d((void*)__hosihikari_shim_handle, (void*)packetSender.Handle);
     }
 
-    public void setTransitionLocation(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2)
+    public void setTransitionLocation(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
     {
-        NativeMethods.TablePtr->hs_method_126c01e5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_23a2d816((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle);
     }
 
-    public void startWaitForRespawn(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public void startWaitForRespawn(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_ad273095((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_eebad939((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    public void syncTransitionComponentTargetPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest arg1)
+    public void syncTransitionComponentTargetPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
     {
-        NativeMethods.TablePtr->hs_method_b6242a1c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_2d109d3a((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
     }
 
-    public bool waitForSubChunks(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1)
+    public bool waitForSubChunks(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
     {
-        return NativeMethods.TablePtr->hs_method_71839ffe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_ceb52098((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)toDimension.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_441148eb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

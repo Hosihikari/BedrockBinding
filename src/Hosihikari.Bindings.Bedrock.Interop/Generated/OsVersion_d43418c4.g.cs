@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum OsVersion : int
 {
+    Unspecified = 0,
+    Windows10 = 1,
+    Windows8_1 = 2,
+    Windows7 = 3,
 }

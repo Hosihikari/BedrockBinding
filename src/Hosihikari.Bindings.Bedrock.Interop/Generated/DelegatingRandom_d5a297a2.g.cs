@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.NoiseUtils;
 
-public sealed unsafe partial class DelegatingRandom
+public sealed unsafe partial class DelegatingRandom : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DelegatingRandom(nint handle) : this(handle, true) { }
 
     internal DelegatingRandom(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DelegatingRandom Borrow(nint handle) => new DelegatingRandom(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,65 +33,129 @@ public sealed unsafe partial class DelegatingRandom
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DelegatingRandom Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DelegatingRandom Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void consumeCount(uint arg0)
+    public void _consumeCount(uint count)
     {
-        NativeMethods.TablePtr->hs_method_f1f54a82((void*)_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_21f34523((void*)__hosihikari_shim_handle, count);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.IRandom? fork()
+    public bool _nextBoolean()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_a187abce((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)__hs_handle) : null;
+        return NativeMethods.TablePtr->C2.hs_method_61728e49((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public double _nextDouble()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_3f494ecd((void*)__hosihikari_shim_handle);
+    }
+
+    public double _nextGaussianDouble()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_11ae5ec8((void*)__hosihikari_shim_handle);
+    }
+
+    public int _nextInt()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_ac5fccc7((void*)__hosihikari_shim_handle);
+    }
+
+    public int _nextInt(int bound)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_6543b357((void*)__hosihikari_shim_handle, bound);
+    }
+
+    public long _nextLong()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_c3a68d63((void*)__hosihikari_shim_handle);
+    }
+
+    public static DelegatingRandom Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_359a9261();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DelegatingRandom((nint)handle);
+    }
+
+    public static DelegatingRandom Create(global::Hosihikari.Bindings.Bedrock.Interop.NoiseUtils.DelegatingRandom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f6bdebec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DelegatingRandom((nint)handle);
+    }
+
+    public void consumeCount(uint count)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f1f54a82((void*)__hosihikari_shim_handle, count);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRandom_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8a59791e((void*)__hosihikari_shim_handle);
     }
 
     public bool nextBoolean()
     {
-        return NativeMethods.TablePtr->hs_method_b19555be((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_b19555be((void*)__hosihikari_shim_handle) != 0;
     }
 
     public double nextDouble()
     {
-        return NativeMethods.TablePtr->hs_method_4490024d((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_4490024d((void*)__hosihikari_shim_handle);
+    }
+
+    public float nextFloat()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_ff548f9a((void*)__hosihikari_shim_handle);
     }
 
     public double nextGaussianDouble()
     {
-        return NativeMethods.TablePtr->hs_method_fe16eee2((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_fe16eee2((void*)__hosihikari_shim_handle);
     }
 
     public int nextInt()
     {
-        return NativeMethods.TablePtr->hs_method_1929332a((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_1929332a((void*)__hosihikari_shim_handle);
     }
 
-    public int nextInt(int arg0)
+    public int nextInt(int bound)
     {
-        return NativeMethods.TablePtr->hs_method_8d54b354((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C2.hs_method_8bb8eb4a((void*)__hosihikari_shim_handle, bound);
     }
 
     public long nextLong()
     {
-        return NativeMethods.TablePtr->hs_method_9072a347((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_9072a347((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.NoiseUtils.DelegatingRandom operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.NoiseUtils.DelegatingRandom arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NoiseUtils.DelegatingRandom((nint)NativeMethods.TablePtr->C2.hs_method_d212b716((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_d5a297a2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

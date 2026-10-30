@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class UpdateSubChunkBlocksChangedInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UpdateSubChunkBlocksChangedInfo(nint handle) : this(handle, true) { }
 
     internal UpdateSubChunkBlocksChangedInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UpdateSubChunkBlocksChangedInfo Borrow(nint handle) => new UpdateSubChunkBlocksChangedInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,28 @@ public sealed unsafe partial class UpdateSubChunkBlocksChangedInfo : global::Sys
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.UpdateSubChunkBlocksChangedInfo arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_b84b2636((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public nint _ctor(nint blocksChanged, nint extraBlocksChanged) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_24ec5a38((void*)__hosihikari_shim_handle);
     }
 
     public static UpdateSubChunkBlocksChangedInfo Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_c9e25e0c();
+        var handle = NativeMethods.TablePtr->C3.hs_create_c9e25e0c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,42 +63,54 @@ public sealed unsafe partial class UpdateSubChunkBlocksChangedInfo : global::Sys
         return new UpdateSubChunkBlocksChangedInfo((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UpdateSubChunkBlocksChangedInfo Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void add(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? arg4)
+    public static UpdateSubChunkBlocksChangedInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateSubChunkBlocksChangedInfo arg0)
     {
-        NativeMethods.TablePtr->hs_method_c4aeace9((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)(arg4?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->C3.hs_create_c8888d99((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateSubChunkBlocksChangedInfo((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static UpdateSubChunkBlocksChangedInfo Create(nint blocksChanged, nint extraBlocksChanged) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public void add(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, uint layer, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int updateFlags, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? syncMsg)
+    {
+        NativeMethods.TablePtr->C3.hs_method_db83d114((void*)__hosihikari_shim_handle, (void*)pos.Handle, layer, (void*)block.Handle, updateFlags, (void*)(syncMsg?.Handle ?? 0));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mExtras_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2afe47cd((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2afe47cd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStandards_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_21a752b8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_21a752b8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateSubChunkBlocksChangedInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.UpdateSubChunkBlocksChangedInfo arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateSubChunkBlocksChangedInfo((nint)NativeMethods.TablePtr->C3.hs_method_ec873417((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ac83e145((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_ac83e145((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelChunkMetaData
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelChunkMetaData(nint handle) : this(handle, true) { }
 
     internal LevelChunkMetaData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelChunkMetaData Borrow(nint handle) => new LevelChunkMetaData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,31 @@ public sealed unsafe partial class LevelChunkMetaData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ulong INVALID_META_DATA
+    public void _recomputeHash()
     {
-        get => NativeMethods.TablePtr->hs_get_876dac0e();
+        NativeMethods.TablePtr->C1.hs_method_dbc436cd((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelChunkMetaData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelChunkMetaData Create_ae2ff9ef(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public ulong getCurrentHash()
+    public ulong mCurrentHash
     {
-        return NativeMethods.TablePtr->hs_method_6d36078c((void*)_handle);
+        get => NativeMethods.TablePtr->C1.hs_get_5012a41e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_5012a41e((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mHashNeedsRecomputing
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_0ad84093((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_0ad84093((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_aad504f1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetaData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2b39efaf((void*)__hosihikari_shim_handle);
+    }
 }

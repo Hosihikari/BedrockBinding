@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum LastClickedSource : int
+public enum LastClickedSource : byte
 {
+    RegularSignIn = 0,
+    DemoHomePage = 1,
+    LibraryPDP = 2,
+    SwitchAccounts = 3,
+    SignOut = 4,
 }

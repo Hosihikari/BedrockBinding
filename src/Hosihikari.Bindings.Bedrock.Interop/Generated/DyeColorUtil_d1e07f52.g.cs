@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DyeColorUtil
+public sealed unsafe partial class DyeColorUtil : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DyeColorUtil(nint handle) : this(handle, true) { }
 
     internal DyeColorUtil(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DyeColorUtil Borrow(nint handle) => new DyeColorUtil(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,59 +33,36 @@ public sealed unsafe partial class DyeColorUtil
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint COLOR_TO_AUX_Address
+    public static nint COLOR_TO_AUX()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f33c363a();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_da5c7319();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEPRECATED_DYE_AUX_VALUES_Address
+    public static nint DYE_AUX_VALUES()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2389e53e();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_2a7f6d08();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DYE_AUX_VALUES_Address
+    public static nint mColorMap()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f0d4afce();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_04a262aa();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DyeColorUtil Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DyeColorUtil Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static int getAuxValue(int arg0)
+    public void Dispose()
     {
-        return NativeMethods.TablePtr->hs_method_b25d414b(arg0);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_d1e07f52((void*)__hosihikari_shim_handle);
+            }
 
-    public static int getItemColor(int arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_0bee0c26(arg0);
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    public static int getRandomItemColor(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_76ebb5e4((void*)arg0.Handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mColorMap_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_10a4cf4b();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

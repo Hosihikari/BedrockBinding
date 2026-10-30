@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DependencyLocator
+public sealed unsafe partial class DependencyLocator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DependencyLocator(nint handle) : this(handle, true) { }
 
     internal DependencyLocator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DependencyLocator Borrow(nint handle) => new DependencyLocator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,54 @@ public sealed partial class DependencyLocator
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static DependencyLocator Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ebbaccd4();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DependencyLocator((nint)handle);
+    }
+
+    public static DependencyLocator Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyLocator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3e5788df((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DependencyLocator((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5eb976_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_45a1f4f4((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyLocator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyLocator arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyLocator((nint)NativeMethods.TablePtr->C3.hs_method_c1d033b4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_ffb5a5dd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

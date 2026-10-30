@@ -7,7 +7,7 @@ namespace Hosihikari.Bindings.Bedrock.Interop.CommandBlockNameResult_Nested;
 public enum Result : byte
 {
     Unknown = 0,
-    Success = 1,
+    Succeess = 1,
     NoBlockName = 2,
     SetDataError = 3,
     SetStateError = 4,

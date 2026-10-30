@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-public sealed unsafe partial class ApplicationDataStores
+public sealed unsafe partial class ApplicationDataStores : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ApplicationDataStores(nint handle) : this(handle, true) { }
 
     internal ApplicationDataStores(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ApplicationDataStores Borrow(nint handle) => new ApplicationDataStores(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,118 @@ public sealed unsafe partial class ApplicationDataStores
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ApplicationDataStores Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ApplicationDataStores Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getDataStore_a0821414(int arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getDataStore_ef8e0283(int which)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_a0821414((void*)_handle, arg0);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_ef8e0283((void*)__hosihikari_shim_handle, which);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getDataStore_3caab93c(int arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _getDataStore_d51a0741(int which)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_3caab93c((void*)_handle, arg0);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_d51a0741((void*)__hosihikari_shim_handle, which);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public void _init()
+    {
+        NativeMethods.TablePtr->C0.hs_method_bae5167f((void*)__hosihikari_shim_handle);
+    }
+
+    public static ApplicationDataStores Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0c4d9f9f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ApplicationDataStores((nint)handle);
+    }
+
+    public static ApplicationDataStores Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.ApplicationDataStores arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d5869b03((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ApplicationDataStores((nint)handle);
+    }
+
+    public void _initDataStore(int which)
+    {
+        NativeMethods.TablePtr->C0.hs_method_08b3b38f((void*)__hosihikari_shim_handle, which);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDataStore_3caab93c(int which)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_3caab93c((void*)__hosihikari_shim_handle, which);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDataStore_7dd5d349(int which)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_7dd5d349((void*)__hosihikari_shim_handle, which);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public void init()
     {
-        NativeMethods.TablePtr->hs_method_b91b7549((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_b91b7549((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk25abfe_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3ea8237a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk65c471_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_51d9da7d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkddf272_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_767bc9c2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke3598c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cdc13944((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.ApplicationDataStores operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.ApplicationDataStores arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.ApplicationDataStores((nint)NativeMethods.TablePtr->C0.hs_method_15e4c83d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9cbab7fc((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9cbab7fc((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_43f848a4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

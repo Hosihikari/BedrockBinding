@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TempEPtrManager
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TempEPtrManager(nint handle) : this(handle, true) { }
 
     internal TempEPtrManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TempEPtrManager Borrow(nint handle) => new TempEPtrManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,14 @@ public sealed unsafe partial class TempEPtrManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TempEPtrManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TempEPtrManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void registerTemporaryPointer(global::Hosihikari.Bindings.Bedrock.Interop._TickPtr arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTempTickPointers_Address
     {
-        NativeMethods.TablePtr->hs_method_60b4d72e((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void tickTemporaryPointers()
-    {
-        NativeMethods.TablePtr->hs_method_a7e3ee3f((void*)_handle);
-    }
-
-    public void unregisterTemporaryPointer(global::Hosihikari.Bindings.Bedrock.Interop._TickPtr arg0)
-    {
-        NativeMethods.TablePtr->hs_method_0c6afd70((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_030586f5((void*)__hosihikari_shim_handle);
     }
 }

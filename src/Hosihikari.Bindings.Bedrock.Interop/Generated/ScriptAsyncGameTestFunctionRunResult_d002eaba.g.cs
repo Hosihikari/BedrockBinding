@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest;
 
 public sealed unsafe partial class ScriptAsyncGameTestFunctionRunResult
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptAsyncGameTestFunctionRunResult(nint handle) : this(handle, true) { }
 
     internal ScriptAsyncGameTestFunctionRunResult(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptAsyncGameTestFunctionRunResult Borrow(nint handle) => new ScriptAsyncGameTestFunctionRunResult(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,19 @@ public sealed unsafe partial class ScriptAsyncGameTestFunctionRunResult
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptAsyncGameTestFunctionRunResult Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
+    public nint _getError() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptAsyncGameTestFunctionRunResult Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool _isComplete()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_66620b6b((void*)__hosihikari_shim_handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
     public nint getError() =>
@@ -52,14 +53,12 @@ public sealed unsafe partial class ScriptAsyncGameTestFunctionRunResult
 
     public bool isComplete()
     {
-        return NativeMethods.TablePtr->hs_method_871bfc73((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_0f572968((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResult_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d038d511((void*)__hosihikari_shim_handle);
+    }
 }

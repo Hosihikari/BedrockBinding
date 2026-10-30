@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MolangVariable : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MolangVariable(nint handle) : this(handle, true) { }
 
     internal MolangVariable(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MolangVariable Borrow(nint handle) => new MolangVariable(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,121 +33,98 @@ public sealed unsafe partial class MolangVariable : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangVariable Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static MolangVariable Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangVariable Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static ushort getVariableIndex(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public static MolangVariable Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangVariable rhs)
     {
-        return NativeMethods.TablePtr->hs_method_0ceb0f64((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_9a2fd9a7((void*)rhs.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangVariable((nint)handle);
     }
 
-    public static ushort getVariableIndex(ulong arg0)
+    public static ushort _findOrAddVariableIndex(ulong nameHash, nint name, bool allowSpecialCharacters)
     {
-        return NativeMethods.TablePtr->hs_method_5cab2aac(arg0);
+        return NativeMethods.TablePtr->C2.hs_method_4beb2799(nameHash, (void*)name, allowSpecialCharacters);
     }
 
-    public static ushort getVariableIndex(ulong arg0, nint arg1, bool arg2)
+    public static void _resetToLowWaterMark()
     {
-        return NativeMethods.TablePtr->hs_method_5fdaf734(arg0, (void*)arg1, arg2);
+        NativeMethods.TablePtr->C2.hs_method_98750986();
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getVariableName(ushort arg0)
+    public static void _updateLowWaterMark()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_60ba763f(arg0), false);
+        NativeMethods.TablePtr->C2.hs_method_df99a4ab();
+    }
+
+    public static ushort getVariableIndex(ulong nameHash)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_5cab2aac(nameHash);
     }
 
     public static void initVariableMaps()
     {
-        NativeMethods.TablePtr->hs_method_8de87268();
+        NativeMethods.TablePtr->C2.hs_method_8de87268();
     }
 
-    public static bool mHasSetWatermark
+    public static nint mHasSetWatermark()
     {
-        get => NativeMethods.TablePtr->hs_get_901479c5() != 0;
+        return (nint)NativeMethods.TablePtr->C2.hs_method_5305a352();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mIndexToVariableNameMap_Address
+    public static nint mIndexToVariableNameMap()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9e0a55e8();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_ec45faf9();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mIndexToVariableNameMap_LowWaterMark_Address
+    public static nint mIndexToVariableNameMap_LowWaterMark()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_17ecabf6();
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1f2bdba9((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_3283d1eb();
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPublicValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e1c78fa9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e1c78fa9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSettings_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b79562f5((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b79562f5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9b0aaf49((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9b0aaf49((void*)__hosihikari_shim_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mVariableNameToIndexMap_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1a769333();
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public static nint mVariableNameToIndexMap() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mVariableNameToIndexMap_LowWaterMark_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_50626b5f();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void processWaterMark()
-    {
-        NativeMethods.TablePtr->hs_method_546443ae();
-    }
-
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    public static nint mVariableNameToIndexMap_LowWaterMark() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f2b58388((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_f2b58388((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

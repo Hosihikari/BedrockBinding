@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IInPackagePacks_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MetaData
+public sealed unsafe partial class MetaData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MetaData(nint handle) : this(handle, true) { }
 
     internal MetaData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MetaData Borrow(nint handle) => new MetaData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,72 @@ public sealed partial class MetaData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path, bool isHidden, int packCategory)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_45cd725e((void*)__hosihikari_shim_handle, (void*)path.Handle, isHidden, packCategory);
+    }
+
+    public static MetaData Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_34d7cf1b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MetaData((nint)handle);
+    }
+
+    public static MetaData Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path, bool isHidden, int packCategory)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_53540607((void*)path.Handle, isHidden, packCategory);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MetaData((nint)handle);
+    }
+
+    public int mFileSystem
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_9de0d9c3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_9de0d9c3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsHidden
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_1ac9a5f0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_1ac9a5f0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mPackCategory
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_e51c8c65((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e51c8c65((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_653051ab((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_55dc5b9d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

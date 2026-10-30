@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-public sealed unsafe partial class StringConversions
+public sealed unsafe partial class StringConversions : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StringConversions(nint handle) : this(handle, true) { }
 
     internal StringConversions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StringConversions Borrow(nint handle) => new StringConversions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,62 +33,36 @@ public sealed unsafe partial class StringConversions
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StringConversions Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StringConversions Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static int toUtf8(nint arg0, int arg1, nint arg2, int arg3)
+    public static int toUtf8(nint src, int srcLen, nint dest, int max)
     {
-        return NativeMethods.TablePtr->hs_method_6bf4274a((void*)arg0, arg1, (void*)arg2, arg3);
+        return NativeMethods.TablePtr->C0.hs_method_eb8302c0((void*)src, srcLen, (void*)dest, max);
     }
 
-    public static string toUtf8_7b83cd18(nint arg0)
+    public static string toUtf8(nint src, int srcLen)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7b83cd18((void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_ee5d037e((void*)src, srcLen);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string toUtf8(nint arg0, int arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::basic_string<wchar_t>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint toWide(nint src, int srcLen) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::basic_string<wchar_t>' requires --link-carrier or --virtual-dispatch.");
+
+    public void Dispose()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_6f877371((void*)arg0, arg1);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b5cc4e06((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toUtf8_bfcd9873(nint src) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static int toWide(nint arg0, int arg1, nint arg2, int arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_3dabb57d((void*)arg0, arg1, (void*)arg2, arg3);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint toWide_0989d06e(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint toWide_bb766148(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toWide_16528bba(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toWide_d12d3b28(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

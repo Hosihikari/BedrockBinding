@@ -4,7 +4,15 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Social;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SignInResult : int
 {
+    Unknown = -1,
+    Success = 0,
+    Failure = 1,
+    UserActionRequired = 2,
+    Canceled = 3,
+    SandboxFailure = 4,
+    InternetTimeout = 5,
+    IncorrectAccount = 6,
+    PlayerBanned = 7,
 }

@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VibrationListener_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum OwnerType : int
 {
+    SculkSensor = 0,
+    SculkShrieker = 1,
+    Warden = 2,
+    Allay = 3,
 }

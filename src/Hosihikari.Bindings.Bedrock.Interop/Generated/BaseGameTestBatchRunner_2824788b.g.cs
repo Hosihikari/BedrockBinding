@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.gametest;
 
 public sealed unsafe partial class BaseGameTestBatchRunner : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BaseGameTestBatchRunner(nint handle) : this(handle, true) { }
 
     internal BaseGameTestBatchRunner(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BaseGameTestBatchRunner Borrow(nint handle) => new BaseGameTestBatchRunner(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,127 @@ public sealed unsafe partial class BaseGameTestBatchRunner : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BaseGameTestBatchRunner Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BaseGameTestBatchRunner Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static BaseGameTestBatchRunner Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addTestInstanceWithRotation_64e11265(nint arg0, nint arg1, nint rotation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _createGameTestInstance(nint function) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _runTest(nint test, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void start()
+    public static BaseGameTestBatchRunner Create()
     {
-        NativeMethods.TablePtr->hs_method_3adbb575((void*)_handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_02fb9de6();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseGameTestBatchRunner((nint)handle);
+    }
+
+    public static BaseGameTestBatchRunner Create(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestBatchRunner arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f52948b7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseGameTestBatchRunner((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _createGameTestInstance(nint function) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void _runBatch(int batchIndex)
+    {
+        NativeMethods.TablePtr->C4.hs_method_be5e96a2((void*)__hosihikari_shim_handle, batchIndex);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void _runTest(nint test, nint ticker) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void forceStop()
+    {
+        NativeMethods.TablePtr->C4.hs_method_a892939b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1b7674_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_62aeadc1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk21b924_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3ca8be85((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk26cd31_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_420b3f55((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk62d7f4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f0876631((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk763143_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_fdaa3936((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8d0a12_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3ec113f4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd25d6d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_1241f341((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke52d45_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_816b604a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf9be2e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a187135a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfa4478_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_748ac950((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestBatchRunner operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestBatchRunner arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestBatchRunner((nint)NativeMethods.TablePtr->C4.hs_method_b2453f0f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2824788b((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_2824788b((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

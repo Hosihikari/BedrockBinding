@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandOriginData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandOriginData(nint handle) : this(handle, true) { }
 
     internal CommandOriginData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandOriginData Borrow(nint handle) => new CommandOriginData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,72 +33,51 @@ public sealed unsafe partial class CommandOriginData : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static CommandOriginData Create()
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_945d96a5();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOriginData((nint)handle);
-    }
-
-    public static CommandOriginData Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOriginData arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_b1c62dec((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CommandOriginData((nint)handle);
+        NativeMethods.TablePtr->C0.hs_method_c73db0d4((void*)__hosihikari_shim_handle);
     }
 
     public long mPlayerId
     {
-        get => NativeMethods.TablePtr->hs_get_dde356e2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_dde356e2((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_dde356e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_dde356e2((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRequestId_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1cc7d24f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1cc7d24f((void*)__hosihikari_shim_handle);
     }
 
-    public sbyte mType
+    public byte mType
     {
-        get => NativeMethods.TablePtr->hs_get_96518214((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_96518214((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_96518214((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_96518214((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mUuid_Address
+    public nint mUUID_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_10884230((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1b915c13((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_04e72a36((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_04e72a36((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

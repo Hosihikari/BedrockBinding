@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorEventListener
+public sealed unsafe partial class ActorEventListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorEventListener(nint handle) : this(handle, true) { }
 
     internal ActorEventListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorEventListener Borrow(nint handle) => new ActorEventListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,36 +33,24 @@ public sealed unsafe partial class ActorEventListener
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorEventListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorEventListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int onActorAttackedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public int _onActorAttackedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
     {
-        return NativeMethods.TablePtr->hs_method_4d8be007((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_bc21fcee((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)target.Handle);
     }
 
-    public int onActorCreated(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    public int _onActorCreated(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, byte initializationMethod)
     {
-        return NativeMethods.TablePtr->hs_method_69711834((void*)_handle, (void*)arg0.Handle, arg1);
+        return NativeMethods.TablePtr->C0.hs_method_90b8f39b((void*)__hosihikari_shim_handle, (void*)actor.Handle, initializationMethod);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onActorCreationAttemptFailed(nint actor, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int onActorCreationAttemptFailed(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)
+    public int _onActorCreationAttemptFailed(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, string message)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -72,87 +60,186 @@ public sealed unsafe partial class ActorEventListener
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_e4cc283f((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return NativeMethods.TablePtr->C0.hs_method_bc578fb4((void*)__hosihikari_shim_handle, (void*)actor.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public nint onActorDefinitionEvent(nint arg0, nint arg1, nint arg2) =>
+    public nint _onActorDefinitionEvent(nint actor, nint @event, nint modifiers) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public int onActorMobInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, int arg2)
+    public int _onActorMobInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, byte interactionType, int interactedActorType)
     {
-        return NativeMethods.TablePtr->hs_method_b7be5054((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+        return NativeMethods.TablePtr->C0.hs_method_05ba2cf7((void*)__hosihikari_shim_handle, (void*)actor.Handle, interactionType, interactedActorType);
+    }
+
+    public int _onActorMovementRewindCorrected(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, ulong arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_17b07564((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, arg2);
+    }
+
+    public int _onActorSneakChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, bool isSneaking)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_df446112((void*)__hosihikari_shim_handle, (void*)actor.Handle, isSneaking);
+    }
+
+    public int _onActorStartRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Actor vehicle)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_eda00533((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)vehicle.Handle);
+    }
+
+    public int _onActorStopRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, bool exitFromPassenger, bool actorIsBeingDestroyed, bool switchingVehicles)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0bfc6f96((void*)__hosihikari_shim_handle, (void*)actor.Handle, exitFromPassenger, actorIsBeingDestroyed, switchingVehicles);
+    }
+
+    public int _onActorTargetAcquired(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a661a379((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)target.Handle);
+    }
+
+    public int _onActorTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_12efa241((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public int _onActorTick(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e39bda2b((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public int _onPlayerAIStepBegin(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f600c546((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public int _onPlayerAIStepEnd(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_73aa37ed((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public int _onPlayerAuthInputApplied(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d288e822((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public int _onPlayerAuthInputReceived(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_08f7275b((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public int onActorAttackedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b67036bc((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)target.Handle);
+    }
+
+    public int onActorCreated(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, byte initializationMethod)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b783eb48((void*)__hosihikari_shim_handle, (void*)actor.Handle, initializationMethod);
+    }
+
+    public int onActorCreationAttemptFailed(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return NativeMethods.TablePtr->C0.hs_method_c195fbb9((void*)__hosihikari_shim_handle, (void*)actor.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public nint onActorDefinitionEvent(nint actor, nint @event, nint modifiers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public int onActorMobInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, byte interactionType, int interactedActorType)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_c35ad49a((void*)__hosihikari_shim_handle, (void*)actor.Handle, interactionType, interactedActorType);
     }
 
     public int onActorMovementRewindCorrected(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, ulong arg1, int arg2)
     {
-        return NativeMethods.TablePtr->hs_method_8300d189((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+        return NativeMethods.TablePtr->C0.hs_method_3623d4ae((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
-    public int onActorSneakChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1)
+    public int onActorSneakChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, bool isSneaking)
     {
-        return NativeMethods.TablePtr->hs_method_5f269259((void*)_handle, (void*)arg0.Handle, arg1);
+        return NativeMethods.TablePtr->C0.hs_method_d8169a27((void*)__hosihikari_shim_handle, (void*)actor.Handle, isSneaking);
     }
 
-    public int onActorStartRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public int onActorStartRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Actor vehicle)
     {
-        return NativeMethods.TablePtr->hs_method_e0ffac66((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_8f6355ca((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)vehicle.Handle);
     }
 
-    public int onActorStopRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1, bool arg2, bool arg3)
+    public int onActorStopRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, bool exitFromPassenger, bool actorIsBeingDestroyed, bool switchingVehicles)
     {
-        return NativeMethods.TablePtr->hs_method_7fcc30fe((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+        return NativeMethods.TablePtr->C0.hs_method_4b3dc537((void*)__hosihikari_shim_handle, (void*)actor.Handle, exitFromPassenger, actorIsBeingDestroyed, switchingVehicles);
     }
 
-    public int onActorTargetAcquired(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public int onActorTargetAcquired(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
     {
-        return NativeMethods.TablePtr->hs_method_361abd55((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_0e09f0ca((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)target.Handle);
     }
 
-    public int onActorTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public int onActorTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return NativeMethods.TablePtr->hs_method_96f044c6((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_1294d782((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public int onActorTick(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public int onActorTick(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return NativeMethods.TablePtr->hs_method_c0ef74b8((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_ff5ad50e((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorNotificationEvent arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorNotificationEvent @event)
     {
-        return NativeMethods.TablePtr->hs_method_97ec9b54((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_22c7ccb6((void*)__hosihikari_shim_handle, (void*)@event.Handle);
     }
 
     public int onPlayerAIStepBegin(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
-        return NativeMethods.TablePtr->hs_method_c5ff8093((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_db0eb0b6((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public int onPlayerAIStepEnd(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
-        return NativeMethods.TablePtr->hs_method_ee5f3d17((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_deaf6a8e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public int onPlayerAuthInputApplied(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
-        return NativeMethods.TablePtr->hs_method_c1d602c1((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_a819dca1((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public int onPlayerAuthInputReceived(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
-        return NativeMethods.TablePtr->hs_method_25ffd9d8((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_e49fb13e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_5965b9b1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

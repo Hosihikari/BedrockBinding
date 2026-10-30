@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class DBStorageEnvironmentChain
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DBStorageEnvironmentChain(nint handle) : this(handle, true) { }
 
     internal DBStorageEnvironmentChain(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DBStorageEnvironmentChain Borrow(nint handle) => new DBStorageEnvironmentChain(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,80 +33,60 @@ public sealed unsafe partial class DBStorageEnvironmentChain
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DBStorageEnvironmentChain Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'FlushableEnv' has no accessible destructor.", false)]
+    public static nint createFlushableEnv(nint currentEnv, nint storageAreaForLevel, nint dbPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'FlushableEnv' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DBStorageEnvironmentChain Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DBStorageEnvironmentChain Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv? getCompactionListenerEnv()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCompactionListenerEnv_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_1676b612((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv((nint)__hs_handle, false) : null;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6a92093d((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.FlushableEnv? getFlushableEnv()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDbPath_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_266cc15f((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.FlushableEnv((nint)__hs_handle, false) : null;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_40f82ed7((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb_Nested.Env? getRootEnv()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEncryptedEnv_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d6448720((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.leveldb_Nested.Env((nint)__hs_handle, false) : null;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3814c3fc((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.SnapshotEnv? getSnapshotEnv()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlushableEnv_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_6be03bac((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SnapshotEnv((nint)__hs_handle, false) : null;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4ae90195((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint isChainValid(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
-
-    public static bool isContentKeyValid(global::Hosihikari.Bindings.Bedrock.Interop.leveldb_Nested.Env? arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg2, string arg3, global::Hosihikari.Bindings.Abi.SharedHandle? arg4)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelDbEnv_Address
     {
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
-        scoped global::System.Span<byte> __hs_stringBytes3;
-        if (__hs_stringByteCount3 <= 256)
-        {
-            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
-        }
-        else
-        {
-            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
-        {
-            return NativeMethods.TablePtr->hs_method_17578aa8((void*)(arg0?.Handle ?? 0), (void*)arg1, (void*)arg2.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3bc58be7((void*)__hosihikari_shim_handle);
     }
 
-    public void onFlush()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreSnapshotBufferEnv_Address
     {
-        NativeMethods.TablePtr->hs_method_ed8b522d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3cf06815((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSnapshotEnv_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6af271c0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public nint mWrappedEnv
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_15881b0d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_15881b0d((void*)__hosihikari_shim_handle, (void*)value);
+    }
 }

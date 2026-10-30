@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BoostableComponent
+public sealed unsafe partial class BoostableComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BoostableComponent(nint handle) : this(handle, true) { }
 
     internal BoostableComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BoostableComponent Borrow(nint handle) => new BoostableComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,64 +33,70 @@ public sealed unsafe partial class BoostableComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BoostableComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BoostableComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID SPEED_MODIFIER_BOOSTING_UUID
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID SPEED_MODIFIER_BOOSTING_UUID()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_7b59812d(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C0.hs_method_bf77f3db(), false);
     }
 
-    public int getBoostTime()
+    public bool _canUseItem(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        return NativeMethods.TablePtr->hs_method_6a649a4e((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_341b535b((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)item.Handle) != 0;
     }
 
-    public int getBoostTimeTotal()
+    public void _useItem(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->hs_method_d5a00ef9((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_5741055c((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)item.Handle, (void*)player.Handle);
     }
 
-    public bool getIsBoosting()
+    public void boost(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return NativeMethods.TablePtr->hs_method_5baf7042((void*)_handle) != 0;
+        NativeMethods.TablePtr->C0.hs_method_877b70a3((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getSpeedModifierUUID()
+    public int mBoostTime
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_method_8a688e9d());
+        get => NativeMethods.TablePtr->C0.hs_get_f5b26c2f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f5b26c2f((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool itemUseText(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    public bool onItemInteract(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.Player arg2)
+    public int mBoostTimeTotal
     {
-        return NativeMethods.TablePtr->hs_method_b005a002((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_d558ccf0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d558ccf0((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setBoostTime(int arg0)
+    public bool mIsBoosting
     {
-        NativeMethods.TablePtr->hs_method_c563cf94((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_276c2066((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_276c2066((void*)__hosihikari_shim_handle, value);
     }
 
-    public void setIsBoosting(bool arg0)
+    public float mSpeedMultiplier
     {
-        NativeMethods.TablePtr->hs_method_f259b953((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C0.hs_get_4afe9320((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_4afe9320((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool onItemInteract(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_995fa4f1((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)item.Handle, (void*)player.Handle) != 0;
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_aeee95d8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum ActorInitializationMethod : int
+public enum ActorInitializationMethod : byte
 {
+    Invalid = 0,
+    Loaded = 1,
+    Spawned = 2,
+    Born = 3,
+    Transformed = 4,
+    Updated = 5,
+    Event = 6,
+    Legacy = 7,
 }

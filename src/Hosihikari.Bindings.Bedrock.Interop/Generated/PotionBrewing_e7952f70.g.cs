@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PotionBrewing
+public sealed unsafe partial class PotionBrewing : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PotionBrewing(nint handle) : this(handle, true) { }
 
     internal PotionBrewing(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PotionBrewing Borrow(nint handle) => new PotionBrewing(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,111 +33,109 @@ public sealed unsafe partial class PotionBrewing
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PotionBrewing Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PotionBrewing Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void addContainerRecipe(global::Hosihikari.Bindings.Bedrock.Interop.Item arg0, global::Hosihikari.Bindings.Bedrock.Interop.PotionBrewing_Nested.Ingredient arg1, global::Hosihikari.Bindings.Bedrock.Interop.Item arg2)
+    public static void addContainerRecipe(global::Hosihikari.Bindings.Bedrock.Interop.Item from, global::Hosihikari.Bindings.Bedrock.Interop.PotionBrewing_Nested.Ingredient ingredient, global::Hosihikari.Bindings.Bedrock.Interop.Item to)
     {
-        NativeMethods.TablePtr->hs_method_11f095f0((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4f40b3d4((void*)from.Handle, (void*)ingredient.Handle, (void*)to.Handle);
     }
 
-    public static void addPotionMix(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.PotionBrewing_Nested.Ingredient arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg2)
+    public static void addPotionMix(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor from, global::Hosihikari.Bindings.Bedrock.Interop.PotionBrewing_Nested.Ingredient ingredient, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor to)
     {
-        NativeMethods.TablePtr->hs_method_4074ad97((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C2.hs_method_06ca6c83((void*)from.Handle, (void*)ingredient.Handle, (void*)to.Handle);
     }
 
-    public static int getFuelValue(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getChemistryMix(nint from, nint ingredient) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+
+    public static int getFuelValue(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
     {
-        return NativeMethods.TablePtr->hs_method_adf1a5de((void*)arg0.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_646e1533((void*)item.Handle);
     }
 
-    public static bool hasMix(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
+    public static bool hasMix(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance source, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor ingredient)
     {
-        return NativeMethods.TablePtr->hs_method_c057c82b((void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_8dc3f22a((void*)source.Handle, (void*)ingredient.Handle) != 0;
     }
 
     public static void initPotionBrewing()
     {
-        NativeMethods.TablePtr->hs_method_d01bc3de();
+        NativeMethods.TablePtr->C2.hs_method_d01bc3de();
     }
 
-    public static bool isFuel(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
+    public static bool isFuel(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
     {
-        return NativeMethods.TablePtr->hs_method_c7af6ec8((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_a9c97ebf((void*)item.Handle) != 0;
     }
 
-    public static bool isIngredient(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
+    public static bool isIngredient(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
     {
-        return NativeMethods.TablePtr->hs_method_ef67a3c0((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_4d1a4545((void*)item.Handle) != 0;
     }
 
-    public static bool isPotionRecipeInput(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
+    public static bool isPotionIngredient(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
     {
-        return NativeMethods.TablePtr->hs_method_b9bcdb6b((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_7a7dd55c((void*)item.Handle) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mChemistryMixes_Address
+    public static bool isPotionRecipeInput(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_95a4adcf();
+        return NativeMethods.TablePtr->C2.hs_method_848c1092((void*)item.Handle) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mContainerMixes_Address
+    public static nint mChemistryMixes()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b47f8190();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_13de178b();
     }
 
-    public static bool mIsInitialized
+    public static nint mContainerMixes()
     {
-        get => NativeMethods.TablePtr->hs_get_0c426036() != 0;
+        return (nint)NativeMethods.TablePtr->C2.hs_method_d79a710b();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mPotionMixes_Address
+    public static nint mPotionMixes()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_53ff8973();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_b9e660fc();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mValidContainers_Address
+    public static nint mValidContainers()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a95dfe67();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_067c881f();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mValidIngredients_Address
+    public static nint mValidIngredients()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6585ce16();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_bf6e38e8();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mValidRecipeInputs_Address
+    public static nint mValidRecipeInputs()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d6546980();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_0264b92b();
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance mix(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_37ba3f86((void*)arg0.Handle, (void*)arg1.Handle));
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint mix(nint ingredient, nint source) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
 
     public static void shutdown()
     {
-        NativeMethods.TablePtr->hs_method_54baead2();
+        NativeMethods.TablePtr->C2.hs_method_54baead2();
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e7952f70((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,9 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum CircuitComponentType : long
+public enum CircuitComponentType : ulong
 {
-    Unknown = 0,
     Undefined = 1,
     BaseRailTransporter = 65536,
     ConsumerComponent = 131072,
@@ -20,5 +19,5 @@ public enum CircuitComponentType : long
     RedstoneTorchCapacitor = 2097155,
     RepeaterCapacitor = 2097156,
     BaseCircuitComponent = 2147483648,
-    Mask = 4294901760,
+    GroupMask = 4294901760,
 }

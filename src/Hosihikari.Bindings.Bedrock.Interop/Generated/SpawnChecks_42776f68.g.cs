@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SpawnChecks
+public sealed unsafe partial class SpawnChecks : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SpawnChecks(nint handle) : this(handle, true) { }
 
     internal SpawnChecks(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SpawnChecks Borrow(nint handle) => new SpawnChecks(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,105 +33,41 @@ public sealed unsafe partial class SpawnChecks
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SpawnChecks Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SpawnChecks Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static bool canHatchEgg(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
+    public static bool canSpawnNaturally(global::Hosihikari.Bindings.Bedrock.Interop.ILevel level)
     {
-        return NativeMethods.TablePtr->hs_method_bcd4f155((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_bff98097((void*)level.Handle) != 0;
     }
 
-    public static bool canRespawnEnderDragon(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
+    public static bool canSpawnPigZombieFromPortal(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return NativeMethods.TablePtr->hs_method_158cd939((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_96de9a8e((void*)dimension.Handle, (void*)random.Handle) != 0;
     }
 
-    public static bool canReviveBees(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
+    public static bool canSpawnSkeletonTrap(global::Hosihikari.Bindings.Bedrock.Interop.ILevel level, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return NativeMethods.TablePtr->hs_method_f25a5116((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_9ddc413c((void*)level.Handle, (void*)random.Handle) != 0;
     }
 
-    public static bool canSpawnBees(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
+    public static bool canSpawnWanderingTrader(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel level)
     {
-        return NativeMethods.TablePtr->hs_method_5f64e7aa((void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_81405b85((void*)level.Handle) != 0;
     }
 
-    public static bool canSpawnEnderDragon(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel arg0)
+    public void Dispose()
     {
-        return NativeMethods.TablePtr->hs_method_79de9de8((void*)arg0.Handle) != 0;
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_42776f68((void*)__hosihikari_shim_handle);
+            }
 
-    public static bool canSpawnFromMobSpawnerBlock(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_2eba6dcb((void*)arg0.Handle) != 0;
-    }
-
-    public static bool canSpawnNaturally(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_1ebb1959((void*)arg0.Handle) != 0;
-    }
-
-    public static bool canSpawnPigZombieFromPortal(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_a241d956((void*)arg0.Handle, (void*)arg1.Handle) != 0;
-    }
-
-    public static bool canSpawnSkeletonTrap(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_9c770c8e((void*)arg0.Handle, (void*)arg1.Handle) != 0;
-    }
-
-    public static bool canSpawnTadpoles(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_675bb5b3((void*)arg0.Handle) != 0;
-    }
-
-    public static bool canSpawnVillageDwellers(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_399606cf((void*)arg0.Handle) != 0;
-    }
-
-    public static bool canSpawnWanderingTrader(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_5833575a((void*)arg0.Handle) != 0;
-    }
-
-    public static bool canSpawnWarden(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_e29023c8((void*)arg0.Handle) != 0;
-    }
-
-    public static bool canSpawnWithWorldGeneration(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_b87684c9((void*)arg0.Handle) != 0;
-    }
-
-    public static bool canTriggerRaid(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_4687d1b6((void*)arg0.Handle) != 0;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static bool shouldAbortRaid(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_30184446((void*)arg0.Handle) != 0;
-    }
-
-    public static bool shouldPauseRaid(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_17a760e2((void*)arg0.Handle) != 0;
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

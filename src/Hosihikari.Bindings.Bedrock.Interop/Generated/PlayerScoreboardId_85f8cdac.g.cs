@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayerScoreboardId : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerScoreboardId(nint handle) : this(handle, true) { }
 
     internal PlayerScoreboardId(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerScoreboardId Borrow(nint handle) => new PlayerScoreboardId(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,37 @@ public sealed unsafe partial class PlayerScoreboardId : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId INVALID
+    public static global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId INVALID()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId((nint)NativeMethods.TablePtr->hs_get_234f7e48(), false);
-    }
-
-    public static PlayerScoreboardId Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_defda1c7();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PlayerScoreboardId((nint)handle);
-    }
-
-    public static PlayerScoreboardId Create(long arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_ef468a01(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PlayerScoreboardId((nint)handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId((nint)NativeMethods.TablePtr->C2.hs_method_a2d0bd6e(), false);
     }
 
     public long mActorUniqueId
     {
-        get => NativeMethods.TablePtr->hs_get_ba0275b9((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ba0275b9((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ba0275b9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ba0275b9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId rhs)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_ae881a45((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_85f8cdac((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_85f8cdac((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

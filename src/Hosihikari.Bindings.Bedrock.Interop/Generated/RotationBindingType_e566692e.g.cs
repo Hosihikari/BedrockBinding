@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockTransformationSerializer;
 
-public sealed unsafe partial class RotationBindingType
+public sealed unsafe partial class RotationBindingType : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RotationBindingType(nint handle) : this(handle, true) { }
 
     internal RotationBindingType(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RotationBindingType Borrow(nint handle) => new RotationBindingType(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,25 +33,39 @@ public sealed unsafe partial class RotationBindingType
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RotationBindingType Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RotationBindingType Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void rotationTypeFromVec3(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    public int x
     {
-        NativeMethods.TablePtr->hs_method_5194249d((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_a17380cb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_a17380cb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int y
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_301cdfda((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_301cdfda((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int z
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_27952374((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_27952374((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_e566692e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

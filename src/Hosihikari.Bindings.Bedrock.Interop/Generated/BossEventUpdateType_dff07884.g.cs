@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum BossEventUpdateType : int
+public enum BossEventUpdateType : byte
 {
     Add = 0,
     PlayerAdded = 1,

@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum BatteryStatus : int
 {
+    Unknown = 0,
+    Discharging = 1,
+    Charging = 2,
+    Full = 3,
+    Count = 4,
 }

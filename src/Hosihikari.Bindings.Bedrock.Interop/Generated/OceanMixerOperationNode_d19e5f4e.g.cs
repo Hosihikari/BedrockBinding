@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class OceanMixerOperationNode : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public OceanMixerOperationNode(nint handle) : this(handle, true) { }
 
     internal OceanMixerOperationNode(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static OceanMixerOperationNode Borrow(nint handle) => new OceanMixerOperationNode(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,27 @@ public sealed unsafe partial class OceanMixerOperationNode : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OceanMixerOperationNode Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OperationGraphResult<BiomeTemperatureCategory>' is not a known bindable declaration.", false)]
+    public void __fillArea(nint operationNodeData, nint origin, nint size, int pw, nint oceanData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OperationGraphResult<BiomeTemperatureCategory>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OceanMixerOperationNode Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint __getAreaRead(nint origin, nint size) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.");
 
-    public static OceanMixerOperationNode Create(uint arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1, global::Hosihikari.Bindings.Abi.SharedHandle? arg2, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg3, global::Hosihikari.Bindings.Bedrock.Interop.Biome arg4, global::Hosihikari.Bindings.Bedrock.Interop.Biome arg5)
+    public nint _ctor(uint seedMixup, global::Hosihikari.Bindings.Abi.SharedHandle? biomeLayer, global::Hosihikari.Bindings.Abi.SharedHandle? oceanLayer, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.Biome genericShallowOcean, global::Hosihikari.Bindings.Bedrock.Interop.Biome genericDeepOcean)
     {
-        var handle = NativeMethods.TablePtr->hs_create_bd1defa4(arg0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_41a77c54((void*)__hosihikari_shim_handle, seedMixup, biomeLayer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), oceanLayer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)registry.Handle, (void*)genericShallowOcean.Handle, (void*)genericDeepOcean.Handle);
+    }
+
+    public static OceanMixerOperationNode Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1d38892e();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,29 +62,57 @@ public sealed unsafe partial class OceanMixerOperationNode : global::System.IDis
         return new OceanMixerOperationNode((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static OceanMixerOperationNode Create(uint seedMixup, global::Hosihikari.Bindings.Abi.SharedHandle? biomeLayer, global::Hosihikari.Bindings.Abi.SharedHandle? oceanLayer, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.Biome genericShallowOcean, global::Hosihikari.Bindings.Bedrock.Interop.Biome genericDeepOcean)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_02aa9a99(seedMixup, biomeLayer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), oceanLayer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)registry.Handle, (void*)genericShallowOcean.Handle, (void*)genericDeepOcean.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void init(long seed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new OceanMixerOperationNode((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OperationGraphResult<BiomeTemperatureCategory>' is not a known bindable declaration.", false)]
+    public void _fillArea(nint operationNodeData, nint origin, nint size, int pw, nint oceanData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OperationGraphResult<BiomeTemperatureCategory>' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getAreaRead(nint origin, nint size) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeepOceanBiomes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8d163f7f((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mGenericDeepOcean
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f66aee30((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mGenericShallowOcean
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a051812f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mShallowOceanBiomes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3b19740c((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d19e5f4e((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_d19e5f4e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

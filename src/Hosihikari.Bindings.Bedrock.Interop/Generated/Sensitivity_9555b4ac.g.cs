@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PressurePlateBlock_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Sensitivity : int
 {
+    Everything = 0,
+    Mobs = 1,
+    Players = 2,
 }

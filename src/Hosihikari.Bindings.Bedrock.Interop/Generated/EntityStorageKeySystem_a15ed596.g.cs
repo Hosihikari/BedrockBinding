@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EntityStorageKeySystem
+public sealed unsafe partial class EntityStorageKeySystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EntityStorageKeySystem(nint handle) : this(handle, true) { }
 
     internal EntityStorageKeySystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EntityStorageKeySystem Borrow(nint handle) => new EntityStorageKeySystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,28 +33,20 @@ public sealed unsafe partial class EntityStorageKeySystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntityStorageKeySystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntityStorageKeySystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static string generateStorageKey(long arg0)
+    public static string generateStorageKey(long actorId)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ce1e7059(arg0);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_47c9dd16(actorId);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static bool getIsDirtySinceSerialization(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, string arg1)
+    public static bool getIsDirtySinceSerialization(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, string currentSerializedState)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(currentSerializedState);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -64,25 +56,21 @@ public sealed unsafe partial class EntityStorageKeySystem
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(currentSerializedState, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_97555274((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_498c695c((void*)entity.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void setDirtyFromNonSerializedState(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    public static void setDirtyFromNonSerializedState(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        NativeMethods.TablePtr->hs_method_f37aff0b((void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_75e4ae7a((void*)entity.Handle);
     }
 
-    public static void setLastSerializedState(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, string arg1)
+    public static void setLastSerializedState(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, string currentSerializedState)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(currentSerializedState);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -92,10 +80,23 @@ public sealed unsafe partial class EntityStorageKeySystem
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(currentSerializedState, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_66f38603((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C1.hs_method_3082b031((void*)entity.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_a15ed596((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

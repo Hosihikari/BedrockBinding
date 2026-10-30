@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http;
 
-public sealed unsafe partial class RequestBuilder
+public sealed unsafe partial class RequestBuilder : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RequestBuilder(nint handle) : this(handle, true) { }
 
     internal RequestBuilder(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RequestBuilder Borrow(nint handle) => new RequestBuilder(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,41 @@ public sealed unsafe partial class RequestBuilder
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder POST()
+    public void _dtor()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder((nint)NativeMethods.TablePtr->hs_method_59b7613a((void*)_handle), false);
+        NativeMethods.TablePtr->C0.hs_method_846b946d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RequestBuilder Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RequestBuilder Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder addHeader(string arg0, string arg1, bool arg2)
+    public static RequestBuilder Create()
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var handle = NativeMethods.TablePtr->C0.hs_create_46fec7c9();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RequestBuilder((nint)handle);
+    }
+
+    public static RequestBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_be1e48ba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RequestBuilder((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder body(string plainText)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(plainText);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -63,83 +77,60 @@ public sealed unsafe partial class RequestBuilder
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
+        global::System.Text.Encoding.UTF8.GetBytes(plainText, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder((nint)NativeMethods.TablePtr->C0.hs_method_bcc4a4c5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaf9bb2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d9df9c43((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd459f4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4c1e5486((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder((nint)NativeMethods.TablePtr->C0.hs_method_535e5a4e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder url(string url)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(url);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
         }
         else
         {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(url, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder((nint)NativeMethods.TablePtr->C0.hs_method_66862bfa((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
             {
-                return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder((nint)NativeMethods.TablePtr->hs_method_45b75ff4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2), false);
+                NativeMethods.TablePtr->C0.hs_destroy_549532fe((void*)__hosihikari_shim_handle);
             }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder body(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder((nint)NativeMethods.TablePtr->hs_method_3b3fc37a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.Request build()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.Request((nint)NativeMethods.TablePtr->hs_method_64dc4374((void*)_handle), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint timeout_b351add8(nint timeout) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public nint timeout_6865e0be(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder url(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.RequestBuilder((nint)NativeMethods.TablePtr->hs_method_4158e3fe((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c6e6a7f1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

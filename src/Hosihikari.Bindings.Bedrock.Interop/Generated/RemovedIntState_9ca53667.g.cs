@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.FlatteningUtils_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.FlatteningUtils;
 
 public sealed unsafe partial class RemovedIntState
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RemovedIntState(nint handle) : this(handle, true) { }
 
     internal RemovedIntState(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RemovedIntState Borrow(nint handle) => new RemovedIntState(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,50 @@ public sealed unsafe partial class RemovedIntState
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RemovedIntState Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RemovedIntState Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addValue(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public void _addValue(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->hs_method_728d6ca8((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_de99da77((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    public void match(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterNodeBuilder arg0, ulong arg1)
+    public void _match(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterNodeBuilder builder, ulong index)
     {
-        NativeMethods.TablePtr->hs_method_1085fce4((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C1.hs_method_13fdf011((void*)__hosihikari_shim_handle, (void*)builder.Handle, index);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong _valueCount()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6425fa92((void*)__hosihikari_shim_handle);
+    }
+
+    public void addValue(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C1.hs_method_253b9e18((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5c73c2d3((void*)__hosihikari_shim_handle);
+    }
+
+    public void match(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterNodeBuilder builder, ulong index)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c05c4a86((void*)__hosihikari_shim_handle, (void*)builder.Handle, index);
+    }
 
     public ulong valueCount()
     {
-        return NativeMethods.TablePtr->hs_method_d491b1f7((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_ecd127e7((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_91ca50d3((void*)__hosihikari_shim_handle);
+    }
 }

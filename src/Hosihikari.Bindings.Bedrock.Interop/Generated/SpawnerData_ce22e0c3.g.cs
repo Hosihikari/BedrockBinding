@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SpawnerData
+public sealed unsafe partial class SpawnerData
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SpawnerData(nint handle) : this(handle, true) { }
 
     internal SpawnerData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SpawnerData Borrow(nint handle) => new SpawnerData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,20 +33,66 @@ public sealed partial class SpawnerData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SpawnerData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public int mRandomWeight
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_5efcb457((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_5efcb457((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SpawnerData Create_0a469bde(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint brightness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b15b0cd4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint entity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_5e9f203f((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'br::worldgen::SpawnerData' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint make(nint id, short probabilityWeight, short minCount, short maxCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'br::worldgen::SpawnerData' requires --link-carrier or --virtual-dispatch.");
+
+    public short maxCount
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_d8adc5d8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_d8adc5d8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public short minCount
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_db0236dd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_db0236dd((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint population_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_2982a67f((void*)__hosihikari_shim_handle);
+    }
+
+    public sbyte surface
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_dd96f5e8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_dd96f5e8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public sbyte underground
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_60fca01b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_60fca01b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public sbyte underwater
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_0848d3e4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_0848d3e4((void*)__hosihikari_shim_handle, value);
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class PoolElementStructureSection
+public sealed unsafe partial class PoolElementStructureSection : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PoolElementStructureSection(nint handle) : this(handle, true) { }
 
     internal PoolElementStructureSection(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PoolElementStructureSection Borrow(nint handle) => new PoolElementStructureSection(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,37 +33,77 @@ public sealed unsafe partial class PoolElementStructureSection
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PoolElementStructureSection Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PoolElementStructureSection Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'br::worldgen::JigsawJunction' is not supported.", false)]
-    public void appendJunctions(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'br::worldgen::JigsawJunction' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'br::worldgen::Rigid' is not supported.", false)]
-    public void appendRigid(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'br::worldgen::Rigid' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2)
+    public static PoolElementStructureSection Create()
     {
-        return NativeMethods.TablePtr->hs_method_107a1a9e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        var handle = NativeMethods.TablePtr->C4.hs_create_056cae8e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PoolElementStructureSection((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoundingBox_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_14616b0e((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mElement
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_1b393116((void*)__hosihikari_shim_handle);
+    }
+
+    public int mGroundOffset
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_935a001a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_935a001a((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mJunctions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f0fd3974((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mLiquidSettings
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_3d293fa9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_3d293fa9((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9f9c9e8c((void*)__hosihikari_shim_handle);
+    }
+
+    public byte mRot
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_94838429((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_94838429((void*)__hosihikari_shim_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SharedTypes::v1_21_50::PoolElementStructureSection' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint serialize() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SharedTypes::v1_21_50::PoolElementStructureSection' requires --link-carrier or --virtual-dispatch.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_b644f27b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ActorHistory_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Snapshot
+public sealed unsafe partial class Snapshot
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Snapshot(nint handle) : this(handle, true) { }
 
     internal Snapshot(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Snapshot Borrow(nint handle) => new Snapshot(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,32 @@ public sealed partial class Snapshot
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCapturedInput_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8efcd3e6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCorrections_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ebbf0e69((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsCorrection
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_ba4e6225((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_ba4e6225((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSnapshotState_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e3e9164e((void*)__hosihikari_shim_handle);
     }
 }

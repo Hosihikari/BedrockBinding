@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TickDeltaTimeManager
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TickDeltaTimeManager(nint handle) : this(handle, true) { }
 
     internal TickDeltaTimeManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TickDeltaTimeManager Borrow(nint handle) => new TickDeltaTimeManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,20 @@ public sealed unsafe partial class TickDeltaTimeManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickDeltaTimeManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickDeltaTimeManager Create_893de115(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TickDeltaTimeManager Create_73d7f818(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void captureDeltaTime()
+    public double mTickDeltaTime
     {
-        NativeMethods.TablePtr->hs_method_c45bca0c((void*)_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_92b2fa63((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_92b2fa63((void*)__hosihikari_shim_handle, value);
     }
 
-    public double getTickDeltaTime()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTickDeltaTimeManagerProxy_Address
     {
-        return NativeMethods.TablePtr->hs_method_6f30020a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_76668ad2((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

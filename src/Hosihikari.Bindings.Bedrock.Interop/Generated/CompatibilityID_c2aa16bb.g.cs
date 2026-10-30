@@ -10,7 +10,7 @@ public enum CompatibilityID : int
     Damage = 1,
     Gathering = 2,
     Protection = 3,
-    Froststrider = 4,
-    Mendfinity = 5,
-    Loyalriptide = 6,
+    FrostStrider = 4,
+    MendingInfinity = 5,
+    LoyaltyRiptide = 6,
 }

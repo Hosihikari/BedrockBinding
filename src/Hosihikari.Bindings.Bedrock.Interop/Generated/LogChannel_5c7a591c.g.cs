@@ -2,12 +2,12 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.BedrockLog_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.BedrockLog;
 
 public enum LogChannel : int
 {
     Global = 0,
     ClientSide = 1,
     ServerSide = 2,
-    Count = 3,
+    NumLogChannels = 3,
 }

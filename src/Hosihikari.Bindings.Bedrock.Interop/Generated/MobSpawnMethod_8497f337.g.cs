@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum MobSpawnMethod : int
+public enum MobSpawnMethod : byte
 {
+    Unknown = 0,
+    SpawnEgg = 1,
+    Command = 2,
+    Dispenser = 3,
+    Spawner = 4,
+    SpawnMethodCount = 5,
 }

@@ -7,5 +7,5 @@ namespace Hosihikari.Bindings.Bedrock.Interop.InventorySource_Nested;
 public enum InventorySourceFlags : uint
 {
     NoFlag = 0,
-    WorldInteraction_Random = 1,
+    WorldInteractionRandom = 1,
 }

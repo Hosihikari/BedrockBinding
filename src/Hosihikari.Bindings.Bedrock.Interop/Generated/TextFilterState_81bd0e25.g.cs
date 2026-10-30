@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackNetManagerServer_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum TextFilterState : int
 {
+    None = 0,
+    Waiting = 1,
+    Timedout = 2,
 }

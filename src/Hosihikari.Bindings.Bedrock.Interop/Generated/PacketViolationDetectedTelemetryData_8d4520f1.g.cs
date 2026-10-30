@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PacketViolationDetectedTelemetryData
+public sealed unsafe partial class PacketViolationDetectedTelemetryData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PacketViolationDetectedTelemetryData(nint handle) : this(handle, true) { }
 
     internal PacketViolationDetectedTelemetryData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PacketViolationDetectedTelemetryData Borrow(nint handle) => new PacketViolationDetectedTelemetryData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,89 @@ public sealed unsafe partial class PacketViolationDetectedTelemetryData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PacketViolationDetectedTelemetryData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PacketViolationDetectedTelemetryData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PacketViolationDetectedTelemetryData Create(ulong arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void WriteEventData(global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.Event arg0)
+    public static PacketViolationDetectedTelemetryData Create()
     {
-        NativeMethods.TablePtr->hs_method_6dc52327((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_c34232e5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PacketViolationDetectedTelemetryData((nint)handle);
     }
 
-    public static string mEventName
+    public static PacketViolationDetectedTelemetryData Create(global::Hosihikari.Bindings.Bedrock.Interop.PacketViolationDetectedTelemetryData arg0)
     {
-        get
+        var handle = NativeMethods.TablePtr->C2.hs_create_126c5935((void*)arg0.Handle);
+        if (handle == null)
         {
-            var view = NativeMethods.TablePtr->hs_get_67faf0a7();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PacketViolationDetectedTelemetryData((nint)handle);
+    }
+
+    public void WriteEventData(nint @event)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d61e93ef((void*)__hosihikari_shim_handle, (void*)@event);
+    }
+
+    public static string mEventName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_5b4def9c();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk38d1a1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_38b9787b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk42dcb4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_60ea365a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6ab08a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f0983f4c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkec8fe0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_97bb6eb2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfa3960_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_daa5f365((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PacketViolationDetectedTelemetryData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PacketViolationDetectedTelemetryData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PacketViolationDetectedTelemetryData((nint)NativeMethods.TablePtr->C2.hs_method_84669da6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8d4520f1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

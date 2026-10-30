@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum Duration : int
 {
+    Session = 0,
+    OneTimeForInvalidPlayer = 1,
+    Invalid = 2,
 }

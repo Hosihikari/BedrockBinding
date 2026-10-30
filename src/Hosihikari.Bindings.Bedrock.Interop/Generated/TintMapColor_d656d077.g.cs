@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TintMapColor : global::System.IDisposable
+public sealed unsafe partial class TintMapColor
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TintMapColor(nint handle) : this(handle, true) { }
 
     internal TintMapColor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TintMapColor Borrow(nint handle) => new TintMapColor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,19 @@ public sealed unsafe partial class TintMapColor : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    public static TintMapColor Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_6dcbc56b();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new TintMapColor((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint colors_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_380b0de6((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_380b0de6((void*)__hosihikari_shim_handle);
     }
 
-    public void Dispose()
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.TintMapColor rhs)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_d656d077((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return NativeMethods.TablePtr->C3.hs_method_c77a3495((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 }

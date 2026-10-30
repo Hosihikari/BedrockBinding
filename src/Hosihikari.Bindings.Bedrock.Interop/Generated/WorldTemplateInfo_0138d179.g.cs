@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WorldTemplateInfo
+public sealed unsafe partial class WorldTemplateInfo : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WorldTemplateInfo(nint handle) : this(handle, true) { }
 
     internal WorldTemplateInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WorldTemplateInfo Borrow(nint handle) => new WorldTemplateInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,79 @@ public sealed unsafe partial class WorldTemplateInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldTemplateInfo Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WorldTemplateInfo Create_e2d947c2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldTemplateInfo Create_ce5d69dc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addWorldTemplatePackSource(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackManifest manifest, global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? accessStrategy)
     {
-        NativeMethods.TablePtr->hs_method_804daeb8((void*)_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_8380b033((void*)__hosihikari_shim_handle, (void*)manifest.Handle, (void*)(accessStrategy?.Handle ?? 0));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackManifest getPackManifest()
+    public static WorldTemplateInfo Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackManifest((nint)NativeMethods.TablePtr->hs_method_280bfa75((void*)_handle), false);
+        var handle = NativeMethods.TablePtr->C4.hs_create_68f54bbf();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldTemplateInfo((nint)handle);
     }
 
-    public string getWorldName()
+    public static WorldTemplateInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_6ce8da29((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        var handle = NativeMethods.TablePtr->C4.hs_create_ce5d69dc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldTemplateInfo((nint)handle);
     }
 
-    public nint getWorldPath()
+    public static WorldTemplateInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackManifest manifest, global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? accessStrategy)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2ecd2814((void*)_handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_6d366dd6((void*)manifest.Handle, (void*)(accessStrategy?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldTemplateInfo((nint)handle);
     }
 
-    public bool isVirtualCatalogItem()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WorldTemplateData' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint buildTemplateData(nint manifest, nint accessStrategy) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WorldTemplateData' requires --link-carrier or --virtual-dispatch.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo getInvalid()
     {
-        return NativeMethods.TablePtr->hs_method_60b02d3d((void*)_handle) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo((nint)NativeMethods.TablePtr->C4.hs_method_13bc2290(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk207bb5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_4e8a2b34((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_bf0a4fac() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo((nint)NativeMethods.TablePtr->C4.hs_method_3bb6c451((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_0138d179((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

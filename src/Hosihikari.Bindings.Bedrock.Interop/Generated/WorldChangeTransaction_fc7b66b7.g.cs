@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WorldChangeTransaction : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WorldChangeTransaction(nint handle) : this(handle, true) { }
 
     internal WorldChangeTransaction(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WorldChangeTransaction Borrow(nint handle) => new WorldChangeTransaction(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,24 @@ public sealed unsafe partial class WorldChangeTransaction : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldChangeTransaction Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static WorldChangeTransaction Create(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target)
     {
-        var handle = NativeMethods.TablePtr->hs_create_7b4e3dce((void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_1d12c4dd((void*)__hosihikari_shim_handle, (void*)target.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C4.hs_method_d7983ad8((void*)__hosihikari_shim_handle);
+    }
+
+    public static WorldChangeTransaction Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_dab9da73();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,52 +59,56 @@ public sealed unsafe partial class WorldChangeTransaction : global::System.IDisp
         return new WorldChangeTransaction((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldChangeTransaction Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool apply()
+    public static WorldChangeTransaction Create(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target)
     {
-        return NativeMethods.TablePtr->hs_method_3a15c2df((void*)_handle) != 0;
+        var handle = NativeMethods.TablePtr->C4.hs_create_9a34a0d1((void*)target.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldChangeTransaction((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public static WorldChangeTransaction Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldChangeTransaction arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_2c409281((void*)_handle, (void*)arg0.Handle), false);
+        var handle = NativeMethods.TablePtr->C4.hs_create_62927858((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldChangeTransaction((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e6787c1e((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e6787c1e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTarget_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a69fc63b((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a69fc63b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldChangeTransaction operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.WorldChangeTransaction arg0)
     {
-        NativeMethods.TablePtr->hs_method_bed5b544((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldChangeTransaction((nint)NativeMethods.TablePtr->C4.hs_method_5fd31144((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_fc7b66b7((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_fc7b66b7((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

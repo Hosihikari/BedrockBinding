@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ConnectedStorageEventType : int
 {
+    NotSet = 0,
+    Upload = 1,
+    Download = 2,
+    Delete = 3,
+    RetryUpload = 4,
 }

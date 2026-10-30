@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SignInStage : int
 {
+    Unknown = 0,
+    Starting = 1,
+    Failed = 2,
+    Canceled = 3,
+    Succeeded = 4,
+    SucceededNewAccount = 5,
+    FailedCreate = 6,
 }

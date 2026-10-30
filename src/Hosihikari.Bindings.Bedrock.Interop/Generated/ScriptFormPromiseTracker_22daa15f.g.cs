@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ScriptFormPromiseTracker : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptFormPromiseTracker(nint handle) : this(handle, true) { }
 
     internal ScriptFormPromiseTracker(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptFormPromiseTracker Borrow(nint handle) => new ScriptFormPromiseTracker(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,20 +33,45 @@ public sealed unsafe partial class ScriptFormPromiseTracker : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ed06936b((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ed06936b((void*)__hosihikari_shim_handle);
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ServerScriptManagerEvents events, global::Hosihikari.Bindings.Bedrock.Interop.LevelEventCoordinator levelEventCoordinator, global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayerEventCoordinator playerEventCooordinator)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_23616284((void*)__hosihikari_shim_handle, (void*)events.Handle, (void*)levelEventCoordinator.Handle, (void*)playerEventCooordinator.Handle);
+    }
+
+    public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDataDrivenScreenClosedEvent formResponseEvent)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_2ea1c2a1((void*)__hosihikari_shim_handle, (void*)formResponseEvent.Handle);
+    }
+
+    public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormCloseEvent formCloseEvent)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_c6eab00b((void*)__hosihikari_shim_handle, (void*)formCloseEvent.Handle);
+    }
+
+    public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormResponseEvent formResponseEvent)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b582ed56((void*)__hosihikari_shim_handle, (void*)formResponseEvent.Handle);
+    }
+
+    public int _onLevelRemovedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b4bc3f3a((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     public static ScriptFormPromiseTracker Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_20698098();
+        var handle = NativeMethods.TablePtr->C3.hs_create_20698098();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,67 +80,122 @@ public sealed unsafe partial class ScriptFormPromiseTracker : global::System.IDi
         return new ScriptFormPromiseTracker((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptFormPromiseTracker Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void handleFormResponse(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
+    public static ScriptFormPromiseTracker Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerScriptManagerEvents events, global::Hosihikari.Bindings.Bedrock.Interop.LevelEventCoordinator levelEventCoordinator, global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayerEventCoordinator playerEventCooordinator)
     {
-        NativeMethods.TablePtr->hs_method_34f3d68a((void*)_handle, arg0, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_3d3567aa((void*)events.Handle, (void*)levelEventCoordinator.Handle, (void*)playerEventCooordinator.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptFormPromiseTracker((nint)handle);
     }
 
-    public void handlePlayerQuit(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
+    public static ScriptFormPromiseTracker Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptFormPromiseTracker arg0)
     {
-        NativeMethods.TablePtr->hs_method_4e484746((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_8946007c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptFormPromiseTracker((nint)handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static void _sendToClient(nint player, nint formJson, uint formId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFormRequests_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ea2d1e02((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ea2d1e02((void*)__hosihikari_shim_handle);
     }
 
-    public int mLastRequestId
+    public uint mLastRequestId
     {
-        get => NativeMethods.TablePtr->hs_get_0d319e4f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_0d319e4f((void*)_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_0d319e4f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_0d319e4f((void*)__hosihikari_shim_handle, value);
     }
-
-    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormCloseEvent arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_bb76f5ae((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormResponseEvent arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_6450756b((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint padding_Address
+    public nint mLevelEventCoordinator_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_bc2d2aa0((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_950a4bd2((void*)__hosihikari_shim_handle);
     }
 
-    public void rejectAllForShutdown()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerEventCoordinator_Address
     {
-        NativeMethods.TablePtr->hs_method_23dc71e9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3224ee63((void*)__hosihikari_shim_handle);
     }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mReloadSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_87b7e624((void*)__hosihikari_shim_handle);
+    }
+
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDataDrivenScreenClosedEvent formResponseEvent)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_1e3b200d((void*)__hosihikari_shim_handle, (void*)formResponseEvent.Handle);
+    }
+
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormCloseEvent formCloseEvent)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_2d5b1fde((void*)__hosihikari_shim_handle, (void*)formCloseEvent.Handle);
+    }
+
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormResponseEvent formResponseEvent)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_ac5909b3((void*)__hosihikari_shim_handle, (void*)formResponseEvent.Handle);
+    }
+
+    public int onLevelRemovedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_df55be78((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptFormPromiseTracker operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptFormPromiseTracker arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptFormPromiseTracker((nint)NativeMethods.TablePtr->C3.hs_method_8ec349f6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void rejectAll()
+    {
+        NativeMethods.TablePtr->C3.hs_method_79276b71((void*)__hosihikari_shim_handle);
+    }
+
+    public void showDataDrivenScreenToPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player, string screenId, uint? dataInstanceId, global::Hosihikari.Bindings.Abi.SharedHandle? promise)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(screenId);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(screenId, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C3.hs_method_d643ff8a((void*)__hosihikari_shim_handle, (void*)player.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, dataInstanceId ?? default(uint), promise?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), dataInstanceId.HasValue);
+        }
+    }
+
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_22daa15f((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_22daa15f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

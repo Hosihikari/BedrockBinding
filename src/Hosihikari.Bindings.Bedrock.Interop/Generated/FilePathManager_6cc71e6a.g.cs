@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
 public sealed unsafe partial class FilePathManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FilePathManager(nint handle) : this(handle, true) { }
 
     internal FilePathManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FilePathManager Borrow(nint handle) => new FilePathManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,38 @@ public sealed unsafe partial class FilePathManager : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_98604104((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_98604104((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint ARCHIVE_DIR
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint paths) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void _dtor()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        NativeMethods.TablePtr->C0.hs_method_2a674933((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilePathManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public static FilePathManager Create(nint arg0, bool arg1)
+    public static nint ARCHIVE_DIR()
     {
-        var handle = NativeMethods.TablePtr->hs_create_f74a26e0((void*)arg0, arg1);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_c75cad98();
+    }
+
+    public static FilePathManager Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3766b08c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,78 +73,141 @@ public sealed unsafe partial class FilePathManager : global::System.IDisposable
         return new FilePathManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilePathManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static FilePathManager Create(nint paths) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint HOME_DIR
+    public static nint HOME_DIR()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C0.hs_method_2b9c09d2();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint PERSONA_TEST_DIR
+    public static nint PERSONA_TEST_DIR()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C0.hs_method_6c3be341();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint REALM_WORLDS_DIR
+    public static nint REALM_WORLDS_DIR()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C0.hs_method_dcd7e391();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint RESOURCE_PACKS_DIR
+    public static nint RESOURCE_PACKS_DIR()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C0.hs_method_715f0209();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint WORLDS_DIR
+    public static nint WORLDS_DIR()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        return (nint)NativeMethods.TablePtr->C0.hs_method_0e638bca();
     }
 
-    public string getResourcePacksPath()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCacheFilePath_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_1dc97079((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2e9d146b((void*)__hosihikari_shim_handle);
     }
 
-    public string getUserDataPath()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDataUrl_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_a956ec13((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8c8c73bb((void*)__hosihikari_shim_handle);
     }
 
-    public string getWorldsPath()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExternalFilePath_Address
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_5b75c5d6((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_aba2488e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHome_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4199ca00((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsDedicatedServer
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_e99805ef((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelArchive_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3c227217((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackagePath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5b1ece3f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPersonaPiecePack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b4bb96d0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResourcePacks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6835d44e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRoot_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b10aadbb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSettingsPath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5aefda55((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSharedData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_bbdb16a1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSharedWorlds_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0718d727((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTemporaryFilePath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_41d487dd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUserData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_20e8b0dc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWorlds_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d543237a((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_6cc71e6a((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_6cc71e6a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -2,16 +2,16 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Json_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Json;
 
-public enum ValueType : int
+public enum ValueType : sbyte
 {
-    Null = 0,
-    Int = 1,
-    Uint = 2,
-    Real = 3,
-    String = 4,
-    Boolean = 5,
-    Array = 6,
-    Object = 7,
+    NullValue = 0,
+    IntValue = 1,
+    UintValue = 2,
+    RealValue = 3,
+    StringValue = 4,
+    BooleanValue = 5,
+    ArrayValue = 6,
+    ObjectValue = 7,
 }

@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.QuickJS;
+namespace Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS;
 
-public sealed unsafe partial class ContextObject
+public sealed unsafe partial class ContextObject : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ContextObject(nint handle) : this(handle, true) { }
 
     internal ContextObject(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ContextObject Borrow(nint handle) => new ContextObject(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,26 +33,144 @@ public sealed unsafe partial class ContextObject
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContextObject Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'Scripting::ScriptObjectFactory' has no generated wrapper.", false)]
+    public nint _ctor(nint contextId, nint jsContext, nint scope, nint bindings, nint factory, nint inspector, nint printer, nint loader, nint arg8, nint contextConfig) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'Scripting::ScriptObjectFactory' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ContextObject Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContextObject Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addUnhandledPromiseRejection(nint arg0, string arg1, bool arg2)
+    public static ContextObject Create()
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var handle = NativeMethods.TablePtr->C3.hs_create_c8e6b921();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContextObject((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'Scripting::ScriptObjectFactory' has no generated wrapper.", false)]
+    public static ContextObject Create(nint contextId, nint jsContext, nint scope, nint bindings, nint factory, nint inspector, nint printer, nint loader, nint arg8, nint contextConfig) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'Scripting::ScriptObjectFactory' has no generated wrapper.");
+
+    public static ContextObject Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextObject arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_db6d90d7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContextObject((nint)handle);
+    }
+
+    public static void _bindClass(nint ctx, nint jsModuleDef, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextUserData contextData, nint registeredClass)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d522cbf9((void*)ctx, (void*)jsModuleDef, (void*)contextData.Handle, (void*)registeredClass);
+    }
+
+    public static void _bindError(nint ctx, nint moduleDef, nint registeredError)
+    {
+        NativeMethods.TablePtr->C3.hs_method_fc798f4e((void*)ctx, (void*)moduleDef, (void*)registeredError);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Scripting::AnyAndJSValue' has no accessible destructor.", false)]
+    public static nint _createConstant(nint ctx, nint contextData, nint target, nint constantCreator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Scripting::AnyAndJSValue' has no accessible destructor.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.JSValue _createConstructor(nint ctx, nint jsModuleDef, global::Hosihikari.Bindings.Bedrock.Interop.JSValue jsValue, string name, uint jsClassId)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.JSValue((nint)NativeMethods.TablePtr->C3.hs_method_15bf562f((void*)ctx, (void*)jsModuleDef, (void*)jsValue.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, jsClassId));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Scripting::AnyAndJSValue' has no accessible destructor.", false)]
+    public static nint _createEnumReverseConstant(nint ctx, nint contextData, nint enumObj, nint enumBinding, nint constantBinding) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Scripting::AnyAndJSValue' has no accessible destructor.");
+
+    public static void _createFunction(nint ctx, global::Hosihikari.Bindings.Bedrock.Interop.JSValue jsValue, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.FunctionBinding functionBinding, global::Hosihikari.Bindings.Bedrock.Interop.JSValue jsCtorVal, string className)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(className);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(className, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            NativeMethods.TablePtr->C3.hs_method_6a6185d0((void*)ctx, (void*)jsValue.Handle, (void*)functionBinding.Handle, (void*)jsCtorVal.Handle, __hs_stringData4, (nuint)__hs_stringByteCount4);
+        }
+    }
+
+    public static void _createProperty(nint ctx, global::Hosihikari.Bindings.Bedrock.Interop.JSValue jsPrototype, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.PropertyBinding propertyBinding, string className)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(className);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(className, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            NativeMethods.TablePtr->C3.hs_method_cded7a96((void*)ctx, (void*)jsPrototype.Handle, (void*)propertyBinding.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3);
+        }
+    }
+
+    public static int _moduleInitializer(nint ctx, nint jsModuleDef)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_ddccaffd((void*)ctx, (void*)jsModuleDef);
+    }
+
+    public void _resolvePromise(global::Hosihikari.Bindings.Bedrock.Interop.JSValue jsResolutionFunc, nint arg)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5b38bd4d((void*)__hosihikari_shim_handle, (void*)jsResolutionFunc.Handle, (void*)arg);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::TypedObjectHandle<Scripting::ClosureType>' is not a known bindable declaration.", false)]
+    public nint call(nint closureHandle, nint args, uint argc, nint expectedReturnType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::TypedObjectHandle<Scripting::ClosureType>' is not a known bindable declaration.");
+
+    public int checkModuleImportAllowed(string baseName, string moduleName, bool dynamicImport)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(baseName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(baseName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(moduleName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -62,44 +180,114 @@ public sealed unsafe partial class ContextObject
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        global::System.Text.Encoding.UTF8.GetBytes(moduleName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_639b98d7((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                return NativeMethods.TablePtr->C3.hs_method_cc316fa3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, dynamicImport);
+            }
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint call(nint arg0, nint arg1, uint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getFutureResult(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::TypeNameInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNameForType(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::TypeNameInfo' requires --link-carrier or --virtual-dispatch.");
-
-    public nint loadScriptAsModule(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk182a63_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a49fe46c((void*)_handle, (void*)arg0);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_418ad21f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk21a88e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b8cfcf23((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk270325_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f4c973df((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3d7cec_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1c093837((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4cff01_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ebc31c13((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5457d8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6b7dce3e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk71fb76_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_804c2a49((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8cc61a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_eb397dbb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka4780b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cf97407f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka99eed_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_24f5e48c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd84617_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a1058690((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkd8b07a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c1497542((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfbf45f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d5a61608((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextObject operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextObject arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ContextObject((nint)NativeMethods.TablePtr->C3.hs_method_b2617111((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void processUnhandledPromiseRejection()
     {
-        NativeMethods.TablePtr->hs_method_8e5f10d8((void*)_handle);
+        NativeMethods.TablePtr->C3.hs_method_8e5f10d8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint run(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_cbc366bc((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_5e4e02bb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

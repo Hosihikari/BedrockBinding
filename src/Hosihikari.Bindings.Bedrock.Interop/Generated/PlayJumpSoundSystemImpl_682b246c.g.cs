@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PlayJumpSoundSystemImpl
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayJumpSoundSystemImpl(nint handle) : this(handle, true) { }
 
     internal PlayJumpSoundSystemImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayJumpSoundSystemImpl Borrow(nint handle) => new PlayJumpSoundSystemImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,41 @@ public sealed unsafe partial class PlayJumpSoundSystemImpl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayJumpSoundSystemImpl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayJumpSoundSystemImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void __unk_vfn_4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void doPlayJumpSoundSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifierComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.SoundEventPlayerComponent arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent arg3, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg4, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg5, nint arg6, global::Hosihikari.Bindings.Bedrock.Interop.GetAttachPositionViews arg7, int arg8, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg9)
+    public void _singleTick(nint context, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
     {
-        NativeMethods.TablePtr->hs_method_72bc4322((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6, (void*)arg7.Handle, arg8, (void*)arg9.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c133254e((void*)__hosihikari_shim_handle, (void*)context, (void*)entityContext.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void _tick(nint context)
+    {
+        NativeMethods.TablePtr->C2.hs_method_482553aa((void*)__hosihikari_shim_handle, (void*)context);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerEvents(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OptionalComponentWrapper<SoundEventRequestQueueComponent>' is not a known bindable declaration.", false)]
-    public static void sendSoundRequest(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OptionalComponentWrapper<SoundEventRequestQueueComponent>' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext, SoundEventRequestQueueComponent>' is not a known bindable declaration.", false)]
+    public static void doPlayJumpSoundSystem(nint entity, nint actorFlags, nint actorIdentifier, nint actorUniqueID, nint dimensionType, nint soundEventPlayerComponent, nint stateVectorComponent, nint aabbShapeComponent, nint requestQueueView, nint jumpType, nint region) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext, SoundEventRequestQueueComponent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int mJumpType
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_76146403((void*)__hosihikari_shim_handle);
+    }
+
+    public void singleTick(nint context, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
+    {
+        NativeMethods.TablePtr->C2.hs_method_63548d4c((void*)__hosihikari_shim_handle, (void*)context, (void*)entityContext.Handle);
+    }
+
+    public void tick(nint context)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4b356af0((void*)__hosihikari_shim_handle, (void*)context);
+    }
 }

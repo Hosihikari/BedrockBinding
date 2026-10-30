@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockVolume : global::System.IDisposable
+public sealed unsafe partial class BlockVolume
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockVolume(nint handle) : this(handle, true) { }
 
     internal BlockVolume(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockVolume Borrow(nint handle) => new BlockVolume(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,149 +33,52 @@ public sealed unsafe partial class BlockVolume : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockVolume Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'std::vector<short>' is not a known bindable declaration.", false)]
+    public nint computeHeightMap() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'std::vector<short>' is not a known bindable declaration.");
 
-    public static BlockVolume Create(nint[] arg0, int arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.Block arg4, int arg5)
+    public short getAboveTopSolidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos start, bool dimensionShowsSky, bool includeWater, bool includeLeaves)
     {
-        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<nint>();
-        fixed (nint* __hs_vectorHandleData0 = __hs_vectorItems0)
-        {
-            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            var handle = NativeMethods.TablePtr->hs_create_b0a0a103(arg1, arg2, arg3, (void*)arg4.Handle, arg5, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new BlockVolume((nint)handle);
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint begin_82d2c34f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint block(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint block(uint index) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'std::vector<short,std::allocator<short>>' is not a known bindable declaration.", false)]
-    public nint computeHeightMap_f43447a8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'std::vector<short,std::allocator<short>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint computeHeightMap_f36fc8ff() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint end_5f7263ac() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public short findHighestNonAirBlock()
-    {
-        return NativeMethods.TablePtr->hs_method_7866143a((void*)_handle);
-    }
-
-    public short getAboveTopSolidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, bool arg1, bool arg2, bool arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_3207a346((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Pos' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDimensions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Pos' requires --link-carrier or --virtual-dispatch.");
-
-    public uint getIndexBounds()
-    {
-        return NativeMethods.TablePtr->hs_method_b21b3cad((void*)_handle);
-    }
-
-    public uint index(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_8d1970a6((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public uint index(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_1b66763a((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public uint indexNoBoundsCheck(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_9e131aed((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public uint indexNoBoundsCheck(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_a605a95d((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public bool isInBounds(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_8ecca986((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    public bool isInBounds(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_52f78714((void*)_handle, (void*)arg0.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_67f3cf64((void*)__hosihikari_shim_handle, (void*)start.Handle, dimensionShowsSky, includeWater, includeLeaves);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlocks_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_214158b4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_214158b4((void*)__hosihikari_shim_handle);
     }
 
     public uint mDepth
     {
-        get => NativeMethods.TablePtr->hs_get_d5f80923((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d5f80923((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_d5f80923((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d5f80923((void*)__hosihikari_shim_handle, value);
     }
 
     public int mDimensionBottom
     {
-        get => NativeMethods.TablePtr->hs_get_397e1eff((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_397e1eff((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_397e1eff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_397e1eff((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mHeight
     {
-        get => NativeMethods.TablePtr->hs_get_1a427a28((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1a427a28((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_1a427a28((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_1a427a28((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mInitBlock
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ca3759a7((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ca3759a7((void*)__hosihikari_shim_handle);
     }
 
     public uint mWidth
     {
-        get => NativeMethods.TablePtr->hs_get_734f93de((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_734f93de((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c4b3bc30((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => NativeMethods.TablePtr->C0.hs_get_734f93de((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_734f93de((void*)__hosihikari_shim_handle, value);
     }
 }

@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockComponentDirectData_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum LayerBitMask : int
 {
+    None = 0,
+    Init = 1,
+    Rendering = 2,
 }

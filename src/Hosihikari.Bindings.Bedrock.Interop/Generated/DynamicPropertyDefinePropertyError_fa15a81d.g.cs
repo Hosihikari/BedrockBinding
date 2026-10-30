@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum DynamicPropertyDefinePropertyError : int
 {
+    IdentifierTooLong = 0,
+    IdentifierDuplicate = 1,
 }

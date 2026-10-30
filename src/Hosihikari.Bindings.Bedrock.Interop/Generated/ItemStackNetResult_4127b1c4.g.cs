@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum ItemStackNetResult : sbyte
+public enum ItemStackNetResult : byte
 {
     Success = 0,
     Error = 1,

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
 public sealed unsafe partial class Beardifier
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Beardifier(nint handle) : this(handle, true) { }
 
     internal Beardifier(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Beardifier Borrow(nint handle) => new Beardifier(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,42 +33,29 @@ public sealed unsafe partial class Beardifier
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Beardifier Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Beardifier Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public double compute(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public double compute(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
-        return NativeMethods.TablePtr->hs_method_fa6d4705((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public bool empty()
-    {
-        return NativeMethods.TablePtr->hs_method_4cb03da7((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_50faf197((void*)__hosihikari_shim_handle, (void*)pos.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'br::worldgen::Beardifier' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint forStructuresInChunk(nint arg0, nint arg1) =>
+    public static nint forStructuresInChunk(nint structureCache, nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'br::worldgen::Beardifier' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_7c483a15(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mJunctions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_454f51bb((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_2175e073(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a3373535() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPieces_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_5d80d42e((void*)__hosihikari_shim_handle);
+    }
 }

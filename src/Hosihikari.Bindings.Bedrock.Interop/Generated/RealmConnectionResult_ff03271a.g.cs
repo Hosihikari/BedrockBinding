@@ -4,7 +4,15 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum RealmConnectionResult : int
 {
+    Success = 0,
+    SuccessWithWarning = 1,
+    FailWithUnnassignedDevVersion = 2,
+    Fail = 3,
+    Retry = 4,
+    CancelByUser = 5,
+    InvalidCallback = 6,
+    Unknown = 7,
+    TimedOut = 8,
 }

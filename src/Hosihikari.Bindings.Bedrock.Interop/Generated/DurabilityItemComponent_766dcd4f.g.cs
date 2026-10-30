@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DurabilityItemComponent : global::System.IDisposable
+public sealed unsafe partial class DurabilityItemComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DurabilityItemComponent(nint handle) : this(handle, true) { }
 
     internal DurabilityItemComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DurabilityItemComponent Borrow(nint handle) => new DurabilityItemComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,39 @@ public sealed unsafe partial class DurabilityItemComponent : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static DurabilityItemComponent Create(int arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_448788e1(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new DurabilityItemComponent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void bindType(nint arg0, nint arg1, nint arg2) =>
+    public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'IntRange' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDamageChanceRange() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'IntRange' requires --link-carrier or --virtual-dispatch.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_573cea6c(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C1.hs_method_d9e12158(), false);
     }
 
-    public int getMaxDamage()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDamageChance_Address
     {
-        return NativeMethods.TablePtr->hs_method_fd1a8d49((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_df497c00((void*)__hosihikari_shim_handle);
     }
 
-    public void setMaxDamage(int arg0)
+    public int mMaxDamage
     {
-        NativeMethods.TablePtr->hs_method_dce8aaee((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_44598a82((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_44598a82((void*)__hosihikari_shim_handle, value);
     }
 
-    public void Dispose()
+    public nint mOwner
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_766dcd4f((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_026c299b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_026c299b((void*)__hosihikari_shim_handle, (void*)value);
     }
 }

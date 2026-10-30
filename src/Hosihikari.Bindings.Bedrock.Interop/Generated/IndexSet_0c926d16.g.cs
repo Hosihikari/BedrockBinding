@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IndexSet
+public sealed unsafe partial class IndexSet : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public IndexSet(nint handle) : this(handle, true) { }
 
     internal IndexSet(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static IndexSet Borrow(nint handle) => new IndexSet(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,52 +33,76 @@ public sealed unsafe partial class IndexSet
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static IndexSet Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static IndexSet Create_bc0deb49(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static IndexSet Create_d7f20528(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public bool contains(ulong arg0)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.IndexSet other)
     {
-        return NativeMethods.TablePtr->hs_method_4cc992bc((void*)_handle, arg0) != 0;
+        return (nint)NativeMethods.TablePtr->C1.hs_method_1898823e((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
-    public nint getPacked()
+    public void _dtor()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4b5ff2cc((void*)_handle);
+        NativeMethods.TablePtr->C1.hs_method_ec2d0d89((void*)__hosihikari_shim_handle);
     }
 
-    public void insert(ulong arg0)
+    public static IndexSet Create()
     {
-        NativeMethods.TablePtr->hs_method_cba40633((void*)_handle, arg0);
+        var handle = NativeMethods.TablePtr->C1.hs_create_6d263c31();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IndexSet((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void remove(ulong arg0)
+    public static IndexSet Create(global::Hosihikari.Bindings.Bedrock.Interop.IndexSet other)
     {
-        NativeMethods.TablePtr->hs_method_2f7a1489((void*)_handle, arg0);
+        var handle = NativeMethods.TablePtr->C1.hs_create_f4a40c62((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IndexSet((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a79a564b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void insert(ulong index)
+    {
+        NativeMethods.TablePtr->C1.hs_method_cba40633((void*)__hosihikari_shim_handle, index);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf38d12_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_88b42573((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf89f4f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2a0da5f7((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IndexSet operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.IndexSet arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IndexSet((nint)NativeMethods.TablePtr->C1.hs_method_a077040b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0c926d16((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

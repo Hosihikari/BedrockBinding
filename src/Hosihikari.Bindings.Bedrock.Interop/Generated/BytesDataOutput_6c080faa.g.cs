@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class BytesDataOutput
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BytesDataOutput(nint handle) : this(handle, true) { }
 
     internal BytesDataOutput(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BytesDataOutput Borrow(nint handle) => new BytesDataOutput(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,39 @@ public sealed unsafe partial class BytesDataOutput
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void writeByte(sbyte arg0)
+    public void _writeByte(sbyte v)
     {
-        NativeMethods.TablePtr->hs_method_4f2ed231((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_19aee63a((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeDouble(double arg0)
+    public void _writeDouble(double v)
     {
-        NativeMethods.TablePtr->hs_method_bf270f6f((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_7e0d0a47((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeFloat(float arg0)
+    public void _writeFloat(float v)
     {
-        NativeMethods.TablePtr->hs_method_99fc36fe((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_11d47d92((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeInt(int arg0)
+    public void _writeInt(int v)
     {
-        NativeMethods.TablePtr->hs_method_e4f05108((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_52cc6382((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeLongLong(long arg0)
+    public void _writeLongLong(long v)
     {
-        NativeMethods.TablePtr->hs_method_14023dc2((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_dd9a691d((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeLongString(string arg0)
+    public void _writeLongString(string v)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(v);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -75,25 +75,21 @@ public sealed unsafe partial class BytesDataOutput
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_dad4e9d0((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_94e36bcb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void writeLongString(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void writeShort(short arg0)
+    public void _writeShort(short v)
     {
-        NativeMethods.TablePtr->hs_method_a63af17f((void*)_handle, arg0);
+        NativeMethods.TablePtr->C0.hs_method_9caec4ae((void*)__hosihikari_shim_handle, v);
     }
 
-    public void writeString(string arg0)
+    public void _writeString(string v)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(v);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -103,18 +99,82 @@ public sealed unsafe partial class BytesDataOutput
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_b4d53578((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_77f823ec((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void writeString(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void writeByte(sbyte v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_4f2ed231((void*)__hosihikari_shim_handle, v);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void writeBytes(nint data, ulong bytes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void writeDouble(double v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_bf270f6f((void*)__hosihikari_shim_handle, v);
+    }
+
+    public void writeFloat(float v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_99fc36fe((void*)__hosihikari_shim_handle, v);
+    }
+
+    public void writeInt(int v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_e4f05108((void*)__hosihikari_shim_handle, v);
+    }
+
+    public void writeLongLong(long v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_14023dc2((void*)__hosihikari_shim_handle, v);
+    }
+
+    public void writeLongString(string v)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(v);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_07f72ba3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void writeShort(short v)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a63af17f((void*)__hosihikari_shim_handle, v);
+    }
+
+    public void writeString(string v)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(v);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_7a3dc410((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TimerDefinition
+public sealed unsafe partial class TimerDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TimerDefinition(nint handle) : this(handle, true) { }
 
     internal TimerDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TimerDefinition Borrow(nint handle) => new TimerDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,93 @@ public sealed unsafe partial class TimerDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TimerDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TimerDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addWeightedChoiceEntry(global::Hosihikari.Bindings.Bedrock.Interop.WeightChoiceEntry arg0)
+    public static TimerDefinition Create()
     {
-        NativeMethods.TablePtr->hs_method_c107fd7b((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_1fba1184();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TimerDefinition((nint)handle);
     }
 
-    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    public static TimerDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.TimerDefinition arg0)
     {
-        NativeMethods.TablePtr->hs_method_01751735(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        var handle = NativeMethods.TablePtr->C3.hs_create_f814723b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TimerDefinition((nint)handle);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.TimerComponent arg1)
+    public void addWeightedChoiceEntry(global::Hosihikari.Bindings.Bedrock.Interop.WeightChoiceEntry entry)
     {
-        NativeMethods.TablePtr->hs_method_b82a4368((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_fad55114((void*)__hosihikari_shim_handle, (void*)entry.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
+    {
+        NativeMethods.TablePtr->C3.hs_method_408dfa25(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.TimerComponent component)
+    {
+        NativeMethods.TablePtr->C3.hs_method_75c9c0a7((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)component.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1be68c_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_73b7787c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk219ada_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ef77d6b9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk6fb0ff_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9ac05789((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk941273_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7228c48e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkb2a6e5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0c6fc6bb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TimerDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.TimerDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TimerDefinition((nint)NativeMethods.TablePtr->C3.hs_method_bec13f85((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_0dd27796((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,9 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum EducationEditionOffer : int
+public enum EducationEditionOffer : uint
 {
     None = 0,
     RestOfWorld = 1,
-    China = 2,
+    ChinaDeprecated = 2,
 }

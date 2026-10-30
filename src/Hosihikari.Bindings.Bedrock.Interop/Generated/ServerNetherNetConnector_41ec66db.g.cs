@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ServerNetherNetConnector : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerNetherNetConnector(nint handle) : this(handle, true) { }
 
     internal ServerNetherNetConnector(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerNetherNetConnector Borrow(nint handle) => new ServerNetherNetConnector(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,28 +33,158 @@ public sealed unsafe partial class ServerNetherNetConnector : global::System.IDi
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f57d7b82((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f57d7b82((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.", false)]
-    public void OnSessionOpen(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.", false)]
-    public void OnSessionRequested(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.");
-
-    public static ServerNetherNetConnector Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionCallbacks arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCallbacks_Address
     {
-        var handle = NativeMethods.TablePtr->hs_create_f6b15bdf((void*)arg0, (void*)arg1.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d27b63ea((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBroadcastCallbackMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_81d7a1e6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBroadcastRequestCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_094fbf73((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBroadcastResponseCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4a4fb2f0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEvents_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5ed2dd4f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEventsMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_241919e7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHttpLibrary_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_210bbef1((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetworkID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_71a34214((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPeers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c7ae2c99((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransport_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b95b8d88((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1d223d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9d814026((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaf3b65_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_87cf28e1((void*)__hosihikari_shim_handle);
+    }
+
+    public void _OnSessionOpen(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID networkID, ulong sessionId, bool isLan)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f94e40a7((void*)__hosihikari_shim_handle, (void*)networkID.Handle, sessionId, isLan);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _OnSessionRequested(nint networkID, ulong sessionId, nint assertion, nint fingerprintJson, bool isLan) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _OnSessionResponse(nint arg0, ulong arg1, nint arg2, nint arg3, bool arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<std::shared_ptr<IIdentityAssertionVerifier>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint factory, nint callbacks, nint clientIdentityVerifier, nint networkID) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<std::shared_ptr<IIdentityAssertionVerifier>>' is not a known bindable declaration.");
+
+    public void _disconnect()
+    {
+        NativeMethods.TablePtr->C3.hs_method_b8a1ccd7((void*)__hosihikari_shim_handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_d8445b07((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _host(global::Hosihikari.Bindings.Bedrock.Interop.ConnectionDefinition definition, global::Hosihikari.Bindings.Bedrock.Interop.PrivateKeyManager keys)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_5c849629((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)keys.Handle) != 0;
+    }
+
+    public bool _isServer()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_8b467eb9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForConnector() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForEnableNonOwnerReferences() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForNetworkEnableDisableListener() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void OnSessionOpen(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID networkID, ulong sessionId, bool isLan)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b039138a((void*)__hosihikari_shim_handle, (void*)networkID.Handle, sessionId, isLan);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint OnSessionRequested(nint networkID, ulong sessionId, nint assertion, nint fingerprintJson, bool isLan) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint OnSessionResponse(nint arg0, ulong arg1, nint arg2, nint arg3, bool arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
+
+    public static ServerNetherNetConnector Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0c2cd577();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,26 +193,58 @@ public sealed unsafe partial class ServerNetherNetConnector : global::System.IDi
         return new ServerNetherNetConnector((nint)handle);
     }
 
-    public bool host(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<std::shared_ptr<IIdentityAssertionVerifier>>' is not a known bindable declaration.", false)]
+    public static ServerNetherNetConnector Create(nint factory, nint callbacks, nint clientIdentityVerifier, nint networkID) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<std::shared_ptr<IIdentityAssertionVerifier>>' is not a known bindable declaration.");
+
+    public static ServerNetherNetConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerNetherNetConnector arg0)
     {
-        return NativeMethods.TablePtr->hs_method_1b89db12((void*)_handle, (void*)arg0) != 0;
+        var handle = NativeMethods.TablePtr->C3.hs_create_9f180e77((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerNetherNetConnector((nint)handle);
+    }
+
+    public void disconnect()
+    {
+        NativeMethods.TablePtr->C3.hs_method_f6f94cd2((void*)__hosihikari_shim_handle);
+    }
+
+    public bool host(global::Hosihikari.Bindings.Bedrock.Interop.ConnectionDefinition definition, global::Hosihikari.Bindings.Bedrock.Interop.PrivateKeyManager keys)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_f015ff06((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)keys.Handle) != 0;
     }
 
     public bool isServer()
     {
-        return NativeMethods.TablePtr->hs_method_73ad223b((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_ba100c1c((void*)__hosihikari_shim_handle) != 0;
     }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk7a1c8a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_066c095f((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerNetherNetConnector operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ServerNetherNetConnector arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerNetherNetConnector((nint)NativeMethods.TablePtr->C3.hs_method_9eed1cff((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_41ec66db((void*)_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_41ec66db((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

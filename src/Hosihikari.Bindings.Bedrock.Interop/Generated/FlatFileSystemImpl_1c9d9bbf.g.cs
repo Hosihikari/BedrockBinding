@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-public sealed unsafe partial class FlatFileSystemImpl
+public sealed unsafe partial class FlatFileSystemImpl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FlatFileSystemImpl(nint handle) : this(handle, true) { }
 
     internal FlatFileSystemImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FlatFileSystemImpl Borrow(nint handle) => new FlatFileSystemImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,47 +33,100 @@ public sealed unsafe partial class FlatFileSystemImpl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FlatFileSystemImpl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FlatFileSystemImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint deleteFileOrDirectory(nint arg0, nint arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
-
-    public bool fileOrDirectoryExists(nint arg0, nint arg1)
+    public static FlatFileSystemImpl Create()
     {
-        return NativeMethods.TablePtr->hs_method_12b97fba((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_cee88593();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlatFileSystemImpl((nint)handle);
     }
 
-    public bool isDirectoryPathAFlatFile(nint arg0)
+    public static FlatFileSystemImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl arg0)
     {
-        return NativeMethods.TablePtr->hs_method_6bf309e5((void*)_handle, (void*)arg0) != 0;
+        var handle = NativeMethods.TablePtr->C0.hs_create_b1302657((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlatFileSystemImpl((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public nint _findFileOrDirectoryEntry(nint filePath, nint manifestPath, bool skipDeleted) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getSeekPositionAndSize(nint filePath, nint manifestPath, nint seekPositionOut, nint fileSizeOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint copyFlatFile(nint sourceDirectoryPath, nint targetDirectoryPath, nint excludedDirectories, nint excludedFiles) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint createFlatFile(nint sourceDirectoryPath, nint targetDirectoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint deleteFileOrDirectory(nint fileOrDirectoryPath, nint manifestPath, bool directoryDeleteEnabled, bool deleteRecursively) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool fileOrDirectoryExists(nint path, nint manifestPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool isDirectoryPathAFlatFile(nint directoryPath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint iterateOverDirectory(nint directoryPath, nint manifestPath, nint flags, nint callbackFunction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke799e3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d157df5b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf2e326_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_aa1a221b((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint iterateOverDirectory(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public nint openFlatFile(nint fileOut, nint filePath, nint manifestPath, nint openMode, nint fileBufferingMode) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint openFlatFile(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool shouldAccessFlatFile(nint arg0, nint arg1, bool arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl arg0)
     {
-        return NativeMethods.TablePtr->hs_method_757c779c((void*)_handle, (void*)arg0, (void*)arg1, arg2) != 0;
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl((nint)NativeMethods.TablePtr->C0.hs_method_7322d8e0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public bool shouldAccessFlatFile(nint path, nint manifestFilePath, bool shouldIncludeParentDir) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_1c9d9bbf((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

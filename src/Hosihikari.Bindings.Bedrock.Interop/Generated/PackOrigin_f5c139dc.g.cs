@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public enum PackOrigin : sbyte
+public enum PackOrigin : byte
 {
     Unknown = 0,
     RealmsUnknown = 1,
@@ -16,5 +16,7 @@ public enum PackOrigin : sbyte
     TempCache = 7,
     PremiumCache = 8,
     PremiumTempCache = 9,
-    Test = 10,
+    RealmsService = 10,
+    Test = 11,
+    System = 12,
 }

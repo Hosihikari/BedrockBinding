@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CommandBlockNameResult : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandBlockNameResult(nint handle) : this(handle, true) { }
 
     internal CommandBlockNameResult(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandBlockNameResult Borrow(nint handle) => new CommandBlockNameResult(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,23 @@ public sealed unsafe partial class CommandBlockNameResult : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandBlockNameResult Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint originalName, nint block, bool isComplexAlias, nint statesToCompare) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    public static CommandBlockNameResult Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg1, bool arg2)
+    public void _dtor()
     {
-        var handle = NativeMethods.TablePtr->hs_create_1387b6ac((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), arg2);
+        NativeMethods.TablePtr->C0.hs_method_b3651adb((void*)__hosihikari_shim_handle);
+    }
+
+    public static CommandBlockNameResult Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ebc3b542();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,68 +58,55 @@ public sealed unsafe partial class CommandBlockNameResult : global::System.IDisp
         return new CommandBlockNameResult((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandBlockNameResult Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public static CommandBlockNameResult Create(nint originalName, nint block, bool isComplexAlias, nint statesToCompare) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block? getBlock()
+    public bool isSameBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block rhs, bool onlyCompareBlockType, bool compareWithComplexAlias)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_4a19189f((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getResult_95c2111c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool isComplexAlias()
-    {
-        return NativeMethods.TablePtr->hs_method_2639b758((void*)_handle) != 0;
-    }
-
-    public bool isSameBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, bool arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_c39a9ead((void*)_handle, (void*)arg0.Handle, arg1) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_d2394206((void*)__hosihikari_shim_handle, (void*)rhs.Handle, onlyCompareBlockType, compareWithComplexAlias) != 0;
     }
 
     public nint mBlock
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4a74ab30((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4a74ab30((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mComplexAliasPostSplitBlocks_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ceee0ca9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ceee0ca9((void*)__hosihikari_shim_handle);
     }
 
     public bool mIsComplexAlias
     {
-        get => NativeMethods.TablePtr->hs_get_dadfdc64((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_dadfdc64((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_dadfdc64((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_dadfdc64((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mResult
     {
-        get => NativeMethods.TablePtr->hs_get_da315866((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_da315866((void*)_handle, value);
+        get => NativeMethods.TablePtr->C0.hs_get_da315866((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_da315866((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStatesToCompare_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6a6c2bbd((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_76c92a93((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_76c92a93((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

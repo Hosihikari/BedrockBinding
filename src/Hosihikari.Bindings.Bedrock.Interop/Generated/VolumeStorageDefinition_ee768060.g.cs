@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VolumeInstanceData;
 
-public sealed unsafe partial class VolumeStorageDefinition
+public sealed unsafe partial class VolumeStorageDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VolumeStorageDefinition(nint handle) : this(handle, true) { }
 
     internal VolumeStorageDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VolumeStorageDefinition Borrow(nint handle) => new VolumeStorageDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,78 @@ public sealed unsafe partial class VolumeStorageDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VolumeStorageDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VolumeStorageDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addDefinitionData(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    public static VolumeStorageDefinition Create()
     {
-        NativeMethods.TablePtr->hs_method_a6909fc9((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_a1dc0f3f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VolumeStorageDefinition((nint)handle);
     }
 
-    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    public static VolumeStorageDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.VolumeInstanceData.VolumeStorageDefinition arg0)
     {
-        NativeMethods.TablePtr->hs_method_e9d87261((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_2e553488((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VolumeStorageDefinition((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'VolumeInstanceData::VolumeStorageDefinition' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromEntity(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'VolumeInstanceData::VolumeStorageDefinition' requires --link-carrier or --virtual-dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk526e8a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e3d30db7((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk531db0_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_668192e4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_26caf1cd() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5328d3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a04f6b08((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk71dbde_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_19dd4934((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9c727e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e3617bfd((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.VolumeInstanceData.VolumeStorageDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.VolumeInstanceData.VolumeStorageDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VolumeInstanceData.VolumeStorageDefinition((nint)NativeMethods.TablePtr->C4.hs_method_4d415b1c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_ee768060((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

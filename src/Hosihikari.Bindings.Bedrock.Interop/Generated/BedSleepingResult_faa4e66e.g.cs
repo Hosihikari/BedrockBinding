@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum BedSleepingResult : int
 {
+    Ok = 0,
+    NotPossibleHere = 1,
+    NotPossibleNow = 2,
+    TooFarAway = 3,
+    OtherProblem = 4,
+    NotSafe = 5,
+    BedObstructed = 6,
 }

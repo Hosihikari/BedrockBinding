@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum MinecartType : int
 {
+    Rideable = 0,
+    Chest = 1,
+    Furnace = 2,
+    Tnt = 3,
+    Spawner = 4,
+    Hopper = 5,
+    CommandBlock = 6,
 }

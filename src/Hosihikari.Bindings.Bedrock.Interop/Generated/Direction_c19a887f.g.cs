@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AgentComponents;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum Direction : int
+public enum Direction : byte
 {
+    Up = 0,
+    Down = 1,
+    Forward = 2,
+    Back = 3,
+    Left = 4,
+    Right = 5,
+    Undefined = 6,
 }

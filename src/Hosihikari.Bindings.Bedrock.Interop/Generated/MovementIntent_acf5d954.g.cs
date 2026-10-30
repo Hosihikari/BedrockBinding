@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.sim;
 
-public sealed unsafe partial class MovementIntent
+public sealed unsafe partial class MovementIntent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MovementIntent(nint handle) : this(handle, true) { }
 
     internal MovementIntent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MovementIntent Borrow(nint handle) => new MovementIntent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,52 @@ public sealed unsafe partial class MovementIntent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MovementIntent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<sim::VoidMoveIntent, sim::MoveInDirectionIntent, sim::MoveToPositionIntent, sim::NavigateToPositionsIntent, sim::NavigateToEntityIntent>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint type) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<sim::VoidMoveIntent, sim::MoveInDirectionIntent, sim::MoveToPositionIntent, sim::NavigateToPositionsIntent, sim::NavigateToEntityIntent>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MovementIntent Create_9d0d8e7c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MovementIntent Create_bd1693f0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void finalize(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_8ee3d959((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_b1590f6d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static MovementIntent Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_968273e7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new MovementIntent((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<sim::VoidMoveIntent, sim::MoveInDirectionIntent, sim::MoveToPositionIntent, sim::NavigateToPositionsIntent, sim::NavigateToEntityIntent>' is not a known bindable declaration.", false)]
+    public static MovementIntent Create(nint type) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<sim::VoidMoveIntent, sim::MoveInDirectionIntent, sim::MoveToPositionIntent, sim::NavigateToPositionsIntent, sim::NavigateToEntityIntent>' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mType_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_092483b0((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_acf5d954((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

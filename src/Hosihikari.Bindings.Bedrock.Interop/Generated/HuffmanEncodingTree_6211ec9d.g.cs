@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-public sealed unsafe partial class HuffmanEncodingTree
+public sealed unsafe partial class HuffmanEncodingTree : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public HuffmanEncodingTree(nint handle) : this(handle, true) { }
 
     internal HuffmanEncodingTree(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static HuffmanEncodingTree Borrow(nint handle) => new HuffmanEncodingTree(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,75 @@ public sealed unsafe partial class HuffmanEncodingTree
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public void FreeMemory()
     {
-        NativeMethods.TablePtr->hs_method_7e463967((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_7e463967((void*)__hosihikari_shim_handle);
     }
 
-    public void GenerateFromFrequencyTable_220fbd81(nint arg0)
+    public void GenerateFromFrequencyTable(nint frequencyTable)
     {
-        NativeMethods.TablePtr->hs_method_220fbd81((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C2.hs_method_82bd4bec((void*)__hosihikari_shim_handle, (void*)frequencyTable);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static HuffmanEncodingTree Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static HuffmanEncodingTree Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e045c609();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HuffmanEncodingTree Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new HuffmanEncodingTree((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static HuffmanEncodingTree Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.HuffmanEncodingTree arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0e10e1d7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new HuffmanEncodingTree((nint)handle);
+    }
+
+    public static void InsertNodeIntoSortedList(nint node, nint huffmanEncodingTreeNodeList)
+    {
+        NativeMethods.TablePtr->C2.hs_method_290ac6ee((void*)node, (void*)huffmanEncodingTreeNodeList);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9c3a19_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7ac38e5b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkffa0a4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ab68bed1((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet.HuffmanEncodingTree operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.HuffmanEncodingTree arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.HuffmanEncodingTree((nint)NativeMethods.TablePtr->C2.hs_method_e5d21632((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_6211ec9d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

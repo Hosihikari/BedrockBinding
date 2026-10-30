@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
 public sealed unsafe partial class ConstantHeight
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ConstantHeight(nint handle) : this(handle, true) { }
 
     internal ConstantHeight(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ConstantHeight Borrow(nint handle) => new ConstantHeight(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,28 @@ public sealed unsafe partial class ConstantHeight
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConstantHeight Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ConstantHeight Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'br::worldgen::ConstantHeight' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint of(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'br::worldgen::ConstantHeight' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, nint arg1)
+    public int _sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenContext heightAccessor)
     {
-        return NativeMethods.TablePtr->hs_method_c25731e9((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return NativeMethods.TablePtr->C4.hs_method_36ed6a18((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)heightAccessor.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAnchor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a5464642((void*)__hosihikari_shim_handle);
+    }
+
+    public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenContext heightAccessor)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_15bd1e46((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)heightAccessor.Handle);
+    }
 }

@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RandomBlockStateFunction_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum RemapComplexAliasBlockResult : int
 {
+    NotComplexAlias = 0,
+    Succeed = 1,
+    Fail = 2,
 }

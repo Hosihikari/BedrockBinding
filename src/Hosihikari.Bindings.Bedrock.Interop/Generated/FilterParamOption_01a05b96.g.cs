@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum FilterParamOption : int
+public enum FilterParamOption : byte
 {
+    None = 0,
+    EmptyDefaultString = 1,
 }

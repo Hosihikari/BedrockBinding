@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ContainerScreenValidation : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ContainerScreenValidation(nint handle) : this(handle, true) { }
 
     internal ContainerScreenValidation(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ContainerScreenValidation Borrow(nint handle) => new ContainerScreenValidation(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,72 +33,141 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContainerScreenValidation Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'FullContainerName' is not supported.", false)]
+    public nint _ctor(nint screenContext, nint caller, nint predictiveContainers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'FullContainerName' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<ContainerEnumName,std::shared_ptr<Container>,std::hash<ContainerEnumName>,std::equal_to<ContainerEnumName>,std::allocator<std::pair<ContainerEnumName const,std::shared_ptr<Container>>>>' is not a known bindable declaration.", false)]
-    public static ContainerScreenValidation Create_ae6d03b1(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<ContainerEnumName,std::shared_ptr<Container>,std::hash<ContainerEnumName>,std::equal_to<ContainerEnumName>,std::allocator<std::pair<ContainerEnumName const,std::shared_ptr<Container>>>>' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint _getCraftResults(nint craftInputs, nint numCrafts) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContainerScreenValidation Create_f5adf1af(nint screenContext, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _tryActivate() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ContainerScreenValidation Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _tryCraft(nint craftInputs, nint numCrafts) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationCraftResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCraftResults(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationCraftResult' requires --link-carrier or --virtual-dispatch.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateSparseContainer(sbyte arg0)
+    public static ContainerScreenValidation Create()
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_ddb8e8d5((void*)_handle, arg0);
+        var handle = NativeMethods.TablePtr->C0.hs_create_5932fecc();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContainerScreenValidation((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'FullContainerName' is not supported.", false)]
+    public static ContainerScreenValidation Create(nint screenContext, nint caller, nint predictiveContainers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'FullContainerName' is not supported.");
+
+    public void _commit()
+    {
+        NativeMethods.TablePtr->C0.hs_method_74dbef53((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationSlotInfo' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _createContainerValidatorSlotInfo(nint slotData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationSlotInfo' requires --link-carrier or --virtual-dispatch.");
+
+    public bool _dropItems()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_40827fb5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _propagateContainers()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_64b86b63((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool _tryMoveItem(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo srcValidatorPair, global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo dstValidatorPair)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_1cd76e0b((void*)__hosihikari_shim_handle, (void*)srcValidatorPair.Handle, (void*)dstValidatorPair.Handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack _tryRemoveItem(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo slotInfo, int amount)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C0.hs_method_a7ecd2ed((void*)__hosihikari_shim_handle, (void*)slotInfo.Handle, amount));
+    }
+
+    public int _trySetItem(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo slotInfo, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack stack, bool isWholeStackTransfer, bool allowPartialSuccess, bool isInternalTransfer)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_18bf7c3b((void*)__hosihikari_shim_handle, (void*)slotInfo.Handle, (void*)stack.Handle, isWholeStackTransfer, allowPartialSuccess, isInternalTransfer);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _tryTransferSpecial(nint srcSlotData, int transferAmount, nint actionType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint getCraftResults(nint craftInputs, nint numCrafts) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateSparseContainer(global::Hosihikari.Bindings.Bedrock.Interop.FullContainerName containerEnumName)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_ff16e8ed((void*)__hosihikari_shim_handle, (void*)containerEnumName.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public bool isCraftingImplemented()
+    public int mCaller
     {
-        return NativeMethods.TablePtr->hs_method_8fe13104((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C0.hs_get_80ea0af6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_80ea0af6((void*)__hosihikari_shim_handle, value);
     }
 
-    public void logServerAuthUntrustedFail(string arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerIndexMap_Address
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            NativeMethods.TablePtr->hs_method_1405c87b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-        }
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_642de733((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<ContainerEnumName,std::shared_ptr<Container>,std::hash<ContainerEnumName>,std::equal_to<ContainerEnumName>,std::allocator<std::pair<ContainerEnumName const,std::shared_ptr<Container>>>>' is not a known bindable declaration.", false)]
-    public static nint makeContainerScreenValidation_900265f3(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<ContainerEnumName,std::shared_ptr<Container>,std::hash<ContainerEnumName>,std::equal_to<ContainerEnumName>,std::allocator<std::pair<ContainerEnumName const,std::shared_ptr<Container>>>>' is not a known bindable declaration.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerScreenValidator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7d6bf00a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint makeContainerScreenValidation_29a1c101(nint screenContext, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerValidatorMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7e0b4fde((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDebug_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b2cda87e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPredictiveContainers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_35c67b44((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScreenContext_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d3bcb5bf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValidationStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_73af6a57((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ContainerScreenValidation' has no accessible destructor.", false)]
+    public static nint makeContainerScreenValidation(nint screenContext, nint caller, nint predictiveContainers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ContainerScreenValidation' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tryActivate() =>
@@ -106,48 +175,40 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
 
     public bool tryCommitActionResults()
     {
-        return NativeMethods.TablePtr->hs_method_235e871e((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_235e871e((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryConsume(nint arg0, int arg1) =>
+    public nint tryConsume(nint srcSlotData, int transferAmount) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryCraft(nint arg0) =>
+    public nint tryCraft(nint craftInputs, nint numCrafts) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryDestroy(nint arg0, int arg1) =>
+    public nint tryDrop(nint srcSlotData, int transferAmount, bool dropRandomly) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryDrop(nint arg0, int arg1, bool arg2) =>
+    public nint trySwap(nint srcSlotData, nint dstSlotData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryPlaceInItemContainer(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint trySwap(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryTransfer(nint arg0, nint arg1, int arg2, bool arg3) =>
+    public nint tryTransfer(nint srcSlotData, nint dstSlotData, int transferAmount, bool isAllowingPartialTransfer) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_4310f2c8((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_4310f2c8((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

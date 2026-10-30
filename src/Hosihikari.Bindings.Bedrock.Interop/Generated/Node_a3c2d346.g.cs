@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RTree_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Node
+public sealed unsafe partial class Node
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Node(nint handle) : this(handle, true) { }
 
     internal Node(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Node Borrow(nint handle) => new Node(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,45 @@ public sealed partial class Node
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'RTree::Node' is not supported.", false)]
+    public static nint branch(nint children) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'RTree::Node' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiome_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d8ae85d7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChildren_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_216424d3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParameterSpace_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d2c77ffd((void*)__hosihikari_shim_handle);
+    }
+
+    public long mTotalMagnitude
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5e69a289((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5e69a289((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void search(global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.TargetSpace target, nint closestLeaf)
+    {
+        NativeMethods.TablePtr->C2.hs_method_37edcfa6((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)closestLeaf);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static void sort(nint children, int dimension, bool absolute) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RuntimeLightingManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RuntimeLightingManager(nint handle) : this(handle, true) { }
 
     internal RuntimeLightingManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RuntimeLightingManager Borrow(nint handle) => new RuntimeLightingManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,18 @@ public sealed unsafe partial class RuntimeLightingManager : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RuntimeLightingManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public static RuntimeLightingManager Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
+    public static RuntimeLightingManager Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_0d376557((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_55aaedbd();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,35 +53,88 @@ public sealed unsafe partial class RuntimeLightingManager : global::System.IDisp
         return new RuntimeLightingManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RuntimeLightingManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void flushRunTimeLighting()
+    public static RuntimeLightingManager Create(global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_3ffe7dd9((void*)_handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_663f99e4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RuntimeLightingManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void updateBlockLight(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg1, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg2, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg3, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg4, bool arg5)
+    public void _getListOfChunksWithPlayerDistance()
     {
-        NativeMethods.TablePtr->hs_method_964ae928((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, arg5);
+        NativeMethods.TablePtr->C2.hs_method_2561c807((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void _relightChunks(nint timeLimit) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void _removeProcessedSubchunks()
+    {
+        NativeMethods.TablePtr->C2.hs_method_c576f6f6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimension_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8e080cdf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevelChunksToLight_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0ad74b58((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLightingTimeboxTime_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d9bb7ae6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListOfChunksToProcess_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_540c7ea5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProcessedSubchunks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f3af4e54((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mWorkerScheduled
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_222ad4f1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_222ad4f1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager((nint)NativeMethods.TablePtr->C2.hs_method_8c1a2e7c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void updateBlockLight(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, global::Hosihikari.Bindings.Bedrock.Interop.Brightness oldBrightness, global::Hosihikari.Bindings.Bedrock.Interop.Brightness newBrightness, global::Hosihikari.Bindings.Bedrock.Interop.Brightness oldAbsorption, global::Hosihikari.Bindings.Bedrock.Interop.Brightness newAbsorption, bool isSkyLight)
+    {
+        NativeMethods.TablePtr->C2.hs_method_eb443510((void*)__hosihikari_shim_handle, (void*)blockPos.Handle, (void*)oldBrightness.Handle, (void*)newBrightness.Handle, (void*)oldAbsorption.Handle, (void*)newAbsorption.Handle, isSkyLight);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_0bc280ea((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_0bc280ea((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

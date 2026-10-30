@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Aquifer_Nested;
 
-public sealed unsafe partial class FluidSample : global::System.IDisposable
+public sealed unsafe partial class FluidSample
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FluidSample(nint handle) : this(handle, true) { }
 
     internal FluidSample(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FluidSample Borrow(nint handle) => new FluidSample(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,26 @@ public sealed unsafe partial class FluidSample : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void Dispose()
+    public int blockLevel
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_d1d0e9f8((void*)_handle);
-            }
+        get => NativeMethods.TablePtr->C0.hs_get_72abbdaa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_72abbdaa((void*)__hosihikari_shim_handle, value);
+    }
 
-            _handle = 0;
-        }
+    public sbyte fluidType
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_f5f0b4d7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f5f0b4d7((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint pos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ea3a4eb5((void*)__hosihikari_shim_handle);
     }
 }

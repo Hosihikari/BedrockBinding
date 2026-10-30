@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExperienceRewardComponent
+public sealed unsafe partial class ExperienceRewardComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ExperienceRewardComponent(nint handle) : this(handle, true) { }
 
     internal ExperienceRewardComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ExperienceRewardComponent Borrow(nint handle) => new ExperienceRewardComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,58 +33,66 @@ public sealed unsafe partial class ExperienceRewardComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExperienceRewardComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ExperienceRewardComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    public void _dtor()
     {
-        NativeMethods.TablePtr->hs_method_43e248f0((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_303f4c48((void*)__hosihikari_shim_handle);
     }
 
-    public bool getIsExperienceDropEnabled()
+    public int getOnBredExperience(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_429224da((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_a2e12337((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public int getOnDeathExperience(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public int getOnDeathExperience(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->hs_method_2f98d496((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_06e54d0f((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    public static string mIsExperienceDropEnabledTag
+    public bool mIsExperienceDropEnabled
     {
-        get
+        get => NativeMethods.TablePtr->C1.hs_get_11121ca8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_11121ca8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static string mIsExperienceDropEnabledTag()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_89b80a57();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnBred_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b5d69753((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnDeath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1dc1f276((void*)__hosihikari_shim_handle);
+    }
+
+    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    {
+        NativeMethods.TablePtr->C1.hs_method_860595fa((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle, (void*)arg2.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
         {
-            var view = NativeMethods.TablePtr->hs_get_e12060c1();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ba73f224((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_eb4dba5d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_b5f14f45(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
-    {
-        NativeMethods.TablePtr->hs_method_4c386c5a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    public void setIsExperienceDropEnabled(bool arg0)
-    {
-        NativeMethods.TablePtr->hs_method_147b39ea((void*)_handle, arg0);
     }
 }

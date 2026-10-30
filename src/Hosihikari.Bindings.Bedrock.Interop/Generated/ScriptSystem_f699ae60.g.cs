@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptSystem
+public sealed unsafe partial class ScriptSystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptSystem(nint handle) : this(handle, true) { }
 
     internal ScriptSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptSystem Borrow(nint handle) => new ScriptSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,78 +33,113 @@ public sealed unsafe partial class ScriptSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptSystem Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptSystem>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptSystem>' requires --link-carrier or --virtual-dispatch.");
-
-    public void clearJob(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.WeakLifetimeScope arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.DependencyLocator arg1, uint arg2)
+    public static ScriptSystem Create()
     {
-        NativeMethods.TablePtr->hs_method_6b87243b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        var handle = NativeMethods.TablePtr->C3.hs_create_5175374c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSystem((nint)handle);
     }
 
-    public void clearRun(uint arg0)
+    public static ScriptSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptSystem arg0)
     {
-        NativeMethods.TablePtr->hs_method_037da129((void*)_handle, arg0);
+        var handle = NativeMethods.TablePtr->C3.hs_create_c3211ec7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSystem((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptSystemAfterEvents>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSystemAfterEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptSystemAfterEvents>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _waitTicks(nint factory, uint numberOfTicks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptSystemBeforeEvents>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSystemBeforeEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptSystemBeforeEvents>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_2adcaa53());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGlobalEventListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8cc00d67((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLevel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0e908268((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c3f8a784((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSystemAfterEventsHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_07a631bd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSystemBeforeEventsHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7be8c5cc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSystemInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f67989d0((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint runInterval_fa70754d(nint arg0, nint interval) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptSystem operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptSystem arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptSystem((nint)NativeMethods.TablePtr->C3.hs_method_a5c62364((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Scripting::Closure<void (void)>' is not supported.", false)]
-    public uint runInterval_7cc62995(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<void (void)>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Scripting::Closure<void ()>' is not supported.", false)]
+    public uint runInterval(nint closure, nint interval) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<void ()>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::Generator<void,void,void>' is not a known bindable declaration.", false)]
-    public uint runJob(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::Generator<void,void,void>' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Scripting::Closure<void ()>' is not supported.", false)]
+    public uint runTimeout(nint closure, nint delay) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<void ()>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint runSafe_2dd1f997(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint waitTicks(nint factory, uint numberOfTicks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Scripting::Closure<void (void)>' is not supported.", false)]
-    public uint runSafe_5bf85053(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<void (void)>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint waitTicksV1(nint factory, uint numberOfTicks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint runTimeout_ac66d21f(nint arg0, nint delay) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f699ae60((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Scripting::Closure<void (void)>' is not supported.", false)]
-    public uint runTimeout_65be1ac1(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<void (void)>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void,Scripting::Error,void>,Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint waitTicks(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void,Scripting::Error,void>,Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

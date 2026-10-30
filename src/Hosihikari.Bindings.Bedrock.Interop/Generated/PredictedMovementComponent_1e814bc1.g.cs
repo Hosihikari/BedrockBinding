@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PredictedMovementComponent
+public sealed unsafe partial class PredictedMovementComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PredictedMovementComponent(nint handle) : this(handle, true) { }
 
     internal PredictedMovementComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PredictedMovementComponent Borrow(nint handle) => new PredictedMovementComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,122 @@ public sealed unsafe partial class PredictedMovementComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static uint LERP_STEP_SIZE
+    public nint _ctor()
     {
-        get => NativeMethods.TablePtr->hs_get_2bf93cef();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_2373b158((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PredictedMovementComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_7030c347((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PredictedMovementComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PredictedMovementComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_30d537e2();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _tryInterpolate_7e5ffbaa(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new PredictedMovementComponent((nint)handle);
+    }
+
+    public void _debugLog(nint @params, global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.PredictionDbgData debugData)
+    {
+        NativeMethods.TablePtr->C2.hs_method_bdc3386b((void*)__hosihikari_shim_handle, (void*)@params, (void*)debugData.Handle);
+    }
+
+    public bool mAllowTeleportingWithoutRegion
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_55e5401f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_55e5401f((void*)__hosihikari_shim_handle, value);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint mGlobalRuntimePredictionData_Address
+    public nint mDisableConditions_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0d3f47a4();
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a499f0f0((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mForceTeleportAfterResuming
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_265079ff((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_265079ff((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static nint mGlobalRuntimePredictionData()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_e73a2eed();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHistoryCache_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3485b2c1((void*)__hosihikari_shim_handle);
+    }
+
+    public uint mLastCompletedInterpolationSequenceID
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_2b54c664((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2b54c664((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastEndItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a9caeeab((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastStartItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_31194160((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPredictedMovementValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ae0158b2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPredictionEventsListenerFunc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cd31dadd((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRuntimePredictionData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5eb1bc8d((void*)__hosihikari_shim_handle);
+    }
 
     public void reset()
     {
-        NativeMethods.TablePtr->hs_method_b8a2734f((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_b8a2734f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void tickNextPosition_88834bab(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void tickNextPosition_5538d7d8(nint arg0, nint arg1) =>
+    public void tickNextPosition(nint @params, nint timepoint) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_1e814bc1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

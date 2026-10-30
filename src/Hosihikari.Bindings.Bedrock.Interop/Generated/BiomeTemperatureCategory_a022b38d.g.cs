@@ -4,7 +4,12 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum BiomeTemperatureCategory : int
+public enum BiomeTemperatureCategory : byte
 {
+    Medium = 0,
+    Warm = 1,
+    Lukewarm = 2,
+    Cold = 3,
+    Frozen = 4,
+    Count = 5,
 }

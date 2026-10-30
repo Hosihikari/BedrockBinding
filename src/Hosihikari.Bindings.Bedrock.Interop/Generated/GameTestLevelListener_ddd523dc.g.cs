@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GameTestLevelListener : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameTestLevelListener(nint handle) : this(handle, true) { }
 
     internal GameTestLevelListener(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameTestLevelListener Borrow(nint handle) => new GameTestLevelListener(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,28 @@ public sealed unsafe partial class GameTestLevelListener : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameTestLevelListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameTestLevelListener Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static GameTestLevelListener Create(global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestTicker arg0)
+    public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent @event)
     {
-        var handle = NativeMethods.TablePtr->hs_create_3a0c9412((void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_b698c8e5((void*)__hosihikari_shim_handle, (void*)@event.Handle);
+    }
+
+    public int _onLevelTickEnd(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e98de187((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static GameTestLevelListener Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2cfedd3d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,30 +63,48 @@ public sealed unsafe partial class GameTestLevelListener : global::System.IDispo
         return new GameTestLevelListener((nint)handle);
     }
 
-    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent arg0)
+    public static GameTestLevelListener Create(global::Hosihikari.Bindings.Bedrock.Interop.GameTestLevelListener arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5c955257((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_642b8a4d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameTestLevelListener((nint)handle);
     }
 
-    public void onLevelTickEnd()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk66625a_Address
     {
-        NativeMethods.TablePtr->hs_method_87a2477d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b710c319((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent @event)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1bc69c7b((void*)__hosihikari_shim_handle, (void*)@event.Handle);
+    }
+
+    public int onLevelTickEnd(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2929b597((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameTestLevelListener operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.GameTestLevelListener arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameTestLevelListener((nint)NativeMethods.TablePtr->C1.hs_method_9ac6c2e9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ddd523dc((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_ddd523dc((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

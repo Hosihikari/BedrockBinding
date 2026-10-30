@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MolangScriptArg(nint handle) : this(handle, true) { }
 
     internal MolangScriptArg(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MolangScriptArg Borrow(nint handle) => new MolangScriptArg(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,19 @@ public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg other)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_61246b96((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
     public static MolangScriptArg Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_2183f2e0();
+        var handle = NativeMethods.TablePtr->C2.hs_create_2183f2e0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,21 +54,9 @@ public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
         return new MolangScriptArg((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangScriptArg Create_6d15eb92(nint actorId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangScriptArg Create_ff969131(nint loopBreak) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangScriptArg Create_c51fa23e(nint loopContinue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MolangScriptArg Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg0)
+    public static MolangScriptArg Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorId)
     {
-        var handle = NativeMethods.TablePtr->hs_create_af8e1be7((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_6d15eb92((void*)actorId.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,33 +65,9 @@ public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
         return new MolangScriptArg((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static MolangScriptArg Create_7cdd3995(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangScriptArg Create_fae4ceff(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangScriptArg Create_08e3f5fe(nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangScriptArg Create_f3b2d47f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangScriptArg Create_97d48027(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MolangScriptArg Create_0b175a30(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static MolangScriptArg Create(float arg0)
+    public static MolangScriptArg Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangLoopBreak loopBreak)
     {
-        var handle = NativeMethods.TablePtr->hs_create_35db8e16(arg0);
+        var handle = NativeMethods.TablePtr->C2.hs_create_ff969131((void*)loopBreak.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -107,9 +76,9 @@ public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
         return new MolangScriptArg((nint)handle);
     }
 
-    public static MolangScriptArg Create(int arg0)
+    public static MolangScriptArg Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangLoopContinue loopContinue)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ce548887(arg0);
+        var handle = NativeMethods.TablePtr->C2.hs_create_c51fa23e((void*)loopContinue.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -118,116 +87,127 @@ public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
         return new MolangScriptArg((nint)handle);
     }
 
-    public void clear()
+    public static MolangScriptArg Create(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->hs_method_93a4b662((void*)_handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_fae4ceff((void*)actor.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangScriptArg((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray? getAsNonConstIfMolangMemberArray()
+    public static MolangScriptArg Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d9d32cb5((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray((nint)__hs_handle, false) : null;
+        var handle = NativeMethods.TablePtr->C2.hs_create_08e3f5fe((void*)item.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangScriptArg((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray? getAsNonConstMolangMemberArray()
+    public static MolangScriptArg Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg other)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_3e408a67((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray((nint)__hs_handle, false) : null;
+        var handle = NativeMethods.TablePtr->C2.hs_create_12215874((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangScriptArg((nint)handle);
     }
 
-    public int getBaseType()
+    public static MolangScriptArg Create(float val)
     {
-        return NativeMethods.TablePtr->hs_method_8667466a((void*)_handle);
-    }
+        var handle = NativeMethods.TablePtr->C2.hs_create_35db8e16(val);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray? getIfMolangMemberArray()
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_a918450b((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray((nint)__hs_handle, false) : null;
-    }
-
-    public bool isEqual(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_84869c7c((void*)_handle, (void*)arg0.Handle) != 0;
+        return new MolangScriptArg((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0659e4f3((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0659e4f3((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_break
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_break()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_547e61f3(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C2.hs_method_dc13e688(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_emptyStringHash
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_emptyStringHash()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_451ea540(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C2.hs_method_c18d7eaf(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_float0
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_float0()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_4980e917(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C2.hs_method_0abe1850(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_float1
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_float1()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_1282d699(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C2.hs_method_e3efec30(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_floatNeg1
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_floatNeg1()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_c4df9408(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C2.hs_method_b8f70fea(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_molangActorIdEmptyArrayPtr
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_molangActorIdEmptyArrayPtr()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_5e190c29(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C2.hs_method_14c57d32(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_structUV0
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_structUV0()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_fdf9df4e(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C2.hs_method_e97030c7(), false);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPOD_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_be5a4fb0((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_be5a4fb0((void*)__hosihikari_shim_handle);
     }
 
     public int mType
     {
-        get => NativeMethods.TablePtr->hs_get_bd7f2008((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_bd7f2008((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_bd7f2008((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_bd7f2008((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_99e0ab68(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint other) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_f043fa97(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setType(int arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg other)
     {
-        NativeMethods.TablePtr->hs_method_1f331429((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->C2.hs_method_f043fa97((void*)__hosihikari_shim_handle, (void*)other.Handle), false);
     }
 
+    public void reportGetFailure()
+    {
+        NativeMethods.TablePtr->C2.hs_method_0c4779f3((void*)__hosihikari_shim_handle);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_cc849525((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_cc849525((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

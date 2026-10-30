@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ItemStackRequestActionCraftBase
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemStackRequestActionCraftBase(nint handle) : this(handle, true) { }
 
     internal ItemStackRequestActionCraftBase(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemStackRequestActionCraftBase Borrow(nint handle) => new ItemStackRequestActionCraftBase(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,50 @@ public sealed unsafe partial class ItemStackRequestActionCraftBase
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public byte mActionType
     {
-        get => NativeMethods.TablePtr->hs_get_40940a4c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_40940a4c((void*)_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_40940a4c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_40940a4c((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemStackRequestActionCraftBase Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemStackRequestActionCraftBase Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase? getCraftAction()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase? _getCraftAction()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c8cfedc2((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_143c5237((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void postLoadItems_DEPRECATEDASKTYLAING(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg0, bool arg1)
+    public void _postLoadItems_DEPRECATEDASKTYLAING(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette blockPalette, bool isClientSide)
     {
-        NativeMethods.TablePtr->hs_method_4880573c((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C1.hs_method_afd51b70((void*)__hosihikari_shim_handle, (void*)blockPalette.Handle, isClientSide);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_7894663f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public nint _read(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void _write(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase? getCraftAction()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_c779b296((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase((nint)__hs_handle, false) : null;
+    }
+
+    public byte mNumCrafts
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_5a9de10c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_5a9de10c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void postLoadItems_DEPRECATEDASKTYLAING(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette blockPalette, bool isClientSide)
+    {
+        NativeMethods.TablePtr->C1.hs_method_0d93f809((void*)__hosihikari_shim_handle, (void*)blockPalette.Handle, isClientSide);
+    }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Puv.@internal;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScopedPath
+public sealed unsafe partial class ScopedPath : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScopedPath(nint handle) : this(handle, true) { }
 
     internal ScopedPath(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScopedPath Borrow(nint handle) => new ScopedPath(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,70 @@ public sealed partial class ScopedPath
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScopedPath Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(nint path, global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.PathElement point)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_fe517dc6((void*)__hosihikari_shim_handle, (void*)path, (void*)point.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScopedPath Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ScopedPath Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ce525643();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new ScopedPath((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static ScopedPath Create(nint path, global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.PathElement point)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e3b6ecc6((void*)path, (void*)point.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScopedPath((nint)handle);
+    }
+
+    public static ScopedPath Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.ScopedPath arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8648c5c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScopedPath((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk16802b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bcc86f76((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.ScopedPath operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.ScopedPath arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.@internal.ScopedPath((nint)NativeMethods.TablePtr->C2.hs_method_545a4a60((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8a505cc9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

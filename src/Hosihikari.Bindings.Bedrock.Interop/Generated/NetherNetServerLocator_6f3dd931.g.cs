@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NetherNetServerLocator : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetherNetServerLocator(nint handle) : this(handle, true) { }
 
     internal NetherNetServerLocator(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetherNetServerLocator Borrow(nint handle) => new NetherNetServerLocator(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,79 @@ public sealed unsafe partial class NetherNetServerLocator : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public void _addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver futureIP, int port)
+    {
+        NativeMethods.TablePtr->C2.hs_method_47b6a42e((void*)__hosihikari_shim_handle, (void*)futureIP.Handle, port);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Bedrock::Http::DispatcherInterface>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint connector, nint appPlatform, nint dispatcher, nint signalingService) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Bedrock::Http::DispatcherInterface>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.", false)]
+    public nint _getServerList() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.");
+
+    public void _startAnnouncingServer(string playerName, string worldName, int gameType, int numPlayers, int maxNumPlayers, bool isJoinableThroughServerScreen, bool isEditorWorld, bool isHardcore, global::Hosihikari.Bindings.Bedrock.Interop.ServerSupportedAuthenticationTypes supportedAuth, global::Hosihikari.Bindings.Bedrock.Interop.Social.Nonce nonce)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(playerName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(playerName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_e7afd403((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, gameType, numPlayers, maxNumPlayers, isJoinableThroughServerScreen, isEditorWorld, isHardcore, (void*)supportedAuth.Handle, (void*)nonce.Handle);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.", false)]
+    public void _startServerDiscovery(nint ports) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.");
+
+    public void _stopAnnouncingServer()
+    {
+        NativeMethods.TablePtr->C2.hs_method_f77bfa9a((void*)__hosihikari_shim_handle);
+    }
+
+    public void _stopServerDiscovery()
+    {
+        NativeMethods.TablePtr->C2.hs_method_1fd8d1ed((void*)__hosihikari_shim_handle);
+    }
+
+    public void _update()
+    {
+        NativeMethods.TablePtr->C2.hs_method_5d134043((void*)__hosihikari_shim_handle);
     }
 
     public static NetherNetServerLocator Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_7688f390();
+        var handle = NativeMethods.TablePtr->C2.hs_create_7688f390();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,51 +114,215 @@ public sealed unsafe partial class NetherNetServerLocator : global::System.IDisp
         return new NetherNetServerLocator((nint)handle);
     }
 
+    public static NetherNetServerLocator Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherNetServerLocator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e39ec665((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherNetServerLocator((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Bedrock::Http::DispatcherInterface>' is not a known bindable declaration.", false)]
+    public static NetherNetServerLocator Create(nint connector, nint appPlatform, nint dispatcher, nint signalingService) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Bedrock::Http::DispatcherInterface>' is not a known bindable declaration.");
+
+    public void _cacheDiscoveryResponseData()
+    {
+        NativeMethods.TablePtr->C2.hs_method_f0b60afb((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _onDiscoveryRequest(global::Hosihikari.Bindings.Bedrock.Interop.cereal.SchemaWriter writer, byte area)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0e149eb7((void*)__hosihikari_shim_handle, (void*)writer.Handle, area) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<PingedCompatibleServer>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _pingExternalServer(nint futureIP, ushort port, nint urls, ulong index) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<PingedCompatibleServer>' requires --link-carrier or --virtual-dispatch.");
+
+    public void _setDiscoveryRequestCallback(bool enable)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ff3b8b6c((void*)__hosihikari_shim_handle, enable);
+    }
+
+    public void _setDiscoveryResponseCallback(bool enable)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f04529c4((void*)__hosihikari_shim_handle, enable);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static nint _transformFrom(nint networkID, nint serverData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver futureIP, int port)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d2904e5c((void*)__hosihikari_shim_handle, (void*)futureIP.Handle, port);
+    }
+
     public void clearServerList()
     {
-        NativeMethods.TablePtr->hs_method_66880ea2((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_66880ea2((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.", false)]
     public nint getServerList() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public void setNetherNetConnector(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1ca294_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f7cbb814((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.", false)]
-    public void startAnnouncingServer(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, bool arg6, bool arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk330682_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a312e5eb((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4488db_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a0670081((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk646852_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0f64d58b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk965302_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5c0935d7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk983682_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cba5264f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9e12a8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d820c365((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka0ecad_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8d34a9b4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke14539_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_af011b78((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnke6202d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_36520982((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkeab7f7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_725e8940((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfee0d4_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_21a39315((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetherNetServerLocator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.NetherNetServerLocator arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetherNetServerLocator((nint)NativeMethods.TablePtr->C2.hs_method_212b6eda((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void startAnnouncingServer(string playerName, string worldName, int gameType, int numPlayers, int maxNumPlayers, bool isJoinableThroughServerScreen, bool isEditorWorld, bool isHardcore, global::Hosihikari.Bindings.Bedrock.Interop.ServerSupportedAuthenticationTypes supportedAuth, global::Hosihikari.Bindings.Bedrock.Interop.Social.Nonce nonce)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(playerName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(playerName, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(worldName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->C2.hs_method_7709367a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, gameType, numPlayers, maxNumPlayers, isJoinableThroughServerScreen, isEditorWorld, isHardcore, (void*)supportedAuth.Handle, (void*)nonce.Handle);
+            }
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.", false)]
-    public void startServerDiscovery(nint arg0) =>
+    public void startServerDiscovery(nint ports) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.", false)]
-    public void stopAnnouncingServer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.");
+    public void stopAnnouncingServer()
+    {
+        NativeMethods.TablePtr->C2.hs_method_f98201b9((void*)__hosihikari_shim_handle);
+    }
 
     public void stopServerDiscovery()
     {
-        NativeMethods.TablePtr->hs_method_cc89f3a2((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_cc89f3a2((void*)__hosihikari_shim_handle);
     }
 
     public void update()
     {
-        NativeMethods.TablePtr->hs_method_830e7b31((void*)_handle);
+        NativeMethods.TablePtr->C2.hs_method_830e7b31((void*)__hosihikari_shim_handle);
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk1d223d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_68ffffca((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkaf3b65_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e47f465e((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_6f3dd931((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_6f3dd931((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

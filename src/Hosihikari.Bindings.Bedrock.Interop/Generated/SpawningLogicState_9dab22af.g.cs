@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.TrialSpawner_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum SpawningLogicState : int
 {
+    Inactive = 0,
+    WaitingForPlayers = 1,
+    Active = 2,
+    WaitingForRewardEjection = 3,
+    EjectingRewards = 4,
+    Cooldown = 5,
+    Count = 6,
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SimpleRandom : global::System.IDisposable
+public sealed unsafe partial class SimpleRandom
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public SimpleRandom(nint handle) : this(handle, true) { }
 
     internal SimpleRandom(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static SimpleRandom Borrow(nint handle) => new SimpleRandom(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,113 +33,112 @@ public sealed unsafe partial class SimpleRandom : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimpleRandom Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimpleRandom Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static SimpleRandom Create(long arg0)
+    public void _consumeCount(uint count)
     {
-        var handle = NativeMethods.TablePtr->hs_create_818c40cf(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SimpleRandom((nint)handle);
+        NativeMethods.TablePtr->C3.hs_method_9daa2288((void*)__hosihikari_shim_handle, count);
     }
 
-    public void consumeCount(uint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
+    public nint _forkPositional() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.");
+
+    public bool _nextBoolean()
     {
-        NativeMethods.TablePtr->hs_method_c6646ffc((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_4042f370((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.IRandom? fork()
+    public double _nextDouble()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_1a921613((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)__hs_handle) : null;
+        return NativeMethods.TablePtr->C3.hs_method_c733a106((void*)__hosihikari_shim_handle);
+    }
+
+    public float _nextFloat()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_f96876f1((void*)__hosihikari_shim_handle);
+    }
+
+    public double _nextGaussianDouble()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_2076431e((void*)__hosihikari_shim_handle);
+    }
+
+    public int _nextInt()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_e5f58cd2((void*)__hosihikari_shim_handle);
+    }
+
+    public int _nextInt(int bound)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_43d6b904((void*)__hosihikari_shim_handle, bound);
+    }
+
+    public long _nextLong()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_07d5955a((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public void consumeCount(uint count)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c6646ffc((void*)__hosihikari_shim_handle, count);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
     public nint forkPositional() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.");
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGaussianSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_add5c21e((void*)__hosihikari_shim_handle);
+    }
+
+    public long mSeed
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_a9aec606((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a9aec606((void*)__hosihikari_shim_handle, value);
+    }
+
     public bool nextBoolean()
     {
-        return NativeMethods.TablePtr->hs_method_938470ca((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_938470ca((void*)__hosihikari_shim_handle) != 0;
     }
 
     public double nextDouble()
     {
-        return NativeMethods.TablePtr->hs_method_22a3bb85((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_22a3bb85((void*)__hosihikari_shim_handle);
     }
 
     public float nextFloat()
     {
-        return NativeMethods.TablePtr->hs_method_b356d841((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_b356d841((void*)__hosihikari_shim_handle);
     }
 
     public double nextGaussianDouble()
     {
-        return NativeMethods.TablePtr->hs_method_a5fddd96((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_a5fddd96((void*)__hosihikari_shim_handle);
     }
 
     public int nextInt()
     {
-        return NativeMethods.TablePtr->hs_method_9929cf73((void*)_handle);
+        return NativeMethods.TablePtr->C3.hs_method_9929cf73((void*)__hosihikari_shim_handle);
     }
 
-    public int nextInt(int arg0)
+    public int nextInt(int bound)
     {
-        return NativeMethods.TablePtr->hs_method_379cbe8e((void*)_handle, arg0);
+        return NativeMethods.TablePtr->C3.hs_method_379cbe8e((void*)__hosihikari_shim_handle, bound);
     }
 
     public long nextLong()
     {
-        return NativeMethods.TablePtr->hs_method_d7243973((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Seed128Bit' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint seed128() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Seed128Bit' requires --link-carrier or --virtual-dispatch.");
-
-    public long seed64()
-    {
-        return NativeMethods.TablePtr->hs_method_cb6cb1c1((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Seed128Bit' is not a known bindable declaration.", false)]
-    public void setSeed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Seed128Bit' is not a known bindable declaration.");
-
-    public void setSeed(long arg0)
-    {
-        NativeMethods.TablePtr->hs_method_b3aa2be2((void*)_handle, arg0);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_ed471be1((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return NativeMethods.TablePtr->C3.hs_method_d7243973((void*)__hosihikari_shim_handle);
     }
 }

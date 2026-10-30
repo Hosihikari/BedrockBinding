@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class BlockSourceFactoryImpl
+public sealed unsafe partial class BlockSourceFactoryImpl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockSourceFactoryImpl(nint handle) : this(handle, true) { }
 
     internal BlockSourceFactoryImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockSourceFactoryImpl Borrow(nint handle) => new BlockSourceFactoryImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,24 +33,59 @@ public sealed partial class BlockSourceFactoryImpl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockSourceFactoryImpl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static BlockSourceFactoryImpl Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_12ce33f6();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockSourceFactoryImpl Create_65335e04(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new BlockSourceFactoryImpl((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockSourceFactoryImpl Create_4ae10075(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BlockSourceFactoryImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockSourceFactoryImpl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_65335e04((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new BlockSourceFactoryImpl((nint)handle);
+    }
+
+    public void _createOrUpdate(global::Hosihikari.Bindings.Bedrock.Interop.MockableOwnedBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType type)
+    {
+        NativeMethods.TablePtr->C0.hs_method_3a135d67((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)type.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkef957b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_365e6765((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockSourceFactoryImpl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.BlockSourceFactoryImpl arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockSourceFactoryImpl((nint)NativeMethods.TablePtr->C0.hs_method_db407c5c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_27abf7ab((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

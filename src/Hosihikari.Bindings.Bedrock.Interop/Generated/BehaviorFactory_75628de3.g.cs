@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class BehaviorFactory
+public sealed unsafe partial class BehaviorFactory
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BehaviorFactory(nint handle) : this(handle, true) { }
 
     internal BehaviorFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BehaviorFactory Borrow(nint handle) => new BehaviorFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,32 +33,27 @@ public sealed partial class BehaviorFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BehaviorFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public void _initNodes()
+    {
+        NativeMethods.TablePtr->C0.hs_method_dbde82c7((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BehaviorFactory Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BehaviorDefinition' has no accessible destructor.", false)]
+    public nint loadNodeDefinition(nint name, nint root, nint ptr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BehaviorDefinition' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint loadNodeDefinition(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFactoryPairs_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_711fede9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerNodePair_7dfb4f5d(nint id, nint definitionCreator, nint nodeCreator) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<BehaviorDefinition,std::default_delete<BehaviorDefinition>>' is not supported.", false)]
-    public void registerNodePair_62b1063c(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<BehaviorDefinition,std::default_delete<BehaviorDefinition>>' is not supported.");
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<BehaviorDefinition>' is not supported.", false)]
+    public void registerNodePair(nint id, nint definitionCreator, nint nodeCreator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<BehaviorDefinition>' is not supported.");
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RelativeFloat : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RelativeFloat(nint handle) : this(handle, true) { }
 
     internal RelativeFloat(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RelativeFloat Borrow(nint handle) => new RelativeFloat(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,65 +33,33 @@ public sealed unsafe partial class RelativeFloat : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    public static RelativeFloat Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_cfe85281();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new RelativeFloat((nint)handle);
-    }
-
-    public static RelativeFloat Create(float arg0, bool arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_e4db30b9(arg0, arg1);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new RelativeFloat((nint)handle);
-    }
-
-    public float getValue(float arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_ff12376b((void*)_handle, arg0);
-    }
-
-    public bool isRelative()
-    {
-        return NativeMethods.TablePtr->hs_method_a4fb828f((void*)_handle) != 0;
     }
 
     public float mOffset
     {
-        get => NativeMethods.TablePtr->hs_get_3d615477((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_3d615477((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_3d615477((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3d615477((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mRelative
     {
-        get => NativeMethods.TablePtr->hs_get_07aa4e39((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_07aa4e39((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_07aa4e39((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_07aa4e39((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2621ebde((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_2621ebde((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

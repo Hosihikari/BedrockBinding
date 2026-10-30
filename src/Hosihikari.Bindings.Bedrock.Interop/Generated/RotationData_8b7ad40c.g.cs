@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.RotationCommandUtils;
 
 public sealed unsafe partial class RotationData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RotationData(nint handle) : this(handle, true) { }
 
     internal RotationData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RotationData Borrow(nint handle) => new RotationData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,50 +33,39 @@ public sealed unsafe partial class RotationData : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
-    }
-
-    public static RotationData Create(global::Hosihikari.Bindings.Bedrock.Interop.RelativeFloat arg0, global::Hosihikari.Bindings.Bedrock.Interop.RelativeFloat arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec2? arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_3c91b657((void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), arg2 is not null);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new RotationData((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommandOriginRotation_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_cf55b4fd((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cf55b4fd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRotX_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6eb9b57e((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6eb9b57e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRotY_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_eef35d6f((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_eef35d6f((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_8b7ad40c((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_8b7ad40c((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

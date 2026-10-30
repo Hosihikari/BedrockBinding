@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PackInfoData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PackInfoData(nint handle) : this(handle, true) { }
 
     internal PackInfoData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PackInfoData Borrow(nint handle) => new PackInfoData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,19 @@ public sealed unsafe partial class PackInfoData : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static PackInfoData Create(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, ulong arg2, string arg3, string arg4, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg5, bool arg6, bool arg7)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.PackInfoData arg0)
     {
-        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_ad64819a((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID guid, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version, ulong packSize, string contentKey, string subpackName, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity contentIdentity, bool hasScripts, bool isAddonPack, bool isRayTracingCapable, string cdnUrl)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(contentKey);
         scoped global::System.Span<byte> __hs_stringBytes3;
         if (__hs_stringByteCount3 <= 256)
         {
@@ -50,8 +55,8 @@ public sealed unsafe partial class PackInfoData : global::System.IDisposable
         {
             __hs_stringBytes3 = new byte[__hs_stringByteCount3];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        global::System.Text.Encoding.UTF8.GetBytes(contentKey, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(subpackName);
         scoped global::System.Span<byte> __hs_stringBytes4;
         if (__hs_stringByteCount4 <= 256)
         {
@@ -61,81 +66,186 @@ public sealed unsafe partial class PackInfoData : global::System.IDisposable
         {
             __hs_stringBytes4 = new byte[__hs_stringByteCount4];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        global::System.Text.Encoding.UTF8.GetBytes(subpackName, __hs_stringBytes4);
+        var __hs_stringByteCount9 = global::System.Text.Encoding.UTF8.GetByteCount(cdnUrl);
+        scoped global::System.Span<byte> __hs_stringBytes9;
+        if (__hs_stringByteCount9 <= 256)
+        {
+            __hs_stringBytes9 = stackalloc byte[__hs_stringByteCount9 == 0 ? 1 : __hs_stringByteCount9];
+        }
+        else
+        {
+            __hs_stringBytes9 = new byte[__hs_stringByteCount9];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cdnUrl, __hs_stringBytes9);
         fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
             fixed (byte* __hs_stringData4 = __hs_stringBytes4)
             {
-                var handle = NativeMethods.TablePtr->hs_create_ec7f253d((void*)arg0.Handle, (void*)arg1.Handle, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, (void*)arg5.Handle, arg6, arg7);
-                if (handle == null)
+                fixed (byte* __hs_stringData9 = __hs_stringBytes9)
                 {
-                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                    return (nint)NativeMethods.TablePtr->C2.hs_method_d00938fe((void*)__hosihikari_shim_handle, (void*)guid.Handle, (void*)version.Handle, packSize, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, (void*)contentIdentity.Handle, hasScripts, isAddonPack, isRayTracingCapable, __hs_stringData9, (nuint)__hs_stringByteCount9);
                 }
+            }
+        }
+    }
 
-                return new PackInfoData((nint)handle);
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_cfd7a297((void*)__hosihikari_shim_handle);
+    }
+
+    public static PackInfoData Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_86e3a631();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackInfoData((nint)handle);
+    }
+
+    public static PackInfoData Create(global::Hosihikari.Bindings.Bedrock.Interop.PackInfoData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5470f7f1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackInfoData((nint)handle);
+    }
+
+    public static PackInfoData Create(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID guid, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version, ulong packSize, string contentKey, string subpackName, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity contentIdentity, bool hasScripts, bool isAddonPack, bool isRayTracingCapable, string cdnUrl)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(contentKey);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(contentKey, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(subpackName);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(subpackName, __hs_stringBytes4);
+        var __hs_stringByteCount9 = global::System.Text.Encoding.UTF8.GetByteCount(cdnUrl);
+        scoped global::System.Span<byte> __hs_stringBytes9;
+        if (__hs_stringByteCount9 <= 256)
+        {
+            __hs_stringBytes9 = stackalloc byte[__hs_stringByteCount9 == 0 ? 1 : __hs_stringByteCount9];
+        }
+        else
+        {
+            __hs_stringBytes9 = new byte[__hs_stringByteCount9];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cdnUrl, __hs_stringBytes9);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                fixed (byte* __hs_stringData9 = __hs_stringBytes9)
+                {
+                    var handle = NativeMethods.TablePtr->C2.hs_create_6533e194((void*)guid.Handle, (void*)version.Handle, packSize, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, (void*)contentIdentity.Handle, hasScripts, isAddonPack, isRayTracingCapable, __hs_stringData9, (nuint)__hs_stringByteCount9);
+                    if (handle == null)
+                    {
+                        throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                    }
+
+                    return new PackInfoData((nint)handle);
+                }
             }
         }
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mCDNUrl_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f03cf62d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public nint mContentIdentity_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9d2ae7b8((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9d2ae7b8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mContentKey_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f978e7db((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f978e7db((void*)__hosihikari_shim_handle);
     }
 
     public bool mHasExceptions
     {
-        get => NativeMethods.TablePtr->hs_get_7f4bced6((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_7f4bced6((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_7f4bced6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_7f4bced6((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mHasScripts
     {
-        get => NativeMethods.TablePtr->hs_get_4c8c385e((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_4c8c385e((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4c8c385e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_4c8c385e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsAddonPack
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_9a91c3a3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_9a91c3a3((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mIsRayTracingCapable
     {
-        get => NativeMethods.TablePtr->hs_get_bd884986((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_bd884986((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_bd884986((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_bd884986((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPackIdVersion_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_17ef10b5((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_17ef10b5((void*)__hosihikari_shim_handle);
     }
 
     public ulong mPackSize
     {
-        get => NativeMethods.TablePtr->hs_get_0a9aaf73((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_0a9aaf73((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0a9aaf73((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0a9aaf73((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSubpackName_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5ffefd0a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5ffefd0a((void*)__hosihikari_shim_handle);
+    }
+
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.PackInfoData info)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_2150f420((void*)__hosihikari_shim_handle, (void*)info.Handle) != 0;
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_345dd092((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_345dd092((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

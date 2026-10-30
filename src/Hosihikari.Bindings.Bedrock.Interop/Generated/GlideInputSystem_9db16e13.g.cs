@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GlideInputSystem
+public sealed unsafe partial class GlideInputSystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GlideInputSystem(nint handle) : this(handle, true) { }
 
     internal GlideInputSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GlideInputSystem Borrow(nint handle) => new GlideInputSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,26 @@ public sealed unsafe partial class GlideInputSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GlideInputSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GlideInputSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createGlideInputSystem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.");
-
-    public static void doGlideInputSystem(global::Hosihikari.Bindings.Bedrock.Interop.MovementAbilitiesComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.MoveInputComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent arg2, global::Hosihikari.Bindings.Bedrock.Interop.FallFlyTicksComponent arg3, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg4)
+    public static void doGlideInputSystem(global::Hosihikari.Bindings.Bedrock.Interop.MovementAbilitiesComponent abilitiesComponent, global::Hosihikari.Bindings.Bedrock.Interop.MoveInputComponent moveInputComponent, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent synchedActorDataComponent, global::Hosihikari.Bindings.Bedrock.Interop.FallFlyTicksComponent fallFlyTicksComponent, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent)
     {
-        NativeMethods.TablePtr->hs_method_f93ef538((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
+        NativeMethods.TablePtr->C1.hs_method_2e5d8355((void*)abilitiesComponent.Handle, (void*)moveInputComponent.Handle, (void*)synchedActorDataComponent.Handle, (void*)fallFlyTicksComponent.Handle, (void*)stateVectorComponent.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9db16e13((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

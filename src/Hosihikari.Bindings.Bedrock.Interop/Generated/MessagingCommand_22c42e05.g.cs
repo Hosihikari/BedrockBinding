@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MessagingCommand : global::System.IDisposable
+public sealed unsafe partial class MessagingCommand
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MessagingCommand(nint handle) : this(handle, true) { }
 
     internal MessagingCommand(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MessagingCommand Borrow(nint handle) => new MessagingCommand(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,62 @@ public sealed unsafe partial class MessagingCommand : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public int mCommandSymbol
     {
-        get => NativeMethods.TablePtr->hs_get_f7c98541((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f7c98541((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_f7c98541((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f7c98541((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFlags_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6bcef945((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6bcef945((void*)__hosihikari_shim_handle);
     }
 
     public byte mPermissionLevel
     {
-        get => NativeMethods.TablePtr->hs_get_ae37f3f0((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ae37f3f0((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ae37f3f0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ae37f3f0((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mRegistry
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ad231054((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ad231054((void*)__hosihikari_shim_handle);
     }
 
     public int mVersion
     {
-        get => NativeMethods.TablePtr->hs_get_0d648061((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_0d648061((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0d648061((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0d648061((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MessagingCommand Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MessagingCommand Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-
-    public void Dispose()
+    public bool checkChatPermissions(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_22c42e05((void*)_handle);
-            }
+        return NativeMethods.TablePtr->C2.hs_method_ef54349a((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle) != 0;
+    }
 
-            _handle = 0;
+    public static bool checkIfTextProcessorIsHealthyAndSendChatIfNot(global::Hosihikari.Bindings.Bedrock.Interop.CommandOriginIdentity identity, global::Hosihikari.Bindings.Bedrock.Interop.Level level, int[] events)
+    {
+        fixed (int* __hs_vectorData2 = events)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_841b0c04((void*)identity.Handle, (void*)level.Handle, __hs_vectorData2, (nuint)(events?.Length ?? 0)) != 0;
         }
+    }
+
+    public bool mRequireChatPerms
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_4aacf4ec((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_4aacf4ec((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mRequireTellPerms
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_69a89c90((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_69a89c90((void*)__hosihikari_shim_handle, value);
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RakDataOutput : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RakDataOutput(nint handle) : this(handle, true) { }
 
     internal RakDataOutput(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RakDataOutput Borrow(nint handle) => new RakDataOutput(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,27 +33,64 @@ public sealed unsafe partial class RakDataOutput : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public void writeBytes(nint arg0, ulong arg1)
+    public void _writeBytes(nint data, ulong bytes)
     {
-        NativeMethods.TablePtr->hs_method_bdf1f570((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->C2.hs_method_09ffdb55((void*)__hosihikari_shim_handle, (void*)data, bytes);
     }
 
+    public static RakDataOutput Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_47536142();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakDataOutput((nint)handle);
+    }
+
+    public static RakDataOutput Create(global::Hosihikari.Bindings.Bedrock.Interop.RakDataOutput arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5c9cba87((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakDataOutput((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBitStream_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_65599815((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakDataOutput operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RakDataOutput arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakDataOutput((nint)NativeMethods.TablePtr->C2.hs_method_4c8831db((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void writeBytes(nint data, ulong bytes)
+    {
+        NativeMethods.TablePtr->C2.hs_method_41b89c30((void*)__hosihikari_shim_handle, (void*)data, bytes);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_559c6741((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_559c6741((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

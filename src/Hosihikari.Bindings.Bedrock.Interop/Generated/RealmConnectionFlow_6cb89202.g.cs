@@ -4,7 +4,19 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum RealmConnectionFlow : int
 {
+    PlayScreen = 0,
+    SettingsScreen = 1,
+    InviteLink = 2,
+    AllowList = 3,
+    Marketplace = 4,
+    CreateScreen = 5,
+    SlotsScreen = 6,
+    ConnectToRealmLink = 7,
+    EditWorld = 8,
+    TimelineRequiredScreen = 9,
+    RealmsPurchase = 10,
+    PartyTravel = 11,
+    JoiningFriend = 12,
 }

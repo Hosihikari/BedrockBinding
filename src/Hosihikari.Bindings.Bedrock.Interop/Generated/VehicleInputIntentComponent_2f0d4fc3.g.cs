@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class VehicleInputIntentComponent
+public sealed unsafe partial class VehicleInputIntentComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VehicleInputIntentComponent(nint handle) : this(handle, true) { }
 
     internal VehicleInputIntentComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VehicleInputIntentComponent Borrow(nint handle) => new VehicleInputIntentComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,86 @@ public sealed partial class VehicleInputIntentComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VehicleInputIntentComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public bool mControlledByPlayer
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_876171ad((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_876171ad((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VehicleInputIntentComponent Create_6e4ef61c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControllingEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a354f594((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VehicleInputIntentComponent Create_fc651508(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public ulong mCurrentTick
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_203fee5b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_203fee5b((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_fa21d309(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDoControllers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a868bab5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_f89e1475(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool mIsClientPredicted
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_3ce9db75((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_3ce9db75((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIsPaddling_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3fe8a9a5((void*)__hosihikari_shim_handle);
+    }
+
+    public int mJumpAmount
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_37a96002((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_37a96002((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalMovementVelocity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ad32f95d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPaddleForces_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dd45445d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRotation_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d0294839((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mUsePaddleForce
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_34891472((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_34891472((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWASDFreeCameraControlled
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_992f1380((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_992f1380((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWASDGroundControlled
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_9fd166fd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_9fd166fd((void*)__hosihikari_shim_handle, value);
+    }
 }

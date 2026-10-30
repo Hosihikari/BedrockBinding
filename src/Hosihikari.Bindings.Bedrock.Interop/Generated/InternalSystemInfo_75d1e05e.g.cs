@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class InternalSystemInfo
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public InternalSystemInfo(nint handle) : this(handle, true) { }
 
     internal InternalSystemInfo(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static InternalSystemInfo Borrow(nint handle) => new InternalSystemInfo(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,34 +33,38 @@ public sealed unsafe partial class InternalSystemInfo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static InternalSystemInfo Create_def19f86(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_8a752ef0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAnnotationForTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_01090897((void*)__hosihikari_shim_handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDependencies_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2e3538ff((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2e3538ff((void*)__hosihikari_shim_handle);
     }
 
-    public nint mGenerateDetailedInfo
+    public byte mDisplayCategoryIndex
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_cccecb78((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_cccecb78((void*)_handle, (void*)value);
+        get => NativeMethods.TablePtr->C1.hs_get_451664c0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_451664c0((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGenerateDetailedInfo_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cccecb78((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e402fcf4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e402fcf4((void*)__hosihikari_shim_handle);
     }
 }

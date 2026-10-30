@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue_Nested;
 
 public sealed unsafe partial class BlockTick : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BlockTick(nint handle) : this(handle, true) { }
 
     internal BlockTick(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BlockTick Borrow(nint handle) => new BlockTick(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,38 @@ public sealed unsafe partial class BlockTick : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e5703cc5((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsRemoved
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_c7b76c9a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_c7b76c9a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool operator_greater(global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue_Nested.BlockTick other)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_69e5e1e9((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_838f4b21((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_838f4b21((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

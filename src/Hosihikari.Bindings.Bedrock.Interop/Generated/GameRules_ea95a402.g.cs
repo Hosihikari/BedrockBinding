@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class GameRules : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameRules(nint handle) : this(handle, true) { }
 
     internal GameRules(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameRules Borrow(nint handle) => new GameRules(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,43 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e0f7a4a4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e0f7a4a4((void*)__hosihikari_shim_handle);
     }
 
-    public static uint DEFAULT_PLAYER_SPAWN_RADIUS
+    public nint _ctor()
     {
-        get => NativeMethods.TablePtr->hs_get_a59a03c0();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_ea586f7b((void*)__hosihikari_shim_handle);
     }
 
-    public static int DEFAULT_RANDOMTICKSPEED
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.GameRules rhs)
     {
-        get => NativeMethods.TablePtr->hs_get_903fc1b4();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_321dd4c2((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
     }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_468415a0((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     public static GameRules Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_5dc90e54();
+        var handle = NativeMethods.TablePtr->C1.hs_create_5dc90e54();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,9 +78,13 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
         return new GameRules((nint)handle);
     }
 
-    public static GameRules Create(global::Hosihikari.Bindings.Bedrock.Interop.GameRules arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static GameRules Create(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static GameRules Create(global::Hosihikari.Bindings.Bedrock.Interop.GameRules rhs)
     {
-        var handle = NativeMethods.TablePtr->hs_create_0a8eef54((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_4b5e524f((void*)rhs.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -76,157 +93,78 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
         return new GameRules((nint)handle);
     }
 
-    public static int MAX_FUNCTIONCOMMANDLIMIT
+    public static string WORLD_POLICY_TAG_NAME()
     {
-        get => NativeMethods.TablePtr->hs_get_84824ebe();
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_fcc3ce3c();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static uint MAX_PLAYER_SPAWN_RADIUS
+    public void _registerRules()
     {
-        get => NativeMethods.TablePtr->hs_get_bcd6e78b();
+        NativeMethods.TablePtr->C1.hs_method_f83f1429((void*)__hosihikari_shim_handle);
     }
 
-    public static int MAX_RANDOMTICKSPEED
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' has no accessible destructor.", false)]
+    public nint _setGameRule(nint gameRule, nint value, nint type, bool returnPacket, nint pValueValidated, nint pValueChanged, nint errorOutput) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' has no accessible destructor.", false)]
+    public nint createAllGameRulesPacket() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' has no accessible destructor.");
+
+    public void deserializeRules(global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacketData ruleData)
     {
-        get => NativeMethods.TablePtr->hs_get_baf95c4b();
+        NativeMethods.TablePtr->C1.hs_method_2686145d((void*)__hosihikari_shim_handle, (void*)ruleData.Handle);
     }
 
-    public static uint MIN_PLAYER_SPAWN_RADIUS
+    public bool getBool(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId ruleType, bool defaultValue)
     {
-        get => NativeMethods.TablePtr->hs_get_272b223d();
+        return NativeMethods.TablePtr->C1.hs_method_10865c7c((void*)__hosihikari_shim_handle, (void*)ruleType.Handle, defaultValue) != 0;
     }
 
-    public static string WORLD_POLICY_TAG_NAME
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameRuleChangePublisher_Address
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_be7c0ec6();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7143a73c((void*)__hosihikari_shim_handle);
     }
 
-    public void __autoclassinit2(ulong arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameRules_Address
     {
-        NativeMethods.TablePtr->hs_method_a7d46db9((void*)_handle, arg0);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6c5130d0((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _getMarketplaceGameRulesDefaultMap_d8bd2ec4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? createAllGameRulesPacket()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mWorldPolicies_Address
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_817b7aee((void*)_handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket((nint)__hs_handle) : null;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_283b92bf((void*)__hosihikari_shim_handle);
     }
 
-    public void deserializeRules(global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacketData arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRules operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.GameRules rhs)
     {
-        NativeMethods.TablePtr->hs_method_28315413((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameRules((nint)NativeMethods.TablePtr->C1.hs_method_5b819930((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
     }
-
-    public bool getBool(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, bool arg1)
-    {
-        return NativeMethods.TablePtr->hs_method_852d490a((void*)_handle, (void*)arg0.Handle, arg1) != 0;
-    }
-
-    public float getFloat(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_b0d7cfea((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public int getInt(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_45a74be1((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.GameRule? getRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_ca6cba4a((void*)_handle, (void*)arg0.Handle);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRule((nint)__hs_handle, false) : null;
-    }
-
-    public nint getRules()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_d514dead((void*)_handle);
-    }
-
-    public void getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
-    {
-        NativeMethods.TablePtr->hs_method_b68dc259((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
-    }
-
-    public bool hasRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_8eab998f((void*)_handle, (void*)arg0.Handle) != 0;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId nameToGameRuleIndex(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId((nint)NativeMethods.TablePtr->hs_method_364506e7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
-        }
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint registerOnGameRuleChangeCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
 
     public void setMarketplaceOverrides()
     {
-        NativeMethods.TablePtr->hs_method_5e418686((void*)_handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? setRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, bool arg1, bool arg2, nint arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg5)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_40daecb1((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3, (void*)arg4, (void*)(arg5?.Handle ?? 0));
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket((nint)__hs_handle) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? setRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, float arg1, bool arg2, nint arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg5)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_2dc8d22f((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3, (void*)arg4, (void*)(arg5?.Handle ?? 0));
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket((nint)__hs_handle) : null;
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? setRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, int arg1, bool arg2, nint arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg5)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_66408e2c((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3, (void*)arg4, (void*)(arg5?.Handle ?? 0));
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket((nint)__hs_handle) : null;
-    }
-
-    public void setTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
-    {
-        NativeMethods.TablePtr->hs_method_da764149((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_5e418686((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ea95a402((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_ea95a402((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

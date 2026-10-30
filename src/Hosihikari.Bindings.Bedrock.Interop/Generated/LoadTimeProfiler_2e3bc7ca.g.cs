@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
 public sealed unsafe partial class LoadTimeProfiler : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LoadTimeProfiler(nint handle) : this(handle, true) { }
 
     internal LoadTimeProfiler(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LoadTimeProfiler Borrow(nint handle) => new LoadTimeProfiler(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,20 +33,29 @@ public sealed unsafe partial class LoadTimeProfiler : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_62103f1d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_62103f1d((void*)__hosihikari_shim_handle);
     }
+
+    public nint _ctor()
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_dff310f0((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
     public static LoadTimeProfiler Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_3a35e773();
+        var handle = NativeMethods.TablePtr->C0.hs_create_3a35e773();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,30 +64,69 @@ public sealed unsafe partial class LoadTimeProfiler : global::System.IDisposable
         return new LoadTimeProfiler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LoadTimeProfiler Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setEnabled(bool arg0)
+    public static LoadTimeProfiler Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler arg0)
     {
-        NativeMethods.TablePtr->hs_method_7ecb3bc7((void*)_handle, arg0);
+        var handle = NativeMethods.TablePtr->C0.hs_create_ef5be685((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoadTimeProfiler((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3beda8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_94395d77((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk58830a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_80864110((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk69a966_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4b93c4b9((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnka79572_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_063571a0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkec42a1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3bcc451e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfa6b3f_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e04e8dff((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler((nint)NativeMethods.TablePtr->C0.hs_method_c58ed6cf((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2e3bc7ca((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_2e3bc7ca((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

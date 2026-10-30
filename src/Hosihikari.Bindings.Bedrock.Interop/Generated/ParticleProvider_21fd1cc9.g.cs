@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class ParticleProvider : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ParticleProvider(nint handle) : this(handle, true) { }
 
     internal ParticleProvider(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ParticleProvider Borrow(nint handle) => new ParticleProvider(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,87 +33,72 @@ public sealed unsafe partial class ParticleProvider : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static ParticleProvider Create()
+    public void _addSprintParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor mob, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ff5e2166();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ParticleProvider((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ParticleProvider Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addBreakingItemParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResolvedItemIconInfo arg2)
-    {
-        NativeMethods.TablePtr->hs_method_56c2ec06((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle);
-    }
-
-    public nint addParticle(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg4, bool arg5)
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_c2551e81((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)(arg4?.Handle ?? 0), arg5);
-    }
-
-    public void addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap arg2)
-    {
-        NativeMethods.TablePtr->hs_method_f70e5f71((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
-    }
-
-    public void addTerrainParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, float arg4, float arg5)
-    {
-        NativeMethods.TablePtr->hs_method_2360a0e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5);
-    }
-
-    public void addTerrainSlideEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, float arg4, float arg5)
-    {
-        NativeMethods.TablePtr->hs_method_f0709f3e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5);
+        NativeMethods.TablePtr->C2.hs_method_f20914fb((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)region.Handle, (void*)random.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public nint getAddBreakingItemParticleEffectConnector() =>
+    public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public nint getAddTerrainParticleEffectConnector() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public nint getAddTerrainSlideEffectConnector() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public nint getSendServerLegacyParticleConnector() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void sendServerLegacyParticle(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3)
+    public void addSprintParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor mob, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        NativeMethods.TablePtr->hs_method_5baea9f8((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
+        NativeMethods.TablePtr->C2.hs_method_6e528a94((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)region.Handle, (void*)random.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAddBiomeTintedParticleEffectPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8149e3ad((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAddBreakingItemParticleEffectPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a0ab9bef((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAddTerrainParticleEffectPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a4b11ad5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAddTerrainSlideEffectPublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_93a3c15b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParticleSystemInterface_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1c196e7c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSendServerLegacyParticlePublisher_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_22481c38((void*)__hosihikari_shim_handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_21fd1cc9((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_21fd1cc9((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

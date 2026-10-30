@@ -2,28 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-public sealed unsafe partial class FileSizePresetManagerImpl
+public sealed unsafe partial class FileSizePresetManagerImpl : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public FileSizePresetManagerImpl(nint handle) : this(handle, true) { }
 
     internal FileSizePresetManagerImpl(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static FileSizePresetManagerImpl Borrow(nint handle) => new FileSizePresetManagerImpl(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,90 @@ public sealed unsafe partial class FileSizePresetManagerImpl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileSizePresetManagerImpl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileSizePresetManagerImpl Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public ulong? checkFileInitialSize(nint arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
     {
-        var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_af0c7bce((void*)_handle, (void*)arg0, &__hs_hasValue);
-        return __hs_hasValue ? __hs_value : (ulong?)null;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d3d2d936((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public nint _checkFileInitialSize(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
-    public nint presetInitialSizeForFile(nint arg0, ulong arg1) =>
+    public nint _presetInitialSizeForFile(nint filePath, ulong initialFileSize) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForEnableNonOwnerReferences() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForFileSizePresetManager() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static FileSizePresetManagerImpl Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d31e52f5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileSizePresetManagerImpl((nint)handle);
+    }
+
+    public static FileSizePresetManagerImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_6295124d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileSizePresetManagerImpl((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    public nint checkFileInitialSize(nint filePath) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkbcb807_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_103b8cf5((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkea1e36_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a3e091ff((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl((nint)NativeMethods.TablePtr->C0.hs_method_bd241dd4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
+    public nint presetInitialSizeForFile(nint filePath, ulong initialFileSize) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_66ce42b5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PackInstanceId : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PackInstanceId(nint handle) : this(handle, true) { }
 
     internal PackInstanceId(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PackInstanceId Borrow(nint handle) => new PackInstanceId(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,18 +33,14 @@ public sealed unsafe partial class PackInstanceId : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackInstanceId Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static PackInstanceId Create(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0, string arg1)
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion packId, string subpackName)
     {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(subpackName);
         scoped global::System.Span<byte> __hs_stringBytes1;
         if (__hs_stringByteCount1 <= 256)
         {
@@ -54,10 +50,50 @@ public sealed unsafe partial class PackInstanceId : global::System.IDisposable
         {
             __hs_stringBytes1 = new byte[__hs_stringByteCount1];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        global::System.Text.Encoding.UTF8.GetBytes(subpackName, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->hs_create_4f520c8c((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return (nint)NativeMethods.TablePtr->C2.hs_method_8efd159e((void*)__hosihikari_shim_handle, (void*)packId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.PackInstanceId arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_a3841d0c((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C2.hs_method_a57a3c19((void*)__hosihikari_shim_handle);
+    }
+
+    public static PackInstanceId Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_316c4bbf();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackInstanceId((nint)handle);
+    }
+
+    public static PackInstanceId Create(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion packId, string subpackName)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(subpackName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(subpackName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var handle = NativeMethods.TablePtr->C2.hs_create_c87a4df2((void*)packId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,13 +103,9 @@ public sealed unsafe partial class PackInstanceId : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static PackInstanceId Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
     public static PackInstanceId Create(global::Hosihikari.Bindings.Bedrock.Interop.PackInstanceId arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_f4c26b98((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_f4c26b98((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -85,30 +117,31 @@ public sealed unsafe partial class PackInstanceId : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mPackId_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d0bf3fe2((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d0bf3fe2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSubpackName_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c2cc8584((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c2cc8584((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackInstanceId operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PackInstanceId arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackInstanceId((nint)NativeMethods.TablePtr->C2.hs_method_2d46a31c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_d7bd87d0((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_d7bd87d0((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

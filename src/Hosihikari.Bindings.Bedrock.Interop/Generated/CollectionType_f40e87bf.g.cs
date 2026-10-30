@@ -4,7 +4,9 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FilterGroup_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum CollectionType : int
 {
+    And = 0,
+    Or = 1,
+    Not = 2,
 }

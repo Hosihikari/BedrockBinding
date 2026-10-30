@@ -4,7 +4,16 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum AddedFriendLocation : int
 {
+    AddFriendsRecommendedFriends = 0,
+    AddFriendsRecentlyPlayedWith = 1,
+    AddFriendsFollowers = 2,
+    AddFriendsSearch = 3,
+    ProfileMain = 4,
+    JsonUI = 5,
+    ProfileFriendsList = 6,
+    ProfileFollowersList = 7,
+    SocialDrawerOpenParty = 8,
+    SocialDrawerFriendRequests = 9,
 }

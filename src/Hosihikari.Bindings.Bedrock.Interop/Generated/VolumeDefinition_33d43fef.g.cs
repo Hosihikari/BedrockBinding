@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VolumeDefinition
+public sealed unsafe partial class VolumeDefinition : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public VolumeDefinition(nint handle) : this(handle, true) { }
 
     internal VolumeDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static VolumeDefinition Borrow(nint handle) => new VolumeDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,72 @@ public sealed unsafe partial class VolumeDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static string NAME
+    public static string NAME()
     {
-        get
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_19ecd912();
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public static VolumeDefinition Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_1d1534cd();
+        if (handle == null)
         {
-            var view = NativeMethods.TablePtr->hs_get_71b06fbc();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VolumeDefinition((nint)handle);
+    }
+
+    public static VolumeDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.VolumeDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f93e6e84((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VolumeDefinition((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk344d33_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6d00a66b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk8a75ea_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_5f007bc7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc1bc7b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_2975cf97((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.VolumeDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.VolumeDefinition arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VolumeDefinition((nint)NativeMethods.TablePtr->C4.hs_method_f2a61ec5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_33d43fef((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VolumeDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VolumeDefinition Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
-    {
-        NativeMethods.TablePtr->hs_method_4089c979((void*)arg0.Handle);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getMaxSupportedVersion()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_e8c1d292(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getMinSupportedVersion()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_717e31de(), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_085d4189() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

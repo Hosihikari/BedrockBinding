@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorAnimationEvent
+public sealed unsafe partial class ActorAnimationEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorAnimationEvent(nint handle) : this(handle, true) { }
 
     internal ActorAnimationEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorAnimationEvent Borrow(nint handle) => new ActorAnimationEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,37 +33,111 @@ public sealed unsafe partial class ActorAnimationEvent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationEvent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorAnimationEvent Create_f75e3520(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationEvent Create_7281d6e2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorAnimationEvent Create(float arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void fire(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1)
+    public nint _ctor(float time, string @event, int commandVersion, short molangVersion)
     {
-        NativeMethods.TablePtr->hs_method_e3e6017d((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(@event);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(@event, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C0.hs_method_439db2e3((void*)__hosihikari_shim_handle, time, __hs_stringData1, (nuint)__hs_stringByteCount1, commandVersion, molangVersion);
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static ActorAnimationEvent Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f60df338();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_d83f274e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+        return new ActorAnimationEvent((nint)handle);
+    }
+
+    public static ActorAnimationEvent Create(float time, string @event, int commandVersion, short molangVersion)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(@event);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(@event, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var handle = NativeMethods.TablePtr->C0.hs_create_8dcaf9c3(time, __hs_stringData1, (nuint)__hs_stringByteCount1, commandVersion, molangVersion);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ActorAnimationEvent((nint)handle);
+        }
+    }
+
+    public void fire(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams, global::Hosihikari.Bindings.Bedrock.Interop.Actor? actor)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ab8a3b3f((void*)__hosihikari_shim_handle, (void*)renderParams.Handle, (void*)(actor?.Handle ?? 0));
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCommand_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7e28eb7a((void*)__hosihikari_shim_handle);
+    }
+
+    public int mCommandVersion
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_6a2203dc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_6a2203dc((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9a49107b((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExpression_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ac2a9ead((void*)__hosihikari_shim_handle);
+    }
+
+    public float mTime
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_08c3983b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_08c3983b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b43ceeb1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public LevelDbEnv(nint handle) : this(handle, true) { }
 
     internal LevelDbEnv(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static LevelDbEnv Borrow(nint handle) => new LevelDbEnv(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,32 +33,24 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_fc0b26f4((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fc0b26f4((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint CreateDir(nint arg0) =>
+    public nint _CreateDir(nint path) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint DeleteDir(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint DeleteFileA(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
-
-    public bool FileExists(string arg0)
+    public bool _FileExists(string fname)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fname);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -68,33 +60,139 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(fname, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_f0b08b1e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C1.hs_method_d44038fa((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint GetChildren(nint arg0, nint arg1) =>
+    public nint _GetChildren(nint dir, nint pChildrenOut) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint GetFileSize(nint arg0, nint arg1) =>
+    public nint _GetFileSize(nint fname, nint size) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint GetTestDirectory(nint arg0) =>
+    public nint _GetTestDirectory(nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
-    public bool IsComplete()
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _LockFile(nint fname, nint @lock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _NewAppendableFile(nint fname, nint result) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _NewLogger(nint fname, nint result) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _NewRandomAccessFile(nint fname, nint result) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _NewSequentialFile(nint fname, nint result) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _NewWritableFile(nint fname, nint result) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    public ulong _NowMicros()
     {
-        return NativeMethods.TablePtr->hs_method_4c63d045((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_f416676a((void*)__hosihikari_shim_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _RemoveDir(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _RemoveFile(nint fname) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _RenameFile(nint src, nint target) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.", false)]
+    public void _Schedule(nint function, nint arg) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.");
+
+    public void _SleepForMicroseconds(int microseconds)
+    {
+        NativeMethods.TablePtr->C1.hs_method_777f8367((void*)__hosihikari_shim_handle, microseconds);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.", false)]
+    public void _StartThread(nint function, nint arg) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _UnlockFile(nint @lock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    public nint _ctor(int maxOpenFiles)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_128572e0((void*)__hosihikari_shim_handle, maxOpenFiles);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_7457dd13((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForEnableNonOwnerReferences() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftableForEnv() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint CreateDir(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    public bool FileExists(string fname)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fname);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(fname, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_4e721380((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint GetChildren(nint dir, nint pChildrenOut) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint GetFileSize(nint fname, nint size) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint GetTestDirectory(nint result) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     public static LevelDbEnv Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_f879c899();
+        var handle = NativeMethods.TablePtr->C1.hs_create_f879c899();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -103,80 +201,118 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
         return new LevelDbEnv((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelDbEnv Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LevelDbEnv Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8a107bea((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelDbEnv((nint)handle);
+    }
+
+    public static LevelDbEnv Create(int maxOpenFiles)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9cdeb745(maxOpenFiles);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelDbEnv((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint LockFile(nint arg0, nint arg1) =>
+    public nint LockFile(nint fname, nint @lock) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint NewAppendableFile(nint arg0, nint arg1) =>
+    public nint NewAppendableFile(nint fname, nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint NewLogger(nint arg0, nint arg1) =>
+    public nint NewLogger(nint fname, nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint NewRandomAccessFile(nint arg0, nint arg1) =>
+    public nint NewRandomAccessFile(nint fname, nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint NewSequentialFile(nint arg0, nint arg1) =>
+    public nint NewSequentialFile(nint fname, nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint NewWritableFile(nint arg0, nint arg1) =>
+    public nint NewWritableFile(nint fname, nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
     public ulong NowMicros()
     {
-        return NativeMethods.TablePtr->hs_method_e5d1601c((void*)_handle);
+        return NativeMethods.TablePtr->C1.hs_method_e5d1601c((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint RenameFile(nint arg0, nint arg1) =>
+    public nint RemoveDir(nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void*)' is not supported.", false)]
-    public void Schedule(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void*)' is not supported.");
-
-    public void SleepForMicroseconds(int arg0)
-    {
-        NativeMethods.TablePtr->hs_method_dbf7d90a((void*)_handle, arg0);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void*)' is not supported.", false)]
-    public void StartThread(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void*)' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint UnlockFile(nint arg0) =>
+    public nint RemoveFile(nint fname) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint RenameFile(nint src, nint target) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv sSingleton
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.", false)]
+    public void Schedule(nint function, nint arg) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.");
+
+    public void SleepForMicroseconds(int microseconds)
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv((nint)NativeMethods.TablePtr->hs_get_359e2d1a(), false);
+        NativeMethods.TablePtr->C1.hs_method_dbf7d90a((void*)__hosihikari_shim_handle, microseconds);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.", false)]
+    public void StartThread(nint function, nint arg) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint UnlockFile(nint @lock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcc5166_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_af36235c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkfe3fa7_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_87f06630((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv((nint)NativeMethods.TablePtr->C1.hs_method_f1056835((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint sSingleton() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f1459eaf((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_f1459eaf((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Motif
+public sealed unsafe partial class Motif : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Motif(nint handle) : this(handle, true) { }
 
     internal Motif(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Motif Borrow(nint handle) => new Motif(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,285 +33,333 @@ public sealed unsafe partial class Motif
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Motif Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'glm::vec<4, float>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint name, int w, int h, nint UVs, bool isPublic, bool isSplitMeshPainting) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'glm::vec<4, float>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Motif Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static Motif Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_27fc0100();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Motif Create(nint arg0, int arg1, int arg2, nint arg3, bool arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new Motif((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'glm::vec<4, float>' is not a known bindable declaration.", false)]
+    public static Motif Create(nint name, int w, int h, nint UVs, bool isPublic, bool isSplitMeshPainting) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'glm::vec<4, float>' is not a known bindable declaration.");
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_92ddb042((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_8e955565((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mAlban
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mAlban()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_549a9f43(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_0f6cc23d(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mAztec
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mAztec()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_64e3cc11(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_12294cce(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mAztec2
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mAztec2()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_8fd675fe(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_7736e185(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBackyard
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBackyard()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_4d6a1787(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_d5066ef2(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBaroque
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBaroque()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_b7638003(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_a702f6b6(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBomb
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBomb()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_f0d47dbf(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_be625745(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBouquet
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBouquet()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_8ef18b4a(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_b65576b3(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBurningSkull
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBurningSkull()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_b875ebb0(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_b9df27b5(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBust
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mBust()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_40cb2fb1(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_978e9dfa(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mCavebird
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mCavebird()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_d25c11cb(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_709e8a6b(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mChainging
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mChainging()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_0fa3f9c6(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_e8322252(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mCotan
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mCotan()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_00a34e0d(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_ea22184d(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mCourbet
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mCourbet()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_dab4bce2(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_61bfd001(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mCreebet
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mCreebet()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_3e405bf0(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_bf842fa4(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mDefaultImage
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mDennis()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_566973f1(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_509c7d76(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mDonkeyKong
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mDonkeyKong()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_0ad51f07(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_5c501816(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mEarth
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mEarth()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_35ec90b0(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_297fcbcb(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mEndboss
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mEndboss()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_345b4c22(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_d9a2cb40(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mFern
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mFern()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_2c20f3cd(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_06a59022(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mFighters
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mFighters()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_7aaffa93(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_9f0962c9(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mFinding
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mFinding()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_b9f96d9d(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_787fbb72(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mFire
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mFire()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_64cc07b8(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_4f54c513(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mGraham
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mGraham()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_79dfc914(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_dbfd581c(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mHumble
+    public int mHeight
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_00cb19a8(), false);
+        get => NativeMethods.TablePtr->C2.hs_get_182a4319((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mKebab
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mHumble()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_96f783ab(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_0b5e7964(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mLowmist
+    public bool mIsPublic
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_8a6daf38(), false);
+        get => NativeMethods.TablePtr->C2.hs_get_cbad4bbd((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mMatch
+    public bool mIsSplitMeshPainting
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_68a6eaa4(), false);
+        get => NativeMethods.TablePtr->C2.hs_get_3a8c3593((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mMeditative
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mKebab()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_ad808a38(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_874a411a(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mOrb
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mLowmist()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_0a9f6bf6(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_0f6e54ae(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mOwlemons
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mMatch()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_1e4ea52c(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_5e60894a(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPassage
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mMeditative()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_3993963d(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_5bc0c340(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPigscene
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_a17b70c7(), false);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_533c12f2((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPlant
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mOrb()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_1ce3ecfc(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_bfb1052d(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPointer
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mOwlemons()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_1d9f9090(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_2ad97ff5(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPond
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPassage()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_9ffa3a6e(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_96a91dfb(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPool
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPigscene()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_22cfd62a(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_b6bd0525(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPrairieRide
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPlant()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_e7105314(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_2644386d(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSea
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPointer()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_28da5e0b(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_3810c23c(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSkeleton
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPond()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_741c34c6(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_4959fd4e(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSkullAndRoses
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPool()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_e181a1bb(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_591f7f39(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mStage
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mPrairieRide()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_9a2d3d77(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_25f70d63(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSunflowers
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSea()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_5690ef55(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_4cc1ec93(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSunset
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSkeleton()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_cfce2945(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_85e81eca(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mTides
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSkullAndRoses()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_4feefd2b(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_f798e13c(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mUnpacked
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mStage()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_93714e79(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_421cbc4e(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mVoid
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSunflowers()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_686615a0(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_05c6ce9a(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWanderer
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mSunset()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_3c986ffb(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_d591f8ce(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWasteland
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mTides()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_fb158d84(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_7005f76a(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWater
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUVs_Address
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_53957c41(), false);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_56b8129f((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWind
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mUnpacked()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_d20d132c(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_5e6fe22c(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWither
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mVoid()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->hs_get_0ba862c3(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_2ab272b7(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWanderer()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_5b34439f(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWasteland()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_a4abbfa5(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWater()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_2f5716d1(), false);
+    }
+
+    public int mWidth
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_a1f15aa1((void*)__hosihikari_shim_handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWind()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_347fb2ae(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Motif mWither()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_10f7c3ba(), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8fb0473a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

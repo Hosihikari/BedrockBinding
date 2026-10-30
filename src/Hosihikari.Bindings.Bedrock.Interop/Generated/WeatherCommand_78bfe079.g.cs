@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WeatherCommand
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WeatherCommand(nint handle) : this(handle, true) { }
 
     internal WeatherCommand(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WeatherCommand Borrow(nint handle) => new WeatherCommand(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,63 +33,70 @@ public sealed unsafe partial class WeatherCommand
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public int mCommandSymbol
     {
-        get => NativeMethods.TablePtr->hs_get_d1fb04ae((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d1fb04ae((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_d1fb04ae((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_d1fb04ae((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFlags_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_203bfd50((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_203bfd50((void*)__hosihikari_shim_handle);
     }
 
     public byte mPermissionLevel
     {
-        get => NativeMethods.TablePtr->hs_get_57d3a431((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_57d3a431((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_57d3a431((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_57d3a431((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mRegistry
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_88c290e6((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_88c290e6((void*)__hosihikari_shim_handle);
     }
 
     public int mVersion
     {
-        get => NativeMethods.TablePtr->hs_get_4116d13f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4116d13f((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_4116d13f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_4116d13f((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WeatherCommand Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WeatherCommand Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
+    public void _execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        NativeMethods.TablePtr->hs_method_9588b234((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C4.hs_method_58da504a((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0)
+    public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        NativeMethods.TablePtr->hs_method_b4018da4((void*)arg0.Handle);
+        NativeMethods.TablePtr->C4.hs_method_1873e962((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public int mDuration
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_554151bb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_554151bb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mRequest
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_b54a195b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_b54a195b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_ad9d642e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_ad9d642e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry)
+    {
+        NativeMethods.TablePtr->C4.hs_method_28209afd((void*)registry.Handle);
+    }
 }

@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum RawInputType : int
+public enum RawInputType : sbyte
 {
+    None = 0,
+    MouseButton = 1,
+    MouseWheelUp = 2,
+    MouseWheelDown = 3,
+    Keyboard = 4,
+    GamepadButton = 5,
+    GamepadTrigger = 6,
 }

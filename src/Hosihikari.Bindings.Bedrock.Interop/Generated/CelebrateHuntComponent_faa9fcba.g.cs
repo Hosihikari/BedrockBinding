@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CelebrateHuntComponent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CelebrateHuntComponent(nint handle) : this(handle, true) { }
 
     internal CelebrateHuntComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CelebrateHuntComponent Borrow(nint handle) => new CelebrateHuntComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,36 @@ public sealed unsafe partial class CelebrateHuntComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CelebrateHuntComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CelebrateHuntComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public int getCelebrateSound(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    public uint getCelebrateSound(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        return NativeMethods.TablePtr->hs_method_0ca41e56((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C0.hs_method_a847fadf((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Tick getCelebrateUntil()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCelebrateUntil_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_method_b88a5a61((void*)_handle));
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_164439b2((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Tick getNextSoundEventTick()
+    public bool mCelebrating
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_method_50e3c083((void*)_handle));
+        get => NativeMethods.TablePtr->C0.hs_get_38220b43((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_38220b43((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isCelebrating()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNextSoundEventTick_Address
     {
-        return NativeMethods.TablePtr->hs_method_1c0745b9((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2f657dd2((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setNextSoundEventTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    public void setNextSoundEventTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->hs_method_f30630bc((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void startCelebrating(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
-    {
-        NativeMethods.TablePtr->hs_method_0f70ecaf((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void stopCelebrating()
-    {
-        NativeMethods.TablePtr->hs_method_3e9cf864((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_520671e1((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 }

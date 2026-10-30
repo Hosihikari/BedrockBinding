@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MolangMaterialVariable
+public sealed unsafe partial class MolangMaterialVariable : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MolangMaterialVariable(nint handle) : this(handle, true) { }
 
     internal MolangMaterialVariable(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MolangMaterialVariable Borrow(nint handle) => new MolangMaterialVariable(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,21 @@ public sealed unsafe partial class MolangMaterialVariable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public ulong hash
+    public void Dispose()
     {
-        get => NativeMethods.TablePtr->hs_get_21a7a9ca((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_21a7a9ca((void*)_handle, value);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_983f5964((void*)__hosihikari_shim_handle);
+            }
 
-    public nint lastMatch
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3603105f((void*)_handle);
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint str_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e0fbddb5((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

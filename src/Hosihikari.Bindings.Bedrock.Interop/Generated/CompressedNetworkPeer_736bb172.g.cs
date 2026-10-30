@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CompressedNetworkPeer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CompressedNetworkPeer(nint handle) : this(handle, true) { }
 
     internal CompressedNetworkPeer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CompressedNetworkPeer Borrow(nint handle) => new CompressedNetworkPeer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,74 +33,22 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CompressedNetworkPeer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CompressedNetworkPeer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static CompressedNetworkPeer Create(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_0202ee17(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CompressedNetworkPeer((nint)handle);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus getNetworkStatus()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->hs_method_0559b799((void*)_handle));
-    }
-
-    public bool mCompressionEnabled
-    {
-        get => NativeMethods.TablePtr->hs_get_04efa9ca((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_04efa9ca((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mNetworkSettings_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_da68c994((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mReceiveBuffer_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d7c175ca((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSendBuffer_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7b6f935a((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public nint receivePacket_b6e868bd(nint arg0, nint arg1) =>
+    public nint __receivePacket(nint outData, nint timepointPtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint receivePacket_eccde858(nint outData, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _getNetworkStatus() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
 
-    public void sendPacket(string arg0, int arg1, int arg2)
+    public void _sendPacket(string data, int reliability, int compressible)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -110,35 +58,97 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_ea8413b4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+            NativeMethods.TablePtr->C0.hs_method_e048a14f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, compressible);
         }
     }
 
-    public void setCompressionEnabled(bool arg0, global::Hosihikari.Bindings.Bedrock.Interop.NetworkSettingOptions arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public nint _receivePacket(nint outData, nint timepointPtr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getNetworkStatus() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+
+    public bool mCompressionEnabled
     {
-        NativeMethods.TablePtr->hs_method_39485304((void*)_handle, arg0, (void*)arg1.Handle);
+        get => NativeMethods.TablePtr->C0.hs_get_04efa9ca((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_04efa9ca((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mHybridCompressionEnabled
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_aa37fe71((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_aa37fe71((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mMaxDecompressedSize
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_af38f55f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_af38f55f((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetworkSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_da68c994((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mReceiveBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d7c175ca((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSendBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7b6f935a((void*)__hosihikari_shim_handle);
+    }
+
+    public void sendPacket(string data, int reliability, int compressible)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_ea9675ab((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, compressible);
+        }
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPeer_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8305fd4d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8305fd4d((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_736bb172((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_736bb172((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

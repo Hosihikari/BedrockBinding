@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ITickingSystem
+public sealed unsafe partial class ITickingSystem : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ITickingSystem(nint handle) : this(handle, true) { }
 
     internal ITickingSystem(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ITickingSystem Borrow(nint handle) => new ITickingSystem(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,30 +33,46 @@ public sealed unsafe partial class ITickingSystem
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ITickingSystem Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ITickingSystem Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg1)
+    public void _singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        NativeMethods.TablePtr->hs_method_9dbfc8f0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_572c677f((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)entity.Handle);
     }
 
-    public void singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg1)
+    public void _singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
     {
-        NativeMethods.TablePtr->hs_method_1b2698de((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C1.hs_method_b0d193d8((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)entityContext.Handle);
+    }
+
+    public void singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c757ba92((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)entity.Handle);
+    }
+
+    public void singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
+    {
+        NativeMethods.TablePtr->C1.hs_method_3ae80006((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)entityContext.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    public void tick(nint registry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_e7b447c0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

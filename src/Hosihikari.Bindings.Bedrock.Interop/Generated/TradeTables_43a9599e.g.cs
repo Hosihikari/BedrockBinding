@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class TradeTables
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TradeTables(nint handle) : this(handle, true) { }
 
     internal TradeTables(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TradeTables Borrow(nint handle) => new TradeTables(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,22 +33,18 @@ public sealed unsafe partial class TradeTables
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TradeTables Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TradeTables::TradeTableLoadData' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _parseAndStoreTradeTable(nint level, nint resourceLoader, nint tradeTablePath, bool usingUpcomingCreatorFeaturesExperiment, nint validator) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TradeTables::TradeTableLoadData' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TradeTables Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.TradeTable? fetchTable(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.TradeTable? fetchTable(string path)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(path);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -58,24 +54,22 @@ public sealed unsafe partial class TradeTables
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(path, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_2e3e827f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_b130e733((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.TradeTable((nint)__hs_handle, false) : null;
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void reload(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTradeTables_Address
     {
-        NativeMethods.TablePtr->hs_method_62d49526((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_85ef6b64((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_976d8e69() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void reload(global::Hosihikari.Bindings.Bedrock.Interop.Level level, bool usingUpcomingCreatorFeaturesExperiment, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
+    {
+        NativeMethods.TablePtr->C3.hs_method_4094a254((void*)__hosihikari_shim_handle, (void*)level.Handle, usingUpcomingCreatorFeaturesExperiment, (void*)eventing.Handle);
+    }
 }

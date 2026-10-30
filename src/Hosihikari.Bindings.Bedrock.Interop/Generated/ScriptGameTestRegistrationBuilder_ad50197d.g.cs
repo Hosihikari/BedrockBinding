@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptGameTestRegistrationBuilder
+public sealed unsafe partial class ScriptGameTestRegistrationBuilder
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ScriptGameTestRegistrationBuilder(nint handle) : this(handle, true) { }
 
     internal ScriptGameTestRegistrationBuilder(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ScriptGameTestRegistrationBuilder Borrow(nint handle) => new ScriptGameTestRegistrationBuilder(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,80 +33,64 @@ public sealed partial class ScriptGameTestRegistrationBuilder
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptGameTestRegistrationBuilder Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint batch(nint batchName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptGameTestRegistrationBuilder Create_e464888d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameTestFunction_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c3f052e3((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptGameTestRegistrationBuilder Create_38bafa39(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptGameTestRegistrationBuilder Create_6bdb5dba(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScriptingHandle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2144ec2a((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint batch(nint arg0) =>
+    public nint maxAttempts(int maxAttempts) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint maxAttempts(int arg0) =>
+    public nint maxTicks(int maxTicks) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint maxTicks(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_9ba25967(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_273e1dad(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint padding(int arg0) =>
+    public nint padding(int blockPadding) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint required(bool arg0) =>
+    public nint required(bool required) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint requiredSuccessfulAttempts(int arg0) =>
+    public nint requiredSuccessfulAttempts(int requiredSuccessfulAttempts) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint rotate(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' is not a known bindable declaration.", false)]
-    public void setScriptObjectHandle(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setupTicks(int arg0) =>
+    public nint rotate(bool rotate) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint structureName(nint arg0) =>
+    public nint setupTicks(int setupTicks) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>, Scripting::InvalidArgumentError, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint structureLocation(nint dependencyLocator, nint structureLocation, nint dimensionTypeVar) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>, Scripting::InvalidArgumentError, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint structureName(nint structureName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tag(nint arg0) =>
+    public nint tag(nint tag) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_94989de8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

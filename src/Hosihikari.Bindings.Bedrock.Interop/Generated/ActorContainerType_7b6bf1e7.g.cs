@@ -4,7 +4,13 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ActorContainerType : int
 {
+    Armor = 0,
+    Hand = 1,
+    ContainerComponent = 2,
+    PlayerUI = 3,
+    PlayerInventory = 4,
+    PlayerEnderChest = 5,
+    Dynamic = 6,
 }

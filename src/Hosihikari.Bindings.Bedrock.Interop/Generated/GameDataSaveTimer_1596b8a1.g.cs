@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameDataSaveTimer
+public sealed unsafe partial class GameDataSaveTimer : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public GameDataSaveTimer(nint handle) : this(handle, true) { }
 
     internal GameDataSaveTimer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static GameDataSaveTimer Borrow(nint handle) => new GameDataSaveTimer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,116 +33,57 @@ public sealed unsafe partial class GameDataSaveTimer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameDataSaveTimer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameDataSaveTimer Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool areStorageActionsAllowed()
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_51acf9e9((void*)_handle) != 0;
+        NativeMethods.TablePtr->C1.hs_method_48328ea9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
-    public nint calculateNextGameDataSaveTime_72089550(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint calculateNextGameDataSaveTime_a66417a1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
-    public static nint calculateNextStorageCheckTime_8743d911(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint calculateNextStorageCheckTime_0e04e917(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool isNextGameDataSaveTimeSet()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeferStorageActionsRefCount_Address
     {
-        return NativeMethods.TablePtr->hs_method_63fdcbdb((void*)_handle) != 0;
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b69b5f1e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool isTimeForGameDataSave_a1f92404(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isTimeForGameDataSave_3b7610d0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool isTimeForStorageCheck_69444c3e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isTimeForStorageCheck_7523fe4f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void onAppSuspend()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNextSaveDataTime_Address
     {
-        NativeMethods.TablePtr->hs_method_7882f0ed((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9de08d24((void*)__hosihikari_shim_handle);
     }
 
-    public void onStartLeaveGame()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNextStorageCheckTime_Address
     {
-        NativeMethods.TablePtr->hs_method_a6ea75c2((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_558e0396((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void onUpdateAfterStorageDeferred_88964fac(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onUpdateAfterStorageDeferred_22761cc7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Abi.SharedHandle? requestTimedStorageDeferment()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSaveTimeInterval_Address
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_e0218ba7((void*)_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_af414f23((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setNextGameDataSaveTime_671f3d1c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setNextGameDataSaveTime_eedea8e6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void setNextStorageCheckTime_e115fa6d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setNextStorageCheckTime_5212bda1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setWasStorageSavePreviouslyDeferred(bool arg0)
+    public bool mWasStoragePreviouslyDeferred
     {
-        NativeMethods.TablePtr->hs_method_8310ca4f((void*)_handle, arg0);
+        get => NativeMethods.TablePtr->C1.hs_get_7178cc89((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_7178cc89((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool wasStorageSavePreviouslyDeferred()
-    {
-        return NativeMethods.TablePtr->hs_method_10a716f1((void*)_handle) != 0;
-    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_89e91742() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_1596b8a1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

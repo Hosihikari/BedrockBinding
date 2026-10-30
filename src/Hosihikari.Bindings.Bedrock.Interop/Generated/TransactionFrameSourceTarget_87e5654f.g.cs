@@ -2,29 +2,28 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class TransactionFrameSourceTarget
+public sealed unsafe partial class TransactionFrameSourceTarget : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TransactionFrameSourceTarget(nint handle) : this(handle, true) { }
 
     internal TransactionFrameSourceTarget(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TransactionFrameSourceTarget Borrow(nint handle) => new TransactionFrameSourceTarget(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,28 +33,88 @@ public sealed partial class TransactionFrameSourceTarget
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TransactionFrameSourceTarget Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static TransactionFrameSourceTarget Create()
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_05591d33();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TransactionFrameSourceTarget Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new TransactionFrameSourceTarget((nint)handle);
+    }
+
+    public static TransactionFrameSourceTarget Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.TransactionFrameSourceTarget arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_be49a7b2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TransactionFrameSourceTarget((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint exec(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static nint exec(nint source, nint target, nint sameStorageAreaFunction, nint differentStorageAreaFunction) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk500b9e_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a388543a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_50396bab() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9d9552_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4e9efb1c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk9e3f64_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0d97eaf3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkad08df_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c16c147c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkc7e523_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e2316538((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf97f14_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_558473d3((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.TransactionFrameSourceTarget operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.TransactionFrameSourceTarget arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.TransactionFrameSourceTarget((nint)NativeMethods.TablePtr->C0.hs_method_9c858fc8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_87e5654f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

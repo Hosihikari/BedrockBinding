@@ -4,7 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum WeirdoDirection : int
 {
+    East = 0,
+    West = 1,
+    South = 2,
+    North = 3,
+    Undefined = 4,
 }

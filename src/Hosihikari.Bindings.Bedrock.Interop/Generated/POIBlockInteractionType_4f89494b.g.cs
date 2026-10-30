@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MinecraftEventing_Nested;
 
-public enum POIBlockInteractionType : int
+public enum POIBlockInteractionType : byte
 {
     None = 0,
     Extend = 1,

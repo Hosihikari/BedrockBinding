@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ArmorMaterial
+public sealed unsafe partial class ArmorMaterial : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ArmorMaterial(nint handle) : this(handle, true) { }
 
     internal ArmorMaterial(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ArmorMaterial Borrow(nint handle) => new ArmorMaterial(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,51 @@ public sealed partial class ArmorMaterial
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public int mDurabilityMultiplier
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_4b1bff1b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_4b1bff1b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mEnchantmentValue
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_09453448((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_09453448((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mKnockbackResistance
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_dbd7ffd3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_dbd7ffd3((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSlotProtections_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_293f08de((void*)__hosihikari_shim_handle);
+    }
+
+    public int mToughnessValue
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_ff527776((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ff527776((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_4975735d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Pos2d
+public sealed unsafe partial class Pos2d : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Pos2d(nint handle) : this(handle, true) { }
 
     internal Pos2d(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Pos2d Borrow(nint handle) => new Pos2d(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,86 @@ public sealed partial class Pos2d
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static Pos2d Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_94c3ac08((void*)pos.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Pos2d((nint)handle);
+    }
+
+    public int b
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d43b22fd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d43b22fd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int g
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_26e96325((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_26e96325((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int p
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d1d200ee((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d1d200ee((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int r
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_be2af601((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_be2af601((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int s
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_7fc46604((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7fc46604((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int t
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_42c6013e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_42c6013e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int x
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_481759bb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_481759bb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int y
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_df616641((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_df616641((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int z
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e6e9a597((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e6e9a597((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_4589956d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

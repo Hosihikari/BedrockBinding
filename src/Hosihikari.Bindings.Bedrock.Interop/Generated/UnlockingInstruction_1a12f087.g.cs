@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class UnlockingInstruction
+public sealed unsafe partial class UnlockingInstruction : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UnlockingInstruction(nint handle) : this(handle, true) { }
 
     internal UnlockingInstruction(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UnlockingInstruction Borrow(nint handle) => new UnlockingInstruction(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,66 @@ public sealed partial class UnlockingInstruction
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C3.hs_method_2aa3582f((void*)__hosihikari_shim_handle);
+    }
+
+    public static UnlockingInstruction Create()
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_13a6732b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UnlockingInstruction((nint)handle);
+    }
+
+    public static UnlockingInstruction Create(global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8a9f6c26((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UnlockingInstruction((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5660a8_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b36defff((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkf225ff_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_edb9d0c2((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction((nint)NativeMethods.TablePtr->C3.hs_method_27732734((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_1a12f087((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

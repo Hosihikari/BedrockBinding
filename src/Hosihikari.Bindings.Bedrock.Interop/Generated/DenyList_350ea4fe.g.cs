@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DenyList
+public sealed unsafe partial class DenyList : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DenyList(nint handle) : this(handle, true) { }
 
     internal DenyList(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DenyList Borrow(nint handle) => new DenyList(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,80 @@ public sealed unsafe partial class DenyList
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DenyList Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DenyList Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void addEntry(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry arg0)
+    public static DenyList Create()
     {
-        NativeMethods.TablePtr->hs_method_2187e3f4((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_c64409dc();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DenyList((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDuration_d39cf141(nint entry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getMessage(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry arg0)
+    public static DenyList Create(global::Hosihikari.Bindings.Bedrock.Interop.DenyList arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_bd19be9b((void*)_handle, (void*)arg0.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        var handle = NativeMethods.TablePtr->C1.hs_create_ba3d9271((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DenyList((nint)handle);
     }
 
-    public bool isBlocked(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry arg0)
+    public void addEntry(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry entry)
     {
-        return NativeMethods.TablePtr->hs_method_eb61b05d((void*)_handle, (void*)arg0.Handle) != 0;
+        NativeMethods.TablePtr->C1.hs_method_81195368((void*)__hosihikari_shim_handle, (void*)entry.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeEntry(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry arg0)
+    public int getDuration(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry entry)
     {
-        NativeMethods.TablePtr->hs_method_89607879((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_d39cf141((void*)__hosihikari_shim_handle, (void*)entry.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public bool isBlocked(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry entry)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_4a4d467e((void*)__hosihikari_shim_handle, (void*)entry.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk3f8199_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_74e2bb89((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk5bbfd3_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_51342ac2((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DenyList operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.DenyList arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DenyList((nint)NativeMethods.TablePtr->C1.hs_method_0b49cec5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void removeEntry(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry entry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_89853ba2((void*)__hosihikari_shim_handle, (void*)entry.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_350ea4fe((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

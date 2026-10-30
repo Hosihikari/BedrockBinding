@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class AttackCooldownDefinition
+public sealed unsafe partial class AttackCooldownDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AttackCooldownDefinition(nint handle) : this(handle, true) { }
 
     internal AttackCooldownDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AttackCooldownDefinition Borrow(nint handle) => new AttackCooldownDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,30 @@ public sealed partial class AttackCooldownDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5cee5d97(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.AttackCooldownComponent cooldownComponent)
+    {
+        NativeMethods.TablePtr->C0.hs_method_fc301bc0((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)cooldownComponent.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCooldownTime_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_936986e2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnAttackCooldownComplete_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_326112db((void*)__hosihikari_shim_handle);
     }
 }

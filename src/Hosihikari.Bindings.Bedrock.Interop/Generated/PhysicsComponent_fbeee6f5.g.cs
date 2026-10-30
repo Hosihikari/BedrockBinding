@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PhysicsComponent
+public sealed unsafe partial class PhysicsComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PhysicsComponent(nint handle) : this(handle, true) { }
 
     internal PhysicsComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PhysicsComponent Borrow(nint handle) => new PhysicsComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,21 @@ public sealed unsafe partial class PhysicsComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PhysicsComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PhysicsComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public bool isAffectedByGravity(global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent arg0)
+    public void Dispose()
     {
-        return NativeMethods.TablePtr->hs_method_6669f3a0((void*)_handle, (void*)arg0.Handle) != 0;
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_fbeee6f5((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setAffectedByGravity(global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataDirtyFlagsComponent arg1, bool arg2)
-    {
-        NativeMethods.TablePtr->hs_method_c9566b8b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
-    }
-
-    public void setHasCollision(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1)
-    {
-        NativeMethods.TablePtr->hs_method_51bea9b9((void*)_handle, (void*)arg0.Handle, arg1);
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

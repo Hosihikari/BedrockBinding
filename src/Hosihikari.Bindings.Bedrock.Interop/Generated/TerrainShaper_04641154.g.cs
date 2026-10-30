@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TerrainShaper
+public sealed unsafe partial class TerrainShaper : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public TerrainShaper(nint handle) : this(handle, true) { }
 
     internal TerrainShaper(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static TerrainShaper Borrow(nint handle) => new TerrainShaper(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,39 +33,88 @@ public sealed unsafe partial class TerrainShaper
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TerrainShaper Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TerrainShaper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TerrainShaper' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint buildOverworld() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TerrainShaper' requires --link-carrier or --virtual-dispatch.");
-
-    public float factor(float arg0, float arg1, float arg2)
+    public void _dtor()
     {
-        return NativeMethods.TablePtr->hs_method_26212062((void*)_handle, arg0, arg1, arg2);
+        NativeMethods.TablePtr->C3.hs_method_f8a087d7((void*)__hosihikari_shim_handle);
     }
 
-    public float jaggedness(float arg0, float arg1, float arg2)
+    public float FACTOR_SCALER
     {
-        return NativeMethods.TablePtr->hs_method_2278abd6((void*)_handle, arg0, arg1, arg2);
+        get => NativeMethods.TablePtr->C3.hs_get_56cd0062((void*)__hosihikari_shim_handle);
     }
 
-    public float offset(float arg0, float arg1, float arg2)
+    public float GLOBAL_OFFSET
     {
-        return NativeMethods.TablePtr->hs_method_9e83eeaf((void*)_handle, arg0, arg1, arg2);
+        get => NativeMethods.TablePtr->C3.hs_get_55668328((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint buildErosionJaggednessSpline(nint jaggednessFactorAtPeakRidgeAndErosionIndex0, nint jaggednessFactorAtPeakRidgeAndErosionIndex1, nint jaggednessFactorAtHighRidgeAndErosionIndex0, nint jaggednessFactorAtHighRidgeAndErosionIndex1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint buildErosionOffsetSpline(nint name, float lowValley, float hill, float tallHill, float mountainFactor, float plain, float swamp, bool includeExtremeHills, bool saddle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint buildMountainRidgeSplineWithPoints(float modulation, bool saddle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper buildOverworld()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper((nint)NativeMethods.TablePtr->C3.hs_method_b807c3a3());
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint buildRidgeJaggednessSpline(nint jaggednessFactorAtPeakRidge, nint jaggednessFactorAtHighRidge) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint buildWeirdnessJaggednessSpline(nint jaggednessFactor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getErosionFactor(float baseValue, bool shatteredTerrain) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFactorSpline_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2925133f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mJaggednessSpline_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6ffcf39a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOffsetSpline_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_54e10eb9((void*)__hosihikari_shim_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint ridgeSpline(nint name, float valley, float low, float mid, float high, float peaks, float minValleySteepness) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_04641154((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

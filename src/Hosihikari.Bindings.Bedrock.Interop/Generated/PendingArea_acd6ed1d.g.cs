@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class PendingArea
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PendingArea(nint handle) : this(handle, true) { }
 
     internal PendingArea(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PendingArea Borrow(nint handle) => new PendingArea(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,73 @@ public sealed unsafe partial class PendingArea
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PendingArea Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PendingArea Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingAreaDescription' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDescription() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingAreaDescription' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PendingArea' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint load(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PendingArea' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_fb5ad042(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_3081b577(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaDescription getDescription()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_7e832650((void*)_handle, (void*)arg0.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaDescription((nint)NativeMethods.TablePtr->C2.hs_method_69c81cfc((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f2487954() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public bool mAlwaysActive
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_bc9fd6c4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_bc9fd6c4((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBounds_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ad72a5ac((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mCreated
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_967c600c((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_967c600c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8bb86380((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mIsCircle
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c2911743((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_c2911743((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mLoadMode
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e6a4f960((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e6a4f960((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMaxDistToPlayers
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_efa75dd3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_efa75dd3((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c61b6362((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7eccd457((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6fb2e950((void*)__hosihikari_shim_handle);
+    }
 }

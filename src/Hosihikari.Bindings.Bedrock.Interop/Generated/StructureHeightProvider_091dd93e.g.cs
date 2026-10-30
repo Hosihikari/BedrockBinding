@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class StructureHeightProvider : global::System.IDisposable
+public sealed unsafe partial class StructureHeightProvider
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public StructureHeightProvider(nint handle) : this(handle, true) { }
 
     internal StructureHeightProvider(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static StructureHeightProvider Borrow(nint handle) => new StructureHeightProvider(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,58 +33,28 @@ public sealed unsafe partial class StructureHeightProvider : global::System.IDis
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureHeightProvider Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static StructureHeightProvider Create_1ce18d72(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static StructureHeightProvider Create_807beab3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static StructureHeightProvider Create_f539d3d3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public static StructureHeightProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureHeightProvider arg0)
+    public int _sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom randomSource, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenContext heightAccessor)
     {
-        var handle = NativeMethods.TablePtr->hs_create_55a4662b((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StructureHeightProvider((nint)handle);
+        return NativeMethods.TablePtr->C4.hs_method_a5104333((void*)__hosihikari_shim_handle, (void*)randomSource.Handle, (void*)heightAccessor.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, nint arg1)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mData_Address
     {
-        return NativeMethods.TablePtr->hs_method_5edd6b74((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c757ebd6((void*)__hosihikari_shim_handle);
     }
 
-
-    public void Dispose()
+    public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom randomSource, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenContext heightAccessor)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_091dd93e((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return NativeMethods.TablePtr->C4.hs_method_f0cba9a3((void*)__hosihikari_shim_handle, (void*)randomSource.Handle, (void*)heightAccessor.Handle);
     }
 }

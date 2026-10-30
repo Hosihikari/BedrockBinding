@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
-public enum NetworkConnectionType : int
+public enum NetworkConnectionType : byte
 {
+    Wired = 0,
+    Wifi = 1,
+    Cellular = 2,
+    Unknown = 3,
 }

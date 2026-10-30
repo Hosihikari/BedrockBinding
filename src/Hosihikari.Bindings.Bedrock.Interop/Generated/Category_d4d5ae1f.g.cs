@@ -4,20 +4,22 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DBHelpers;
 
-public enum Category : int
+public enum Category : uint
 {
     Uncategorized = 0,
     Actor = 1,
     Biome = 2,
     Block = 3,
     Chunk = 4,
-    EDU = 5,
-    Item = 6,
-    Player = 7,
-    TickingArea = 8,
-    VolumeArea = 9,
-    WorldFeature = 10,
-    ForcedCorruption = 11,
-    Count = 12,
-    All = 13,
+    Dimension = 5,
+    Edu = 6,
+    Item = 7,
+    Player = 8,
+    Realms = 9,
+    TickingArea = 10,
+    VolumeArea = 11,
+    WorldFeature = 12,
+    ForcedCorruption = 13,
+    Count = 14,
+    All = 15,
 }

@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BehaviorTreeDefinitionPtr
+public sealed unsafe partial class BehaviorTreeDefinitionPtr : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BehaviorTreeDefinitionPtr(nint handle) : this(handle, true) { }
 
     internal BehaviorTreeDefinitionPtr(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BehaviorTreeDefinitionPtr Borrow(nint handle) => new BehaviorTreeDefinitionPtr(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,41 +33,38 @@ public sealed unsafe partial class BehaviorTreeDefinitionPtr
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BehaviorTreeDefinitionPtr Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BehaviorTreeDefinitionPtr Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BehaviorTreeDefinitionPtr Create_9af3cb3b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BehaviorTreeDefinitionPtr Create_ac26e7c6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BehaviorTreeDefinitionPtr NONE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BehaviorTreeDefinitionPtr NONE()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.BehaviorTreeDefinitionPtr((nint)NativeMethods.TablePtr->hs_get_21569955(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BehaviorTreeDefinitionPtr((nint)NativeMethods.TablePtr->C0.hs_method_94d87c72(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_c33f7821(nint moved) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint mGroup
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6da67917((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_6da67917((void*)__hosihikari_shim_handle, (void*)value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_58826dc5(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint mPtr
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7b79791f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_7b79791f((void*)__hosihikari_shim_handle, (void*)value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_ffcf9fcb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_10cb8c4e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

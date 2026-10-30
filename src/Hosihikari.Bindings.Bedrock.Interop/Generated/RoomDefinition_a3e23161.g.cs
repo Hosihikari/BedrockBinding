@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RoomDefinition
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RoomDefinition(nint handle) : this(handle, true) { }
 
     internal RoomDefinition(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RoomDefinition Borrow(nint handle) => new RoomDefinition(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,54 @@ public sealed unsafe partial class RoomDefinition
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RoomDefinition Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RoomDefinition Create_5663857e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RoomDefinition Create(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public bool findSource(int arg0)
+    public bool findSource(int scanIndex)
     {
-        return NativeMethods.TablePtr->hs_method_bc7a82d5((void*)_handle, arg0) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_bc7a82d5((void*)__hosihikari_shim_handle, scanIndex) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void setConnection(nint arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    public bool mClaimed
     {
-        NativeMethods.TablePtr->hs_method_50c3ec1e((void*)_handle, (void*)arg0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        get => NativeMethods.TablePtr->C2.hs_get_e97bb2fe((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e97bb2fe((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_5ca06585() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConnections_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bc64ec3a((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHasOpening_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e1cb72ed((void*)__hosihikari_shim_handle);
+    }
+
+    public int mIndex
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_70e2cd11((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_70e2cd11((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mIsSource
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_802340c0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_802340c0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mScanIndex
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_04f3a4b2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_04f3a4b2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void setConnection(nint direction, global::Hosihikari.Bindings.Abi.SharedHandle? definition)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4ff39be6((void*)__hosihikari_shim_handle, (void*)direction, definition?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 }

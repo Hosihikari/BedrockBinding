@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class Scheduler : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Scheduler(nint handle) : this(handle, true) { }
 
     internal Scheduler(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Scheduler Borrow(nint handle) => new Scheduler(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,33 +33,20 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c276cda9((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c276cda9((void*)__hosihikari_shim_handle);
     }
 
-    public static float AVERAGE_TASK_TOLERANCE
+    public nint _ctor(string name, uint FPS)
     {
-        get => NativeMethods.TablePtr->hs_get_b4c5d969();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Scheduler Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Scheduler Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static Scheduler Create(string arg0, uint arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -69,10 +56,44 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_84280887(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            return (nint)NativeMethods.TablePtr->C2.hs_method_9e0c9541((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, FPS);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static Scheduler Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4874d659();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Scheduler((nint)handle);
+    }
+
+    public static Scheduler Create(string name, uint FPS)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C2.hs_create_40ae2139(__hs_stringData0, (nuint)__hs_stringByteCount0, FPS);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -82,122 +103,93 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::thread::id' is not a known bindable declaration.", false)]
-    public void changeThread_994578cb(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::thread::id' is not a known bindable declaration.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool getCoroutinePool()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCoroutinePolicy_Address
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool((nint)NativeMethods.TablePtr->hs_method_f3f69b55((void*)_handle), false);
-    }
-
-    public double mAverageCallbackDuration
-    {
-        get => NativeMethods.TablePtr->hs_get_80cdf336((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_80cdf336((void*)_handle, value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8d9902ae((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCoroutinePool_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e7c26ed0((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e7c26ed0((void*)__hosihikari_shim_handle);
     }
 
-    public double mCoroutineTimeLimit
+    public uint mEffectiveFPS
     {
-        get => NativeMethods.TablePtr->hs_get_0aa4a99d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_0aa4a99d((void*)_handle, value);
-    }
-
-    public int mEffectiveFPS
-    {
-        get => NativeMethods.TablePtr->hs_get_55ba701b((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_55ba701b((void*)_handle, value);
-    }
-
-    public int mFramesOverBound
-    {
-        get => NativeMethods.TablePtr->hs_get_8d2a79c6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_8d2a79c6((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_55ba701b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_55ba701b((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNextStarveCheckTime_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2465fba7((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2465fba7((void*)__hosihikari_shim_handle);
     }
 
-    public int mPromotionFrames
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPredictedCoroutineDuration_Address
     {
-        get => NativeMethods.TablePtr->hs_get_1c33ee50((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1c33ee50((void*)_handle, value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_14908f8c((void*)__hosihikari_shim_handle);
     }
 
-    public int mStarvedFrames
+    public uint mPromotionFrames
     {
-        get => NativeMethods.TablePtr->hs_get_8ea0cc15((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_8ea0cc15((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1c33ee50((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1c33ee50((void*)__hosihikari_shim_handle, value);
     }
 
-    public int mTargetFPS
+    public uint mStarvedFrames
     {
-        get => NativeMethods.TablePtr->hs_get_766d9b03((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_766d9b03((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_8ea0cc15((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8ea0cc15((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mTargetFPS
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_766d9b03((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_766d9b03((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mThreadID_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a57c6066((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a57c6066((void*)__hosihikari_shim_handle);
     }
 
-    public double mTotalCoroutineDuration
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTotalCoroutineDuration_Address
     {
-        get => NativeMethods.TablePtr->hs_get_bd716971((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_bd716971((void*)_handle, value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bd716971((void*)__hosihikari_shim_handle);
     }
 
-    public int mTotalFrames
+    public uint mTotalFrames
     {
-        get => NativeMethods.TablePtr->hs_get_23564fbd((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_23564fbd((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_23564fbd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_23564fbd((void*)__hosihikari_shim_handle, value);
     }
 
-    public ulong mTotalRunCoroutines
+    public uint mTotalRunCoroutines
     {
-        get => NativeMethods.TablePtr->hs_get_51fcba26((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_51fcba26((void*)_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_51fcba26((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_51fcba26((void*)__hosihikari_shim_handle, value);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void processCoroutines_67773edb(nint arg0, nint arg1) =>
+    public void processCoroutines(nint timeSinceSwap, nint ensureNonZeroRunTime, nint limitMaxRunTime) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    public void queueCallback(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
-    {
-        NativeMethods.TablePtr->hs_method_a2523ea5((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
-    }
-
-    public void setTargetFPS(uint arg0)
-    {
-        NativeMethods.TablePtr->hs_method_34351826((void*)_handle, arg0);
-    }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_b654c177((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_b654c177((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

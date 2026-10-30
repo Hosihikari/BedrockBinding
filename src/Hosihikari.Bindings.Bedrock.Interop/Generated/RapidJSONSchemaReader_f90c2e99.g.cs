@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop.cereal;
 
 public sealed unsafe partial class RapidJSONSchemaReader : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RapidJSONSchemaReader(nint handle) : this(handle, true) { }
 
     internal RapidJSONSchemaReader(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RapidJSONSchemaReader Borrow(nint handle) => new RapidJSONSchemaReader(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,37 +33,96 @@ public sealed unsafe partial class RapidJSONSchemaReader : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RapidJSONSchemaReader Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RapidJSONSchemaReader Create_d3b0491b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RapidJSONSchemaReader Create_b7e59014(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static RapidJSONSchemaReader Create_b91e899f(nint arg0)
+    public bool? _additionalDataAsBool()
     {
-        var handle = NativeMethods.TablePtr->hs_create_b91e899f((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new RapidJSONSchemaReader((nint)handle);
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C4.hs_method_218f9d67((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value != 0 : (bool?)null;
     }
 
-    public static RapidJSONSchemaReader Create(string arg0)
+    public string? _additionalDataAsString(ulong arg0)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_hasValue = false;
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_7167ed15((void*)__hosihikari_shim_handle, arg0, &__hs_hasValue);
+        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+    }
+
+    public uint? _additionalDataAsUInt32()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C4.hs_method_acd7dbed((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (uint?)null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<bool>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asBool() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<bool>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<double>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asDouble() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<double>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<float>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asFloat() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<float>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<short>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asInt16() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<short>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<int>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asInt32() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<int>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asInt64() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<signed char>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asInt8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<signed char>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asNull() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asRawBytes(nint storage, ulong maxInputLength) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asString(ulong maxInputLength) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned short>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asUInt16() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned short>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned int>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asUInt32() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned int>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned long long>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asUInt64() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned long long>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _asUInt8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char>' requires --link-carrier or --virtual-dispatch.");
+
+    public nint _ctor(nint value)
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_e8f6e0c8((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint _ctor(string data)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -73,10 +132,115 @@ public sealed unsafe partial class RapidJSONSchemaReader : global::System.IDispo
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_dc97146b(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C4.hs_method_2d291e52((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C4.hs_method_7ae4fcf6((void*)__hosihikari_shim_handle);
+    }
+
+    public byte _expectedType()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_e33000a7((void*)__hosihikari_shim_handle);
+    }
+
+    public bool _isValid()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_31f8353a((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public ulong _length(ulong expectedSize)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_ff75b0ef((void*)__hosihikari_shim_handle, expectedSize);
+    }
+
+    public ulong _members()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_7a5ce6f1((void*)__hosihikari_shim_handle);
+    }
+
+    public void _pop()
+    {
+        NativeMethods.TablePtr->C4.hs_method_3d4107f3((void*)__hosihikari_shim_handle);
+    }
+
+    public void _pushElement(ulong index)
+    {
+        NativeMethods.TablePtr->C4.hs_method_8dc28c39((void*)__hosihikari_shim_handle, index);
+    }
+
+    public bool _pushMember(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C4.hs_method_2dfab884((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
+
+    public string _pushNextMember()
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_dec55b64((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static RapidJSONSchemaReader Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_83a604b5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RapidJSONSchemaReader((nint)handle);
+    }
+
+    public static RapidJSONSchemaReader Create(nint value)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_b7e59014((void*)value);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RapidJSONSchemaReader((nint)handle);
+    }
+
+    public static RapidJSONSchemaReader Create(string data)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C4.hs_create_06262199(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -86,148 +250,128 @@ public sealed unsafe partial class RapidJSONSchemaReader : global::System.IDispo
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<bool,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asBool_5930dc3c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<bool,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asBool_a4d427c1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<double,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asDouble_97893139(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<double,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asDouble_bd2dd3c2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<float,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asFloat_968d3a45(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<float,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asFloat_efccb536(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<short,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asInt16_5d61e5ea(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<short,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asInt16_902465a9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<int,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asInt32_d803ded5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<int,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asInt32_9e22f436(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asInt64_61ba409e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asInt64_f073a7c7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<signed char,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asInt8_01073f46(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<signed char,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asInt8_05daeb6f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asString_b676bff3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_df2f9569(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned short,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asUInt16_3b507d53(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned short,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asUInt16_8c0cca5b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned int,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asUInt32_c18212e1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned int,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asUInt32_8c5185a6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned long long,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asUInt64_75f50978(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned long long,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asUInt64_7ee1937e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asUInt8_b424996b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char,std::error_code>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asUInt8_242645fd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public int isArray()
+    public bool? additionalDataAsBool()
     {
-        return NativeMethods.TablePtr->hs_method_ed5cd512((void*)_handle);
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C4.hs_method_791fe588((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value != 0 : (bool?)null;
     }
 
-    public int isObject()
+    public string? additionalDataAsString(ulong arg0)
     {
-        return NativeMethods.TablePtr->hs_method_d619c8b3((void*)_handle);
+        var __hs_hasValue = false;
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_ec2e2bc3((void*)__hosihikari_shim_handle, arg0, &__hs_hasValue);
+        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isSequenceReader() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public uint? additionalDataAsUInt32()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C4.hs_method_36e64a40((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (uint?)null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<bool>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asBool() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<bool>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<double>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asDouble() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<double>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<float>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asFloat() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<float>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<short>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asInt16() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<short>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<int>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asInt32() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<int>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asInt64() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<signed char>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asInt8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<signed char>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asNull() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asRawBytes(nint storage, ulong maxInputLength) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asString(ulong maxInputLength) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned short>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asUInt16() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned short>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned int>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asUInt32() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned int>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned long long>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asUInt64() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned long long>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asUInt8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char>' requires --link-carrier or --virtual-dispatch.");
+
+    public byte expectedType()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_3f13d89c((void*)__hosihikari_shim_handle);
+    }
 
     public bool isValid()
     {
-        return NativeMethods.TablePtr->hs_method_176c2c92((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_ae07b3b8((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public ulong length()
+    public ulong length(ulong expectedSize)
     {
-        return NativeMethods.TablePtr->hs_method_72851ec1((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_13c1e9a2((void*)__hosihikari_shim_handle, expectedSize);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDoc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_47785d9f((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mState_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e15ea7a2((void*)__hosihikari_shim_handle);
     }
 
     public ulong members()
     {
-        return NativeMethods.TablePtr->hs_method_618527d6((void*)_handle);
+        return NativeMethods.TablePtr->C4.hs_method_618527d6((void*)__hosihikari_shim_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void pop()
     {
-        NativeMethods.TablePtr->hs_method_5e2b9439((void*)_handle);
+        NativeMethods.TablePtr->C4.hs_method_5e2b9439((void*)__hosihikari_shim_handle);
     }
 
-    public void pushElement(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
+    public void pushElement(ulong index)
     {
-        NativeMethods.TablePtr->hs_method_c7ab449a((void*)_handle, arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C4.hs_method_8cf76fcb((void*)__hosihikari_shim_handle, index);
     }
 
-    public bool pushMember(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
+    public bool pushMember(string name)
     {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
         scoped global::System.Span<byte> __hs_stringBytes0;
         if (__hs_stringByteCount0 <= 256)
         {
@@ -237,38 +381,42 @@ public sealed unsafe partial class RapidJSONSchemaReader : global::System.IDispo
         {
             __hs_stringBytes0 = new byte[__hs_stringByteCount0];
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_c29af232((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_4e28e99e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool pushMember(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string pushNextMember(global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg0)
+    public string pushNextMember()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b0614474((void*)_handle, (void*)arg0.Handle);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_e6091396((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint pushNextMember(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    public byte mSerializationTraits
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_0c392b7d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_0c392b7d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mSerializationTraitsOverride
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_e648030c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_e648030c((void*)__hosihikari_shim_handle, value);
+    }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_f90c2e99((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_f90c2e99((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

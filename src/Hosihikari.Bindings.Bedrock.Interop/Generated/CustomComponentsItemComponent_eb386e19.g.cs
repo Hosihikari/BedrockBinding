@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CustomComponentsItemComponent
+public sealed unsafe partial class CustomComponentsItemComponent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CustomComponentsItemComponent(nint handle) : this(handle, true) { }
 
     internal CustomComponentsItemComponent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CustomComponentsItemComponent Borrow(nint handle) => new CustomComponentsItemComponent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,38 +33,76 @@ public sealed unsafe partial class CustomComponentsItemComponent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CustomComponentsItemComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_60.CustomComponentsItemComponent component)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_5ed1b57e((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::iterable_adaptor<cereal::internal::ComponentStorageIterator<brstd::associative_adapter<std::basic_string<char>, entt::meta_any, std::less<void>, std::vector<std::basic_string<char>>, std::vector<entt::meta_any>>::iterator_impl<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::basic_string<char>>>>, std::_Vector_iterator<std::_Vector_val<std::_Simple_types<entt::meta_any>>>, std::pair<const std::basic_string<char> &, entt::meta_any &>>, SharedTypes::v1_26_30::ItemCustomComponent>, cereal::ComponentStorageSentinelType>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint customComponentsData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::iterable_adaptor<cereal::internal::ComponentStorageIterator<brstd::associative_adapter<std::basic_string<char>, entt::meta_any, std::less<void>, std::vector<std::basic_string<char>>, std::vector<entt::meta_any>>::iterator_impl<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::basic_string<char>>>>, std::_Vector_iterator<std::_Vector_val<std::_Simple_types<entt::meta_any>>>, std::pair<const std::basic_string<char> &, entt::meta_any &>>, SharedTypes::v1_26_30::ItemCustomComponent>, cereal::ComponentStorageSentinelType>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static CustomComponentsItemComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2bf47538();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CustomComponentsItemComponent((nint)handle);
+    }
+
+    public static CustomComponentsItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_60.CustomComponentsItemComponent component)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a24f6fec((void*)component.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CustomComponentsItemComponent((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::iterable_adaptor<cereal::internal::ComponentStorageIterator<brstd::associative_adapter<std::basic_string<char>, entt::meta_any, std::less<void>, std::vector<std::basic_string<char>>, std::vector<entt::meta_any>>::iterator_impl<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::basic_string<char>>>>, std::_Vector_iterator<std::_Vector_val<std::_Simple_types<entt::meta_any>>>, std::pair<const std::basic_string<char> &, entt::meta_any &>>, SharedTypes::v1_26_30::ItemCustomComponent>, cereal::ComponentStorageSentinelType>' is not a known bindable declaration.", false)]
+    public static CustomComponentsItemComponent Create(nint customComponentsData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::iterable_adaptor<cereal::internal::ComponentStorageIterator<brstd::associative_adapter<std::basic_string<char>, entt::meta_any, std::less<void>, std::vector<std::basic_string<char>>, std::vector<entt::meta_any>>::iterator_impl<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::basic_string<char>>>>, std::_Vector_iterator<std::_Vector_val<std::_Simple_types<entt::meta_any>>>, std::pair<const std::basic_string<char> &, entt::meta_any &>>, SharedTypes::v1_26_30::ItemCustomComponent>, cereal::ComponentStorageSentinelType>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static CustomComponentsItemComponent Create_bf3758fd(nint arg0) =>
+    public void _addComponent(nint compName, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CustomComponentsItemComponent Create_149eb23e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public nint getComponentNames()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mComponents_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_13cb91d6((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8010cb36((void*)__hosihikari_shim_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
+    public nint mOwner
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_d1cd46ed(), false);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4a65770((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e4a65770((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_eb386e19((void*)__hosihikari_shim_handle);
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

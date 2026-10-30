@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Palette
+public sealed unsafe partial class Palette : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Palette(nint handle) : this(handle, true) { }
 
     internal Palette(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Palette Borrow(nint handle) => new Palette(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,110 +33,26 @@ public sealed unsafe partial class Palette
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color BLACK
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color WHITE()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_960e2c92(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C2.hs_method_41c2beed(), false);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color BLUE
+    public void Dispose()
     {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_9ae2064f(), false);
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_da45c7cc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color BROWN
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_e7d1c1c4(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color CYAN
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_569f5050(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRAY
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_b3a9b014(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GREEN
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_653f68c3(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color LIGHT_BLUE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_b453a879(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color LIGHT_GREEN
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_3781433f(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color MAGENTA
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_5e8a73ec(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color ORANGE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_57ebe441(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color PINK
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_bdf5219e(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color PURPLE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_7084c10c(), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Palette Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Palette Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color RED
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_60766ffa(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color SILVER
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_faf227f7(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color WHITE
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_4d367c83(), false);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color YELLOW
-    {
-        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_69728a5f(), false);
-    }
-
-    public static int fromByte(byte arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_378c1c3e(arg0);
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getColor(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_a870366b(arg0), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

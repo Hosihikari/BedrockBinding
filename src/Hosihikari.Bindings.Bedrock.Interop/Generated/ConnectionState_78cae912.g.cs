@@ -2,9 +2,15 @@
 #nullable enable
 #pragma warning disable CS0618
 
-namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
+namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ConnectionState : int
 {
+    Pending = 0,
+    Connecting = 1,
+    Connected = 2,
+    Disconnecting = 3,
+    SilentlyDisconnecting = 4,
+    Disconnected = 5,
+    NotConnected = 6,
 }

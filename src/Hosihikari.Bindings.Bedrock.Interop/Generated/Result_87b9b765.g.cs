@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Result
+public sealed unsafe partial class Result : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Result(nint handle) : this(handle, true) { }
 
     internal Result(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Result Borrow(nint handle) => new Result(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,83 @@ public sealed partial class Result
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.Result arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_f3e3aa29((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+    public void _dtor()
+    {
+        NativeMethods.TablePtr->C1.hs_method_1fdf0f48((void*)__hosihikari_shim_handle);
+    }
+
+    public static Result Create()
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fc5f46ed();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Result((nint)handle);
+    }
+
+    public static Result Create(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.Result arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7a2dfa75((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Result((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint fileName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2935dbd3((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint levelId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f3dfe310((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.Result operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.Result arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.Result((nint)NativeMethods.TablePtr->C1.hs_method_7d64affc((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint originalLevelId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b0c5c8a9((void*)__hosihikari_shim_handle);
+    }
+
+    public int outcome
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_e73ea849((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e73ea849((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_87b9b765((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class EntitySystems : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public EntitySystems(nint handle) : this(handle, true) { }
 
     internal EntitySystems(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static EntitySystems Borrow(nint handle) => new EntitySystems(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,119 +33,163 @@ public sealed unsafe partial class EntitySystems : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d5025d0d((void*)_handle);
-    }
-
-    public static EntitySystems Create(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_6f1062a6(__hs_stringData0, (nuint)__hs_stringByteCount0);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new EntitySystems((nint)handle);
-        }
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d5025d0d((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static EntitySystems Create(nint arg0, nint arg1) =>
+    public bool __hasSingleTickCategory(nint category) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDefaultCollection() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint _ctor(nint systems, nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerInteractionSystem getPlayerInteractionSystem()
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const Bedrock::typeid_t<SystemCategory>' is not supported.", false)]
+    public void _registerTickingSystem(nint categories, nint system, nint info, nint tickingMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const Bedrock::typeid_t<SystemCategory>' is not supported.");
+
+    public void _tickMovementCatchup(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerInteractionSystem((nint)NativeMethods.TablePtr->hs_method_3cd03029((void*)_handle), false);
+        NativeMethods.TablePtr->C1.hs_method_c08c252d((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public void registerEditorOnlyTickingSystem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public void registerEvents(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0)
+    public void _tickMovementCorrectionReplay(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->hs_method_79a7bd0c((void*)_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C1.hs_method_180f250b((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public void registerGameOnlyMovementTickingSystem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public void registerGameOnlyTickingSystem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public void registerMovementTickingSystem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public void registerTickingSystem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: span element type 'Bedrock::typeid_t<SystemCategory> const' is not supported.", false)]
-    public void registerTickingSystem_735f09ec(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'Bedrock::typeid_t<SystemCategory> const' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void registerTickingSystem_04fc82b5(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0)
+    public static EntitySystems Create()
     {
-        NativeMethods.TablePtr->hs_method_7e27cab4((void*)_handle, (void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_57445035();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntitySystems((nint)handle);
     }
 
-    public void tickEditor(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static EntitySystems Create(nint systems, nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public bool _hasSingleTickCategory(nint category) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDispatcher_Address
     {
-        NativeMethods.TablePtr->hs_method_fc196bed((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_519d945f((void*)__hosihikari_shim_handle);
     }
 
-    public void tickMovementCatchup(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0)
+    public bool mEnableTimingCapture
     {
-        NativeMethods.TablePtr->hs_method_d429c2b3((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C1.hs_get_cedb2523((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_cedb2523((void*)__hosihikari_shim_handle, value);
     }
 
-    public void tickMovementCorrectionReplay(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
     {
-        NativeMethods.TablePtr->hs_method_b0f457b7((void*)_handle, (void*)arg0.Handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5a684247((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerInteractionSystem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e0d97db4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPostSystemInvoke_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f7569ee2((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPostTotalTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f1887b35((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreSystemInvoke_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_42bebd17((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreTotalTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f0dc34f0((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSystems_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1556280c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTickingAnnotation_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cc8c7045((void*)__hosihikari_shim_handle);
+    }
+
+    public void registerEvents(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_85b798f2((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const Bedrock::typeid_t<SystemCategory>' is not supported.", false)]
+    public void registerTickingSystem(nint categories, nint system, nint info, nint tickingMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const Bedrock::typeid_t<SystemCategory>' is not supported.");
+
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2c6b1a5e((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public void tickEditor(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_4435c22d((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public void tickInitialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_20f99e37((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public void tickMovementCatchup(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_6f8b4b73((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public void tickMovementCorrectionReplay(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f015f781((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_566db07f((void*)_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_566db07f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

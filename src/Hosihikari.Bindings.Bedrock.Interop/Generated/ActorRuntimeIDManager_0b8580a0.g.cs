@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorRuntimeIDManager
+public sealed unsafe partial class ActorRuntimeIDManager : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ActorRuntimeIDManager(nint handle) : this(handle, true) { }
 
     internal ActorRuntimeIDManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ActorRuntimeIDManager Borrow(nint handle) => new ActorRuntimeIDManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,64 +33,125 @@ public sealed unsafe partial class ActorRuntimeIDManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorRuntimeIDManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.", false)]
+    public nint _ctor(nint gameplayUserManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorRuntimeIDManager Create_3c1db634(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorRuntimeIDManager Create_4c50dd36(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public void addRuntimeActorEntity(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID getNextRuntimeID()
+    public static ActorRuntimeIDManager Create()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID((nint)NativeMethods.TablePtr->hs_method_cb984dd5((void*)_handle));
+        var handle = NativeMethods.TablePtr->C0.hs_create_6a155fdc();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorRuntimeIDManager((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getRuntimeActorEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID arg0, bool arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.", false)]
+    public static ActorRuntimeIDManager Create(nint gameplayUserManager) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.");
+
+    public void _addEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_8df91d85((void*)_handle, (void*)arg0.Handle, arg1);
+        NativeMethods.TablePtr->C0.hs_method_8207b10a((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+    }
+
+    public void _onActorAdded(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C0.hs_method_f4b539d9((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public void _onRemoveActorEntityReferences(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C0.hs_method_94a9230f((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public void _removeEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
+    {
+        NativeMethods.TablePtr->C0.hs_method_b3104b35((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getRuntimeActorEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID actorId, bool getRemoved)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_9d138468((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public nint[] getRuntimeActorList()
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.IActorManagerConnector actorManagerConnector)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_b37dcd67((void*)_handle);
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
-        if (__hs_view.Size > 0)
+        NativeMethods.TablePtr->C0.hs_method_1c0c4221((void*)__hosihikari_shim_handle, (void*)actorManagerConnector.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGameplayUserManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_47bf7aee((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastRuntimeID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_543f3e84((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnActorEntityAdded_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_70e999cf((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserAdded_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d4727912((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserRemoved_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ea802b67((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserResumedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b349afe7((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnGameplayUserSuspendedSubscription_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5526aea8((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnRemoveActorEntityReferences_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cd34608d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRuntimeIdMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e94cdd64((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
         {
-            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0b8580a0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
-        return __hs_result;
     }
-
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.ActorManager arg0)
-    {
-        NativeMethods.TablePtr->hs_method_d7f7f832((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void removeRuntimeActorEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID arg0)
-    {
-        NativeMethods.TablePtr->hs_method_3e75aad7((void*)_handle, (void*)arg0.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

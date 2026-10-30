@@ -4,7 +4,14 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum ContainerValidationOutcome : int
 {
+    Success = 0,
+    Error = 1,
+    CannotRemoveItem = 2,
+    CannotPlaceItem = 3,
+    CannotSwapItem = 4,
+    CannotDestroyItem = 5,
+    CannotDropItem = 6,
+    CannotCraftItem = 7,
 }

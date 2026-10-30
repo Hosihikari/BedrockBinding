@@ -4,9 +4,11 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.IRequestAction_Nested;
 
-public enum RequestActionType : sbyte
+public enum RequestActionType : byte
 {
     FunctionAction = 0,
     TestAction = 1,
     StructureAnimationAction = 2,
+    JigsawStructurePostprocessAction = 3,
+    MultiBlockDelayedPlacement = 4,
 }

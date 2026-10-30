@@ -4,26 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MobSpawnRules
+public sealed unsafe partial class MobSpawnRules : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MobSpawnRules(nint handle) : this(handle, true) { }
 
     internal MobSpawnRules(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MobSpawnRules Borrow(nint handle) => new MobSpawnRules(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,313 +33,330 @@ public sealed unsafe partial class MobSpawnRules
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    public static int LOW_END_MAX_SPAWN_DISTANCE
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint _ctor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules arg0)
     {
-        get => NativeMethods.TablePtr->hs_get_c3997afb();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_04a454d6((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    public static int MAX_DEFAULT_SPAWN_DISTANCE
+    public void _dtor()
     {
-        get => NativeMethods.TablePtr->hs_get_28629a89();
+        NativeMethods.TablePtr->C2.hs_method_f3123f27((void*)__hosihikari_shim_handle);
     }
 
-    public static ulong MAX_WORLD_AGE
+    public static MobSpawnRules Create()
     {
-        get => NativeMethods.TablePtr->hs_get_bf78ffd6();
-    }
-
-    public static int MIN_DEFAULT_SPAWN_DISTANCE
-    {
-        get => NativeMethods.TablePtr->hs_get_578983ff();
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MobSpawnRules Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MobSpawnRules Create_bd478e2d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MobSpawnRules Create_6a8f53f7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules addHerd(int arg0, int arg1, string arg2)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
+        var handle = NativeMethods.TablePtr->C2.hs_create_5051358f();
+        if (handle == null)
         {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        else
+
+        return new MobSpawnRules((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static MobSpawnRules Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static MobSpawnRules Create(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_707d1394((void*)arg0.Handle);
+        if (handle == null)
         {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
         }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_eaa77125((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2), false);
-        }
+
+        return new MobSpawnRules((nint)handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules addPermutation(int arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules addPermutation(int weight, int guaranteedCount, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier id)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_e004445b((void*)_handle, arg0, arg1, (void*)arg2.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->C2.hs_method_e3bf0c3d((void*)__hosihikari_shim_handle, weight, guaranteedCount, (void*)id.Handle), false);
     }
 
-    public bool canSpawnInConditions(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    public bool canSpawnInConditions(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions conditions, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        return NativeMethods.TablePtr->hs_method_7636f975((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
-    }
-
-    public int getAboveBlockDistance()
-    {
-        return NativeMethods.TablePtr->hs_method_16561540((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<int,int> const' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDelayRange() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<int,int> const' requires --link-carrier or --virtual-dispatch.");
-
-    public int getDelaySpawnChance()
-    {
-        return NativeMethods.TablePtr->hs_method_e2581669((void*)_handle);
-    }
-
-    public nint getGuaranteedPermutations()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_9bba3ffc((void*)_handle);
-    }
-
-    public nint getHerdListMutable()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_c88ff21d((void*)_handle);
+        return NativeMethods.TablePtr->C2.hs_method_41c0d69d((void*)__hosihikari_shim_handle, (void*)conditions.Handle, (void*)region.Handle) != 0;
     }
 
     public string getMobToDelayId()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_02b864d7((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_4c2f366c((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getPermutations()
+    public int mAboveBlockDistance
     {
-        return (nint)NativeMethods.TablePtr->hs_method_15674d10((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_0519d303((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0519d303((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool getPersistence()
+    public bool mAdjustForWeather
     {
-        return NativeMethods.TablePtr->hs_method_8c51d105((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_eaac6d85((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_eaac6d85((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getPopulationCap(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0)
+    public bool mBubbleSpawner
     {
-        return NativeMethods.TablePtr->hs_method_5a6e5c93((void*)_handle, (void*)arg0.Handle);
+        get => NativeMethods.TablePtr->C2.hs_get_2a19f3b0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_2a19f3b0((void*)__hosihikari_shim_handle, value);
     }
 
-    public nint getSpawnAboveBlockList()
+    public int mDelaySpawnChance
     {
-        return (nint)NativeMethods.TablePtr->hs_method_06684eb8((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_99190444((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_99190444((void*)__hosihikari_shim_handle, value);
     }
 
-    public nint getSpawnAboveBlockListMutable()
+    public bool mExperimentalSpawner
     {
-        return (nint)NativeMethods.TablePtr->hs_method_8b4d5c7e((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_e3f4ce3f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e3f4ce3f((void*)__hosihikari_shim_handle, value);
     }
 
-    public int getSpawnCount(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo arg3)
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGuaranteedList_Address
     {
-        return NativeMethods.TablePtr->hs_method_8f18347d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3a5427aa((void*)__hosihikari_shim_handle);
     }
 
-    public nint getSpawnOnBlockList()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHardcodedCallbackRule_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c3e1feb0((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_db923bb0((void*)__hosihikari_shim_handle);
     }
 
-    public nint getSpawnOnBlockListMutable()
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHerdList_Address
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6f822e9c((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_96c18fef((void*)__hosihikari_shim_handle);
     }
 
-    public nint getSpawnOnBlockPreventedList()
+    public bool mLavaSpawner
     {
-        return (nint)NativeMethods.TablePtr->hs_method_09de79d2((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_51e6d17d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_51e6d17d((void*)__hosihikari_shim_handle, value);
     }
 
-    public nint getSpawnOnBlockPreventedListMutable()
+    public int mMaxBrightness
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ecea2f65((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_12a7e0e7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_12a7e0e7((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isLavaSpawner()
+    public int mMaxDelay
     {
-        return NativeMethods.TablePtr->hs_method_b6c14756((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_27e73c4e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_27e73c4e((void*)__hosihikari_shim_handle, value);
     }
 
-    public bool isUnderwaterSpawner()
+    public int mMaxDifficulty
     {
-        return NativeMethods.TablePtr->hs_method_9ccb079a((void*)_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_bcc43faa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_bcc43faa((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_c9e44528(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_e46ef561(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo selectRandomHerd(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    public int mMaxHeight
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo((nint)NativeMethods.TablePtr->hs_method_c73dd600((void*)_handle, (void*)arg0.Handle), false);
+        get => NativeMethods.TablePtr->C2.hs_get_5480ee93((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5480ee93((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setAboveBlockDistance(int arg0)
+    public float mMaxMoonBrightness
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_fcbf25ef((void*)_handle, arg0), false);
+        get => NativeMethods.TablePtr->C2.hs_get_27952348((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_27952348((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setBrightnessRange(int arg0, int arg1, bool arg2)
+    public int mMaxSpawnDistance
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_b8f3434f((void*)_handle, arg0, arg1, arg2), false);
+        get => NativeMethods.TablePtr->C2.hs_get_f345efb3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f345efb3((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setBubbleSpawner(bool arg0)
+    public ulong mMaxWorldAge
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_a4a6f2bc((void*)_handle, arg0), false);
+        get => NativeMethods.TablePtr->C2.hs_get_9e2e552e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_9e2e552e((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setDelayRange(int arg0, int arg1, string arg2)
+    public int mMinBrightness
     {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_c4480f2b((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2), false);
-        }
+        get => NativeMethods.TablePtr->C2.hs_get_888d08e8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_888d08e8((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setDelaySpawnChance(int arg0)
+    public int mMinDelay
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_1ee7e97c((void*)_handle, arg0), false);
+        get => NativeMethods.TablePtr->C2.hs_get_58c8c8c8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_58c8c8c8((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setDifficultyRange(int arg0, int arg1)
+    public int mMinDifficulty
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_8c3552d9((void*)_handle, arg0, arg1), false);
+        get => NativeMethods.TablePtr->C2.hs_get_3014c074((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3014c074((void*)__hosihikari_shim_handle, value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setExperimentalGameplay()
+    public int mMinHeight
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_a356b834((void*)_handle), false);
+        get => NativeMethods.TablePtr->C2.hs_get_793ec94e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_793ec94e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMinMoonBrightness
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c082d56c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c082d56c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinSpawnDistance
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_46c065e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_46c065e2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mMinWorldAge
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_b7584e5e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b7584e5e((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMobEventName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7615154e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMobToDelayId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_58f2844d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPermutationList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_169d1f7d((void*)__hosihikari_shim_handle);
+    }
+
+    public bool mPersistence
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_fd1942e0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_fd1942e0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mPlayerInVillageBorderTolerance
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_7674f96c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7674f96c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public uint mPlayerInVillageDistance
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_993b75ce((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_993b75ce((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mRarity
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_69d9d087((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_69d9d087((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpawnAboveBlockList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d4d0118e((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSpawnDistanceCap
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_48e1d95e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_48e1d95e((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpawnOnBlockList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9e7a985e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpawnOnBlockPreventedList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6825712e((void*)__hosihikari_shim_handle);
+    }
+
+    public int mSurfaceCap
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_d75deee9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d75deee9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mSurfaceSpawner
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_6a14894a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_6a14894a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mUndergroundCap
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_1c73c5b8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1c73c5b8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mUndergroundSpawner
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_087a4201((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_087a4201((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mWaterSpawner
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_5c3aab80((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_5c3aab80((void*)__hosihikari_shim_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->C2.hs_method_e46ef561((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo selectRandomHerd(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo((nint)NativeMethods.TablePtr->C2.hs_method_5bfc23e9((void*)__hosihikari_shim_handle, (void*)random.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public nint setHardcodedSpawnRuleCallback(nint arg0) =>
+    public nint setHardcodedSpawnRuleCallback(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setHeightRange(int arg0, int arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_14296b2d((void*)_handle, arg0, arg1), false);
-    }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setLavaSpawner()
+    public void Dispose()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_3d27b8e2((void*)_handle), false);
-    }
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_20f843f5((void*)__hosihikari_shim_handle);
+            }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setMobEventType(string arg0)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_bf10e264((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+            __hosihikari_shim_handle = 0;
         }
     }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setPersistence(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_da4653db((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setPlayerInVillageBorderTolerance(uint arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_fbc8c15f((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setPlayerInVillageDistance(uint arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_70445322((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setPopulationCap(int arg0, int arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_b41837a7((void*)_handle, arg0, arg1), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setRarity(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_84b51ced((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setSpawnDistanceCap(int arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_7e2cbc55((void*)_handle, arg0), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setSpawnDistances(int arg0, int arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_3778eb2b((void*)_handle, arg0, arg1), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setSurfaceSpawner()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_536714c4((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setUndergroundSpawner()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_e54accdd((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setUnderwaterSpawner()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_fe2e0213((void*)_handle), false);
-    }
-
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setWorldAgeRange(ulong arg0, ulong arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_d4b75689((void*)_handle, arg0, arg1), false);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_90ede13d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

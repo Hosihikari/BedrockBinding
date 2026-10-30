@@ -30,4 +30,6 @@ public enum LevelChunkTag : sbyte
     BlendingData = 64,
     ActorDigestVersion = 65,
     LegacyVersion = 118,
+    AabbVolumes = 119,
+    JigsawStructureBlueprint = 120,
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class RopeParams
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public RopeParams(nint handle) : this(handle, true) { }
 
     internal RopeParams(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static RopeParams Borrow(nint handle) => new RopeParams(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,29 +33,98 @@ public sealed unsafe partial class RopeParams
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RopeParams Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RopeParams Create(nint arg0, nint arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RopeParams Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public void leadInit()
+    public ulong mDestroyDelay
     {
-        NativeMethods.TablePtr->hs_method_fcba317b((void*)_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_aa68d1d8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_aa68d1d8((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEndPin_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d17a360d((void*)__hosihikari_shim_handle);
+    }
+
+    public int mFlags
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_09322a44((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_09322a44((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mFriction
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_12daf9a2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_12daf9a2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mGravity
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_125086fb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_125086fb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mIterations
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_051fd244((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_051fd244((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mLength
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_861b9f0b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_861b9f0b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mMaxTension
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_cb6d1c95((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_cb6d1c95((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNodeDist
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_6b3bd7f4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6b3bd7f4((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mNodeSize
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_45402251((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_45402251((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mOriginalNodeDist
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_1850d300((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1850d300((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mRelaxation
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_243b7781((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_243b7781((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mSlack
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_dafb89a6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_dafb89a6((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStartPin_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_da97ee9c((void*)__hosihikari_shim_handle);
+    }
+
+    public float mVelDamping
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_aa8a0b71((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_aa8a0b71((void*)__hosihikari_shim_handle, value);
+    }
 }

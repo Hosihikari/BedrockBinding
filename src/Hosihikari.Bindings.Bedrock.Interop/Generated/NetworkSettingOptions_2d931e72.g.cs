@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class NetworkSettingOptions : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public NetworkSettingOptions(nint handle) : this(handle, true) { }
 
     internal NetworkSettingOptions(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static NetworkSettingOptions Borrow(nint handle) => new NetworkSettingOptions(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,21 +33,69 @@ public sealed unsafe partial class NetworkSettingOptions : global::System.IDispo
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public bool mClientThrottleEnabled
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_86676a4f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_86676a4f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mClientThrottleScalar
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_cb6d45a8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_cb6d45a8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public byte mClientThrottleThreshold
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_57724d8e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_57724d8e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mCompressionAlgorithm
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_c15aceaa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c15aceaa((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mCompressionThreshold
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_e0daca1f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e0daca1f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mDevConnectionQuality
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_48f70c90((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_48f70c90((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mEncryptionDisabled
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_096a2628((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_096a2628((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mRaknetJoinFloodProtectionEnabled
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_30415cf9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_30415cf9((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2d931e72((void*)_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_2d931e72((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

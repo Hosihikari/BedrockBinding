@@ -4,27 +4,26 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class HistoryTimestampData
+public sealed unsafe partial class HistoryTimestampData : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public HistoryTimestampData(nint handle) : this(handle, true) { }
 
     internal HistoryTimestampData(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static HistoryTimestampData Borrow(nint handle) => new HistoryTimestampData(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -34,8 +33,71 @@ public sealed partial class HistoryTimestampData
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public static HistoryTimestampData Create()
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b3179945();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HistoryTimestampData((nint)handle);
+    }
+
+    public static HistoryTimestampData Create(global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryTimestampData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_670153b8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HistoryTimestampData((nint)handle);
+    }
+
+    public static nint mSequenceIdGenerator()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_ab65a245();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk274cb5_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dc8fb793((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnk4baf21_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8d760925((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnkcc9bee_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b90e7375((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryTimestampData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryTimestampData arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryTimestampData((nint)NativeMethods.TablePtr->C2.hs_method_838c8ef4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_f24c7a0a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

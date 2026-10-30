@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class CameraItemComponentLegacy : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CameraItemComponentLegacy(nint handle) : this(handle, true) { }
 
     internal CameraItemComponentLegacy(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CameraItemComponentLegacy Borrow(nint handle) => new CameraItemComponentLegacy(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,114 +33,225 @@ public sealed unsafe partial class CameraItemComponentLegacy : global::System.ID
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CameraItemComponentLegacy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static CameraItemComponentLegacy Create(global::Hosihikari.Bindings.Bedrock.Interop.Item arg0)
+    public float _blackBarsDuration()
     {
-        var handle = NativeMethods.TablePtr->hs_create_a558749a((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CameraItemComponentLegacy((nint)handle);
+        return NativeMethods.TablePtr->C0.hs_method_70e22e9c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CameraItemComponentLegacy Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public float _blackBarsScreenRatio()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_660216ab((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _tryPlace_9e78a227(nint instance, nint actor, nint blockPos, byte face, nint spawnPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool _canPlace(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, byte face)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_31e7d061((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)actor.Handle, (void*)blockPos.Handle, face) != 0;
+    }
+
+    public float _pictureDuration()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a311f75d((void*)__hosihikari_shim_handle);
+    }
+
+    public void _registerCallbacks(nint callbacks)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5190946d((void*)__hosihikari_shim_handle, (void*)callbacks);
+    }
+
+    public void _releaseUsing(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Player player, int durationLeft)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d014d0b0((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)player.Handle, durationLeft);
+    }
+
+    public float _shutterDuration()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b760265e((void*)__hosihikari_shim_handle);
+    }
+
+    public float _shutterScreenRatio()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_99271504((void*)__hosihikari_shim_handle);
+    }
+
+    public float _slideAwayDuration()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_802c308a((void*)__hosihikari_shim_handle);
+    }
+
+    public void _takePictureNow(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Actor? camera, global::Hosihikari.Bindings.Bedrock.Interop.Actor? target)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5337aeea((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)(camera?.Handle ?? 0), (void*)(target?.Handle ?? 0));
+    }
+
+    public void _use(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C0.hs_method_21d7cf10((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)player.Handle);
+    }
+
+    public bool _useOn(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, byte face, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg4)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ac4b47cb((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)actor.Handle, (void*)blockPos.Handle, face, (void*)arg4.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static byte _tryPlace(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, byte face, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 spawnPos)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_9e78a227((void*)instance.Handle, (void*)actor.Handle, (void*)blockPos.Handle, face, (void*)spawnPos.Handle);
+    }
 
     public float blackBarsDuration()
     {
-        return NativeMethods.TablePtr->hs_method_68480789((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_dfee173b((void*)__hosihikari_shim_handle);
     }
 
     public float blackBarsScreenRatio()
     {
-        return NativeMethods.TablePtr->hs_method_d0752826((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_7570c262((void*)__hosihikari_shim_handle);
     }
 
-    public bool canPlace(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, byte arg3)
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
+    public nint buildNetworkTag() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
+
+    public bool canPlace(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, byte face)
     {
-        return NativeMethods.TablePtr->hs_method_60fe2415((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_3aa2ba3d((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)actor.Handle, (void*)blockPos.Handle, face) != 0;
     }
 
-    public bool init(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public bool init(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value data, short arg1)
     {
-        return NativeMethods.TablePtr->hs_method_4bf10b01((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_01cfa5be((void*)__hosihikari_shim_handle, (void*)data.Handle, arg1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Json.Value initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C0.hs_method_dae59ba9((void*)tag.Handle));
+    }
+
+    public float mBlackBarsDuration
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_6a1f042d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_6a1f042d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mBlackBarsScreenRatio
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_d8a1ebbb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_d8a1ebbb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public nint mCallbacks
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b51f109b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_b51f109b((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public float mPictureDuration
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_f203ed48((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_f203ed48((void*)__hosihikari_shim_handle, value);
+    }
+
+    public bool mPlacingTripod
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_246ee208((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_246ee208((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mPlacingTripodClientTick
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_c8a4a5f7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_c8a4a5f7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ulong mPlacingTripodServerTick
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_cc4ef60d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_cc4ef60d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mShutterDuration
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_09882b09((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_09882b09((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mShutterScreenRatio
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_0c2205b0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_0c2205b0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public float mSlideAwayDuration
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_e374b4c4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C0.hs_set_e374b4c4((void*)__hosihikari_shim_handle, value);
+    }
 
     public float pictureDuration()
     {
-        return NativeMethods.TablePtr->hs_method_a0f62f62((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_d72a9c64((void*)__hosihikari_shim_handle);
     }
 
-    public void registerCallbacks(nint arg0)
+    public void registerCallbacks(nint callbacks)
     {
-        NativeMethods.TablePtr->hs_method_e5c1f4f6((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C0.hs_method_990cb211((void*)__hosihikari_shim_handle, (void*)callbacks);
     }
 
-    public void releaseUsing(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, int arg2)
+    public void releaseUsing(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Player player, int durationLeft)
     {
-        NativeMethods.TablePtr->hs_method_61ea20c0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->C0.hs_method_1fcfac55((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)player.Handle, durationLeft);
     }
 
     public float shutterDuration()
     {
-        return NativeMethods.TablePtr->hs_method_ed9ab815((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_65ca7398((void*)__hosihikari_shim_handle);
     }
 
     public float shutterScreenRatio()
     {
-        return NativeMethods.TablePtr->hs_method_c240d4db((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_10b28c87((void*)__hosihikari_shim_handle);
     }
 
     public float slideAwayDuration()
     {
-        return NativeMethods.TablePtr->hs_method_c25637da((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_3e3be58f((void*)__hosihikari_shim_handle);
     }
 
-    public void takePictureNow(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2)
+    public void takePictureNow(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Actor? camera, global::Hosihikari.Bindings.Bedrock.Interop.Actor? target)
     {
-        NativeMethods.TablePtr->hs_method_254e39a9((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_5da57fc8((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)(camera?.Handle ?? 0), (void*)(target?.Handle ?? 0));
     }
 
-    public void use(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
+    public void use(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->hs_method_36daf9f2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C0.hs_method_50170c3d((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)player.Handle);
     }
 
-    public bool useOn(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, byte arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg4)
+    public bool useOn(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, byte face, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg4)
     {
-        return NativeMethods.TablePtr->hs_method_d3c90c5c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)arg4.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_3db424f7((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)actor.Handle, (void*)blockPos.Handle, face, (void*)arg4.Handle) != 0;
     }
 
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_65524282((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_65524282((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Bedrock.Interop;
 
 public sealed unsafe partial class WoodlandMansionFeature : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WoodlandMansionFeature(nint handle) : this(handle, true) { }
 
     internal WoodlandMansionFeature(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WoodlandMansionFeature Borrow(nint handle) => new WoodlandMansionFeature(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,94 +33,111 @@ public sealed unsafe partial class WoodlandMansionFeature : global::System.IDisp
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_74b63eea((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_74b63eea((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlueprintWaitVar_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_524ee603((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_524ee603((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlueprintsFinished_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8fdb750a((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8fdb750a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCacheMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8811f4c5((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8811f4c5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCachedStructures_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_09985d59((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_09985d59((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public nint mCreateBlueprintsMutex_Address
+    public nint mCreateBlueprintsAndVisitedPositionsMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b0f4ec6d((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_19cae2b2((void*)__hosihikari_shim_handle);
     }
 
     public uint mRadius
     {
-        get => NativeMethods.TablePtr->hs_get_a08dc50d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_a08dc50d((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_a08dc50d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_a08dc50d((void*)__hosihikari_shim_handle, value);
     }
 
-    public sbyte mStructureFeatureType
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureFeatureType_Address
     {
-        get => NativeMethods.TablePtr->hs_get_af12a0ee((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_af12a0ee((void*)_handle, value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_af12a0ee((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVisitedPositions_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3dbae98f((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mVisitedPositionsMutex_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_281b5280((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3dbae98f((void*)__hosihikari_shim_handle);
     }
 
     public int mXScale
     {
-        get => NativeMethods.TablePtr->hs_get_fc84e7e5((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_fc84e7e5((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_fc84e7e5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_fc84e7e5((void*)__hosihikari_shim_handle, value);
     }
 
     public int mZScale
     {
-        get => NativeMethods.TablePtr->hs_get_ace3437a((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ace3437a((void*)_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_ace3437a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_ace3437a((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WoodlandMansionFeature Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.", false)]
+    public nint _createStructureStart(nint dimension, nint arg1, nint random, nint lc, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WoodlandMansionFeature Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static WoodlandMansionFeature Create(uint arg0)
+    public nint _ctor(uint seed)
     {
-        var handle = NativeMethods.TablePtr->hs_create_d3934d54(arg0);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_07481fe5((void*)__hosihikari_shim_handle, seed);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public bool _getNearestGeneratedFeature(nint dimension, nint biomeSource, nint origin, nint pos, nint preliminarySurfaceLevel, bool mustBeInNewChunks, nint biomeTag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.", false)]
+    public nint _getRequiredBiomes() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.");
+
+    public bool _isFeatureChunk(global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource biomeSource, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos lc, uint levelSeed, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider preliminarySurfaceLevel, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg5)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_fb5a910e((void*)__hosihikari_shim_handle, (void*)biomeSource.Handle, (void*)random.Handle, (void*)lc.Handle, levelSeed, (void*)preliminarySurfaceLevel.Handle, (void*)arg5.Handle) != 0;
+    }
+
+    public bool _shouldPostProcessMobs()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_b2c59508((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
+    public static nint _vftable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static WoodlandMansionFeature Create()
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_311146ba();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -129,30 +146,67 @@ public sealed unsafe partial class WoodlandMansionFeature : global::System.IDisp
         return new WoodlandMansionFeature((nint)handle);
     }
 
+    public static WoodlandMansionFeature Create(uint seed)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_d3934d54(seed);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WoodlandMansionFeature((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.", false)]
+    public nint createStructureStart(nint dimension, nint arg1, nint random, nint lc, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public bool getNearestGeneratedFeature(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6) =>
+    public bool getNearestGeneratedFeature(nint dimension, nint biomeSource, nint origin, nint pos, nint preliminarySurfaceLevel, bool mustBeInNewChunks, nint biomeTag) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.", false)]
+    public nint getRequiredBiomes() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.");
+
+    public bool isFeatureChunk(global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource biomeSource, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos lc, uint levelSeed, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider preliminarySurfaceLevel, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg5)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_ff9313c0((void*)__hosihikari_shim_handle, (void*)biomeSource.Handle, (void*)random.Handle, (void*)lc.Handle, levelSeed, (void*)preliminarySurfaceLevel.Handle, (void*)arg5.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAllowedBiomes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_04c88445((void*)__hosihikari_shim_handle);
+    }
+
+    public int mFeatureSpacing
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_d84d6051((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_d84d6051((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinFeatureSeparation
+    {
+        get => NativeMethods.TablePtr->C4.hs_get_004e5d2c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_004e5d2c((void*)__hosihikari_shim_handle, value);
+    }
 
     public bool shouldPostProcessMobs()
     {
-        return NativeMethods.TablePtr->hs_method_fdfffb0a((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_6caee7dd((void*)__hosihikari_shim_handle) != 0;
     }
-
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_fdb527a6((void*)_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_fdb527a6((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

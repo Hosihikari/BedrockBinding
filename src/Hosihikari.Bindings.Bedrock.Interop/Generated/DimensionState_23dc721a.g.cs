@@ -4,7 +4,10 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DimensionStateComponent_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any enumerator of this enum; it is exported for type identity only.", false)]
 public enum DimensionState : int
 {
+    Ready = 0,
+    Pending = 1,
+    WaitingServerResponse = 2,
+    WaitingArea = 3,
 }

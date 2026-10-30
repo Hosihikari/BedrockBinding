@@ -11,9 +11,9 @@
 
   <PropertyGroup>
     <PackageId>Hosihikari.Bindings.Bedrock.Interop</PackageId>
-    <Version>1.21.3-r0</Version>
+    <Version>1.26.51-r0</Version>
     <Authors>Hosihikari</Authors>
-    <Description>Generated native-style .NET Interop for the Bedrock Dedicated Server (MCAPI) surface, dispatched by RVA and vtable slot.</Description>
+    <Description>Generated native-style .NET Interop for the Bedrock Dedicated Server (MCAPI) surface, resolved by symbol name through the LeviLamina preloader.</Description>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/HosihikariProjection/BedrockBinding</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
