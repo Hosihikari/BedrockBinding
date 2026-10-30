@@ -53,6 +53,10 @@ powershell -File native/BindingShim/build.ps1
 
 生成的 shim 目录包含来自 `BindingAbi` 的 `hosihikari_abi.h`，原生构建因此自包含。shim 用 MSVC 构建，不需要 BDS 头文件或 import library。
 
+## 示例
+
+`samples/UsageSmoke/` 是一个插件脚本：加载垫片、调用一个静态 MCAPI 函数，并在两个构造出的游戏对象上调用实例方法。部署所需文件见其 README。
+
 ## 生成源校验
 
 `scripts/verify_generated.py` 校验来源信息、覆盖基线、shim 函数数、表版本、托管表与每个生成文件的哈希。CI 构建解决方案、运行校验器、用生成器验证提交的覆盖契约，并编译 Windows shim。

@@ -53,6 +53,10 @@ powershell -File native/BindingShim/build.ps1
 
 The generated shim directories contain `hosihikari_abi.h` from `BindingAbi`, so the native build stays self-contained. The shim builds with MSVC and needs no BDS headers or import library.
 
+## Sample
+
+`samples/UsageSmoke/` is a plugin script that loads the shim, calls a static MCAPI function, and constructs two game objects before calling instance methods on them. Its README lists the files to deploy next to it.
+
 ## Generated-source gate
 
 `scripts/verify_generated.py` checks provenance, the coverage baseline, the shim function count, the table version, the managed table, and every generated file hash. CI builds the solution, runs the verifier, validates the committed coverage contract with the generator, and compiles the Windows shim.
