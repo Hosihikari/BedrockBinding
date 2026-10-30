@@ -40,12 +40,12 @@ public sealed unsafe partial class SocketLayer : global::System.IDisposable
 
     public static void GetMyAdapters(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.NetworkAdapter? adapters)
     {
-        NativeMethods.TablePtr->C2.hs_method_7bc8c916((void*)(adapters?.Handle ?? 0));
+        NativeMethods.TablePtr->C3.hs_method_7bc8c916((void*)(adapters?.Handle ?? 0));
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString GetSubNetForSocketAndIp(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString inIpString)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString((nint)NativeMethods.TablePtr->C2.hs_method_f38a562a((void*)inIpString.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakString((nint)NativeMethods.TablePtr->C3.hs_method_f38a562a((void*)inIpString.Handle));
     }
 
     public void Dispose()
@@ -54,7 +54,7 @@ public sealed unsafe partial class SocketLayer : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_fc82096b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_fc82096b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

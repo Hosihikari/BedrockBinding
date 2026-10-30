@@ -38,9 +38,10 @@ public sealed unsafe partial class TransactionFrame : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _ctor(nint accessType, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public nint _ctor(int accessType, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_12152f02((void*)__hosihikari_shim_handle, accessType, (void*)path.Handle);
+    }
 
     public static TransactionFrame Create()
     {
@@ -53,9 +54,16 @@ public sealed unsafe partial class TransactionFrame : global::System.IDisposable
         return new TransactionFrame((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public static TransactionFrame Create(nint accessType, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public static TransactionFrame Create(int accessType, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_22e749fb(accessType, (void*)path.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TransactionFrame((nint)handle);
+    }
 
     public static TransactionFrame Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.TransactionFrame arg0)
     {

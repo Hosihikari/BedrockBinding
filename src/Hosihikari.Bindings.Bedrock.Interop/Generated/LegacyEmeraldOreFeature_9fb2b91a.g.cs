@@ -41,35 +41,35 @@ public sealed unsafe partial class LegacyEmeraldOreFeature : global::System.IDis
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d9a8b17b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d9a8b17b((void*)__hosihikari_shim_handle);
     }
 
     public nint mTransaction
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_99ea8870((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_99ea8870((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_99ea8870((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_99ea8870((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C1.hs_get_28a6c35e((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_28a6c35e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_28a6c35e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_28a6c35e((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C1.hs_get_366613eb((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_366613eb((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_366613eb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_366613eb((void*)__hosihikari_shim_handle, value);
     }
 
     public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C1.hs_method_fc7b6058((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_fc7b6058((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
     public static LegacyEmeraldOreFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyEmeraldOreFeature arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_f414cbb9((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_f414cbb9((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -80,7 +80,7 @@ public sealed unsafe partial class LegacyEmeraldOreFeature : global::System.IDis
 
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C1.hs_method_76005330((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_76005330((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
 
@@ -90,7 +90,7 @@ public sealed unsafe partial class LegacyEmeraldOreFeature : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_9fb2b91a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_9fb2b91a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

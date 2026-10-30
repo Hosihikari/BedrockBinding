@@ -114,9 +114,10 @@ public sealed unsafe partial class RedactableString : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint erase(ulong offset, ulong count) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ erase(ulong offset, ulong count)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C0.hs_method_50f2edf4((void*)__hosihikari_shim_handle, offset, count));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRedactedString_Address

@@ -44,7 +44,7 @@ public sealed unsafe partial class TagCacheManager : global::System.IDisposable
 
     public static TagCacheManager Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_e7209800();
+        var handle = NativeMethods.TablePtr->C4.hs_create_e7209800();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,7 +59,7 @@ public sealed unsafe partial class TagCacheManager : global::System.IDisposable
 
     public static TagCacheManager Create(global::Hosihikari.Bindings.Bedrock.Interop.TagCacheManager arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_c929e814((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_c929e814((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -70,7 +70,7 @@ public sealed unsafe partial class TagCacheManager : global::System.IDisposable
 
     public void _deregisterTagsFromActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->C3.hs_method_6586a227((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+        NativeMethods.TablePtr->C4.hs_method_6586a227((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
     public void decrementTagCache(string tag)
@@ -88,7 +88,7 @@ public sealed unsafe partial class TagCacheManager : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_4bebbc06((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C4.hs_method_4bebbc06((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -107,37 +107,37 @@ public sealed unsafe partial class TagCacheManager : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_2d8a0a65((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C4.hs_method_2d8a0a65((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.IActorManagerConnector actorManagerConnector)
     {
-        NativeMethods.TablePtr->C3.hs_method_50a8eab3((void*)__hosihikari_shim_handle, (void*)actorManagerConnector.Handle);
+        NativeMethods.TablePtr->C4.hs_method_50a8eab3((void*)__hosihikari_shim_handle, (void*)actorManagerConnector.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommandManager_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_7d85e478((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7d85e478((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDeregisterTagsFromActorProxy_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_63f3e74e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_63f3e74e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnRemoveActorEntityReferences_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6450629b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6450629b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTagCache_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_a97072e5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a97072e5((void*)__hosihikari_shim_handle);
     }
 
 
@@ -147,7 +147,7 @@ public sealed unsafe partial class TagCacheManager : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_24b93164((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_24b93164((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

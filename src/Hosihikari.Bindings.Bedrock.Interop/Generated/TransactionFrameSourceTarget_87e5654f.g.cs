@@ -60,9 +60,9 @@ public sealed unsafe partial class TransactionFrameSourceTarget : global::System
         return new TransactionFrameSourceTarget((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'Core::Result' is not supported.", false)]
     public static nint exec(nint source, nint target, nint sameStorageAreaFunction, nint differentStorageAreaFunction) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'Core::Result' is not supported.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk500b9e_Address

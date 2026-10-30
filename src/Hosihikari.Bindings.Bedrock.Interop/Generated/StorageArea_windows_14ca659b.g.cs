@@ -57,9 +57,10 @@ public sealed unsafe partial class StorageArea_windows : global::System.IDisposa
         return NativeMethods.TablePtr->C1.hs_method_82fdb84f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getExtendSizeThreshold(nint outExtendSizeThreshold) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getExtendSizeThreshold(nint outExtendSizeThreshold)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_97771c74((void*)__hosihikari_shim_handle, (void*)outExtendSizeThreshold));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo _getStorageAreaSpaceInfo()
     {
@@ -71,9 +72,10 @@ public sealed unsafe partial class StorageArea_windows : global::System.IDisposa
         return NativeMethods.TablePtr->C1.hs_method_d83128ea((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getUsedSize(nint outUsedSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getUsedSize(nint outUsedSize)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_3816111e((void*)__hosihikari_shim_handle, (void*)outUsedSize));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void _preemptiveExtendSize(nint expectedContentSize, nint successCallback, nint failureCallback) =>
@@ -89,9 +91,9 @@ public sealed unsafe partial class StorageArea_windows : global::System.IDisposa
         NativeMethods.TablePtr->C1.hs_method_9295fa12((void*)__hosihikari_shim_handle, fileSize);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::error_code' is not a known bindable declaration.", false)]
     public bool _shouldRecordFileError(nint path, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::error_code' is not a known bindable declaration.");
 
     public bool _supportsExtendSize()
     {
@@ -148,9 +150,10 @@ public sealed unsafe partial class StorageArea_windows : global::System.IDisposa
         return NativeMethods.TablePtr->C1.hs_method_fb5ec9ae((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getExtendSizeThreshold(nint outExtendSizeThreshold) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result getExtendSizeThreshold(nint outExtendSizeThreshold)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_c6f8f3f9((void*)__hosihikari_shim_handle, (void*)outExtendSizeThreshold));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo getStorageAreaSpaceInfo()
     {
@@ -162,9 +165,10 @@ public sealed unsafe partial class StorageArea_windows : global::System.IDisposa
         return NativeMethods.TablePtr->C1.hs_method_a94aea68((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getUsedSize(nint outUsedSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result getUsedSize(nint outUsedSize)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_4bf552a8((void*)__hosihikari_shim_handle, (void*)outUsedSize));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc8f210_Address
@@ -191,9 +195,9 @@ public sealed unsafe partial class StorageArea_windows : global::System.IDisposa
         NativeMethods.TablePtr->C1.hs_method_79ef9be4((void*)__hosihikari_shim_handle, fileSize);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::error_code' is not a known bindable declaration.", false)]
     public bool shouldRecordFileError(nint path, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::error_code' is not a known bindable declaration.");
 
     public bool supportsExtendSize()
     {

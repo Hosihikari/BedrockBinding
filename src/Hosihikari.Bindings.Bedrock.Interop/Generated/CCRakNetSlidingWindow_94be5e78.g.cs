@@ -76,55 +76,55 @@ public sealed unsafe partial class CCRakNetSlidingWindow : global::System.IDispo
     public double deviationRtt
     {
         get => NativeMethods.TablePtr->C2.hs_get_0b43ba64((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_0b43ba64((void*)__hosihikari_shim_handle, value);
+        set => NativeMethods.TablePtr->C3.hs_set_0b43ba64((void*)__hosihikari_shim_handle, value);
     }
 
     public double estimatedRTT
     {
-        get => NativeMethods.TablePtr->C2.hs_get_73e4c34c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_73e4c34c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_73e4c34c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_73e4c34c((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint expectedNextSequenceNumber_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2076b6a1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2076b6a1((void*)__hosihikari_shim_handle);
     }
 
     public double lastRtt
     {
-        get => NativeMethods.TablePtr->C2.hs_get_c8b85d0c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_c8b85d0c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_c8b85d0c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_c8b85d0c((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint nextCongestionControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_be4c4a50((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_be4c4a50((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint nextDatagramSequenceNumber_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_df799086((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_df799086((void*)__hosihikari_shim_handle);
     }
 
     public ulong oldestUnsentAck
     {
-        get => NativeMethods.TablePtr->C2.hs_get_88212b9c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_88212b9c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_88212b9c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_88212b9c((void*)__hosihikari_shim_handle, value);
     }
 
     public bool speedUpThisBlock
     {
-        get => NativeMethods.TablePtr->C2.hs_get_861235a0((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_861235a0((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_861235a0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_861235a0((void*)__hosihikari_shim_handle, value);
     }
 
     public double ssThresh
     {
-        get => NativeMethods.TablePtr->C2.hs_get_624af1e9((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_624af1e9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_624af1e9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_624af1e9((void*)__hosihikari_shim_handle, value);
     }
 
 

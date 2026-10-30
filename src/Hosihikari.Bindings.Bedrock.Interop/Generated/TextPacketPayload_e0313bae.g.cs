@@ -40,12 +40,12 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_b5632014((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_b5632014((void*)__hosihikari_shim_handle);
     }
 
     public static TextPacketPayload Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_924a291b();
+        var handle = NativeMethods.TablePtr->C4.hs_create_924a291b();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
 
     public static TextPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.TextPacketPayload arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_6cd56757((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_6cd56757((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -132,7 +132,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
                     {
                         fixed (byte* __hs_stringData4 = __hs_stringBytes4)
                         {
-                            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_27a4a950(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, filteredMessage is not null));
+                            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_27a4a950(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, filteredMessage is not null));
                         }
                     }
                 }
@@ -207,7 +207,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
                     {
                         fixed (byte* __hs_stringData4 = __hs_stringBytes4)
                         {
-                            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_f158d954(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, filteredMessage is not null));
+                            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_f158d954(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, filteredMessage is not null));
                         }
                     }
                 }
@@ -250,7 +250,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
             }
             fixed (byte* __hs_stringData0 = __hs_stringBytes0)
             {
-                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_5da3f26f(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_vectorData1, (nuint)(@params?.Length ?? 0)));
+                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_5da3f26f(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_vectorData1, (nuint)(@params?.Length ?? 0)));
             }
         }
     }
@@ -270,7 +270,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(rawJson, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_3f180402(__hs_stringData0, (nuint)__hs_stringByteCount0));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_3f180402(__hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
@@ -289,7 +289,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_190555d8(__hs_stringData0, (nuint)__hs_stringByteCount0));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_190555d8(__hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
@@ -321,7 +321,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_16ac793d((void*)resolvedTextObject.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
+                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_16ac793d((void*)resolvedTextObject.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
             }
         }
     }
@@ -354,7 +354,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_c44f516f((void*)resolvedTextObject.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
+                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_c44f516f((void*)resolvedTextObject.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
             }
         }
     }
@@ -400,7 +400,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_132be0a8(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
+                    return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_132be0a8(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
                 }
             }
         }
@@ -441,7 +441,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
             }
             fixed (byte* __hs_stringData0 = __hs_stringBytes0)
             {
-                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_42d312c3(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_vectorData1, (nuint)(@params?.Length ?? 0)));
+                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_42d312c3(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_vectorData1, (nuint)(@params?.Length ?? 0)));
             }
         }
     }
@@ -500,7 +500,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
                 {
                     fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                     {
-                        return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_021424a6(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3));
+                        return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_021424a6(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3));
                     }
                 }
             }
@@ -561,7 +561,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
                 {
                     fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                     {
-                        return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_6519264f(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3));
+                        return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_6519264f(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3));
                     }
                 }
             }
@@ -635,7 +635,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
                     {
                         fixed (byte* __hs_stringData4 = __hs_stringBytes4)
                         {
-                            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_80b45f7a(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, filteredMessage is not null));
+                            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C4.hs_method_80b45f7a(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, filteredMessage is not null));
                         }
                     }
                 }
@@ -646,31 +646,31 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
     // The native field type is not projected; this is the address of the field storage.
     public nint mBody_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_c23f402d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c23f402d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFilteredMessage_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d2d69703((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d2d69703((void*)__hosihikari_shim_handle);
     }
 
     public bool mLocalize
     {
-        get => NativeMethods.TablePtr->C3.hs_get_38400462((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_38400462((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_38400462((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_38400462((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlatformId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_4f0528fd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_4f0528fd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mXuid_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_806ef7e1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_806ef7e1((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -679,7 +679,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TextPacketPayload operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.TextPacketPayload arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacketPayload((nint)NativeMethods.TablePtr->C3.hs_method_e058dd89((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacketPayload((nint)NativeMethods.TablePtr->C4.hs_method_e058dd89((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -689,7 +689,7 @@ public sealed unsafe partial class TextPacketPayload : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_e0313bae((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_e0313bae((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

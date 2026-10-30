@@ -40,53 +40,53 @@ public sealed unsafe partial class TellCommand : global::System.IDisposable
 
     public int mCommandSymbol
     {
-        get => NativeMethods.TablePtr->C3.hs_get_256b6bca((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_256b6bca((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_256b6bca((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_256b6bca((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFlags_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f5633eea((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f5633eea((void*)__hosihikari_shim_handle);
     }
 
     public byte mPermissionLevel
     {
-        get => NativeMethods.TablePtr->C3.hs_get_d9e46e50((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_d9e46e50((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_d9e46e50((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_d9e46e50((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mRegistry
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_03d2a12e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_03d2a12e((void*)__hosihikari_shim_handle);
     }
 
     public int mVersion
     {
-        get => NativeMethods.TablePtr->C3.hs_get_004f15fc((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_004f15fc((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_004f15fc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_004f15fc((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mRequireChatPerms
     {
-        get => NativeMethods.TablePtr->C3.hs_get_29e85f85((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_29e85f85((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_29e85f85((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_29e85f85((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mRequireTellPerms
     {
-        get => NativeMethods.TablePtr->C3.hs_get_3f6289b7((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_3f6289b7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_3f6289b7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_3f6289b7((void*)__hosihikari_shim_handle, value);
     }
 
     public void _execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        NativeMethods.TablePtr->C3.hs_method_0220850d((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
+        NativeMethods.TablePtr->C4.hs_method_0220850d((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
     public static TellCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.TellCommand arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_4af2474f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_4af2474f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -145,7 +145,7 @@ public sealed unsafe partial class TellCommand : global::System.IDisposable
                 {
                     fixed (byte* __hs_stringData4 = __hs_stringBytes4)
                     {
-                        return NativeMethods.TablePtr->C3.hs_method_4c4a7776((void*)level.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_vectorData2, (nuint)(targets?.Length ?? 0), filteredMessage is not null) != 0;
+                        return NativeMethods.TablePtr->C4.hs_method_4c4a7776((void*)level.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_vectorData2, (nuint)(targets?.Length ?? 0), filteredMessage is not null) != 0;
                     }
                 }
             }
@@ -193,7 +193,7 @@ public sealed unsafe partial class TellCommand : global::System.IDisposable
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    NativeMethods.TablePtr->C3.hs_method_be426cc9((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)identity.Handle, (void*)level.Handle, filteredMessage is not null);
+                    NativeMethods.TablePtr->C4.hs_method_be426cc9((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)identity.Handle, (void*)level.Handle, filteredMessage is not null);
                 }
             }
         }
@@ -201,24 +201,24 @@ public sealed unsafe partial class TellCommand : global::System.IDisposable
 
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
-        NativeMethods.TablePtr->C3.hs_method_33af0b82((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
+        NativeMethods.TablePtr->C4.hs_method_33af0b82((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMessage_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_daf8b768((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_daf8b768((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTargets_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d022ec9f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d022ec9f((void*)__hosihikari_shim_handle);
     }
 
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_daa02d00((void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_daa02d00((void*)registry.Handle);
     }
 
 
@@ -228,7 +228,7 @@ public sealed unsafe partial class TellCommand : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_d9916fe2((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_d9916fe2((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

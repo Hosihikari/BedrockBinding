@@ -64,13 +64,13 @@ public sealed unsafe partial class SystemTiming : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mSystemName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d680450e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d680450e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTime_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_693502ea((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_693502ea((void*)__hosihikari_shim_handle);
     }
 
 

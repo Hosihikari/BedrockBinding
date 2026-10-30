@@ -44,7 +44,7 @@ public sealed unsafe partial class TheEndBiomeSurfaceFlag : global::System.IDisp
 
     public static TheEndBiomeSurfaceFlag Create(global::Hosihikari.Bindings.Bedrock.Interop.TheEndBiomeSurfaceFlag arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_98a62120((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_98a62120((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,7 +60,7 @@ public sealed unsafe partial class TheEndBiomeSurfaceFlag : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_5a0444cb((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_5a0444cb((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

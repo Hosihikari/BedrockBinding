@@ -40,12 +40,12 @@ public sealed unsafe partial class TerrainBurstReactionComponent : global::Syste
 
     public void __onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        NativeMethods.TablePtr->C3.hs_method_44387c8e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
+        NativeMethods.TablePtr->C4.hs_method_44387c8e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
     }
 
     public static TerrainBurstReactionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.TerrainBurstReactionComponent arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_e4489b91((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_e4489b91((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,37 +56,37 @@ public sealed unsafe partial class TerrainBurstReactionComponent : global::Syste
 
     public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        NativeMethods.TablePtr->C3.hs_method_149a9a07((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
+        NativeMethods.TablePtr->C4.hs_method_149a9a07((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
     }
 
     public int mCount
     {
-        get => NativeMethods.TablePtr->C3.hs_get_2af0d5f7((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_2af0d5f7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_2af0d5f7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_2af0d5f7((void*)__hosihikari_shim_handle, value);
     }
 
     public int mData
     {
-        get => NativeMethods.TablePtr->C3.hs_get_7953f8f7((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_7953f8f7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_7953f8f7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_7953f8f7((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDims_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_c4f21880((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c4f21880((void*)__hosihikari_shim_handle);
     }
 
     public bool mDirOneWay
     {
-        get => NativeMethods.TablePtr->C3.hs_get_a339aec7((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_a339aec7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_a339aec7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_a339aec7((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDirRange_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_9c9519c3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9c9519c3((void*)__hosihikari_shim_handle);
     }
 
 
@@ -96,7 +96,7 @@ public sealed unsafe partial class TerrainBurstReactionComponent : global::Syste
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_0a53f6fa((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_0a53f6fa((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

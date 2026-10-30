@@ -40,12 +40,12 @@ public sealed unsafe partial class Tag : global::System.IDisposable
 
     public void _deleteChildren()
     {
-        NativeMethods.TablePtr->C3.hs_method_77f5ccca((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_77f5ccca((void*)__hosihikari_shim_handle);
     }
 
     public void _print(global::Hosihikari.Bindings.Bedrock.Interop.PrintStream @out)
     {
-        NativeMethods.TablePtr->C3.hs_method_d6355f88((void*)__hosihikari_shim_handle, (void*)@out.Handle);
+        NativeMethods.TablePtr->C4.hs_method_d6355f88((void*)__hosihikari_shim_handle, (void*)@out.Handle);
     }
 
     public void _print(string prefix, global::Hosihikari.Bindings.Bedrock.Interop.PrintStream @out)
@@ -63,13 +63,13 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(prefix, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_d88aa484((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)@out.Handle);
+            NativeMethods.TablePtr->C4.hs_method_d88aa484((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)@out.Handle);
         }
     }
 
     public static Tag Create(global::Hosihikari.Bindings.Bedrock.Interop.Tag arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_fdd696ab((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_fdd696ab((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -84,7 +84,7 @@ public sealed unsafe partial class Tag : global::System.IDisposable
 
     public void deleteChildren()
     {
-        NativeMethods.TablePtr->C3.hs_method_51a88ea4((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_51a88ea4((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -109,12 +109,12 @@ public sealed unsafe partial class Tag : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.Tag other)
     {
-        return NativeMethods.TablePtr->C3.hs_method_8069fb0f((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_8069fb0f((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public void print(global::Hosihikari.Bindings.Bedrock.Interop.PrintStream @out)
     {
-        NativeMethods.TablePtr->C3.hs_method_16970861((void*)__hosihikari_shim_handle, (void*)@out.Handle);
+        NativeMethods.TablePtr->C4.hs_method_16970861((void*)__hosihikari_shim_handle, (void*)@out.Handle);
     }
 
     public void print(string prefix, global::Hosihikari.Bindings.Bedrock.Interop.PrintStream @out)
@@ -132,13 +132,13 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(prefix, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_adecfce4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)@out.Handle);
+            NativeMethods.TablePtr->C4.hs_method_adecfce4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)@out.Handle);
         }
     }
 
     public string toSnbt(uint snbtFormat, byte indent)
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_07f1c5ec((void*)__hosihikari_shim_handle, snbtFormat, indent);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_07f1c5ec((void*)__hosihikari_shim_handle, snbtFormat, indent);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -157,7 +157,7 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_47020131((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_47020131((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

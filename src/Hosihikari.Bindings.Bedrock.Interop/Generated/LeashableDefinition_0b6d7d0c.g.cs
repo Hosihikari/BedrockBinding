@@ -40,7 +40,7 @@ public sealed unsafe partial class LeashableDefinition : global::System.IDisposa
 
     public static LeashableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.LeashableDefinition arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_2daa6578((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_2daa6578((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,59 +51,59 @@ public sealed unsafe partial class LeashableDefinition : global::System.IDisposa
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->C1.hs_method_08745b34(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_08745b34(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.LeashableComponent component)
     {
-        NativeMethods.TablePtr->C1.hs_method_61fe9860((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)component.Handle);
+        NativeMethods.TablePtr->C2.hs_method_61fe9860((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)component.Handle);
     }
 
     public bool mCanBeCut
     {
-        get => NativeMethods.TablePtr->C1.hs_get_ddfcd637((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_ddfcd637((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ddfcd637((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ddfcd637((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mCanBeStolen
     {
-        get => NativeMethods.TablePtr->C1.hs_get_007f1e0a((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_007f1e0a((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_007f1e0a((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_007f1e0a((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnLeash_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_17a6387d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_17a6387d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnUnleash_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9bb730e9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9bb730e9((void*)__hosihikari_shim_handle);
     }
 
     public bool mOnUnleashInteractOnly
     {
-        get => NativeMethods.TablePtr->C1.hs_get_1c7c57ef((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_1c7c57ef((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1c7c57ef((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1c7c57ef((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPresets_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a63450e3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a63450e3((void*)__hosihikari_shim_handle);
     }
 
     public bool mUnleashOnRemoval
     {
-        get => NativeMethods.TablePtr->C1.hs_get_0e43669b((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_0e43669b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0e43669b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_0e43669b((void*)__hosihikari_shim_handle, value);
     }
 
     public void uninitialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.LeashableComponent arg1)
     {
-        NativeMethods.TablePtr->C1.hs_method_118fbe39((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_118fbe39((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)arg1.Handle);
     }
 
 
@@ -113,7 +113,7 @@ public sealed unsafe partial class LeashableDefinition : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_0b6d7d0c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_0b6d7d0c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

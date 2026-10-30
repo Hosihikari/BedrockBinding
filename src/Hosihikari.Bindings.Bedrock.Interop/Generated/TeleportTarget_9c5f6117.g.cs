@@ -40,25 +40,25 @@ public sealed unsafe partial class TeleportTarget : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_5edd4719((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_5edd4719((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChangeRequest_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_b327af63((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b327af63((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_71932bc0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_71932bc0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRotation_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_21ad19f1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_21ad19f1((void*)__hosihikari_shim_handle);
     }
 
 
@@ -68,7 +68,7 @@ public sealed unsafe partial class TeleportTarget : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_9c5f6117((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_9c5f6117((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

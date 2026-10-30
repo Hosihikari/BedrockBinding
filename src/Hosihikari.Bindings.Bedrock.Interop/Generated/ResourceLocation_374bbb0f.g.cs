@@ -38,13 +38,15 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _ctor(nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_8607eaf7((void*)__hosihikari_shim_handle, (void*)path.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _ctor(nint path, nint fileSystem) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path, int fileSystem)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_01c06b26((void*)__hosihikari_shim_handle, (void*)path.Handle, fileSystem);
+    }
 
     public void _dtor()
     {
@@ -62,13 +64,27 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
         return new ResourceLocation((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public static ResourceLocation Create(nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public static ResourceLocation Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c577677a((void*)path.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public static ResourceLocation Create(nint path, nint fileSystem) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+        return new ResourceLocation((nint)handle);
+    }
+
+    public static ResourceLocation Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path, int fileSystem)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a3d74214((void*)path.Handle, fileSystem);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceLocation((nint)handle);
+    }
 
     public static ResourceLocation Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {

@@ -48,7 +48,7 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult _tryActivate()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_05b0c98a((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C1.hs_method_05b0c98a((void*)__hosihikari_shim_handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -57,7 +57,7 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
 
     public static ContainerScreenValidation Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_5932fecc();
+        var handle = NativeMethods.TablePtr->C1.hs_create_5932fecc();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,42 +72,42 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
 
     public void _commit()
     {
-        NativeMethods.TablePtr->C0.hs_method_74dbef53((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_74dbef53((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo _createContainerValidatorSlotInfo(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData slotData)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo((nint)NativeMethods.TablePtr->C0.hs_method_a8aadacf((void*)__hosihikari_shim_handle, (void*)slotData.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo((nint)NativeMethods.TablePtr->C1.hs_method_a8aadacf((void*)__hosihikari_shim_handle, (void*)slotData.Handle));
     }
 
     public bool _dropItems()
     {
-        return NativeMethods.TablePtr->C0.hs_method_40827fb5((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_40827fb5((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _propagateContainers()
     {
-        return NativeMethods.TablePtr->C0.hs_method_64b86b63((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_64b86b63((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _tryMoveItem(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo srcValidatorPair, global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo dstValidatorPair)
     {
-        return NativeMethods.TablePtr->C0.hs_method_1cd76e0b((void*)__hosihikari_shim_handle, (void*)srcValidatorPair.Handle, (void*)dstValidatorPair.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_1cd76e0b((void*)__hosihikari_shim_handle, (void*)srcValidatorPair.Handle, (void*)dstValidatorPair.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack _tryRemoveItem(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo slotInfo, int amount)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C0.hs_method_a7ecd2ed((void*)__hosihikari_shim_handle, (void*)slotInfo.Handle, amount));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C1.hs_method_a7ecd2ed((void*)__hosihikari_shim_handle, (void*)slotInfo.Handle, amount));
     }
 
     public int _trySetItem(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo slotInfo, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack stack, bool isWholeStackTransfer, bool allowPartialSuccess, bool isInternalTransfer)
     {
-        return NativeMethods.TablePtr->C0.hs_method_18bf7c3b((void*)__hosihikari_shim_handle, (void*)slotInfo.Handle, (void*)stack.Handle, isWholeStackTransfer, allowPartialSuccess, isInternalTransfer);
+        return NativeMethods.TablePtr->C1.hs_method_18bf7c3b((void*)__hosihikari_shim_handle, (void*)slotInfo.Handle, (void*)stack.Handle, isWholeStackTransfer, allowPartialSuccess, isInternalTransfer);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult _tryTransferSpecial(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, int transferAmount, byte actionType)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_89e881d4((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount, actionType));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C1.hs_method_89e881d4((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount, actionType));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -116,56 +116,56 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateSparseContainer(global::Hosihikari.Bindings.Bedrock.Interop.FullContainerName containerEnumName)
     {
-        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_ff16e8ed((void*)__hosihikari_shim_handle, (void*)containerEnumName.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ff16e8ed((void*)__hosihikari_shim_handle, (void*)containerEnumName.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public int mCaller
     {
-        get => NativeMethods.TablePtr->C0.hs_get_80ea0af6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_80ea0af6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_80ea0af6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_80ea0af6((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainerIndexMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_642de733((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_642de733((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainerScreenValidator_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_7d6bf00a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7d6bf00a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainerValidatorMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_7e0b4fde((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7e0b4fde((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDebug_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_b2cda87e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b2cda87e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPredictiveContainers_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_35c67b44((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_35c67b44((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mScreenContext_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_d3bcb5bf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d3bcb5bf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValidationStack_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_73af6a57((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_73af6a57((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ContainerScreenValidation' has no accessible destructor.", false)]
@@ -174,17 +174,17 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryActivate()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_27e4024a((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C1.hs_method_27e4024a((void*)__hosihikari_shim_handle));
     }
 
     public bool tryCommitActionResults()
     {
-        return NativeMethods.TablePtr->C0.hs_method_235e871e((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_235e871e((void*)__hosihikari_shim_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryConsume(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, int transferAmount)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_83f41770((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C1.hs_method_83f41770((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -193,17 +193,17 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryDrop(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, int transferAmount, bool dropRandomly)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_787f57ba((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount, dropRandomly));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C1.hs_method_787f57ba((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount, dropRandomly));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult trySwap(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData dstSlotData)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_a9776eea((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, (void*)dstSlotData.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C1.hs_method_a9776eea((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, (void*)dstSlotData.Handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryTransfer(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData dstSlotData, int transferAmount, bool isAllowingPartialTransfer)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_58c36007((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, (void*)dstSlotData.Handle, transferAmount, isAllowingPartialTransfer));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C1.hs_method_58c36007((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, (void*)dstSlotData.Handle, transferAmount, isAllowingPartialTransfer));
     }
 
 
@@ -213,7 +213,7 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_4310f2c8((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_4310f2c8((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

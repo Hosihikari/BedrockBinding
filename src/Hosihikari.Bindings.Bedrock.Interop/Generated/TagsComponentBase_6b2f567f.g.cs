@@ -60,13 +60,13 @@ public sealed unsafe partial class TagsComponentBase : global::System.IDisposabl
                 __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
                 __hs_vectorOffset1 += __hs_length1;
             }
-            NativeMethods.TablePtr->C3.hs_method_b6c13fb1((void*)tag.Handle, __hs_vectorData1, (nuint)(componentTags?.Length ?? 0));
+            NativeMethods.TablePtr->C4.hs_method_b6c13fb1((void*)tag.Handle, __hs_vectorData1, (nuint)(componentTags?.Length ?? 0));
         }
     }
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper dataLoadhelper)
     {
-        NativeMethods.TablePtr->C3.hs_method_3c71de09((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)tag.Handle, (void*)dataLoadhelper.Handle);
+        NativeMethods.TablePtr->C4.hs_method_3c71de09((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)tag.Handle, (void*)dataLoadhelper.Handle);
     }
 
     public void Dispose()
@@ -75,7 +75,7 @@ public sealed unsafe partial class TagsComponentBase : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_6b2f567f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_6b2f567f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -69,9 +69,10 @@ public sealed unsafe partial class File : global::System.IDisposable
     public static nint cleanPath(nint entryPath) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::BasicStackString<char, 1024>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint close() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result close()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_6763e6a6((void*)__hosihikari_shim_handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk6dd4a2_Address
@@ -90,9 +91,9 @@ public sealed unsafe partial class File : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.File((nint)NativeMethods.TablePtr->C1.hs_method_e502811e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'brstd::source_location' is not a known bindable declaration.", false)]
     public static nint writeCreateOrAppendFileData(nint path, ulong offset, ulong numBytesToWrite, nint buffer, nint sourceLocation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'brstd::source_location' is not a known bindable declaration.");
 
 
     public void Dispose()

@@ -38,18 +38,20 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __commit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result __commit()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_ee8c694e((void*)__hosihikari_shim_handle));
+    }
 
     public void __onTeardown()
     {
         NativeMethods.TablePtr->C1.hs_method_2f113227((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __onTransactionsEmpty(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result __onTransactionsEmpty(bool arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_80f19b4e((void*)__hosihikari_shim_handle, arg0));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void _attemptExtendSize(nint currentFreeSpace, nint onCompleteCallback) =>
@@ -74,9 +76,10 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
     public nint _createTransaction(nint fileAccessType, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSystemImpl' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _ctor(nint type, nint rootPath, bool usesFlatFiles, bool isAccessedDirectly, nint parent) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public nint _ctor(int type, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView rootPath, bool usesFlatFiles, bool isAccessedDirectly, global::Hosihikari.Bindings.Abi.SharedHandle? parent)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_cfeebe3e((void*)__hosihikari_shim_handle, type, (void*)rootPath.Handle, usesFlatFiles, isAccessedDirectly, parent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
     public void _dtor()
     {
@@ -98,18 +101,20 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_b8b034dc((void*)__hosihikari_shim_handle, rawFileSize);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void _flushImmediately(nint flushPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void _flushImmediately(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView flushPath)
+    {
+        NativeMethods.TablePtr->C1.hs_method_deda4503((void*)__hosihikari_shim_handle, (void*)flushPath.Handle);
+    }
 
     public ulong _getAvailableUserStorageSize()
     {
         return NativeMethods.TablePtr->C1.hs_method_6b3c9a77((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getExtendSizeThreshold(nint outExtendSizeThreshold) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getExtendSizeThreshold(nint outExtendSizeThreshold)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_43f0c7c8((void*)__hosihikari_shim_handle, (void*)outExtendSizeThreshold));
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getFileIndexLru()
     {
@@ -161,9 +166,10 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_b7b7d120((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _setSaveDataIcon(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _setSaveDataIcon(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_caa27850((void*)__hosihikari_shim_handle, (void*)arg0.Handle));
+    }
 
     public void _setUsedSizeOverride(ulong fileSize)
     {
@@ -175,9 +181,9 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_b6a2618d((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::error_code' is not a known bindable declaration.", false)]
     public bool _shouldRecordFileError(nint path, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::error_code' is not a known bindable declaration.");
 
     public bool _supportsExtendSize()
     {
@@ -189,13 +195,15 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_661a5079((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void _trackBytesWritten(nint targetPath, ulong amount, nint writeOperation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void _trackBytesWritten(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetPath, ulong amount, int writeOperation)
+    {
+        NativeMethods.TablePtr->C1.hs_method_ef252bd3((void*)__hosihikari_shim_handle, (void*)targetPath.Handle, amount, writeOperation);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void _trackWriteOperation(nint targetPath, nint writeOperation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void _trackWriteOperation(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetPath, int writeOperation)
+    {
+        NativeMethods.TablePtr->C1.hs_method_1a7301a5((void*)__hosihikari_shim_handle, (void*)targetPath.Handle, writeOperation);
+    }
 
     public void _unloadFlatFileManifests(bool shouldClearManifests)
     {
@@ -213,9 +221,16 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return new FileStorageArea((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public static FileStorageArea Create(nint type, nint rootPath, bool usesFlatFiles, bool isAccessedDirectly, nint parent) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public static FileStorageArea Create(int type, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView rootPath, bool usesFlatFiles, bool isAccessedDirectly, global::Hosihikari.Bindings.Abi.SharedHandle? parent)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0a75a38d(type, (void*)rootPath.Handle, usesFlatFiles, isAccessedDirectly, parent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileStorageArea((nint)handle);
+    }
 
     public static FileStorageArea Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea arg0)
     {
@@ -243,26 +258,30 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_59b66e56((void*)__hosihikari_shim_handle, (void*)(pTransaction?.Handle ?? 0), arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _commit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _commit()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_49ca94e1((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _endTransaction(nint pTransaction, bool fromChild) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _endTransaction(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystemImpl? pTransaction, bool fromChild)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_f654d2c1((void*)__hosihikari_shim_handle, (void*)(pTransaction?.Handle ?? 0), fromChild));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint _getStorageAreaForPathImpl(nint fileStorageArea, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getStorageAreaForPathImpl(global::Hosihikari.Bindings.Abi.SharedHandle? fileStorageArea, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_ef0456ec(fileStorageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)path.Handle));
+    }
 
     public void _onTeardown()
     {
         NativeMethods.TablePtr->C1.hs_method_e5eb0780((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _onTransactionsEmpty(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _onTransactionsEmpty(bool arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_59b8bb5a((void*)__hosihikari_shim_handle, arg0));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void attemptExtendSize(nint currentFreeSpace, nint onCompleteCallback) =>
@@ -311,18 +330,20 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_5ea30df0((void*)__hosihikari_shim_handle, rawFileSize);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void flushImmediately(nint flushPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void flushImmediately(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView flushPath)
+    {
+        NativeMethods.TablePtr->C1.hs_method_02740fb1((void*)__hosihikari_shim_handle, (void*)flushPath.Handle);
+    }
 
     public ulong getAvailableUserStorageSize()
     {
         return NativeMethods.TablePtr->C1.hs_method_2507299b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getExtendSizeThreshold(nint outExtendSizeThreshold) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result getExtendSizeThreshold(nint outExtendSizeThreshold)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_713e7ded((void*)__hosihikari_shim_handle, (void*)outExtendSizeThreshold));
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getFileIndexLru()
     {
@@ -494,9 +515,10 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree((nint)NativeMethods.TablePtr->C1.hs_method_c59bfd3d(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint setSaveDataIcon(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result setSaveDataIcon(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_3972190d((void*)__hosihikari_shim_handle, (void*)arg0.Handle));
+    }
 
     public void setUsedSizeOverride(ulong fileSize)
     {
@@ -508,9 +530,9 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_f6f5aa1f((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::error_code' is not a known bindable declaration.", false)]
     public bool shouldRecordFileError(nint path, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::error_code' is not a known bindable declaration.");
 
     public bool supportsExtendSize()
     {
@@ -526,13 +548,15 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_6fce9db0((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void trackBytesWritten(nint targetPath, ulong amount, nint writeOperation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void trackBytesWritten(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetPath, ulong amount, int writeOperation)
+    {
+        NativeMethods.TablePtr->C1.hs_method_27f58caa((void*)__hosihikari_shim_handle, (void*)targetPath.Handle, amount, writeOperation);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void trackWriteOperation(nint targetPath, nint writeOperation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void trackWriteOperation(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetPath, int writeOperation)
+    {
+        NativeMethods.TablePtr->C1.hs_method_98124092((void*)__hosihikari_shim_handle, (void*)targetPath.Handle, writeOperation);
+    }
 
     public void unloadFlatFileManifests(bool shouldClearManifests)
     {

@@ -40,24 +40,24 @@ public sealed unsafe partial class LegacyBodyControl : global::System.IDisposabl
 
     public float mLastYHeadRot
     {
-        get => NativeMethods.TablePtr->C1.hs_get_c5334ed6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_c5334ed6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c5334ed6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c5334ed6((void*)__hosihikari_shim_handle, value);
     }
 
     public int mStillTicks
     {
-        get => NativeMethods.TablePtr->C1.hs_get_7557e126((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_7557e126((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_7557e126((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7557e126((void*)__hosihikari_shim_handle, value);
     }
 
     public void _clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->C1.hs_method_6f7ca593((void*)__hosihikari_shim_handle, (void*)mob.Handle);
+        NativeMethods.TablePtr->C2.hs_method_6f7ca593((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
     public static LegacyBodyControl Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyBodyControl arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_7343bbd3((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_7343bbd3((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,7 +68,7 @@ public sealed unsafe partial class LegacyBodyControl : global::System.IDisposabl
 
     public void clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->C1.hs_method_390ff46f((void*)__hosihikari_shim_handle, (void*)mob.Handle);
+        NativeMethods.TablePtr->C2.hs_method_390ff46f((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
 
@@ -78,7 +78,7 @@ public sealed unsafe partial class LegacyBodyControl : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_85608eaa((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_85608eaa((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

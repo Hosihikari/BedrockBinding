@@ -40,7 +40,7 @@ public sealed unsafe partial class RakNetSocket2Allocator : global::System.IDisp
 
     public static void DeallocRNS2(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakNetSocket2? s)
     {
-        NativeMethods.TablePtr->C2.hs_method_c38511c9((void*)(s?.Handle ?? 0));
+        NativeMethods.TablePtr->C3.hs_method_c38511c9((void*)(s?.Handle ?? 0));
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class RakNetSocket2Allocator : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_763cdc0f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_763cdc0f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -65,13 +65,15 @@ public sealed unsafe partial class FlatFileManifest : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_e53f765d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void _createFromVector(nint manifestPath, nint manifestInfoVector, ulong version, bool validatePaths) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint findFileOrDirectoryEntry(nint filePath, bool skipDeleted) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestInfo? findFileOrDirectoryEntry(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath, bool skipDeleted)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_aae9225b((void*)__hosihikari_shim_handle, (void*)filePath.Handle, skipDeleted);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestInfo((nint)__hs_handle, false) : null;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk15f051_Address

@@ -38,9 +38,10 @@ public sealed unsafe partial class FileStorageAreaFetcher : global::System.IDisp
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getStorageAreaForPath(nint fileStorageArea, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getStorageAreaForPath(global::Hosihikari.Bindings.Abi.SharedHandle? fileStorageArea, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_f0d91f39((void*)__hosihikari_shim_handle, fileStorageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)path.Handle));
+    }
 
     public static FileStorageAreaFetcher Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageAreaFetcher arg0)
     {
@@ -53,9 +54,10 @@ public sealed unsafe partial class FileStorageAreaFetcher : global::System.IDisp
         return new FileStorageAreaFetcher((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStorageAreaForPath(nint fileStorageArea, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result getStorageAreaForPath(global::Hosihikari.Bindings.Abi.SharedHandle? fileStorageArea, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_d2594983((void*)__hosihikari_shim_handle, fileStorageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)path.Handle));
+    }
 
 
     public void Dispose()

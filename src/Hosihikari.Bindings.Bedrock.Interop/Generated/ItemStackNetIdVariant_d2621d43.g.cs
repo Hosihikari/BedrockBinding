@@ -60,9 +60,10 @@ public sealed unsafe partial class ItemStackNetIdVariant : global::System.IDispo
         return new ItemStackNetIdVariant((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint deserialize(nint stream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ deserialize(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_e8ac2b3b((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVariant_Address

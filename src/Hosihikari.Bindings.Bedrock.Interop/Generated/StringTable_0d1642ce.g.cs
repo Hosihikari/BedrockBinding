@@ -40,7 +40,7 @@ public sealed unsafe partial class StringTable : global::System.IDisposable
 
     public static void RemoveReference()
     {
-        NativeMethods.TablePtr->C2.hs_method_69c19061();
+        NativeMethods.TablePtr->C3.hs_method_69c19061();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -50,12 +50,12 @@ public sealed unsafe partial class StringTable : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint orderedStringList_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_965d6a91((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_965d6a91((void*)__hosihikari_shim_handle);
     }
 
     public static nint referenceCount()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_17463c0e();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_17463c0e();
     }
 
     public void Dispose()
@@ -64,7 +64,7 @@ public sealed unsafe partial class StringTable : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_0d1642ce((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_0d1642ce((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

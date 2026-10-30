@@ -14,10 +14,10 @@ This branch targets **BDS 1.26.51.1** through the headers of LeviLamina `ee049f1
 
 ## Current state
 
-- Interop: 9,110 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
-- Binding Shim: 135,927 functions in `native/BindingShim/generated/win-x64-server/bedrock/`.
-- Coverage: 12,043 declarations and 100,896 members bound for `win-x64-server`.
-- `scripts/headers-26.51.txt` lists the 5,192 headers parsed for the surface. Every declaration reachable from them is emitted; layouts and field offsets come from the frontend's AST record layout, so a record keeps its fields as long as the headers prove them.
+- Interop: 9,112 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
+- Binding Shim: 137,407 functions in `native/BindingShim/generated/win-x64-server/bedrock/`.
+- Coverage: 12,045 declarations and 100,918 members bound for `win-x64-server`.
+- `scripts/headers-26.51.txt` lists the 5,194 headers parsed for the surface. Every declaration reachable from them is emitted; layouts and field offsets come from the frontend's AST record layout, so a record keeps its fields as long as the headers prove them.
 
 The shim is emitted in `--symbol-dispatch --resolve-by-name` mode. Supported ABI:
 
@@ -25,6 +25,7 @@ The shim is emitted in `--symbol-dispatch --resolve-by-name` mode. Supported ABI
 - `std::string` / `std::string_view` values and const references;
 - single-level `T*` / `T&` as `void*`;
 - by-value records: small `triviallyCopyable` records travel in integer registers, larger records use a stack temporary; a record that is not trivially copyable is built through its copy constructor (resolved by name) and released by the callee when its destructor is non-trivial, and a trivially destructible record without a recorded copy constructor is copied as bytes while still using the hidden-reference convention;
+- by-value results whose signature spelling omits defaulted template arguments resolve to the recorded specialization (`Bedrock::Result<T>` binds to `Bedrock::Result<T, std::error_code>`), so the call returns an owned wrapper with a working `Dispose`;
 - fields whose type is not projected expose the address of the field storage as a read-only `nint` named `<field>_Address`;
 - `optional_ref<T>` parameters and results with the presence flag;
 - `std::vector<T>` parameters and by-value results whose element is a scalar/enum, a string, a single-level pointer (surfacing as `nint[]`), or a trivially destructible record with a recorded layout; reference and pointer vector results remain borrowed handles;

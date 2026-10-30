@@ -40,12 +40,12 @@ public sealed unsafe partial class LegacyActorArmorChangedListener : global::Sys
 
     public void _containerContentChanged(int arg0)
     {
-        NativeMethods.TablePtr->C1.hs_method_c669b6e4((void*)__hosihikari_shim_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_c669b6e4((void*)__hosihikari_shim_handle, arg0);
     }
 
     public static LegacyActorArmorChangedListener Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_9af3dd15();
+        var handle = NativeMethods.TablePtr->C2.hs_create_9af3dd15();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class LegacyActorArmorChangedListener : global::Sys
 
     public static LegacyActorArmorChangedListener Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyActorArmorChangedListener arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_0e53310d((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_0e53310d((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,28 +67,28 @@ public sealed unsafe partial class LegacyActorArmorChangedListener : global::Sys
 
     public static void containerContentChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->C1.hs_method_af6efe28((void*)actor.Handle);
+        NativeMethods.TablePtr->C2.hs_method_af6efe28((void*)actor.Handle);
     }
 
     public void containerContentChanged(int arg0)
     {
-        NativeMethods.TablePtr->C1.hs_method_4df46829((void*)__hosihikari_shim_handle, arg0);
+        NativeMethods.TablePtr->C2.hs_method_4df46829((void*)__hosihikari_shim_handle, arg0);
     }
 
     public static void initializeEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        NativeMethods.TablePtr->C1.hs_method_2d2f6eb4((void*)entity.Handle);
+        NativeMethods.TablePtr->C2.hs_method_2d2f6eb4((void*)entity.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka51d7e_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_167fa479((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_167fa479((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LegacyActorArmorChangedListener operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LegacyActorArmorChangedListener arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyActorArmorChangedListener((nint)NativeMethods.TablePtr->C1.hs_method_7f445c60((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyActorArmorChangedListener((nint)NativeMethods.TablePtr->C2.hs_method_7f445c60((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -98,7 +98,7 @@ public sealed unsafe partial class LegacyActorArmorChangedListener : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_c3868e68((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_c3868e68((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

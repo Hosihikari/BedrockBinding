@@ -59,13 +59,29 @@ public sealed unsafe partial class NullSoundPlayer : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_d0dd192b((void*)__hosihikari_shim_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathView' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getCurrentlyPlayingMusicPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathView' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView _getCurrentlyPlayingMusicPath()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView((nint)NativeMethods.TablePtr->C2.hs_method_4d816c9c((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public bool _getItem(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public bool _getItem(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView arg1, nint arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_eafb7f31((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)arg2) != 0;
+        }
+    }
 
     public string? _getSubtitle(string arg0)
     {
@@ -93,9 +109,10 @@ public sealed unsafe partial class NullSoundPlayer : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_dfafd9b7((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public bool _isPlayingMusic(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public bool _isPlayingMusic(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView arg0)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_66704c37((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
 
     public bool _isPlayingMusicEvent(string arg0)
     {
@@ -331,13 +348,29 @@ public sealed unsafe partial class NullSoundPlayer : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_4ac7e84a((void*)__hosihikari_shim_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathView' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCurrentlyPlayingMusicPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathView' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView getCurrentlyPlayingMusicPath()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView((nint)NativeMethods.TablePtr->C2.hs_method_0f1d45c8((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public bool getItem(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public bool getItem(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView arg1, nint arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C2.hs_method_2a452a2b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)arg2) != 0;
+        }
+    }
 
     public string? getSubtitle(string arg0)
     {
@@ -365,9 +398,10 @@ public sealed unsafe partial class NullSoundPlayer : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_c811ecf5((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public bool isPlayingMusic(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public bool isPlayingMusic(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView arg0)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0bdace9e((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
 
     public bool isPlayingMusicEvent(string arg0)
     {

@@ -94,9 +94,10 @@ public sealed unsafe partial class FlatFileManifestInfo : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestInfo((nint)NativeMethods.TablePtr->C1.hs_method_ee3b8e75((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void setPath(nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void setPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        NativeMethods.TablePtr->C1.hs_method_9f455783((void*)__hosihikari_shim_handle, (void*)path.Handle);
+    }
 
 
     public void Dispose()

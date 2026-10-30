@@ -38,9 +38,10 @@ public sealed unsafe partial class StorageAreaState : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _ctor(nint storageAreaRootPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView storageAreaRootPath)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_5047252e((void*)__hosihikari_shim_handle, (void*)storageAreaRootPath.Handle);
+    }
 
     public void _dtor()
     {
@@ -58,9 +59,16 @@ public sealed unsafe partial class StorageAreaState : global::System.IDisposable
         return new StorageAreaState((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public static StorageAreaState Create(nint storageAreaRootPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public static StorageAreaState Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView storageAreaRootPath)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4b793f64((void*)storageAreaRootPath.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StorageAreaState((nint)handle);
+    }
 
     public static StorageAreaState Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreaState arg0)
     {

@@ -40,7 +40,7 @@ public sealed unsafe partial class ContainerScreenValidatorBase : global::System
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_47f37bc9((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_47f37bc9((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -49,12 +49,12 @@ public sealed unsafe partial class ContainerScreenValidatorBase : global::System
 
     public bool _isCraftingImplemented()
     {
-        return NativeMethods.TablePtr->C0.hs_method_e93d9317((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_e93d9317((void*)__hosihikari_shim_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _postCommitItemRemoved(byte containerEnumName, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_78cabba5((void*)__hosihikari_shim_handle, containerEnumName, slot, (void*)item.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_78cabba5((void*)__hosihikari_shim_handle, containerEnumName, slot, (void*)item.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
@@ -64,7 +64,7 @@ public sealed unsafe partial class ContainerScreenValidatorBase : global::System
 
     public static ContainerScreenValidatorBase Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenValidatorBase arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_6d00e34f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_6d00e34f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -79,18 +79,18 @@ public sealed unsafe partial class ContainerScreenValidatorBase : global::System
 
     public bool isCraftingImplemented()
     {
-        return NativeMethods.TablePtr->C0.hs_method_3210d712((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_3210d712((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValidContainerEnumNames_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_7e219b82((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7e219b82((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? postCommitItemRemoved(byte containerEnumName, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
-        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_e868d7b8((void*)__hosihikari_shim_handle, containerEnumName, slot, (void*)item.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_e868d7b8((void*)__hosihikari_shim_handle, containerEnumName, slot, (void*)item.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
@@ -101,7 +101,7 @@ public sealed unsafe partial class ContainerScreenValidatorBase : global::System
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_3c6c1dc7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_3c6c1dc7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

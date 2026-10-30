@@ -100,7 +100,7 @@ public sealed unsafe partial class RakPeerInterface : global::System.IDisposable
 
     public static ulong Get64BitUniqueRandomNumber()
     {
-        return NativeMethods.TablePtr->C2.hs_method_e7bfa823();
+        return NativeMethods.TablePtr->C3.hs_method_e7bfa823();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -285,7 +285,7 @@ public sealed unsafe partial class RakPeerInterface : global::System.IDisposable
 
     public static RakPeerInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_af03105b((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_af03105b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -409,7 +409,7 @@ public sealed unsafe partial class RakPeerInterface : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_48721f05((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_48721f05((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

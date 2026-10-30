@@ -65,9 +65,10 @@ public sealed unsafe partial class JournaledFile : global::System.IDisposable
         return new JournaledFile((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint close() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result close()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_4441cdb6((void*)__hosihikari_shim_handle));
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ findBackupPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fileName)
     {
@@ -108,9 +109,10 @@ public sealed unsafe partial class JournaledFile : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_8032f70a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint open(nint filePath, nint fileOpenMode, nint bufferingMode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result open(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filePath, global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode fileOpenMode, int bufferingMode)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_a3dbea32((void*)__hosihikari_shim_handle, (void*)filePath.Handle, (void*)fileOpenMode.Handle, bufferingMode));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.JournaledFile operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.JournaledFile arg0)
     {
@@ -143,13 +145,15 @@ public sealed unsafe partial class JournaledFile : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint replaceHeadFileWithBackup(nint fileName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core.Result replaceHeadFileWithBackup(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fileName)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_a317404f((void*)fileName.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint write(nint pBuf, ulong numBytes) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result write(nint pBuf, ulong numBytes)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_57ac7c85((void*)__hosihikari_shim_handle, (void*)pBuf, numBytes));
+    }
 
 
     public void Dispose()

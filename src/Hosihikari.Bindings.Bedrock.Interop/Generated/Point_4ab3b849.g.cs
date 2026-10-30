@@ -40,62 +40,62 @@ public sealed unsafe partial class Point : global::System.IDisposable
 
     public static nint CONTINENTS_EXTRACTOR()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_ea608caf();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_ea608caf();
     }
 
     public static nint EROSION_EXTRACTOR()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_d6b12ee4();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_d6b12ee4();
     }
 
     public static nint RIDGES_EXTRACTOR()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_8a562008();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_8a562008();
     }
 
     public static nint WEIRDNESS_EXTRACTOR()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_01e38274();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_01e38274();
     }
 
     public static float getContinents(global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper_Nested.Point point)
     {
-        return NativeMethods.TablePtr->C3.hs_method_8fc02d15((void*)point.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_8fc02d15((void*)point.Handle);
     }
 
     public static float getErosion(global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper_Nested.Point point)
     {
-        return NativeMethods.TablePtr->C3.hs_method_75131f8a((void*)point.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_75131f8a((void*)point.Handle);
     }
 
     public static float getRidges(global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper_Nested.Point point)
     {
-        return NativeMethods.TablePtr->C3.hs_method_7152b53a((void*)point.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_7152b53a((void*)point.Handle);
     }
 
     public static float getWeirdness(global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper_Nested.Point point)
     {
-        return NativeMethods.TablePtr->C3.hs_method_06ba697c((void*)point.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_06ba697c((void*)point.Handle);
     }
 
     public float mContinents
     {
-        get => NativeMethods.TablePtr->C3.hs_get_eb48fc0e((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_eb48fc0e((void*)__hosihikari_shim_handle);
     }
 
     public float mErosion
     {
-        get => NativeMethods.TablePtr->C3.hs_get_7b413621((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_7b413621((void*)__hosihikari_shim_handle);
     }
 
     public float mRidges
     {
-        get => NativeMethods.TablePtr->C3.hs_get_e8aee9d4((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_e8aee9d4((void*)__hosihikari_shim_handle);
     }
 
     public float mWeirdness
     {
-        get => NativeMethods.TablePtr->C3.hs_get_af4157ab((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_af4157ab((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -104,7 +104,7 @@ public sealed unsafe partial class Point : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_4ab3b849((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_4ab3b849((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

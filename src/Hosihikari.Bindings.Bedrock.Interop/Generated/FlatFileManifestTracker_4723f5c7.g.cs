@@ -60,9 +60,11 @@ public sealed unsafe partial class FlatFileManifestTracker : global::System.IDis
         return new FlatFileManifestTracker((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint loadManifest(nint manifestPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? loadManifest(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView manifestPath)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_e1bb65b0((void*)__hosihikari_shim_handle, (void*)manifestPath.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk3b8242_Address
@@ -82,18 +84,20 @@ public sealed unsafe partial class FlatFileManifestTracker : global::System.IDis
         get => (nint)NativeMethods.TablePtr->C1.hs_get_590c8bb2((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public bool manifestExists(nint manifestPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public bool manifestExists(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView manifestPath)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_235d1580((void*)__hosihikari_shim_handle, (void*)manifestPath.Handle) != 0;
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestTracker operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestTracker arg0)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestTracker((nint)NativeMethods.TablePtr->C1.hs_method_8d1986e2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public bool tryUnloadManifest(nint manifestPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public bool tryUnloadManifest(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView manifestPath)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c7614b0d((void*)__hosihikari_shim_handle, (void*)manifestPath.Handle) != 0;
+    }
 
     public void Dispose()
     {

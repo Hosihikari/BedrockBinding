@@ -40,22 +40,22 @@ public sealed unsafe partial class TerrainShaper : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_f8a087d7((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_f8a087d7((void*)__hosihikari_shim_handle);
     }
 
     public float FACTOR_SCALER
     {
-        get => NativeMethods.TablePtr->C3.hs_get_56cd0062((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_56cd0062((void*)__hosihikari_shim_handle);
     }
 
     public float GLOBAL_OFFSET
     {
-        get => NativeMethods.TablePtr->C3.hs_get_55668328((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_55668328((void*)__hosihikari_shim_handle);
     }
 
     public static TerrainShaper Create(global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_2a8ca342((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_2a8ca342((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -78,7 +78,7 @@ public sealed unsafe partial class TerrainShaper : global::System.IDisposable
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper buildOverworld()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper((nint)NativeMethods.TablePtr->C3.hs_method_b807c3a3());
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper((nint)NativeMethods.TablePtr->C4.hs_method_b807c3a3());
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -96,19 +96,19 @@ public sealed unsafe partial class TerrainShaper : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mFactorSpline_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_2925133f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_2925133f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mJaggednessSpline_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6ffcf39a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6ffcf39a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOffsetSpline_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_54e10eb9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_54e10eb9((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -122,7 +122,7 @@ public sealed unsafe partial class TerrainShaper : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_04641154((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_04641154((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

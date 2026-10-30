@@ -112,13 +112,15 @@ public sealed unsafe partial class DirectoryIterationItem : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem((nint)NativeMethods.TablePtr->C1.hs_method_43dc893f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void setFullPathName(nint fullPathName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void setFullPathName(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView fullPathName)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f9ccce67((void*)__hosihikari_shim_handle, (void*)fullPathName.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void setName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void setName(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView name)
+    {
+        NativeMethods.TablePtr->C1.hs_method_0408bf4c((void*)__hosihikari_shim_handle, (void*)name.Handle);
+    }
 
 
     public void Dispose()

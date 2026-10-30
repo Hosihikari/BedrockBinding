@@ -57,9 +57,10 @@ public sealed unsafe partial class ShortTag : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_c8d9e05a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _load(nint dis) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _load(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput dis)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C3.hs_method_d45c5758((void*)__hosihikari_shim_handle, (void*)dis.Handle));
+    }
 
     public string _toString()
     {
@@ -123,9 +124,10 @@ public sealed unsafe partial class ShortTag : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_1bae5d8a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint load(nint dis) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ load(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput dis)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C3.hs_method_a0c92b75((void*)__hosihikari_shim_handle, (void*)dis.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ShortTag operator_subtract()
     {

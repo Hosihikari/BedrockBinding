@@ -40,13 +40,13 @@ public sealed unsafe partial class LegacyEventItemComponent : global::System.IDi
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ec647612((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_ec647612((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ec647612((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ec647612((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_0f8bea44((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_0f8bea44((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -59,7 +59,7 @@ public sealed unsafe partial class LegacyEventItemComponent : global::System.IDi
 
     public static LegacyEventItemComponent Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_689f5893();
+        var handle = NativeMethods.TablePtr->C2.hs_create_689f5893();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -74,7 +74,7 @@ public sealed unsafe partial class LegacyEventItemComponent : global::System.IDi
 
     public static LegacyEventItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyEventItemComponent arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_c51c72ec((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_c51c72ec((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -85,25 +85,25 @@ public sealed unsafe partial class LegacyEventItemComponent : global::System.IDi
 
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_07595ba5((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_07595ba5((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEventHandlers_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_20c9a359((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_20c9a359((void*)__hosihikari_shim_handle);
     }
 
     public nint mTriggerHandler
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8c3cb8e3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_8c3cb8e3((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8c3cb8e3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8c3cb8e3((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTriggerSubscriptions_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ad899545((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ad899545((void*)__hosihikari_shim_handle);
     }
 
 
@@ -113,7 +113,7 @@ public sealed unsafe partial class LegacyEventItemComponent : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_4bcd8b64((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_4bcd8b64((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

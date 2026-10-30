@@ -104,9 +104,10 @@ public sealed unsafe partial class FileSecureStorage : global::System.IDisposabl
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _ctor(nint settingsPath, nint baseSettingsPath, nint sskSystem, nint userDataPath, nint storage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView settingsPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView baseSettingsPath, global::Hosihikari.Bindings.Bedrock.Interop.ISecureStorageKeySystem? sskSystem, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView userDataPath, global::Hosihikari.Bindings.Bedrock.Interop.FileSecureStorage_Nested.StorageSystem? storage)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_2c38ba3f((void*)__hosihikari_shim_handle, (void*)settingsPath.Handle, (void*)baseSettingsPath.Handle, (void*)(sskSystem?.Handle ?? 0), (void*)userDataPath.Handle, (void*)(storage?.Handle ?? 0));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public bool _get(nint key, nint outValue) =>
@@ -142,9 +143,16 @@ public sealed unsafe partial class FileSecureStorage : global::System.IDisposabl
         return new FileSecureStorage((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public static FileSecureStorage Create(nint settingsPath, nint baseSettingsPath, nint sskSystem, nint userDataPath, nint storage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public static FileSecureStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView settingsPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView baseSettingsPath, global::Hosihikari.Bindings.Bedrock.Interop.ISecureStorageKeySystem? sskSystem, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView userDataPath, global::Hosihikari.Bindings.Bedrock.Interop.FileSecureStorage_Nested.StorageSystem? storage)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3d901d09((void*)settingsPath.Handle, (void*)baseSettingsPath.Handle, (void*)(sskSystem?.Handle ?? 0), (void*)userDataPath.Handle, (void*)(storage?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileSecureStorage((nint)handle);
+    }
 
     public static FileSecureStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.FileSecureStorage arg0)
     {

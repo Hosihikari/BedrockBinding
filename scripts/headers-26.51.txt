@@ -128,6 +128,7 @@ mc/deps/core/file/FlushingIOController.h
 mc/deps/core/file/InputFileStream.h
 mc/deps/core/file/LevelStorageResult.h
 mc/deps/core/file/OutputFileStream.h
+mc/deps/core/file/PathView.h
 mc/deps/core/file/StorageAreaState.h
 mc/deps/core/file/StorageAreaStateListener.h
 mc/deps/core/file/StorageAreasTree.h
@@ -201,6 +202,7 @@ mc/deps/core/platform/ActivationArguments.h
 mc/deps/core/platform/AppLifecycleContext.h
 mc/deps/core/platform/PlatformBuildInfo.h
 mc/deps/core/platform/PlatformRuntimeInfo.h
+mc/deps/core/platform/Result.h
 mc/deps/core/platform/win/file/FileSystem_windows.h
 mc/deps/core/platform/win/file/File_c_windows.h
 mc/deps/core/platform/win/file/StorageArea_windows.h

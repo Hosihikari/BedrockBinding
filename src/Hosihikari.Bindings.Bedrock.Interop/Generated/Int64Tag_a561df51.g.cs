@@ -57,9 +57,10 @@ public sealed unsafe partial class Int64Tag : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_b785d46d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _load(nint dis) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _load(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput dis)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_ad5c723c((void*)__hosihikari_shim_handle, (void*)dis.Handle));
+    }
 
     public string _toString()
     {
@@ -123,9 +124,10 @@ public sealed unsafe partial class Int64Tag : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_7d3eb718((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint load(nint dis) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ load(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput dis)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_010b4c30((void*)__hosihikari_shim_handle, (void*)dis.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Int64Tag operator_subtract()
     {

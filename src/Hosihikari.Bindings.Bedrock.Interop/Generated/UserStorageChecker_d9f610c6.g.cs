@@ -85,9 +85,10 @@ public sealed unsafe partial class UserStorageChecker : global::System.IDisposab
         return new global::Hosihikari.Bindings.Bedrock.Interop.UserStorageChecker((nint)NativeMethods.TablePtr->C4.hs_method_0532129f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public void queueCheckUserStorage(nint storagePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public void queueCheckUserStorage(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView storagePath)
+    {
+        NativeMethods.TablePtr->C4.hs_method_838be40f((void*)__hosihikari_shim_handle, (void*)storagePath.Handle);
+    }
 
     public void Dispose()
     {

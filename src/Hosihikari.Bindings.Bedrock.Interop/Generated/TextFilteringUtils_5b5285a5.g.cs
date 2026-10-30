@@ -42,7 +42,7 @@ public sealed unsafe partial class TextFilteringUtils : global::System.IDisposab
     {
         fixed (int* __hs_vectorData0 = events)
         {
-            return NativeMethods.TablePtr->C3.hs_method_72f9818f((void*)(packetSender?.Handle ?? 0), (void*)source.Handle, (void*)subClientId, __hs_vectorData0, (nuint)(events?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_72f9818f((void*)(packetSender?.Handle ?? 0), (void*)source.Handle, (void*)subClientId, __hs_vectorData0, (nuint)(events?.Length ?? 0)) != 0;
         }
     }
 
@@ -56,7 +56,7 @@ public sealed unsafe partial class TextFilteringUtils : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_5b5285a5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_5b5285a5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

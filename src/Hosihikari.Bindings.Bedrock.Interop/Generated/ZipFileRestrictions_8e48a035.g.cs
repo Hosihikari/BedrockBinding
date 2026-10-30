@@ -91,9 +91,10 @@ public sealed unsafe partial class ZipFileRestrictions : global::System.IDisposa
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public bool allowFile(nint file) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public bool allowFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView file)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_167306c6((void*)__hosihikari_shim_handle, (void*)file.Handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mForbiddenExtensions_Address

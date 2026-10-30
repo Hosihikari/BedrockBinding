@@ -40,7 +40,7 @@ public sealed unsafe partial class TeleportComponent : global::System.IDisposabl
 
     public static TeleportComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.TeleportComponent arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_e9ef9b59((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_e9ef9b59((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,93 +51,93 @@ public sealed unsafe partial class TeleportComponent : global::System.IDisposabl
 
     public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->C3.hs_method_4c08d7d3((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+        NativeMethods.TablePtr->C4.hs_method_4c08d7d3((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
     public float mDarkTeleportChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_b66b2c5f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_b66b2c5f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_b66b2c5f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_b66b2c5f((void*)__hosihikari_shim_handle, value);
     }
 
     public float mLightTeleportChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_4fbfad4c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_4fbfad4c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_4fbfad4c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_4fbfad4c((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMaxTeleportTime
     {
-        get => NativeMethods.TablePtr->C3.hs_get_78fb3874((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_78fb3874((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_78fb3874((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_78fb3874((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMinTeleportTime
     {
-        get => NativeMethods.TablePtr->C3.hs_get_b4f77d9e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_b4f77d9e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_b4f77d9e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_b4f77d9e((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mProjectileFilter_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_20baeeee((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_20baeeee((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRandomTeleportCube_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_8a52ba78((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8a52ba78((void*)__hosihikari_shim_handle);
     }
 
     public bool mRandomTeleports
     {
-        get => NativeMethods.TablePtr->C3.hs_get_6a4275d9((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_6a4275d9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_6a4275d9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_6a4275d9((void*)__hosihikari_shim_handle, value);
     }
 
     public float mTargetDistance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_eb5b06fe((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_eb5b06fe((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_eb5b06fe((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_eb5b06fe((void*)__hosihikari_shim_handle, value);
     }
 
     public float mTargetTeleportChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_8419e3c0((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_8419e3c0((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_8419e3c0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_8419e3c0((void*)__hosihikari_shim_handle, value);
     }
 
     public int mTeleportTime
     {
-        get => NativeMethods.TablePtr->C3.hs_get_2e274a36((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_2e274a36((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_2e274a36((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_2e274a36((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mTeleportsOnProjectileHit
     {
-        get => NativeMethods.TablePtr->C3.hs_get_dd287f7f((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_dd287f7f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_dd287f7f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_dd287f7f((void*)__hosihikari_shim_handle, value);
     }
 
     public bool randomTeleport(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->C3.hs_method_e1735286((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_e1735286((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
     }
 
     public bool teleport(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {
-        return NativeMethods.TablePtr->C3.hs_method_00a7f3bc((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)pos.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_00a7f3bc((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)pos.Handle) != 0;
     }
 
     public bool teleportTowards(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
     {
-        return NativeMethods.TablePtr->C3.hs_method_fbd56810((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)target.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_fbd56810((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)target.Handle) != 0;
     }
 
     public bool tryTeleportFromProjectileHit(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor projectile)
     {
-        return NativeMethods.TablePtr->C3.hs_method_0d357c19((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)projectile.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_0d357c19((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)projectile.Handle) != 0;
     }
 
 
@@ -147,7 +147,7 @@ public sealed unsafe partial class TeleportComponent : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_5a2570b6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_5a2570b6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

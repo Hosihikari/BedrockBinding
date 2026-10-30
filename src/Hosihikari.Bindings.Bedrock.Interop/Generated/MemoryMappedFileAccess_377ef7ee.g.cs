@@ -53,9 +53,24 @@ public sealed unsafe partial class MemoryMappedFileAccess : global::System.IDisp
         return NativeMethods.TablePtr->C2.hs_method_96453b73((void*)__hosihikari_shim_handle, (void*)file);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _fopen(nint filePath, nint mode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public nint _fopen(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath, string mode)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(mode);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(mode, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C2.hs_method_ed83d4a6((void*)__hosihikari_shim_handle, (void*)filePath.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
     public int _fseek(nint file, long offset, int origin)
     {
@@ -124,9 +139,24 @@ public sealed unsafe partial class MemoryMappedFileAccess : global::System.IDisp
         return NativeMethods.TablePtr->C2.hs_method_cc224a24((void*)__hosihikari_shim_handle, (void*)file);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint fopen(nint filePath, nint mode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public nint fopen(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath, string mode)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(mode);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(mode, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C2.hs_method_56d5895e((void*)__hosihikari_shim_handle, (void*)filePath.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
     public int fseek(nint file, long offset, int origin)
     {

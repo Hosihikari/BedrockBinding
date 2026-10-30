@@ -43,9 +43,10 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_6aaf6be8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _read(nint target, ulong num) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _read(nint target, ulong num)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C3.hs_method_e4db625c((void*)__hosihikari_shim_handle, (void*)target, num));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -59,9 +60,10 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
     public static ReadOnlyBinaryStream Create(nint buffer, bool copyBuffer) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ensureReadCompleted() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ ensureReadCompleted()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C3.hs_method_7673be7f((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<bool>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getBool() =>
@@ -79,9 +81,13 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
     public nint getFloat() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<float>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getRawBytes(nint outBuffer, ulong length) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ getRawBytes(byte[] outBuffer, ulong length)
+    {
+        fixed (byte* __hs_vectorData0 = outBuffer)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C3.hs_method_3bdc1350((void*)__hosihikari_shim_handle, length, __hs_vectorData0, (nuint)(outBuffer?.Length ?? 0)));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<int>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getSignedBigEndianInt() =>
@@ -107,9 +113,9 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
     public nint getString(ulong maxLength) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public nint getString(nint outStringStream, ulong maxLength) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getUnsignedChar() =>
@@ -167,9 +173,10 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
         get => (nint)NativeMethods.TablePtr->C3.hs_get_78b0824c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint read(nint target, ulong num) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ read(nint target, ulong num)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C3.hs_method_3bc09e02((void*)__hosihikari_shim_handle, (void*)target, num));
+    }
 
 
     public void Dispose()

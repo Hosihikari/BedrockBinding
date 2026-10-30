@@ -44,9 +44,12 @@ public sealed unsafe partial class FileSizePresetManagerImpl : global::System.ID
         get => (nint)NativeMethods.TablePtr->C1.hs_get_d3d2d936((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _checkFileInitialSize(nint filePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public ulong? _checkFileInitialSize(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C1.hs_method_c8077344((void*)__hosihikari_shim_handle, (void*)filePath.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (ulong?)null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
     public nint _presetInitialSizeForFile(nint filePath, ulong initialFileSize) =>
@@ -82,9 +85,12 @@ public sealed unsafe partial class FileSizePresetManagerImpl : global::System.ID
         return new FileSizePresetManagerImpl((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint checkFileInitialSize(nint filePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public ulong? checkFileInitialSize(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C1.hs_method_02a0722a((void*)__hosihikari_shim_handle, (void*)filePath.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (ulong?)null;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbcb807_Address

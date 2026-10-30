@@ -40,12 +40,12 @@ public sealed unsafe partial class LayeredAbilities : global::System.IDisposable
 
     public nint _ctor()
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_6606cdb9((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_6606cdb9((void*)__hosihikari_shim_handle);
     }
 
     public static LayeredAbilities Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_1141060b();
+        var handle = NativeMethods.TablePtr->C2.hs_create_1141060b();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class LayeredAbilities : global::System.IDisposable
 
     public static LayeredAbilities Create(global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_66d20e6a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_66d20e6a((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -79,54 +79,54 @@ public sealed unsafe partial class LayeredAbilities : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Ability getAbility_01fb0e9e(sbyte val)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->C1.hs_method_01fb0e9e((void*)__hosihikari_shim_handle, val), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->C2.hs_method_01fb0e9e((void*)__hosihikari_shim_handle, val), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Ability getAbility(ushort layer, sbyte val)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->C1.hs_method_5a3de719((void*)__hosihikari_shim_handle, layer, val), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->C2.hs_method_5a3de719((void*)__hosihikari_shim_handle, layer, val), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Ability getAbility_6aed1c39(sbyte val)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->C1.hs_method_6aed1c39((void*)__hosihikari_shim_handle, val), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->C2.hs_method_6aed1c39((void*)__hosihikari_shim_handle, val), false);
     }
 
     public bool getBool(sbyte val)
     {
-        return NativeMethods.TablePtr->C1.hs_method_c934e7f3((void*)__hosihikari_shim_handle, val) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_c934e7f3((void*)__hosihikari_shim_handle, val) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLayers_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_19fec217((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_19fec217((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPermissions_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1aac01e9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1aac01e9((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities rhs)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities((nint)NativeMethods.TablePtr->C1.hs_method_d9b59028((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities((nint)NativeMethods.TablePtr->C2.hs_method_d9b59028((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
     }
 
     public bool setAbility(sbyte val, bool value)
     {
-        return NativeMethods.TablePtr->C1.hs_method_f54a1604((void*)__hosihikari_shim_handle, val, value) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_f54a1604((void*)__hosihikari_shim_handle, val, value) != 0;
     }
 
     public bool setAbility(sbyte val, float value)
     {
-        return NativeMethods.TablePtr->C1.hs_method_e45d531d((void*)__hosihikari_shim_handle, val, value) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_e45d531d((void*)__hosihikari_shim_handle, val, value) != 0;
     }
 
     public void setPlayerPermissions(sbyte permissions)
     {
-        NativeMethods.TablePtr->C1.hs_method_68565d58((void*)__hosihikari_shim_handle, permissions);
+        NativeMethods.TablePtr->C2.hs_method_68565d58((void*)__hosihikari_shim_handle, permissions);
     }
 
 
@@ -136,7 +136,7 @@ public sealed unsafe partial class LayeredAbilities : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_da413351((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_da413351((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

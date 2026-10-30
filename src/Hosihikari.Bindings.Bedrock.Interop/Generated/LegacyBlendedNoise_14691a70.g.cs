@@ -40,12 +40,12 @@ public sealed unsafe partial class LegacyBlendedNoise : global::System.IDisposab
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_885e9031((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_885e9031((void*)__hosihikari_shim_handle, (void*)random.Handle);
     }
 
     public static LegacyBlendedNoise Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_209fc315();
+        var handle = NativeMethods.TablePtr->C2.hs_create_209fc315();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class LegacyBlendedNoise : global::System.IDisposab
 
     public static LegacyBlendedNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_ee496373((void*)random.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_ee496373((void*)random.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,7 +67,7 @@ public sealed unsafe partial class LegacyBlendedNoise : global::System.IDisposab
 
     public static LegacyBlendedNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyBlendedNoise arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_a4b1e3cb((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_a4b1e3cb((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -79,19 +79,19 @@ public sealed unsafe partial class LegacyBlendedNoise : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mainNoise_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_02d69f5d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_02d69f5d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint maxLimitNoise_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b7e6eb99((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b7e6eb99((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint minLimitNoise_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d4ba008f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d4ba008f((void*)__hosihikari_shim_handle);
     }
 
 
@@ -101,7 +101,7 @@ public sealed unsafe partial class LegacyBlendedNoise : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_14691a70((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_14691a70((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

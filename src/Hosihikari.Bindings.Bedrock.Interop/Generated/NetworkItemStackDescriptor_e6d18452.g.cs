@@ -136,9 +136,10 @@ public sealed unsafe partial class NetworkItemStackDescriptor : global::System.I
         return NativeMethods.TablePtr->C2.hs_method_68fa8577((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint read(nint stream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ read(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_3cf15a86((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+    }
 
 
     public void Dispose()

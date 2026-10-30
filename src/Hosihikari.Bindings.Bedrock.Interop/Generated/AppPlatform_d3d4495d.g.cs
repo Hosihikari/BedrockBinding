@@ -180,9 +180,11 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_6af4a105((void*)__hosihikari_shim_handle, (void*)filePath.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint _createLoggingStorageArea(nint fileAccessType, nint loggingPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _createLoggingStorageArea(int fileAccessType, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView loggingPath)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_ed92e773((void*)__hosihikari_shim_handle, fileAccessType, (void*)loggingPath.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public void _createUserInput()
     {
@@ -1598,9 +1600,11 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_f52181f5((void*)__hosihikari_shim_handle, (void*)filePath.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
-    public nint createLoggingStorageArea(nint fileAccessType, nint loggingPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createLoggingStorageArea(int fileAccessType, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView loggingPath)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_d3bb7803((void*)__hosihikari_shim_handle, fileAccessType, (void*)loggingPath.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public void createUserInput()
     {

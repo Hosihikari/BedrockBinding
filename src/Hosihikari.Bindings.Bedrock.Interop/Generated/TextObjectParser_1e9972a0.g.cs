@@ -40,78 +40,78 @@ public sealed unsafe partial class TextObjectParser : global::System.IDisposable
 
     public static string RAW_TEXT_ERROR_NOT_ARRAY()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_83b2f02f();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_83b2f02f();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_NOT_OBJECT()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_90a260ed();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_90a260ed();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_NO_DATA()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_55542835();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_55542835();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_PARSE_FAILED()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_dbae41b9();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_dbae41b9();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_SCORE_NAME_NOT_STRING()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_e418279c();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_e418279c();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_SCORE_NOT_OBJECT()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_759b12ca();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_759b12ca();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_SCORE_OBJECTIVE_NOT_STRING()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_670ec1ec();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_670ec1ec();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_SELECTOR_NOT_STRING()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_55f637b4();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_55f637b4();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_TEXT_NOT_STRING()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_4e58557a();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_4e58557a();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_TRANSLATE_NOT_STRING()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_c55232da();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_c55232da();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string RAW_TEXT_ERROR_WITH_NOT_ARRAY_OR_RAW_TEXT()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_630db3bf();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_630db3bf();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static bool _getObjectsFromTextObject(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot parsedObject, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectParser_Nested.ServerData? serverData, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectParser_Nested.ErrorLocalization errorLocalization)
     {
-        return NativeMethods.TablePtr->C3.hs_method_aa80af04((void*)root.Handle, (void*)parsedObject.Handle, (void*)(serverData?.Handle ?? 0), (void*)errorLocalization.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_aa80af04((void*)root.Handle, (void*)parsedObject.Handle, (void*)(serverData?.Handle ?? 0), (void*)errorLocalization.Handle) != 0;
     }
 
     public static bool _textObjectFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot parsedObject, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectParser_Nested.ServerData? serverData, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectParser_Nested.ErrorLocalization errorLocalization)
     {
-        return NativeMethods.TablePtr->C3.hs_method_dc0fea7c((void*)root.Handle, (void*)parsedObject.Handle, (void*)(serverData?.Handle ?? 0), (void*)errorLocalization.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_dc0fea7c((void*)root.Handle, (void*)parsedObject.Handle, (void*)(serverData?.Handle ?? 0), (void*)errorLocalization.Handle) != 0;
     }
 
     public static bool _textObjectFromString(string jsonAsString, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot parsedObject, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectParser_Nested.ServerData? serverData, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectParser_Nested.ErrorLocalization errorLocalization)
@@ -129,7 +129,7 @@ public sealed unsafe partial class TextObjectParser : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(jsonAsString, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C3.hs_method_07ea9736(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)parsedObject.Handle, (void*)(serverData?.Handle ?? 0), (void*)errorLocalization.Handle) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_07ea9736(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)parsedObject.Handle, (void*)(serverData?.Handle ?? 0), (void*)errorLocalization.Handle) != 0;
         }
     }
 
@@ -147,7 +147,7 @@ public sealed unsafe partial class TextObjectParser : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_1e9972a0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_1e9972a0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

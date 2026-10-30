@@ -40,7 +40,7 @@ public sealed unsafe partial class TameableDefinition : global::System.IDisposab
 
     public static TameableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.TameableDefinition arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_ed059b5f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_ed059b5f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class TameableDefinition : global::System.IDisposab
 
     public void addTamingItem(nint tameItem)
     {
-        NativeMethods.TablePtr->C3.hs_method_67979bb8((void*)__hosihikari_shim_handle, (void*)tameItem);
+        NativeMethods.TablePtr->C4.hs_method_67979bb8((void*)__hosihikari_shim_handle, (void*)tameItem);
     }
 
     public void addTamingItemByName(string name)
@@ -69,31 +69,31 @@ public sealed unsafe partial class TameableDefinition : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_f6bf3891((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C4.hs_method_f6bf3891((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->C3.hs_method_65469c95(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C4.hs_method_65469c95(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnTame_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3142cea2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3142cea2((void*)__hosihikari_shim_handle);
     }
 
     public float mTameChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_6bcf873a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_6bcf873a((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_6bcf873a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_6bcf873a((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTameItems_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_26e0d61e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_26e0d61e((void*)__hosihikari_shim_handle);
     }
 
 
@@ -103,7 +103,7 @@ public sealed unsafe partial class TameableDefinition : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_9873b6a7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_9873b6a7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

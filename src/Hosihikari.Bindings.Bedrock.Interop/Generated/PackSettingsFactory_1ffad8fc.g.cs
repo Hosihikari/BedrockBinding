@@ -38,9 +38,10 @@ public sealed unsafe partial class PackSettingsFactory : global::System.IDisposa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Core::PathView' is abstract or not copy-constructible.", false)]
-    public nint _ctor(ulong maxGlobalPackSettingEntriesPerFile, nint globalPathRoot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Core::PathView' is abstract or not copy-constructible.");
+    public nint _ctor(ulong maxGlobalPackSettingEntriesPerFile, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView? globalPathRoot)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_11b58263((void*)__hosihikari_shim_handle, maxGlobalPackSettingEntriesPerFile, (void*)(globalPathRoot?.Handle ?? 0), globalPathRoot is not null);
+    }
 
     public ulong _getAccessTimestamp()
     {
@@ -63,9 +64,16 @@ public sealed unsafe partial class PackSettingsFactory : global::System.IDisposa
         return new PackSettingsFactory((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Core::PathView' is abstract or not copy-constructible.", false)]
-    public static PackSettingsFactory Create(ulong maxGlobalPackSettingEntriesPerFile, nint globalPathRoot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Core::PathView' is abstract or not copy-constructible.");
+    public static PackSettingsFactory Create(ulong maxGlobalPackSettingEntriesPerFile, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView? globalPathRoot)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_51c691f4(maxGlobalPackSettingEntriesPerFile, (void*)(globalPathRoot?.Handle ?? 0), globalPathRoot is not null);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackSettingsFactory((nint)handle);
+    }
 
     public static nint WORLD_BEHAVIOR_PACK_SETTINGS_FILENAME()
     {
