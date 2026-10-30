@@ -4,7 +4,7 @@
 
 The **Bedrock / MCAPI** interop surface for the Hosihikari projection: a generated native-style **Interop** and a symbol-dispatched native **binding shim**.
 
-This branch targets **BDS 1.26.51.1** through the headers of LeviLamina `ee049f1dc`. The `main` branch keeps the 1.21.3.01 surface generated from the carrier's debug symbols.
+This branch targets **BDS 1.26.51.1** through the headers of LeviLamina `ee049f1dc`. The `v1.21.3` branch keeps the 1.21.3.01 surface generated from the carrier's debug symbols.
 
 ## Boundary
 
